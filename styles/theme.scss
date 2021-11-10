@@ -1,0 +1,13 @@
+// Theme colors
+$yellow: #f9b930;
+$black: #000;
+$white: #fff;
+$pattern-bg-color: #3a3838;
+$grey: #808080;
+$red: #ff0c0c;
+
+.backgroundPattern {
+    background: url("/images/homepage/common/pattern-bg.png");
+    background-color: $pattern-bg-color;
+    background-repeat: repeat;
+}

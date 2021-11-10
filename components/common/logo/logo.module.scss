@@ -1,0 +1,22 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+
+.footerLogoDimensions {
+    width: 245px;
+    height: 77px;
+
+    @include media("<tablet") {
+        width: 149px;
+        height: 43px;
+    }
+}
+
+.headerLogoDimensions {
+    width: 149px;
+    height: 43px;
+}
+
+:export {
+    white: $white;
+    red: $red;
+}

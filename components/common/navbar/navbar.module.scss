@@ -1,0 +1,54 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.navbar {
+  background-color: $black;
+  top: 0;
+
+  img:hover {
+    cursor: pointer;
+  }
+
+  .links {
+    @extend .regular24;
+
+    .link {
+      color: $white;
+
+      &:hover {
+        color: $yellow;
+      }
+    }
+
+    .buttons {
+      .buttonLogin {
+        @extend .bold24;
+        color: $yellow;
+        background: transparent;
+        border: none;
+        text-transform: uppercase;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.link {
+  color: $white;
+}
+
+@include media(">=phone", "<991px") {
+  .links {
+    .link {
+      border-bottom: 1px solid $grey;
+    }
+  }
+}

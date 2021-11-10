@@ -1,0 +1,10 @@
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.primaryButton {
+    @extend .bold24;
+    background-color: $yellow;
+    border-radius: unset;
+    text-transform: uppercase;
+    padding: 15px 25px 15px 25px;
+}
