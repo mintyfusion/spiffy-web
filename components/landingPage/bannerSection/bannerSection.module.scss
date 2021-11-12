@@ -1,0 +1,49 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.banner {
+    color: $white;
+
+    .bannerContent {
+        h2 {
+            @extend .bold109;
+
+            label {
+                @extend .bold178;
+                color: $yellow;
+                line-height: unset;
+            }
+        }
+
+        h3 {
+            @extend .bold67;
+        }
+
+        h4 {
+            @extend .regular25;
+        }
+    }
+}
+
+// Bootstrap carousel places captions on the bottom by default. This will place it on the center.
+.caption {
+    top: 50%;
+    transform: translateY(-50%);
+    min-height: 40rem;
+    z-index: 1;
+}
+
+.carouselItem div {
+    min-height: 40rem;
+}
+
+@include media("<=tablet") {
+    .banner .bannerContent h4 {
+        display: none;
+    }
+
+    .caption {
+        min-height: unset;
+    }
+}

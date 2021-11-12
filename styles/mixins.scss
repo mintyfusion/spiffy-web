@@ -6,3 +6,12 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
     }
     #{$property}: $value;
 }
+
+// Takes minumum and maximum font size and creates a mixin with dynamic font properties.
+@mixin typeFace($minValue, $maxValue, $fontWeight) {
+    $font-size: fluid-fonts($minValue, $maxValue);
+    font-size: $font-size;
+    line-height: calculate-line-height($font-size);
+    letter-spacing: countLetterSpacing($font-size);
+    font-weight: $fontWeight;
+}

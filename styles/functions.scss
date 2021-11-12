@@ -1,0 +1,22 @@
+/*  
+    Following calc function changes the properties dynamically as screen size changes
+    calc([minimum property] + ([maximum property] - [minimum property]) * 
+    ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); 
+*/
+@function fluid-fonts($minValue, $maxValue) {
+    @return calc((#{$minValue}px) + ($maxValue - $minValue) * ((100vw - 480px) / (1920 - 480)));
+}
+
+// The ratio between font-size and line-height
+$ratio: 1.42857;
+
+@function calculate-line-height($font-size) {
+    @return calc($font-size * $ratio);
+}
+
+// Calculates the letter spacing value using the font-size passed in.
+$letterSpacing: 20;
+
+@function countLetterSpacing($font-size) {
+    @return calc($font-size * $letterSpacing / 1000);
+}

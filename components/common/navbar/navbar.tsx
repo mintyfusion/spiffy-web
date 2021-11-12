@@ -11,8 +11,26 @@ import styles from "components/common/navbar/navbar.module.scss";
 
 const alignCenter = flexbox({ hAlign: "center", vAlign: "center" });
 
-const Navbar = (): JSX.Element =>
-    <BTNavbar collapseOnSelect expand="lg" className={`${styles.navbar} py-4 px-md-5 px-4 `} variant="dark">
+const Navbar = (): JSX.Element => {
+    const [backgroundClass, setBackgroundClass] = React.useState<string>("");
+
+    // Adding dark background when page is scrolled
+    const handleScroll = React.useCallback(() => {
+        setBackgroundClass(window.pageYOffset > 1 ? styles.backgroundDark : "");
+    }, []);
+
+    React.useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [handleScroll]);
+
+    return <BTNavbar
+        collapseOnSelect
+        expand="lg"
+        className={`${styles.navbar} ${backgroundClass} position-fixed py-4 px-md-5 px-4 w-100`}
+        variant="dark"
+    >
         <Link href="/">
             <Logo variant={LogoVariants.header} />
         </Link>
@@ -38,5 +56,6 @@ const Navbar = (): JSX.Element =>
             </Nav>
         </BTNavbar.Collapse>
     </BTNavbar>;
+};
 
 export default Navbar;
