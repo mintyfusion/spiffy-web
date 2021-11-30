@@ -38,6 +38,10 @@
     @include typeFace($fourteen, $fortyOne, $bold);
 }
 
+.bold60 {
+    @include typeFace($twentyEight, $sixty, $bold);
+}
+
 .bold67 {
     @include typeFace($twentyFive, $sixtySeven, $bold);
 }
@@ -48,6 +52,10 @@
 
 .bold109 {
     @include typeFace($thirtyFive, $oneHundredNine, $bold);
+}
+
+.bold150 {
+    @include typeFace($fortyFive, $oneHunderdFifty, $bold);
 }
 
 .bold178 {

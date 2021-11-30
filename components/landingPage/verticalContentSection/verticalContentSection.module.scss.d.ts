@@ -1,23 +1,26 @@
 export type Styles = {
+  "active": string;
   "backgroundPattern": string;
-  "banner": string;
-  "bannerContent": string;
   "bold109": string;
+  "bold150": string;
   "bold178": string;
   "bold24": string;
   "bold60": string;
-  "bold41": string;
   "bold67": string;
-  "bold90": string;
-  "caption": string;
-  "carouselItem": string;
-  "extraBold90": string;
+  "container": string;
+  "content3": string;
+  "contentContainer": string;
+  "headerEmphasisText": string;
+  "hide": string;
+  "highlightText": string;
+  "panel": string;
+  "panelHeader": string;
   "regular16": string;
   "regular24": string;
   "regular25": string;
-  "regular90": string;
-  "regularDesktop25Mobile9": string;
-  "semiBold90": string;
+  "selector": string;
+  "selectors": string;
+  "show": string;
 };
 
 export type ClassNames = keyof Styles;
