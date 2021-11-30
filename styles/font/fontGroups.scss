@@ -22,12 +22,16 @@
     @include typeFace($thirtyFive, $ninety, $regular);
 }
 
-.semiBold90{
+.semiBold90 {
     @include typeFace($thirtyFive, $ninety, $semi-bold);
 }
 
 .bold24 {
     @include typeFace($fourteen, $twentyFour, $bold);
+}
+
+.bold32 {
+    @include typeFace($nine, $thirtyTwo, $bold);
 }
 
 .bold41 {
@@ -50,14 +54,13 @@
     @include typeFace($sixty, $oneSeventyEight, $bold);
 }
 
-.extraBold90{
+.extraBold90 {
     @include typeFace($thirtyFive, $ninety, $extraBold);
 }
 
 .fullBold67 {
     @include typeFace($thirty, $sixtySeven, $full-bold);
 }
-
 
 // Special Cases
 .regular-desktop25-mobile9 {

@@ -1,0 +1,194 @@
+@import "styles/includeMedia.scss";
+@import "styles/mixins.scss";
+@import "styles/theme.scss";
+@import "styles/functions.scss";
+@import "styles/font/fontGroups.scss";
+
+@include opacityKeyFrames();
+
+@mixin opacityTransition($showSection, $hideSection) {
+    #{$showSection} {
+        opacity: 1;
+        transition: show 2s;
+        animation: show 2s;
+    }
+
+    #{$hideSection} {
+        opacity: 0;
+        transition: hide 0.3s;
+        animation: hide 0.3s;
+    }
+}
+
+@mixin sectionKeyframe($name, $start, $end) {
+    @keyframes #{$name} {
+        from {
+            left: #{$start};
+        }
+        to {
+            left: #{$end};
+        }
+    }
+}
+
+$minHeight: calc(100vh - 25rem);
+$minWidth: calc(100vw - 62rem);
+
+.wrapperDiv {
+    min-height: $minHeight;
+
+    .content2 {
+        .content2Container {
+            min-height: $minHeight;
+
+            .leftSection {
+                background: $dirty-white;
+                transition: padding 0.5s;
+
+                .leftSectionRight {
+                    transition: padding 0.5s;
+                    h2 {
+                        @extend .bold67;
+                    }
+                    h5 {
+                        text-align: right;
+                        @extend .regular25;
+                    }
+                }
+            }
+
+            .rightSection {
+                background: $fadedRed;
+                color: $white;
+                transition: padding 0.5s;
+
+                .rightSectionLeft {
+                    transition: padding 0.5s;
+                    h2 {
+                        @extend .bold67;
+                    }
+                    h5 {
+                        @extend .regular25;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media(">1200px") {
+    .content2Container {
+        flex-wrap: nowrap;
+
+        div {
+            min-width: 0px;
+        }
+    }
+
+    .content2 {
+        position: absolute;
+        left: -50%;
+        z-index: 1;
+        .leftSection {
+            width: 100vw;
+            min-height: $minHeight;
+            padding: 5rem;
+
+            .leftSectionRight {
+                min-width: 510px;
+                max-width: $minWidth;
+
+                > h2 {
+                    width: max-content;
+                }
+            }
+        }
+
+        .rightSection {
+            width: 100vw;
+            min-height: $minHeight;
+            padding: 5rem;
+
+            .rightSectionLeft {
+                min-width: 510px;
+                max-width: $minWidth;
+
+                > h2 {
+                    width: max-content;
+                }
+
+                > h5 {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+@include media("<1200px") {
+    .content2 {
+        .leftSection {
+            padding: 3rem;
+
+            .leftSectionRight {
+                min-width: inherit;
+                padding: inherit;
+            }
+        }
+        .rightSection {
+            padding: 3rem;
+
+            .rightSectionLeft {
+                min-width: inherit;
+                padding: inherit;
+            }
+        }
+    }
+}
+
+// Show left content transition from outer
+.showLeft {
+    animation: showLeft 0.5s;
+    left: -30%;
+    @include opacityTransition(".leftSection .btnGetStarted", ".rightSectionLeft");
+    @include sectionKeyframe("showLeft", -50%, -30%);
+}
+
+// Show right content transition from outer
+.showRight {
+    animation: showRight 0.5s;
+    left: -70%;
+    @include opacityTransition(".rightSection .btnGetStarted", ".leftSectionRight");
+    @include sectionKeyframe("showRight", -50%, -70%);
+}
+
+// Reset left content transition to outer
+.resetLeft {
+    animation: resetLeft 0.5s;
+    left: -50%;
+    @include opacityTransition(".rightSectionLeft", ".leftSection .btnGetStarted");
+    @include sectionKeyframe("resetLeft", -30%, -50%);
+}
+
+// Reset right content transition to outer
+.resetRight {
+    left: -50%;
+    animation: resetRight 0.5s;
+    @include opacityTransition(".leftSectionRight", ".rightSection .btnGetStarted");
+    @include sectionKeyframe("resetRight", -70%, -50%);
+}
+
+// Show left content transition from inner
+.showLeftIn {
+    animation: showLeftIn 0.5s;
+    left: -30%;
+    @include opacityTransition(".leftSection .btnGetStarted", ".rightSectionLeft");
+    @include sectionKeyframe("showLeftIn", -70%, -30%);
+}
+// Show right content transition from inner
+.showRightIn {
+    animation: showRightIn 0.5s;
+    left: -70%;
+    @include opacityTransition(".rightSection .btnGetStarted", ".leftSectionRight");
+    @include sectionKeyframe("showRightIn", -30%, -70%);
+}

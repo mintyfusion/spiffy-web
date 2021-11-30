@@ -16,6 +16,26 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
     font-weight: $fontWeight;
 }
 
+// Common keyframes for opacity
+@mixin opacityKeyFrames() {
+    @keyframes show {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes hide {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+}
+
 // Takes CSS property name, minimum and maximum value for dynamic property value based on viewport
 @mixin fluidDimension($property, $minValue, $maxValue) {
     #{$property}: fluid($minValue, $maxValue);

@@ -4,6 +4,7 @@ export type Styles = {
   "bold109": string;
   "bold178": string;
   "bold24": string;
+  "bold32": string;
   "bold41": string;
   "bold67": string;
   "bold90": string;
@@ -14,6 +15,7 @@ export type Styles = {
   "container": string;
   "content1": string;
   "extraBold90": string;
+  "fullBold67": string;
   "imageContainer": string;
   "imageLogoContainer": string;
   "leftSection": string;
