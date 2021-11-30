@@ -32,3 +32,7 @@
 .bold178 {
     @include typeFace($sixty, $oneSeventyEight, $bold);
 }
+
+.fullBold67 {
+    @include typeFace($thirty, $sixtySeven, $full-bold);
+}

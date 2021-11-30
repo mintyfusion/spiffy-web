@@ -1,0 +1,52 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/mixins.scss";
+@import "styles/font/fontGroups.scss";
+
+.content4 {
+    background: $dirty-white;
+
+    .contentHeading h2 {
+        @extend .fullBold67;
+    }
+
+    .container .card {
+        border-radius: 12px;
+
+        .cardTitle {
+            color: $light-grey;
+            @extend .regular16;
+        }
+
+        .cardText {
+            @extend .regular25;
+        }
+
+        .link {
+            @extend .bold24;
+            cursor: pointer;
+            color: $yellow;
+        }
+    }
+}
+
+@include media(">807px") {
+    .content4 {
+        padding: 7rem 5rem;
+
+        .card {
+            @include fluidDimension("max-width", 340, 530);
+            min-width: 300px;
+        }
+    }
+}
+
+@include media("<=807px") {
+    .content4 {
+        padding: 4rem 3.5rem;
+
+        .card {
+            width: 86vw;
+        }
+    }
+}
