@@ -1,0 +1,171 @@
+@import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
+@import "styles/mixins.scss";
+@import "styles/theme.scss";
+
+@mixin cardProperties($marginTop, $padding, $rotate) {
+  margin-top: $marginTop;
+  padding: $padding;
+  transform: rotate($rotate);
+}
+
+.container {
+  > div {
+    // Scroll width For Firefox
+    scrollbar-width: none;
+    // Scroll width for Edge, Chrome, Opera and Safari
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
+
+.content1 {
+  @extend .backgroundPattern;
+  background-color: $darkGrey;
+  min-height: 640px;
+  color: $white;
+
+  .leftSection {
+    z-index: 1;
+
+    .cardStack {
+      .card {
+        .imageContainer .imageLogoContainer {
+          width: 60px;
+        }
+
+        .cardContent {
+          background: $white;
+
+          h4 {
+            @extend .bold41;
+            color: $black;
+          }
+
+          h6 {
+            @extend .regular-desktop25-mobile9;
+            color: $neutralBlack;
+          }
+        }
+      }
+    }
+  }
+
+  .rightSection {
+    z-index: 1;
+    color: $white;
+
+    .arrowContainer h2 {
+      @extend .semiBold90;
+    }
+
+    h2 {
+      @extend .extraBold90;
+    }
+  }
+}
+
+@include media(">=1337px") {
+  .cardStack {
+    position: absolute;
+  }
+}
+
+@include media(">=975px", "<1337px") {
+  .leftSection,
+  .rightSection {
+    flex: 1;
+  }
+}
+
+@include media(">991px") {
+  .container {
+    margin-top: 6rem;
+
+    .sectionContainer {
+      @include fluidDimension("height", 540, 720);
+    }
+  }
+
+  .content1 .leftSection .cardStack {
+    .card {
+      height: 420px;
+      padding: 5rem;
+      // For dynamic card box sizing based on viewport
+      .imageContainer {
+        @include fluidDimension("width", 200, 353);
+      }
+
+      .cardContent {
+        @include fluidDimension("width", 200, 480);
+      }
+
+      &:nth-child(2) {
+        @include cardProperties(17rem, 5rem, 14deg);
+
+        .cardContainer {
+          padding-top: 4rem;
+        }
+      }
+
+      &:nth-child(3) {
+        @include cardProperties(28rem, 0 5rem 5rem 5rem, 348deg);
+      }
+    }
+  }
+
+  .rightSection {
+    padding: 5rem 1rem 2rem 2rem;
+    text-align: right;
+    height: fit-content;
+    margin: 0;
+
+    .rightSectionContainer {
+      @include fluidDimension("min-height", 300, 450);
+
+      .arrowContainer {
+        h2 {
+          line-height: 0;
+        }
+      }
+
+      h2 {
+        line-height: 1;
+      }
+    }
+  }
+}
+
+@include media("<992px") {
+  .card {
+    margin: auto;
+    margin-bottom: 2rem;
+    max-width: 40rem;
+  }
+
+  .rightSection {
+    padding: 3rem;
+  }
+}
+
+@include media("<=1337px") {
+  .cardStack {
+    padding: 1rem 1rem 3rem 1rem;
+
+    .card {
+      transform: rotate(0);
+
+      .imageContainer,
+      .cardContent {
+        flex: 1;
+      }
+    }
+  }
+}
+
+@include media("<desktop") {
+  .content1 .leftSection .cardStack .imageContainer {
+    min-width: 220px;
+  }
+}

@@ -64,6 +64,7 @@
                     div:not(.linkHeaderText) {
                         color: $white;
                         @extend .regular25;
+                        width: max-content;
                     }
 
                     a:hover {

@@ -1,21 +1,30 @@
 export type Styles = {
+  "arrowContainer": string;
   "backgroundPattern": string;
-  "banner": string;
-  "bannerContent": string;
   "bold109": string;
   "bold178": string;
   "bold24": string;
   "bold41": string;
   "bold67": string;
   "bold90": string;
-  "caption": string;
-  "carouselItem": string;
+  "card": string;
+  "cardContainer": string;
+  "cardContent": string;
+  "cardStack": string;
+  "container": string;
+  "content1": string;
   "extraBold90": string;
+  "imageContainer": string;
+  "imageLogoContainer": string;
+  "leftSection": string;
   "regular16": string;
   "regular24": string;
   "regular25": string;
   "regular90": string;
   "regularDesktop25Mobile9": string;
+  "rightSection": string;
+  "rightSectionContainer": string;
+  "sectionContainer": string;
   "semiBold90": string;
 };
 

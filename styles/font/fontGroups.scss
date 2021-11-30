@@ -3,6 +3,7 @@
 @import "styles/mixins.scss";
 @import "styles/font/fontWeights.scss";
 @import "styles/font/fontSizes.scss";
+@import "styles/mixins.scss";
 
 // Different font weights and sizes
 .regular16 {
@@ -17,12 +18,28 @@
     @include typeFace($fourteen, $twentyFive, $regular);
 }
 
+.regular90 {
+    @include typeFace($thirtyFive, $ninety, $regular);
+}
+
+.semiBold90{
+    @include typeFace($thirtyFive, $ninety, $semi-bold);
+}
+
 .bold24 {
     @include typeFace($fourteen, $twentyFour, $bold);
 }
 
+.bold41 {
+    @include typeFace($fourteen, $fortyOne, $bold);
+}
+
 .bold67 {
     @include typeFace($twentyFive, $sixtySeven, $bold);
+}
+
+.bold90 {
+    @include typeFace($thirtyFive, $ninety, $bold);
 }
 
 .bold109 {
@@ -33,6 +50,16 @@
     @include typeFace($sixty, $oneSeventyEight, $bold);
 }
 
+.extraBold90{
+    @include typeFace($thirtyFive, $ninety, $extraBold);
+}
+
 .fullBold67 {
     @include typeFace($thirty, $sixtySeven, $full-bold);
+}
+
+
+// Special Cases
+.regular-desktop25-mobile9 {
+    @include typeFace($nine, $twentyFive, $regular);
 }
