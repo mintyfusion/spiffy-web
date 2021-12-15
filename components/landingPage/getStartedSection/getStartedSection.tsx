@@ -5,7 +5,7 @@ import flexbox from "utils/flexbox";
 import getStartedContentData from "components/landingPage/getStartedSection/getStartedContentData";
 import GetStartedContentSectionSide from "components/landingPage/getStartedSection/section/enums/getStartedContentSectionSide";
 import Section from "components/landingPage/getStartedSection/section/section";
-import useBreakpoint from "hooks/useBreakpoints";
+import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/landingPage/getStartedSection/getStarted.module.scss";
 

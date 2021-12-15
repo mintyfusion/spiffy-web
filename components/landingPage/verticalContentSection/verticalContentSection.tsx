@@ -4,7 +4,7 @@ import { SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import React from "react";
 
-import BreakpointChecks from "hooks/enums/BreakpointChecks";
+import BreakpointChecks from "hooks/enums/breakpointChecks";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import IVerticalContentData from "components/landingPage/verticalContentSection/interfaces/IVerticalContentData";

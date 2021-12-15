@@ -1,6 +1,6 @@
 import React from "react";
 
-import BreakpointChecks from "hooks/enums/BreakpointChecks";
+import BreakpointChecks from "hooks/enums/breakpointChecks";
 import Breakpoints from "common/style/breakpoints";
 
 /**
