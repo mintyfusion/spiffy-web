@@ -56,21 +56,21 @@ const Footer = (): JSX.Element =>
                         </Col>
                     )}
                 </Row>
-                <hr />
+                <hr className="d-none d-md-block" />
                 <Row className={`${styles.footerBottom} p-3`}>
-                    <Col className="pe-1">
-                        <p className="text-white text-end">Powered by</p>
-                    </Col>
-                    <Col className="ps-0 pb-1">
-                        <a href="https://mintyfusion.com/">
+                    <Stack className="pe-1 justify-content-start justify-content-md-center" direction="horizontal" gap={1}>
+                        <p className="text-white m-0">Powered by</p>
+                        <a href="https://mintyfusion.com/" className="d-flex">
                             <Image
                                 src="/images/homepage/footer/mintyfusionstudios.svg"
                                 width="150"
                                 height="25"
                                 alt="mintyfusion Studios"
+                                layout="intrinsic"
+                                priority={true}
                             />
                         </a>
-                    </Col>
+                    </Stack>
                 </Row>
             </Col>
         </Container>
