@@ -33,6 +33,12 @@
     z-index: 1;
 }
 
+.carouselItem {
+    & > div:first-child {
+        height: 100vh;
+    }
+}
+
 @include media(">=1340px") {
     .caption {
         min-height: 40rem;
@@ -47,7 +53,7 @@
 @include media("<1340px") {
     .caption,
     .carouselItem div {
-        min-height: 40rem;
+        min-height: 24rem;
     }
 }
 

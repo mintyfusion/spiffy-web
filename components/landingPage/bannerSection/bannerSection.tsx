@@ -42,7 +42,7 @@ const BannerSection = (): JSX.Element => {
             {bannerContent.images.map((banner: ImageProps, index) => {
                 const { src, alt, width, height, layout, priority } = banner;
 
-                return <Carousel.Item className={styles.carouselItem} key={index}>
+                return <Carousel.Item className={`${styles.carouselItem} vh-100`} key={index}>
                     <Image
                         src={src}
                         alt={alt}
