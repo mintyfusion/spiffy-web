@@ -1,0 +1,51 @@
+@import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
+@import "styles/mixins.scss";
+
+@mixin contentProperties($containerPadding, $contentPadding) {
+    .container {
+        padding: $containerPadding;
+
+        .contentContainer {
+            padding: $contentPadding;
+        }
+    }
+}
+
+.container {
+    .contentContainer {
+        min-height: 350px;
+
+        .title {
+            @extend .extraBold67;
+
+            .arrowContainer {
+                @include fluidDimension("width", 10, 45);
+            }
+        }
+
+        .description {
+            @extend .regular-desktop25-mobile9;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .content {
+        min-height: 640px;
+    }
+
+    @include contentProperties(7rem 0, 0 5rem);
+}
+
+@include media(">=tablet", "<desktop") {
+    @include contentProperties(3rem 0, 0 1rem);
+}
+
+@include media("<tablet") {
+    @include contentProperties(0, 3rem 2rem);
+
+    .arrowContainer {
+        transform: scale(0.8);
+    }
+}

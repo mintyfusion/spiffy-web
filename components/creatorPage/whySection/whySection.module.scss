@@ -1,0 +1,7 @@
+@import "styles/theme.scss";
+
+.container {
+  @extend .backgroundPattern;
+  background-color: $darkGrey;
+  color: $white;
+}

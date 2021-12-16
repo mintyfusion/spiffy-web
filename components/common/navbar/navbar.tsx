@@ -40,7 +40,7 @@ const Navbar = (): JSX.Element => {
                 <Link href="/subscribers" className={`${styles.link} ${alignCenter} text-center me-lg-5`}>
                     FOR SUBSCRIBERS
                 </Link>
-                <Link href="/youtube" className={`${styles.link} ${alignCenter} text-center me-lg-5 mb-xs-3`}>
+                <Link href="/creator" className={`${styles.link} ${alignCenter} text-center me-lg-5 mb-xs-3`}>
                     FOR YOUTUBE CHANNELS
                 </Link>
             </Nav>

@@ -1,9 +1,7 @@
 // Dark background pattern
-@import "styles/functions.scss";
 @import "styles/mixins.scss";
 @import "styles/font/fontWeights.scss";
 @import "styles/font/fontSizes.scss";
-@import "styles/mixins.scss";
 
 // Different font weights and sizes
 .regular16 {
@@ -60,6 +58,10 @@
 
 .bold178 {
     @include typeFace($sixty, $oneSeventyEight, $bold);
+}
+
+.extraBold67 {
+    @include typeFace($thirty, $sixtySeven, $extraBold);
 }
 
 .extraBold90 {

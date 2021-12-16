@@ -2,6 +2,7 @@ import { Col, Container, Row, Stack } from "react-bootstrap";
 import Image from "next/image";
 import React from "react";
 
+import ArrowIcon from "components/common/arrowIcon/arrowIcon";
 import featuresSectionContentData from "components/landingPage/featuresSection/featuresSectionContentData";
 import flexbox from "utils/flexbox";
 import IFeaturesContentData from "components/landingPage/featuresSection/interfaces/IFeaturesContentData";
@@ -13,21 +14,6 @@ const columnAlignStart = flexbox({ vertical: true, hAlign: "center", vAlign: "st
 const rowReverseCenter = flexbox({ vertical: true, reversed: true, hAlign: "center" });
 const contentAlignCenter = flexbox({ hAlign: "center" });
 const flex = flexbox();
-const numOfArrows = 5;
-
-const arrowsGeneration =
-    Array.from(Array(numOfArrows), (_, index) =>
-        <div className="d-none d-lg-block" key={index}>
-            <Image
-                src="/images/homepage/features-section/arrow-left.svg"
-                alt=""
-                width={45}
-                height={60}
-                layout="intrinsic"
-                priority={true}
-            />
-        </div>
-    );
 
 const FeaturesSection = (): JSX.Element =>
     <Stack className={`${styles.content1} ${columnAlignCenter}`}>
@@ -94,7 +80,7 @@ const FeaturesSection = (): JSX.Element =>
                             direction="horizontal"
                             className={`${styles.arrowContainer} ${contentAlignCenter} justify-content-xl-end`}
                         >
-                            {arrowsGeneration}
+                            <ArrowIcon width={45} height={60} layout="intrinsic" quantity={5} />
                             <h2 className="ms-1">Our</h2>
                         </Stack>
                         <h2 className="text-xl-end text-center">Features</h2>
