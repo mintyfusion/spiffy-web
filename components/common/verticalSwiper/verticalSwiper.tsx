@@ -10,9 +10,6 @@ import "swiper/css/pagination";
 
 import styles from "components/common/verticalSwiper/verticalSwiper.module.scss";
 
-// Rendering Custom Bullet
-const handleRenderBullet = (_: number, className: string) => `<span class="${className}"></span>`;
-
 // install Swiper modules
 SwiperCore.use([Mousewheel, Pagination]);
 
@@ -21,14 +18,8 @@ export default function VerticalSwiper(props: PropsWithChildren<IVerticalSwiperP
         <div className={`${styles.swiperWrapper} position-relative`}>
             <Swiper
                 className={styles.swiper}
-                direction={props.isViewportDesktop ? "vertical" : "horizontal"}
+                direction="vertical"
                 mousewheel={{ releaseOnEdges: true }}
-                pagination={{
-                    clickable: true,
-                    renderBullet: handleRenderBullet,
-                    bulletClass: styles.bullets,
-                    bulletActiveClass: styles.activeBullets
-                }}
                 onActiveIndexChange={props.onActiveIndexChange}
             >
                 {props.children}

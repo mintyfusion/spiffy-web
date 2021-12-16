@@ -1,3 +1,5 @@
+@import "styles/functions.scss";
+
 $prefixes: -webkit-, -moz-, -ms-, -o-;
 
 @mixin crossBrowserPrefix($property, $value) {

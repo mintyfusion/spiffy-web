@@ -34,7 +34,7 @@ const VerticalContentSection = (): JSX.Element => {
             <Col
                 className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0`}
             >
-                <VerticalSwiper onActiveIndexChange={onActiveIndexChange} isViewportDesktop={isViewportDesktop} >
+                <VerticalSwiper onActiveIndexChange={onActiveIndexChange}>
                     {verticalContentData.map((content: IVerticalContentData, index) =>
                         <SwiperSlide key={index}>
                             <Row className={`${rowHAlignCenter} w-100 m-0`}>
