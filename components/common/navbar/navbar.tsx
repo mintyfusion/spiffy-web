@@ -90,7 +90,7 @@ const Navbar = (): JSX.Element => {
                         FOR SUBSCRIBERS
                     </Link>
                     <Link
-                        href="/youtube"
+                        href="/creator"
                         className={`${styles.link} me-lg-3 me-xl-5 py-3 px-4 px-lg-0`}
                     >
                         FOR YOUTUBE CHANNELS

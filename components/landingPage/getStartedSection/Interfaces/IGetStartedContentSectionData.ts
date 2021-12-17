@@ -1,6 +1,6 @@
-import IGetStartedContentSectionDetailsData from "components/landingPage/getStartedSection/Interfaces/IGetStartedContentSectionDetailsData";
+import IContentInfo from "types/IContentnfo";
 
 export default interface IGetStartedContentSectionData {
-    leftPart: IGetStartedContentSectionDetailsData;
-    rightPart: IGetStartedContentSectionDetailsData;
+    leftPart: IContentInfo;
+    rightPart: IContentInfo;
 }
