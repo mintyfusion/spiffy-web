@@ -80,7 +80,9 @@ const FeaturesSection = (): JSX.Element =>
                             direction="horizontal"
                             className={`${styles.arrowContainer} ${contentAlignCenter} justify-content-xl-end`}
                         >
-                            <ArrowIcon width={45} height={60} layout="intrinsic" quantity={5} />
+                            <div className="d-none d-lg-block">
+                                <ArrowIcon width={45} height={60} layout="intrinsic" quantity={5} />
+                            </div>
                             <h2 className="ms-1">Our</h2>
                         </Stack>
                         <h2 className="text-xl-end text-center">Features</h2>

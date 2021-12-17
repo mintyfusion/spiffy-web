@@ -1,7 +1,6 @@
 export type Styles = {
   "backgroundPattern": string;
-  "banner": string;
-  "bannerContent": string;
+  "bannerCaption": string;
   "bold109": string;
   "bold150": string;
   "bold178": string;
@@ -11,8 +10,6 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
-  "caption": string;
-  "carouselItem": string;
   "extraBold90": string;
   "fullBold67": string;
   "regular16": string;
