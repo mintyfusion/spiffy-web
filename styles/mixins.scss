@@ -19,19 +19,29 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
 }
 
 // Common keyframes for opacity
-@mixin opacityKeyFrames() {
+@mixin opacityKeyFrames($opacity: 1) {
     @keyframes show {
         from {
             opacity: 0;
         }
+
         to {
-            opacity: 1;
+            @if $opacity == 1 {
+                opacity: 1;
+            } @else {
+                opacity: $opacity;
+            }
         }
     }
     @keyframes hide {
         from {
-            opacity: 1;
+            @if $opacity == 1 {
+                opacity: 1;
+            } @else {
+                opacity: $opacity;
+            }
         }
+
         to {
             opacity: 0;
         }

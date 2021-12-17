@@ -1,0 +1,85 @@
+@import "styles/theme.scss";
+@import "styles/includeMedia.scss";
+
+// Needed pre defined CSS properties as written in react-player documentation
+.videoPlayerContainer {
+    position: relative;
+    padding-top: 56.25%;
+
+    :global(.react-player__shadow) {
+        visibility: hidden;
+    }
+
+    .videoPlayer {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .playButtonContainer {
+        opacity: 0.5;
+        background-color: $white;
+        border-radius: 50%;
+        position: absolute;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        margin: auto;
+
+        .playButton {
+            border-style: solid;
+            border-color: transparent transparent transparent $transparent-grey;
+            margin-left: 7px;
+            padding-left: 2px;
+            position: absolute;
+            top: 24%;
+            left: 27%;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .videoPlayerContainer {
+        .playButtonContainer {
+            width: 150px;
+            height: 150px;
+        }
+        .playButton {
+            border-width: 36px 0px 36px 61px;
+        }
+    }
+}
+
+@include media(">=tablet") {
+    .videoPlayerContainer {
+        .playButtonContainer {
+            padding: 3rem;
+        }
+    }
+}
+
+@include media("<tablet") {
+    .videoPlayerContainer {
+        .playButtonContainer {
+            padding: 2rem;
+            width: 10px;
+            height: 10px;
+        }
+        .playButton {
+            border-width: 16px 0px 16px 21px;
+        }
+    }
+}
+
+@include media(">=tablet", "<desktop") {
+    .videoPlayerContainer {
+        .playButtonContainer {
+            width: 50px;
+            height: 50px;
+        }
+        .playButton {
+            border-width: 26px 0px 26px 41px;
+        }
+    }
+}

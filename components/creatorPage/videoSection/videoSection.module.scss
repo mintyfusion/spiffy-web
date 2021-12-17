@@ -1,0 +1,14 @@
+@import "styles/includeMedia.scss";
+
+@include media(">=tablet") {
+    .videoSectionContainer {
+        padding: 8rem 5rem;
+        height: 100vh;
+    }
+}
+
+@include media("<tablet") {
+    .videoSectionContainer {
+        padding: 4rem 1.5rem;
+    }
+}
