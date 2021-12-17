@@ -367,66 +367,66 @@
     display: flex;
     > div:nth-child(1) {
         animation-name: opacityAnimation;
-        animation-duration: 2s;
+        animation-duration: 3s;
     }
     div:nth-child(2) {
         right: 40%;
         top: 50px;
         animation-name: opacityAnimation;
-        animation-duration: 3s;
+        animation-duration: 5s;
     }
     div:nth-child(3) {
         right: 35%;
         top: 170px;
         animation-name: opacityAnimation;
-        animation-duration: 4s;
+        animation-duration: 6s;
     }
     div:nth-child(4) {
         right: 31%;
         top: 300px;
         animation-name: opacityAnimation;
-        animation-duration: 5s;
+        animation-duration: 8s;
     }
     div:nth-child(5) {
         right: 35%;
         top: 430px;
         animation-name: opacityAnimation;
-        animation-duration: 6s;
+        animation-duration: 10s;
     }
     div:nth-child(6) {
         right: 40%;
         top: 535px;
         animation-name: opacityAnimation;
-        animation-duration: 7.5s;
+        animation-duration: 12s;
     }
     div:nth-child(7) {
         bottom: 0;
         animation-name: opacityAnimation;
-        animation-duration: 8.5s;
+        animation-duration: 14s;
     }
     div:nth-child(8) {
         bottom: 40px;
         left: 40%;
         animation-name: opacityAnimation;
-        animation-duration: 9.5s;
+        animation-duration: 15s;
     }
     div:nth-child(9) {
         bottom: 145px;
         left: 34%;
         animation-name: opacityAnimation;
-        animation-duration: 10.5s;
+        animation-duration: 16s;
     }
     div:nth-child(10) {
         bottom: 275px;
         left: 31%;
         animation-name: opacityAnimation;
-        animation-duration: 12s;
+        animation-duration: 17s;
     }
     div:nth-child(11) {
         bottom: 460px;
         left: 31%;
         animation-name: opacityAnimation;
-        animation-duration: 12.5s;
+        animation-duration: 18s;
     }
 }
 @keyframes opacityAnimation {
