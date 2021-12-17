@@ -2,10 +2,12 @@ export type Styles = {
   "arrowContainer": string;
   "backgroundPattern": string;
   "bold109": string;
+  "bold150": string;
   "bold178": string;
   "bold24": string;
   "bold32": string;
   "bold41": string;
+  "bold60": string;
   "bold67": string;
   "bold90": string;
   "card": string;

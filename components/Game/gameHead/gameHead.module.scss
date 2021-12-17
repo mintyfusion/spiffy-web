@@ -1,0 +1,20 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.gameHead {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 150px;
+    margin-bottom: 75px;
+}
+.gameHeading {
+    font-size: 109px;
+}
+.gameDesc {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    color: #F9B930
+}

@@ -1,0 +1,439 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    background-color: $white;
+    padding: 150px 0px;
+}
+.avatarHeading {
+    font-size: 67px;
+    color: $neutralBlack800;
+    font-weight: $bold;
+}
+.avatarWrapper {
+    width: 25%;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    img {
+        cursor: pointer;
+    }
+}
+.gameStepTwo {
+    width: 30%;
+    margin-top: 55px;
+    input {
+        width: 100%;
+        border: 1px solid $gameInput;
+        padding: 20px 10px;
+        text-align: center;
+        border-radius: 12px;
+        margin-top: 55px;
+    }
+    input:focus-visible {
+        outline: 0px;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 55px;
+        background-color: $yellow;
+        border: 1px solid $yellow;
+        padding: 20px 0px;
+        font-size: 20px;
+        color: #212429;
+        font-weight: $semi-bold;
+    }
+}
+
+.hide {
+    display: none !important;
+}
+.show {
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.gameStepThree {
+    display: flex;
+    .gameStepThreeUserColumn {
+        width: 30%;
+        background-color: $white;
+    }
+    .gameStepThreeFriendsColumn {
+        width: 65%;
+        background-color: $white;
+        .avatarWrapper {
+            width: 40%;
+        }
+    }
+    h3 {
+        font-weight: 500;
+        font-size: 24px;
+        color: #232323;
+        margin-top: 20px;
+    }
+}
+.selected {
+    img {
+        width: 265px;
+        height: 331px;
+    }
+}
+.friends {
+    position: absolute;
+    top: 0px;
+    img {
+        width: 182px;
+        height: 215px;
+    }
+    div:nth-child(1) {
+        right: 140px;
+        bottom: 40px;
+    }
+    div:nth-child(2) {
+        bottom: 258px;
+        left: 225px;
+    }
+    div:nth-child(3) {
+        bottom: 258px;
+        left: 225px;
+    }
+    div:nth-child(4) {
+        bottom: 480px;
+        right: 147px;
+    }
+}
+.avatarInner {
+    position: relative;
+}
+.donations {
+    padding: 10px 0px;
+    background-color: #f3e6ca;
+    width: 169px;
+    text-align: center;
+    margin-right: 30px;
+    cursor: pointer;
+    &:hover {
+        background-color: #f9b930;
+    }
+    h4 {
+        margin: 0px;
+    }
+}
+.donationInner {
+    margin-top: 55px;
+    h2 {
+        font-size: 41px;
+        font-weight: $bold;
+    }
+    p {
+        margin-top: 10px;
+        color: #ff9872;
+        opacity: 1;
+        animation-fill-mode: forwards;
+    }
+    h3 {
+        font-size: 25px;
+        font-weight: $bold;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+}
+.contentAnimation {
+    p {
+        animation-name: contetHide;
+        animation-duration: 1s;
+    }
+    h3 {
+        animation-name: contentShow;
+        animation-duration: 2s;
+    }
+}
+@keyframes contentShow {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes contetHide {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.donationActive {
+    background-color: #f9b930;
+}
+.yellow {
+    color: $yellow;
+}
+.percentageSelected {
+    img {
+        width: 152px;
+        height: 189px;
+    }
+}
+.percentageFriends {
+    position: absolute;
+    top: 0px;
+    img {
+        width: 104px;
+        height: 123px;
+    }
+    div:nth-child(1) {
+        right: 80px;
+        bottom: 29px;
+    }
+    div:nth-child(2) {
+        bottom: 174px;
+        left: 125px;
+    }
+    div:nth-child(3) {
+        bottom: 200px;
+        left: 126px;
+    }
+    div:nth-child(4) {
+        bottom: 350px;
+        right: 80px;
+    }
+}
+.signUpsection {
+    button {
+        width: 30%;
+        margin-top: 55px;
+        background-color: $yellow;
+        border: 1px solid $yellow;
+        padding: 20px 0px;
+        font-size: 20px;
+        color: #212429;
+        font-weight: $semi-bold;
+    }
+    h2 {
+        margin-top: 40px;
+    }
+}
+.coin {
+    width: 75px;
+    height: 75px;
+    animation-name: example;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+}
+@keyframes example {
+    0% {
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+    10% {
+        transform: translate(0px, 340px);
+        opacity: 1;
+        width: 37px;
+        height: 37px;
+    }
+    20% {
+        transform: translate(80px, 420px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
+    }
+    30% {
+        transform: translate(120px, 500px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
+    }
+    40% {
+        transform: translate(180px, 600px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
+    }
+    50% {
+        transform: translate(140px, 690px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
+    }
+    60% {
+        transform: translate(90px, 760px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
+    }
+    70% {
+        transform: translate(-10px, 780px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
+    }
+    80% {
+        transform: translate(-100px, 750px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
+    }
+    90% {
+        transform: translate(-150px, 680px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
+    }
+    92% {
+        transform: translate(-200px, 550px);
+        opacity: 1;
+        width: 37px;
+        height: 37px;
+    }
+    100% {
+        transform: translate(-180px, 580px);
+        opacity: 1;
+        width: 100px;
+        height: 100px;
+    }
+}
+.donationCycleItems {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f4f4f4;
+    position: absolute;
+    border-radius: 50px;
+}
+.animationGrid {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    justify-content: center;
+    display: flex;
+    > div:nth-child(1) {
+        animation-name: opacityAnimation;
+        animation-duration: 2s;
+    }
+    div:nth-child(2) {
+        right: 40%;
+        top: 50px;
+        animation-name: opacityAnimation;
+        animation-duration: 3s;
+    }
+    div:nth-child(3) {
+        right: 35%;
+        top: 170px;
+        animation-name: opacityAnimation;
+        animation-duration: 4s;
+    }
+    div:nth-child(4) {
+        right: 31%;
+        top: 300px;
+        animation-name: opacityAnimation;
+        animation-duration: 5s;
+    }
+    div:nth-child(5) {
+        right: 35%;
+        top: 430px;
+        animation-name: opacityAnimation;
+        animation-duration: 6s;
+    }
+    div:nth-child(6) {
+        right: 40%;
+        top: 535px;
+        animation-name: opacityAnimation;
+        animation-duration: 7.5s;
+    }
+    div:nth-child(7) {
+        bottom: 0;
+        animation-name: opacityAnimation;
+        animation-duration: 8.5s;
+    }
+    div:nth-child(8) {
+        bottom: 40px;
+        left: 40%;
+        animation-name: opacityAnimation;
+        animation-duration: 9.5s;
+    }
+    div:nth-child(9) {
+        bottom: 145px;
+        left: 34%;
+        animation-name: opacityAnimation;
+        animation-duration: 10.5s;
+    }
+    div:nth-child(10) {
+        bottom: 275px;
+        left: 31%;
+        animation-name: opacityAnimation;
+        animation-duration: 12s;
+    }
+    div:nth-child(11) {
+        bottom: 460px;
+        left: 31%;
+        animation-name: opacityAnimation;
+        animation-duration: 12.5s;
+    }
+}
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
