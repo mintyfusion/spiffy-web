@@ -2,7 +2,7 @@ import { Swiper } from "swiper/react";
 import React, { PropsWithChildren } from "react";
 import SwiperCore, { Mousewheel, Pagination } from "swiper";
 
-import IVerticalSwiperProps from "./interfaces/IVerticalSwiperProps";
+import IVerticalSwiperProps from "components/common/verticalSwiper/interfaces/IVerticalSwiperProps";
 
 // Importing css swiper
 import "swiper/css";
