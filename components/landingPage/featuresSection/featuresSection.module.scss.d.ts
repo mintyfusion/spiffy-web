@@ -16,6 +16,7 @@ export type Styles = {
   "cardStack": string;
   "container": string;
   "content1": string;
+  "extraBold67": string;
   "extraBold90": string;
   "fullBold67": string;
   "imageContainer": string;
