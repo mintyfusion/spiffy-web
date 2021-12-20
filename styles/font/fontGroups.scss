@@ -16,6 +16,10 @@
     @include typeFace($fourteen, $twentyFive, $regular);
 }
 
+.regular32 {
+    @include typeFace($eighteen, $thirtyTwo, $regular);
+}
+
 .regular90 {
     @include typeFace($thirtyFive, $ninety, $regular);
 }
@@ -70,6 +74,10 @@
 
 .fullBold67 {
     @include typeFace($thirty, $sixtySeven, $full-bold);
+}
+
+.fullbold109 {
+    @include typeFace($thirtyFive, $oneHundredNine, $full-bold);
 }
 
 // Special Cases

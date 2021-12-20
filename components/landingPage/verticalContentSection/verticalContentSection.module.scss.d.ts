@@ -13,7 +13,9 @@ export type Styles = {
   "container": string;
   "content3": string;
   "contentContainer": string;
+  "extraBold67": string;
   "extraBold90": string;
+  "fullbold109": string;
   "fullBold67": string;
   "headerEmphasisText": string;
   "hide": string;
@@ -23,6 +25,7 @@ export type Styles = {
   "regular16": string;
   "regular24": string;
   "regular25": string;
+  "regular32": string;
   "regular90": string;
   "regularDesktop25Mobile9": string;
   "selector": string;

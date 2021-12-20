@@ -17,9 +17,9 @@ const PrimaryButton = ({ showArrow, ...props }: PropsWithChildren<IPrimaryButton
             variant="warning"
             {...props}
             className={`
-                ${props.className} 
                 ${showArrow ? styles.sectionButton : styles.primaryButton} 
                 position-relative
+                ${props.className}
             `}
         >
             {props.children}

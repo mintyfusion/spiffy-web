@@ -12,12 +12,13 @@ export type Styles = {
   "bold90": string;
   "caption": string;
   "captionContent": string;
-  "extraBold67": string;
   "extraBold90": string;
+  "fullbold109": string;
   "fullBold67": string;
   "regular16": string;
   "regular24": string;
   "regular25": string;
+  "regular32": string;
   "regular90": string;
   "regularDesktop25Mobile9": string;
   "semiBold90": string;

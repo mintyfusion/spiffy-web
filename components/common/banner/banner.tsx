@@ -7,15 +7,22 @@ import IBannerProps from "components/common/banner/interfaces/IBannerProps";
 import styles from "components/common/banner/banner.module.scss";
 
 const Banner = (props: PropsWithChildren<IBannerProps>): JSX.Element =>
-    <div>
+    <div className={`position-relative ${styles.bannerContainer}`}>
         {props.children}
         <Carousel controls={false} indicators={false} pause={false} variant="dark" className="position-relative">
             {props.images.map((banner: ImageProps, index) =>
-                <Carousel.Item className={`${styles.carouselItem} position-relative`} key={index}>
-                    <Image {...banner} objectFit="cover"/>
+                <Carousel.Item
+                    className={`${styles.carouselItem} ${props.fullHeight && styles.full} position-relative`}
+                    key={index}
+                >
+                    <Image objectFit="cover" {...banner} />
                 </Carousel.Item>
             )}
         </Carousel>
     </div>;
+
+Banner.defaultProps = {
+    fullHeight: true
+};
 
 export default Banner;

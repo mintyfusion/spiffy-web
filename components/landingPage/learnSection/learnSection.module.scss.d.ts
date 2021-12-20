@@ -14,9 +14,11 @@ export type Styles = {
   "contentHeading": string;
   "extraBold90": string;
   "fullBold67": string;
+  "fullbold109": string;
   "regular16": string;
   "regular24": string;
   "regular25": string;
+  "regular32": string;
   "regular90": string;
   "regularDesktop25Mobile9": string;
   "semiBold90": string;

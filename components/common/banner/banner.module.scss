@@ -2,6 +2,19 @@
 @import "styles/mixins.scss";
 @import "styles/includeMedia.scss";
 
+.bannerContainer {
+    @extend .backgroundPattern;
+}
+
+.carouselItem div,
+.carouselItem {
+    min-height: 25rem;
+}
+
+.full {
+    min-height: 40rem;
+}
+
 .carouselInner {
     &::after {
         content: "";
@@ -18,7 +31,7 @@
     min-height: 40rem;
 }
 
-.carouselItem {
+.full {
     & > div:first-child {
         height: 100vh;
     }

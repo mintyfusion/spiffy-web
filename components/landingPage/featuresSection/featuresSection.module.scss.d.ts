@@ -18,6 +18,7 @@ export type Styles = {
   "content1": string;
   "extraBold67": string;
   "extraBold90": string;
+  "fullbold109": string;
   "fullBold67": string;
   "imageContainer": string;
   "imageLogoContainer": string;
@@ -25,6 +26,7 @@ export type Styles = {
   "regular16": string;
   "regular24": string;
   "regular25": string;
+  "regular32": string;
   "regular90": string;
   "regularDesktop25Mobile9": string;
   "rightSection": string;
