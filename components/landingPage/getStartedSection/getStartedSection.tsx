@@ -2,9 +2,9 @@ import { Col, Row, Stack, } from "react-bootstrap";
 import React from "react";
 
 import flexbox from "utils/flexbox";
-import getStartedContentData from "components/landingPage/getStartedSection/getStartedContentData";
-import Section from "components/landingPage/getStartedSection/section/section";
-import SectionSide from "components/landingPage/getStartedSection/section/enums/sectionSide";
+import IGetStartedSectionProps from "components/landingPage/getStartedSection/Interfaces/IGetStartedSectionProps";
+import Section from "components/common/section/section";
+import SectionSide from "components/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/landingPage/getStartedSection/getStarted.module.scss";
@@ -14,15 +14,15 @@ const columnAlignEnd = flexbox({ vertical: true, hAlign: "center", vAlign: "end"
 const rowReverse = flexbox({ vertical: true, reversed: true });
 const layoutBreakpoint = 1200;
 
-const GetStarted = (): JSX.Element => {
+const GetStarted = (props: IGetStartedSectionProps): JSX.Element => {
     const [isParentFocused, setIsParentFocused] = React.useState<boolean>(false);
     const [showClassLeft, setShowClassLeft] = React.useState<string>("");
     const [showClassRight, setShowClassRight] = React.useState<string>("");
     const [side, setSide] = React.useState<SectionSide | "">("");
-    const { leftPart, rightPart } = getStartedContentData;
-    const isViewportTablet = useBreakpoint(layoutBreakpoint);
+    const { leftPart, rightPart } = props.content;
+    const isBreakpointMatched = useBreakpoint(layoutBreakpoint);
 
-    const itemAlignment = React.useMemo(() => isViewportTablet && "align-items-center", [isViewportTablet]);
+    const itemAlignment = React.useMemo(() => isBreakpointMatched && "align-items-center", [isBreakpointMatched]);
 
     // Handles if mouse is still hovered over the content div
     const handleFocus = React.useCallback((state: boolean) => {
@@ -58,7 +58,7 @@ const GetStarted = (): JSX.Element => {
 
     return <div className={`position-relative overflow-hidden ${styles.wrapperDiv}`}>
         <Stack
-            className={`${styles.content2} ${!isViewportTablet && `${showClassLeft} ${showClassRight}`}`}
+            className={`${styles.content2} ${!isBreakpointMatched && `${showClassLeft} ${showClassRight}`}`}
             onMouseEnter={() => handleFocus(true)}
             onMouseLeave={() => handleFocus(false)}
         >
@@ -71,8 +71,10 @@ const GetStarted = (): JSX.Element => {
                     <Section
                         direction={SectionSide.left}
                         content={leftPart}
-                        buttonClassName={styles.btnGetStarted}
+                        buttonClassName={`${styles.btnGetStarted} ${!isBreakpointMatched && "opacity-0"}`}
                         contentClassName={styles.leftSectionRight}
+                        href="/"
+                        buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
                     />
                 </Col>
@@ -84,8 +86,10 @@ const GetStarted = (): JSX.Element => {
                     <Section
                         direction={SectionSide.right}
                         content={rightPart}
-                        buttonClassName={styles.btnGetStarted}
+                        buttonClassName={`${styles.btnGetStarted} ${!isBreakpointMatched && "opacity-0"}`}
                         contentClassName={styles.rightSectionLeft}
+                        href="/"
+                        buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
                     />
                 </Col>

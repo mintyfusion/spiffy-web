@@ -9,6 +9,7 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "extraBold67": string;
   "extraBold90": string;
   "fullBold67": string;
   "primaryButton": string;
@@ -17,6 +18,7 @@ export type Styles = {
   "regular25": string;
   "regular90": string;
   "regularDesktop25Mobile9": string;
+  "sectionButton": string;
   "semiBold90": string;
 };
 

@@ -10,6 +10,7 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "extraBold67": string;
   "extraBold90": string;
   "fullBold67": string;
   "regular16": string;

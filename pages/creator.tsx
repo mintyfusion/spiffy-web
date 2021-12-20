@@ -3,6 +3,8 @@ import React from "react";
 import Banner from "components/common/banner/banner";
 import bannerContent from "components/creatorPage/bannerSection/bannerContent";
 import BannerSection from "components/creatorPage/bannerSection/bannerSection";
+import GetStartedSection from "components/creatorPage/getStartedSection/getStartedSection";
+import getStartedSectionContentData from "components/creatorPage/getStartedSection/getStartedSectionContentData";
 import Layout from "components/common/layout/layout";
 import VideoSection from "components/creatorPage/videoSection/videoSection";
 import videoSectionContent from "components/creatorPage/videoSection/videoSectionContent";
@@ -16,5 +18,7 @@ const Creator = (): JSX.Element =>
         </Banner>
         <WhySection {...whySectionContentData} />
         <VideoSection  {...videoSectionContent} />
+        <GetStartedSection {...getStartedSectionContentData} />
     </Layout>;
+    
 export default Creator;

@@ -15,7 +15,6 @@ const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const colBetween = flexbox({ vertical: true, vAlign: "center", hAlign: "between" });
 const colCenter = flexbox({ vertical: true, vAlign: "center", hAlign: "center" });
 
-
 const Navbar = (): JSX.Element => {
     const [backgroundClass, setBackgroundClass] = React.useState<string>("");
     const [toggle, setToggle] = React.useState<boolean>(false);
@@ -104,9 +103,7 @@ const Navbar = (): JSX.Element => {
                         <a href="/login">
                             <Button variant="dark" className={`${styles.buttonLogin}`}>Log In</Button>
                         </a>
-                        <Link href="/getStarted">
-                            <PrimaryButton>Get Started</PrimaryButton>
-                        </Link>
+                        <PrimaryButton href="/getStarted">Get Started</PrimaryButton>
                     </Stack>
                 </Nav>
             </BTNavbar.Collapse>

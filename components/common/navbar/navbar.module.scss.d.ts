@@ -15,6 +15,7 @@ export type Styles = {
   "collapseNavbar": string;
   "collapsible": string;
   "expandNavbar": string;
+  "extraBold67": string;
   "extraBold90": string;
   "fullBold67": string;
   "headerLogo": string;

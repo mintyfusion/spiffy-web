@@ -12,6 +12,7 @@ export type Styles = {
   "bold90": string;
   "caption": string;
   "captionContent": string;
+  "extraBold67": string;
   "extraBold90": string;
   "fullBold67": string;
   "regular16": string;

@@ -4,7 +4,6 @@ import React from "react";
 import Card from "components/common/card/card";
 import flexbox from "utils/flexbox";
 import learnContent from "components/landingPage/learnSection/learnContent";
-import Link from "components/common/link/link";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 
 import styles from "components/landingPage/learnSection/learnSection.module.scss";
@@ -37,9 +36,7 @@ const LearnSection = (): JSX.Element =>
             )}
         </Row>
         <Row>
-            <Link href="/" >
-                <PrimaryButton>Learn More</PrimaryButton>
-            </Link>
+            <PrimaryButton href="/">Learn More</PrimaryButton>
         </Row>
     </Stack >;
 
