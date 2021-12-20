@@ -6,6 +6,8 @@ import BannerSection from "components/creatorPage/bannerSection/bannerSection";
 import GetStartedSection from "components/creatorPage/getStartedSection/getStartedSection";
 import getStartedSectionContentData from "components/creatorPage/getStartedSection/getStartedSectionContentData";
 import Layout from "components/common/layout/layout";
+import MonetizeSection from "components/creatorPage/monetizeSection/monetizeSection";
+import monetizeSectionContentData from "components/creatorPage/monetizeSection/monetizeContentData";
 import VideoSection from "components/creatorPage/videoSection/videoSection";
 import videoSectionContent from "components/creatorPage/videoSection/videoSectionContent";
 import WhySection from "components/creatorPage/whySection/whySection";
@@ -14,11 +16,11 @@ import whySectionContentData from "components/creatorPage/whySection/whySectionC
 const Creator = (): JSX.Element =>
     <Layout>
         <Banner images={bannerContent.images} >
-            <BannerSection content={bannerContent.content}/>
+            <BannerSection content={bannerContent.content} />
         </Banner>
         <WhySection {...whySectionContentData} />
         <VideoSection  {...videoSectionContent} />
+        <MonetizeSection {...monetizeSectionContentData} />
         <GetStartedSection {...getStartedSectionContentData} />
     </Layout>;
-    
 export default Creator;

@@ -61,11 +61,11 @@
 }
 
 .extraBold67 {
-    @include typeFace($thirty, $sixtySeven, $extraBold);
+    @include typeFace($thirty, $sixtySeven, $extra-bold);
 }
 
 .extraBold90 {
-    @include typeFace($thirtyFive, $ninety, $extraBold);
+    @include typeFace($thirtyFive, $ninety, $extra-bold);
 }
 
 .fullBold67 {
@@ -75,4 +75,8 @@
 // Special Cases
 .regular-desktop25-mobile9 {
     @include typeFace($nine, $twentyFive, $regular);
+}
+
+.extraBold-desktop65-mobile28 {
+    @include typeFace($twentyEight, $sixtySeven, $extra-bold);
 }

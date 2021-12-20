@@ -27,11 +27,11 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
                     `}
                 >
                     <Col>
-                        <Row className={`${colCenter} ${styles.contentContainer} h-100`}>
+                        <Row className={`${colCenter} ${styles.contentContainer} h-100 ${props.reversed && "text-end"}`}>
                             <Stack direction="horizontal">
                                 <h2 className={styles.title}>
                                     {title}
-                                    {props.arrows &&
+                                    {!!props.arrows &&
                                         <Row
                                             className={`
                                             ${styles.arrowContainer} 
@@ -44,7 +44,8 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
                                          `}
                                         >
                                             <ArrowIcon quantity={props.arrows} width={32} height={60} layout="fixed" />
-                                        </Row>}
+                                        </Row>
+                                    }
                                 </h2>
                             </Stack>
                             <h4 className={`${styles.description} mt-md-3`}>
@@ -58,6 +59,10 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
                 </Row>
             </Container>
         </Stack>);
+};
+
+CommonSection.defaultProps = {
+    arrows: 0
 };
 
 export default CommonSection;

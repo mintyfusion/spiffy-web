@@ -17,7 +17,7 @@
         min-height: 350px;
 
         .title {
-            @extend .extraBold67;
+            @extend .extraBold-desktop65-mobile28;
 
             .arrowContainer {
                 @include fluidDimension("width", 10, 45);
@@ -35,7 +35,7 @@
         min-height: 640px;
     }
 
-    @include contentProperties(7rem 0, 0 5rem);
+    @include contentProperties(7rem 0, 0 3rem);
 }
 
 @include media(">=tablet", "<desktop") {

@@ -15,6 +15,7 @@ export type Styles = {
   "description": string;
   "extraBold67": string;
   "extraBold90": string;
+  "extraBoldDesktop65Mobile28": string;
   "fullBold67": string;
   "regular16": string;
   "regular24": string;
