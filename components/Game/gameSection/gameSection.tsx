@@ -17,7 +17,7 @@ import IAvatar from "./interfaces/IAvatar";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const columnAlignEnd = flexbox({ vertical: true, hAlign: "center", vAlign: "end" });
-const avatarWrapperAlign = flexbox({ vAlign: "center", hAlign: 'between' });
+const avatarWrapperAlign = flexbox({ vAlign: "center", hAlign: 'center' });
 const stepthreeFlex = flexbox({ hAlign: 'between' });
 
 const data: string[] = ["5", "10", "15", "25", "50"];
@@ -27,7 +27,7 @@ const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState([]);
     const [avatars, setAvatars] = React.useState([]);
     const [selected, setSelected] = React.useState<IAvatar>(undefined);
-    const [step, setStep] = React.useState<string>("4");
+    const [step, setStep] = React.useState<string>("1");
     const [name, setName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [percentage, setPercentage] = React.useState<string>("");
@@ -87,7 +87,7 @@ const GameSection = (): JSX.Element => {
         <div className={`${step === "3" ? styles.show : styles.hide} ${styles.gameStepThree} ${stepthreeFlex}`}>
             <div className={`${styles.gameStepThreeUserColumn} ${columnAlignCenter}`}>
                 <div className={styles.avatarInner}>
-                    <div className={`${friends.length ? styles.selected : ""}`}>
+                    <div className={`${friends.length ? styles.selected : styles.user}`}>
                         {selected ? <Image {...selected.image} /> : null}
                     </div>
 
@@ -101,8 +101,8 @@ const GameSection = (): JSX.Element => {
             </div>
 
             <div className={`${styles.gameStepThreeFriendsColumn} ${columnAlignEnd}`}>
-                <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                <h4>Hint: Choose a red bee!</h4>
+                {/* <h2 className={styles.avatarHeading}>Add four friends.</h2>
+                <h4>Hint: Choose a red bee!</h4> */}
                 <div className={`${styles.avatarWrapper} ${avatarWrapperAlign}`}>
                     {avatars.filter((filter) => filter.id !== selected?.id).map((i, k) => {
                         return <Image src={i.image.src} alt={i.image.alt} width={i.image.width} height={i.image.height} key={k} onClick={() => friendsHandler(i)} />
@@ -111,27 +111,44 @@ const GameSection = (): JSX.Element => {
             </div>
         </div>
 
-        <div className={`${columnAlignCenter} ${step === "4" ? styles.show : styles.hide}`}>
+        <div className={`${columnAlignCenter} ${step === "4" ? styles.show : styles.hide} ${styles.stepFour}`}>
             <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
             <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
-            <div className={stepthreeFlex}>
-                {data.map((donation, donationKey) => {
-                    return <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`} onClick={() => {
-                        setDonationAmount(donation);
-                        setStep("5");
-                    }
-                    }>
-                        <h4>{donation}</h4>
-                    </div>
-                })}
+            <div className={`${styles.donationDesktop}`}>
+                <div className={`${stepthreeFlex} ${styles.donationDesktop}`}>
+                    {data.map((donation, donationKey) => {
+                        return <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`} onClick={() => {
+                            setDonationAmount(donation);
+                            setStep("5")
+                        }
+                        }>
+                            <h4>{donation}</h4>
+                        </div>
+                    })}
+                </div>
             </div>
+            <div className={`${styles.donationMobile}`}>
+                <div className={`${stepthreeFlex}`}>
+                    <select onChange={(e) => {
+                        setDonationAmount(e.target.value);
+                        setStep("5")
+                    }}>
+                        {data.map((donation, donationKey) => {
+                            return <option key={donationKey}>{donation}</option>
+                        })}
+                    </select>
+                </div>
+            </div>
+
             <div className={`${styles.donationInner} ${columnAlignCenter} ${animation ? styles.contentAnimation : ""}`}>
                 <h2>Donation Cycle</h2>
-                <div className={`${animation ? styles.coin : ""}`}>
+                <div className={`${animation ? styles.coin : styles.coinDefault}`}>
                     <Image src={Coin} alt="Coin" onClick={() => setAnimation(!animation)} />
                 </div>
+                <div className={styles.userDonation}>
+                    <Image src={User} alt="User" />
+                </div>
 
-                <Image src={User} alt="User" />
                 <p>${Number(donationAmount) / 2}</p>
                 <h3>Content Creators</h3>
             </div>
@@ -176,9 +193,15 @@ const GameSection = (): JSX.Element => {
                     <Image src={orangeAvatar} />
                     <span>0.20</span>
                 </div>
-                <div className={styles.donationCycleItems}>
-                    <Image src={spiffy} />
-                    <span>0.50</span>
+                <div>
+                    <div>
+                        <h2>Spiffy Corp.</h2>
+                        <p>We’re totally reliant on this cents to keep us going.</p>
+                    </div>
+                    <div className={styles.donationCycleItems}>
+                        <Image src={spiffy} />
+                        <span>0.50</span>
+                    </div>
                 </div>
             </div> : null}
         </div>
@@ -186,13 +209,31 @@ const GameSection = (): JSX.Element => {
         <div className={`${columnAlignCenter} ${step === "5" ? styles.show : styles.hide}`}>
             <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
             <h4>Click the percentage fill rate to unlock your potential. Higher the filled rate, the more money you make.</h4>
-            <div className={stepthreeFlex}>
-                {percent.map((percent, percentKey) => {
-                    return <div key={percentKey} className={`${styles.donations} ${percentage === percent ? styles.donationActive : ""}`} onClick={() => setPercentage(percent)}>
-                        <h4>{percent}%</h4>
-                    </div>
-                })}
+            <div className={`${styles.donationDesktop}`}>
+                <div className={stepthreeFlex}>
+                    {percent.map((percent, percentKey) => {
+                        return <div key={percentKey} className={`${styles.donations} ${percentage === percent ? styles.donationActive : ""}`} onClick={() => {
+                            setPercentage(percent);
+                            setStep("6");
+                        }}>
+                            <h4>{percent}%</h4>
+                        </div>
+                    })}
+                </div>
             </div>
+            <div className={`${styles.donationMobile}`}>
+                <div className={`${stepthreeFlex}`}>
+                    <select onChange={(e) => {
+                        setPercentage(e.target.value);
+                        setStep("6");
+                    }}>
+                        {data.map((donation, donationKey) => {
+                            return <option key={donationKey}>{donation}</option>
+                        })}
+                    </select>
+                </div>
+            </div>
+
             <div className={`${styles.donationInner} ${columnAlignCenter}`}>
                 <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
                 <div className={styles.avatarInner}>

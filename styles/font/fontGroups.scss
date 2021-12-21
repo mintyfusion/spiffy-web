@@ -9,17 +9,30 @@
 .regular16 {
     @include typeFace($nine, $sixteen, $regular);
 }
+.regular20 {
+    @include typeFace($seven, $twenty, $regular);
+}
 
 .regular24 {
     @include typeFace($fourteen, $twentyFour, $regular);
 }
-
 .regular25 {
     @include typeFace($fourteen, $twentyFive, $regular);
 }
 
+.regularGame25 {
+    @include typeFace($sixteen, $twentyFive, $regular);
+}
+
+.regularDonation25 {
+    @include typeFace($nine, $twentyFive, $regular);
+}
+
 .regular90 {
     @include typeFace($thirtyFive, $ninety, $regular);
+}
+.medium25 {
+    @include typeFace($twentyFive, $sixteen, $medium);
 }
 
 .semiBold90 {
@@ -38,6 +51,10 @@
     @include typeFace($fourteen, $fortyOne, $bold);
 }
 
+.boldGame41 {
+    @include typeFace($twentyFive, $fortyOne, $bold);
+}
+
 .bold60 {
     @include typeFace($twentyEight, $sixty, $bold);
 }
@@ -45,7 +62,9 @@
 .bold67 {
     @include typeFace($twentyFive, $sixtySeven, $bold);
 }
-
+.boldGame67 {
+    @include typeFace($thirty, $sixtySeven, $bold);
+}
 .bold90 {
     @include typeFace($thirtyFive, $ninety, $bold);
 }

@@ -14,7 +14,9 @@ export type Styles = {
   "gameDesc": string;
   "gameHead": string;
   "gameHeading": string;
+  "medium25": string;
   "regular16": string;
+  "regular20": string;
   "regular24": string;
   "regular25": string;
   "regular90": string;

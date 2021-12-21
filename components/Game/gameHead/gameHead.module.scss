@@ -9,12 +9,9 @@
     margin-bottom: 75px;
 }
 .gameHeading {
-    font-size: 109px;
+    @extend .bold109;
 }
 .gameDesc {
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 25px;
-    color: #F9B930
+    @extend .medium25;
+    color: $yellow
 }

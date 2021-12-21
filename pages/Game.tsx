@@ -6,7 +6,9 @@ import GameSection from "components/Game/gameSection/gameSection";
 
 const Game = (): JSX.Element =>
     <Layout>
-        <GameHead />
-        <GameSection />
+        <div style={{backgroundColor : "#f2f2f2"}}>
+            <GameHead />
+            <GameSection />
+        </div>
     </Layout>;
 export default Game;
