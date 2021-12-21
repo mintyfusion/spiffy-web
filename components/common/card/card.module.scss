@@ -1,0 +1,21 @@
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.card {
+    border-radius: 12px;
+
+    .cardTitle {
+        color: $light-grey;
+        @extend .regular16;
+    }
+
+    .cardText {
+        @extend .regular25;
+    }
+
+    .link {
+        @extend .bold24;
+        cursor: pointer;
+        color: $yellow;
+    }
+}

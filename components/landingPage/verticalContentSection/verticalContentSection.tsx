@@ -4,13 +4,13 @@ import { SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import React from "react";
 
-import BreakpointChecks from "hooks/enums/BreakpointChecks";
+import BreakpointChecks from "hooks/enums/breakpointChecks";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import IVerticalContentData from "components/landingPage/verticalContentSection/interfaces/IVerticalContentData";
+import IVerticalSectionProps from "components/landingPage/verticalContentSection/interfaces/IVerticalSectionProps";
 import styleWords from "utils/styleWords";
 import useBreakpoint from "hooks/useBreakpoint";
-import verticalContentData from "components/landingPage/verticalContentSection/verticalContentData";
 import VerticalSwiper from "components/common/verticalSwiper/verticalSwiper";
 
 import styles from "components/landingPage/verticalContentSection/verticalContentSection.module.scss";
@@ -18,7 +18,7 @@ import styles from "components/landingPage/verticalContentSection/verticalConten
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center" });
 const rowHAlignCenter = flexbox({ hAlign: "center" });
 
-const VerticalContentSection = (): JSX.Element => {
+const VerticalContentSection = (props: IVerticalSectionProps): JSX.Element => {
     const [currentIndex, setCurrentIndex] = React.useState<number>(0);
     const isViewportDesktop = useBreakpoint(Breakpoints.MD, BreakpointChecks.Greater);
 
@@ -29,13 +29,13 @@ const VerticalContentSection = (): JSX.Element => {
     return <Stack className={`${styles.content3} position-relative`} >
         <Row className={`m-0 ${styles.container}`}>
             <h1 className={`${styles.headerEmphasisText} position-absolute`}>
-                {verticalContentData[currentIndex].highlightedWord}
+                {props.content[currentIndex].highlightedWord}
             </h1>
             <Col
                 className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0`}
             >
-                <VerticalSwiper onActiveIndexChange={onActiveIndexChange} isViewportDesktop={isViewportDesktop} >
-                    {verticalContentData.map((content: IVerticalContentData, index) =>
+                <VerticalSwiper onActiveIndexChange={onActiveIndexChange}>
+                    {props.content.map((content: IVerticalContentData, index) =>
                         <SwiperSlide key={index}>
                             <Row className={`${rowHAlignCenter} w-100 m-0`}>
                                 <Col>

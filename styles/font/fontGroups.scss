@@ -1,9 +1,7 @@
 // Dark background pattern
-@import "styles/functions.scss";
 @import "styles/mixins.scss";
 @import "styles/font/fontWeights.scss";
 @import "styles/font/fontSizes.scss";
-@import "styles/mixins.scss";
 
 // Different font weights and sizes
 .regular16 {
@@ -20,12 +18,8 @@
     @include typeFace($fourteen, $twentyFive, $regular);
 }
 
-.regularGame25 {
-    @include typeFace($sixteen, $twentyFive, $regular);
-}
-
-.regularDonation25 {
-    @include typeFace($nine, $twentyFive, $regular);
+.regular32 {
+    @include typeFace($eighteen, $thirtyTwo, $regular);
 }
 
 .regular90 {
@@ -81,15 +75,30 @@
     @include typeFace($sixty, $oneSeventyEight, $bold);
 }
 
+.extraBold67 {
+    @include typeFace($thirty, $sixtySeven, $extra-bold);
+}
+
 .extraBold90 {
-    @include typeFace($thirtyFive, $ninety, $extraBold);
+    @include typeFace($thirtyFive, $ninety, $extra-bold);
 }
 
 .fullBold67 {
     @include typeFace($thirty, $sixtySeven, $full-bold);
 }
 
+.fullbold109 {
+    @include typeFace($thirtyFive, $oneHundredNine, $full-bold);
+}
+
 // Special Cases
 .regular-desktop25-mobile9 {
     @include typeFace($nine, $twentyFive, $regular);
+}
+
+.extraBold-desktop65-mobile28 {
+    @include typeFace($twentyEight, $sixtySeven, $extra-bold);
+}
+.regular-desktop25-mobile16 {
+    @include typeFace($sixteen, $twentyFive, $regular);
 }

@@ -1,21 +1,25 @@
 export type Styles = {
   "backgroundPattern": string;
-  "bold20": string;
+  "bold109": string;
+  "bold150": string;
+  "bold178": string;
   "bold24": string;
-  "medium18": string;
-  "medium20": string;
-  "medium25": string;
+  "bold32": string;
+  "bold41": string;
+  "bold60": string;
+  "bold67": string;
+  "bold90": string;
+  "extraBold67": string;
+  "extraBold90": string;
+  "fullBold67": string;
   "primaryButton": string;
-  "regular12": string;
-  "regular13": string;
-  "regular15": string;
   "regular16": string;
-  "regular18": string;
-  "regular20": string;
   "regular24": string;
   "regular25": string;
-  "semiBold16": string;
-  "semiBold20": string;
+  "regular90": string;
+  "regularDesktop25Mobile9": string;
+  "sectionButton": string;
+  "semiBold90": string;
 };
 
 export type ClassNames = keyof Styles;

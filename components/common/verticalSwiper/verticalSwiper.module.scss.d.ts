@@ -1,6 +1,4 @@
 export type Styles = {
-  "activeBullets": string;
-  "bullets": string;
   "swiper": string;
   "swiperWrapper": string;
 };

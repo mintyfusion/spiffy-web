@@ -4,16 +4,28 @@
 
 $backroundTransition: background-color 0.2s;
 
+.backgroundDark {
+  @extend .backgroundPattern;
+  transition: $backroundTransition;
+}
+
 .navbar {
   transition: $backroundTransition;
-  top: 0;
   z-index: 2;
+
+  .headerLogo {
+    z-index: 2;
+  }
+
+  .collapsible {
+    @extend .backgroundPattern;
+  }
 
   img:hover {
     cursor: pointer;
   }
 
-  .links {
+  .navbarItems {
     @extend .regular24;
 
     .link {
@@ -21,6 +33,7 @@ $backroundTransition: background-color 0.2s;
 
       &:hover {
         color: $yellow;
+        transition: color 0.2s ease-in, background 0.2s ease-in;
       }
     }
 
@@ -42,21 +55,89 @@ $backroundTransition: background-color 0.2s;
       }
     }
   }
-}
 
-.link {
-  color: $white;
-}
+  .menuButton {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    z-index: 2;
 
-.backgroundDark {
-  @extend .backgroundPattern;
-  transition: $backroundTransition;
-}
+    .menuButtonBurger {
+      width: 50px;
+      height: 6px;
+      background: $yellow;
+      border-radius: 5px;
+      transition: all 0.5s ease-in-out;
 
-@include media(">=phone", "<991px") {
-  .links {
-    .link {
-      border-bottom: 1px solid $grey;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 6px;
+        background: $yellow;
+        border-radius: 5px;
+        transition: all 0.5s ease-in-out;
+      }
+
+      &::before {
+        transform: translateY(-16px);
+      }
+
+      &::after {
+        transform: translateY(16px);
+      }
     }
+  }
+}
+
+/* ANIMATION START */
+.menuButton.open .menuButtonBurger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+
+  &::before {
+    transform: rotate(45deg) translate(35px, -35px);
+  }
+
+  &::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+  }
+}
+/* ANIMATION END */
+
+@include media(">=phone", "<992px") {
+  .navbarItems {
+    transition: height 0.5s;
+
+    .links {
+      .link {
+        width: 90%;
+
+        &:hover {
+          background: $light-transparent-grey;
+          border-right: 10px solid $yellow;
+        }
+      }
+    }
+  }
+
+  .expandNavbar {
+    z-index: 1;
+    top: 0;
+    padding-top: 10rem;
+    transform: translateY(0%);
+    transition: transform 0.5s;
+  }
+
+  .collapseNavbar {
+    padding-top: 10rem;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0.5s, opacity 0.5s;
+    top: 0;
+    z-index: 1;
   }
 }

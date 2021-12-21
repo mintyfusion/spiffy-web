@@ -2,13 +2,11 @@ import IGetStartedContentSectionData from "components/landingPage/getStartedSect
 
 const getStartedContentData: IGetStartedContentSectionData = {
     leftPart: {
-        header: "I’m a YouTube",
-        subHeader: "Enthusiast",
+        title: "I’m a YouTube Enthusiast",
         description: "Who doesn’t need a few extra bucks? Let’s turn my favorite pastime into a viable side-hustle!"
     },
     rightPart: {
-        header: "I’m a YouTube",
-        subHeader: "Channel",
+        title: "I’m a YouTube Channel",
         description: "It’s a lot of work to produce quality content. Let’s grow my channel and earn recurring income!"
     },
 };

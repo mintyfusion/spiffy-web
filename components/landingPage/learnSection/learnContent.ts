@@ -1,6 +1,6 @@
-import ILearnSectionContentData from "components/landingPage/learnSection/interfaces/ILearnSectionContentData";
+import ICardData from "types/ICardData";
 
-const learnContent: ILearnSectionContentData[] = [
+const learnContent: ICardData[] = [
     {
         imageUrl: { src: "/images/homepage/learnSection/story1.png" },
         title: "Guide",

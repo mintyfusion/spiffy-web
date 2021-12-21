@@ -1,3 +1,5 @@
+@import "styles/functions.scss";
+
 $prefixes: -webkit-, -moz-, -ms-, -o-;
 
 @mixin crossBrowserPrefix($property, $value) {
@@ -17,19 +19,29 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
 }
 
 // Common keyframes for opacity
-@mixin opacityKeyFrames() {
+@mixin opacityKeyFrames($opacity: 1) {
     @keyframes show {
         from {
             opacity: 0;
         }
+
         to {
-            opacity: 1;
+            @if $opacity == 1 {
+                opacity: 1;
+            } @else {
+                opacity: $opacity;
+            }
         }
     }
     @keyframes hide {
         from {
-            opacity: 1;
+            @if $opacity == 1 {
+                opacity: 1;
+            } @else {
+                opacity: $opacity;
+            }
         }
+
         to {
             opacity: 0;
         }
@@ -39,24 +51,4 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
 // Takes CSS property name, minimum and maximum value for dynamic property value based on viewport
 @mixin fluidDimension($property, $minValue, $maxValue) {
     #{$property}: fluid($minValue, $maxValue);
-}
-
-// Common keyframes for opacity
-@mixin opacityKeyFrames() {
-    @keyframes show {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-    @keyframes hide {
-        from {
-            opacity: 1;
-        }
-        to {
-            opacity: 0;
-        }
-    }
 }
