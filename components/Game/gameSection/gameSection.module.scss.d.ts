@@ -30,9 +30,12 @@ export type Styles = {
   "donationMobile": string;
   "donations": string;
   "example": string;
+  "extraBold67": string;
   "extraBold90": string;
+  "extraBoldDesktop65Mobile28": string;
   "fadeIn": string;
   "friends": string;
+  "fullbold109": string;
   "fullBold67": string;
   "gameStepThree": string;
   "gameStepThreeFriendsColumn": string;
@@ -47,10 +50,10 @@ export type Styles = {
   "regular20": string;
   "regular24": string;
   "regular25": string;
+  "regular32": string;
   "regular90": string;
+  "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
-  "regularDonation25": string;
-  "regularGame25": string;
   "selected": string;
   "semiBold90": string;
   "show": string;

@@ -163,7 +163,7 @@
 }
 .stepFour {
     h4 {
-        @extend .regularGame25;
+        @extend .regular-desktop25-mobile16;
     }
 }
 .donationMobile {
@@ -507,13 +507,13 @@
             margin-left: 20px;
         }
         h2 {
-            @extend .regularDonation25;
+            @extend .regular-desktop25-mobile9;
             color: $darkGrey;
             text-align: end;
         }
         p {
             @extend .regular20;
-            color: $neutralBlack;
+            color: $neutralBlack800;
             text-align: end;
         }
         div:nth-child(1) {
