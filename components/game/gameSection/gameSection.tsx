@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import flexbox from "utils/flexbox";
-import gameSectionContent from 'components/Game/gameSection/gameSectionContent'
+import gameSectionContent from 'components/game/gameSection/gameSectionContent'
 import Coin from "public/images/Game/coin.png";
 import User from "public/images/Game/user.png";
 import Trophy from "public/images/Game/trophy.png";

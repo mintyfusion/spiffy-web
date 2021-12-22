@@ -1,4 +1,4 @@
-import IGameSectionContentData from 'components/Game/gameSection/interfaces/IGameSectionContentData'
+import IGameSectionContentData from 'components/game/gameSection/interfaces/IGameSectionContentData'
 
 const bannerContent: IGameSectionContentData = {
     content: [

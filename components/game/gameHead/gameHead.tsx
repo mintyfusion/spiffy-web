@@ -1,7 +1,7 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 
-import gameheadContentData from "components/Game/gameHead/gameHeadContent";
+import gameheadContentData from "components/game/gameHead/gameHeadContent";
 
 import styles from "components/Game/gameHead/gameHead.module.scss";
 

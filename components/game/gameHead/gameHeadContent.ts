@@ -1,4 +1,4 @@
-import IBannerContentData from "components/Game/gameHead/interfaces/IGameHeadContentData";
+import IBannerContentData from "components/game/gameHead/interfaces/IGameHeadContentData";
 
 const bannerContent: IBannerContentData = {
     content: {
