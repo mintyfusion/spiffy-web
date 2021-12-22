@@ -4,26 +4,32 @@
 
 .container {
     width: 90%;
-    margin: 0 auto;
+    margin: 75px auto;
     background-color: $white;
     padding: 150px 0px;
+    border-radius: 10px;
 }
+
 .avatarHeading {
     @extend .boldGame67;
     color: $neutralBlack800;
 }
+
 .avatarWrapper {
     width: 50%;
     flex-wrap: wrap;
     margin-top: 40px;
     gap: 50px;
+
     img {
         cursor: pointer;
     }
 }
+
 .gameStepTwo {
     width: 30%;
     margin-top: 55px;
+
     input {
         width: 100%;
         border: 1px solid $gameInput;
@@ -32,6 +38,7 @@
         border-radius: 12px;
         margin-top: 55px;
     }
+
     input:focus-visible {
         outline: 0px;
     }
@@ -51,6 +58,7 @@
 .hide {
     display: none !important;
 }
+
 .show {
     animation: fadeIn 1s;
     -webkit-animation: fadeIn 1s;
@@ -58,10 +66,12 @@
     -o-animation: fadeIn 1s;
     -ms-animation: fadeIn 1s;
 }
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -71,6 +81,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -80,6 +91,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -102,12 +114,15 @@
         opacity: 1;
     }
 }
+
 .gameStepThree {
     display: flex;
+
     .gameStepThreeUserColumn {
         width: 30%;
         background-color: $white;
     }
+
     .gameStepThreeFriendsColumn {
         width: 65%;
         background-color: $white;
@@ -115,6 +130,7 @@
             width: 40%;
         }
     }
+
     h3 {
         font-weight: 500;
         font-size: 24px;
@@ -129,6 +145,7 @@
         object-fit: contain;
     }
 }
+
 .friends {
     position: absolute;
     top: 0px;
@@ -158,17 +175,22 @@
         display: block !important;
     }
 }
+
 .avatarInner {
     position: relative;
+    margin-top: 35px;
 }
+
 .stepFour {
     h4 {
         @extend .regular-desktop25-mobile16;
     }
 }
+
 .donationMobile {
     display: none;
 }
+
 .donations {
     padding: 10px 0px;
     background-color: #f3e6ca;
@@ -183,6 +205,7 @@
         margin: 0px;
     }
 }
+
 .donationInner {
     margin-top: 55px;
     h2 {
@@ -201,16 +224,19 @@
         animation-fill-mode: forwards;
     }
 }
+
 .contentAnimation {
     p {
         animation-name: contetHide;
         animation-duration: 1s;
     }
+
     h3 {
         animation-name: contentShow;
         animation-duration: 2s;
     }
 }
+
 @keyframes contentShow {
     0% {
         opacity: 1;
@@ -220,6 +246,7 @@
         position: absolute;
     }
 }
+
 @keyframes contetHide {
     0% {
         opacity: 1;
@@ -235,42 +262,53 @@
         position: absolute;
     }
 }
+
 .donationActive {
-    background-color: #f9b930;
+    background-color: $yellow;
 }
+
 .yellow {
     color: $yellow;
 }
+
 .percentageSelected {
     img {
-        width: 152px;
-        height: 189px;
+        width: 191px;
+        height: 191px;
+        object-fit: contain;
     }
 }
+
 .percentageFriends {
     position: absolute;
     top: 0px;
     img {
-        width: 104px;
-        height: 123px;
+        width: 135px;
+        height: 135px;
+        object-fit: contain;
     }
     div:nth-child(1) {
-        right: 80px;
-        bottom: 29px;
+        right: 95px;
+        bottom: 37px;
+        display: block !important;
     }
     div:nth-child(2) {
-        bottom: 174px;
-        left: 125px;
+        bottom: 166px;
+        left: 145px;
+        display: block !important;
     }
     div:nth-child(3) {
-        bottom: 200px;
-        left: 126px;
+        bottom: 168px;
+        left: 148px;
+        display: block !important;
     }
     div:nth-child(4) {
-        bottom: 350px;
-        right: 80px;
+        bottom: 295px;
+        right: 77px;
+        display: block !important;
     }
 }
+
 .signUpsection {
     button {
         width: 30%;
@@ -286,6 +324,7 @@
         margin-top: 40px;
     }
 }
+
 .coin {
     width: 75px;
     height: 75px;
@@ -293,78 +332,80 @@
     animation-duration: 20s;
     animation-fill-mode: forwards;
 }
+
 @keyframes example {
     0% {
         transform: translate(0px, 0px);
         opacity: 1;
     }
     10% {
-        transform: translate(0px, 340px);
+        transform: translate(0px, 320px);
         opacity: 1;
         width: 37px;
         height: 37px;
     }
     20% {
-        transform: translate(80px, 420px);
+        transform: translate(50px, 340px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     30% {
-        transform: translate(120px, 500px);
+        transform: translate(110px, 420px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     40% {
-        transform: translate(180px, 600px);
+        transform: translate(150px, 520px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     50% {
-        transform: translate(140px, 690px);
+        transform: translate(140px, 590px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     60% {
-        transform: translate(90px, 760px);
+        transform: translate(70px, 650px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     70% {
-        transform: translate(-10px, 780px);
+        transform: translate(0px, 700px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     80% {
-        transform: translate(-100px, 750px);
+        transform: translate(-100px, 660px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     90% {
-        transform: translate(-150px, 680px);
+        transform: translate(-120px, 600px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     92% {
-        transform: translate(-200px, 550px);
+        transform: translate(-160px, 510px);
         opacity: 1;
         width: 37px;
         height: 37px;
     }
     100% {
-        transform: translate(-180px, 580px);
+        transform: translate(-160px, 400px);
         opacity: 1;
         width: 100px;
         height: 100px;
     }
 }
+
 .donationCycleItems {
     display: flex;
     align-items: center;
@@ -374,6 +415,7 @@
     position: absolute;
     border-radius: 50px;
 }
+
 .animationGrid {
     position: relative;
     width: 100%;
@@ -523,20 +565,22 @@
         }
     }
 }
+
 @keyframes opacityAnimation {
     0% {
-        opacity: 0;
+        opacity: 1;
     }
     25% {
-        opacity: 0;
+        opacity: 1;
     }
     50% {
-        opacity: 0;
+        opacity: 1;
     }
     100% {
         opacity: 1;
     }
 }
+
 @keyframes displayAnimation {
     0% {
         opacity: 1;
@@ -555,11 +599,13 @@
         position: absolute;
     }
 }
+
 @include media(">=320px", "<768px") {
     .container {
         padding: 30px;
         text-align: center;
     }
+
     .avatarWrapper {
         width: 100%;
         flex-wrap: wrap;
@@ -568,6 +614,7 @@
             width: 84px;
         }
     }
+
     .gameStepTwo {
         width: 100%;
         img {
@@ -582,6 +629,7 @@
             padding: 10px 0px;
         }
     }
+
     .gameStepThree {
         flex-direction: column !important;
         .user {
@@ -644,9 +692,11 @@
             }
         }
     }
+
     .donationDesktop {
         display: none;
     }
+
     .donationMobile {
         display: block;
         width: 100%;
@@ -661,6 +711,7 @@
             outline: none;
         }
     }
+
     .percentageSelected {
         img {
             width: 67px;
@@ -668,6 +719,7 @@
             object-fit: contain;
         }
     }
+
     .percentageFriends {
         img {
             width: 47px;
@@ -693,6 +745,7 @@
             right: 39px;
         }
     }
+
     .donationInner {
         .avatarInner {
             margin-top: 60px;
@@ -703,6 +756,7 @@
             margin-bottom: 0px;
         }
     }
+
     .signUpsection {
         button {
             width: 100%;
@@ -710,9 +764,11 @@
             padding: 10px 0px;
         }
     }
+
     .donationCycleItems {
         padding: 10px 5px;
     }
+
     .animationGrid {
         position: relative;
         width: 100%;
@@ -884,17 +940,20 @@
             }
         }
     }
+
     .userDonation {
         img {
             width: 67px;
         }
     }
+
     .coinDefault {
         img {
             width: 23px;
             height: 23px;
         }
     }
+
     .coin {
         animation-name: coinAnimatonMobile;
         animation-duration: 20s;
@@ -904,71 +963,83 @@
             height: 23px;
         }
     }
+
     @keyframes coinAnimatonMobile {
         0% {
             transform: translate(0px, 0px);
             opacity: 1;
         }
+
         10% {
             transform: translate(0px, 120px);
             opacity: 1;
             width: 37px;
             height: 37px;
         }
+
         20% {
             transform: translate(30px, 150px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
+
         30% {
             transform: translate(60px, 180px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
+
         40% {
             transform: translate(90px, 220px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
+
         50% {
             transform: translate(70px, 260px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
+
         60% {
             transform: translate(40px, 300px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
+
         70% {
             transform: translate(0px, 330px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
+
         80% {
             transform: translate(-30px, 300px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
+
         90% {
             transform: translate(-60px, 270px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
+
         92% {
             transform: translate(-90px, 230px);
             opacity: 1;
             width: 37px;
             height: 37px;
         }
+
         100% {
             transform: translate(-90px, 220px);
             opacity: 1;
@@ -976,6 +1047,7 @@
             height: 100px;
         }
     }
+
     .contentAnimation {
         h3 {
             font-size: 9px;

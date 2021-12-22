@@ -1,9 +1,9 @@
-import IGameSectionContentData from 'components/game/gameSection/interfaces/IGameSectionContentData'
+import IGameSectionContentData from "components/Game/gameSection/interfaces/IGameSectionContentData";
 
 const bannerContent: IGameSectionContentData = {
     content: [
         {
-            id: 'avatarGreen',
+            id: "avatarGreen",
             image: {
                 src: "/images/Game/avatars/avatarGreen.png ",
                 alt: "avatarGreen",
@@ -12,7 +12,7 @@ const bannerContent: IGameSectionContentData = {
             },
         },
         {
-            id: 'avatarPurple',
+            id: "avatarPurple",
             image: {
                 src: "/images/Game/avatars/avatarPurple.png ",
                 alt: "avatarGreen",
@@ -21,7 +21,7 @@ const bannerContent: IGameSectionContentData = {
             },
         },
         {
-            id: 'avatarRed',
+            id: "avatarRed",
             image: {
                 src: "/images/Game/avatars/avatarRed.png ",
                 alt: "avatarGreen",
@@ -30,7 +30,7 @@ const bannerContent: IGameSectionContentData = {
             },
         },
         {
-            id: 'avatarYellow',
+            id: "avatarYellow",
             image: {
                 src: "/images/Game/avatars/avatarYellow.png ",
                 alt: "avatarGreen",
@@ -39,7 +39,7 @@ const bannerContent: IGameSectionContentData = {
             },
         },
         {
-            id: 'avatarOrange',
+            id: "avatarOrange",
             image: {
                 src: "/images/Game/avatars/avatarOrange.png",
                 alt: "avatarGreen",
@@ -50,7 +50,7 @@ const bannerContent: IGameSectionContentData = {
     ],
     friends: [
         {
-            id: 'avatarGreen',
+            id: "avatarGreen",
             image: {
                 src: "/images/Game/friendsAvatar/avatarGreen.png",
                 alt: "avatarGreen",
@@ -59,7 +59,7 @@ const bannerContent: IGameSectionContentData = {
             },
         },
         {
-            id: 'avatarPurple',
+            id: "avatarPurple",
             image: {
                 src: "/images/Game/friendsAvatar/avatarPurple.png",
                 alt: "avatarGreen",
@@ -68,7 +68,7 @@ const bannerContent: IGameSectionContentData = {
             },
         },
         {
-            id: 'avatarRed',
+            id: "avatarRed",
             image: {
                 src: "/images/Game/friendsAvatar/avatarRed.png",
                 alt: "avatarGreen",
@@ -77,7 +77,7 @@ const bannerContent: IGameSectionContentData = {
             },
         },
         {
-            id: 'avatarYellow',
+            id: "avatarYellow",
             image: {
                 src: "/images/Game/friendsAvatar/avatarYellow.png",
                 alt: "avatarGreen",
@@ -86,7 +86,7 @@ const bannerContent: IGameSectionContentData = {
             },
         },
         {
-            id: 'avatarOrange',
+            id: "avatarOrange",
             image: {
                 src: "/images/Game/friendsAvatar/avatarOrange.png",
                 alt: "avatarGreen",
