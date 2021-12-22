@@ -41,7 +41,6 @@ export type Styles = {
   "gameStepThreeFriendsColumn": string;
   "gameStepThreeUserColumn": string;
   "gameStepTwo": string;
-  "hide": string;
   "medium25": string;
   "opacityAnimation": string;
   "percentageFriends": string;

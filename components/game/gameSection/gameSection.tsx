@@ -63,7 +63,7 @@ const GameSection = (): JSX.Element => {
     };
 
     return <div className={`${styles.container}`}>
-        <div className={`${columnAlignCenter} ${step === "1" ? styles.show : styles.hide}`}>
+        <div className={`${columnAlignCenter} ${step === "1" ? styles.show : "d-none"}`}>
             <h2 className={`${styles.avatarHeading}`}>Select your avatar.</h2>
             <div className={`${styles.avatarWrapper} ${avatarWrapperAlign}`}>
                 {avatars.map((i, k) =>
@@ -75,7 +75,7 @@ const GameSection = (): JSX.Element => {
             </div>
         </div>
 
-        <div className={`${columnAlignCenter} ${step === "2" ? styles.show : styles.hide}`}>
+        <div className={`${columnAlignCenter} ${step === "2" ? styles.show : "d-none"}`}>
             <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
             <div className={`${columnAlignCenter} ${styles.gameStepTwo}`}>
                 {selected ?
@@ -89,7 +89,7 @@ const GameSection = (): JSX.Element => {
             </div>
         </div>
 
-        <div className={`${step === "3" ? styles.show : styles.hide} ${styles.gameStepThree} ${stepthreeFlex}`}>
+        <div className={`${step === "3" ? styles.show : "d-none"} ${styles.gameStepThree} ${stepthreeFlex}`}>
             <div className={`${styles.gameStepThreeUserColumn} ${columnAlignCenter}`}>
                 <div className={styles.avatarInner}>
                     <div className={`${friends.length ? styles.selected : styles.user}`}>
@@ -114,7 +114,7 @@ const GameSection = (): JSX.Element => {
             </div>
         </div>
 
-        <div className={`${columnAlignCenter} ${step === "4" ? styles.show : styles.hide} ${styles.stepFour}`}>
+        <div className={`${columnAlignCenter} ${step === "4" ? styles.show : "d-none"} ${styles.stepFour}`}>
             <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
             <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
             <div className={`${styles.donationDesktop}`}>
@@ -204,7 +204,7 @@ const GameSection = (): JSX.Element => {
             </div> : null}
         </div>
 
-        <div className={`${columnAlignCenter} ${step === "5" ? styles.show : styles.hide}`}>
+        <div className={`${columnAlignCenter} ${step === "5" ? styles.show : "d-none"}`}>
             <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
             <h4>Click the percentage fill rate to unlock your potential. Higher the filled rate,
                 the more money you make.</h4>
@@ -245,7 +245,7 @@ const GameSection = (): JSX.Element => {
             </div>
         </div>
 
-        <div className={`${columnAlignCenter} ${step === "6" ? styles.show : styles.hide} ${styles.signUpsection}`}>
+        <div className={`${columnAlignCenter} ${step === "6" ? styles.show : "d-none"} ${styles.signUpsection}`}>
             <Image src={Trophy} alt="trophy" />
             <h2 className={`${styles.avatarHeading}`}>Congratulations!</h2>
             <button>SIGN UP</button>

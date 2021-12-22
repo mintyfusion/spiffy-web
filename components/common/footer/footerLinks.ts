@@ -19,7 +19,7 @@ const footerLinks: IFooterLinks[] = [
     {
         linkHeaderText: "For Subscribers",
         links: [
-            { children: "Spiffy Game", href: "/" },
+            { children: "Spiffy Game", href: "/game" },
             { children: "Education", href: "/education" },
         ]
     }
