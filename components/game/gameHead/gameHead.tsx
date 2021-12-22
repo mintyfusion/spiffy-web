@@ -1,9 +1,9 @@
 import { Col } from "react-bootstrap";
 import React from "react";
 
-import gameheadContentData from "components/Game/gameHead/gameHeadContent";
+import gameheadContentData from "components/game/gameHead/gameHeadContent";
 
-import styles from "components/Game/gameHead/gameHead.module.scss";
+import styles from "components/game/gameHead/gameHead.module.scss";
 
 const GameHead = (): JSX.Element => {
     const {

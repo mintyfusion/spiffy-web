@@ -3,7 +3,7 @@ import React from "react";
 
 import Coin from "public/images/Game/coin.png";
 import flexbox from "utils/flexbox";
-import gameSectionContent from "components/Game/gameSection/gameSectionContent";
+import gameSectionContent from "components/game/gameSection/gameSectionContent";
 import greenAvatar from "public/images/Game/donationCycle/avatarGreen.png";
 import IAvatar from "./interfaces/IAvatar";
 import orangeAvatar from "public/images/Game/donationCycle/avatarOrange.png";
@@ -13,7 +13,7 @@ import Trophy from "public/images/Game/trophy.png";
 import User from "public/images/Game/user.png";
 import yellowAvatar from "public/images/Game/donationCycle/avatarYellow.png";
 
-import styles from "components/Game/gameSection/gameSection.module.scss";
+import styles from "components/game/gameSection/gameSection.module.scss";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const columnAlignEnd = flexbox({ vertical: true, hAlign: "center", vAlign: "end" });
