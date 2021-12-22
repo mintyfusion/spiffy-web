@@ -150,7 +150,7 @@ const GameSection = (): JSX.Element => {
                 <p>${Number(donationAmount) / donation}</p>
                 <h3>Content Creators</h3>
             </div>
-            {animation ? <div className={`${animation ? styles.animationGrid : ""}`}>
+            {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative w-100`}>
                 <div className={styles.donationCycleItems}>
                     <Image src={purpleAvatar} />
                     <span>0.50</span>
