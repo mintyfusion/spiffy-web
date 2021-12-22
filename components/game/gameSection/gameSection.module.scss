@@ -21,6 +21,12 @@
         animation-fill-mode: forwards;
     }
 }
+@mixin friendsAvatar($right, $left, $bottom) {
+    right: $right;
+    left: $left;
+    bottom: $bottom;
+    display: block !important;
+}
 
 .container {
     width: 90%;
@@ -160,24 +166,16 @@
         @include imgProperties(182px);
     }
     div:nth-child(1) {
-        right: 100px;
-        bottom: 50px;
-        display: block !important;
+        @include friendsAvatar(100px, unset, 50px);
     }
     div:nth-child(2) {
-        bottom: 231px;
-        left: 178px;
-        display: block !important;
+        @include friendsAvatar(unset, 178px, 213px);
     }
     div:nth-child(3) {
-        bottom: 239px;
-        left: 179px;
-        display: block !important;
+        @include friendsAvatar(106px, unset, 239px);
     }
     div:nth-child(4) {
-        bottom: 480px;
-        right: 147px;
-        display: block !important;
+        @include friendsAvatar(unset, 147px, 480px);
     }
 }
 
@@ -290,24 +288,16 @@
         object-fit: contain;
     }
     div:nth-child(1) {
-        right: 95px;
-        bottom: 37px;
-        display: block !important;
+        @include friendsAvatar(95px, unset, 37px);
     }
     div:nth-child(2) {
-        bottom: 166px;
-        left: 145px;
-        display: block !important;
+        @include friendsAvatar(145px, unset, 166px);
     }
     div:nth-child(3) {
-        bottom: 168px;
-        left: 148px;
-        display: block !important;
+        @include friendsAvatar(148px, unset, 168px);
     }
     div:nth-child(4) {
-        bottom: 295px;
-        right: 77px;
-        display: block !important;
+        @include friendsAvatar(unset, 77px, 295px);
     }
 }
 
@@ -395,14 +385,7 @@
     justify-content: center;
     display: flex;
     > div:nth-child(1) {
-        animation-name: opacityAnimation;
-        animation-duration: 3s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 5s;
-            animation-fill-mode: forwards;
-            color: #6962df;
-        }
+        @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 3s, displayAnimation, 5s);
     }
     div:nth-child(2) {
         @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s);
