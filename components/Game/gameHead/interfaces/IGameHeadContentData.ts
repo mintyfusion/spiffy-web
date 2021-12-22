@@ -1,7 +1,5 @@
+import IContentInfo from "types/IContentnfo";
 
 export default interface IBannerContentData {
-    content: {
-        secondaryText: string;
-        primaryText: string;
-    };
+    content: IContentInfo;
 }

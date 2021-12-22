@@ -1,14 +1,15 @@
 import React from "react";
 
-import Layout from "components/common/layout/layout";
-import GameHead from 'components/Game/gameHead/gameHead'
+import GameContentWrapper from "components/Game/gameContentWraper/gameConetentWrapper";
+import GameHead from "components/Game/gameHead/gameHead";
 import GameSection from "components/Game/gameSection/gameSection";
+import Layout from "components/common/layout/layout";
 
 const Game = (): JSX.Element =>
     <Layout>
-        <div style={{backgroundColor : "#f2f2f2"}}>
+        <GameContentWrapper>
             <GameHead />
             <GameSection />
-        </div>
+        </GameContentWrapper>
     </Layout>;
 export default Game;
