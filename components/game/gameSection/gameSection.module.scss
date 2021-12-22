@@ -1,6 +1,26 @@
 @import "styles/includeMedia.scss";
 @import "styles/theme.scss";
 @import "styles/font/fontGroups.scss";
+@import "styles/mixins.scss";
+
+@mixin imgProperties($size) {
+    width: $size;
+    height: $size;
+    object-fit: contain;
+}
+@mixin coinAnimation($right, $top, $bottom, $left, $name, $duration, $childAnimationName, $childAnimationDuration) {
+    right: $right;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    animation-name: $name;
+    animation-duration: $duration;
+    span {
+        animation-name: $childAnimationName;
+        animation-duration: $childAnimationDuration;
+        animation-fill-mode: forwards;
+    }
+}
 
 .container {
     width: 90%;
@@ -17,7 +37,6 @@
 
 .avatarWrapper {
     width: 50%;
-    flex-wrap: wrap;
     margin-top: 40px;
     gap: 50px;
 
@@ -31,10 +50,8 @@
     margin-top: 55px;
 
     input {
-        width: 100%;
         border: 1px solid $gameInput;
         padding: 20px 10px;
-        text-align: center;
         border-radius: 12px;
         margin-top: 55px;
     }
@@ -55,13 +72,8 @@
     }
 }
 
-
 .show {
     animation: fadeIn 1s;
-    -webkit-animation: fadeIn 1s;
-    -moz-animation: fadeIn 1s;
-    -o-animation: fadeIn 1s;
-    -ms-animation: fadeIn 1s;
 }
 
 @keyframes fadeIn {
@@ -129,7 +141,7 @@
     }
 
     h3 {
-        font-weight: 500;
+        font-weight: $medium;
         font-size: 24px;
         color: #232323;
         margin-top: 20px;
@@ -137,9 +149,7 @@
 }
 .selected {
     img {
-        width: 257px;
-        height: 257px;
-        object-fit: contain;
+        @include imgProperties(257px);
     }
 }
 
@@ -147,9 +157,7 @@
     position: absolute;
     top: 0px;
     img {
-        width: 182px;
-        height: 182px;
-        object-fit: contain;
+        @include imgProperties(182px);
     }
     div:nth-child(1) {
         right: 100px;
@@ -196,7 +204,7 @@
     margin-right: 30px;
     cursor: pointer;
     &:hover {
-        background-color: #f9b930;
+        background-color: $yellow;
     }
     h4 {
         margin: 0px;
@@ -270,9 +278,7 @@
 
 .percentageSelected {
     img {
-        width: 191px;
-        height: 191px;
-        object-fit: contain;
+        @include imgProperties(191px);
     }
 }
 
@@ -280,8 +286,7 @@
     position: absolute;
     top: 0px;
     img {
-        width: 135px;
-        height: 135px;
+        @include imgProperties(135px);
         object-fit: contain;
     }
     div:nth-child(1) {
@@ -337,67 +342,39 @@
     }
     10% {
         transform: translate(0px, 320px);
-        opacity: 1;
         width: 37px;
         height: 37px;
     }
     20% {
         transform: translate(50px, 340px);
-        width: 37px;
-        height: 37px;
-        opacity: 1;
     }
     30% {
         transform: translate(110px, 420px);
-        width: 37px;
-        height: 37px;
-        opacity: 1;
     }
     40% {
         transform: translate(150px, 520px);
-        width: 37px;
-        height: 37px;
-        opacity: 1;
     }
     50% {
         transform: translate(140px, 590px);
-        width: 37px;
-        height: 37px;
-        opacity: 1;
     }
     60% {
         transform: translate(70px, 650px);
-        width: 37px;
-        height: 37px;
-        opacity: 1;
     }
     70% {
         transform: translate(0px, 700px);
-        width: 37px;
-        height: 37px;
-        opacity: 1;
     }
     80% {
         transform: translate(-100px, 660px);
-        width: 37px;
-        height: 37px;
-        opacity: 1;
     }
     90% {
         transform: translate(-120px, 600px);
-        width: 37px;
-        height: 37px;
-        opacity: 1;
     }
     92% {
         transform: translate(-160px, 510px);
-        opacity: 1;
-        width: 37px;
-        height: 37px;
     }
     100% {
         transform: translate(-160px, 400px);
-        opacity: 1;
+        opacity: 0;
         width: 100px;
         height: 100px;
     }
@@ -430,115 +407,36 @@
         }
     }
     div:nth-child(2) {
-        right: 40%;
-        top: 50px;
-        animation-name: opacityAnimation;
-        animation-duration: 5s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 8s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s);
     }
     div:nth-child(3) {
-        right: 35%;
-        top: 170px;
-        animation-name: opacityAnimation;
-        animation-duration: 8s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 11s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s);
     }
     div:nth-child(4) {
-        right: 31%;
-        top: 300px;
-        animation-name: opacityAnimation;
-        animation-duration: 12s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 14s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s);
     }
     div:nth-child(5) {
-        right: 35%;
-        top: 430px;
-        animation-name: opacityAnimation;
-        animation-duration: 15s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 18s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s);
     }
     div:nth-child(6) {
-        right: 40%;
-        top: 535px;
-        animation-name: opacityAnimation;
-        animation-duration: 18s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 21s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 18s, displayAnimation, 21s);
     }
     div:nth-child(7) {
-        bottom: 0;
-        animation-name: opacityAnimation;
-        animation-duration: 21s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 24s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 24s);
     }
     div:nth-child(8) {
-        bottom: 40px;
-        left: 40%;
-        animation-name: opacityAnimation;
-        animation-duration: 25s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 27s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(unset, unset, 40px, 40%, opacityAnimation, 25s, displayAnimation, 27s);
     }
     div:nth-child(9) {
-        bottom: 145px;
-        left: 34%;
-        animation-name: opacityAnimation;
-        animation-duration: 28s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 30s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(unset, unset, 145px, 34%, opacityAnimation, 28s, displayAnimation, 30s);
     }
     div:nth-child(10) {
-        bottom: 275px;
-        left: 31%;
-        animation-name: opacityAnimation;
-        animation-duration: 30s;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 33s;
-            animation-fill-mode: forwards;
-        }
+        @include coinAnimation(unset, unset, 275px, 31%, opacityAnimation, 30s, displayAnimation, 33s);
     }
     div:nth-child(11) {
-        bottom: 460px;
-        left: 2%;
-        animation-name: opacityAnimation;
-        animation-duration: 36s;
+        @include coinAnimation(unset, unset, 460px, 2%, opacityAnimation, 36s, displayAnimation, 36s);
         position: absolute;
         display: flex;
-        span {
-            animation-name: displayAnimation;
-            animation-duration: 36s;
-            animation-fill-mode: forwards;
-        }
         .donationCycleItems {
             position: relative;
             right: 0;
@@ -608,14 +506,14 @@
         flex-wrap: wrap;
         gap: 25px;
         img {
-            width: 84px;
+            @include imgProperties(84px);
         }
     }
 
     .gameStepTwo {
         width: 100%;
         img {
-            width: 84px;
+            @include imgProperties(84px);
         }
         input {
             font-size: 16px;
@@ -631,12 +529,8 @@
         flex-direction: column !important;
         .user {
             img {
-                width: 115px;
-                height: 115px;
+                @include imgProperties(115px);
             }
-        }
-        img {
-            object-fit: contain;
         }
         .gameStepThreeUserColumn {
             width: 100%;
@@ -645,14 +539,12 @@
             }
             .selected {
                 img {
-                    width: 115px;
-                    height: 115px;
+                    @include imgProperties(115px);
                 }
             }
             .friends {
                 img {
-                    width: 80px;
-                    height: 80px;
+                    @include imgProperties(80px);
                 }
                 div:nth-child(1) {
                     right: unset;
@@ -683,8 +575,7 @@
             .avatarWrapper {
                 width: 100%;
                 img {
-                    width: 80px;
-                    object-fit: contain;
+                    @include imgProperties(80px);
                 }
             }
         }
@@ -711,17 +602,13 @@
 
     .percentageSelected {
         img {
-            width: 67px;
-            height: 67px;
-            object-fit: contain;
+            @include imgProperties(67px);
         }
     }
 
     .percentageFriends {
         img {
-            width: 47px;
-            height: 47px;
-            object-fit: contain;
+            @include imgProperties(47px);
         }
         div:nth-child(1) {
             right: unset;
@@ -773,9 +660,7 @@
         justify-content: center;
         display: flex;
         img {
-            width: 25px;
-            height: 22px;
-            object-fit: contain;
+            @include imgProperties(25px);
         }
         > div:nth-child(1) {
             animation-name: opacityAnimation;
@@ -919,7 +804,7 @@
                 margin-right: 7px;
             }
             img {
-                width: 70px;
+                @include imgProperties(70px);
             }
             h2 {
                 text-align: left;
@@ -940,14 +825,13 @@
 
     .userDonation {
         img {
-            width: 67px;
+            @include imgProperties(67px);
         }
     }
 
     .coinDefault {
         img {
-            width: 23px;
-            height: 23px;
+            @include imgProperties(23px);
         }
     }
 
