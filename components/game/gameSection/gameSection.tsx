@@ -128,7 +128,7 @@ const GameSection = (): JSX.Element => {
                     </div>)}
                 </div>
             </div>
-            <div className={`d-sm-none`}>
+            <div className={"d-sm-none"}>
                 <div className={`${rowHBetween}`}>
                     <select onChange={(e) => {
                         setDonationAmount(e.target.value);
