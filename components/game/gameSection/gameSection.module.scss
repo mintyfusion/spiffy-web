@@ -8,6 +8,7 @@
     height: $size;
     object-fit: contain;
 }
+
 @mixin coinAnimation($right, $top, $bottom, $left, $name, $duration, $childAnimationName, $childAnimationDuration) {
     right: $right;
     top: $top;
@@ -21,6 +22,7 @@
         animation-fill-mode: forwards;
     }
 }
+
 @mixin friendsAvatar($right, $left, $bottom) {
     right: $right;
     left: $left;
@@ -28,12 +30,15 @@
     display: block !important;
 }
 
+@mixin gameContentPadding($padding) {
+    padding: $padding;
+}
 .container {
     width: 90%;
     margin: 75px auto;
     background-color: $white;
-    padding: 150px 0px;
     border-radius: 10px;
+    position: relative;
 }
 
 .avatarHeading {
@@ -44,13 +49,82 @@
 .avatarWrapper {
     width: 50%;
     margin-top: 40px;
-    gap: 50px;
-
+    grid-gap: 50px;
     img {
         cursor: pointer;
     }
 }
 
+.userAvatar {
+    position: relative;
+    animation: avatarAnimation 5s;
+    animation-fill-mode: forwards;
+    z-index: 1;
+}
+
+// @keyframes avatarAnimation {
+//     0% {
+//         top: 0px;
+//     }
+//     100% {
+//         top: 900px;
+//     }
+// }
+
+.containerFadIn {
+    animation: containerFadinAnimation 4s;
+    animation-fill-mode: forwards;
+}
+@keyframes containerFadinAnimation {
+    0% {
+        transform: translateY(120%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+.containerFadOut {
+    animation: containerFadoutAnimation 4s;
+    animation-fill-mode: forwards;
+}
+@keyframes containerFadoutAnimation {
+    0% {
+        transform: translateY(0%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: 0;
+        z-index: -1;
+    }
+}
+.gameStepOne {
+    @include gameContentPadding(150px 0);
+}
+
+.gameStepTwoWrapper {
+    @include gameContentPadding(150px 0);
+}
+
+.gameStepFive {
+    @include gameContentPadding(150px 0);
+}
+
+.gameStepSix {
+    @include gameContentPadding(150px 0);
+}
 .gameStepTwo {
     width: 30%;
     margin-top: 55px;
@@ -132,6 +206,12 @@
 
 .gameStepThree {
     display: flex;
+    background-color: $dirty-white;
+    .user {
+        img {
+            @include imgProperties(257px);
+        }
+    }
 
     .gameStepThreeUserColumn {
         width: 30%;
@@ -141,8 +221,9 @@
     .gameStepThreeFriendsColumn {
         width: 65%;
         background-color: $white;
+        padding: 150px 150px 150px 0;
         .avatarWrapper {
-            width: 40%;
+            width: 45%;
         }
     }
 
@@ -166,16 +247,16 @@
         @include imgProperties(182px);
     }
     div:nth-child(1) {
-        @include friendsAvatar(100px, unset, 50px);
+        @include friendsAvatar(105px, unset, 50px);
     }
     div:nth-child(2) {
-        @include friendsAvatar(unset, 178px, 213px);
+        @include friendsAvatar(unset, 180px, 228px);
     }
     div:nth-child(3) {
-        @include friendsAvatar(106px, unset, 239px);
+        @include friendsAvatar(102px, unset, 221px);
     }
     div:nth-child(4) {
-        @include friendsAvatar(unset, 147px, 480px);
+        @include friendsAvatar(unset, 180px, 410px);
     }
 }
 
@@ -288,16 +369,16 @@
         object-fit: contain;
     }
     div:nth-child(1) {
-        @include friendsAvatar(95px, unset, 37px);
+        @include friendsAvatar(84px, unset, 37px);
     }
     div:nth-child(2) {
-        @include friendsAvatar(145px, unset, 166px);
+        @include friendsAvatar(unset, 140px, 174px);
     }
     div:nth-child(3) {
-        @include friendsAvatar(148px, unset, 168px);
+        @include friendsAvatar(84px, unset, 173px);
     }
     div:nth-child(4) {
-        @include friendsAvatar(unset, 77px, 295px);
+        @include friendsAvatar(unset, 142px, 311px);
     }
 }
 
