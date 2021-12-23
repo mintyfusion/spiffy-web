@@ -64,7 +64,7 @@ const GameSection = (): JSX.Element => {
 
     return (
         <div className={"position-relative"}>
-            <div className={`${step === "1" || step === "2" ? styles.container : 'd-none'} ${step === "2" ? styles.containerFadOut : ""}`}>
+            <div className={`${step === "1" || step === "2" ? styles.container : "d-none"} ${step === "2" ? styles.containerFadOut : ""}`}>
                 <div className={`${colCenter} ${styles.gameStepOne}`}>
                     <h2 className={`${styles.avatarHeading}`}>Select your avatar.</h2>
                     <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
@@ -81,7 +81,7 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className={`${step === "2" || "3" ? styles.container : 'd-none'} ${step === "2" ? styles.containerFadIn : step === "3" ? styles.containerFadOut : "d-none"}`}>
+            <div className={`${step === "2" || step === "3" ? styles.container : "d-none"} ${step === "2" ? styles.containerFadIn : step === "3" ? styles.containerFadOut : "d-none"}`}>
                 <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                     <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
                     <div className={`${colCenter} ${styles.gameStepTwo}`}>
@@ -97,7 +97,7 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className={`${step === "3" || "4" ? styles.container : 'd-none'} ${step === "3" ? styles.containerFadIn : step === "4" ? styles.containerFadOut : "d-none"}`}>
+            <div className={`${step === "3" || step === "4" ? styles.container : "d-none"} ${step === "3" ? styles.containerFadIn : step === "4" ? styles.containerFadOut : "d-none"}`}>
                 <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                     <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                         <div className={styles.avatarInner}>
@@ -117,13 +117,15 @@ const GameSection = (): JSX.Element => {
                         <h4>Hint: Choose a red bee!</h4>
                         <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
                             {avatars.filter((avatar: IAvatar) => avatar.id !== selected?.id).map((i, k) => <Image
-                                src={i.image.src} alt={i.image.alt} width={i.image.width} height={i.image.height} key={k}
+                                src={i.image.src} alt={i.image.alt} width={i.image.width}
+                                height={i.image.height} key={k}
                                 onClick={() => friendsHandler(i)} />)}
                         </div>
                     </div>
                 </div>
             </div>
-            <div className={`${step === "4" || "5" ? styles.container : 'd-none'} ${step === "4" ? styles.containerFadIn : step === "5" ? styles.containerFadOut : "d-none"}`}>
+            <div className={`${step === "4" || step === "5" ? styles.container : "d-none"} 
+            ${step === "4" ? styles.containerFadIn : step === "5" ? styles.containerFadOut : "d-none"}`}>
                 <div className={`${colCenter} ${styles.stepFour}`}>
                     <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
                     <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
@@ -215,7 +217,7 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className={`${step === "5" || "6" ? styles.container : 'd-none'} ${step === "5" ? styles.containerFadIn : step === "6" ? styles.containerFadOut : "d-none"}`}>
+            <div className={`${step === "5" || step === "6" ? styles.container : "d-none"} ${step === "5" ? styles.containerFadIn : step === "6" ? styles.containerFadOut : "d-none"}`}>
                 <div className={styles.gameStepFive}>
                     <div className={`${colCenter}`}>
                         <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
@@ -261,7 +263,7 @@ const GameSection = (): JSX.Element => {
 
             </div>
 
-            <div className={`${step === "6" ? styles.container : 'd-none'} ${step === "6" ? styles.containerFadIn : "d-none"}`}>
+            <div className={`${step === "6" ? styles.container : "d-none"} ${step === "6" ? styles.containerFadIn : "d-none"}`}>
                 <div className={styles.gameStepSix}>
                     <div className={`${colCenter} ${step === "6" ? styles.show : "d-none"} ${styles.signUpsection}`}>
                         <Image src={Trophy} alt="trophy" />
@@ -271,6 +273,6 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
         </div>
-    )
+    );
 };
 export default GameSection;
