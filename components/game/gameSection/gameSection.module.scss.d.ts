@@ -1,5 +1,6 @@
 export type Styles = {
   "animationGrid": string;
+  "avatarAnimation": string;
   "avatarHeading": string;
   "avatarInner": string;
   "avatarWrapper": string;
@@ -19,6 +20,10 @@ export type Styles = {
   "coinAnimatonMobile": string;
   "coinDefault": string;
   "container": string;
+  "containerFadIn": string;
+  "containerFadinAnimation": string;
+  "containerFadOut": string;
+  "containerFadoutAnimation": string;
   "contentAnimation": string;
   "contentShow": string;
   "contetHide": string;
@@ -37,10 +42,14 @@ export type Styles = {
   "friends": string;
   "fullbold109": string;
   "fullBold67": string;
+  "gameStepFive": string;
+  "gameStepOne": string;
+  "gameStepSix": string;
   "gameStepThree": string;
   "gameStepThreeFriendsColumn": string;
   "gameStepThreeUserColumn": string;
   "gameStepTwo": string;
+  "gameStepTwoWrapper": string;
   "medium25": string;
   "opacityAnimation": string;
   "percentageFriends": string;
@@ -59,6 +68,7 @@ export type Styles = {
   "signUpsection": string;
   "stepFour": string;
   "user": string;
+  "userAvatar": string;
   "userDonation": string;
   "yellow": string;
 };
