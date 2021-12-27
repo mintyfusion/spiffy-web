@@ -55,7 +55,6 @@ export type Styles = {
   "friendsAnimation": string;
   "fullbold109": string;
   "fullBold67": string;
-  "gameStepFive": string;
   "gameStepOne": string;
   "gameStepSix": string;
   "gameStepThree": string;
@@ -75,6 +74,7 @@ export type Styles = {
   "regular90": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
   "selected": string;
   "semiBold90": string;
   "show": string;

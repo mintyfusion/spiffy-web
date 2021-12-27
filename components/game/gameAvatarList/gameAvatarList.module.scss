@@ -1,0 +1,124 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/mixins.scss";
+
+@mixin gameContentPadding($padding) {
+    padding: $padding;
+}
+
+@mixin imgProperties($size) {
+    width: $size;
+    height: $size;
+    object-fit: contain;
+}
+
+@mixin percentageAvatars($right, $left, $bottom) {
+    right: $right;
+    left: $left;
+    bottom: $bottom;
+    display: block !important;
+}
+
+.gameStepFive {
+    @include gameContentPadding(100px 0);
+}
+
+.avatarHeading {
+    @extend .regular-desktop30-mobile20;
+}
+
+.donations {
+    padding: 10px 0px;
+    background-color: #f3e6ca;
+    width: 169px;
+    text-align: center;
+    margin-right: 30px;
+    cursor: pointer;
+    &:hover {
+        background-color: $yellow;
+    }
+    h4 {
+        margin: 0px;
+    }
+}
+
+.donationMobile {
+    display: none;
+}
+
+.donationActive {
+    background-color: $yellow;
+}
+
+.donationInner {
+    h2 {
+        @extend .boldGame41;
+        margin-bottom: 20px;
+    }
+    p {
+        margin-top: 10px;
+        color: #ff9872;
+        opacity: 1;
+        animation-fill-mode: forwards;
+    }
+    h3 {
+        font-size: 25px;
+        font-weight: $bold;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+}
+
+.yellow {
+    color: $yellow;
+}
+
+.avatarInner {
+    position: relative;
+    margin-top: 35px;
+}
+
+.percentageSelected {
+    img {
+        @include imgProperties(191px);
+    }
+}
+
+.percentageFriends {
+    position: absolute;
+    top: 0px;
+    img {
+        @include imgProperties(119px);
+        object-fit: contain;
+    }
+    div:nth-child(1) {
+        @include percentageAvatars(105px, unset, -50px);
+    }
+    div:nth-child(2) {
+        @include percentageAvatars(unset, 101px, 63px);
+    }
+    div:nth-child(3) {
+        @include percentageAvatars(106px, unset, 51px);
+    }
+    div:nth-child(4) {
+        @include percentageAvatars(unset, 106px, 172px);
+    }
+}
+
+@for $i from 1 through 1000 {
+    .confetti:nth-child(#{$i}) {
+        position: absolute;
+        top: percentage(random(100) / 100);
+        left: percentage(random(100) / 100);
+        img {
+            width: (random(60) + 20) + px;
+            object-fit: contain;
+        }
+    }
+}
+@include media(">=320px", "<768px") {
+    .donationDesktop {
+        display: none;
+    }
+}

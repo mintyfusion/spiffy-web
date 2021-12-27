@@ -95,7 +95,7 @@
 @keyframes avatarstepTwoAnimation {
     100% {
         left: 43%;
-        top: 34%;
+        top: 30%;
     }
 }
 
@@ -112,8 +112,8 @@
         left: 43%;
     }
     100% {
-        left: 12%;
-        top: 34%;
+        left: 20%;
+        top: 30%;
     }
 }
 
@@ -126,8 +126,7 @@
 }
 
 .avatarHeading {
-    @extend .boldGame67;
-    color: $neutralBlack800;
+    @extend .regular-desktop30-mobile20;
 }
 
 .avatarWrapper {
@@ -197,19 +196,15 @@
 }
 
 .gameStepOne {
-    @include gameContentPadding(150px 0);
+    @include gameContentPadding(100px 0);
 }
 
 .gameStepTwoWrapper {
-    @include gameContentPadding(150px 0);
-}
-
-.gameStepFive {
-    @include gameContentPadding(150px 0);
+    @include gameContentPadding(100px 0);
 }
 
 .gameStepSix {
-    @include gameContentPadding(150px 0);
+    @include gameContentPadding(100px 0);
 }
 
 .gameStepTwo {
@@ -260,25 +255,23 @@
 .gameStepThree {
     display: flex;
     background-color: $dirty-white;
-    height: 1000px;
     .user {
         img {
-            // @include imgProperties(257px);
             visibility: hidden;
         }
     }
 
     .gameStepThreeUserColumn {
-        width: 30%;
+        width: 48%;
         background-color: $white;
     }
 
     .gameStepThreeFriendsColumn {
-        width: 65%;
+        width: 48%;
         background-color: $white;
-        padding: 150px 150px 150px 0;
+        padding: 50px 80px;
         .avatarWrapper {
-            width: 45%;
+            width: 100%;
         }
     }
 
@@ -360,7 +353,7 @@
 }
 
 .stepFour {
-    @include gameContentPadding(150px 0);
+    @include gameContentPadding(100px 0);
     h4 {
         @extend .regular-desktop25-mobile16;
     }

@@ -1,20 +1,19 @@
 import Image from "next/image";
 import React from "react";
 
-import Coin from "public/images/Game/coin.png";
 import flexbox from "utils/flexbox";
 import gameSectionContent from "components/game/gameSection/gameSectionContent";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
+import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
-const colHCenterVEnd = flexbox({ vertical: true, hAlign: "center", vAlign: "end" });
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center", });
 const rowHBetween = flexbox({ hAlign: "between" });
 
 const data: string[] = ["5", "10", "15", "25", "50"];
-const percent: string[] = ["1", "5", "10", "25", "50", "100"];
+
 const donation = 2;
 
 const GameSection = (): JSX.Element => {
@@ -24,7 +23,6 @@ const GameSection = (): JSX.Element => {
     const [step, setStep] = React.useState<string>("1");
     const [name, setName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
-    const [percentage, setPercentage] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
 
     React.useEffect(() => {
@@ -118,7 +116,7 @@ const GameSection = (): JSX.Element => {
                         <h3>{name}</h3>
                     </div>
 
-                    <div className={`${styles.gameStepThreeFriendsColumn} ${colHCenterVEnd}`}>
+                    <div className={`${styles.gameStepThreeFriendsColumn} ${colCenter}`}>
                         <h2 className={styles.avatarHeading}>Add four friends.</h2>
                         <h4>Hint: Choose a red bee!</h4>
                         <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
@@ -165,7 +163,7 @@ const GameSection = (): JSX.Element => {
                     <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
                         <h2>Donation Cycle</h2>
                         <div className={`${animation ? styles.coin : styles.coinDefault}`}>
-                            <Image src={Coin} alt="Coin" />
+                            <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
                         </div>
                         <div className={styles.userDonation}>
                             <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
@@ -229,49 +227,7 @@ const GameSection = (): JSX.Element => {
             </div>
 
             <div className={`${step === "4" ? styles.container : "d-none"}`}>
-                <div className={styles.gameStepFive}>
-                    <div className={`${colCenter}`}>
-                        <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
-                        <h4>Click the percentage fill rate to unlock your potential. Higher the filled rate,
-                            the more money you make.</h4>
-                        <div className={`${styles.donationDesktop}`}>
-                            <div className={rowHBetween}>
-                                {percent.map((percent, percentKey) => <div key={percentKey} className={`${styles.donations} ${percentage === percent ? styles.donationActive : ""}`}
-                                    onClick={() => {
-                                        setPercentage(percent);
-                                        setStep("6");
-                                    }}>
-                                    <h4>{percent}%</h4>
-                                </div>)}
-                            </div>
-                        </div>
-                        <div className={`${styles.donationMobile}`}>
-                            <div className={`${rowHBetween}`}>
-                                <select onChange={(e) => {
-                                    setPercentage(e.target.value);
-                                    setStep("6");
-                                }}>
-                                    {data.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
-                                </select>
-                            </div>
-                        </div>
-
-                        <div className={`${styles.donationInner} ${colCenter}`}>
-                            <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
-                            <div className={styles.avatarInner}>
-                                <div className={`${friends.length ? styles.percentageSelected : ""}`}>
-                                    {selected ? <Image {...selected.image} width={119} height={119} /> : null}
-                                </div>
-
-                                <div className={styles.percentageFriends}>
-                                    {friends.map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
-                                </div>
-                            </div>
-                            <h6>{name}</h6>
-                        </div>
-                    </div>
-                </div>
-
+                <GameAvatarList friends={friends} selected={selected} name={name} />
             </div>
 
             <div className={`${step === "6" ? styles.container : "d-none"} ${step === "6" ? styles.containerFadIn : "d-none"}`}>
