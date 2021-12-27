@@ -4,14 +4,7 @@ import React from "react";
 import Coin from "public/images/Game/coin.png";
 import flexbox from "utils/flexbox";
 import gameSectionContent from "components/game/gameSection/gameSectionContent";
-import greenAvatar from "public/images/Game/donationCycle/avatarGreen.png";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
-import orangeAvatar from "public/images/Game/donationCycle/avatarOrange.png";
-import purpleAvatar from "public/images/Game/donationCycle/avatarPurple.png";
-import spiffy from "public/images/Game/donationCycle/spiffy.png";
-import Trophy from "public/images/Game/trophy.png";
-import User from "public/images/Game/user.png";
-import yellowAvatar from "public/images/Game/donationCycle/avatarYellow.png";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
 
@@ -43,17 +36,18 @@ const GameSection = (): JSX.Element => {
         };
     }, []);
     React.useEffect(() => {
-        if (avatars.length === 1) {
-            setStep("4");
+        if (friends.length === 4) {
+            setTimeout(() => {
+                setStep("4");
+            }, 2000)
+
         }
-    }, [avatars]);
+    }, [friends]);
 
     const friendsHandler = (i: IAvatar) => {
         const friendsAvatar = gameSectionContent.friends;
         const selectedFilter = friendsAvatar.filter((friend) => friend.id === i.id);
-        const filterFriends = avatars.filter((filter) => filter.id !== i.id);
         setFriends([...friends, selectedFilter[0]]);
-        setAvatars(filterFriends);
     };
 
     const selectedHandler = (i: IAvatar) => {
@@ -64,12 +58,25 @@ const GameSection = (): JSX.Element => {
 
     return (
         <div className={"position-relative"}>
+            <div className={`${step === "1" || step === "2" || step === "3" ? selected?.id === "avatarPurple"
+                ? styles.avatarPurple : selected?.id === "avatarGreen"
+                    ? styles.avatarGreen : selected?.id === "avatarRed"
+                        ? styles.avatarRed : selected?.id === "avatarYellow"
+                            ? styles.avatarYellow : selected?.id === "avatarOrange"
+                                ? styles.avatarOrange : "" : "d-none"} 
+            ${step === "2" ? styles.avatarstepTwo : step === "3" ? styles.avatarstepThree : ""}`}>
+                {selected ?
+                    <Image {...selected.image} />
+                    : null
+                }
+            </div>
+
             <div className={`${step === "1" || step === "2" ? styles.container : "d-none"} ${step === "2" ? styles.containerFadOut : ""}`}>
                 <div className={`${colCenter} ${styles.gameStepOne}`}>
                     <h2 className={`${styles.avatarHeading}`}>Select your avatar.</h2>
                     <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
-                        {avatars.filter((f) => selected ? f.id === selected.id : f).map((i, k) =>
-                            <div className={`${selected ? styles.userAvatar : ""}`} key={k}>
+                        {avatars.map((i, k) =>
+                            <div className={`${selected === undefined ? "visible" : "invisible"}`} key={k}>
                                 <Image src={i.image.src} alt={i.image.alt} width={i.image.width} height={i.image.height}
                                     onClick={() => {
                                         selectedHandler(i);
@@ -87,8 +94,7 @@ const GameSection = (): JSX.Element => {
                     <div className={`${colCenter} ${styles.gameStepTwo}`}>
                         {selected ?
                             <Image {...selected.image} />
-                            : null
-                        }
+                            : null}
                         <input placeholder="Name" className="w-100 text-center" onChange={(e) => setName(e.target.value)} />
                         <button disabled={name === ""} onClick={() => {
                             setStep("3");
@@ -101,7 +107,7 @@ const GameSection = (): JSX.Element => {
                 <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                     <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                         <div className={styles.avatarInner}>
-                            <div className={`${friends.length ? styles.selected : styles.user}`}>
+                            <div className={step === "4" ? "visible" : "invisible"}>
                                 {selected ? <Image {...selected.image} /> : null}
                             </div>
 
@@ -116,25 +122,29 @@ const GameSection = (): JSX.Element => {
                         <h2 className={styles.avatarHeading}>Add four friends.</h2>
                         <h4>Hint: Choose a red bee!</h4>
                         <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
-                            {avatars.filter((avatar: IAvatar) => avatar.id !== selected?.id).map((i, k) => <Image
-                                src={i.image.src} alt={i.image.alt} width={i.image.width}
-                                height={i.image.height} key={k}
-                                onClick={() => friendsHandler(i)} />)}
+                            {avatars.filter((avatar: IAvatar) => avatar.id !== selected?.id).map((i, k) =>
+                                <div className={friends.find((f) => f.id === i.id) ? styles.friendsAnimation : ""} key={k}>
+                                    <Image
+                                        src={i.image.src} alt={i.image.alt} width={i.image.width}
+                                        height={i.image.height}
+                                        onClick={() => friendsHandler(i)} />
+                                </div>)}
                         </div>
                     </div>
                 </div>
             </div>
+
             <div className={`${step === "4" || step === "5" ? styles.container : "d-none"} 
             ${step === "4" ? styles.containerFadIn : step === "5" ? styles.containerFadOut : "d-none"}`}>
                 <div className={`${colCenter} ${styles.stepFour}`}>
                     <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
                     <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
                     <div className={`${styles.donationDesktop}`}>
-                        <div className={`${rowHBetween} ${styles.donationDesktop}`}>
+                        <div className={`${rowHBetween}`}>
                             {data.map((donation, donationKey) => <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`}
                                 onClick={() => {
                                     setDonationAmount(donation);
-                                    setStep("5");
+                                    setAnimation(!animation);
                                 }}>
                                 <h4>{donation}</h4>
                             </div>)}
@@ -145,6 +155,7 @@ const GameSection = (): JSX.Element => {
                             <select onChange={(e) => {
                                 setDonationAmount(e.target.value);
                                 setStep("5");
+                                setAnimation(true);
                             }}>
                                 {data.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
                             </select>
@@ -154,53 +165,53 @@ const GameSection = (): JSX.Element => {
                     <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
                         <h2>Donation Cycle</h2>
                         <div className={`${animation ? styles.coin : styles.coinDefault}`}>
-                            <Image src={Coin} alt="Coin" onClick={() => setAnimation(!animation)} />
+                            <Image src={Coin} alt="Coin" />
                         </div>
                         <div className={styles.userDonation}>
-                            <Image src={User} alt="User" />
+                            <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                         </div>
                         <p>${Number(donationAmount) / donation}</p>
                         <h3>Content Creators</h3>
                     </div>
                     {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative w-100`}>
                         <div className={styles.donationCycleItems}>
-                            <Image src={purpleAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                             <span>0.50</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={orangeAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarOrange.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={greenAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarGreen.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={yellowAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarYellow.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={purpleAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={orangeAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarOrange.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={greenAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarGreen.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={yellowAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarYellow.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={purpleAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div className={styles.donationCycleItems}>
-                            <Image src={orangeAvatar} />
+                            <Image src={"/images/Game/donationCycle/avatarOrange.png"} width={56} height={63} />
                             <span>0.20</span>
                         </div>
                         <div>
@@ -209,7 +220,7 @@ const GameSection = (): JSX.Element => {
                                 <p>We’re totally reliant on this cents to keep us going.</p>
                             </div>
                             <div className={styles.donationCycleItems}>
-                                <Image src={spiffy} />
+                                <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
                                 <span>0.50</span>
                             </div>
                         </div>
@@ -217,7 +228,7 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className={`${step === "5" || step === "6" ? styles.container : "d-none"} ${step === "5" ? styles.containerFadIn : step === "6" ? styles.containerFadOut : "d-none"}`}>
+            <div className={`${step === "4" ? styles.container : "d-none"}`}>
                 <div className={styles.gameStepFive}>
                     <div className={`${colCenter}`}>
                         <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
@@ -249,11 +260,11 @@ const GameSection = (): JSX.Element => {
                             <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
                             <div className={styles.avatarInner}>
                                 <div className={`${friends.length ? styles.percentageSelected : ""}`}>
-                                    {selected ? <Image {...selected.image} /> : null}
+                                    {selected ? <Image {...selected.image} width={119} height={119} /> : null}
                                 </div>
 
                                 <div className={styles.percentageFriends}>
-                                    {friends.map((i, k) => <Image {...i.image} key={k} />)}
+                                    {friends.map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
                                 </div>
                             </div>
                             <h6>{name}</h6>
@@ -266,7 +277,7 @@ const GameSection = (): JSX.Element => {
             <div className={`${step === "6" ? styles.container : "d-none"} ${step === "6" ? styles.containerFadIn : "d-none"}`}>
                 <div className={styles.gameStepSix}>
                     <div className={`${colCenter} ${step === "6" ? styles.show : "d-none"} ${styles.signUpsection}`}>
-                        <Image src={Trophy} alt="trophy" />
+                        <Image src={"/images/Game/trophy.png"} alt="trophy" width={291} height={318} />
                         <h2 className={`${styles.avatarHeading}`}>Congratulations!</h2>
                         <button>SIGN UP</button>
                     </div>

@@ -1,9 +1,18 @@
 export type Styles = {
   "animationGrid": string;
   "avatarAnimation": string;
+  "avatarGreen": string;
   "avatarHeading": string;
   "avatarInner": string;
+  "avatarOrange": string;
+  "avatarPurple": string;
+  "avatarRed": string;
+  "avatarstepThree": string;
+  "avatarstepThreeAnimation": string;
+  "avatarstepTwo": string;
+  "avatarstepTwoAnimation": string;
   "avatarWrapper": string;
+  "avatarYellow": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold150": string;
@@ -39,7 +48,11 @@ export type Styles = {
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "fadeIn": string;
+  "fadeOut": string;
+  "freindsSlideLeft": string;
+  "freindsSlideRight": string;
   "friends": string;
+  "friendsAnimation": string;
   "fullbold109": string;
   "fullBold67": string;
   "gameStepFive": string;

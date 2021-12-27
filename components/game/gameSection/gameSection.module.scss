@@ -9,7 +9,17 @@
     object-fit: contain;
 }
 
-@mixin coinAnimation($right, $top, $bottom, $left, $name, $duration, $childAnimationName, $childAnimationDuration) {
+@mixin coinAnimation(
+    $right,
+    $top,
+    $bottom,
+    $left,
+    $name,
+    $duration,
+    $childAnimationName,
+    $childAnimationDuration,
+    $color
+) {
     right: $right;
     top: $top;
     bottom: $bottom;
@@ -20,10 +30,20 @@
         animation-name: $childAnimationName;
         animation-duration: $childAnimationDuration;
         animation-fill-mode: forwards;
+        color: $color;
     }
 }
 
-@mixin friendsAvatar($right, $left, $bottom) {
+@mixin friendsAvatar($right, $left, $bottom, $name, $duration) {
+    right: $right;
+    left: $left;
+    bottom: $bottom;
+    animation-name: $name;
+    animation-duration: $duration;
+    display: block !important;
+}
+
+@mixin percentageAvatars($right, $left, $bottom) {
     right: $right;
     left: $left;
     bottom: $bottom;
@@ -33,6 +53,70 @@
 @mixin gameContentPadding($padding) {
     padding: $padding;
 }
+
+@mixin avatarSelection($top, $left) {
+}
+
+@mixin avatar($top, $left) {
+    position: absolute;
+    left: $left;
+    z-index: 1;
+    top: $top;
+}
+
+.avatarPurple {
+    @include avatar(30%, 45%);
+}
+
+.avatarGreen {
+    @include avatar(30%, 33%);
+}
+
+.avatarRed {
+    @include avatar(30%, 58%);
+}
+
+.avatarYellow {
+    @include avatar(59%, 39%);
+}
+
+.avatarOrange {
+    @include avatar(59%, 51%);
+}
+
+.avatarstepTwo {
+    animation: avatarstepTwoAnimation 4s;
+    animation-fill-mode: forwards;
+    img {
+        @include imgProperties(257px);
+    }
+}
+
+@keyframes avatarstepTwoAnimation {
+    100% {
+        left: 43%;
+        top: 34%;
+    }
+}
+
+.avatarstepThree {
+    animation: avatarstepThreeAnimation 4s;
+    animation-fill-mode: forwards;
+    img {
+        @include imgProperties(257px);
+    }
+}
+
+@keyframes avatarstepThreeAnimation {
+    0% {
+        left: 43%;
+    }
+    100% {
+        left: 12%;
+        top: 34%;
+    }
+}
+
 .container {
     width: 90%;
     margin: 75px auto;
@@ -57,24 +141,23 @@
 
 .userAvatar {
     position: relative;
-    animation: avatarAnimation 5s;
-    animation-fill-mode: forwards;
-    z-index: 1;
 }
 
-// @keyframes avatarAnimation {
-//     0% {
-//         top: 0px;
-//     }
-//     100% {
-//         top: 900px;
-//     }
-// }
+@keyframes avatarAnimation {
+    0% {
+        top: 500px;
+    }
+    100% {
+        top: 1000px;
+        z-index: 1;
+    }
+}
 
 .containerFadIn {
     animation: containerFadinAnimation 4s;
     animation-fill-mode: forwards;
 }
+
 @keyframes containerFadinAnimation {
     0% {
         transform: translateY(120%);
@@ -83,10 +166,12 @@
         transform: translateY(0%);
     }
 }
+
 .containerFadOut {
-    animation: containerFadoutAnimation 4s;
+    animation: containerFadoutAnimation 6s;
     animation-fill-mode: forwards;
 }
+
 @keyframes containerFadoutAnimation {
     0% {
         transform: translateY(0%);
@@ -110,6 +195,7 @@
         z-index: -1;
     }
 }
+
 .gameStepOne {
     @include gameContentPadding(150px 0);
 }
@@ -125,9 +211,14 @@
 .gameStepSix {
     @include gameContentPadding(150px 0);
 }
+
 .gameStepTwo {
     width: 30%;
     margin-top: 55px;
+
+    img {
+        visibility: hidden;
+    }
 
     input {
         border: 1px solid $gameInput;
@@ -166,50 +257,14 @@
     }
 }
 
-@-moz-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@-o-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@-ms-keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .gameStepThree {
     display: flex;
     background-color: $dirty-white;
+    height: 1000px;
     .user {
         img {
-            @include imgProperties(257px);
+            // @include imgProperties(257px);
+            visibility: hidden;
         }
     }
 
@@ -234,6 +289,7 @@
         margin-top: 20px;
     }
 }
+
 .selected {
     img {
         @include imgProperties(257px);
@@ -247,16 +303,54 @@
         @include imgProperties(182px);
     }
     div:nth-child(1) {
-        @include friendsAvatar(105px, unset, 50px);
+        @include friendsAvatar(137px, unset, 79px, freindsSlideLeft, 2s);
     }
     div:nth-child(2) {
-        @include friendsAvatar(unset, 180px, 228px);
+        @include friendsAvatar(unset, 153px, 260px, freindsSlideRight, 2s);
     }
     div:nth-child(3) {
-        @include friendsAvatar(102px, unset, 221px);
+        @include friendsAvatar(137px, unset, 255px, freindsSlideLeft, 2s);
     }
     div:nth-child(4) {
-        @include friendsAvatar(unset, 180px, 410px);
+        @include friendsAvatar(unset, 153px, 433px, freindsSlideRight, 2s);
+    }
+}
+
+@keyframes freindsSlideRight {
+    0% {
+        opacity: 0;
+        left: 308px;
+    }
+    100% {
+        opacity: 1;
+        left: 153px;
+    }
+}
+
+@keyframes freindsSlideLeft {
+    0% {
+        opacity: 0;
+        right: 319px;
+    }
+    100% {
+        opacity: 1;
+        right: 137px;
+    }
+}
+
+.friendsAnimation {
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
     }
 }
 
@@ -266,6 +360,7 @@
 }
 
 .stepFour {
+    @include gameContentPadding(150px 0);
     h4 {
         @extend .regular-desktop25-mobile16;
     }
@@ -365,20 +460,20 @@
     position: absolute;
     top: 0px;
     img {
-        @include imgProperties(135px);
+        @include imgProperties(119px);
         object-fit: contain;
     }
     div:nth-child(1) {
-        @include friendsAvatar(84px, unset, 37px);
+        @include percentageAvatars(65px, unset, 31px);
     }
     div:nth-child(2) {
-        @include friendsAvatar(unset, 140px, 174px);
+        @include percentageAvatars(unset, 136px, 149px);
     }
     div:nth-child(3) {
-        @include friendsAvatar(84px, unset, 173px);
+        @include percentageAvatars(67px, unset, 144px);
     }
     div:nth-child(4) {
-        @include friendsAvatar(unset, 142px, 311px);
+        @include percentageAvatars(unset, 138px, 262px);
     }
 }
 
@@ -404,6 +499,7 @@
     animation-name: example;
     animation-duration: 20s;
     animation-fill-mode: forwards;
+    opacity: 1;
 }
 
 @keyframes example {
@@ -442,12 +538,15 @@
     }
     92% {
         transform: translate(-160px, 510px);
+        width: 37px;
+        height: 37px;
+        opacity: 1;
     }
     100% {
         transform: translate(-160px, 400px);
         opacity: 0;
-        width: 100px;
-        height: 100px;
+        width: 75px;
+        height: 75px;
     }
 }
 
@@ -466,37 +565,37 @@
     justify-content: center;
     display: flex;
     > div:nth-child(1) {
-        @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 3s, displayAnimation, 5s);
+        @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 3s, displayAnimation, 5s, #6962df);
     }
     div:nth-child(2) {
-        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s);
+        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #fa632b);
     }
     div:nth-child(3) {
-        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s);
+        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #23a534);
     }
     div:nth-child(4) {
-        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s);
+        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s, $yellow);
     }
     div:nth-child(5) {
-        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s);
+        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s, #6962df);
     }
     div:nth-child(6) {
-        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 18s, displayAnimation, 21s);
+        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 18s, displayAnimation, 21s, #fa632b);
     }
     div:nth-child(7) {
-        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 24s);
+        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 24s, #23a534);
     }
     div:nth-child(8) {
-        @include coinAnimation(unset, unset, 40px, 40%, opacityAnimation, 25s, displayAnimation, 27s);
+        @include coinAnimation(unset, unset, 40px, 40%, opacityAnimation, 25s, displayAnimation, 27s, $yellow);
     }
     div:nth-child(9) {
-        @include coinAnimation(unset, unset, 145px, 34%, opacityAnimation, 28s, displayAnimation, 30s);
+        @include coinAnimation(unset, unset, 145px, 34%, opacityAnimation, 28s, displayAnimation, 30s, #6962df);
     }
     div:nth-child(10) {
-        @include coinAnimation(unset, unset, 275px, 31%, opacityAnimation, 30s, displayAnimation, 33s);
+        @include coinAnimation(unset, unset, 275px, 31%, opacityAnimation, 30s, displayAnimation, 33s, #fa632b);
     }
     div:nth-child(11) {
-        @include coinAnimation(unset, unset, 460px, 2%, opacityAnimation, 36s, displayAnimation, 36s);
+        @include coinAnimation(unset, unset, 460px, 2%, opacityAnimation, 36s, displayAnimation, 36s, #000);
         position: absolute;
         display: flex;
         .donationCycleItems {
@@ -525,13 +624,13 @@
 
 @keyframes opacityAnimation {
     0% {
-        opacity: 1;
+        opacity: 0;
     }
     25% {
-        opacity: 1;
+        opacity: 0;
     }
     50% {
-        opacity: 1;
+        opacity: 0;
     }
     100% {
         opacity: 1;
@@ -591,7 +690,8 @@
         flex-direction: column !important;
         .user {
             img {
-                @include imgProperties(115px);
+                // @include imgProperties(115px);
+                visibility: hidden;
             }
         }
         .gameStepThreeUserColumn {
@@ -745,6 +845,7 @@
                 animation-duration: 8s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #fa632b;
             }
         }
         div:nth-child(3) {
@@ -757,6 +858,7 @@
                 animation-duration: 11s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #23a534;
             }
         }
         div:nth-child(4) {
@@ -769,6 +871,7 @@
                 animation-duration: 14s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #ff8801;
             }
         }
         div:nth-child(5) {
@@ -781,6 +884,7 @@
                 animation-duration: 18s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #6962df;
             }
         }
         div:nth-child(6) {
@@ -793,6 +897,7 @@
                 animation-duration: 21s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #fa632b;
             }
         }
         div:nth-child(7) {
@@ -804,6 +909,7 @@
                 animation-duration: 24s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #23a534;
             }
         }
         div:nth-child(8) {
@@ -816,6 +922,7 @@
                 animation-duration: 27s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #ff8801;
             }
         }
         div:nth-child(9) {
@@ -828,6 +935,7 @@
                 animation-duration: 30s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #6962df;
             }
         }
         div:nth-child(10) {
@@ -837,16 +945,17 @@
             animation-duration: 30s;
             span {
                 animation-name: displayAnimation;
-                animation-duration: 33s;
+                animation-duration: 30s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
+                color: #fa632b;
             }
         }
         div:nth-child(11) {
             bottom: 193px;
             left: 0%;
             animation-name: opacityAnimation;
-            animation-duration: 33s;
+            animation-duration: 31s;
             position: absolute;
             display: flex;
             justify-content: center;
@@ -854,7 +963,7 @@
             flex-direction: row-reverse;
             span {
                 animation-name: displayAnimation;
-                animation-duration: 33s;
+                animation-duration: 31s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
             }
