@@ -1,9 +1,10 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
 import flexbox from "utils/flexbox";
+import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 
-import styles from "components/game/gameAvatarList/gameAvatarList.module.scss"
+import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
@@ -13,37 +14,44 @@ const mainAvatars = [
     "/images/Game/donationCycle/avatarGreen.png",
     "/images/Game/donationCycle/avatarYellow.png",
     "/images/Game/donationCycle/avatarOrange.png",
-]
+];
+const animationSplice = 2;
 
-const GameAvatarList = (props): JSX.Element => {
+const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("");
     const [avatars, setAvatars] = React.useState([]);
 
     const animationHandler = (percent) => {
         const avatar = [...mainAvatars];
+        const fivePercent = 2;
+        const tenPercent = 3;
+        const twentyfivePercent = 4;
+        const fiftyPercent = 6;
+        const hundredPercent = 15;
         if (percent === "5") {
-            const avatarDuplicate = Array(2).fill(avatar);
+            const avatarDuplicate = Array(fivePercent).fill(avatar);
             setAvatars(avatarDuplicate.flat());
         } else if (percent === "10") {
-            const avatarDuplicate = Array(3).fill(avatar);
+            const avatarDuplicate = Array(tenPercent).fill(avatar);
             setAvatars(avatarDuplicate.flat());
         }
         else if (percent === "25") {
-            const avatarDuplicate = Array(4).fill(avatar);
+            const avatarDuplicate = Array(twentyfivePercent).fill(avatar);
             setAvatars(avatarDuplicate.flat());
         }
         else if (percent === "50") {
-            const avatarDuplicate = Array(6).fill(avatar);
+            const avatarDuplicate = Array(fiftyPercent).fill(avatar);
             setAvatars(avatarDuplicate.flat());
         }
         else if (percent === "100") {
-            const avatarDuplicate = Array(15).fill(avatar);
+            const avatarDuplicate = Array(hundredPercent).fill(avatar);
             setAvatars(avatarDuplicate.flat());
         }
         else if (percent === "1") {
             setAvatars([]);
         }
-    }
+    };
+    const half = Math.ceil(avatars.length / animationSplice);
 
     return (
         <div className={styles.gameStepFive}>
@@ -62,10 +70,11 @@ const GameAvatarList = (props): JSX.Element => {
                         </div>)}
                     </div>
                 </div>
-                <div className={`${styles.donationMobile}`}>
+                <div className={`${styles.donationMobile} w-100`}>
                     <div className={`${rowHBetween}`}>
                         <select onChange={(e) => {
                             setPercentage(e.target.value);
+                            animationHandler(e.target.value);
                         }}>
                             {percent.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
                         </select>
@@ -73,13 +82,16 @@ const GameAvatarList = (props): JSX.Element => {
                 </div>
 
                 <div className={`${styles.donationInner} ${colCenter} w-100 position-relative`}>
-                    {avatars.map((i, k) => {
-                        return (
-                            <div className={styles.confetti} key={k}>
-                                <Image src={i} width={20} height={20} />
-                            </div>
-                        )
-                    })}
+                    {avatars.slice(0, half).map((i, k) => (
+                        <div className={styles.confetti} key={k}>
+                            <Image src={i} width={20} height={20} />
+                        </div>
+                    ))}
+                    {avatars.slice(-half).map((i, k) => (
+                        <div className={styles.confettiRight} key={k}>
+                            <Image src={i} width={20} height={20} />
+                        </div>
+                    ))}
                     <div className={`${styles.avatarInner} ${colCenter}`}>
                         <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
                         <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
@@ -94,6 +106,6 @@ const GameAvatarList = (props): JSX.Element => {
                 </div>
             </div>
         </div>
-    )
-}
-export default GameAvatarList
+    );
+};
+export default GameAvatarList;

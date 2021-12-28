@@ -2,9 +2,9 @@ import Image from "next/image";
 import React from "react";
 
 import flexbox from "utils/flexbox";
+import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import gameSectionContent from "components/game/gameSection/gameSectionContent";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
-import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
 
@@ -13,8 +13,9 @@ const rowCenter = flexbox({ vAlign: "center", hAlign: "center", });
 const rowHBetween = flexbox({ hAlign: "between" });
 
 const data: string[] = ["5", "10", "15", "25", "50"];
-
 const donation = 2;
+const friendsLength = 4;
+const friendsTimeout = 2000;
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
@@ -34,10 +35,10 @@ const GameSection = (): JSX.Element => {
         };
     }, []);
     React.useEffect(() => {
-        if (friends.length === 4) {
+        if (friends.length === friendsLength) {
             setTimeout(() => {
                 setStep("4");
-            }, 2000)
+            }, friendsTimeout);
 
         }
     }, [friends]);
@@ -101,12 +102,13 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className={`${step === "3" || step === "4" ? styles.container : "d-none"} ${step === "3" ? styles.containerFadIn : step === "4" ? styles.containerFadOut : "d-none"}`}>
+            <div className={`${styles.paddingSides} ${step === "3" || step === "4" ? styles.container : "d-none"} ${step === "3" ? styles.containerFadIn : step === "4" ? styles.containerFadOut : "d-none"}`}>
                 <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                     <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
+                        <h2 className={styles.avatarHeading}>Add four friends.</h2>
                         <div className={styles.avatarInner}>
                             <div className={step === "4" ? "visible" : "invisible"}>
-                                {selected ? <Image {...selected.image} /> : null}
+                                {selected ? <Image {...selected.image} width={230} height={286} /> : null}
                             </div>
 
                             <div className={styles.friends}>
@@ -117,8 +119,8 @@ const GameSection = (): JSX.Element => {
                     </div>
 
                     <div className={`${styles.gameStepThreeFriendsColumn} ${colCenter}`}>
-                        <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                        <h4>Hint: Choose a red bee!</h4>
+                        {/* <h2 className={styles.avatarHeading}>Add four friends.</h2>
+                        <h4>Hint: Choose a red bee!</h4> */}
                         <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
                             {avatars.filter((avatar: IAvatar) => avatar.id !== selected?.id).map((i, k) =>
                                 <div className={friends.find((f) => f.id === i.id) ? styles.friendsAnimation : ""} key={k}>
@@ -152,8 +154,7 @@ const GameSection = (): JSX.Element => {
                         <div className={`${rowHBetween}`}>
                             <select onChange={(e) => {
                                 setDonationAmount(e.target.value);
-                                setStep("5");
-                                setAnimation(true);
+                                setAnimation(!animation);
                             }}>
                                 {data.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
                             </select>
@@ -226,7 +227,7 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className={`${step === "4" ? styles.container : "d-none"}`}>
+            <div className={`${donationAmount ? styles.container : "d-none"}`}>
                 <GameAvatarList friends={friends} selected={selected} name={name} />
             </div>
 

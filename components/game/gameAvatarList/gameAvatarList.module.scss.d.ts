@@ -14,6 +14,7 @@ export type Styles = {
   "boldGame41": string;
   "boldGame67": string;
   "confetti": string;
+  "confettiRight": string;
   "donationActive": string;
   "donationDesktop": string;
   "donationInner": string;

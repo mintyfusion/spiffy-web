@@ -64,6 +64,7 @@ export type Styles = {
   "gameStepTwoWrapper": string;
   "medium25": string;
   "opacityAnimation": string;
+  "paddingSides": string;
   "percentageFriends": string;
   "percentageSelected": string;
   "regular16": string;
