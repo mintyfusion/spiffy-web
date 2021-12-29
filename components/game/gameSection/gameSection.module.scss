@@ -65,23 +65,23 @@
 }
 
 .avatarPurple {
-    @include avatar(30%, 45%);
+    @include avatar(23%, 45%);
 }
 
 .avatarGreen {
-    @include avatar(30%, 33%);
+    @include avatar(23%, 33%);
 }
 
 .avatarRed {
-    @include avatar(30%, 58%);
+    @include avatar(23%, 58%);
 }
 
 .avatarYellow {
-    @include avatar(59%, 39%);
+    @include avatar(58%, 39%);
 }
 
 .avatarOrange {
-    @include avatar(59%, 51%);
+    @include avatar(58%, 51%);
 }
 
 .avatarstepTwo {
@@ -95,7 +95,7 @@
 @keyframes avatarstepTwoAnimation {
     100% {
         left: 43%;
-        top: 30%;
+        top: 26%;
     }
 }
 
@@ -110,6 +110,7 @@
 @keyframes avatarstepThreeAnimation {
     0% {
         left: 43%;
+        top: 26%;
     }
     100% {
         left: 20%;
