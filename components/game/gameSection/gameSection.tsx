@@ -11,11 +11,12 @@ import styles from "components/game/gameSection/gameSection.module.scss";
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center", });
 const rowHBetween = flexbox({ hAlign: "between" });
+const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 
 const donation: string[] = ["5", "10", "15", "25", "50"];
 const donationDivide = 2;
 const friendsLength = 4;
-const friendsTimeout = 2000;
+const friendsTimeout = 5000;
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
@@ -30,7 +31,6 @@ const GameSection = (): JSX.Element => {
             setTimeout(() => {
                 setStep("4");
             }, friendsTimeout);
-
         }
     }, [friends]);
 
@@ -42,7 +42,8 @@ const GameSection = (): JSX.Element => {
 
     const selectedHandler = (i: IAvatar) => {
         const selectedFilter = data.filter((filter: IAvatar) => filter.id === i.id);
-        const filterSelected = selectedFilter.map((i: IAvatar) => ({ ...i, friends: i.friends.filter((filter: IAvatar) => filter.id !== i.id) }));
+        const filterSelected = selectedFilter.map((i: IAvatar) =>
+            ({ ...i, friends: i.friends.filter((filter: IAvatar) => filter.id !== i.id) }));
         setSelected(filterSelected[0]);
     };
 
@@ -66,7 +67,7 @@ const GameSection = (): JSX.Element => {
                     <h2 className={`${styles.avatarHeading}`}>Select your avatar.</h2>
                     <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
                         {data.map((i: IAvatar, k) =>
-                            <div className={`${selected === undefined ? "visible" : styles.friendsAnimation}`} key={k}>
+                            <div className={`${selected === undefined ? "visible" : styles.avatarAnimation}`} key={k}>
                                 <Image {...i.image}
                                     onClick={() => {
                                         selectedHandler(i);
@@ -96,28 +97,23 @@ const GameSection = (): JSX.Element => {
             <div className={`${styles.paddingSides} ${step === "3" || step === "4" ? styles.container : "d-none"} ${step === "3" ? styles.containerFadIn : step === "4" ? styles.containerFadOut : "d-none"}`}>
                 <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                     <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
-                        <h2 className={styles.avatarHeading}>Add four friends.</h2>
+                        {/* <h2 className={styles.avatarHeading}>Add four friends.</h2> */}
                         <div className={styles.avatarInner}>
                             <div className={step === "4" ? "visible" : "invisible"}>
                                 {selected ? <Image {...selected.image} width={230} height={286} /> : null}
-                            </div>
-
-                            <div className={styles.friends}>
-                                {friends.map((i, k) => <Image {...i.image} key={k} />)}
                             </div>
                         </div>
                         <h3>{avatarName}</h3>
                     </div>
 
-                    <div className={`${styles.gameStepThreeFriendsColumn} ${colCenter}`}>
-                        {/* <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                        <h4>Hint: Choose a red bee!</h4> */}
-                        <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
-                            {data.filter((avatar: IAvatar) => avatar.id !== selected?.id).map((i, k) =>
+                    <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`}>
+                        <h2 className={styles.avatarHeading}>Add four friends.</h2>
+                        <h4>Hint: Choose a red bee!</h4>
+                        <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
+                            {data.filter((avatar: IAvatar) => avatar.id !== selected?.id).map((i: IAvatar, k) =>
                                 <div className={friends.find((f) => f.id === i.id) ? styles.friendsAnimation : ""} key={k}>
                                     <Image
-                                        src={i.image.src} alt={i.image.alt} width={i.image.width}
-                                        height={i.image.height}
+                                        {...i.image}
                                         onClick={() => friendsHandler(i)} />
                                 </div>)}
                         </div>

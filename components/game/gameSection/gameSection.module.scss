@@ -64,24 +64,50 @@
     top: $top;
 }
 
+@mixin friendsAnimation($name, $startingTop, $startingLeft, $top, $left) {
+    animation-name: $name;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    @at-root {
+        @keyframes #{$name} {
+            0% {
+                top: $startingTop;
+                left: $startingLeft;
+                position: absolute;
+            }
+            100% {
+                top: $top;
+                left: $left;
+                position: absolute;
+                @include imgProperties(166px);
+            }
+        }
+    }
+}
+
 .avatarPurple {
     @include avatar(23%, 45%);
+    @include imgProperties(222px);
 }
 
 .avatarGreen {
     @include avatar(23%, 33%);
+    @include imgProperties(222px);
 }
 
 .avatarRed {
     @include avatar(23%, 58%);
+    @include imgProperties(222px);
 }
 
 .avatarYellow {
     @include avatar(58%, 39%);
+    @include imgProperties(222px);
 }
 
 .avatarOrange {
     @include avatar(58%, 51%);
+    @include imgProperties(222px);
 }
 
 .avatarstepTwo {
@@ -139,18 +165,63 @@
     }
 }
 
-.userAvatar {
-    position: relative;
+.percentageWrapper {
+    img {
+        @include imgProperties(125px);
+        cursor: pointer;
+    }
+    > div:nth-child(1) {
+        position: absolute;
+        top: 32%;
+        left: 65%;
+    }
+    div:nth-child(2) {
+        position: absolute;
+        top: 32%;
+        left: 80%;
+    }
+    div:nth-child(3) {
+        position: absolute;
+        top: 60%;
+        left: 65%;
+    }
+    div:nth-child(4) {
+        position: absolute;
+        top: 60%;
+        left: 80%;
+    }
+
+    .friendsAnimation:nth-child(1) {
+        @include friendsAnimation(animation-1, 32%, 65%, 23%, 10%);
+        img {
+            @include imgProperties(165px);
+        }
+    }
+
+    .friendsAnimation:nth-child(2) {
+        @include friendsAnimation(animation-2, 32%, 80%, 24%, 26.2%);
+        img {
+            @include imgProperties(165px);
+        }
+    }
+
+    .friendsAnimation:nth-child(3) {
+        @include friendsAnimation(animation-3, 60%, 65%, 55%, 10%);
+        img {
+            @include imgProperties(165px);
+        }
+    }
+
+    .friendsAnimation:nth-child(4) {
+        @include friendsAnimation(animation-4, 60%, 80%, 55%, 26.5%);
+        img {
+            @include imgProperties(165px);
+        }
+    }
 }
 
-@keyframes avatarAnimation {
-    0% {
-        top: 500px;
-    }
-    100% {
-        top: 1000px;
-        z-index: 1;
-    }
+.userAvatar {
+    position: relative;
 }
 
 .containerFadIn {
@@ -256,6 +327,7 @@
 .gameStepThree {
     display: flex;
     background-color: $dirty-white;
+    height: 60vh;
     .user {
         img {
             visibility: hidden;
@@ -297,16 +369,16 @@
         @include imgProperties(182px);
     }
     div:nth-child(1) {
-        @include friendsAvatar(137px, unset, 79px, freindsSlideLeft, 2s);
+        @include friendsAvatar(116px, unset, 52px, freindsSlideLeft, 2s);
     }
     div:nth-child(2) {
-        @include friendsAvatar(unset, 153px, 260px, freindsSlideRight, 2s);
+        @include friendsAvatar(unset, 175px, 225px, freindsSlideRight, 2s);
     }
     div:nth-child(3) {
-        @include friendsAvatar(137px, unset, 255px, freindsSlideLeft, 2s);
+        @include friendsAvatar(117px, unset, 227px, freindsSlideLeft, 2s);
     }
     div:nth-child(4) {
-        @include friendsAvatar(unset, 153px, 433px, freindsSlideRight, 2s);
+        @include friendsAvatar(unset, 165px, 402px, freindsSlideRight, 2s);
     }
 }
 
@@ -317,7 +389,7 @@
     }
     100% {
         opacity: 1;
-        left: 153px;
+        left: 120px;
     }
 }
 
@@ -328,11 +400,11 @@
     }
     100% {
         opacity: 1;
-        right: 137px;
+        right: 180px;
     }
 }
 
-.friendsAnimation {
+.avatarAnimation {
     animation-name: fadeOut;
     animation-duration: 1s;
     animation-fill-mode: forwards;
@@ -530,7 +602,7 @@
     90% {
         transform: translate(-120px, 600px);
     }
-    92% {
+    95% {
         transform: translate(-160px, 510px);
         width: 37px;
         height: 37px;
@@ -589,7 +661,7 @@
         @include coinAnimation(unset, unset, 275px, 31%, opacityAnimation, 30s, displayAnimation, 33s, #fa632b);
     }
     div:nth-child(11) {
-        @include coinAnimation(unset, unset, 460px, 2%, opacityAnimation, 36s, displayAnimation, 36s, #000);
+        @include coinAnimation(unset, unset, 460px, 2%, opacityAnimation, 34s, displayAnimation, 34s, #000);
         position: absolute;
         display: flex;
         .donationCycleItems {

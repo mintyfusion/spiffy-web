@@ -1,4 +1,8 @@
 export type Styles = {
+  "animation1": string;
+  "animation2": string;
+  "animation3": string;
+  "animation4": string;
   "animationGrid": string;
   "avatarAnimation": string;
   "avatarGreen": string;
@@ -67,6 +71,7 @@ export type Styles = {
   "paddingSides": string;
   "percentageFriends": string;
   "percentageSelected": string;
+  "percentageWrapper": string;
   "regular16": string;
   "regular20": string;
   "regular24": string;
