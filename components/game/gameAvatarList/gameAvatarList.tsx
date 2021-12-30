@@ -4,6 +4,7 @@ import React from "react";
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 
+import IAvatar from "../gameSection/interfaces/IAvatar";
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -16,10 +17,13 @@ const mainAvatars = [
     "/images/Game/donationCycle/avatarOrange.png",
 ];
 const animationSplice = 2;
+const donationTimeout = 3000;
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("");
     const [avatars, setAvatars] = React.useState([]);
+
+    const half = Math.ceil(avatars.length / animationSplice);
 
     const animationHandler = (percent) => {
         const avatar = [...mainAvatars];
@@ -51,7 +55,14 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
             setAvatars([]);
         }
     };
-    const half = Math.ceil(avatars.length / animationSplice);
+
+    React.useEffect(() => {
+        if (percentage) {
+            setTimeout(() => {
+                props.setStep("6");
+            }, donationTimeout);
+        }
+    }, [percentage]);
 
     return (
         <div className={styles.gameStepFive}>
@@ -99,7 +110,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                         </div>
 
                         <div className={styles.percentageFriends}>
-                            {props.friends.map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                            {props.friends.filter((avatar: IAvatar) => avatar.id !== props.selected?.id)
+                                .map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
                         </div>
                     </div>
                     <h6>{props.name}</h6>

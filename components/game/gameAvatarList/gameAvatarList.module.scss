@@ -85,7 +85,7 @@
 
 .percentageSelected {
     img {
-        @include imgProperties(191px);
+        @include imgProperties(119px);
     }
 }
 
@@ -93,20 +93,20 @@
     position: absolute;
     top: 0px;
     img {
-        @include imgProperties(119px);
+        @include imgProperties(87px);
         object-fit: contain;
     }
     div:nth-child(1) {
-        @include percentageAvatars(105px, unset, -50px);
+        @include percentageAvatars(70px, unset, -58px);
     }
     div:nth-child(2) {
-        @include percentageAvatars(unset, 101px, 63px);
+        @include percentageAvatars(unset, 73px, 33px);
     }
     div:nth-child(3) {
-        @include percentageAvatars(106px, unset, 51px);
+        @include percentageAvatars(71px, unset, 33px);
     }
     div:nth-child(4) {
-        @include percentageAvatars(unset, 106px, 172px);
+        @include percentageAvatars(unset, 73px, 122px);
     }
 }
 

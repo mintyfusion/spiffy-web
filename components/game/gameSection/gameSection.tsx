@@ -35,27 +35,46 @@ const GameSection = (): JSX.Element => {
     }, [friends]);
 
     const friendsHandler = (i: IAvatar) => {
-        const friendsAvatar = [...selected.friends];
-        const selectedFilter = friendsAvatar.filter((friend) => friend.id === i.id);
-        setFriends([...friends, selectedFilter[0]]);
+        setFriends([...friends, i]);
     };
 
     const selectedHandler = (i: IAvatar) => {
-        const selectedFilter = data.filter((filter: IAvatar) => filter.id === i.id);
-        const filterSelected = selectedFilter.map((i: IAvatar) =>
-            ({ ...i, friends: i.friends.filter((filter: IAvatar) => filter.id !== i.id) }));
-        setSelected(filterSelected[0]);
+        setSelected(i);
     };
+
+    const selectedAvatarClasses = React.useMemo(() => {
+        switch (selected?.id) {
+            case "Purple":
+                return styles.avatarPurple;
+            case "Green":
+                return styles.avatarGreen;
+            case "Red":
+                return styles.avatarRed;
+            case "Yellow":
+                return styles.avatarYellow;
+            case "Orange":
+                return styles.avatarOrange;
+            default:
+                return "";
+        }
+    }, [selected]);
+
+    const selectedAvatarStepClasses = React.useMemo(() => {
+        switch (step) {
+            case "2":
+                return styles.avatarstepTwo;
+            case "3":
+                return styles.avatarstepThree;
+            default:
+                return "d-none";
+        }
+    }, [step]);
+
+
 
     return (
         <div className={"position-relative"}>
-            <div className={`${step === "1" || step === "2" || step === "3" ? selected?.id === "Purple"
-                ? styles.avatarPurple : selected?.id === "Green"
-                    ? styles.avatarGreen : selected?.id === "Red"
-                        ? styles.avatarRed : selected?.id === "Yellow"
-                            ? styles.avatarYellow : selected?.id === "Orange"
-                                ? styles.avatarOrange : "" : "d-none"} 
-            ${step === "2" ? styles.avatarstepTwo : step === "3" ? styles.avatarstepThree : ""}`}>
+            <div className={`${selectedAvatarStepClasses} ${selectedAvatarClasses}`}>
                 {selected ?
                     <Image {...selected.image} />
                     : null
@@ -108,7 +127,6 @@ const GameSection = (): JSX.Element => {
 
                     <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`}>
                         <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                        <h4>Hint: Choose a red bee!</h4>
                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
                             {data.filter((avatar: IAvatar) => avatar.id !== selected?.id).map((i: IAvatar, k) =>
                                 <div className={friends.find((f) => f.id === i.id) ? styles.friendsAnimation : ""} key={k}>
@@ -214,8 +232,8 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className={`${donationAmount ? styles.container : "d-none"}`}>
-                <GameAvatarList friends={friends} selected={selected} name={avatarName} />
+            <div className={`${donationAmount ? styles.container : "d-none"} ${step === "6" ? styles.containerFadOut : ""}`}>
+                <GameAvatarList friends={friends} selected={selected} name={avatarName} setStep={setStep} />
             </div>
 
             <div className={`${step === "6" ? styles.container : "d-none"} ${step === "6" ? styles.containerFadIn : "d-none"}`}>

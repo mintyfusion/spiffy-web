@@ -4,6 +4,7 @@ interface IGameAvatarList {
     selected: IAvatar;
     friends: IAvatar[];
     name: string;
+    setStep: (step: string) => void;
 }
 
 export default IGameAvatarList;
