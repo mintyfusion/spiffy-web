@@ -35,7 +35,10 @@ const GameSection = (): JSX.Element => {
     }, [friends]);
 
     const friendsHandler = (i: IAvatar) => {
-        setFriends([...friends, i]);
+        const selectedFriendId = friends.findIndex(element => element.id == i.id);
+        let freindsClassUpdate = [...friends];
+        freindsClassUpdate[selectedFriendId] = { ...freindsClassUpdate[selectedFriendId], className: styles.friendsAnimation };
+        setFriends(freindsClassUpdate);
     };
 
     const selectedHandler = (i: IAvatar) => {
@@ -70,7 +73,9 @@ const GameSection = (): JSX.Element => {
         }
     }, [step]);
 
-
+    React.useMemo(() => {
+        setFriends(data.filter((filter) => filter.id !== selected?.id));
+    }, [])
 
     return (
         <div className={"position-relative"}>
@@ -128,12 +133,13 @@ const GameSection = (): JSX.Element => {
                     <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`}>
                         <h2 className={styles.avatarHeading}>Add four friends.</h2>
                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                            {data.filter((avatar: IAvatar) => avatar.id !== selected?.id).map((i: IAvatar, k) =>
-                                <div className={friends.find((f) => f.id === i.id) ? styles.friendsAnimation : ""} key={k}>
+                            {friends.map((i, k) => {
+                                return <div className={i.className} key={k}>
                                     <Image
                                         {...i.image}
                                         onClick={() => friendsHandler(i)} />
-                                </div>)}
+                                </div>;
+                            })}
                         </div>
                     </div>
                 </div>
