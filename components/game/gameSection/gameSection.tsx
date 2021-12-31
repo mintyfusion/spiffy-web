@@ -27,7 +27,7 @@ const GameSection = (): JSX.Element => {
     const [animation, setAnimation] = React.useState<boolean>(false);
 
     React.useEffect(() => {
-        if (friends.length === friendsLength) {
+        if (friends.filter((filter) => filter.className).length === friendsLength) {
             setTimeout(() => {
                 setStep("4");
             }, friendsTimeout);
@@ -36,8 +36,9 @@ const GameSection = (): JSX.Element => {
 
     const friendsHandler = (i: IAvatar) => {
         const selectedFriendId = friends.findIndex(element => element.id == i.id);
-        let freindsClassUpdate = [...friends];
-        freindsClassUpdate[selectedFriendId] = { ...freindsClassUpdate[selectedFriendId], className: styles.friendsAnimation };
+        const freindsClassUpdate = [...friends];
+        freindsClassUpdate[selectedFriendId] =
+            { ...freindsClassUpdate[selectedFriendId], className: styles.friendsAnimation };
         setFriends(freindsClassUpdate);
     };
 
@@ -75,7 +76,7 @@ const GameSection = (): JSX.Element => {
 
     React.useMemo(() => {
         setFriends(data.filter((filter) => filter.id !== selected?.id));
-    }, [])
+    }, [step === "2"]);
 
     return (
         <div className={"position-relative"}>
@@ -133,13 +134,11 @@ const GameSection = (): JSX.Element => {
                     <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`}>
                         <h2 className={styles.avatarHeading}>Add four friends.</h2>
                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                            {friends.map((i, k) => {
-                                return <div className={i.className} key={k}>
-                                    <Image
-                                        {...i.image}
-                                        onClick={() => friendsHandler(i)} />
-                                </div>;
-                            })}
+                            {friends.map((i, k) => <div className={i.className} key={k}>
+                                <Image
+                                    {...i.image}
+                                    onClick={() => friendsHandler(i)} />
+                            </div>)}
                         </div>
                     </div>
                 </div>
