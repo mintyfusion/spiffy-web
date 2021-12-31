@@ -89,6 +89,14 @@
     @include typeFace($nine, $twentyFive, $regular);
 }
 
+.regular-desktop25-mobile16 {
+    @include typeFace($sixteen, $twentyFive, $regular);
+}
+
+.bold-desktop41-mobile25 {
+    @include typeFace($twentyFive, $fortyOne, $bold);
+}
+
 .extraBold-desktop65-mobile28 {
     @include typeFace($twentyEight, $sixtySeven, $extra-bold);
 }

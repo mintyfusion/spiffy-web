@@ -1,0 +1,59 @@
+@import "styles/mixins.scss";
+@import "styles/includeMedia.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/theme.scss";
+
+@mixin detailsSocialContent($size, $svgPadding) {
+    div:before {
+        width: $size;
+        height: $size;
+    }
+
+    svg {
+        width: $size;
+        height: $size;
+        padding: $svgPadding;
+    }
+}
+
+.socials {
+    .shareText {
+        text-transform: uppercase;
+        @extend .bold-desktop41-mobile25;
+        color: $darkGrey;
+    }
+
+    div:before {
+        content: "";
+        background: url("/images/homepage/footer/footer-social-polygon.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        z-index: 1;
+    }
+
+    div:nth-child(odd)::before {
+        @include crossBrowserPrefix(transform, rotate(90deg));
+    }
+
+    .social {
+        position: relative;
+        z-index: 2;
+
+        &:hover {
+            color: unset;
+        }
+    }
+}
+
+@include media(">=1370px") {
+    .socials {
+        @include detailsSocialContent(58px, 15px);
+    }
+}
+
+@include media("<1370px") {
+    .socials {
+        @include detailsSocialContent(30px, 7px);
+    }
+}
