@@ -1,11 +1,15 @@
 import React from "react";
 
+
 import Banner from "components/common/banner/banner";
 import bannerContent from "components/educationPage/bannerSection/bannerContent";
 import bannerImageListContent from "components/educationPage/bannerSection/bannerImageListContent";
 import BannerSection from "components/educationPage/bannerSection/bannerSection";
 import contentData from "components/educationPage/contentSection/contentData";
 import ContentSection from "components/educationPage/contentSection/contentSection";
+import GameSection from "components/educationPage/gameSection/gameSection";
+import gameSectionContentData from "components/educationPage/gameSection/gameSectionContentData";
+
 import Layout from "components/common/layout/layout";
 
 const Education = (): JSX.Element =>
@@ -14,6 +18,7 @@ const Education = (): JSX.Element =>
             <BannerSection {...bannerContent} />
         </Banner>
         <ContentSection content={contentData} />
+        <GameSection {...gameSectionContentData} />
     </Layout>;
 
 export default Education;
