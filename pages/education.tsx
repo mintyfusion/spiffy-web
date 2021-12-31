@@ -7,6 +7,8 @@ import bannerImageListContent from "components/educationPage/bannerSection/banne
 import BannerSection from "components/educationPage/bannerSection/bannerSection";
 import contentData from "components/educationPage/contentSection/contentData";
 import ContentSection from "components/educationPage/contentSection/contentSection";
+import FaqSection from "components/educationPage/faqSection/faqSection";
+import faqSectionContentData from "components/educationPage/faqSection/faqSectionContentData";
 import GameSection from "components/educationPage/gameSection/gameSection";
 import gameSectionContentData from "components/educationPage/gameSection/gameSectionContentData";
 
@@ -19,6 +21,7 @@ const Education = (): JSX.Element =>
         </Banner>
         <ContentSection content={contentData} />
         <GameSection {...gameSectionContentData} />
+        <FaqSection {...faqSectionContentData} />
     </Layout>;
 
 export default Education;
