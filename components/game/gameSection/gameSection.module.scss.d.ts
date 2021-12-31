@@ -4,6 +4,7 @@ export type Styles = {
   "animation3": string;
   "animation4": string;
   "animationGrid": string;
+  "animationText": string;
   "avatarAnimation": string;
   "avatarGreen": string;
   "avatarHeading": string;

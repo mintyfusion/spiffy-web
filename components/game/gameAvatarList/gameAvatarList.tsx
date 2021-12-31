@@ -4,7 +4,6 @@ import React from "react";
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 
-import IAvatar from "../gameSection/interfaces/IAvatar";
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -59,7 +58,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     React.useEffect(() => {
         if (percentage) {
             setTimeout(() => {
-                props.setStep("6");
+                // props.setStep("6");
             }, donationTimeout);
         }
     }, [percentage]);
@@ -110,8 +109,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                         </div>
 
                         <div className={styles.percentageFriends}>
-                            {props.friends.filter((avatar: IAvatar) => avatar.id !== props.selected?.id)
-                                .map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                            {props.friends.map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
                         </div>
                     </div>
                     <h6>{props.name}</h6>

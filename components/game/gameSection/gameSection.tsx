@@ -224,7 +224,7 @@ const GameSection = (): JSX.Element => {
                             <span>0.20</span>
                         </div>
                         <div>
-                            <div>
+                            <div className={styles.animationText}>
                                 <h2>Spiffy Corp.</h2>
                                 <p>We’re totally reliant on this cents to keep us going.</p>
                             </div>

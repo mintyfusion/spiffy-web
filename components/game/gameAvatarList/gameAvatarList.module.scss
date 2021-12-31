@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "styles/includeMedia.scss";
 @import "styles/theme.scss";
 @import "styles/font/fontGroups.scss";
@@ -113,8 +114,8 @@
 @for $i from 1 through 120 {
     .confetti:nth-child(#{$i}) {
         position: absolute;
-        top: percentage(random(100) / 100);
-        left: percentage(random(35) / 100);
+        top: percentage(math.div(100, 100));
+        left: percentage(math.div(35, 100));
         img {
             width: (random(60) + 20) + px;
             object-fit: contain;
@@ -125,15 +126,15 @@
 @for $i from 1 through 120 {
     .confettiRight:nth-child(#{$i}) {
         position: absolute;
-        top: percentage(random(100) / 100);
-        right: percentage(random(35) / 100);
+        top: percentage(math.div(100, 100));
+        right: percentage(math.div(35, 100));
         img {
             width: (random(50) + 20) + px;
             object-fit: contain;
         }
     }
 }
-@include media(">=320px", "<768px") {
+@include media(">=phone", "<tablet") {
     .donationDesktop {
         display: none;
     }
@@ -187,8 +188,8 @@
     @for $i from 1 through 120 {
         .confetti:nth-child(#{$i}) {
             position: absolute;
-            top: percentage(random(80) / 100);
-            left: percentage(random(15) / 100);
+            top: percentage(math.div(90, 100));
+            left: percentage(math.div(15, 100));
             img {
                 width: (random(30) + 4) + px;
                 object-fit: contain;
@@ -199,10 +200,55 @@
     @for $i from 1 through 120 {
         .confettiRight:nth-child(#{$i}) {
             position: absolute;
-            bottom: percentage(random(80) / 100);
-            right: percentage(random(15) / 100);
+            bottom: percentage(math.div(90, 100));
+            right: percentage(math.div(15, 100));
             img {
                 width: (random(30) + 4) + px;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+@include media(">=tablet", "<1366px") {
+    .donations {
+        width: 69px;
+    }
+
+    .percentageFriends {
+        div:nth-child(1) {
+            @include percentageAvatars(73px, unset, -37px);
+        }
+        div:nth-child(2) {
+            @include percentageAvatars(unset, 73px, 49px);
+        }
+        div:nth-child(3) {
+            @include percentageAvatars(70px, unset, 47px);
+        }
+        div:nth-child(4) {
+            @include percentageAvatars(unset, 73px, 136px);
+        }
+    }
+
+    @for $i from 1 through 120 {
+        .confetti:nth-child(#{$i}) {
+            position: absolute;
+            top: percentage(math.div(100, 100));
+            left: percentage(math.div(20, 100));
+            img {
+                width: (random(60) + 20) + px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    @for $i from 1 through 120 {
+        .confettiRight:nth-child(#{$i}) {
+            position: absolute;
+            top: percentage(math.div(100, 100));
+            right: percentage(math.div(20, 100));
+            img {
+                width: (random(50) + 20) + px;
                 object-fit: contain;
             }
         }
