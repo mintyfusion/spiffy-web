@@ -1,5 +1,6 @@
 export type Styles = {
-  "arrowContainer": string;
+  "active": string;
+  "activeTab": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold150": string;
@@ -11,29 +12,25 @@ export type Styles = {
   "bold67": string;
   "bold90": string;
   "card": string;
-  "cardContainer": string;
-  "cardContent": string;
-  "cardStack": string;
-  "container": string;
-  "content1": string;
+  "content": string;
+  "contentContainer": string;
+  "contentHeading": string;
+  "dirtyWhite": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
-  "imageContainer": string;
-  "imageLogoContainer": string;
-  "leftSection": string;
+  "inactive": string;
+  "regular14": string;
   "regular16": string;
   "regular24": string;
   "regular25": string;
   "regular32": string;
   "regular90": string;
   "regularDesktop25Mobile9": string;
-  "rightSection": string;
-  "rightSectionContainer": string;
-  "sectionContainer": string;
   "semiBold90": string;
+  "tab": string;
 };
 
 export type ClassNames = keyof Styles;

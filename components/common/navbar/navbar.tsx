@@ -103,7 +103,9 @@ const Navbar = (): JSX.Element => {
                         <a href="/login">
                             <Button variant="dark" className={`${styles.buttonLogin}`}>Log In</Button>
                         </a>
-                        <PrimaryButton href="/getStarted">Get Started</PrimaryButton>
+                        <PrimaryButton linkProps={{ href: "/getStarted" }}>
+                            Get Started
+                        </PrimaryButton>
                     </Stack>
                 </Nav>
             </BTNavbar.Collapse>

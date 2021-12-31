@@ -10,12 +10,16 @@ export type Styles = {
   "bold67": string;
   "bold90": string;
   "card": string;
-  "cardText": string;
+  "cardDescription": string;
+  "cardTag": string;
   "cardTitle": string;
+  "extraBold67": string;
   "extraBold90": string;
+  "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
   "link": string;
+  "regular14": string;
   "regular16": string;
   "regular24": string;
   "regular25": string;

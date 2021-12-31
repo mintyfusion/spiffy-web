@@ -16,8 +16,8 @@ const BannerSection = (props: IContentInfo): JSX.Element => {
             <h5 className={styles.description}>{description}</h5>
             <div className={`position-relative ${styles.searchContainer} mt-3`}>
                 <input type="text" placeholder="Search" />
-                <PrimaryButton href="#" variant="warning" className="position-absolute end-0 h-100">
-                    <FontAwesomeIcon icon={faSearch} width="25" height="25"/>
+                <PrimaryButton variant="warning" className="position-absolute end-0 h-100">
+                    <FontAwesomeIcon icon={faSearch} width="25" height="25" />
                 </PrimaryButton>
             </div>
         </div>

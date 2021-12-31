@@ -36,7 +36,7 @@ const LearnSection = (): JSX.Element =>
             )}
         </Row>
         <Row>
-            <PrimaryButton href="/">Learn More</PrimaryButton>
+            <PrimaryButton linkProps={{ href: "/education" }}>Learn More</PrimaryButton>
         </Row>
     </Stack >;
 
