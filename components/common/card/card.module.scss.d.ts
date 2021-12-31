@@ -12,7 +12,8 @@ export type Styles = {
   "boldGame41": string;
   "boldGame67": string;
   "card": string;
-  "cardText": string;
+  "cardDescription": string;
+  "cardTag": string;
   "cardTitle": string;
   "extraBold67": string;
   "extraBold90": string;
@@ -21,6 +22,7 @@ export type Styles = {
   "fullBold67": string;
   "link": string;
   "medium25": string;
+  "regular14": string;
   "regular16": string;
   "regular20": string;
   "regular24": string;

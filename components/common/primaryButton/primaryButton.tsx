@@ -11,8 +11,8 @@ import styles from "components/common/primaryButton/primaryButton.module.scss";
 
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center" });
 
-const PrimaryButton = ({ showArrow, ...props }: PropsWithChildren<IPrimaryButtonProps>): JSX.Element =>
-    <Link href={props.href}>
+const PrimaryButton = ({ showArrow, linkProps, ...props }: PropsWithChildren<IPrimaryButtonProps>): JSX.Element => {
+    const btn = (
         <Button
             variant="warning"
             {...props}
@@ -28,7 +28,12 @@ const PrimaryButton = ({ showArrow, ...props }: PropsWithChildren<IPrimaryButton
                     <Image src={getStartedArrow} layout="fill" />
                 </label>}
         </Button>
-    </Link>;
+    );
+
+    return linkProps
+        ? <Link {...linkProps}>{btn}</Link>
+        : btn;
+};
 
 PrimaryButton.defaultProps = {
     showArrow: false

@@ -3,6 +3,7 @@ import React from "react";
 
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
+import INavbarProps from "components/common/navbar/interfaces/INavbarProps";
 import Link from "components/common/link/link";
 import Logo from "components/common/logo/logo";
 import LogoVariants from "components/common/logo/enums/logoVariants";
@@ -15,15 +16,15 @@ const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const colBetween = flexbox({ vertical: true, vAlign: "center", hAlign: "between" });
 const colCenter = flexbox({ vertical: true, vAlign: "center", hAlign: "center" });
 
-const Navbar = (): JSX.Element => {
+const Navbar = (props: INavbarProps): JSX.Element => {
     const [backgroundClass, setBackgroundClass] = React.useState<string>("");
     const [toggle, setToggle] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
     // Adding dark background when page is scrolled
     const handleScroll = React.useCallback(() => {
-        setBackgroundClass(window.pageYOffset > 1 ? styles.backgroundDark : "");
-    }, []);
+        setBackgroundClass(window.pageYOffset > 1 || props.sticky ? styles.backgroundDark : "");
+    }, [props.sticky]);
 
     React.useEffect(() => {
         window.addEventListener("scroll", handleScroll);
@@ -31,11 +32,26 @@ const Navbar = (): JSX.Element => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [handleScroll]);
 
+    React.useEffect(() => {
+        setBackgroundClass(props.sticky ? styles.backgroundDark : "");
+    }, [props.sticky]);
+
     return <>
         <BTNavbar
             collapseOnSelect
             expand="lg"
-            className={`${styles.navbar} ${backgroundClass} position-fixed py-4 px-md-5 px-4 w-100 top-0`}
+            className={`
+                ${styles.navbar} 
+                ${backgroundClass} 
+                ${props.sticky
+                    ? "position-sticky"
+                    : "position-fixed"} 
+                py-4 
+                px-md-5
+                px-4 
+                w-100 
+                top-0
+            `}
             variant="dark"
         >
             <Link href="/" className={`${styles.headerLogo} me-lg-3 me-xl-5`}>
@@ -103,7 +119,9 @@ const Navbar = (): JSX.Element => {
                         <a href="/login">
                             <Button variant="dark" className={`${styles.buttonLogin}`}>Log In</Button>
                         </a>
-                        <PrimaryButton href="/getStarted">Get Started</PrimaryButton>
+                        <PrimaryButton linkProps={{ href: "/getStarted" }}>
+                            Get Started
+                        </PrimaryButton>
                     </Stack>
                 </Nav>
             </BTNavbar.Collapse>

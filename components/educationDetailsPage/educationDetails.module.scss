@@ -1,0 +1,13 @@
+@import "styles/includeMedia.scss";
+
+@include media(">=desktop") {
+    .container {
+        padding: 3rem 6rem;
+    }
+}
+
+@include media("<desktop") {
+    .container {
+        padding: 1.5rem 2rem;
+    }
+}

@@ -58,8 +58,8 @@ const Section = (props: ISectionProps): JSX.Element => {
                         ${props.buttonClassName} 
                         position-relative
                         ${props.direction === SectionSide.center && "opacity-100 mt-2 mt-lg-4"}
+                        ${!props.showButtonArrow && "p-3"}
                     `}
-                href="/"
                 showArrow={props.showButtonArrow}
             >
                 {props.buttonText}

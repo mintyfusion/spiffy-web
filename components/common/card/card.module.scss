@@ -1,16 +1,21 @@
 @import "styles/theme.scss";
 @import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
 
 .card {
     border-radius: 12px;
 
-    .cardTitle {
+    .cardTag {
         color: $light-grey;
         @extend .regular16;
     }
 
-    .cardText {
+    .cardTitle {
         @extend .regular25;
+    }
+
+    .cardDescription {
+        @extend .regular14;
     }
 
     .link {

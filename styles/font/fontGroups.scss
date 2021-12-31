@@ -4,6 +4,10 @@
 @import "styles/font/fontSizes.scss";
 
 // Different font weights and sizes
+.regular14 {
+    @include typeFace($nine, $fourteen, $regular);
+}
+
 .regular16 {
     @include typeFace($nine, $sixteen, $regular);
 }
@@ -94,6 +98,14 @@
 // Special Cases
 .regular-desktop25-mobile9 {
     @include typeFace($nine, $twentyFive, $regular);
+}
+
+.regular-desktop25-mobile16 {
+    @include typeFace($sixteen, $twentyFive, $regular);
+}
+
+.bold-desktop41-mobile25 {
+    @include typeFace($twentyFive, $fortyOne, $bold);
 }
 
 .extraBold-desktop65-mobile28 {
