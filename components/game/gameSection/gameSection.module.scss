@@ -239,9 +239,17 @@
 @keyframes containerFadinAnimation {
     0% {
         transform: translateY(120%);
+        -ms-transform: translateY(120%);
+        -webkit-transform: translateY(120%);
+        -moz-transform: translateY(120%);
+        -o-transform: translateY(120%);
     }
     100% {
-        transform: translateY(0%);
+        transform: translateY(120%);
+        -ms-transform: translateY(120%);
+        -webkit-transform: translateY(120%);
+        -moz-transform: translateY(120%);
+        -o-transform: translateY(120%);
     }
 }
 
@@ -253,6 +261,10 @@
 @keyframes containerFadoutAnimation {
     0% {
         transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -o-transform: translateY(0%);
         position: absolute;
         top: 0;
         left: 0;
@@ -263,6 +275,10 @@
     }
     100% {
         transform: translateY(-120%);
+        -ms-transform: translateY(-120%);
+        -webkit-transform: translateY(-120%);
+        -moz-transform: translateY(-120%);
+        -o-transform: translateY(-120%);
         position: absolute;
         top: 0;
         left: 0;
@@ -651,10 +667,10 @@
         @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #23a534);
     }
     div:nth-child(4) {
-        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s, $yellow);
+        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 11s, displayAnimation, 14s, $yellow);
     }
     div:nth-child(5) {
-        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s, #6962df);
+        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 14s, displayAnimation, 18s, #6962df);
     }
     div:nth-child(6) {
         @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 18s, displayAnimation, 21s, #fa632b);
@@ -663,16 +679,16 @@
         @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 24s, #23a534);
     }
     div:nth-child(8) {
-        @include coinAnimation(unset, unset, 40px, 40%, opacityAnimation, 25s, displayAnimation, 27s, $yellow);
+        @include coinAnimation(unset, unset, 40px, 40%, opacityAnimation, 24s, displayAnimation, 27s, $yellow);
     }
     div:nth-child(9) {
-        @include coinAnimation(unset, unset, 145px, 34%, opacityAnimation, 28s, displayAnimation, 30s, #6962df);
+        @include coinAnimation(unset, unset, 145px, 34%, opacityAnimation, 27s, displayAnimation, 30s, #6962df);
     }
     div:nth-child(10) {
         @include coinAnimation(unset, unset, 275px, 31%, opacityAnimation, 30s, displayAnimation, 33s, #fa632b);
     }
     div:nth-child(11) {
-        @include coinAnimation(unset, unset, 460px, 2%, opacityAnimation, 34s, displayAnimation, 34s, #000);
+        @include coinAnimation(unset, unset, 460px, 2%, opacityAnimation, 33s, displayAnimation, 34s, #000);
         position: absolute;
         display: flex;
         .donationCycleItems {
@@ -693,7 +709,7 @@
         }
         div:nth-child(1) {
             animation-name: opacityAnimation;
-            animation-duration: 45s;
+            animation-duration: 33s;
             animation-fill-mode: forwards;
         }
     }
@@ -707,7 +723,7 @@
         opacity: 0;
     }
     50% {
-        opacity: 1;
+        opacity: 0;
     }
     100% {
         opacity: 1;
@@ -2163,5 +2179,203 @@
     .avatarOrange {
         @include avatar(73%, 45%);
         @include imgProperties(100px);
+    }
+}
+
+@include media(">=1300px", "<1400px") {
+    .avatarPurple {
+        @include avatar(30%, 46.3%);
+        @include imgProperties(100px);
+    }
+
+    .avatarGreen {
+        @include avatar(30%, 37.1%);
+        @include imgProperties(100px);
+    }
+
+    .avatarRed {
+        @include avatar(30%, 55.5%);
+        @include imgProperties(100px);
+    }
+
+    .avatarYellow {
+        @include avatar(65%, 41.8%);
+        @include imgProperties(100px);
+    }
+
+    .avatarOrange {
+        @include avatar(65%, 51%);
+        @include imgProperties(100px);
+    }
+
+    @keyframes avatarstepThreeAnimation {
+        0% {
+            left: 46%;
+            top: 20%;
+        }
+        100% {
+            left: 21.5%;
+            top: 32%;
+        }
+    }
+    .avatarInner {
+        img {
+            @include imgProperties(100px);
+        }
+    }
+
+    .percentageWrapper {
+        img {
+            cursor: pointer;
+        }
+        > div:nth-child(1) {
+            position: absolute;
+            top: 32%;
+            left: 65%;
+        }
+        div:nth-child(2) {
+            position: absolute;
+            top: 32%;
+            left: 80%;
+        }
+        div:nth-child(3) {
+            position: absolute;
+            top: 60%;
+            left: 65%;
+        }
+        div:nth-child(4) {
+            position: absolute;
+            top: 60%;
+            left: 80%;
+        }
+
+        .friendsAnimation:nth-child(1) {
+            @include friendsAnimation(animation-1, 30%, 65%, 0%, 40%, 31.1%, 10.2%);
+        }
+
+        .friendsAnimation:nth-child(2) {
+            @include friendsAnimation(animation-2, 32%, 80%, 0%, 40%, 31.5%, 21%);
+        }
+
+        .friendsAnimation:nth-child(3) {
+            @include friendsAnimation(animation-3, 60%, 65%, 0%, 40%, 47.5%, 10.2%);
+        }
+
+        .friendsAnimation:nth-child(4) {
+            @include friendsAnimation(animation-4, 60%, 80%, 0%, 40%, 47.5%, 21%);
+        }
+    }
+
+    .donations {
+        width: 150px;
+    }
+
+    @keyframes example {
+        0% {
+            transform: translate(0px, 0px);
+            opacity: 1;
+        }
+        10% {
+            transform: translate(0px, 250px);
+            width: 37px;
+            height: 37px;
+        }
+        20% {
+            transform: translate(50px, 350px);
+        }
+        30% {
+            transform: translate(100px, 400px);
+        }
+        40% {
+            transform: translate(120px, 480px);
+        }
+        50% {
+            transform: translate(110px, 550px);
+        }
+        60% {
+            transform: translate(70px, 620px);
+        }
+        70% {
+            transform: translate(0px, 620px);
+        }
+        80% {
+            transform: translate(-80px, 610px);
+        }
+        90% {
+            transform: translate(-110px, 560px);
+        }
+        94% {
+            transform: translate(-140px, 500px);
+            width: 37px;
+            height: 37px;
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-140, 450px);
+            opacity: 0;
+            width: 75px;
+            height: 75px;
+        }
+    }
+
+    .animationGrid {
+        height: 525px;
+        justify-content: center;
+        display: flex;
+        > div:nth-child(1) {
+            @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 3s, displayAnimation, 5s, #6962df);
+        }
+        div:nth-child(2) {
+            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #fa632b);
+        }
+        div:nth-child(3) {
+            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #23a534);
+        }
+        div:nth-child(4) {
+            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 11s, displayAnimation, 14s, $yellow);
+        }
+        div:nth-child(5) {
+            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 14s, displayAnimation, 18s, #6962df);
+        }
+        div:nth-child(6) {
+            @include coinAnimation(39%, 420px, unset, unset, opacityAnimation, 18s, displayAnimation, 21s, #fa632b);
+        }
+        div:nth-child(7) {
+            @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 24s, #23a534);
+        }
+        div:nth-child(8) {
+            @include coinAnimation(unset, unset, 35px, 38%, opacityAnimation, 24s, displayAnimation, 27s, $yellow);
+        }
+        div:nth-child(9) {
+            @include coinAnimation(unset, unset, 115px, 34%, opacityAnimation, 27s, displayAnimation, 30s, #6962df);
+        }
+        div:nth-child(10) {
+            @include coinAnimation(unset, unset, 215px, 31%, opacityAnimation, 30s, displayAnimation, 33s, #fa632b);
+        }
+        div:nth-child(11) {
+            @include coinAnimation(unset, unset, 320px, 0%, opacityAnimation, 33s, displayAnimation, 34s, #000);
+            img {
+                width: 100px;
+                height: 50px;
+            }
+            position: absolute;
+            display: flex;
+            flex-direction: row !important;
+            .donationCycleItems {
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                position: relative;
+                right: 0;
+                top: 0;
+                margin-left: 20px;
+                padding: 10px 30px;
+            }
+            div:nth-child(1) {
+                animation-name: opacityAnimation;
+                animation-duration: 33s;
+                animation-fill-mode: forwards;
+            }
+        }
     }
 }

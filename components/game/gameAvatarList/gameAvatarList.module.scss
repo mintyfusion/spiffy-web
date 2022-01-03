@@ -114,8 +114,8 @@
 @for $i from 1 through 120 {
     .confetti:nth-child(#{$i}) {
         position: absolute;
-        top: percentage(math.div(100, 100));
-        left: percentage(math.div(35, 100));
+        top: (random(320) + 4) + px;
+        left: (random(550) + 4) + px;
         img {
             width: (random(60) + 20) + px;
             object-fit: contain;
@@ -126,8 +126,8 @@
 @for $i from 1 through 120 {
     .confettiRight:nth-child(#{$i}) {
         position: absolute;
-        top: percentage(math.div(100, 100));
-        right: percentage(math.div(35, 100));
+        top: (random(320) + 4) + px;
+        right: (random(550) + 4) + px;
         img {
             width: (random(50) + 20) + px;
             object-fit: contain;
