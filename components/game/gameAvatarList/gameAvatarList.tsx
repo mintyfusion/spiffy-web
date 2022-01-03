@@ -56,12 +56,17 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     };
 
     React.useEffect(() => {
+        let timer: NodeJS.Timeout;
         if (percentage) {
-            setTimeout(() => {
-                // props.setStep("6");
+            timer = setTimeout(() => {
+                props.setStep("6");
+                clearTimeout(timer);
             }, donationTimeout);
         }
-    }, [percentage]);
+
+        return () => clearTimeout(timer);
+        
+    }, [percentage, props]);
 
     return (
         <div className={styles.gameStepFive}>

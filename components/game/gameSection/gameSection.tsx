@@ -21,17 +21,21 @@ const friendsTimeout = 5000;
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
     const [selected, setSelected] = React.useState<IAvatar>();
-    const [step, setStep] = React.useState<string>("4");
+    const [step, setStep] = React.useState<string>("1");
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
 
     React.useEffect(() => {
+        let timer: NodeJS.Timeout;
         if (friends.filter((filter) => filter.className).length === friendsLength) {
-            const timer = setTimeout(() => { setStep("4"); }, friendsTimeout);
-
-            return () => clearTimeout(timer);
+            timer = setTimeout(() => {
+                setStep("4");
+                clearTimeout(timer);
+            }, friendsTimeout);
         }
+
+        return () => clearTimeout(timer);
     }, [friends]);
 
     const friendsHandler = (i: IAvatar) => {
@@ -74,9 +78,12 @@ const GameSection = (): JSX.Element => {
         }
     }, [step]);
 
-    React.useMemo(() => {
-        setFriends(data.filter((filter) => filter.id !== selected?.id));
-    }, [step === "2"]);
+    React.useEffect(() => {
+        if (selected) {
+            setFriends(data.filter((filter) => filter.id !== selected.id));
+        }
+
+    }, [selected]);
 
     return (
         <div className={"position-relative"}>
@@ -124,7 +131,7 @@ const GameSection = (): JSX.Element => {
                     <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                         {/* <h2 className={styles.avatarHeading}>Add four friends.</h2> */}
                         <div className={styles.avatarInner}>
-                            <div className={step === "4" ? "visible" : "invisible"}>
+                            <div className={`${step === "4" ? "visible" : "invisible"} ${styles.selected}`}>
                                 {selected ? <Image {...selected.image} width={230} height={286} /> : null}
                             </div>
                         </div>
