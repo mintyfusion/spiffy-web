@@ -6,7 +6,7 @@ import GameSection from "components/game/gameSection/gameSection";
 import Layout from "components/common/layout/layout";
 
 const Game = (): JSX.Element =>
-    <Layout>
+    <Layout navbarProps={{ sticky: true }}>
         <GameContentWrapper>
             <GameHead />
             <GameSection />

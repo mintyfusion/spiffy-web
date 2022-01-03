@@ -234,6 +234,7 @@
 .containerFadIn {
     animation: containerFadinAnimation 5s;
     animation-fill-mode: forwards;
+    animation-delay: 1s;
 }
 
 @keyframes containerFadinAnimation {
@@ -252,6 +253,7 @@
 .containerFadOut {
     animation: containerFadoutAnimation 5s;
     animation-fill-mode: forwards;
+    animation-delay: 2s;
 }
 
 @keyframes containerFadoutAnimation {
@@ -2391,14 +2393,14 @@
 
     @keyframes avatarstepTwoAnimation {
         100% {
-            left: 46.5%;
+            left: 45%;
             top: 20%;
         }
     }
 
     @keyframes avatarstepThreeAnimation {
         0% {
-            left: 46.5%;
+            left: 45%;
             top: 20%;
         }
         100% {
@@ -2571,6 +2573,7 @@
             }
         }
     }
+
     .selected {
         img {
             @include imgProperties(222px);
