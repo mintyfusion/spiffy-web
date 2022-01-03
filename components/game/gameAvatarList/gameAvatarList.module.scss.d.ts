@@ -11,6 +11,7 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "boldDesktop41Mobile25": string;
   "boldGame41": string;
   "boldGame67": string;
   "confetti": string;
@@ -29,6 +30,7 @@ export type Styles = {
   "medium25": string;
   "percentageFriends": string;
   "percentageSelected": string;
+  "regular14": string;
   "regular16": string;
   "regular20": string;
   "regular24": string;
