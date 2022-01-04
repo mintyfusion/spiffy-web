@@ -74,7 +74,7 @@ const GameSection = (): JSX.Element => {
             case "3":
                 return styles.avatarstepThree;
             default:
-                return "";
+                return "d-none";
         }
     }, [step]);
 

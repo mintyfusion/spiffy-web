@@ -64,7 +64,7 @@
     top: $top;
 }
 
-@mixin friendsAnimation($name, $startingTop, $startingLeft, $mediumTop, $mediumLeft, $top, $left) {
+@mixin friendsAnimation($name, $startingTop, $startingLeft, $top, $left) {
     animation-name: $name;
     animation-duration: 5s;
     animation-fill-mode: forwards;
@@ -73,11 +73,6 @@
             0% {
                 top: $startingTop;
                 left: $startingLeft;
-                position: absolute;
-            }
-            50% {
-                top: $mediumTop;
-                left: $mediumLeft;
                 position: absolute;
             }
             100% {
@@ -199,28 +194,28 @@
     }
 
     .friendsAnimation:nth-child(1) {
-        @include friendsAnimation(animation-1, 30%, 65%, 0%, 40%, 23.3%, 12%);
+        @include friendsAnimation(animation-1, 30%, 65%, 23.3%, 12%);
         img {
             @include imgProperties(165px);
         }
     }
 
     .friendsAnimation:nth-child(2) {
-        @include friendsAnimation(animation-2, 32%, 80%, 0%, 40%, 24.7%, 26.7%);
+        @include friendsAnimation(animation-2, 32%, 80%, 24.7%, 26.7%);
         img {
             @include imgProperties(165px);
         }
     }
 
     .friendsAnimation:nth-child(3) {
-        @include friendsAnimation(animation-3, 60%, 65%, 0%, 40%, 52%, 12%);
+        @include friendsAnimation(animation-3, 60%, 65%, 52%, 12%);
         img {
             @include imgProperties(165px);
         }
     }
 
     .friendsAnimation:nth-child(4) {
-        @include friendsAnimation(animation-4, 60%, 80%, 0%, 40%, 52%, 27%);
+        @include friendsAnimation(animation-4, 60%, 80%, 52%, 27%);
         img {
             @include imgProperties(165px);
         }
@@ -234,7 +229,6 @@
 .containerFadIn {
     animation: containerFadinAnimation 5s;
     animation-fill-mode: forwards;
-    animation-delay: 1s;
 }
 
 @keyframes containerFadinAnimation {
@@ -253,7 +247,6 @@
 .containerFadOut {
     animation: containerFadoutAnimation 5s;
     animation-fill-mode: forwards;
-    animation-delay: 2s;
 }
 
 @keyframes containerFadoutAnimation {
@@ -490,14 +483,13 @@
 .contentAnimation {
     p {
         animation-name: contetHide;
-        animation-duration: 2s;
+        animation-duration: 2ms;
         animation-fill-mode: forwards;
     }
 
     h3 {
         animation-name: contentShow;
-        animation-duration: 5s;
-        animation-fill-mode: forwards;
+        animation-duration: 2s;
         opacity: 0;
     }
 }
@@ -507,11 +499,13 @@
         opacity: 0;
     }
     50% {
+        opacity: 0;
+    }
+    75% {
         opacity: 1;
     }
     100% {
         opacity: 0;
-        // position: absolute;
     }
 }
 
@@ -521,7 +515,7 @@
     }
     100% {
         opacity: 0;
-        // position: absolute;
+        position: absolute;
     }
 }
 
@@ -590,37 +584,47 @@
         transform: translate(0px, 0px);
         opacity: 1;
     }
+    5% {
+        transform: translate(0px, 110px);
+        width: 37px;
+        height: 37px;
+    }
     10% {
-        transform: translate(0px, 280px);
+        transform: translate(0px, 170px);
+        width: 37px;
+        height: 37px;
+    }
+    15% {
+        transform: translate(0px, 250px);
         width: 37px;
         height: 37px;
     }
     20% {
-        transform: translate(50px, 380px);
+        transform: translate(70px, 360px);
     }
     30% {
-        transform: translate(120px, 490px);
+        transform: translate(140px, 480px);
     }
     40% {
-        transform: translate(190px, 600px);
+        transform: translate(190px, 550px);
     }
     50% {
-        transform: translate(160px, 650px);
+        transform: translate(160px, 600px);
     }
     60% {
-        transform: translate(100px, 720px);
+        transform: translate(100px, 710px);
     }
     70% {
         transform: translate(0px, 780px);
     }
     80% {
-        transform: translate(-110px, 750px);
+        transform: translate(-90px, 700px);
     }
     90% {
-        transform: translate(-130px, 680px);
+        transform: translate(-140px, 620px);
     }
     94% {
-        transform: translate(-160px, 600px);
+        transform: translate(-160px, 540px);
         width: 37px;
         height: 37px;
         opacity: 1;
@@ -648,44 +652,45 @@
     justify-content: center;
     display: flex;
     > div:nth-child(1) {
-        @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 3s, displayAnimation, 5s, #6962df);
+        @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
     }
     div:nth-child(2) {
-        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #fa632b);
+        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #fa632b);
     }
     div:nth-child(3) {
-        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #23a534);
+        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #23a534);
     }
     div:nth-child(4) {
-        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 11s, displayAnimation, 14s, $yellow);
+        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $yellow);
     }
     div:nth-child(5) {
-        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 14s, displayAnimation, 18s, #6962df);
+        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, #6962df);
     }
     div:nth-child(6) {
-        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 18s, displayAnimation, 21s, #fa632b);
+        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 13s, displayAnimation, 13s, #fa632b);
     }
     div:nth-child(7) {
-        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 24s, #23a534);
+        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
     }
     div:nth-child(8) {
-        @include coinAnimation(unset, unset, 40px, 40%, opacityAnimation, 24s, displayAnimation, 27s, $yellow);
+        @include coinAnimation(unset, unset, 83px, 40%, opacityAnimation, 19s, displayAnimation, 20s, $yellow);
     }
     div:nth-child(9) {
-        @include coinAnimation(unset, unset, 145px, 34%, opacityAnimation, 27s, displayAnimation, 30s, #6962df);
+        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 21s, displayAnimation, 22s, #6962df);
     }
     div:nth-child(10) {
-        @include coinAnimation(unset, unset, 275px, 31%, opacityAnimation, 30s, displayAnimation, 33s, #fa632b);
+        @include coinAnimation(unset, unset, 318px, 31%, opacityAnimation, 23s, displayAnimation, 24s, #fa632b);
     }
     div:nth-child(11) {
-        @include coinAnimation(unset, unset, 460px, 2%, opacityAnimation, 33s, displayAnimation, 34s, #000);
+        @include coinAnimation(unset, unset, 460px, 6%, opacityAnimation, 25s, displayAnimation, 26s, #000);
         position: absolute;
         display: flex;
         .donationCycleItems {
-            position: relative;
-            right: 0;
-            top: 0;
-            margin-left: 20px;
+            position: absolute;
+            right: -110px;
+            padding: 20px;
+            border-radius: 20px;
+            top: 5px;
         }
         h2 {
             @extend .regular-desktop25-mobile9;
@@ -699,21 +704,24 @@
         }
         div:nth-child(1) {
             animation-name: opacityAnimation;
-            animation-duration: 33s;
+            animation-duration: 25s;
             animation-fill-mode: forwards;
+        }
+        .animationText {
+            width: 80%;
         }
     }
 }
 
 @keyframes opacityAnimation {
     0% {
-        opacity: 0;
-    }
-    25% {
-        opacity: 0;
+        opacity: 1;
     }
     50% {
-        opacity: 0;
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
     }
     100% {
         opacity: 1;
@@ -731,7 +739,7 @@
     }
     75% {
         opacity: 1;
-        position: absolute;
+        position: relative;
     }
     100% {
         opacity: 0;
@@ -1533,28 +1541,28 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 60%, 0%, 25%, 24%, -2.5%);
+            @include friendsAnimation(animation-1, 30%, 60%, 24%, -2.5%);
             img {
                 @include imgProperties(110px);
             }
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 78%, 0%, 25%, 24.8%, 22.5%);
+            @include friendsAnimation(animation-2, 32%, 78%, 24.8%, 22.5%);
             img {
                 @include imgProperties(110px);
             }
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 60%, 0%, 25%, 45%, -2.5%);
+            @include friendsAnimation(animation-3, 60%, 60%, 45%, -2.5%);
             img {
                 @include imgProperties(110px);
             }
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 78%, 0%, 20%, 45%, 22.5%);
+            @include friendsAnimation(animation-4, 60%, 78%, 45%, 22.5%);
             img {
                 @include imgProperties(110px);
             }
@@ -1640,16 +1648,6 @@
                 right: 0;
                 top: 0;
                 margin-left: 20px;
-            }
-            h2 {
-                @extend .regular-desktop25-mobile9;
-                color: $darkGrey;
-                text-align: end;
-            }
-            p {
-                @extend .regular20;
-                color: $neutralBlack800;
-                text-align: end;
             }
             .animationText {
                 width: 50%;
@@ -1972,28 +1970,28 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 60%, 0%, 25%, 29%, 6%);
+            @include friendsAnimation(animation-1, 30%, 60%, 29%, 6%);
             img {
                 @include imgProperties(80px);
             }
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 78%, 0%, 25%, 30%, 20%);
+            @include friendsAnimation(animation-2, 32%, 78%, 30%, 20%);
             img {
                 @include imgProperties(80px);
             }
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 60%, 0%, 25%, 45%, 6%);
+            @include friendsAnimation(animation-3, 60%, 60%, 45%, 6%);
             img {
                 @include imgProperties(80px);
             }
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 78%, 0%, 20%, 45%, 20.5%);
+            @include friendsAnimation(animation-4, 60%, 78%, 45%, 20.5%);
             img {
                 @include imgProperties(80px);
             }
@@ -2230,19 +2228,19 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 65%, 0%, 40%, 24%, 7%);
+            @include friendsAnimation(animation-1, 30%, 65%, 24%, 7%);
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 80%, 0%, 40%, 24%, 29%);
+            @include friendsAnimation(animation-2, 32%, 80%, 24%, 29%);
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 65%, 0%, 40%, 53%, 7%);
+            @include friendsAnimation(animation-3, 60%, 65%, 53%, 7%);
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 80%, 0%, 40%, 53%, 29%);
+            @include friendsAnimation(animation-4, 60%, 80%, 53%, 29%);
         }
     }
 
@@ -2441,19 +2439,19 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 65%, 0%, 40%, 24%, 9%);
+            @include friendsAnimation(animation-1, 30%, 65%, 24%, 9%);
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 80%, 0%, 40%, 24.5%, 28.5%);
+            @include friendsAnimation(animation-2, 32%, 80%, 24.5%, 28.5%);
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 65%, 0%, 40%, 52%, 9%);
+            @include friendsAnimation(animation-3, 60%, 65%, 52%, 9%);
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 80%, 0%, 40%, 52%, 29%);
+            @include friendsAnimation(animation-4, 60%, 80%, 52%, 29%);
         }
     }
 
@@ -2654,19 +2652,19 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 65%, 0%, 40%, 24%, 9%);
+            @include friendsAnimation(animation-1, 30%, 65%, 24%, 9%);
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 80%, 0%, 40%, 24.5%, 27.5%);
+            @include friendsAnimation(animation-2, 32%, 80%, 24.5%, 27.5%);
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 65%, 0%, 40%, 52%, 9%);
+            @include friendsAnimation(animation-3, 60%, 65%, 52%, 9%);
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 80%, 0%, 40%, 52%, 28%);
+            @include friendsAnimation(animation-4, 60%, 80%, 52%, 28%);
         }
     }
 
