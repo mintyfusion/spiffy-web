@@ -27,15 +27,15 @@ const GameSection = (): JSX.Element => {
     const [animation, setAnimation] = React.useState<boolean>(false);
 
     React.useEffect(() => {
-        let timer: NodeJS.Timeout;
-        if (friends.filter((filter) => filter.className).length === friendsLength) {
-            timer = setTimeout(() => {
-                setStep("4");
-                clearTimeout(timer);
-            }, friendsTimeout);
-        }
+        // let timer: NodeJS.Timeout;
+        // if (friends.filter((filter) => filter.className).length === friendsLength) {
+        //     timer = setTimeout(() => {
+        //         setStep("4");
+        //         clearTimeout(timer);
+        //     }, friendsTimeout);
+        // }
 
-        return () => clearTimeout(timer);
+        // return () => clearTimeout(timer);
     }, [friends]);
 
     const friendsHandler = (i: IAvatar) => {

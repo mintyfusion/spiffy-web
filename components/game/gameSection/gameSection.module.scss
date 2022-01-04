@@ -201,7 +201,7 @@
     }
 
     .friendsAnimation:nth-child(2) {
-        @include friendsAnimation(animation-2, 32%, 80%, 24.7%, 26.7%);
+        @include friendsAnimation(animation-2, 32%, 80%, 23.3%, 27%);
         img {
             @include imgProperties(165px);
         }
@@ -247,6 +247,7 @@
 .containerFadOut {
     animation: containerFadoutAnimation 5s;
     animation-fill-mode: forwards;
+    animation-delay: 5ms;
 }
 
 @keyframes containerFadoutAnimation {
