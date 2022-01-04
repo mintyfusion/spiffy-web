@@ -27,15 +27,15 @@ const GameSection = (): JSX.Element => {
     const [animation, setAnimation] = React.useState<boolean>(false);
 
     React.useEffect(() => {
-        // let timer: NodeJS.Timeout;
-        // if (friends.filter((filter) => filter.className).length === friendsLength) {
-        //     timer = setTimeout(() => {
-        //         setStep("4");
-        //         clearTimeout(timer);
-        //     }, friendsTimeout);
-        // }
+        let timer: NodeJS.Timeout;
+        if (friends.filter((filter) => filter.className).length === friendsLength) {
+            timer = setTimeout(() => {
+                setStep("4");
+                clearTimeout(timer);
+            }, friendsTimeout);
+        }
 
-        // return () => clearTimeout(timer);
+        return () => clearTimeout(timer);
     }, [friends]);
 
     const friendsHandler = (i: IAvatar) => {
@@ -82,7 +82,6 @@ const GameSection = (): JSX.Element => {
         if (selected) {
             setFriends(data.filter((filter) => filter.id !== selected.id));
         }
-
     }, [selected]);
 
     return (
@@ -194,42 +193,15 @@ const GameSection = (): JSX.Element => {
                             <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                             <span>0.50</span>
                         </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarOrange.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarGreen.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarYellow.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarOrange.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarGreen.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarYellow.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
-                        <div className={styles.donationCycleItems}>
-                            <Image src={"/images/Game/donationCycle/avatarOrange.png"} width={56} height={63} />
-                            <span>0.20</span>
-                        </div>
+                        {data.concat(friends).map((i, k) => {
+                            return (
+                                <div className={styles.donationCycleItems} key={k}>
+                                    <Image {...i.image} width={56} height={63} />
+                                    <span>0.20</span>
+                                </div>
+                            );
+                        })}
+
                         <div>
                             <div className={styles.animationText}>
                                 <h2>Spiffy Corp.</h2>
