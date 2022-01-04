@@ -17,6 +17,7 @@ const donation: string[] = ["5", "10", "15", "25", "50"];
 const donationDivide = 2;
 const friendsLength = 4;
 const friendsTimeout = 5000;
+const avatarTimeout = 1000;
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
@@ -74,7 +75,7 @@ const GameSection = (): JSX.Element => {
             case "3":
                 return styles.avatarstepThree;
             default:
-                return "d-none";
+                return "";
         }
     }, [step]);
 
@@ -102,7 +103,9 @@ const GameSection = (): JSX.Element => {
                                 <Image {...i.image}
                                     onClick={() => {
                                         selectedHandler(i);
-                                        setStep("2");
+                                        setTimeout(() => {
+                                            setStep("2");
+                                        }, avatarTimeout);
                                     }} />
                             </div>
                         )}
@@ -194,11 +197,11 @@ const GameSection = (): JSX.Element => {
                             <span>0.50</span>
                         </div>
                         {data.concat(friends).map((i, k) => (
-                                <div className={styles.donationCycleItems} key={k}>
-                                    <Image {...i.image} width={56} height={63} />
-                                    <span>0.20</span>
-                                </div>
-                            ))}
+                            <div className={styles.donationCycleItems} key={k}>
+                                <Image {...i.image} width={56} height={63} />
+                                <span>0.20</span>
+                            </div>
+                        ))}
 
                         <div>
                             <div className={styles.animationText}>
