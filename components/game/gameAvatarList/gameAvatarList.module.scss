@@ -270,6 +270,30 @@
             @include percentageAvatars(unset, 73px, 130px);
         }
     }
+
+    @for $i from 1 through 120 {
+        .confetti:nth-child(#{$i}) {
+            position: absolute;
+            top: (random(250) + 4) + px;
+            left: (random(400) + 4) + px;
+            img {
+                width: (random(40) + 20) + px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    @for $i from 1 through 120 {
+        .confettiRight:nth-child(#{$i}) {
+            position: absolute;
+            top: (random(250) + 4) + px;
+            right: (random(400) + 4) + px;
+            img {
+                width: (random(40) + 20) + px;
+                object-fit: contain;
+            }
+        }
+    }
 }
 
 @include media(">=1400px", "<1500px") {
@@ -285,6 +309,30 @@
         }
         div:nth-child(4) {
             @include percentageAvatars(unset, 73px, 130px);
+        }
+    }
+
+    @for $i from 1 through 120 {
+        .confetti:nth-child(#{$i}) {
+            position: absolute;
+            top: (random(280) + 4) + px;
+            left: (random(420) + 4) + px;
+            img {
+                width: (random(40) + 20) + px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    @for $i from 1 through 120 {
+        .confettiRight:nth-child(#{$i}) {
+            position: absolute;
+            top: (random(280) + 4) + px;
+            right: (random(420) + 4) + px;
+            img {
+                width: (random(40) + 20) + px;
+                object-fit: contain;
+            }
         }
     }
 }
@@ -304,6 +352,30 @@
             @include percentageAvatars(unset, 73px, 126px);
         }
     }
+
+    @for $i from 1 through 120 {
+        .confetti:nth-child(#{$i}) {
+            position: absolute;
+            top: (random(270) + 4) + px;
+            left: (random(410) + 4) + px;
+            img {
+                width: (random(40) + 20) + px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    @for $i from 1 through 120 {
+        .confettiRight:nth-child(#{$i}) {
+            position: absolute;
+            top: (random(270) + 4) + px;
+            right: (random(410) + 4) + px;
+            img {
+                width: (random(40) + 20) + px;
+                object-fit: contain;
+            }
+        }
+    }
 }
 
 @include media(">=1600px", "<1700px") {
@@ -319,6 +391,30 @@
         }
         div:nth-child(4) {
             @include percentageAvatars(unset, 73px, 124px);
+        }
+    }
+
+    @for $i from 1 through 120 {
+        .confetti:nth-child(#{$i}) {
+            position: absolute;
+            top: (random(270) + 4) + px;
+            left: (random(500) + 4) + px;
+            img {
+                width: (random(40) + 20) + px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    @for $i from 1 through 120 {
+        .confettiRight:nth-child(#{$i}) {
+            position: absolute;
+            top: (random(270) + 4) + px;
+            right: (random(500) + 4) + px;
+            img {
+                width: (random(40) + 20) + px;
+                object-fit: contain;
+            }
         }
     }
 }

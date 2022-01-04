@@ -24,7 +24,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
 
     const half = Math.ceil(avatars.length / animationSplice);
 
-    const animationHandler = (percent) => {
+    const animationHandler = (percent: string) => {
         const avatar = [...mainAvatars];
         const fivePercent = 2;
         const tenPercent = 3;
@@ -56,15 +56,15 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     };
 
     React.useEffect(() => {
-        let timer: NodeJS.Timeout;
-        if (percentage !== "1") {
-            timer = setTimeout(() => {
-                props.setStep("6");
-                clearTimeout(timer);
-            }, donationTimeout);
-        }
+        // let timer: NodeJS.Timeout;
+        // if (percentage !== "1") {
+        //     timer = setTimeout(() => {
+        //         props.setStep("6");
+        //         clearTimeout(timer);
+        //     }, donationTimeout);
+        // }
 
-        return () => clearTimeout(timer);
+        // return () => clearTimeout(timer);
 
     }, [percentage, props]);
 

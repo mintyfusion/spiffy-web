@@ -656,16 +656,16 @@
         @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
     }
     div:nth-child(2) {
-        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #fa632b);
+        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
     }
     div:nth-child(3) {
-        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #23a534);
+        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #6962df);
     }
     div:nth-child(4) {
-        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $yellow);
+        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $red);
     }
     div:nth-child(5) {
-        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, #6962df);
+        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, $yellow);
     }
     div:nth-child(6) {
         @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 13s, displayAnimation, 14s, #fa632b);
@@ -674,10 +674,10 @@
         @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
     }
     div:nth-child(8) {
-        @include coinAnimation(unset, unset, 83px, 40%, opacityAnimation, 19s, displayAnimation, 20s, $yellow);
+        @include coinAnimation(unset, unset, 83px, 40%, opacityAnimation, 19s, displayAnimation, 20s, $red);
     }
     div:nth-child(9) {
-        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 21s, displayAnimation, 22s, #6962df);
+        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 21s, displayAnimation, 22s, $yellow);
     }
     div:nth-child(10) {
         @include coinAnimation(unset, unset, 318px, 31%, opacityAnimation, 23s, displayAnimation, 24s, #fa632b);
@@ -957,7 +957,7 @@
                 animation-duration: 8s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
-                color: #fa632b;
+                color: #23a534;
                 margin-top: 5px;
             }
         }
@@ -971,7 +971,7 @@
                 animation-duration: 11s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
-                color: #23a534;
+                color: #6962df;
                 margin-top: 5px;
             }
         }
@@ -985,7 +985,7 @@
                 animation-duration: 14s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
-                color: #ff8801;
+                color: $red;
                 margin-top: 5px;
             }
         }
@@ -999,7 +999,7 @@
                 animation-duration: 18s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
-                color: #6962df;
+                color: $yellow;
                 margin-top: 5px;
             }
         }
@@ -1040,7 +1040,7 @@
                 animation-duration: 27s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
-                color: #ff8801;
+                color: $red;
                 margin-top: 5px;
             }
         }
@@ -1054,7 +1054,7 @@
                 animation-duration: 30s;
                 animation-fill-mode: forwards;
                 font-size: 7px;
-                color: #6962df;
+                color: $yellow;
                 margin-top: 5px;
             }
         }
@@ -1585,25 +1585,25 @@
             }
         }
         div:nth-child(2) {
-            @include coinAnimation(29%, 49px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #fa632b);
+            @include coinAnimation(29%, 49px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #23a534);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(3) {
-            @include coinAnimation(17%, 145px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #23a534);
+            @include coinAnimation(17%, 145px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #6962df);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(4) {
-            @include coinAnimation(10%, 255px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s, $yellow);
+            @include coinAnimation(10%, 255px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s, $red);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(5) {
-            @include coinAnimation(17%, 370px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s, #6962df);
+            @include coinAnimation(17%, 370px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s, $yellow);
             img {
                 @include imgProperties(50px);
             }
@@ -1621,13 +1621,13 @@
             }
         }
         div:nth-child(8) {
-            @include coinAnimation(unset, unset, 35px, 28%, opacityAnimation, 25s, displayAnimation, 27s, $yellow);
+            @include coinAnimation(unset, unset, 35px, 28%, opacityAnimation, 25s, displayAnimation, 27s, $red);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(9) {
-            @include coinAnimation(unset, unset, 125px, 19%, opacityAnimation, 28s, displayAnimation, 30s, #6962df);
+            @include coinAnimation(unset, unset, 125px, 19%, opacityAnimation, 28s, displayAnimation, 30s, $yellow);
             img {
                 @include imgProperties(50px);
             }
@@ -2014,25 +2014,25 @@
             }
         }
         div:nth-child(2) {
-            @include coinAnimation(29%, 49px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #fa632b);
+            @include coinAnimation(29%, 49px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #23a534);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(3) {
-            @include coinAnimation(17%, 145px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #23a534);
+            @include coinAnimation(17%, 145px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #6962df);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(4) {
-            @include coinAnimation(10%, 255px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s, $yellow);
+            @include coinAnimation(10%, 255px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s, $red);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(5) {
-            @include coinAnimation(17%, 370px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s, #6962df);
+            @include coinAnimation(17%, 370px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s, $yellow);
             img {
                 @include imgProperties(50px);
             }
@@ -2050,13 +2050,13 @@
             }
         }
         div:nth-child(8) {
-            @include coinAnimation(unset, unset, 35px, 28%, opacityAnimation, 25s, displayAnimation, 27s, $yellow);
+            @include coinAnimation(unset, unset, 35px, 28%, opacityAnimation, 25s, displayAnimation, 27s, $red);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(9) {
-            @include coinAnimation(unset, unset, 125px, 19%, opacityAnimation, 28s, displayAnimation, 30s, #6962df);
+            @include coinAnimation(unset, unset, 125px, 19%, opacityAnimation, 28s, displayAnimation, 30s, $yellow);
             img {
                 @include imgProperties(50px);
             }
@@ -2316,16 +2316,16 @@
             @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
         }
         div:nth-child(2) {
-            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #fa632b);
+            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
         }
         div:nth-child(3) {
-            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #23a534);
+            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #6962df);
         }
         div:nth-child(4) {
-            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $yellow);
+            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $red);
         }
         div:nth-child(5) {
-            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, #6962df);
+            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, $yellow);
         }
         div:nth-child(6) {
             @include coinAnimation(39%, 420px, unset, unset, opacityAnimation, 13s, displayAnimation, 14s, #fa632b);
@@ -2334,10 +2334,10 @@
             @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
         }
         div:nth-child(8) {
-            @include coinAnimation(unset, unset, 47px, 38%, opacityAnimation, 19s, displayAnimation, 20s, $yellow);
+            @include coinAnimation(unset, unset, 47px, 38%, opacityAnimation, 19s, displayAnimation, 20s, $red);
         }
         div:nth-child(9) {
-            @include coinAnimation(unset, unset, 128px, 34%, opacityAnimation, 21s, displayAnimation, 22s, #6962df);
+            @include coinAnimation(unset, unset, 128px, 34%, opacityAnimation, 21s, displayAnimation, 22s, $yellow);
         }
         div:nth-child(10) {
             @include coinAnimation(unset, unset, 225px, 31%, opacityAnimation, 23s, displayAnimation, 24s, #fa632b);
@@ -2535,16 +2535,16 @@
             @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
         }
         div:nth-child(2) {
-            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #fa632b);
+            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
         }
         div:nth-child(3) {
-            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #23a534);
+            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #6962df);
         }
         div:nth-child(4) {
-            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $yellow);
+            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $red);
         }
         div:nth-child(5) {
-            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, #6962df);
+            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, $yellow);
         }
         div:nth-child(6) {
             @include coinAnimation(39%, 420px, unset, unset, opacityAnimation, 13s, displayAnimation, 14s, #fa632b);
@@ -2553,10 +2553,10 @@
             @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
         }
         div:nth-child(8) {
-            @include coinAnimation(unset, unset, 48px, 39%, opacityAnimation, 19s, displayAnimation, 20s, $yellow);
+            @include coinAnimation(unset, unset, 48px, 39%, opacityAnimation, 19s, displayAnimation, 20s, $red);
         }
         div:nth-child(9) {
-            @include coinAnimation(unset, unset, 127px, 34%, opacityAnimation, 21s, displayAnimation, 22s, #6962df);
+            @include coinAnimation(unset, unset, 127px, 34%, opacityAnimation, 21s, displayAnimation, 22s, $yellow);
         }
         div:nth-child(10) {
             @include coinAnimation(unset, unset, 228px, 31%, opacityAnimation, 23s, displayAnimation, 24s, #fa632b);
@@ -2756,16 +2756,16 @@
             @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
         }
         div:nth-child(2) {
-            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #fa632b);
+            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
         }
         div:nth-child(3) {
-            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #23a534);
+            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #6962df);
         }
         div:nth-child(4) {
-            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $yellow);
+            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $red);
         }
         div:nth-child(5) {
-            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, #6962df);
+            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, $yellow);
         }
         div:nth-child(6) {
             @include coinAnimation(39%, 420px, unset, unset, opacityAnimation, 13s, displayAnimation, 14s, #fa632b);
@@ -2774,10 +2774,10 @@
             @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
         }
         div:nth-child(8) {
-            @include coinAnimation(unset, unset, 59px, 39%, opacityAnimation, 19s, displayAnimation, 20s, $yellow);
+            @include coinAnimation(unset, unset, 59px, 39%, opacityAnimation, 19s, displayAnimation, 20s, $red);
         }
         div:nth-child(9) {
-            @include coinAnimation(unset, unset, 141px, 34%, opacityAnimation, 21s, displayAnimation, 22s, #6962df);
+            @include coinAnimation(unset, unset, 141px, 34%, opacityAnimation, 21s, displayAnimation, 22s, $yellow);
         }
         div:nth-child(10) {
             @include coinAnimation(unset, unset, 237px, 31%, opacityAnimation, 23s, displayAnimation, 24s, #fa632b);
@@ -2970,16 +2970,16 @@
             @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
         }
         div:nth-child(2) {
-            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #fa632b);
+            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
         }
         div:nth-child(3) {
-            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #23a534);
+            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #6962df);
         }
         div:nth-child(4) {
-            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $yellow);
+            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $red);
         }
         div:nth-child(5) {
-            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, #6962df);
+            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, $yellow);
         }
         div:nth-child(6) {
             @include coinAnimation(39%, 420px, unset, unset, opacityAnimation, 13s, displayAnimation, 14s, #fa632b);
@@ -2988,10 +2988,10 @@
             @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
         }
         div:nth-child(8) {
-            @include coinAnimation(unset, unset, 59px, 39%, opacityAnimation, 19s, displayAnimation, 20s, $yellow);
+            @include coinAnimation(unset, unset, 59px, 39%, opacityAnimation, 19s, displayAnimation, 20s, $red);
         }
         div:nth-child(9) {
-            @include coinAnimation(unset, unset, 141px, 34%, opacityAnimation, 21s, displayAnimation, 22s, #6962df);
+            @include coinAnimation(unset, unset, 141px, 34%, opacityAnimation, 21s, displayAnimation, 22s, $yellow);
         }
         div:nth-child(10) {
             @include coinAnimation(unset, unset, 237px, 31%, opacityAnimation, 23s, displayAnimation, 24s, #fa632b);
