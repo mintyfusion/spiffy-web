@@ -667,7 +667,7 @@
         @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, #6962df);
     }
     div:nth-child(6) {
-        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 13s, displayAnimation, 13s, #fa632b);
+        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 13s, displayAnimation, 14s, #fa632b);
     }
     div:nth-child(7) {
         @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
@@ -2678,37 +2678,47 @@
             transform: translate(0px, 0px);
             opacity: 1;
         }
+        5% {
+            transform: translate(0px, 110px);
+            width: 37px;
+            height: 37px;
+        }
         10% {
-            transform: translate(0px, 280px);
+            transform: translate(0px, 170px);
+            width: 37px;
+            height: 37px;
+        }
+        15% {
+            transform: translate(0px, 250px);
             width: 37px;
             height: 37px;
         }
         20% {
-            transform: translate(50px, 370px);
+            transform: translate(50px, 350px);
         }
         30% {
-            transform: translate(100px, 450px);
+            transform: translate(80px, 380px);
         }
         40% {
-            transform: translate(120px, 520px);
+            transform: translate(120px, 480px);
         }
         50% {
-            transform: translate(110px, 570px);
+            transform: translate(140px, 540px);
         }
         60% {
-            transform: translate(70px, 620px);
+            transform: translate(70px, 600px);
         }
         70% {
             transform: translate(0px, 620px);
         }
         80% {
-            transform: translate(-80px, 610px);
+            transform: translate(-60px, 600px);
         }
         90% {
-            transform: translate(-110px, 560px);
+            transform: translate(-110px, 540px);
         }
         94% {
-            transform: translate(-140px, 500px);
+            transform: translate(-130px, 460px);
             width: 37px;
             height: 37px;
             opacity: 1;
@@ -2722,61 +2732,60 @@
     }
 
     .animationGrid {
-        height: 536px;
+        height: 560px;
         justify-content: center;
         display: flex;
         > div:nth-child(1) {
-            @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 3s, displayAnimation, 5s, #6962df);
+            @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
         }
         div:nth-child(2) {
-            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #fa632b);
+            @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #fa632b);
         }
         div:nth-child(3) {
-            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #23a534);
+            @include coinAnimation(34%, 140px, unset, unset, opacityAnimation, 6s, displayAnimation, 7s, #23a534);
         }
         div:nth-child(4) {
-            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 11s, displayAnimation, 14s, $yellow);
+            @include coinAnimation(31%, 240px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $yellow);
         }
         div:nth-child(5) {
-            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 14s, displayAnimation, 18s, #6962df);
+            @include coinAnimation(34%, 340px, unset, unset, opacityAnimation, 10s, displayAnimation, 11s, #6962df);
         }
         div:nth-child(6) {
-            @include coinAnimation(39%, 420px, unset, unset, opacityAnimation, 18s, displayAnimation, 21s, #fa632b);
+            @include coinAnimation(39%, 420px, unset, unset, opacityAnimation, 13s, displayAnimation, 14s, #fa632b);
         }
         div:nth-child(7) {
-            @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 24s, #23a534);
+            @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
         }
         div:nth-child(8) {
-            @include coinAnimation(unset, unset, 35px, 39%, opacityAnimation, 24s, displayAnimation, 27s, $yellow);
+            @include coinAnimation(unset, unset, 59px, 39%, opacityAnimation, 19s, displayAnimation, 20s, $yellow);
         }
         div:nth-child(9) {
-            @include coinAnimation(unset, unset, 115px, 34%, opacityAnimation, 27s, displayAnimation, 30s, #6962df);
+            @include coinAnimation(unset, unset, 141px, 34%, opacityAnimation, 21s, displayAnimation, 22s, #6962df);
         }
         div:nth-child(10) {
-            @include coinAnimation(unset, unset, 215px, 31%, opacityAnimation, 30s, displayAnimation, 33s, #fa632b);
+            @include coinAnimation(unset, unset, 237px, 31%, opacityAnimation, 23s, displayAnimation, 24s, #fa632b);
         }
         div:nth-child(11) {
-            @include coinAnimation(unset, unset, 320px, 0%, opacityAnimation, 33s, displayAnimation, 34s, #000);
+            @include coinAnimation(unset, unset, 320px, 5%, opacityAnimation, 25s, displayAnimation, 26s, #000);
             img {
                 width: 100px;
                 height: 50px;
+                object-fit: contain;
             }
             position: absolute;
             display: flex;
             flex-direction: row !important;
             .donationCycleItems {
-                justify-content: center;
-                align-items: center;
-                display: flex;
-                position: relative;
-                right: 0;
-                top: 0;
-                margin-left: 20px;
+                position: absolute;
+                right: -110px;
+                padding: 20px;
+                border-radius: 20px;
+                top: 5px;
                 padding: 10px 30px;
             }
             div:nth-child(1) {
                 animation-name: opacityAnimation;
-                animation-duration: 33s;
+                animation-duration: 25s;
                 animation-fill-mode: forwards;
             }
         }
