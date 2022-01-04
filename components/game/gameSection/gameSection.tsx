@@ -193,14 +193,12 @@ const GameSection = (): JSX.Element => {
                             <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                             <span>0.50</span>
                         </div>
-                        {data.concat(friends).map((i, k) => {
-                            return (
+                        {data.concat(friends).map((i, k) => (
                                 <div className={styles.donationCycleItems} key={k}>
                                     <Image {...i.image} width={56} height={63} />
                                     <span>0.20</span>
                                 </div>
-                            );
-                        })}
+                            ))}
 
                         <div>
                             <div className={styles.animationText}>

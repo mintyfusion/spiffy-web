@@ -98,13 +98,13 @@
         object-fit: contain;
     }
     div:nth-child(1) {
-        @include percentageAvatars(70px, unset, -58px);
+        @include percentageAvatars(70px, unset, -54px);
     }
     div:nth-child(2) {
         @include percentageAvatars(unset, 73px, 33px);
     }
     div:nth-child(3) {
-        @include percentageAvatars(71px, unset, 33px);
+        @include percentageAvatars(71px, unset, 35px);
     }
     div:nth-child(4) {
         @include percentageAvatars(unset, 73px, 122px);
@@ -210,7 +210,7 @@
     }
 }
 
-@include media(">=tablet", "<1366px") {
+@include media(">=tablet", "<1300px") {
     .donations {
         width: 69px;
     }
@@ -251,6 +251,74 @@
                 width: (random(50) + 20) + px;
                 object-fit: contain;
             }
+        }
+    }
+}
+
+@include media(">=1300px", "<1400px") {
+    .percentageFriends {
+        div:nth-child(1) {
+            @include percentageAvatars(70px, unset, -46px);
+        }
+        div:nth-child(2) {
+            @include percentageAvatars(unset, 73px, 41px);
+        }
+        div:nth-child(3) {
+            @include percentageAvatars(71px, unset, 41px);
+        }
+        div:nth-child(4) {
+            @include percentageAvatars(unset, 73px, 130px);
+        }
+    }
+}
+
+@include media(">=1400px", "<1500px") {
+    .percentageFriends {
+        div:nth-child(1) {
+            @include percentageAvatars(70px, unset, -46px);
+        }
+        div:nth-child(2) {
+            @include percentageAvatars(unset, 73px, 41px);
+        }
+        div:nth-child(3) {
+            @include percentageAvatars(71px, unset, 41px);
+        }
+        div:nth-child(4) {
+            @include percentageAvatars(unset, 73px, 130px);
+        }
+    }
+}
+
+@include media(">=1500px", "<1600px") {
+    .percentageFriends {
+        div:nth-child(1) {
+            @include percentageAvatars(74px, unset, -47px);
+        }
+        div:nth-child(2) {
+            @include percentageAvatars(unset, 73px, 39px);
+        }
+        div:nth-child(3) {
+            @include percentageAvatars(74px, unset, 41px);
+        }
+        div:nth-child(4) {
+            @include percentageAvatars(unset, 73px, 126px);
+        }
+    }
+}
+
+@include media(">=1600px", "<1700px") {
+    .percentageFriends {
+        div:nth-child(1) {
+            @include percentageAvatars(74px, unset, -50px);
+        }
+        div:nth-child(2) {
+            @include percentageAvatars(unset, 73px, 37px);
+        }
+        div:nth-child(3) {
+            @include percentageAvatars(74px, unset, 37px);
+        }
+        div:nth-child(4) {
+            @include percentageAvatars(unset, 73px, 124px);
         }
     }
 }
