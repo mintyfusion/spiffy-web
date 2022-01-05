@@ -114,10 +114,10 @@
 @for $i from 1 through 120 {
     .confetti:nth-child(#{$i}) {
         position: absolute;
-        top: (random(320) + 4) + px;
-        left: (random(550) + 4) + px;
+        top: (random(300) + 4) + px;
+        left: (random(600) + 4) + px;
         img {
-            width: (random(60) + 20) + px;
+            width: (random(30) + 20) + px;
             object-fit: contain;
         }
     }
@@ -126,10 +126,10 @@
 @for $i from 1 through 120 {
     .confettiRight:nth-child(#{$i}) {
         position: absolute;
-        top: (random(320) + 4) + px;
-        right: (random(550) + 4) + px;
+        top: (random(300) + 4) + px;
+        right: (random(600) + 4) + px;
         img {
-            width: (random(50) + 20) + px;
+            width: (random(30) + 20) + px;
             object-fit: contain;
         }
     }

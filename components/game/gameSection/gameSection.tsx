@@ -24,7 +24,7 @@ const GameSection = (): JSX.Element => {
     const [selected, setSelected] = React.useState<IAvatar>();
     const [step, setStep] = React.useState<string>("1");
     const [avatarName, setAvatarName] = React.useState<string>("");
-    const [donationAmount, setDonationAmount] = React.useState<string>("");
+    const [donationAmount, setDonationAmount] = React.useState<string>("0");
     const [animation, setAnimation] = React.useState<boolean>(false);
 
     React.useEffect(() => {
@@ -74,8 +74,8 @@ const GameSection = (): JSX.Element => {
                 return styles.avatarstepTwo;
             case "3":
                 return styles.avatarstepThree;
-            default:
-                return "";
+            case "4":
+                return "d-none"
         }
     }, [step]);
 
@@ -84,6 +84,15 @@ const GameSection = (): JSX.Element => {
             setFriends(data.filter((filter) => filter.id !== selected.id));
         }
     }, [selected]);
+
+    const animationHandler = (donation) => {
+        if (donation !== donationAmount) {
+            setAnimation(false);
+            setTimeout(() => {
+                setAnimation(true);
+            }, avatarTimeout);
+        }
+    }
 
     return (
         <div className={"position-relative"}>
@@ -163,7 +172,7 @@ const GameSection = (): JSX.Element => {
                             {donation.map((donation, donationKey) => <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`}
                                 onClick={() => {
                                     setDonationAmount(donation);
-                                    setAnimation(!animation);
+                                    animationHandler(donation);
                                 }}>
                                 <h4>{donation}</h4>
                             </div>)}
@@ -173,7 +182,7 @@ const GameSection = (): JSX.Element => {
                         <div className={`${rowHBetween}`}>
                             <select onChange={(e) => {
                                 setDonationAmount(e.target.value);
-                                setAnimation(!animation);
+                                animationHandler(donation);
                             }}>
                                 {donation.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
                             </select>
@@ -194,12 +203,13 @@ const GameSection = (): JSX.Element => {
                     {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative w-100`}>
                         <div className={styles.donationCycleItems}>
                             <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
-                            <span>0.50</span>
+                            <span>$0.50</span>
+                            <h3 className="position-absolute">Early Adapters</h3>
                         </div>
                         {data.concat(friends).map((i, k) => (
                             <div className={styles.donationCycleItems} key={k}>
                                 <Image {...i.image} width={56} height={63} />
-                                <span>0.20</span>
+                                <span>$0.20</span>
                             </div>
                         ))}
 
@@ -210,7 +220,7 @@ const GameSection = (): JSX.Element => {
                             </div>
                             <div className={styles.donationCycleItems}>
                                 <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
-                                <span>0.50</span>
+                                <span>$0.50</span>
                             </div>
                         </div>
                     </div> : null}
