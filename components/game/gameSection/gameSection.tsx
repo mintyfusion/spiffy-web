@@ -75,7 +75,7 @@ const GameSection = (): JSX.Element => {
             case "3":
                 return styles.avatarstepThree;
             case "4":
-                return "d-none"
+                return "d-none";
         }
     }, [step]);
 
@@ -92,7 +92,7 @@ const GameSection = (): JSX.Element => {
                 setAnimation(true);
             }, avatarTimeout);
         }
-    }
+    };
 
     return (
         <div className={"position-relative"}>
