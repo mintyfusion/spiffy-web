@@ -667,34 +667,34 @@
         }
     }
     div:nth-child(2) {
-        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
+        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 6s, displayAnimation, 5s, #23a534);
     }
     div:nth-child(3) {
-        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 6s, displayAnimation, 8s, #6962df);
+        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 8s, displayAnimation, 6s, #6962df);
     }
     div:nth-child(4) {
-        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 8s, displayAnimation, 9s, $red);
+        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 12s, displayAnimation, 9s, $red);
     }
     div:nth-child(5) {
-        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 10s, displayAnimation, 13s, $yellow);
+        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 16s, displayAnimation, 10s, $yellow);
     }
     div:nth-child(6) {
-        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 13s, displayAnimation, 16s, #fa632b);
+        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 20s, displayAnimation, 12s, #fa632b);
     }
     div:nth-child(7) {
-        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 15s, displayAnimation, 16s, #23a534);
+        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 24s, displayAnimation, 16s, #23a534);
     }
     div:nth-child(8) {
-        @include coinAnimation(unset, unset, 83px, 40%, opacityAnimation, 19s, displayAnimation, 18s, #6962df);
+        @include coinAnimation(unset, unset, 83px, 40%, opacityAnimation, 28s, displayAnimation, 18s, #6962df);
     }
     div:nth-child(9) {
-        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 21s, displayAnimation, 22s, $yellow);
+        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 32s, displayAnimation, 22s, $yellow);
     }
     div:nth-child(10) {
-        @include coinAnimation(unset, unset, 318px, 31%, opacityAnimation, 23s, displayAnimation, 24s, #fa632b);
+        @include coinAnimation(unset, unset, 318px, 31%, opacityAnimation, 34s, displayAnimation, 21s, #fa632b);
     }
     div:nth-child(11) {
-        @include coinAnimation(unset, unset, 460px, 6%, opacityAnimation, 25s, displayAnimation, 26s, #000);
+        @include coinAnimation(unset, unset, 460px, 6%, opacityAnimation, 36s, displayAnimation, 21s, #000);
         position: absolute;
         display: flex;
         .donationCycleItems {
