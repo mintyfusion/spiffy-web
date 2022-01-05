@@ -727,13 +727,13 @@
 
 @keyframes opacityAnimation {
     0% {
-        opacity: 0;
+        opacity: 1;
     }
     50% {
-        opacity: 0;
+        opacity: 1;
     }
     75% {
-        opacity: 0;
+        opacity: 1;
     }
     100% {
         opacity: 1;
@@ -2015,83 +2015,90 @@
     }
 
     .animationGrid {
-        height: 570px;
+        height: 500px;
         justify-content: center;
         display: flex;
         > div:nth-child(1) {
-            @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 3s, displayAnimation, 5s, #6962df);
+            @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 3s, displayAnimation, 3s, #6962df);
             img {
                 @include imgProperties(50px);
             }
+            h3 {
+                top: 90px;
+                left: -80px;
+            }
         }
         div:nth-child(2) {
-            @include coinAnimation(29%, 49px, unset, unset, opacityAnimation, 5s, displayAnimation, 8s, #23a534);
+            @include coinAnimation(36%, 40px, unset, unset, opacityAnimation, 5s, displayAnimation, 4s, #23a534);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(3) {
-            @include coinAnimation(17%, 145px, unset, unset, opacityAnimation, 8s, displayAnimation, 11s, #6962df);
+            @include coinAnimation(29%, 120px, unset, unset, opacityAnimation, 8s, displayAnimation, 6s, #6962df);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(4) {
-            @include coinAnimation(10%, 255px, unset, unset, opacityAnimation, 12s, displayAnimation, 14s, $red);
+            @include coinAnimation(25%, 220px, unset, unset, opacityAnimation, 12s, displayAnimation, 9s, $red);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(5) {
-            @include coinAnimation(17%, 370px, unset, unset, opacityAnimation, 15s, displayAnimation, 18s, $yellow);
+            @include coinAnimation(29%, 320px, unset, unset, opacityAnimation, 15s, displayAnimation, 11s, $yellow);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(6) {
-            @include coinAnimation(29%, 465px, unset, unset, opacityAnimation, 18s, displayAnimation, 21s, #fa632b);
+            @include coinAnimation(36%, 405px, unset, unset, opacityAnimation, 18s, displayAnimation, 13s, #fa632b);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(7) {
-            @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 24s, #23a534);
+            @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 21s, displayAnimation, 15s, #23a534);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(8) {
-            @include coinAnimation(unset, unset, 35px, 28%, opacityAnimation, 25s, displayAnimation, 27s, $red);
+            @include coinAnimation(unset, unset, 25px, 36%, opacityAnimation, 25s, displayAnimation, 17s, $red);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(9) {
-            @include coinAnimation(unset, unset, 125px, 19%, opacityAnimation, 28s, displayAnimation, 30s, $yellow);
+            @include coinAnimation(unset, unset, 109px, 30%, opacityAnimation, 28s, displayAnimation, 19s, $yellow);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(10) {
-            @include coinAnimation(unset, unset, 235px, 13%, opacityAnimation, 30s, displayAnimation, 33s, #fa632b);
+            @include coinAnimation(unset, unset, 211px, 27%, opacityAnimation, 30s, displayAnimation, 21s, #fa632b);
             img {
                 @include imgProperties(50px);
             }
         }
         div:nth-child(11) {
-            @include coinAnimation(unset, unset, 382px, -4%, opacityAnimation, 34s, displayAnimation, 34s, #000);
+            @include coinAnimation(unset, unset, 340px, 4%, opacityAnimation, 34s, displayAnimation, 23s, #000);
             position: absolute;
             display: flex;
-            flex-direction: row-reverse !important;
             .donationCycleItems {
-                border-radius: 10px;
-                position: relative;
-                right: 0;
-                top: 0;
-                margin-left: 20px;
+                position: absolute;
+                right: -12px;
+                padding: 10px;
+                border-radius: 20px;
+                top: 0px;
+                img {
+                    width: 100px;
+                    height: 50px;
+                }
             }
             .animationText {
-                width: 50%;
+                width: 65%;
                 animation-name: opacityAnimation;
                 animation-duration: 45s;
                 animation-fill-mode: forwards;
@@ -2104,44 +2111,49 @@
             transform: translate(0px, 0px);
             opacity: 1;
         }
-        10% {
-            transform: translate(0px, 200px);
+        5% {
+            transform: translate(0px, 80px);
             width: 37px;
             height: 37px;
         }
+        10% {
+            transform: translate(0px, 140px);
+        }
+        15% {
+            transform: translate(0px, 200px);
+        }
         20% {
-            transform: translate(40px, 300px);
+            transform: translate(50px, 290px);
         }
         30% {
             transform: translate(100px, 360px);
         }
         40% {
-            transform: translate(160px, 450px);
+            transform: translate(150px, 420px);
         }
         50% {
-            transform: translate(140px, 500px);
+            transform: translate(130px, 460px);
         }
         60% {
-            transform: translate(100px, 580px);
+            transform: translate(100px, 540px);
         }
         70% {
-            transform: translate(0px, 600px);
+            transform: translate(0px, 560px);
         }
         80% {
-            transform: translate(-80px, 580px);
+            transform: translate(-50px, 540px);
         }
         90% {
-            transform: translate(-90px, 550px);
+            transform: translate(-90px, 500px);
         }
         94% {
-            transform: translate(-100px, 450px);
+            transform: translate(-100px, 400px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
         100% {
-            transform: translate(-110px, 400px);
-            opacity: 0;
+            transform: translate(-110px, 380px);
             width: 75px;
             height: 75px;
         }
