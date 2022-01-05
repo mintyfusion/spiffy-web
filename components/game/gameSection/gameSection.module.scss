@@ -632,7 +632,7 @@
         opacity: 1;
     }
     100% {
-        transform: translate(-200px, 470px);
+        transform: translate(-200px, 450px);
         width: 50px;
         height: 50px;
     }
@@ -688,7 +688,7 @@
         @include coinAnimation(unset, unset, 83px, 40%, opacityAnimation, 28s, displayAnimation, 18s, #6962df);
     }
     div:nth-child(9) {
-        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 32s, displayAnimation, 22s, $yellow);
+        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 32s, displayAnimation, 20s, $yellow);
     }
     div:nth-child(10) {
         @include coinAnimation(unset, unset, 318px, 31%, opacityAnimation, 34s, displayAnimation, 21s, #fa632b);
