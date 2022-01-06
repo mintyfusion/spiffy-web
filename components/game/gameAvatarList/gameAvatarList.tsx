@@ -16,7 +16,7 @@ const mainAvatars = [
     "/images/Game/donationCycle/avatarOrange.png",
 ];
 const animationSplice = 2;
-const donationTimeout = 3000;
+const donationTimeout = 6000;
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("1");

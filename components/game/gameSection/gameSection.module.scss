@@ -67,7 +67,7 @@
 
 @mixin friendsAnimation($name, $startingTop, $startingLeft, $top, $left) {
     animation-name: $name;
-    animation-duration: 5s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
     @at-root {
         @keyframes #{$name} {
@@ -242,10 +242,12 @@
 
 @keyframes containerFadinAnimation {
     0% {
-        @include crossBrowserPrefix(transform, translateY(120%));
+        @include crossBrowserPrefix(transform, translateY(80%));
+        opacity: 0;
     }
     100% {
         @include crossBrowserPrefix(transform, translateY(0%));
+        opacity: 1;
     }
 }
 
@@ -264,17 +266,17 @@
         bottom: 0;
         margin: auto;
         opacity: 1;
+        z-index: 0;
     }
     100% {
         // @include crossBrowserPrefix(transform, translateY(-120%));
         position: absolute;
-        top: -120%;
+        top: -100%;
         left: 0;
         right: 0;
         bottom: 0;
         margin: auto;
         opacity: 0;
-        z-index: -1;
     }
 }
 
@@ -338,7 +340,7 @@
 .gameStepThree {
     display: flex;
     background-color: $dirty-white;
-    height: 60vh;
+    height: 590px;
     .user {
         img {
             visibility: hidden;
@@ -452,7 +454,6 @@
 .avatarInner {
     position: relative;
     margin-top: 35px;
-    @include imgProperties(222px);
 }
 
 .stepFour {
@@ -3264,7 +3265,9 @@
             width: 48%;
             .selected {
                 img {
-                    @include imgProperties(100px);
+                    width: 100px;
+                    height: 150px;
+                    object-fit: contain;
                 }
             }
             .friends {
@@ -3416,12 +3419,16 @@
 
     @keyframes avatarstepThreeAnimation {
         0% {
-            left: 45%;
-            top: 21%;
+            left: 46%;
+            top: 20%;
+        }
+        99% {
+            opacity: 1;
         }
         100% {
-            left: 20%;
-            top: 30%;
+            left: 23.9%;
+            top: 38%;
+            opacity: 0;
         }
     }
 
@@ -3464,28 +3471,28 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 60%, 29%, 6%);
+            @include friendsAnimation(animation-1, 30%, 60%, 37%, 12%);
             img {
                 @include imgProperties(80px);
             }
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 78%, 30%, 20%);
+            @include friendsAnimation(animation-2, 32%, 78%, 37%, 24.2%);
             img {
                 @include imgProperties(80px);
             }
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 60%, 45%, 6%);
+            @include friendsAnimation(animation-3, 60%, 60%, 50%, 12%);
             img {
                 @include imgProperties(80px);
             }
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 78%, 45%, 20.5%);
+            @include friendsAnimation(animation-4, 60%, 78%, 50%, 24.2%);
             img {
                 @include imgProperties(80px);
             }
@@ -3698,9 +3705,13 @@
             left: 46%;
             top: 20%;
         }
+        99% {
+            opacity: 1;
+        }
         100% {
-            left: 19%;
-            top: 32%;
+            left: 18.3%;
+            top: 31%;
+            opacity: 0;
         }
     }
 
@@ -3736,19 +3747,19 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 65%, 24%, 7%);
+            @include friendsAnimation(animation-1, 30%, 65%, 23%, 6.2%);
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 80%, 24%, 29%);
+            @include friendsAnimation(animation-2, 32%, 80%, 23%, 28.2%);
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 65%, 53%, 7%);
+            @include friendsAnimation(animation-3, 60%, 65%, 50%, 6.2%);
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 80%, 53%, 29%);
+            @include friendsAnimation(animation-4, 60%, 80%, 50%, 28.2%);
         }
     }
 
@@ -3913,12 +3924,16 @@
 
     @keyframes avatarstepThreeAnimation {
         0% {
-            left: 45%;
+            left: 46%;
             top: 20%;
         }
+        99% {
+            opacity: 1;
+        }
         100% {
-            left: 20%;
-            top: 32%;
+            left: 19%;
+            top: 31%;
+            opacity: 0;
         }
     }
 
@@ -3954,19 +3969,19 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 65%, 24%, 9%);
+            @include friendsAnimation(animation-1, 30%, 65%, 23%, 7.3%);
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 80%, 24%, 29%);
+            @include friendsAnimation(animation-2, 32%, 80%, 23%, 28%);
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 65%, 52%, 9%);
+            @include friendsAnimation(animation-3, 60%, 65%, 50%, 7.3%);
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 80%, 52%, 29%);
+            @include friendsAnimation(animation-4, 60%, 80%, 50%, 28%);
         }
     }
 
@@ -4135,9 +4150,13 @@
             left: 46%;
             top: 20%;
         }
+        99% {
+            opacity: 1;
+        }
         100% {
-            left: 20%;
-            top: 32%;
+            left: 19.1%;
+            top: 30.9%;
+            opacity: 0;
         }
     }
 
@@ -4173,19 +4192,19 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 65%, 24%, 9%);
+            @include friendsAnimation(animation-1, 30%, 65%, 22.1%, 8%);
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 80%, 24%, 28%);
+            @include friendsAnimation(animation-2, 32%, 80%, 22.1%, 27.6%);
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 65%, 52%, 9%);
+            @include friendsAnimation(animation-3, 60%, 65%, 50%, 8%);
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 80%, 52%, 28%);
+            @include friendsAnimation(animation-4, 60%, 80%, 50%, 27.6%);
         }
     }
 
@@ -4351,9 +4370,13 @@
             left: 46%;
             top: 20%;
         }
+        99% {
+            opacity: 1;
+        }
         100% {
-            left: 20%;
-            top: 32%;
+            left: 19.6%;
+            top: 30.2%;
+            opacity: 0;
         }
     }
 
@@ -4389,19 +4412,19 @@
         }
 
         .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 65%, 24%, 9.5%);
+            @include friendsAnimation(animation-1, 30%, 65%, 22%, 9%);
         }
 
         .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 80%, 24%, 28%);
+            @include friendsAnimation(animation-2, 32%, 80%, 22%, 27.5%);
         }
 
         .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 65%, 52%, 9.5%);
+            @include friendsAnimation(animation-3, 60%, 65%, 50%, 9%);
         }
 
         .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 80%, 52%, 28%);
+            @include friendsAnimation(animation-4, 60%, 80%, 50%, 27.5%);
         }
     }
 
