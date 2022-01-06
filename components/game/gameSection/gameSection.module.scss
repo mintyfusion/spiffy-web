@@ -654,6 +654,8 @@
     display: flex;
     > div:nth-child(1) {
         @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
+        visibility: hidden;
+        animation-fill-mode: forwards;
         h3 {
             @extend .regular-desktop25-mobile9;
             top: 120px;
@@ -666,35 +668,55 @@
             visibility: hidden;
         }
     }
-    div:nth-child(2) {
-        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 6s, displayAnimation, 5s, #23a534);
+    > div:nth-child(2) {
+        @include coinAnimation(40%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(3) {
-        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 8s, displayAnimation, 6s, #6962df);
+        @include coinAnimation(35%, 170px, unset, unset, opacityAnimation, 5s, displayAnimation, 6s, #6962df);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(4) {
-        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 12s, displayAnimation, 9s, $red);
+        @include coinAnimation(31%, 300px, unset, unset, opacityAnimation, 7s, displayAnimation, 9s, $red);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(5) {
-        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 16s, displayAnimation, 10s, $yellow);
+        @include coinAnimation(35%, 430px, unset, unset, opacityAnimation, 9s, displayAnimation, 10s, $yellow);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(6) {
-        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 20s, displayAnimation, 12s, #fa632b);
+        @include coinAnimation(40%, 535px, unset, unset, opacityAnimation, 11s, displayAnimation, 12s, #fa632b);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(7) {
-        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 24s, displayAnimation, 16s, #23a534);
+        @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 13s, displayAnimation, 14s, #23a534);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(8) {
-        @include coinAnimation(unset, unset, 83px, 40%, opacityAnimation, 28s, displayAnimation, 18s, #6962df);
+        @include coinAnimation(unset, unset, 83px, 40%, opacityAnimation, 15s, displayAnimation, 16s, #6962df);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(9) {
-        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 32s, displayAnimation, 20s, $yellow);
+        @include coinAnimation(unset, unset, 188px, 34%, opacityAnimation, 17s, displayAnimation, 18s, $yellow);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(10) {
-        @include coinAnimation(unset, unset, 318px, 31%, opacityAnimation, 34s, displayAnimation, 21s, #fa632b);
+        @include coinAnimation(unset, unset, 318px, 31%, opacityAnimation, 19s, displayAnimation, 21s, #fa632b);
+        visibility: hidden;
+        animation-fill-mode: forwards;
     }
     div:nth-child(11) {
-        @include coinAnimation(unset, unset, 460px, 6%, opacityAnimation, 36s, displayAnimation, 21s, #000);
+        @include coinAnimation(unset, unset, 460px, 6%, opacityAnimation, 20s, displayAnimation, 20s, #000);
+        visibility: hidden;
+        animation-fill-mode: forwards;
         position: absolute;
         display: flex;
         .donationCycleItems {
@@ -716,7 +738,7 @@
         }
         div:nth-child(1) {
             animation-name: opacityAnimation;
-            animation-duration: 26s;
+            animation-duration: 23s;
             animation-fill-mode: forwards;
         }
         .animationText {
@@ -726,35 +748,21 @@
 }
 
 @keyframes opacityAnimation {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0;
-    }
-    75% {
-        opacity: 1;
+    99% {
+        visibility: hidden;
     }
     100% {
-        opacity: 1;
+        visibility: visible;
     }
 }
 
 @keyframes displayAnimation {
-    0% {
-        visibility: hidden;
-        position: relative;
-    }
-    50% {
-        visibility: visible;
-        position: relative;
-    }
-    90% {
-        visibility: hidden;
+    99% {
+        opacity: 1;
         position: relative;
     }
     100% {
-        visibility: hidden;
+        opacity: 0;
         position: absolute;
     }
 }
