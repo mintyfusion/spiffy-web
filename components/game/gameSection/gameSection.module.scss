@@ -48,6 +48,7 @@
     left: $left;
     bottom: $bottom;
     display: block !important;
+    z-index: 1000;
 }
 
 @mixin gameContentPadding($padding) {
@@ -140,9 +141,13 @@
         left: 46%;
         top: 20%;
     }
+    99% {
+        opacity: 1;
+    }
     100% {
-        left: 21%;
-        top: 32%;
+        left: 20.7%;
+        top: 34%;
+        opacity: 0;
     }
 }
 
@@ -176,46 +181,50 @@
         position: absolute;
         top: 32%;
         left: 65%;
+        z-index: 2;
     }
     div:nth-child(2) {
         position: absolute;
         top: 32%;
         left: 80%;
+        z-index: 2;
     }
     div:nth-child(3) {
         position: absolute;
         top: 60%;
         left: 65%;
+        z-index: 2;
     }
     div:nth-child(4) {
         position: absolute;
         top: 60%;
         left: 80%;
+        z-index: 2;
     }
 
     .friendsAnimation:nth-child(1) {
-        @include friendsAnimation(animation-1, 30%, 65%, 23.3%, 12%);
+        @include friendsAnimation(animation-1, 30%, 65%, 22%, 11.5%);
         img {
             @include imgProperties(165px);
         }
     }
 
     .friendsAnimation:nth-child(2) {
-        @include friendsAnimation(animation-2, 32%, 80%, 23.3%, 27%);
+        @include friendsAnimation(animation-2, 32%, 80%, 22%, 27%);
         img {
             @include imgProperties(165px);
         }
     }
 
     .friendsAnimation:nth-child(3) {
-        @include friendsAnimation(animation-3, 60%, 65%, 52%, 12%);
+        @include friendsAnimation(animation-3, 60%, 65%, 50%, 11.5%);
         img {
             @include imgProperties(165px);
         }
     }
 
     .friendsAnimation:nth-child(4) {
-        @include friendsAnimation(animation-4, 60%, 80%, 52%, 27%);
+        @include friendsAnimation(animation-4, 60%, 80%, 50%, 27%);
         img {
             @include imgProperties(165px);
         }
@@ -340,6 +349,10 @@
     .gameStepThreeUserColumn {
         width: 48%;
         background-color: $white;
+        h2 {
+            position: absolute;
+            top: 60px;
+        }
     }
 
     .gameStepThreeFriendsColumn {
@@ -355,18 +368,27 @@
         font-weight: $medium;
         font-size: 24px;
         color: $neutralBlack800;
-        bottom: 19%;
-        left: 20.8%;
-        position: absolute;
-        width: 7%;
-        word-break: break-all;
         text-align: center;
     }
 }
 
 .selected {
+    animation: selectedAnimation 4s;
+    animation-fill-mode: forwards;
     img {
-        @include imgProperties(257px);
+        @include imgProperties(222px);
+    }
+}
+
+@keyframes selectedAnimation {
+    0% {
+        visibility: hidden;
+    }
+    99% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
     }
 }
 
@@ -745,7 +767,7 @@
 
 @keyframes opacityAnimation {
     99% {
-        visibility: visible;
+        visibility: hidden;
     }
     100% {
         visibility: visible;
