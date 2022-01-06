@@ -140,7 +140,7 @@ const GameSection = (): JSX.Element => {
             <div className={`${styles.paddingSides} ${step === "3" || step === "4" ? styles.container : "d-none"} ${step === "3" ? styles.containerFadIn : step === "4" ? styles.containerFadOut : "d-none"}`}>
                 <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                     <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
-                        {/* <h2 className={styles.avatarHeading}>Add four friends.</h2> */}
+                        <h2 className={styles.avatarHeading}>Add four friends.</h2>
                         <div className={styles.avatarInner}>
                             <div className={`${step === "4" ? "visible" : "invisible"} ${styles.selected}`}>
                                 {selected ? <Image {...selected.image} width={230} height={286} /> : null}
@@ -182,7 +182,7 @@ const GameSection = (): JSX.Element => {
                         <div className={`${rowHBetween}`}>
                             <select onChange={(e) => {
                                 setDonationAmount(e.target.value);
-                                animationHandler(donation);
+                                animationHandler(e.target.value);
                             }}>
                                 {donation.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
                             </select>
