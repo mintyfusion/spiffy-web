@@ -112,7 +112,9 @@ const GameSection = (): JSX.Element => {
                                 <Image {...i.image}
                                     onClick={() => {
                                         selectedHandler(i);
-                                        setStep("2");
+                                        setTimeout(() => {
+                                            setStep("2");
+                                        }, avatarTimeout);
                                     }} />
                             </div>
                         )}

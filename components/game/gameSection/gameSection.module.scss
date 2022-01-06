@@ -252,12 +252,11 @@
 .containerFadOut {
     animation: containerFadoutAnimation 5s;
     animation-fill-mode: forwards;
-    animation-delay: 5ms;
 }
 
 @keyframes containerFadoutAnimation {
     0% {
-        @include crossBrowserPrefix(transform, translateY(0%));
+        // @include crossBrowserPrefix(transform, translateY(0%));
         position: absolute;
         top: 0;
         left: 0;
@@ -267,9 +266,9 @@
         opacity: 1;
     }
     100% {
-        @include crossBrowserPrefix(transform, translateY(-120%));
+        // @include crossBrowserPrefix(transform, translateY(-120%));
         position: absolute;
-        top: 0;
+        top: -120%;
         left: 0;
         right: 0;
         bottom: 0;
