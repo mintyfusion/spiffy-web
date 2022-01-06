@@ -74,7 +74,7 @@ const GameSection = (): JSX.Element => {
                 return styles.avatarstepTwo;
             case "3":
                 return styles.avatarstepThree;
-            case "4":
+            default:
                 return "d-none";
         }
     }, [step]);
@@ -85,7 +85,7 @@ const GameSection = (): JSX.Element => {
         }
     }, [selected]);
 
-    const animationHandler = (donation) => {
+    const animationHandler = (donation: string) => {
         if (donation !== donationAmount) {
             setAnimation(false);
             setTimeout(() => {
@@ -112,9 +112,7 @@ const GameSection = (): JSX.Element => {
                                 <Image {...i.image}
                                     onClick={() => {
                                         selectedHandler(i);
-                                        setTimeout(() => {
-                                            setStep("2");
-                                        }, avatarTimeout);
+                                        setStep("2");
                                     }} />
                             </div>
                         )}
@@ -142,8 +140,8 @@ const GameSection = (): JSX.Element => {
                     <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                         <h2 className={styles.avatarHeading}>Add four friends.</h2>
                         <div className={styles.avatarInner}>
-                            <div className={`${step === "4" ? "visible" : "invisible"} ${styles.selected}`}>
-                                {selected ? <Image {...selected.image} width={230} height={286} /> : null}
+                            <div className={`${step === "3" || step === "4" ? styles.selected : "invisible"}`}>
+                                {selected ? <Image {...selected.image} width={222} height={222} /> : null}
                             </div>
                         </div>
                         <h3>{avatarName}</h3>

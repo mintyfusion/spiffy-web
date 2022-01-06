@@ -85,6 +85,7 @@ export type Styles = {
   "regularDesktop25Mobile9": string;
   "regularDesktop30Mobile20": string;
   "selected": string;
+  "selectedAnimation": string;
   "semiBold90": string;
   "show": string;
   "signUpsection": string;
