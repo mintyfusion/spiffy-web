@@ -18,6 +18,7 @@ const donationDivide = 2;
 const friendsLength = 4;
 const friendsTimeout = 5000;
 const avatarTimeout = 1000;
+const animationtimeout = 2000;
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
@@ -74,7 +75,11 @@ const GameSection = (): JSX.Element => {
                 return styles.avatarstepTwo;
             case "3":
                 return styles.avatarstepThree;
-            default:
+            case "4":
+                return "d-none";
+            case "5":
+                return "d-none";
+            case "6":
                 return "d-none";
         }
     }, [step]);
@@ -112,7 +117,9 @@ const GameSection = (): JSX.Element => {
                                 <Image {...i.image}
                                     onClick={() => {
                                         selectedHandler(i);
-                                        setStep("2");
+                                        setTimeout(() => {
+                                            setStep("2");
+                                        }, animationtimeout);
                                     }} />
                             </div>
                         )}
