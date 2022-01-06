@@ -1,9 +1,11 @@
 import { Col, Row } from "react-bootstrap";
+import { ContentItem } from "@agility/nextjs";
 import React from "react";
 
-import Card from "components/common/card/card";
+import Card from "components/agility-pageModules/common/card/card";
 import flexbox from "utils/flexbox";
-import ICardContainerProps from "components/common/cardContainer/interfaces/ICardContainerProps";
+import ICardContainerProps from "components/agility-pageModules/common/cardContainer/interfaces/ICardContainerProps";
+import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
 
 import styles from "components/common/cardContainer/cardContainer.module.scss";
 
@@ -12,7 +14,7 @@ const horizontalAlign = flexbox({ hAlign: "center" });
 
 const CardContainer = (props: ICardContainerProps): JSX.Element =>
     <Row className={`gap-1 gap-md-4 ${horizontalAlign} w-100`}>
-        {props.content.map((card, index) =>
+        {props.content?.items && props.content.items.map((card: ContentItem<ICardProps>, index: number) =>
             <Col
                 key={index}
                 className={`
@@ -26,7 +28,7 @@ const CardContainer = (props: ICardContainerProps): JSX.Element =>
                         flex-md-grow-0
                     `}
             >
-                <Card {...card} />
+                <Card {...card} ></Card>
             </Col>
         )}
     </Row>;

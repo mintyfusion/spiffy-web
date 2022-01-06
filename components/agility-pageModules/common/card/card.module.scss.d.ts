@@ -10,11 +10,16 @@ export type Styles = {
   "bold67": string;
   "bold90": string;
   "boldDesktop41Mobile25": string;
+  "card": string;
+  "cardDescription": string;
+  "cardTag": string;
+  "cardTitle": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
+  "link": string;
   "regular14": string;
   "regular16": string;
   "regular24": string;
@@ -24,9 +29,6 @@ export type Styles = {
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "semiBold90": string;
-  "shareText": string;
-  "social": string;
-  "socials": string;
 };
 
 export type ClassNames = keyof Styles;

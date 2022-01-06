@@ -1,5 +1,6 @@
 enum ContentCategory {
     all = "All Topics",
+    top6 = "Top 6 Topics",
     gameRules = "Game Rules",
     general = "General",
     payment = "Payment",

@@ -9,6 +9,7 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "boldDesktop41Mobile25": string;
   "detailsContainer": string;
   "extraBold67": string;
   "extraBold90": string;
@@ -16,6 +17,7 @@ export type Styles = {
   "fullbold109": string;
   "fullBold67": string;
   "mediaContainer": string;
+  "regular14": string;
   "regular16": string;
   "regular24": string;
   "regular25": string;
