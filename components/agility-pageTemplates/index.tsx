@@ -11,7 +11,7 @@ const allTemplates: ITemplates[] = [
     { name: "MainTemplate", template: MainTemplate },
 ];
 
-export const getPageTemplate = (templateName: string): unknown => {
+export const getPageTemplate = (templateName: string): any => {
     if (!templateName) return null;
     const obj = allTemplates.find(
         (m) => m.name.toLowerCase() === templateName.toLowerCase()
