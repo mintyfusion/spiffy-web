@@ -1,6 +1,6 @@
 enum DetailsType {
     video = "video",
-    guide = "guide"
+    guide = "Guide"
 }
 
 export default DetailsType;
