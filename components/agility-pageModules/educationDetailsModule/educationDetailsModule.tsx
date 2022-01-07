@@ -24,7 +24,6 @@ const EducationDetailsModule = (props :
         key: fields.name
     };
 
-
     return (
         <div>
             <Layout navbarProps={{ sticky: true }}>

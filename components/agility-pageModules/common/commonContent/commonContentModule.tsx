@@ -36,7 +36,6 @@ const CommonContentModule = (props: ModuleProps<ICommonContentProps>): JSX.Eleme
                 return <></>;
         }
 
-
     }, [page.name, module.fields, preparedData]);
 
     return <div>{renderComponent}</div>;
