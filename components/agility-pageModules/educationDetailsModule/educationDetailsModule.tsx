@@ -11,17 +11,17 @@ import ShareSection from "components/educationDetailsPage/shareSection/shareSect
 
 import styles from "components/educationDetailsPage/educationDetails.module.scss";
 
-const EducationDetailsModule = (props :
+const EducationDetailsModule = (props:
     DynamicModuleProps<IEducationDetailsModuleProps
         , IEducationDetailsModuleProps>): JSX.Element => {
     const { fields } = props.dynamicPageItem;
-    
     const preparedData = {
         detailsType: fields.contentType_TextField,
         title: fields.title,
         description: fields.description,
         mediaSrc: fields.mediaSrc.href,
-        key: fields.name
+        key: fields.name,
+        htmlContent: fields.htmlContent
     };
 
     return (

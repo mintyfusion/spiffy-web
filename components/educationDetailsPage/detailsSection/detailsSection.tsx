@@ -1,3 +1,4 @@
+import { renderHTML } from "@agility/nextjs";
 import Image from "next/image";
 import React from "react";
 
@@ -23,6 +24,7 @@ const DetailsSection = (props: IDetailsSectionProps): JSX.Element =>
                 : <VideoPlayer width="100%" height="100%" url={props.mediaSrc} />
             }
         </div>
+        <div dangerouslySetInnerHTML={renderHTML(props.htmlContent)} />
     </div>;
 
 export default DetailsSection;

@@ -5,4 +5,5 @@ export default interface IDetailsSectionProps extends IContentInfo {
     detailsType: DetailsType;
     mediaSrc: string;
     key: string;
+    htmlContent: string;
 }
