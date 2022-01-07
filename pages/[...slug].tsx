@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { getAgilityPageProps, getAgilityPaths } from "@agility/nextjs/node";
@@ -12,7 +13,10 @@ import type {
 
 } from "next";
 
+import INavbarProps from "components/common/navbar/interfaces/INavbarProps";
 import Layout from "components/common/layout/layout";
+import PageIds from "common/pageIds";
+
 // import SiteHeader from "components/common/SiteHeader";
 
 // getStaticProps function fetches data for all of your Agility Pages 
@@ -64,7 +68,16 @@ export async function getStaticPaths({ locales, defaultLocale }) {
     };
 }
 
-const Index = (props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element =>
-    <Layout {...props}></Layout>;
+const Index = (props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element => {
+    const showStickyHeader: INavbarProps = React.useMemo(() => {
+        if (props.page.pageID === PageIds.EDUCATION_DETAILS) {
+            return { sticky: true };
+        }
+
+        return { sticky: false };
+    }, [props.page.pageID]);
+
+    return <Layout {...props} navbarProps={showStickyHeader}></Layout>;
+};
 
 export default Index;

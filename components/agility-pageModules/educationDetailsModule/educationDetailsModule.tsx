@@ -6,7 +6,6 @@ import Breadcrumb from "components/educationDetailsPage/breadcrumbSection/breadc
 import DetailsSection from "components/educationDetailsPage/detailsSection/detailsSection";
 import detailsSocialData from "components/educationDetailsPage/shareSection/shareSocials";
 import IEducationDetailsModuleProps from "components/agility-pageModules/educationDetailsModule/interfaces/IEducationDetailsModuleProps";
-import Layout from "components/common/layout/layout";
 import ShareSection from "components/educationDetailsPage/shareSection/shareSection";
 
 import styles from "components/educationDetailsPage/educationDetails.module.scss";
@@ -26,13 +25,11 @@ const EducationDetailsModule = (props:
 
     return (
         <div>
-            <Layout navbarProps={{ sticky: true }}>
                 <div className={styles.container}>
                     <Breadcrumb blogId={fields.name} />
                     <DetailsSection {...preparedData} />
                     <ShareSection content={detailsSocialData} />
                 </div>
-            </Layout>
         </div>
     );
 };
