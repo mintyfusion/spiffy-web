@@ -28,8 +28,6 @@ const GameSection = (): JSX.Element => {
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
-    const [firstAnimation, setFirstAnimation] = React.useState<boolean>(false);
-    const [lastAnimation, setLastAnimation] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -110,7 +108,7 @@ const GameSection = (): JSX.Element => {
                 }
             </div>
 
-            <div className={`${step === "1" || step === "2" ? styles.container : "d-none"} ${firstAnimation ? styles.containerFadOut : ""}`}>
+            <div className={`${step === "1" || step === "2" ? styles.container : "d-none"} ${step === "2" ? styles.containerFadOut : ""}`}>
                 <div className={`${colCenter} ${styles.gameStepOne}`}>
                     <h2 className={`${styles.avatarHeading}`}>Select your avatar.</h2>
                     <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
@@ -121,7 +119,6 @@ const GameSection = (): JSX.Element => {
                                         selectedHandler(i);
                                         setTimeout(() => {
                                             setStep("2");
-                                            setFirstAnimation(true);
                                         }, animationtimeout);
                                     }} />
                             </div>
@@ -235,8 +232,8 @@ const GameSection = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className={`${donationAmount ? styles.container : "d-none"} ${lastAnimation ? styles.containerFadOut : "d-none"}`}>
-                <GameAvatarList friends={friends} selected={selected} name={avatarName} setStep={setStep} setLastAnimation={setLastAnimation} />
+            <div className={`${donationAmount ? styles.container : "d-none"} ${step === "6" ? styles.containerFadOut : ""}`}>
+                <GameAvatarList friends={friends} selected={selected} name={avatarName} setStep={setStep} />
             </div>
 
             <div className={`${step === "6" ? styles.container : "d-none"} ${step === "6" ? styles.containerFadIn : "d-none"}`}>

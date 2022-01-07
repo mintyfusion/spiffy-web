@@ -61,7 +61,6 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
             timer = setTimeout(() => {
                 window.scroll(0, 0);
                 props.setStep("6");
-                props.setLastAnimation(true);
                 clearTimeout(timer);
             }, donationTimeout);
         }
