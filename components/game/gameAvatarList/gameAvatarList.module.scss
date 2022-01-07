@@ -134,6 +134,7 @@
         }
     }
 }
+
 @include media(">=phone", "<tablet") {
     .donationDesktop {
         display: none;
@@ -188,8 +189,8 @@
     @for $i from 1 through 120 {
         .confetti:nth-child(#{$i}) {
             position: absolute;
-            top: percentage(math.div(90, 100));
-            left: percentage(math.div(15, 100));
+            top: (random(90) + 4) + px;
+            left: (random(15) + 4) + px;
             img {
                 width: (random(30) + 4) + px;
                 object-fit: contain;
@@ -200,8 +201,8 @@
     @for $i from 1 through 120 {
         .confettiRight:nth-child(#{$i}) {
             position: absolute;
-            bottom: percentage(math.div(90, 100));
-            right: percentage(math.div(15, 100));
+            bottom: (random(90) + 4) + px;
+            right: (random(15) + 4) + px;
             img {
                 width: (random(30) + 4) + px;
                 object-fit: contain;
@@ -233,10 +234,10 @@
     @for $i from 1 through 120 {
         .confetti:nth-child(#{$i}) {
             position: absolute;
-            top: percentage(math.div(100, 100));
-            left: percentage(math.div(20, 100));
+            top: (random(300) + 4) + px;
+            left: (random(200) + 4) + px;
             img {
-                width: (random(60) + 20) + px;
+                width: (random(30) + 20) + px;
                 object-fit: contain;
             }
         }
@@ -245,10 +246,10 @@
     @for $i from 1 through 120 {
         .confettiRight:nth-child(#{$i}) {
             position: absolute;
-            top: percentage(math.div(100, 100));
-            right: percentage(math.div(20, 100));
+            top: (random(300) + 4) + px;
+            right: (random(200) + 4) + px;
             img {
-                width: (random(50) + 20) + px;
+                width: (random(30) + 20) + px;
                 object-fit: contain;
             }
         }
@@ -274,10 +275,10 @@
     @for $i from 1 through 120 {
         .confetti:nth-child(#{$i}) {
             position: absolute;
-            top: (random(250) + 4) + px;
+            top: (random(300) + 4) + px;
             left: (random(400) + 4) + px;
             img {
-                width: (random(40) + 20) + px;
+                width: (random(30) + 20) + px;
                 object-fit: contain;
             }
         }
@@ -286,10 +287,10 @@
     @for $i from 1 through 120 {
         .confettiRight:nth-child(#{$i}) {
             position: absolute;
-            top: (random(250) + 4) + px;
+            top: (random(300) + 4) + px;
             right: (random(400) + 4) + px;
             img {
-                width: (random(40) + 20) + px;
+                width: (random(30) + 20) + px;
                 object-fit: contain;
             }
         }
@@ -315,8 +316,8 @@
     @for $i from 1 through 120 {
         .confetti:nth-child(#{$i}) {
             position: absolute;
-            top: (random(280) + 4) + px;
-            left: (random(420) + 4) + px;
+            top: (random(290) + 4) + px;
+            left: (random(430) + 4) + px;
             img {
                 width: (random(40) + 20) + px;
                 object-fit: contain;
@@ -327,8 +328,8 @@
     @for $i from 1 through 120 {
         .confettiRight:nth-child(#{$i}) {
             position: absolute;
-            top: (random(280) + 4) + px;
-            right: (random(420) + 4) + px;
+            top: (random(290) + 4) + px;
+            right: (random(430) + 4) + px;
             img {
                 width: (random(40) + 20) + px;
                 object-fit: contain;

@@ -214,7 +214,7 @@ const GameSection = (): JSX.Element => {
                         {data.concat(friends).map((i, k) => (
                             <div className={styles.donationCycleItems} key={k}>
                                 <Image {...i.image} width={56} height={63} />
-                                <span>$0.20</span>
+                                <span>{(Number(donationAmount) / 5) / 5}</span>
                             </div>
                         ))}
 
