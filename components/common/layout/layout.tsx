@@ -13,12 +13,12 @@ const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
     const { notFound, pageTemplateName } = props;
 
     const showStickyHeader: boolean = React.useMemo(() => {
-        if (props.page.pageID === PageIds.EDUCATION_DETAILS) {
+        if (props.page?.pageID === PageIds.EDUCATION_DETAILS) {
             return true;
         }
 
         return false;
-    }, [props.page.pageID]);
+    }, [props.page?.pageID]);
 
     // if page not found, throw 404
     if (notFound === true) {
