@@ -59,6 +59,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         let timer: NodeJS.Timeout;
         if (percentage !== "1") {
             timer = setTimeout(() => {
+                window.scroll(0,0);
                 props.setStep("6");
                 clearTimeout(timer);
             }, donationTimeout);
