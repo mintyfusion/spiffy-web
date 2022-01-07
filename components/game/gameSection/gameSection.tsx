@@ -6,8 +6,8 @@ import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 
-import styles from "components/game/gameSection/gameSection.module.scss";
 import AvatarType from "./enums/avatarTypes";
+import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center", });
@@ -20,6 +20,7 @@ const friendsLength = 4;
 const friendsTimeout = 5000;
 const avatarTimeout = 1000;
 const animationtimeout = 2000;
+const donationFormula = 5;
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
@@ -99,6 +100,7 @@ const GameSection = (): JSX.Element => {
             }, avatarTimeout);
         }
     };
+
     return (
         <div className={"position-relative"}>
             <div className={`${selectedAvatarStepClasses} ${selectedAvatarClasses}`}>
@@ -214,7 +216,7 @@ const GameSection = (): JSX.Element => {
                         {data.concat(friends).map((i, k) => (
                             <div className={styles.donationCycleItems} key={k}>
                                 <Image {...i.image} width={56} height={63} />
-                                <span>{(Number(donationAmount) / 5) / 5}</span>
+                                <span>{Number(donationAmount) / donationFormula / donationFormula}</span>
                             </div>
                         ))}
 
