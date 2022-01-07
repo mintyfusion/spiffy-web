@@ -23,7 +23,7 @@ const animationtimeout = 2000;
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
     const [selected, setSelected] = React.useState<IAvatar>();
-    const [step, setStep] = React.useState<string>("4");
+    const [step, setStep] = React.useState<string>("1");
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
