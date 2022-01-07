@@ -7,6 +7,7 @@ import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
+import AvatarType from "./enums/avatarTypes";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center", });
@@ -98,7 +99,6 @@ const GameSection = (): JSX.Element => {
             }, avatarTimeout);
         }
     };
-
     return (
         <div className={"position-relative"}>
             <div className={`${selectedAvatarStepClasses} ${selectedAvatarClasses}`}>
@@ -112,7 +112,7 @@ const GameSection = (): JSX.Element => {
                 <div className={`${colCenter} ${styles.gameStepOne}`}>
                     <h2 className={`${styles.avatarHeading}`}>Select your avatar.</h2>
                     <div className={`${styles.avatarWrapper} ${rowCenter} flex-wrap`}>
-                        {data.map((i: IAvatar, k) =>
+                        {data.filter((filter) => filter.id !== AvatarType.Orange).map((i: IAvatar, k) =>
                             <div className={`${selected === undefined ? "visible" : styles.avatarAnimation}`} key={k}>
                                 <Image {...i.image}
                                     onClick={() => {
@@ -143,7 +143,7 @@ const GameSection = (): JSX.Element => {
             </div>
 
             <div className={`${styles.paddingSides} ${step === "3" || step === "4" ? styles.container : "d-none"} ${step === "3" ? styles.containerFadIn : step === "4" ? styles.containerFadOut : "d-none"}`}>
-                <div className={`${styles.gameStepThree} ${rowHBetween}`}>
+                <div className={`${styles.gameStepThree} ${rowHBetween} position-relative`}>
                     <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                         <h2 className={styles.avatarHeading}>Add four friends.</h2>
                         <div className={styles.avatarInner}>
