@@ -13,9 +13,7 @@ import type {
 
 } from "next";
 
-import INavbarProps from "components/common/navbar/interfaces/INavbarProps";
 import Layout from "components/common/layout/layout";
-import PageIds from "common/pageIds";
 
 // import SiteHeader from "components/common/SiteHeader";
 
@@ -68,16 +66,7 @@ export async function getStaticPaths({ locales, defaultLocale }) {
     };
 }
 
-const Index = (props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element => {
-    const showStickyHeader: INavbarProps = React.useMemo(() => {
-        if (props.page.pageID === PageIds.EDUCATION_DETAILS) {
-            return { sticky: true };
-        }
-
-        return { sticky: false };
-    }, [props.page.pageID]);
-
-    return <Layout {...props} navbarProps={showStickyHeader}></Layout>;
-};
+const Index = (props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element =>
+    <Layout {...props}></Layout>;
 
 export default Index;
