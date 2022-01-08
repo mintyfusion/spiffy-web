@@ -292,6 +292,7 @@
         max-height: none;
         height: 0px;
         margin: 0;
+        overflow: hidden;
     }
 }
 
@@ -545,6 +546,7 @@
     }
     100% {
         opacity: 0;
+        height: 0px;
     }
 }
 
