@@ -288,8 +288,10 @@
         left: 0;
         right: 0;
         bottom: 0;
-        margin: auto;
         opacity: 0;
+        max-height: none;
+        height: 0px;
+        margin: 0;
     }
 }
 
