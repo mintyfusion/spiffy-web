@@ -12,15 +12,67 @@
         @extend .extraBold67;
     }
 
+    h2 {
+        @extend .extraBold41;
+    }
+
+    .blockContainer {
+        div {
+            flex: 1;
+            margin: 2rem 4rem 2rem 0;
+        }
+
+        blockquote {
+            flex: 2;
+        }
+    }
+
+    blockquote {
+        p:nth-child(odd) {
+            @extend .bold-desktop41-mobile25;
+        }
+
+        p:nth-child(even) {
+            @extend .bold25;
+            text-align: right;
+        }
+    }
+
+    .logoIcon {
+        object-fit: contain;
+        max-width: 100px;
+    }
+
+    img:not(.logoIcon) {
+        width: 100%;
+        object-fit: cover;
+    }
+
     @include media(">=desktop") {
         .mediaContainer {
             margin: 5rem 0;
+        }
+
+        .blockContainer {
+            div {
+                border-right: 3px solid $light-grey;
+            }
         }
     }
 
     @include media("<desktop") {
         .mediaContainer {
             margin: 3rem 0;
+            margin-right: 4rem;
+        }
+
+        .blockContainer {
+            div {
+                width: fit-content;
+                margin: 0;
+                border-bottom: 3px solid grey;
+                padding-bottom: 1rem;
+            }
         }
     }
 }

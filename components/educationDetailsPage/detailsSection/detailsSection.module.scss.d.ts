@@ -1,9 +1,11 @@
 export type Styles = {
   "backgroundPattern": string;
+  "blockContainer": string;
   "bold109": string;
   "bold150": string;
   "bold178": string;
   "bold24": string;
+  "bold25": string;
   "bold32": string;
   "bold41": string;
   "bold60": string;
@@ -11,11 +13,13 @@ export type Styles = {
   "bold90": string;
   "boldDesktop41Mobile25": string;
   "detailsContainer": string;
+  "extraBold41": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
+  "logoIcon": string;
   "mediaContainer": string;
   "regular14": string;
   "regular16": string;

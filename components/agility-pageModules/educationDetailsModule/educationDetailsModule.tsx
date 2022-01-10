@@ -25,11 +25,11 @@ const EducationDetailsModule = (props:
 
     return (
         <div>
-                <div className={styles.container}>
-                    <Breadcrumb blogId={fields.name} />
-                    <DetailsSection {...preparedData} />
-                    <ShareSection content={detailsSocialData} />
-                </div>
+            <div className={styles.container}>
+                <Breadcrumb blogId={fields.name} />
+                <DetailsSection {...preparedData} />
+                <ShareSection content={detailsSocialData} />
+            </div>
         </div>
     );
 };
