@@ -5,6 +5,7 @@ export type Styles = {
   "animation4": string;
   "animationGrid": string;
   "animationText": string;
+  "avatar": string;
   "avatarAnimation": string;
   "avatarGreen": string;
   "avatarHeading": string;
@@ -31,6 +32,7 @@ export type Styles = {
   "boldDesktop41Mobile25": string;
   "boldGame41": string;
   "boldGame67": string;
+  "card": string;
   "coin": string;
   "coinAnimatonMobile": string;
   "coinDefault": string;

@@ -49,6 +49,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         else if (percent === "100") {
             const avatarDuplicate = Array(hundredPercent).fill(avatar);
             setAvatars(avatarDuplicate.flat());
+            props.signupAnimation();
         }
         else if (percent === "1") {
             setAvatars([]);
