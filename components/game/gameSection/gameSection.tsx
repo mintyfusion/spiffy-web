@@ -1,24 +1,25 @@
-import { Element, Link, animateScroll as scroll, scroller } from "react-scroll";
-import Image from "next/image";
-import React, { CSSProperties } from "react";
+import { Element, Link, scroller } from "react-scroll";
+import Avatar from "../avatar/avatar";
+import AvatarType from "./enums/avatarTypes";
 import data from "components/game/gameSection/gameSectionContent";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
-import Avatar from "../avatar/avatar";
-import AvatarType from "./enums/avatarTypes";
+import Image from "next/image";
+import React, { CSSProperties } from "react";
 import styles from "components/game/gameSection/gameSection.module.scss";
+
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
-const rowCenter = flexbox({ vAlign: "center", hAlign: "center", });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
 const donationDivide = 2;
-const friendsLength = 4;
 const friendsTimeout = 5000;
 const avatarTimeout = 1000;
-const animationtimeout = 2000;
 const donationFormula = 5;
+const boundDivide = 2;
+const friendsLength = 4;
+
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<IAvatar>();
@@ -30,13 +31,17 @@ const GameSection = (): JSX.Element => {
     const [fullscreenView, serFullscreenView] = React.useState<boolean>(false);
     const [avatatStyles, setAvatatStyles] = React.useState<Record<AvatarType, CSSProperties> | undefined>();
     const [friendsStyle, setFriendsStyle] = React.useState<Record<AvatarType, CSSProperties> | undefined>();
+    const [freindsCount, setFriendsCount] = React.useState<number>(0);
+
     const start = React.createRef<HTMLDivElement>();
     const target = React.createRef<HTMLDivElement>();
     const stepThree = React.createRef<HTMLDivElement>();
     const fullscreen = React.createRef<HTMLDivElement>();
+    const friendsRef = React.createRef<HTMLDivElement>();
+
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
-        if (friendsStyle && Object.keys(friendsStyle).length === friendsLength) {
+        if (freindsCount === friendsLength) {
             scroller.scrollTo("4", {
                 duration: 700,
                 smooth: true,
@@ -48,8 +53,10 @@ const GameSection = (): JSX.Element => {
                 clearTimeout(timer);
             }, friendsTimeout);
         }
+
         return () => clearTimeout(timer);
-    }, [friendsStyle]);
+    }, [freindsCount]);
+
     const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
             scroller.scrollTo("5", {
@@ -64,20 +71,20 @@ const GameSection = (): JSX.Element => {
             }, avatarTimeout);
         }
     }, [donationAmount]);
+
     const getStyles = React.useCallback(() => {
-        console.log(start.current);
         if (start.current) {
             const bounds = start.current.getBoundingClientRect();
             const avatarSize = 160;
-            const cardMidPointX = (bounds.x + bounds.right) / 2;
-            const cardMidPointY = (bounds.y + bounds.bottom) / 2;
+            const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
+            const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 10;
             const left1 = Math.abs(cardMidPointX - avatarSize - space);
             const left2 = Math.abs(cardMidPointX + space);
             const top1 = Math.abs(cardMidPointY - avatarSize + space) + fullscreen.current.scrollTop;
             const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollLeft;
             const styles = {} as Record<AvatarType, CSSProperties>;
-            Object.entries(AvatarType).forEach(([key, value]) => {
+            Object.entries(AvatarType).forEach(([value]) => {
                 switch (value) {
                     case AvatarType.Green:
                         styles[value] = {
@@ -106,10 +113,63 @@ const GameSection = (): JSX.Element => {
                         break;
                 }
             });
+
             return styles;
         }
+
         return null;
     }, [start, fullscreen]);
+
+    const getFriendsStyle = React.useCallback(() => {
+        if (friendsRef.current) {
+            const bounds = friendsRef.current.getBoundingClientRect();
+            const avatarSize = 160;
+            const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
+            const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
+            const space = 10;
+            const left1 = Math.abs(cardMidPointX - avatarSize - space);
+            const left2 = Math.abs(cardMidPointX + space);
+            const top1 = Math.abs(cardMidPointY - avatarSize + space) + fullscreen.current.scrollTop;
+            const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollTop;
+            const styles = {} as Record<AvatarType, CSSProperties>;
+            Object.entries(AvatarType).filter(([filter]) => filter !== selected).forEach(([value], index) => {
+                const keyTwo = 2;
+                const keyThree = 3;
+                switch (index) {
+                    case 0:
+                        styles[value] = {
+                            left: left1,
+                            top: top1,
+                        };
+                        break;
+                    case 1:
+                        styles[value] = {
+                            left: left2,
+                            top: top1,
+                        };
+                        break;
+                    case keyTwo:
+                        styles[value] = {
+                            left: left1,
+                            top: top2,
+                        };
+                        break;
+                    case keyThree:
+                    default:
+                        styles[value] = {
+                            left: left2,
+                            top: top2,
+                        };
+                        break;
+                }
+            });
+
+            return styles;
+        }
+
+        return null;
+    }, [friendsRef, fullscreen]);
+
     const handleBtnClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
             const bounds = target.current.getBoundingClientRect();
@@ -119,12 +179,14 @@ const GameSection = (): JSX.Element => {
                     left: bounds.x + fullscreen.current.scrollLeft,
                 }
             });
+
         }
         const Avatar = data.filter((filter) => filter.id === avatar);
         setFriends(data.filter((filter) => filter.id !== avatar));
         setSelected(avatar);
         setSeletedAvatar(Avatar[0]);
     }, [target, avatatStyles, fullscreen]);
+
     const handleBtnClick2 = React.useCallback((avatar: AvatarType) => {
         if (stepThree.current) {
             const bounds = stepThree.current.getBoundingClientRect();
@@ -134,38 +196,52 @@ const GameSection = (): JSX.Element => {
                     left: bounds.x + fullscreen.current.scrollLeft,
                 }
             });
+            setStep("3");
         }
     }, [stepThree, avatatStyles, fullscreen]);
+
     const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
+            setFriendsCount(freindsCount + 1);
+            const topSpacing = 40;
+            const top2Spacing = 70;
+            const leftSpacing = 90;
+            const left2Spacing = 110;
+
             const bounds = stepThree.current.getBoundingClientRect();
-            const spacing = 180;
-            const cardMidPointX = bounds.x;
-            const cardMidPointY = bounds.y;
-            const left1 = Math.abs(cardMidPointX - spacing);
-            const left2 = Math.abs(cardMidPointX - spacing);
-            const rigth1 = Math.abs(cardMidPointX + 10);
-            const rigth2 = Math.abs(cardMidPointX + 10);
-            const top1 = Math.abs(cardMidPointY - 90);
-            const top2 = Math.abs(cardMidPointY + 25);
+            const top = bounds.y + fullscreen.current.scrollTop - topSpacing;
+            const left = bounds.x + fullscreen.current.scrollLeft - leftSpacing;
+            const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing;
+            const left2 = bounds.x + fullscreen.current.scrollLeft + left2Spacing;
+
+            const keyTwo = 2;
+            const keyThree = 3;
             switch (index) {
                 case 0:
                     setFriendsStyle({
                         ...friendsStyle, [value]: {
-                            top: top1,
-                            left: left1,
+                            top,
+                            left,
                         }
                     });
                     break;
                 case 1:
                     setFriendsStyle({
                         ...friendsStyle, [value]: {
-                            top: top1,
-                            left: rigth1,
+                            top,
+                            left: left2,
                         }
                     });
                     break;
-                case 2:
+                case keyTwo:
+                    setFriendsStyle({
+                        ...friendsStyle, [value]: {
+                            top: top2,
+                            left,
+                        }
+                    });
+                    break;
+                case keyThree:
                     setFriendsStyle({
                         ...friendsStyle, [value]: {
                             top: top2,
@@ -173,30 +249,26 @@ const GameSection = (): JSX.Element => {
                         }
                     });
                     break;
-                case 3:
-                    setFriendsStyle({
-                        ...friendsStyle, [value]: {
-                            top: top2,
-                            left: rigth2,
-                        }
-                    });
-                    break;
             }
         }
     }, [friendsStyle, stepThree]);
+
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
         if (styles) {
             setAvatatStyles(styles);
         }
     }, [getStyles]);
+
     React.useEffect(() => {
         const timer: NodeJS.Timeout = setTimeout(() => {
             setAvatarPositions();
             clearTimeout(timer);
         }, friendsTimeout);
+
         return () => clearTimeout(timer);
     }, [setAvatarPositions]);
+
     const fullscreenHandler = React.useCallback(() => {
         const docElmWithBrowsersFullScreenFunctions = fullscreen.current as HTMLDivElement & {
             mozRequestFullScreen(): Promise<void>;
@@ -204,19 +276,20 @@ const GameSection = (): JSX.Element => {
             msRequestFullscreen(): Promise<void>;
         };
         if (docElmWithBrowsersFullScreenFunctions.requestFullscreen) {
-            docElmWithBrowsersFullScreenFunctions.requestFullscreen();
+            void docElmWithBrowsersFullScreenFunctions.requestFullscreen();
             serFullscreenView(true);
         } else if (docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen) { /* Firefox */
-            docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen();
+            void docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen();
             serFullscreenView(true);
         } else if (docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-            docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen();
+            void docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen();
             serFullscreenView(true);
         } else if (docElmWithBrowsersFullScreenFunctions.msRequestFullscreen) { /* IE/Edge */
-            docElmWithBrowsersFullScreenFunctions.msRequestFullscreen();
+            void docElmWithBrowsersFullScreenFunctions.msRequestFullscreen();
             serFullscreenView(true);
         }
     }, [fullscreen]);
+
     const signupAnimation = React.useCallback(() => {
         scroller.scrollTo("6", {
             duration: 700,
@@ -225,32 +298,47 @@ const GameSection = (): JSX.Element => {
             delay: 2000
         });
     }, []);
+
     React.useEffect(() => {
-        window.addEventListener("resize", setAvatarPositions);
-    }, [setAvatarPositions]);
+        if (step === "1") {
+            window.addEventListener("resize", setAvatarPositions);
+        }
+
+    }, [setAvatarPositions, step]);
+
+    React.useEffect(() => {
+        if (step === "3") {
+            setFriendsStyle(getFriendsStyle);
+        }
+
+    }, [step]);
+
     return (
         <div>
             <div id="containerElement" ref={fullscreen} style={{ height: "100vh", overflow: "hidden", backgroundColor: "#f2f2f2" }}>
-                <div className={styles.container}>
+                {fullscreenView ? <div className={styles.container}>
                     <div className={styles.card} ref={start}>
                         <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
-                        {Object.entries(AvatarType).filter(([filter]) => filter !== AvatarType.Orange).map(([key, value]) =>
-                            <Link
-                                key={key}
-                                style={{
-                                    ...avatatStyles && avatatStyles[value],
-                                }}
-                                onClick={() => handleBtnClick(value)}
-                                to="2"
-                                smooth={true}
-                                duration={700}
-                                containerId="containerElement"
-                                className={styles.avatar}
-                            >
-                                <Avatar color={value} />
-                            </Link>
-                        )}
+                        {Object.entries(AvatarType)
+                            .filter(([filter]) => filter !== AvatarType.Orange)
+                            .map(([key, value]) =>
+                                <Link
+                                    key={key}
+                                    style={{
+                                        ...avatatStyles && avatatStyles[value],
+                                    }}
+                                    onClick={() => handleBtnClick(value)}
+                                    to="2"
+                                    smooth={true}
+                                    duration={700}
+                                    containerId="containerElement"
+                                    className={styles.avatar}
+                                >
+                                    <Avatar color={value} />
+                                </Link>
+                            )}
                     </div>
+
                     <Element name="2" className={styles.card}>
                         <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                             <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
@@ -269,31 +357,35 @@ const GameSection = (): JSX.Element => {
                             </div>
                         </div>
                     </Element>
+
                     <Element name="3" className={styles.card}>
-                        <div className={`${styles.gameStepThree} ${rowHBetween} position-relative`}>
+                        <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                             <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                                 <h2 className={styles.avatarHeading}>Add four friends.</h2>
                                 <div style={{ width: "148px", height: "148px", display: "block" }} ref={stepThree}></div>
                                 <h3>{avatarName}</h3>
                             </div>
-                            <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`}>
+                            <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`} ref={friendsRef}>
                                 <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                                <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                                    {Object.entries(AvatarType).filter(([filter]) => filter !== selected).map(([key, value], index) =>
-                                        <div
-                                            key={key}
-                                            style={{
-                                                ...friendsStyle && friendsStyle[value],
-                                            }}
-                                            onClick={() => friendsAnimation(index, value)}
-                                        >
-                                            <Avatar color={value} />
-                                        </div>
-                                    )}
-                                </div>
+                                {step === "3" ? <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
+                                    {Object.entries(AvatarType)
+                                        .filter(([filter]) => filter !== selected)
+                                        .map(([key, value], index) =>
+                                            <div
+                                                key={key}
+                                                style={{
+                                                    ...friendsStyle && friendsStyle[value],
+                                                }}
+                                                onClick={() => friendsAnimation(index, value)}
+                                            >
+                                                <Avatar color={value} />
+                                            </div>
+                                        )}
+                                </div> : null}
                             </div>
                         </div>
                     </Element>
+
                     <Element name="4" className={styles.donationSections}>
                         <div className={styles.card}>
                             <div className={`${rowHCenter} ${styles.stepFour}`}>
@@ -316,7 +408,8 @@ const GameSection = (): JSX.Element => {
                                             setDonationAmount(e.target.value);
                                             animationHandler(e.target.value);
                                         }}>
-                                            {donation.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
+                                            {donation.map((donation, donationKey) =>
+                                                <option key={donationKey}>{donation}</option>)}
                                         </select>
                                     </div>
                                 </div>
@@ -358,10 +451,16 @@ const GameSection = (): JSX.Element => {
                         </div>
                         {donationAmount ?
                             <div className={styles.card}>
-                                <GameAvatarList friends={friends} selected={seletedAvatar} name={avatarName} setStep={setStep} signupAnimation={signupAnimation} />
+                                <GameAvatarList
+                                    friends={friends}
+                                    selected={seletedAvatar}
+                                    name={avatarName}
+                                    setStep={setStep}
+                                    signupAnimation={signupAnimation} />
                             </div> :
                             null}
                     </Element>
+
                     <Element name="6" className={styles.card}>
                         <div className={styles.gameStepSix}>
                             <div className={`${colCenter} ${styles.signUpsection}`}>
@@ -372,7 +471,8 @@ const GameSection = (): JSX.Element => {
                         </div>
                     </Element>
                 </div>
-                <button onClick={() => fullscreenHandler()}>Fullscreen</button>
+                    : <button onClick={() => fullscreenHandler()}>Fullscreen</button>}
+
             </div>
         </div >
     );
