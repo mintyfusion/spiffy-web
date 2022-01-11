@@ -1,4 +1,5 @@
 import { Col, Row, Stack, } from "react-bootstrap";
+import { ContentItem } from "@agility/nextjs";
 import { Swiper } from "swiper";
 import { SwiperSlide } from "swiper/react";
 import Image from "next/image";
@@ -29,13 +30,13 @@ const VerticalContentSection = (props: IVerticalSectionProps): JSX.Element => {
     return <Stack className={`${styles.content3} position-relative`} >
         <Row className={`m-0 ${styles.container}`}>
             <h1 className={`${styles.headerEmphasisText} position-absolute`}>
-                {props.content[currentIndex].highlightedWord}
+                {props.content[currentIndex].fields.highlightedWord}
             </h1>
             <Col
                 className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0`}
             >
                 <VerticalSwiper onActiveIndexChange={onActiveIndexChange}>
-                    {props.content.map((content: IVerticalContentData, index) =>
+                    {props.content.map((content: ContentItem<IVerticalContentData>, index) =>
                         <SwiperSlide key={index}>
                             <Row className={`${rowHAlignCenter} w-100 m-0`}>
                                 <Col>
@@ -48,8 +49,8 @@ const VerticalContentSection = (props: IVerticalSectionProps): JSX.Element => {
                                                 <h2
                                                     className={`${styles.panelHeader} text-center text-md-end m-0`}
                                                     dangerouslySetInnerHTML={{
-                                                        __html: styleWords(content.header, [{
-                                                            text: content.highlightedWord,
+                                                        __html: styleWords(content.fields.header, [{
+                                                            text: content.fields.highlightedWord,
                                                             className: styles.highlightText,
                                                         }])
                                                     }}
@@ -61,7 +62,7 @@ const VerticalContentSection = (props: IVerticalSectionProps): JSX.Element => {
                                 {isViewportDesktop &&
                                     <Col className="p-0">
                                         <Image
-                                            src={content.image.src}
+                                            src={content.fields.image.url}
                                             width="1045"
                                             height="1099"
                                             layout="responsive"

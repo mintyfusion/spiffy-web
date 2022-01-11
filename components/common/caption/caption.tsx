@@ -11,29 +11,36 @@ const rowHAlignCenter = flexbox({ hAlign: "center" });
 
 const Caption = (props: ICaptionProps): JSX.Element => {
     const {
-        secondaryText,
-        primaryText,
-        primaryTextEmphasis,
-        textList
+        title,
+        description
     } = props.content;
+
+    const preparedData = React.useMemo(() => title.split("\n"), [title]);
 
     return (
         <div className={`carousel-caption ${styles.caption} ${props.captionContainerClass}`}>
             <Stack className={`${styles.banner}`}>
                 <Row className={`${rowHAlignCenter} ${styles.captionContent} `}>
                     <Col className={`${columnAlignCenter} align-items-center no-gutters`}>
-                        <h3 role="secondary-text">{secondaryText}</h3>
-                        <h2 role="primary-text">
-                            {primaryText}
-                            <label role="emphasis-text">{primaryTextEmphasis}</label>
-                        </h2>
-                        {textList.map((text: string, index: number) =>
+                        {preparedData.length > 1
+                            ? <>
+                                <h3 role="secondary-text">{preparedData[0]}</h3>
+                                <h2 role="primary-text">
+                                    {preparedData[1]}
+                                    <label role="emphasis-text">{preparedData[2]}</label>
+                                </h2>
+                            </>
+                            : <h2 role="primary-text">
+                                {preparedData[0]}
+                            </h2>
+                        }
+                        {description.split("\n").map((text: string, index: number) =>
                             <h4 key={index} role="text-list">{text}</h4>)
                         }
                     </Col>
                 </Row>
             </Stack>
-        </div>
+        </div >
     );
 };
 

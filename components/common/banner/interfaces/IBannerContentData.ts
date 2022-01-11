@@ -1,7 +1,7 @@
 import { ImageProps } from "next/image";
-import ICaptionContent from "components/common/caption/interfaces/ICaptionContent";
+import IContentInfo from "types/IContentnfo";
 
 export default interface IBannerContentData {
     images: ImageProps[];
-    content: ICaptionContent;
+    content: IContentInfo;
 }

@@ -1,8 +1,8 @@
-import { ImageProps } from "next/image";
+import { ImageField } from "@agility/nextjs";
 
 export default interface IVerticalContentData {
     id: string;
     header: string;
     highlightedWord: string;
-    image: ImageProps;
+    image: Partial<ImageField>;
 }

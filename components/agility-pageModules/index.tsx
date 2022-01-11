@@ -4,14 +4,20 @@ import CommonContentModule from "components/agility-pageModules/common/commonCon
 import EducationDetailsModule from "components/agility-pageModules/educationDetailsModule/educationDetailsModule";
 import EducationListingModule from "components/agility-pageModules/educationModule/contentSection/contentSection";
 import HeroModule from "components/agility-pageModules/HeroModule";
-import LandingPageEducation from "components/agility-pageModules/LandingPageEducation";
+import LandingFeaturesModule from "components/agility-pageModules/landingPage/featuresModule/LandingFeaturesModule";
+import LandingPageEducation from "components/agility-pageModules/landingPage/educationModule/landingPageEducation";
+import LandingPageGetStarted from "components/agility-pageModules/landingPage/getStartedModule/landingPageGetStarted";
+import LandingPageVerticalModule from "components/agility-pageModules/landingPage/verticalModule/landingPageVerticalModule";
 
 const allModules = [
   { name: "EducationListingModule", module: EducationListingModule },
   { name: "HeroModule", module: HeroModule },
   { name: "LandingPageEducation", module: LandingPageEducation },
   { name: "CommonContentModule", module: CommonContentModule },
-  { name: "EducationDetailsModule", module: EducationDetailsModule }
+  { name: "EducationDetailsModule", module: EducationDetailsModule },
+  { name: "LandingPageGetStarted", module: LandingPageGetStarted },
+  { name: "LandingFeaturesModule", module: LandingFeaturesModule },
+  { name: "LandingPageVerticalModule", module: LandingPageVerticalModule },
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,6 +1,6 @@
-import ICaptionContent from "components/common/caption/interfaces/ICaptionContent";
+import IContentInfo from "types/IContentnfo";
 
 export default interface ICaptionProps {
-    content: ICaptionContent;
+    content: IContentInfo;
     captionContainerClass?: string;
 }

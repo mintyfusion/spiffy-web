@@ -1,5 +1,5 @@
-import ICaptionContent from "components/common/caption/interfaces/ICaptionContent";
+import IContentInfo from "types/IContentnfo";
 
 export default interface IBannerSectionProps {
-    content: ICaptionContent;
+    content: IContentInfo;
 }

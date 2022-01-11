@@ -57,7 +57,6 @@ const Navbar = (props: INavbarProps): JSX.Element => {
             <Link href="/" className={`${styles.headerLogo} me-lg-3 me-xl-5`}>
                 <Logo variant={LogoVariants.header} />
             </Link>
-
             <div
                 className={`
                     border-0
