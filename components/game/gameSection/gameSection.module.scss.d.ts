@@ -51,6 +51,7 @@ export type Styles = {
   "donationInner": string;
   "donationMobile": string;
   "donations": string;
+  "donationSections": string;
   "example": string;
   "extraBold67": string;
   "extraBold90": string;

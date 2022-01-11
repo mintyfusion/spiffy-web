@@ -23,6 +23,7 @@
 
 .gameStepFive {
     @include gameContentPadding(100px 0);
+    width: 100%;
 
     h4 {
         @extend .regular-desktop25-mobile16;

@@ -34,6 +34,7 @@ const GameSection = (): JSX.Element => {
     const [animation, setAnimation] = React.useState<boolean>(false);
     const [fullscreenView, serFullscreenView] = React.useState<boolean>(false);
     const [avatatStyles, setAvatatStyles] = React.useState<Record<AvatarType, CSSProperties> | undefined>();
+    const [friendsStyle, setFriendsStyle] = React.useState<Record<AvatarType, CSSProperties> | undefined>();
 
     const start = React.createRef<HTMLDivElement>();
     const target = React.createRef<HTMLDivElement>();
@@ -42,7 +43,7 @@ const GameSection = (): JSX.Element => {
 
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
-        if (friends.filter((filter) => filter.className).length === friendsLength) {
+        if (friendsStyle && Object.keys(friendsStyle).length === friendsLength) {
             scroller.scrollTo("4", {
                 duration: 700,
                 smooth: true,
@@ -56,15 +57,7 @@ const GameSection = (): JSX.Element => {
         }
 
         return () => clearTimeout(timer);
-    }, [friends]);
-
-    const friendsHandler = (i: IAvatar) => {
-        const selectedFriendId = friends.findIndex(element => element.id == i.id);
-        const freindsClassUpdate = [...friends];
-        freindsClassUpdate[selectedFriendId] =
-            { ...freindsClassUpdate[selectedFriendId], className: styles.friendsAnimation };
-        setFriends(freindsClassUpdate);
-    };
+    }, [friendsStyle]);
 
     const animationHandler = (donation: string) => {
         if (donation !== donationAmount) {
@@ -81,17 +74,17 @@ const GameSection = (): JSX.Element => {
         }
     };
 
-    const getStyles = () => {
+    const getStyles = React.useCallback(() => {
         if (start.current) {
             const bounds = start.current.getBoundingClientRect();
-            const avatarSize = 140;
+            const avatarSize = 160;
             const cardMidPointX = (bounds.x + bounds.right) / 2;
             const cardMidPointY = (bounds.y + bounds.bottom) / 2;
-            const space = 0;
+            const space = 10;
             const left1 = Math.abs(cardMidPointX - avatarSize - space);
             const left2 = Math.abs(cardMidPointX + space);
             const top1 = Math.abs(cardMidPointY - avatarSize + space) + fullscreen.current.scrollTop;
-            const top2 = Math.abs(cardMidPointY - space) + fullscreen.current.scrollLeft;
+            const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollLeft;
 
             const styles = {} as Record<AvatarType, CSSProperties>;
             Object.entries(AvatarType).forEach(([key, value]) => {
@@ -131,7 +124,7 @@ const GameSection = (): JSX.Element => {
         }
 
         return null;
-    };
+    }, [start, fullscreen]);
 
     const handleBtnClick = (avatar: AvatarType) => {
         if (target.current) {
@@ -161,19 +154,78 @@ const GameSection = (): JSX.Element => {
         }
     };
 
-    const setAvatarPositions = () => {
+    const friendsAnimation = (index: number, value: AvatarType) => {
+        if (stepThree.current) {
+            const bounds = stepThree.current.getBoundingClientRect();
+            const spacing = 180;
+            const cardMidPointX = bounds.x;
+            const cardMidPointY = bounds.y;
+            const left1 = Math.abs(cardMidPointX - spacing);
+            const left2 = Math.abs(cardMidPointX - spacing);
+            const rigth1 = Math.abs(cardMidPointX + 10);
+            const rigth2 = Math.abs(cardMidPointX + 10);
+            const top1 = Math.abs(cardMidPointY - 90);
+            const top2 = Math.abs(cardMidPointY + 25);
+            switch (index) {
+                case 0:
+                    setFriendsStyle({
+                        ...friendsStyle, [value]: {
+                            top: top1,
+                            left: left1,
+                        }
+                    });
+                    break;
+                case 1:
+                    setFriendsStyle({
+                        ...friendsStyle, [value]: {
+                            top: top1,
+                            left: rigth1,
+                        }
+                    });
+                    break;
+                case 2:
+                    setFriendsStyle({
+                        ...friendsStyle, [value]: {
+                            top: top2,
+                            left: left2,
+                        }
+                    });
+                    break;
+                case 3:
+                    setFriendsStyle({
+                        ...friendsStyle, [value]: {
+                            top: top2,
+                            left: rigth2,
+                        }
+                    });
+                    break;
+
+            }
+
+        }
+    }
+
+    const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
+        console.log(start.current);
         if (styles) {
             setAvatatStyles(styles);
         }
-    };
+    }, [start]);
 
     React.useEffect(() => {
-        setAvatarPositions();
+        let timer: NodeJS.Timeout;
+
+        timer = setTimeout(() => {
+            setAvatarPositions();
+            clearTimeout(timer);
+        }, friendsTimeout);
+
+        return () => clearTimeout(timer);
+
     }, [fullscreenView]);
 
     const fullscreenHandler = () => {
-        let elem = fullscreen.current;
 
         const docElmWithBrowsersFullScreenFunctions = fullscreen.current as HTMLDivElement & {
             mozRequestFullScreen(): Promise<void>;
@@ -205,11 +257,15 @@ const GameSection = (): JSX.Element => {
         });
     }
 
+    React.useEffect(() => {
+        window.addEventListener("resize", setAvatarPositions);
+    }, []);
+
     return (
         <div>
             <div id="containerElement" ref={fullscreen} style={{ height: "100vh", overflow: "hidden", backgroundColor: "#f2f2f2" }}>
-                {fullscreenView ? <div className={styles.container}>
-                    <div className={styles.card} ref={start}>
+                <div className={styles.container}>
+                    <div className={styles.card} ref={start} id="start">
                         <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
                         {Object.entries(AvatarType).filter(([filter]) => filter !== AvatarType.Orange).map(([key, value]) =>
                             <Link
@@ -260,82 +316,93 @@ const GameSection = (): JSX.Element => {
                             <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`}>
                                 <h2 className={styles.avatarHeading}>Add four friends.</h2>
                                 <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                                    {friends.map((i, k) => <div className={i.className} key={k}>
-                                        <Image
-                                            {...i.image}
-                                            onClick={() => friendsHandler(i)} />
-                                    </div>)}
+                                    {Object.entries(AvatarType).filter(([filter]) => filter !== selected).map(([key, value], index) =>
+                                        <div
+                                            key={key}
+                                            style={{
+                                                ...friendsStyle && friendsStyle[value],
+                                            }}
+                                            onClick={() => friendsAnimation(index, value)}
+                                        >
+                                            <Avatar color={value} />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </Element>
 
-                    <Element name="4" className={`${styles.card} overflow-auto`}>
-                        <div className={`${rowHCenter} ${styles.stepFour}`}>
-                            <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
-                            <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
-                            <div className={`${styles.donationDesktop}`}>
-                                <div className={`${rowHBetween}`}>
-                                    {donation.map((donation, donationKey) => <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`}
-                                        onClick={() => {
-                                            setDonationAmount(donation);
-                                            animationHandler(donation);
+                    <Element name="4" className={styles.donationSections}>
+                        <div className={styles.card}>
+                            <div className={`${rowHCenter} ${styles.stepFour}`}>
+                                <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
+                                <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
+                                <div className={`${styles.donationDesktop}`}>
+                                    <div className={`${rowHBetween}`}>
+                                        {donation.map((donation, donationKey) => <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`}
+                                            onClick={() => {
+                                                setDonationAmount(donation);
+                                                animationHandler(donation);
+                                            }}>
+                                            <h4>{donation}</h4>
+                                        </div>)}
+                                    </div>
+                                </div>
+                                <div className={"d-sm-none"}>
+                                    <div className={`${rowHBetween}`}>
+                                        <select onChange={(e) => {
+                                            setDonationAmount(e.target.value);
+                                            animationHandler(e.target.value);
                                         }}>
-                                        <h4>{donation}</h4>
-                                    </div>)}
-                                </div>
-                            </div>
-                            <div className={"d-sm-none"}>
-                                <div className={`${rowHBetween}`}>
-                                    <select onChange={(e) => {
-                                        setDonationAmount(e.target.value);
-                                        animationHandler(e.target.value);
-                                    }}>
-                                        {donation.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
-                                <h2>Donation Cycle</h2>
-                                <div className={`${animation ? styles.coin : styles.coinDefault}`}>
-                                    <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
-                                </div>
-                                <div className={styles.userDonation}>
-                                    <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
-                                </div>
-                                <p>${Number(donationAmount) / donationDivide}</p>
-                                <h3>Content Creators</h3>
-                            </div>
-                            {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative w-100`}>
-                                <div className={styles.donationCycleItems}>
-                                    <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
-                                    <span>$0.50</span>
-                                    <h3 className="position-absolute">Early Adapters</h3>
-                                </div>
-                                {data.concat(friends).map((i, k) => (
-                                    <div className={styles.donationCycleItems} key={k}>
-                                        <Image {...i.image} width={56} height={63} />
-                                        <span>${Number(donationAmount) / donationFormula / donationFormula}0</span>
+                                            {donation.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
+                                        </select>
                                     </div>
-                                ))}
+                                </div>
 
-                                <div>
-                                    <div className={styles.animationText}>
-                                        <h2>Spiffy Corp.</h2>
-                                        <p>We’re totally reliant on this cents to keep us going.</p>
+                                <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
+                                    <h2>Donation Cycle</h2>
+                                    <div className={`${animation ? styles.coin : styles.coinDefault}`}>
+                                        <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
                                     </div>
+                                    <div className={styles.userDonation}>
+                                        <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
+                                    </div>
+                                    <p>${Number(donationAmount) / donationDivide}</p>
+                                    <h3>Content Creators</h3>
+                                </div>
+                                {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative w-100`}>
                                     <div className={styles.donationCycleItems}>
-                                        <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
+                                        <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                                         <span>$0.50</span>
+                                        <h3 className="position-absolute">Early Adapters</h3>
                                     </div>
-                                </div>
-                            </div> : null}
-                        </div>
-                    </Element>
+                                    {data.concat(friends).map((i, k) => (
+                                        <div className={styles.donationCycleItems} key={k}>
+                                            <Image {...i.image} width={56} height={63} />
+                                            <span>${Number(donationAmount) / donationFormula / donationFormula}0</span>
+                                        </div>
+                                    ))}
 
-                    <Element name="5" className={styles.card}>
-                        {donationAmount ? <GameAvatarList friends={friends} selected={seletedAvatar} name={avatarName} setStep={setStep} signupAnimation={signupAnimation} /> : null}
+                                    <div>
+                                        <div className={styles.animationText}>
+                                            <h2>Spiffy Corp.</h2>
+                                            <p>We’re totally reliant on this cents to keep us going.</p>
+                                        </div>
+                                        <div className={styles.donationCycleItems}>
+                                            <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
+                                            <span>$0.50</span>
+                                        </div>
+                                    </div>
+                                </div> : null}
+                            </div>
+                        </div>
+
+                        {donationAmount ?
+                            <div className={styles.card}>
+                                <GameAvatarList friends={friends} selected={seletedAvatar} name={avatarName} setStep={setStep} signupAnimation={signupAnimation} />
+                            </div> :
+                            null}
+
                     </Element>
 
                     <Element name="6" className={styles.card}>
@@ -348,10 +415,10 @@ const GameSection = (): JSX.Element => {
                         </div>
                     </Element>
 
-                </div> : <button onClick={() => fullscreenHandler()}>Fullscreen</button>}
-
+                </div>
+                <button onClick={() => fullscreenHandler()}>Fullscreen</button>
             </div>
-        </div>
+        </div >
     );
 };
 export default GameSection;
