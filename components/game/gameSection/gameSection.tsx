@@ -174,8 +174,26 @@ const GameSection = (): JSX.Element => {
 
     const fullscreenHandler = () => {
         let elem = fullscreen.current;
-        elem.requestFullscreen();
-        serFullscreenView(true);
+
+        const docElmWithBrowsersFullScreenFunctions = fullscreen.current as HTMLDivElement & {
+            mozRequestFullScreen(): Promise<void>;
+            webkitRequestFullscreen(): Promise<void>;
+            msRequestFullscreen(): Promise<void>;
+        };
+
+        if (docElmWithBrowsersFullScreenFunctions.requestFullscreen) {
+            docElmWithBrowsersFullScreenFunctions.requestFullscreen();
+            serFullscreenView(true);
+        } else if (docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen) { /* Firefox */
+            docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen();
+            serFullscreenView(true);
+        } else if (docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen();
+            serFullscreenView(true);
+        } else if (docElmWithBrowsersFullScreenFunctions.msRequestFullscreen) { /* IE/Edge */
+            docElmWithBrowsersFullScreenFunctions.msRequestFullscreen();
+            serFullscreenView(true);
+        }
     }
 
     const signupAnimation = () => {
