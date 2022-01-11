@@ -1,4 +1,4 @@
-import { Element, Link, animateScroll as scroll, scroller } from "react-scroll";
+import { Element, Link, scroller } from "react-scroll";
 import Image from "next/image";
 import React, { CSSProperties } from "react";
 
@@ -74,7 +74,7 @@ const GameSection = (): JSX.Element => {
         }
     };
 
-    const getStyles = React.useCallback(() => {
+    const getStyles = () => {
         if (start.current) {
             const bounds = start.current.getBoundingClientRect();
             const avatarSize = 160;
@@ -124,7 +124,7 @@ const GameSection = (): JSX.Element => {
         }
 
         return null;
-    }, [start, fullscreen]);
+    };
 
     const handleBtnClick = (avatar: AvatarType) => {
         if (target.current) {
@@ -157,6 +157,7 @@ const GameSection = (): JSX.Element => {
     const friendsAnimation = (index: number, value: AvatarType) => {
         if (stepThree.current) {
             const bounds = stepThree.current.getBoundingClientRect();
+            console.log(bounds);
             const spacing = 180;
             const cardMidPointX = bounds.x;
             const cardMidPointY = bounds.y;
@@ -205,13 +206,12 @@ const GameSection = (): JSX.Element => {
         }
     }
 
-    const setAvatarPositions = React.useCallback(() => {
+    const setAvatarPositions = () => {
         const styles = getStyles();
-        console.log(start.current);
         if (styles) {
             setAvatatStyles(styles);
         }
-    }, [start]);
+    };
 
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -259,164 +259,165 @@ const GameSection = (): JSX.Element => {
 
     React.useEffect(() => {
         window.addEventListener("resize", setAvatarPositions);
-    }, []);
+    }, [setAvatarPositions]);
 
     return (
         <div>
             <div id="containerElement" ref={fullscreen} style={{ height: "100vh", overflow: "hidden", backgroundColor: "#f2f2f2" }}>
-                <div className={styles.container}>
-                    <div className={styles.card} ref={start} id="start">
-                        <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
-                        {Object.entries(AvatarType).filter(([filter]) => filter !== AvatarType.Orange).map(([key, value]) =>
-                            <Link
-                                key={key}
-                                style={{
-                                    ...avatatStyles && avatatStyles[value],
-                                }}
-                                onClick={() => handleBtnClick(value)}
-                                to="2"
-                                smooth={true}
-                                duration={700}
-                                containerId="containerElement"
-                                className={styles.avatar}
-                            >
-                                <Avatar color={value} />
-                            </Link>
-                        )}
-                    </div>
-
-                    <Element name="2" className={styles.card}>
-                        <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
-                            <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
-                            <div className={`${colCenter} ${styles.gameStepTwo}`}>
-                                <div style={{ width: "148px", height: "148px" }} ref={target}></div>
-                                <input placeholder="Name" className="w-100 text-center" onChange={(e) => setAvatarName(e.target.value)} />
-                                <Link to="3"
+                {fullscreenView ?
+                    <div className={styles.container}>
+                        <div className={styles.card} ref={start}>
+                            <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
+                            {Object.entries(AvatarType).filter(([filter]) => filter !== AvatarType.Orange).map(([key, value]) =>
+                                <Link
+                                    key={key}
+                                    style={{
+                                        ...avatatStyles && avatatStyles[value],
+                                    }}
+                                    onClick={() => handleBtnClick(value)}
+                                    to="2"
                                     smooth={true}
-                                    duration={700} containerId="containerElement">
-                                    <button disabled={avatarName === ""} onClick={() => {
-                                        handleBtnClick2(selected);
-                                    }}>
-                                        Continue
-                                    </button>
+                                    duration={700}
+                                    containerId="containerElement"
+                                    className={styles.avatar}
+                                >
+                                    <Avatar color={value} />
                                 </Link>
-
-                            </div>
+                            )}
                         </div>
-                    </Element>
 
-                    <Element name="3" className={styles.card}>
-                        <div className={`${styles.gameStepThree} ${rowHBetween} position-relative`}>
-                            <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
-                                <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                                <div style={{ width: "148px", height: "148px", display: "block" }} ref={stepThree}></div>
-                                <h3>{avatarName}</h3>
-                            </div>
-
-                            <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`}>
-                                <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                                <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                                    {Object.entries(AvatarType).filter(([filter]) => filter !== selected).map(([key, value], index) =>
-                                        <div
-                                            key={key}
-                                            style={{
-                                                ...friendsStyle && friendsStyle[value],
-                                            }}
-                                            onClick={() => friendsAnimation(index, value)}
-                                        >
-                                            <Avatar color={value} />
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </Element>
-
-                    <Element name="4" className={styles.donationSections}>
-                        <div className={styles.card}>
-                            <div className={`${rowHCenter} ${styles.stepFour}`}>
-                                <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
-                                <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
-                                <div className={`${styles.donationDesktop}`}>
-                                    <div className={`${rowHBetween}`}>
-                                        {donation.map((donation, donationKey) => <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`}
-                                            onClick={() => {
-                                                setDonationAmount(donation);
-                                                animationHandler(donation);
-                                            }}>
-                                            <h4>{donation}</h4>
-                                        </div>)}
-                                    </div>
-                                </div>
-                                <div className={"d-sm-none"}>
-                                    <div className={`${rowHBetween}`}>
-                                        <select onChange={(e) => {
-                                            setDonationAmount(e.target.value);
-                                            animationHandler(e.target.value);
+                        <Element name="2" className={styles.card}>
+                            <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
+                                <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
+                                <div className={`${colCenter} ${styles.gameStepTwo}`}>
+                                    <div style={{ width: "148px", height: "148px" }} ref={target}></div>
+                                    <input placeholder="Name" className="w-100 text-center" onChange={(e) => setAvatarName(e.target.value)} />
+                                    <Link to="3"
+                                        smooth={true}
+                                        duration={700} containerId="containerElement">
+                                        <button disabled={avatarName === ""} onClick={() => {
+                                            handleBtnClick2(selected);
                                         }}>
-                                            {donation.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
-                                        </select>
-                                    </div>
-                                </div>
+                                            Continue
+                                        </button>
+                                    </Link>
 
-                                <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
-                                    <h2>Donation Cycle</h2>
-                                    <div className={`${animation ? styles.coin : styles.coinDefault}`}>
-                                        <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
-                                    </div>
-                                    <div className={styles.userDonation}>
-                                        <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
-                                    </div>
-                                    <p>${Number(donationAmount) / donationDivide}</p>
-                                    <h3>Content Creators</h3>
                                 </div>
-                                {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative w-100`}>
-                                    <div className={styles.donationCycleItems}>
-                                        <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
-                                        <span>$0.50</span>
-                                        <h3 className="position-absolute">Early Adapters</h3>
-                                    </div>
-                                    {data.concat(friends).map((i, k) => (
-                                        <div className={styles.donationCycleItems} key={k}>
-                                            <Image {...i.image} width={56} height={63} />
-                                            <span>${Number(donationAmount) / donationFormula / donationFormula}0</span>
-                                        </div>
-                                    ))}
-
-                                    <div>
-                                        <div className={styles.animationText}>
-                                            <h2>Spiffy Corp.</h2>
-                                            <p>We’re totally reliant on this cents to keep us going.</p>
-                                        </div>
-                                        <div className={styles.donationCycleItems}>
-                                            <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
-                                            <span>$0.50</span>
-                                        </div>
-                                    </div>
-                                </div> : null}
                             </div>
-                        </div>
+                        </Element>
 
-                        {donationAmount ?
+                        <Element name="3" className={styles.card}>
+                            <div className={`${styles.gameStepThree} ${rowHBetween} position-relative`}>
+                                <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
+                                    <h2 className={styles.avatarHeading}>Add four friends.</h2>
+                                    <div style={{ width: "148px", height: "148px", display: "block" }} ref={stepThree}></div>
+                                    <h3>{avatarName}</h3>
+                                </div>
+
+                                <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`}>
+                                    <h2 className={styles.avatarHeading}>Add four friends.</h2>
+                                    <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
+                                        {Object.entries(AvatarType).filter(([filter]) => filter !== selected).map(([key, value], index) =>
+                                            <div
+                                                key={key}
+                                                style={{
+                                                    ...friendsStyle && friendsStyle[value],
+                                                }}
+                                                onClick={() => friendsAnimation(index, value)}
+                                            >
+                                                <Avatar color={value} />
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </Element>
+
+                        <Element name="4" className={styles.donationSections}>
                             <div className={styles.card}>
-                                <GameAvatarList friends={friends} selected={seletedAvatar} name={avatarName} setStep={setStep} signupAnimation={signupAnimation} />
-                            </div> :
-                            null}
+                                <div className={`${rowHCenter} ${styles.stepFour}`}>
+                                    <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
+                                    <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
+                                    <div className={`${styles.donationDesktop}`}>
+                                        <div className={`${rowHBetween}`}>
+                                            {donation.map((donation, donationKey) => <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`}
+                                                onClick={() => {
+                                                    setDonationAmount(donation);
+                                                    animationHandler(donation);
+                                                }}>
+                                                <h4>{donation}</h4>
+                                            </div>)}
+                                        </div>
+                                    </div>
+                                    <div className={"d-sm-none"}>
+                                        <div className={`${rowHBetween}`}>
+                                            <select onChange={(e) => {
+                                                setDonationAmount(e.target.value);
+                                                animationHandler(e.target.value);
+                                            }}>
+                                                {donation.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
+                                            </select>
+                                        </div>
+                                    </div>
 
-                    </Element>
+                                    <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
+                                        <h2>Donation Cycle</h2>
+                                        <div className={`${animation ? styles.coin : styles.coinDefault}`}>
+                                            <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
+                                        </div>
+                                        <div className={styles.userDonation}>
+                                            <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
+                                        </div>
+                                        <p>${Number(donationAmount) / donationDivide}</p>
+                                        <h3>Content Creators</h3>
+                                    </div>
+                                    {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative w-100`}>
+                                        <div className={styles.donationCycleItems}>
+                                            <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
+                                            <span>$0.50</span>
+                                            <h3 className="position-absolute">Early Adapters</h3>
+                                        </div>
+                                        {data.concat(friends).map((i, k) => (
+                                            <div className={styles.donationCycleItems} key={k}>
+                                                <Image {...i.image} width={56} height={63} />
+                                                <span>${Number(donationAmount) / donationFormula / donationFormula}0</span>
+                                            </div>
+                                        ))}
 
-                    <Element name="6" className={styles.card}>
-                        <div className={styles.gameStepSix}>
-                            <div className={`${colCenter} ${styles.signUpsection}`}>
-                                <Image src={"/images/Game/trophy.png"} alt="trophy" width={291} height={318} />
-                                <h2 className={`${styles.avatarHeading}`}>Congratulations!</h2>
-                                <button>SIGN UP</button>
+                                        <div>
+                                            <div className={styles.animationText}>
+                                                <h2>Spiffy Corp.</h2>
+                                                <p>We’re totally reliant on this cents to keep us going.</p>
+                                            </div>
+                                            <div className={styles.donationCycleItems}>
+                                                <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
+                                                <span>$0.50</span>
+                                            </div>
+                                        </div>
+                                    </div> : null}
+                                </div>
                             </div>
-                        </div>
-                    </Element>
 
-                </div>
-                <button onClick={() => fullscreenHandler()}>Fullscreen</button>
+                            {donationAmount ?
+                                <div className={styles.card}>
+                                    <GameAvatarList friends={friends} selected={seletedAvatar} name={avatarName} setStep={setStep} signupAnimation={signupAnimation} />
+                                </div> :
+                                null}
+
+                        </Element>
+
+                        <Element name="6" className={styles.card}>
+                            <div className={styles.gameStepSix}>
+                                <div className={`${colCenter} ${styles.signUpsection}`}>
+                                    <Image src={"/images/Game/trophy.png"} alt="trophy" width={291} height={318} />
+                                    <h2 className={`${styles.avatarHeading}`}>Congratulations!</h2>
+                                    <button>SIGN UP</button>
+                                </div>
+                            </div>
+                        </Element>
+
+                    </div>
+                    : <button onClick={() => fullscreenHandler()}>Fullscreen</button>}
             </div>
         </div >
     );
