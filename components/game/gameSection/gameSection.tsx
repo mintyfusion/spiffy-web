@@ -59,7 +59,7 @@ const GameSection = (): JSX.Element => {
         return () => clearTimeout(timer);
     }, [friendsStyle]);
 
-    const animationHandler = (donation: string) => {
+    const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
             scroller.scrollTo("5", {
                 duration: 700,
@@ -72,9 +72,11 @@ const GameSection = (): JSX.Element => {
                 setAnimation(true);
             }, avatarTimeout);
         }
-    };
+    }, [donationAmount]);
 
     const getStyles = React.useCallback(() => {
+        console.log(start.current);
+
         if (start.current) {
             const bounds = start.current.getBoundingClientRect();
             const avatarSize = 160;
@@ -126,7 +128,7 @@ const GameSection = (): JSX.Element => {
         return null;
     }, [start, fullscreen]);
 
-    const handleBtnClick = (avatar: AvatarType) => {
+    const handleBtnClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
             const bounds = target.current.getBoundingClientRect();
             setAvatatStyles({
@@ -140,9 +142,9 @@ const GameSection = (): JSX.Element => {
         setFriends(data.filter((filter) => filter.id !== avatar));
         setSelected(avatar);
         setSeletedAvatar(Avatar[0]);
-    };
+    }, [target, avatatStyles, fullscreen]);
 
-    const handleBtnClick2 = (avatar: AvatarType) => {
+    const handleBtnClick2 = React.useCallback((avatar: AvatarType) => {
         if (stepThree.current) {
             const bounds = stepThree.current.getBoundingClientRect();
             setAvatatStyles({
@@ -152,9 +154,9 @@ const GameSection = (): JSX.Element => {
                 }
             });
         }
-    };
+    }, [stepThree, avatatStyles, fullscreen]);
 
-    const friendsAnimation = (index: number, value: AvatarType) => {
+    const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
             const bounds = stepThree.current.getBoundingClientRect();
             const spacing = 180;
@@ -203,30 +205,26 @@ const GameSection = (): JSX.Element => {
             }
 
         }
-    }
+    }, [friendsStyle, stepThree]);
 
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
-        console.log(start.current);
         if (styles) {
             setAvatatStyles(styles);
         }
-    }, [start]);
+    }, [getStyles]);
 
     React.useEffect(() => {
-        let timer: NodeJS.Timeout;
-
-        timer = setTimeout(() => {
+        const timer: NodeJS.Timeout = setTimeout(() => {
             setAvatarPositions();
             clearTimeout(timer);
         }, friendsTimeout);
 
         return () => clearTimeout(timer);
 
-    }, [fullscreenView]);
+    }, [setAvatarPositions]);
 
-    const fullscreenHandler = () => {
-
+    const fullscreenHandler = React.useCallback(() => {
         const docElmWithBrowsersFullScreenFunctions = fullscreen.current as HTMLDivElement & {
             mozRequestFullScreen(): Promise<void>;
             webkitRequestFullscreen(): Promise<void>;
@@ -246,26 +244,26 @@ const GameSection = (): JSX.Element => {
             docElmWithBrowsersFullScreenFunctions.msRequestFullscreen();
             serFullscreenView(true);
         }
-    }
+    }, [fullscreen]);
 
-    const signupAnimation = () => {
+    const signupAnimation = React.useCallback(() => {
         scroller.scrollTo("6", {
             duration: 700,
             smooth: true,
             containerId: "containerElement",
             delay: 2000
         });
-    }
+    }, []);
 
     React.useEffect(() => {
         window.addEventListener("resize", setAvatarPositions);
-    }, []);
+    }, [setAvatarPositions]);
 
     return (
         <div>
             <div id="containerElement" ref={fullscreen} style={{ height: "100vh", overflow: "hidden", backgroundColor: "#f2f2f2" }}>
                 <div className={styles.container}>
-                    <div className={styles.card} ref={start} id="start">
+                    <div className={styles.card} ref={start}>
                         <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
                         {Object.entries(AvatarType).filter(([filter]) => filter !== AvatarType.Orange).map(([key, value]) =>
                             <Link
