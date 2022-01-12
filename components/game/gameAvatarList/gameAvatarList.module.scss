@@ -190,8 +190,8 @@
     @for $i from 1 through 120 {
         .confetti:nth-child(#{$i}) {
             position: absolute;
-            top: (random(90) + 4) + px;
-            left: (random(15) + 4) + px;
+            top: (random(150) + 4) + px;
+            left: (random(100) + 4) + px;
             img {
                 width: (random(30) + 4) + px;
                 object-fit: contain;
@@ -202,8 +202,8 @@
     @for $i from 1 through 120 {
         .confettiRight:nth-child(#{$i}) {
             position: absolute;
-            bottom: (random(90) + 4) + px;
-            right: (random(15) + 4) + px;
+            bottom: (random(150) + 4) + px;
+            right: (random(100) + 4) + px;
             img {
                 width: (random(30) + 4) + px;
                 object-fit: contain;

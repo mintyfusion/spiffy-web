@@ -75,8 +75,10 @@ const GameSection = (): JSX.Element => {
 
     const getStyles = React.useCallback(() => {
         if (start.current) {
+            const width = screen.width;
+            console.log(width);
             const bounds = start.current.getBoundingClientRect();
-            const avatarSize = 160;
+            const avatarSize = width < 768 ? 90 : 160;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 10;
@@ -123,8 +125,9 @@ const GameSection = (): JSX.Element => {
 
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
+            const width = screen.width;
             const bounds = friendsRef.current.getBoundingClientRect();
-            const avatarSize = 160;
+            const avatarSize = width > 768 ? 160 : 90;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 20;
@@ -205,10 +208,10 @@ const GameSection = (): JSX.Element => {
     const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
             setFriendsCount(freindsCount + 1);
-            const topSpacing = 40;
-            const top2Spacing = 90;
-            const leftSpacing = 90;
-            const left2Spacing = 110;
+            const topSpacing = 20;
+            const top2Spacing = 50;
+            const leftSpacing = 45;
+            const left2Spacing = 70;
 
             const bounds = stepThree.current.getBoundingClientRect();
             const top = bounds.y + fullscreen.current.scrollTop - topSpacing - 49;
@@ -316,7 +319,7 @@ const GameSection = (): JSX.Element => {
                                             ...avatatStyles && avatatStyles[value],
                                         }}
                                         onClick={() => handleBtnClick(value)}
-                                        to="4"
+                                        to="2"
                                         smooth={true}
                                         duration={700}
                                         containerId="containerElement"
@@ -331,7 +334,7 @@ const GameSection = (): JSX.Element => {
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
-                                    <div style={{ width: "148px", height: "148px" }} ref={target}></div>
+                                    <div className={styles.targetOne} ref={target}></div>
                                     <input placeholder="Name" className="w-100 text-center" onChange={(e) => setAvatarName(e.target.value)} />
                                     <Link to="3"
                                         smooth={true}
@@ -351,7 +354,7 @@ const GameSection = (): JSX.Element => {
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                                     <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                                    <div style={{ width: "148px", height: "148px", display: "block" }} ref={stepThree}></div>
+                                    <div className={styles.targetTwo} ref={stepThree}></div>
                                     <h3>{avatarName}</h3>
                                 </div>
                                 <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`} ref={friendsRef}>
@@ -392,7 +395,7 @@ const GameSection = (): JSX.Element => {
                                             </div>)}
                                         </div>
                                     </div>
-                                    <div className={"d-sm-none"}>
+                                    <div className={"d-sm-none w-100"}>
                                         <div className={`${rowHBetween}`}>
                                             <select onChange={(e) => {
                                                 setDonationAmount(e.target.value);

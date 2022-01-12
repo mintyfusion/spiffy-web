@@ -194,6 +194,10 @@
     }
 }
 
+.modal-body {
+    padding: 0px;
+}
+
 .donationSections {
     width: 100%;
     overflow: auto;
@@ -865,7 +869,39 @@
     }
 }
 
+.targetOne {
+    width: 148px;
+    height: 148px;
+}
+
+.targetTwo {
+    width: 148px;
+    height: 148px;
+    display: "block";
+}
+
 @include media(">=phone", "<375px") {
+    .targetOne {
+        width: 90px;
+        height: 90px;
+    }
+    .stepFour {
+        width: 90%;
+        height: auto;
+        select {
+            width: 100%;
+            text-align: center;
+            border: none;
+            border-bottom: 4px solid #f9b930;
+            padding: 5px;
+        }
+    }
+
+    .targetTwo {
+        width: 90px;
+        height: 90px;
+        display: "block";
+    }
     .avatarPurple {
         @include avatar(23%, 54.3%);
         @include imgProperties(84px);
@@ -900,9 +936,20 @@
     }
 
     .container {
-        padding: 30px 30px;
+        padding: 0px;
         text-align: center;
         margin: 20px auto;
+        .card {
+            margin: 0;
+            width: 100%;
+            position: relative;
+        }
+    }
+
+    .avatar {
+        img {
+            @include imgProperties(90px);
+        }
     }
 
     .avatarWrapper {
@@ -915,7 +962,7 @@
     }
 
     .gameStepTwo {
-        width: 100%;
+        width: 75%;
         img {
             @include imgProperties(84px);
         }
@@ -933,7 +980,7 @@
 
     .gameStepThree {
         flex-direction: column !important;
-        height: 40vh;
+        height: 60vh;
         .user {
             img {
                 visibility: hidden;
@@ -947,10 +994,7 @@
                 top: 50px;
             }
             h3 {
-                font-size: 11px;
-                bottom: 40%;
-                left: 20.8%;
-                width: 55%;
+                margin-top: 60px;
             }
             .selected {
                 img {
@@ -1530,6 +1574,32 @@
 }
 
 @include media(">=375px", "<425px") {
+    .avatar {
+        img {
+            @include imgProperties(90px);
+        }
+    }
+    .targetOne {
+        width: 90px;
+        height: 90px;
+    }
+    .stepFour {
+        width: 90%;
+        height: auto;
+        select {
+            width: 100%;
+            text-align: center;
+            border: none;
+            border-bottom: 4px solid #f9b930;
+            padding: 5px;
+        }
+    }
+
+    .targetTwo {
+        width: 90px;
+        height: 90px;
+        display: "block";
+    }
     .avatarPurple {
         @include avatar(23%, 54.3%);
         @include imgProperties(84px);
@@ -1564,9 +1634,13 @@
     }
 
     .container {
-        padding: 30px 30px;
+        padding: 0px;
         text-align: center;
         margin: 20px auto;
+        .card {
+            width: 100%;
+            margin: 0px;
+        }
     }
 
     .avatarWrapper {
@@ -1579,7 +1653,7 @@
     }
 
     .gameStepTwo {
-        width: 100%;
+        width: 75%;
         img {
             @include imgProperties(84px);
         }
@@ -1611,10 +1685,7 @@
                 top: 50px;
             }
             h3 {
-                font-size: 11px;
-                bottom: 40%;
-                left: 20.8%;
-                width: 55%;
+                margin-top: 40px;
             }
             .selected {
                 img {
@@ -1971,7 +2042,7 @@
         }
         div:nth-child(11) {
             bottom: 187px;
-            left: -5%;
+            left: 0%;
             animation-name: opacityAnimation;
             animation-duration: 20s;
             position: absolute;
@@ -2194,6 +2265,33 @@
 }
 
 @include media(">=425px", "<800px") {
+    .avatar {
+        img {
+            @include imgProperties(90px);
+        }
+    }
+    .targetOne {
+        width: 90px;
+        height: 90px;
+    }
+    .stepFour {
+        width: 80%;
+        height: auto;
+        position: relative;
+        select {
+            width: 100%;
+            text-align: center;
+            border: none;
+            border-bottom: 4px solid #f9b930;
+            padding: 5px;
+        }
+    }
+
+    .targetTwo {
+        width: 90px;
+        height: 90px;
+        display: "block";
+    }
     .avatarPurple {
         @include avatar(23%, 54.3%);
         @include imgProperties(84px);
@@ -2228,9 +2326,13 @@
     }
 
     .container {
-        padding: 30px 30px;
+        padding: 0px;
         text-align: center;
         margin: 20px auto;
+        .card {
+            width: 100%;
+            margin: 0;
+        }
     }
 
     .avatarWrapper {
@@ -2243,7 +2345,7 @@
     }
 
     .gameStepTwo {
-        width: 100%;
+        width: 75%;
         img {
             @include imgProperties(84px);
         }
@@ -2275,10 +2377,7 @@
                 top: 50px;
             }
             h3 {
-                font-size: 11px;
-                bottom: 40%;
-                left: 20.8%;
-                width: 55%;
+                margin-bottom: 40px;
             }
             .selected {
                 img {
