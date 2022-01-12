@@ -96,6 +96,7 @@ export type Styles = {
   "user": string;
   "userAvatar": string;
   "userDonation": string;
+  "wrapper": string;
   "yellow": string;
 };
 
