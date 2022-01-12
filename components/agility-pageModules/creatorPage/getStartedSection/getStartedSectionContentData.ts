@@ -1,4 +1,4 @@
-import IGetStartedSectionContentData from "components/creatorPage/getStartedSection/interfaces/IGetStartedSectionContentData";
+import IGetStartedSectionContentData from "components/agility-pageModules/creatorPage/getStartedSection/interfaces/IGetStartedSectionContentData";
 
 const getStartedSectionContentData: IGetStartedSectionContentData = {
     href: "/",

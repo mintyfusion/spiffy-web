@@ -1,10 +1,10 @@
-import { ImageProps } from "next/image";
+import { ImageField } from "@agility/nextjs";
 
 import IContentInfo from "types/IContentnfo";
 
 export default interface ICommonSectionProps {
     reversed?: boolean;
-    image: ImageProps;
+    image: ImageField;
     content: IContentInfo;
     arrows?: number;
     containerClass?: string;

@@ -1,4 +1,4 @@
-import bannerImageListContent from "components/creatorPage/bannerSection/bannerImageListContent";
+import bannerImageListContent from "components/agility-pageModules/creatorPage/bannerSection/bannerImageListContent";
 import IBannerContentData from "components/common/banner/interfaces/IBannerContentData";
 
 const bannerContent: IBannerContentData = {

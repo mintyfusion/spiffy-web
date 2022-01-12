@@ -2,11 +2,11 @@ import { Stack } from "react-bootstrap";
 import React from "react";
 
 import flexbox from "utils/flexbox";
-import IGetStartedSectionContentData from "components/creatorPage/getStartedSection/interfaces/IGetStartedSectionContentData";
+import IGetStartedSectionContentData from "components/agility-pageModules/creatorPage/getStartedSection/interfaces/IGetStartedSectionContentData";
 import Section from "components/common/section/section";
 import SectionSide from "components/common/section/enums/SectionSide";
 
-import styles from "components/creatorPage/getStartedSection/getStartedSection.module.scss";
+import styles from "components/agility-pageModules/creatorPage/getStartedSection/getStartedSection.module.scss";
 
 const alignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 

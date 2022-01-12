@@ -3,9 +3,10 @@ import { ImageProps } from "next/image";
 import React from "react";
 
 import Banner from "components/common/banner/banner";
-import BannerSection from "components/landingPage/bannerSection/bannerSection";
+import CreatorBannerSection from "components/agility-pageModules/creatorPage/bannerSection/bannerSection";
 import EducationBannerSection from "components/educationPage/bannerSection/bannerSection";
 import IContentInfo from "types/IContentnfo";
+import LandingBannerSection from "components/landingPage/bannerSection/bannerSection";
 import PageIds from "common/pageIds";
 
 interface IHeroModuleProps extends IContentInfo {
@@ -19,15 +20,23 @@ const HeroModule = (props: ModuleProps<IHeroModuleProps>): JSX.Element => {
     const renderBannerComponent = React.useMemo((): JSX.Element => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         switch (props.page?.pageID) {
-            case PageIds.EDUCATION_LANDING: {
-                setRenderFullHeight(false);
+            case PageIds.EDUCATION_LANDING:
+            case PageIds.FAQ:
+                {
+                    setRenderFullHeight(false);
 
-                return <EducationBannerSection title={fields.title} description={fields.description} />;
-            }
+                    return <EducationBannerSection title={fields.title} description={fields.description} />;
+                }
+
             case PageIds.LANDING: {
                 setRenderFullHeight(true);
 
-                return <BannerSection content={fields} />;
+                return <LandingBannerSection content={fields} />;
+            }
+            case PageIds.CREATOR_LANDING: {
+                setRenderFullHeight(true);
+
+                return <CreatorBannerSection content={fields} />;
             }
         }
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access

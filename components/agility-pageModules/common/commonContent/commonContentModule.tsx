@@ -5,18 +5,19 @@ import React from "react";
 import EducationSections from "components/agility-pageModules/educationModule/enums/educationSections";
 import FaqSection from "components/educationPage/faqSection/faqSection";
 import GameSection from "components/educationPage/gameSection/gameSection";
+import GetStartedSection from "components/agility-pageModules/creatorPage/getStartedSection/getStartedSection";
 import ICommonContentProps from "components/agility-pageModules/common/commonContent/interfaces/ICommonContentProps";
 import Pages from "enums/pages";
 
 const CommonContentModule = (props: ModuleProps<ICommonContentProps>): JSX.Element => {
     const { page, module } = props;
-    
+
     const preparedData = React.useMemo(() => ({
         content: { title: module.fields.title, description: module.fields.description },
         href: module.fields.href,
         section_TextField: module.fields.section_TextField
     }), [module.fields]);
-
+    
     const renderComponent = React.useMemo(() => {
         switch (page.name) {
             case Pages.education: {
@@ -28,9 +29,11 @@ const CommonContentModule = (props: ModuleProps<ICommonContentProps>): JSX.Eleme
                         return <GameSection {...preparedData} />;
 
                     default:
-                        return <></>;
+                        return <GetStartedSection {...preparedData} />;
                 }
             }
+            case Pages.creator:
+                return <GetStartedSection {...preparedData} />;
 
             default:
                 return <></>;
