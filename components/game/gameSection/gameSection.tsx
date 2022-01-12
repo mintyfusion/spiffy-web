@@ -187,6 +187,7 @@ const GameSection = (): JSX.Element => {
         setFriends(data.filter((filter) => filter.id !== avatar));
         setSelected(avatar);
         setSeletedAvatar(Avatar[0]);
+        setStep("2");
     }, [target, avatatStyles, fullscreen]);
 
     const handleBtnClick2 = React.useCallback((avatar: AvatarType) => {
@@ -206,7 +207,7 @@ const GameSection = (): JSX.Element => {
         if (stepThree.current) {
             setFriendsCount(freindsCount + 1);
             const topSpacing = 40;
-            const top2Spacing = 70;
+            const top2Spacing = 90;
             const leftSpacing = 90;
             const left2Spacing = 110;
 
@@ -263,34 +264,17 @@ const GameSection = (): JSX.Element => {
     }, [getStyles]);
 
     React.useEffect(() => {
-        const timer: NodeJS.Timeout = setTimeout(() => {
-            setAvatarPositions();
-            clearTimeout(timer);
-        }, friendsTimeout);
+        if (step === "1") {
+            const timer: NodeJS.Timeout = setTimeout(() => {
+                setAvatarPositions();
+                clearTimeout(timer);
+            }, 500);
 
-        return () => clearTimeout(timer);
+            return () => clearTimeout(timer);
+        }
+
     }, [setAvatarPositions]);
 
-    const fullscreenHandler = React.useCallback(() => {
-        const docElmWithBrowsersFullScreenFunctions = fullscreen.current as HTMLDivElement & {
-            mozRequestFullScreen(): Promise<void>;
-            webkitRequestFullscreen(): Promise<void>;
-            msRequestFullscreen(): Promise<void>;
-        };
-        if (docElmWithBrowsersFullScreenFunctions.requestFullscreen) {
-            void docElmWithBrowsersFullScreenFunctions.requestFullscreen();
-            serFullscreenView(true);
-        } else if (docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen) { /* Firefox */
-            void docElmWithBrowsersFullScreenFunctions.mozRequestFullScreen();
-            serFullscreenView(true);
-        } else if (docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-            void docElmWithBrowsersFullScreenFunctions.webkitRequestFullscreen();
-            serFullscreenView(true);
-        } else if (docElmWithBrowsersFullScreenFunctions.msRequestFullscreen) { /* IE/Edge */
-            void docElmWithBrowsersFullScreenFunctions.msRequestFullscreen();
-            serFullscreenView(true);
-        }
-    }, [fullscreen]);
 
     const signupAnimation = React.useCallback(() => {
         scroller.scrollTo("6", {
@@ -314,8 +298,6 @@ const GameSection = (): JSX.Element => {
         }
 
     }, [step]);
-
-    console.log(fullscreen);
 
     return (
         <div>
@@ -434,7 +416,7 @@ const GameSection = (): JSX.Element => {
                                             <p>${Number(donationAmount) / donationDivide}</p>
                                             <h3>Content Creators</h3>
                                         </div>
-                                        {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative w-100`}>
+                                        {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative`}>
                                             <div className={styles.donationCycleItems}>
                                                 <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                                                 <span>$0.50</span>
