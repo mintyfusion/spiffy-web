@@ -881,7 +881,7 @@
     display: "block";
 }
 
-.transparent{
+.transparent {
     background-color: $transparent !important;
 }
 
@@ -985,7 +985,7 @@
 
     .gameStepThree {
         flex-direction: column !important;
-        height: 60vh;
+        height: auto;
         .user {
             img {
                 visibility: hidden;
@@ -993,7 +993,7 @@
         }
         .gameStepThreeUserColumn {
             width: 100%;
-            height: 100%;
+            height: 50%;
             h2 {
                 position: absolute;
                 top: 50px;
@@ -1029,6 +1029,7 @@
         .gameStepThreeFriendsColumn {
             width: 100%;
             padding: 0px;
+            height: 50%;
             .avatarWrapper {
                 width: 100%;
                 gap: 0px;
@@ -1043,6 +1044,8 @@
     }
 
     .percentageWrapper {
+        width: 100%;
+        height: 100%;
         img {
             @include imgProperties(125px);
             cursor: pointer;
@@ -1590,7 +1593,8 @@
     }
     .stepFour {
         width: 90%;
-        height: auto;
+        position: relative;
+        height: 640px;
         select {
             width: 100%;
             text-align: center;
@@ -1645,6 +1649,7 @@
         .card {
             width: 100%;
             margin: 0px;
+            height: 100vh;
         }
     }
 
@@ -1676,7 +1681,7 @@
 
     .gameStepThree {
         flex-direction: column !important;
-        height: 40vh;
+        height: auto;
         .user {
             img {
                 visibility: hidden;
@@ -1684,7 +1689,7 @@
         }
         .gameStepThreeUserColumn {
             width: 100%;
-            height: 100%;
+            height: 50%;
             h2 {
                 position: absolute;
                 top: 50px;
@@ -1720,6 +1725,7 @@
         .gameStepThreeFriendsColumn {
             width: 100%;
             padding: 0px;
+            height: 50%;
             .avatarWrapper {
                 width: 100%;
                 gap: 0px;
@@ -1734,6 +1740,8 @@
     }
 
     .percentageWrapper {
+        width: 100%;
+        height: 100%;
         img {
             @include imgProperties(125px);
             cursor: pointer;
@@ -2197,14 +2205,14 @@
         }
 
         92% {
-            transform: translate(-60px, 210px);
+            transform: translate(-95px, 210px);
             opacity: 1;
             width: 37px;
             height: 37px;
         }
 
         100% {
-            transform: translate(-60px, 220px);
+            transform: translate(-95px, 220px);
             opacity: 1;
             width: 100px;
             height: 100px;
@@ -2270,6 +2278,12 @@
 }
 
 @include media(">=425px", "<800px") {
+    .donationSections {
+        .card {
+            height: 100%;
+        }
+    }
+
     .avatar {
         img {
             @include imgProperties(90px);
@@ -2337,6 +2351,7 @@
         .card {
             width: 100%;
             margin: 0;
+            height: 100vh;
         }
     }
 
@@ -2368,7 +2383,7 @@
 
     .gameStepThree {
         flex-direction: column !important;
-        height: 40vh;
+        height: auto;
         .user {
             img {
                 visibility: hidden;
@@ -2376,7 +2391,7 @@
         }
         .gameStepThreeUserColumn {
             width: 100%;
-            height: 100%;
+            height: 50%;
             h2 {
                 position: absolute;
                 top: 50px;
@@ -2412,6 +2427,7 @@
         .gameStepThreeFriendsColumn {
             width: 100%;
             padding: 0px;
+            height: 50%;
             .avatarWrapper {
                 width: 100%;
                 gap: 0px;
@@ -2419,8 +2435,14 @@
                     @include imgProperties(60px);
                 }
             }
+
             h2 {
                 display: none;
+            }
+
+            .percentageWrapper {
+                width: 100%;
+                height: 100%;
             }
         }
     }
@@ -5859,6 +5881,7 @@
         height: 560px;
         justify-content: center;
         display: flex;
+        width: 100%;
         > div:nth-child(1) {
             @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
         }

@@ -490,7 +490,7 @@ const GameSection = (): JSX.Element => {
                                 null}
                         </Element>
 
-                        <Element name={StepTypes.Five} className={styles.card}>
+                        <Element name={StepTypes.Six} className={styles.card}>
                             <div className={styles.gameStepSix}>
                                 <div className={`${colCenter} ${styles.signUpsection}`}>
                                     <Image src={"/images/Game/trophy.png"} alt="trophy" width={291} height={318} />
