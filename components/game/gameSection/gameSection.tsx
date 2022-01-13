@@ -6,8 +6,8 @@ import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import Image from "next/image";
+import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
-import Modal from 'react-bootstrap/Modal'
 import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -76,7 +76,6 @@ const GameSection = (): JSX.Element => {
     const getStyles = React.useCallback(() => {
         if (start.current) {
             const width = screen.width;
-            console.log(width);
             const bounds = start.current.getBoundingClientRect();
             const avatarSize = width < 768 ? 90 : 160;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
@@ -179,7 +178,7 @@ const GameSection = (): JSX.Element => {
             const bounds = target.current.getBoundingClientRect();
             setAvatatStyles({
                 ...avatatStyles, [avatar]: {
-                    top: bounds.y + fullscreen.current.scrollTop - 49,
+                    top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
                 }
             });
@@ -197,7 +196,7 @@ const GameSection = (): JSX.Element => {
             const bounds = stepThree.current.getBoundingClientRect();
             setAvatatStyles({
                 ...avatatStyles, [avatar]: {
-                    top: bounds.y + fullscreen.current.scrollTop - 49,
+                    top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
                 }
             });
@@ -207,16 +206,17 @@ const GameSection = (): JSX.Element => {
 
     const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
+            const width = screen.width;
             setFriendsCount(freindsCount + 1);
-            const topSpacing = 20;
-            const top2Spacing = 50;
-            const leftSpacing = 45;
-            const left2Spacing = 70;
+            const topSpacing = width < 760 ? 20 : 40;
+            const top2Spacing = width < 760 ? 50 : 80;
+            const leftSpacing = width < 760 ? 45 : 90;
+            const left2Spacing = width < 760 ? 70 : 115;
 
             const bounds = stepThree.current.getBoundingClientRect();
-            const top = bounds.y + fullscreen.current.scrollTop - topSpacing - 49;
+            const top = bounds.y + fullscreen.current.scrollTop - topSpacing;
             const left = bounds.x + fullscreen.current.scrollLeft - leftSpacing;
-            const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing - 49;
+            const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing;
             const left2 = bounds.x + fullscreen.current.scrollLeft + left2Spacing;
 
             const keyTwo = 2;
@@ -305,8 +305,7 @@ const GameSection = (): JSX.Element => {
         <div className={`${colCenter} ${styles.wrapper}`}>
             <button onClick={() => setShow(true)}>Fullscreen</button>
             <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
-                <Modal.Header closeButton></Modal.Header>
-                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: '100%' }} id="containerElement" ref={fullscreen}>
+                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%" }} id="containerElement" ref={fullscreen}>
                     <div className={styles.container}>
                         <div className={styles.card} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
@@ -350,7 +349,7 @@ const GameSection = (): JSX.Element => {
                             </div>
                         </Element>
 
-                        <Element name="3" className={styles.card}>
+                        <Element name="3" className={`${styles.card} ${styles.transparent}`}>
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                                     <h2 className={styles.avatarHeading}>Add four friends.</h2>

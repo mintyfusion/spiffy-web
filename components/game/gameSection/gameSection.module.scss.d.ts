@@ -96,6 +96,7 @@ export type Styles = {
   "stepFour": string;
   "targetOne": string;
   "targetTwo": string;
+  "transparent": string;
   "user": string;
   "userAvatar": string;
   "userDonation": string;

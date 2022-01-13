@@ -720,19 +720,19 @@
         transform: translate(0px, 650px);
     }
     80% {
-        transform: translate(-60px, 640px);
+        transform: translate(-90px, 640px);
     }
     90% {
-        transform: translate(-100px, 600px);
+        transform: translate(-120px, 600px);
     }
     94% {
-        transform: translate(-140px, 500px);
+        transform: translate(-180px, 500px);
         width: 37px;
         height: 37px;
         opacity: 1;
     }
     100% {
-        transform: translate(-160px, 432px);
+        transform: translate(-180px, 432px);
         width: 50px;
         height: 50px;
     }
@@ -861,6 +861,7 @@
     99% {
         opacity: 1;
         position: relative;
+        height: 100%;
     }
     100% {
         opacity: 0;
@@ -878,6 +879,10 @@
     width: 148px;
     height: 148px;
     display: "block";
+}
+
+.transparent{
+    background-color: $transparent !important;
 }
 
 @include media(">=phone", "<375px") {
