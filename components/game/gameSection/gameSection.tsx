@@ -9,6 +9,7 @@ import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 import styles from "components/game/gameSection/gameSection.module.scss";
+import StepTypes from "./enums/stepTypes";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
@@ -265,6 +266,13 @@ const GameSection = (): JSX.Element => {
         }
     }, [getStyles]);
 
+    const setFriendsPositions = React.useCallback(() => {
+        const styles = getFriendsStyle();
+        if (styles) {
+            setFriendsStyle(getFriendsStyle);
+        }
+    }, [getFriendsStyle]);
+
     React.useEffect(() => {
         if (step === "1") {
             const timer: NodeJS.Timeout = setTimeout(() => {
@@ -287,16 +295,49 @@ const GameSection = (): JSX.Element => {
         });
     }, []);
 
-    React.useEffect(() => {
-        if (step === "1") {
-            window.addEventListener("resize", setAvatarPositions);
+    const handleResize = React.useCallback(() => {
+        switch (step) {
+            case StepTypes.One:
+                setAvatarPositions();
+                break;
+            case StepTypes.Two:
+                const boundsFirst = target.current?.getBoundingClientRect();
+                if (boundsFirst) {
+                    setAvatatStyles({
+                        ...avatatStyles, [selected]: {
+                            top: boundsFirst.y + fullscreen.current.scrollTop,
+                            left: boundsFirst.x + fullscreen.current.scrollLeft,
+                        }
+                    })
+                }
+                break;
+            case StepTypes.Three:
+                setFriendsPositions();
+                const boundsSecond = stepThree.current?.getBoundingClientRect();
+                console.log(boundsSecond);
+                if (boundsSecond) {
+                    setAvatatStyles({
+                        ...avatatStyles, [selected]: {
+                            top: boundsSecond.y + fullscreen.current.scrollTop,
+                            left: boundsSecond.x + fullscreen.current.scrollLeft,
+                        }
+                    });
+                }
+                break;
         }
+    }, [setAvatarPositions, setFriendsPositions, step, target, fullscreen, stepThree, avatatStyles]);
 
-    }, [setAvatarPositions, step]);
+    React.useEffect(() => {
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        }
+    }, [handleResize]);
 
     React.useEffect(() => {
         if (step === "3") {
-            setFriendsStyle(getFriendsStyle);
+            setFriendsPositions();
         }
 
     }, [step]);
@@ -329,7 +370,7 @@ const GameSection = (): JSX.Element => {
                                 )}
                         </div>
 
-                        <Element name="2" className={styles.card}>
+                        <Element name={StepTypes.Two} className={styles.card}>
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
@@ -349,7 +390,7 @@ const GameSection = (): JSX.Element => {
                             </div>
                         </Element>
 
-                        <Element name="3" className={`${styles.card} ${styles.transparent}`}>
+                        <Element name={StepTypes.Three} className={`${styles.card} ${styles.transparent}`}>
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                                     <h2 className={styles.avatarHeading}>Add four friends.</h2>
@@ -378,7 +419,7 @@ const GameSection = (): JSX.Element => {
                             </div>
                         </Element>
 
-                        <Element name="4" className={styles.donationSections}>
+                        <Element name={StepTypes.Four} className={styles.donationSections}>
                             <div className={styles.card}>
                                 <div className={`${rowHCenter} ${styles.stepFour}`}>
                                     <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
@@ -453,7 +494,7 @@ const GameSection = (): JSX.Element => {
                                 null}
                         </Element>
 
-                        <Element name="6" className={styles.card}>
+                        <Element name={StepTypes.Five} className={styles.card}>
                             <div className={styles.gameStepSix}>
                                 <div className={`${colCenter} ${styles.signUpsection}`}>
                                     <Image src={"/images/Game/trophy.png"} alt="trophy" width={291} height={318} />
