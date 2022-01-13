@@ -194,10 +194,6 @@
     }
 }
 
-.modal-body {
-    padding: 0px;
-}
-
 .donationSections {
     width: 100%;
     overflow: auto;
@@ -943,7 +939,6 @@
     .container {
         padding: 0px;
         text-align: center;
-        margin: 20px auto;
         .card {
             margin: 0;
             width: 100%;
@@ -1645,7 +1640,6 @@
     .container {
         padding: 0px;
         text-align: center;
-        margin: 20px auto;
         .card {
             width: 100%;
             margin: 0px;
@@ -2347,7 +2341,6 @@
     .container {
         padding: 0px;
         text-align: center;
-        margin: 20px auto;
         .card {
             width: 100%;
             margin: 0;
@@ -2973,9 +2966,7 @@
 
 @include media(">=800px", "<900px") {
     .container {
-        padding: 30px 30px;
         text-align: center;
-        margin: 20px auto;
     }
 
     .avatarWrapper {
@@ -3438,9 +3429,7 @@
 
 @include media(">=900px", "<1000px") {
     .container {
-        padding: 30px 30px;
         text-align: center;
-        margin: 20px auto;
     }
 
     .avatarWrapper {
@@ -3907,9 +3896,7 @@
         padding: 0px 0px !important;
     }
     .container {
-        padding: 30px 30px;
         text-align: center;
-        margin: 20px auto;
     }
 
     .avatarWrapper {
@@ -4362,11 +4349,9 @@
 @include media(">=1100px", "<1200px") {
     .paddingSides {
         padding: 0px 0px !important;
-    }
+    
     .container {
-        padding: 30px 30px;
         text-align: center;
-        margin: 20px auto;
     }
 
     .avatarWrapper {
@@ -4821,9 +4806,7 @@
         padding: 0px 0px !important;
     }
     .container {
-        padding: 30px 30px;
         text-align: center;
-        margin: 20px auto;
     }
 
     .avatarWrapper {
@@ -6373,4 +6356,5 @@
             }
         }
     }
+}
 }

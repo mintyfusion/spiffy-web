@@ -72,7 +72,6 @@ export type Styles = {
   "gameStepTwo": string;
   "gameStepTwoWrapper": string;
   "medium25": string;
-  "modalBody": string;
   "opacityAnimation": string;
   "paddingSides": string;
   "percentageFriends": string;

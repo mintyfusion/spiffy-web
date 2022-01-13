@@ -81,7 +81,7 @@ const GameSection = (): JSX.Element => {
             const mobile = 768;
             const mobileAvatar = 90;
             const desktopAvatar = 160;
-            const width = screen.width;
+            const width = window.innerWidth;
             const bounds = start.current.getBoundingClientRect();
             const avatarSize = width < mobile ? mobileAvatar : desktopAvatar;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
@@ -198,7 +198,7 @@ const GameSection = (): JSX.Element => {
 
     const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
-            const width = screen.width;
+            const width = window.innerWidth;
             setFriendsCount(freindsCount + 1);
             const mobile = 768;
             const mobileTop = 20;
@@ -357,7 +357,7 @@ const GameSection = (): JSX.Element => {
         <div className={`${colCenter} ${styles.wrapper}`}>
             <button onClick={() => setShow(true)}>Fullscreen</button>
             <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
-                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%" }} id="containerElement" ref={fullscreen}>
+                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px" }} id="containerElement" ref={fullscreen}>
                     <div className={styles.container}>
                         <div className={styles.card} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
@@ -376,6 +376,7 @@ const GameSection = (): JSX.Element => {
                                         containerId="containerElement"
                                         className={styles.avatar}
                                         ignoreCancelEvents={true}
+                                        offset={-20}
                                     >
                                         <Avatar color={value} />
                                     </Link>
