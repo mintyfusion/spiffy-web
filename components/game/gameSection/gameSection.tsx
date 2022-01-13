@@ -8,8 +8,8 @@ import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
-import styles from "components/game/gameSection/gameSection.module.scss";
 import StepTypes from "./enums/stepTypes";
+import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
@@ -36,10 +36,10 @@ const GameSection = (): JSX.Element => {
     const [show, setShow] = React.useState<boolean>(false);
 
     const start = React.createRef<HTMLDivElement>();
-    const target = React.createRef<HTMLDivElement>();
-    const stepThree = React.createRef<HTMLDivElement>();
-    const fullscreen = React.createRef<HTMLDivElement>();
-    const friendsRef = React.createRef<HTMLDivElement>();
+    const target = React.useRef<HTMLDivElement>();
+    const stepThree = React.useRef<HTMLDivElement>();
+    const fullscreen = React.useRef<HTMLDivElement>();
+    const friendsRef = React.useRef<HTMLDivElement>();
 
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -48,7 +48,8 @@ const GameSection = (): JSX.Element => {
                 duration: 700,
                 smooth: true,
                 containerId: "containerElement",
-                delay: 2000
+                delay: 2000,
+                ignoreCancelEvents: true
             });
             timer = setTimeout(() => {
                 setStep("4");
@@ -65,7 +66,8 @@ const GameSection = (): JSX.Element => {
                 duration: 700,
                 smooth: true,
                 containerId: "containerElement",
-                delay: 2000
+                delay: 2000,
+                ignoreCancelEvents: true
             });
             setAnimation(false);
             setTimeout(() => {
@@ -76,9 +78,12 @@ const GameSection = (): JSX.Element => {
 
     const getStyles = React.useCallback(() => {
         if (start.current) {
+            const mobile = 768;
+            const mobileAvatar = 90;
+            const desktopAvatar = 160;
             const width = screen.width;
             const bounds = start.current.getBoundingClientRect();
-            const avatarSize = width < 768 ? 90 : 160;
+            const avatarSize = width < mobile ? mobileAvatar : desktopAvatar;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 10;
@@ -126,8 +131,11 @@ const GameSection = (): JSX.Element => {
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
             const width = screen.width;
+            const mobile = 768;
+            const mobileAvatar = 90;
+            const desktopAvatar = 160;
             const bounds = friendsRef.current.getBoundingClientRect();
-            const avatarSize = width > 768 ? 160 : 90;
+            const avatarSize = width > mobile ? desktopAvatar : mobileAvatar;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 20;
@@ -209,10 +217,20 @@ const GameSection = (): JSX.Element => {
         if (stepThree.current) {
             const width = screen.width;
             setFriendsCount(freindsCount + 1);
-            const topSpacing = width < 760 ? 20 : 40;
-            const top2Spacing = width < 760 ? 50 : 80;
-            const leftSpacing = width < 760 ? 45 : 90;
-            const left2Spacing = width < 760 ? 70 : 115;
+            const mobile = 768;
+            const mobileTop = 20;
+            const desktopTop = 40;
+            const mobileTop2 = 50;
+            const desktopTop2 = 80;
+            const mobileLeft = 45;
+            const desktopLeft = 90;
+            const mobileLeft2 = 70;
+            const desktopleft2 = 115;
+
+            const topSpacing = width < mobile ? mobileTop : desktopTop;
+            const top2Spacing = width < mobile ? mobileTop2 : desktopTop2;
+            const leftSpacing = width < mobile ? mobileLeft : desktopLeft;
+            const left2Spacing = width < mobile ? mobileLeft2 : desktopleft2;
 
             const bounds = stepThree.current.getBoundingClientRect();
             const top = bounds.y + fullscreen.current.scrollTop - topSpacing;
@@ -291,7 +309,8 @@ const GameSection = (): JSX.Element => {
             duration: 700,
             smooth: true,
             containerId: "containerElement",
-            delay: 2000
+            delay: 2000,
+            ignoreCancelEvents: true
         });
     }, []);
 
@@ -308,7 +327,7 @@ const GameSection = (): JSX.Element => {
                             top: boundsFirst.y + fullscreen.current.scrollTop,
                             left: boundsFirst.x + fullscreen.current.scrollLeft,
                         }
-                    })
+                    });
                 }
                 break;
             case StepTypes.Three:
@@ -332,7 +351,7 @@ const GameSection = (): JSX.Element => {
 
         return () => {
             window.removeEventListener("resize", handleResize);
-        }
+        };
     }, [handleResize]);
 
     React.useEffect(() => {
@@ -364,6 +383,7 @@ const GameSection = (): JSX.Element => {
                                         duration={700}
                                         containerId="containerElement"
                                         className={styles.avatar}
+                                        ignoreCancelEvents={true}
                                     >
                                         <Avatar color={value} />
                                     </Link>
@@ -379,7 +399,8 @@ const GameSection = (): JSX.Element => {
                                     <Link to="3"
                                         smooth={true}
                                         duration={700}
-                                        containerId="containerElement">
+                                        containerId="containerElement"
+                                        ignoreCancelEvents={true}>
                                         <button disabled={avatarName === ""} onClick={() => {
                                             handleBtnClick2(selected);
                                         }}>
