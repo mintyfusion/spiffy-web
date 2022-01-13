@@ -21,6 +21,7 @@ const avatarTimeout = 1000;
 const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
+const firstSectionTime = 500;
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
@@ -131,7 +132,10 @@ const GameSection = (): JSX.Element => {
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
             const bounds = friendsRef.current.getBoundingClientRect();
-            const avatarSize = window.innerWidth > 768 ? 160 : 90;
+            const mobile = 768;
+            const mobileAvatar = 90;
+            const desktopAvatar = 160;
+            const avatarSize = window.innerWidth > mobile ? desktopAvatar : mobileAvatar;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 20;
@@ -293,7 +297,7 @@ const GameSection = (): JSX.Element => {
             const timer: NodeJS.Timeout = setTimeout(() => {
                 setAvatarPositions();
                 clearTimeout(timer);
-            }, 500);
+            }, firstSectionTime);
 
             return () => clearTimeout(timer);
         }
@@ -310,7 +314,7 @@ const GameSection = (): JSX.Element => {
         });
     }, []);
 
-    const handleResize = React.useCallback(async () => {
+    const handleResize = React.useCallback(() => {
         switch (step) {
             case StepTypes.One:
                 setAvatarPositions();
@@ -331,7 +335,6 @@ const GameSection = (): JSX.Element => {
                 setFriendsPositions();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
-                console.log(boundsSecond, stepThree);
                 if (boundsSecond) {
                     setAvatatStyles({
                         ...avatatStyles, [selected]: {
@@ -481,7 +484,9 @@ const GameSection = (): JSX.Element => {
                                         {data.concat(friends).map((i, k) => (
                                             <div className={styles.donationCycleItems} key={k}>
                                                 <Image {...i.image} width={56} height={63} />
-                                                <span>${Number(donationAmount) / donationFormula / donationFormula}0</span>
+                                                <span>
+                                                    ${Number(donationAmount) / donationFormula / donationFormula}0
+                                                </span>
                                             </div>
                                         ))}
                                         <div>
