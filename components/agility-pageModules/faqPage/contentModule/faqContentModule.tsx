@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Accordion, Nav, Navbar, Row, Stack } from "react-bootstrap";
 import { ContentItem, ModuleProps } from "@agility/nextjs";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import agility from "@agility/content-fetch";
 import React from "react";
@@ -18,6 +18,7 @@ import useBreakpoint from "hooks/useBreakpoint";
 import styles from "components/agility-pageModules/faqPage/contentModule/faqContentModule.module.scss";
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
+const zeroPrefixLimit = 9;
 
 const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.payment);
@@ -31,6 +32,15 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
             apiKey: process.env.NEXT_PUBLIC_AGILITY_API_PREVIEW_KEY,
             isPreview: true
         }), []);
+
+    const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
+        <div className={` h-100 ${horizontalAlign} ${styles.customAccordianButton}`}>
+            <div>
+                <FontAwesomeIcon icon={faChevronLeft} width="20" height="35" />
+                <FontAwesomeIcon icon={faChevronLeft} width="20" height="35" />
+                {props.children}
+            </div>
+        </div>;
 
     React.useEffect(() => {
         api.getContentList({
@@ -51,7 +61,7 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
     }, [api, activeTab]);
 
     return (
-        <div className={styles.contentContainer}>
+        <div className={`${styles.contentContainer} px-2 px-md-5`}>
             <Stack
                 className={`
                         ${styles.content}
@@ -70,8 +80,8 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
                 onClick={() => breakpoint && setExpanded(!expanded)}
                 className="mb-1 mb-md-4"
             >
-                <Navbar.Brand href="#home">
-                    <label className="d-block d-lg-none w-100">
+                <Navbar.Brand href="#home" className="d-block d-lg-none">
+                    <label className="w-100">
                         {activeTab}
                     </label>
                 </Navbar.Brand>
@@ -102,16 +112,26 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            {contentData && contentData.items.map((post, index) =>
-                <Accordion key={index}>
-                    <Accordion.Item eventKey={index.toString()} >
-                        <Accordion.Header>{post.fields.title}</Accordion.Header>
-                        <Accordion.Body>
-                            {post.fields.description}
-                        </Accordion.Body>
-                    </Accordion.Item>
-                </Accordion>
-            )}
+            <Stack className="gap-4">
+                {contentData && contentData.items.map((post, index) =>
+                    <Accordion key={index} className={styles.accordion}>
+                        <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
+                            <Accordion.Header className={styles.accordianHeader}>
+                                <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
+                                    <div className={`${styles.faqIndex} p-2`}>
+                                        {`${index < zeroPrefixLimit && "0"}${index + 1}`}
+                                    </div>
+                                    <div className="w-100 p-2">{post.fields.title}</div>
+                                    <ContextAwareToggle eventKey={index.toString()} />
+                                </Stack>
+                            </Accordion.Header>
+                            <Accordion.Body className={styles.accordianBody}>
+                                {post.fields.description}
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
+                )}
+            </Stack>
         </div>
     );
 };

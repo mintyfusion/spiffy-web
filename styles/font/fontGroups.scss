@@ -28,6 +28,10 @@
     @include typeFace($thirtyFive, $ninety, $regular);
 }
 
+.semiBold32 {
+    @include typeFace($eighteen, $thirtyTwo, $semi-bold);
+}
+
 .semiBold90 {
     @include typeFace($thirtyFive, $ninety, $semi-bold);
 }

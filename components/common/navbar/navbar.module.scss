@@ -11,10 +11,10 @@ $backroundTransition: background-color 0.2s;
 
 .navbar {
   transition: $backroundTransition;
-  z-index: 2;
+  z-index: 4;
 
   .headerLogo {
-    z-index: 2;
+    z-index: 4;
   }
 
   .collapsible {

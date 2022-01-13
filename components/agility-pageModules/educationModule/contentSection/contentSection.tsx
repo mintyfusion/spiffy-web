@@ -63,8 +63,8 @@ const ContentSection = (props: ModuleProps<IContentSectionProps>): JSX.Element =
                 onClick={() => breakpoint && setExpanded(!expanded)}
                 className="mb-1 mb-md-4"
             >
-                <Navbar.Brand href="#home">
-                    <label className="d-block d-lg-none w-100">
+                <Navbar.Brand href="#home" className="d-block d-lg-none">
+                    <label className="w-100">
                         {activeTab}
                     </label>
                 </Navbar.Brand>

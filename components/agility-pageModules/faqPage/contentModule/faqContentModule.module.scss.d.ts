@@ -1,4 +1,7 @@
 export type Styles = {
+  "accordianBody": string;
+  "accordianHeader": string;
+  "accordion": string;
   "active": string;
   "activeTab": string;
   "backgroundPattern": string;
@@ -17,11 +20,13 @@ export type Styles = {
   "content": string;
   "contentContainer": string;
   "contentHeading": string;
+  "customAccordianButton": string;
   "dirtyWhite": string;
   "extraBold41": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
+  "faqIndex": string;
   "fullbold109": string;
   "fullBold67": string;
   "inactive": string;
@@ -33,6 +38,7 @@ export type Styles = {
   "regular90": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "semiBold32": string;
   "semiBold90": string;
   "tab": string;
 };
