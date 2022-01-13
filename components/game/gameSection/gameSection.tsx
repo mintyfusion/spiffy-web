@@ -26,7 +26,7 @@ const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<IAvatar>();
     const [selected, setSelected] = React.useState<AvatarType>();
-    const [step, setStep] = React.useState<string>("1");
+    const [step, setStep] = React.useState<StepTypes>(StepTypes.One);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
@@ -44,7 +44,7 @@ const GameSection = (): JSX.Element => {
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
         if (freindsCount === friendsLength) {
-            scroller.scrollTo("4", {
+            scroller.scrollTo(StepTypes.Four, {
                 duration: 700,
                 smooth: true,
                 containerId: "containerElement",
@@ -52,7 +52,7 @@ const GameSection = (): JSX.Element => {
                 ignoreCancelEvents: true
             });
             timer = setTimeout(() => {
-                setStep("4");
+                setStep(StepTypes.Four);
                 clearTimeout(timer);
             }, friendsTimeout);
         }
@@ -62,7 +62,7 @@ const GameSection = (): JSX.Element => {
 
     const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
-            scroller.scrollTo("5", {
+            scroller.scrollTo(StepTypes.Five, {
                 duration: 700,
                 smooth: true,
                 containerId: "containerElement",
@@ -126,16 +126,12 @@ const GameSection = (): JSX.Element => {
         }
 
         return null;
-    }, [start, fullscreen]);
+    }, [start]);
 
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
-            const width = screen.width;
-            const mobile = 768;
-            const mobileAvatar = 90;
-            const desktopAvatar = 160;
             const bounds = friendsRef.current.getBoundingClientRect();
-            const avatarSize = width > mobile ? desktopAvatar : mobileAvatar;
+            const avatarSize = window.innerWidth > 768 ? 160 : 90;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 20;
@@ -143,10 +139,12 @@ const GameSection = (): JSX.Element => {
             const left2 = Math.abs(cardMidPointX + space);
             const top1 = Math.abs(cardMidPointY - avatarSize - space) + fullscreen.current.scrollTop;
             const top2 = Math.abs(cardMidPointY - space) + fullscreen.current.scrollTop;
+
             const styles = {} as Record<AvatarType, CSSProperties>;
+            const keyTwo = 2;
+            const keyThree = 3;
+
             Object.entries(AvatarType).filter(([filter]) => filter !== selected).forEach(([value], index) => {
-                const keyTwo = 2;
-                const keyThree = 3;
                 switch (index) {
                     case 0:
                         styles[value] = {
@@ -178,9 +176,7 @@ const GameSection = (): JSX.Element => {
 
             return styles;
         }
-
-        return null;
-    }, [friendsRef, fullscreen]);
+    }, [selected]);
 
     const handleBtnClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
@@ -197,21 +193,8 @@ const GameSection = (): JSX.Element => {
         setFriends(data.filter((filter) => filter.id !== avatar));
         setSelected(avatar);
         setSeletedAvatar(Avatar[0]);
-        setStep("2");
-    }, [target, avatatStyles, fullscreen]);
-
-    const handleBtnClick2 = React.useCallback((avatar: AvatarType) => {
-        if (stepThree.current) {
-            const bounds = stepThree.current.getBoundingClientRect();
-            setAvatatStyles({
-                ...avatatStyles, [avatar]: {
-                    top: bounds.y + fullscreen.current.scrollTop,
-                    left: bounds.x + fullscreen.current.scrollLeft,
-                }
-            });
-            setStep("3");
-        }
-    }, [stepThree, avatatStyles, fullscreen]);
+        setStep(StepTypes.Two);
+    }, [avatatStyles]);
 
     const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
@@ -275,7 +258,7 @@ const GameSection = (): JSX.Element => {
                     break;
             }
         }
-    }, [friendsStyle, stepThree]);
+    }, [friendsStyle, freindsCount]);
 
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
@@ -287,12 +270,26 @@ const GameSection = (): JSX.Element => {
     const setFriendsPositions = React.useCallback(() => {
         const styles = getFriendsStyle();
         if (styles) {
-            setFriendsStyle(getFriendsStyle);
+            setFriendsStyle({ ...friendsStyle, ...styles });
         }
-    }, [getFriendsStyle]);
+    }, [getFriendsStyle, friendsStyle]);
+
+    const handleBtnClick2 = React.useCallback((avatar: AvatarType) => {
+        if (stepThree.current && step === StepTypes.Two) {
+            const bounds = stepThree.current.getBoundingClientRect();
+            setAvatatStyles({
+                ...avatatStyles, [avatar]: {
+                    top: bounds.y + fullscreen.current.scrollTop,
+                    left: bounds.x + fullscreen.current.scrollLeft,
+                }
+            });
+            setStep(StepTypes.Three);
+            setFriendsPositions();
+        }
+    }, [avatatStyles, setFriendsPositions]);
 
     React.useEffect(() => {
-        if (step === "1") {
+        if (step === StepTypes.One) {
             const timer: NodeJS.Timeout = setTimeout(() => {
                 setAvatarPositions();
                 clearTimeout(timer);
@@ -301,11 +298,10 @@ const GameSection = (): JSX.Element => {
             return () => clearTimeout(timer);
         }
 
-    }, [setAvatarPositions]);
-
+    }, [setAvatarPositions, step]);
 
     const signupAnimation = React.useCallback(() => {
-        scroller.scrollTo("6", {
+        scroller.scrollTo(StepTypes.Six, {
             duration: 700,
             smooth: true,
             containerId: "containerElement",
@@ -314,7 +310,7 @@ const GameSection = (): JSX.Element => {
         });
     }, []);
 
-    const handleResize = React.useCallback(() => {
+    const handleResize = React.useCallback(async () => {
         switch (step) {
             case StepTypes.One:
                 setAvatarPositions();
@@ -331,9 +327,11 @@ const GameSection = (): JSX.Element => {
                 }
                 break;
             case StepTypes.Three:
+            default:
                 setFriendsPositions();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
-                console.log(boundsSecond);
+
+                console.log(boundsSecond, stepThree);
                 if (boundsSecond) {
                     setAvatatStyles({
                         ...avatatStyles, [selected]: {
@@ -342,9 +340,10 @@ const GameSection = (): JSX.Element => {
                         }
                     });
                 }
+
                 break;
         }
-    }, [setAvatarPositions, setFriendsPositions, step, target, fullscreen, stepThree, avatatStyles]);
+    }, [setAvatarPositions, step, avatatStyles, selected]);
 
     React.useEffect(() => {
         window.addEventListener("resize", handleResize);
@@ -353,13 +352,6 @@ const GameSection = (): JSX.Element => {
             window.removeEventListener("resize", handleResize);
         };
     }, [handleResize]);
-
-    React.useEffect(() => {
-        if (step === "3") {
-            setFriendsPositions();
-        }
-
-    }, [step]);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
@@ -378,7 +370,7 @@ const GameSection = (): JSX.Element => {
                                             ...avatatStyles && avatatStyles[value],
                                         }}
                                         onClick={() => handleBtnClick(value)}
-                                        to="2"
+                                        to={StepTypes.Two}
                                         smooth={true}
                                         duration={700}
                                         containerId="containerElement"
@@ -396,7 +388,8 @@ const GameSection = (): JSX.Element => {
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
                                     <div className={styles.targetOne} ref={target}></div>
                                     <input placeholder="Name" className="w-100 text-center" onChange={(e) => setAvatarName(e.target.value)} />
-                                    <Link to="3"
+                                    <Link
+                                        to={StepTypes.Three}
                                         smooth={true}
                                         duration={700}
                                         containerId="containerElement"
@@ -420,7 +413,7 @@ const GameSection = (): JSX.Element => {
                                 </div>
                                 <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`} ref={friendsRef}>
                                     <h2 className={styles.avatarHeading}>Add four friends.</h2>
-                                    {step === "3" ?
+                                    {step === StepTypes.Three ?
                                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
                                             {Object.entries(AvatarType)
                                                 .filter(([filter]) => filter !== selected)

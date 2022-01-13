@@ -4,6 +4,7 @@ import React from "react";
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 
+import StepTypes from "../gameSection/enums/stepTypes";
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -61,7 +62,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         if (percentage !== "1") {
             timer = setTimeout(() => {
                 window.scroll(0, 0);
-                props.setStep("6");
+                props.setStep(StepTypes.Six);
                 clearTimeout(timer);
             }, donationTimeout);
         }
