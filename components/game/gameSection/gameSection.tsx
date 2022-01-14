@@ -1,4 +1,4 @@
-import { Element, Link, scroller, animateScroll as scroll } from "react-scroll";
+import { Element, Link, scroller } from "react-scroll";
 import Avatar from "../avatar/avatar";
 import AvatarType from "./enums/avatarTypes";
 import data from "components/game/gameSection/gameSectionContent";
@@ -454,7 +454,7 @@ const GameSection = (): JSX.Element => {
                                                     animationHandler(donation);
                                                     titleRef.current.scroll({
                                                         top: 200,
-                                                        behavior: 'smooth'
+                                                        behavior: "smooth"
                                                     });
                                                 }}>
                                                 <h4>{donation}</h4>
