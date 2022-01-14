@@ -4349,455 +4349,456 @@
 @include media(">=1100px", "<1200px") {
     .paddingSides {
         padding: 0px 0px !important;
-    
-    .container {
-        text-align: center;
-    }
 
-    .avatarWrapper {
-        width: 35%;
-        flex-wrap: wrap;
-        gap: 25px;
-        img {
-            @include imgProperties(100px);
+        .container {
+            text-align: center;
         }
-    }
 
-    .gameStepTwo {
-        width: 35%;
-        img {
-            @include imgProperties(100px);
-        }
-        input {
-            font-size: 16px;
-            padding: 8px 10px;
-            margin-top: 0px;
-        }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
-        }
-    }
-
-    .gameStepThree {
-        .user {
+        .avatarWrapper {
+            width: 35%;
+            flex-wrap: wrap;
+            gap: 25px;
             img {
-                visibility: hidden;
+                @include imgProperties(100px);
             }
         }
-        .gameStepThreeUserColumn {
-            width: 48%;
-            .selected {
+
+        .gameStepTwo {
+            width: 35%;
+            img {
+                @include imgProperties(100px);
+            }
+            input {
+                font-size: 16px;
+                padding: 8px 10px;
+                margin-top: 0px;
+            }
+            button {
+                font-size: 12px;
+                padding: 10px 0px;
+                margin-top: 30px;
+            }
+        }
+
+        .gameStepThree {
+            .user {
                 img {
-                    width: 100px;
-                    height: 150px;
-                    object-fit: contain;
+                    visibility: hidden;
                 }
             }
-            .friends {
+            .gameStepThreeUserColumn {
+                width: 48%;
+                .selected {
+                    img {
+                        width: 100px;
+                        height: 150px;
+                        object-fit: contain;
+                    }
+                }
+                .friends {
+                    position: absolute;
+                    top: 0px;
+                    img {
+                        @include imgProperties(60px);
+                    }
+                    div:nth-child(1) {
+                        @include friendsAvatar(unset, 23px, -6px, freindsSlideLeft, 2s);
+                    }
+                    div:nth-child(2) {
+                        @include friendsAvatar(unset, 136px, 56px, freindsSlideRight, 2s);
+                    }
+                    div:nth-child(3) {
+                        @include friendsAvatar(unset, 23px, 50px, freindsSlideLeft, 2s);
+                    }
+                    div:nth-child(4) {
+                        @include friendsAvatar(unset, 136px, 111px, freindsSlideRight, 2s);
+                    }
+                }
+            }
+            .gameStepThreeFriendsColumn {
+                width: 48%;
+                padding: 0px;
+                .avatarWrapper {
+                    width: 100%;
+                    gap: 0px;
+                    img {
+                        @include imgProperties(60px);
+                    }
+                }
+            }
+        }
+
+        @keyframes freindsSlideRight {
+            0% {
+                opacity: 0;
+                left: 190px;
+            }
+            100% {
+                opacity: 1;
+                left: 136px;
+            }
+        }
+
+        @keyframes freindsSlideLeft {
+            0% {
+                opacity: 0;
+                left: -60px;
+            }
+            100% {
+                opacity: 1;
+                left: 23px;
+            }
+        }
+
+        .percentageSelected {
+            img {
+                @include imgProperties(67px);
+            }
+        }
+
+        .percentageFriends {
+            img {
+                @include imgProperties(47px);
+            }
+            div:nth-child(1) {
+                right: unset;
+                bottom: 12px;
+                left: 40px;
+            }
+            div:nth-child(2) {
+                bottom: 20px;
+                left: 40px;
+            }
+            div:nth-child(3) {
+                bottom: 118px;
+                left: unset;
+                right: 38px;
+            }
+            div:nth-child(4) {
+                bottom: 129px;
+                right: 39px;
+            }
+        }
+
+        .donationInner {
+            margin-top: 15px;
+            .avatarInner {
+                margin-top: 60px;
+            }
+        }
+
+        .signUpsection {
+            button {
+                width: 60%;
+                font-size: 12px;
+                padding: 10px 0px;
+            }
+        }
+
+        .donationCycleItems {
+            padding: 10px 5px;
+        }
+
+        .userDonation {
+            img {
+                @include imgProperties(100px);
+            }
+        }
+
+        .coinDefault {
+            img {
+                @include imgProperties(50px);
+            }
+        }
+
+        .gameStepOne {
+            @include gameContentPadding(0px 0);
+        }
+
+        .avatarstepTwo {
+            animation: avatarstepTwoAnimation 4s;
+            animation-fill-mode: forwards;
+            img {
+                @include imgProperties(100px);
+            }
+        }
+
+        @keyframes avatarstepTwoAnimation {
+            100% {
+                left: 45%;
+                top: 21%;
+            }
+        }
+
+        .gameStepTwoWrapper {
+            @include gameContentPadding(0px 0);
+        }
+
+        .avatarstepThree {
+            animation: avatarstepThreeAnimation 4s;
+            animation-fill-mode: forwards;
+            img {
+                @include imgProperties(150px);
+            }
+        }
+
+        @keyframes avatarstepThreeAnimation {
+            0% {
+                left: 46%;
+                top: 20%;
+            }
+            99% {
+                opacity: 1;
+            }
+            100% {
+                left: 23.9%;
+                top: 38%;
+                opacity: 0;
+            }
+        }
+
+        .percentageWrapper {
+            img {
+                @include imgProperties(125px);
+                cursor: pointer;
+            }
+            > div:nth-child(1) {
                 position: absolute;
-                top: 0px;
+                top: 32%;
+                left: 60%;
                 img {
-                    @include imgProperties(60px);
-                }
-                div:nth-child(1) {
-                    @include friendsAvatar(unset, 23px, -6px, freindsSlideLeft, 2s);
-                }
-                div:nth-child(2) {
-                    @include friendsAvatar(unset, 136px, 56px, freindsSlideRight, 2s);
-                }
-                div:nth-child(3) {
-                    @include friendsAvatar(unset, 23px, 50px, freindsSlideLeft, 2s);
-                }
-                div:nth-child(4) {
-                    @include friendsAvatar(unset, 136px, 111px, freindsSlideRight, 2s);
+                    @include imgProperties(100px);
                 }
             }
-        }
-        .gameStepThreeFriendsColumn {
-            width: 48%;
-            padding: 0px;
-            .avatarWrapper {
-                width: 100%;
-                gap: 0px;
+            div:nth-child(2) {
+                position: absolute;
+                top: 32%;
+                left: 78%;
                 img {
-                    @include imgProperties(60px);
+                    @include imgProperties(100px);
+                }
+            }
+            div:nth-child(3) {
+                position: absolute;
+                top: 60%;
+                left: 60%;
+                img {
+                    @include imgProperties(100px);
+                }
+            }
+            div:nth-child(4) {
+                position: absolute;
+                top: 60%;
+                left: 78%;
+                img {
+                    @include imgProperties(100px);
+                }
+            }
+
+            .friendsAnimation:nth-child(1) {
+                @include friendsAnimation(animation-1, 30%, 60%, 35.5%, 8.6%);
+                img {
+                    @include imgProperties(80px);
+                }
+            }
+
+            .friendsAnimation:nth-child(2) {
+                @include friendsAnimation(animation-2, 32%, 78%, 35.5%, 22.6%);
+                img {
+                    @include imgProperties(80px);
+                }
+            }
+
+            .friendsAnimation:nth-child(3) {
+                @include friendsAnimation(animation-3, 60%, 60%, 50.5%, 8.6%);
+                img {
+                    @include imgProperties(80px);
+                }
+            }
+
+            .friendsAnimation:nth-child(4) {
+                @include friendsAnimation(animation-4, 60%, 78%, 50.5%, 22.6%);
+                img {
+                    @include imgProperties(80px);
                 }
             }
         }
-    }
 
-    @keyframes freindsSlideRight {
-        0% {
-            opacity: 0;
-            left: 190px;
-        }
-        100% {
-            opacity: 1;
-            left: 136px;
-        }
-    }
-
-    @keyframes freindsSlideLeft {
-        0% {
-            opacity: 0;
-            left: -60px;
-        }
-        100% {
-            opacity: 1;
-            left: 23px;
-        }
-    }
-
-    .percentageSelected {
-        img {
-            @include imgProperties(67px);
-        }
-    }
-
-    .percentageFriends {
-        img {
-            @include imgProperties(47px);
-        }
-        div:nth-child(1) {
-            right: unset;
-            bottom: 12px;
-            left: 40px;
-        }
-        div:nth-child(2) {
-            bottom: 20px;
-            left: 40px;
-        }
-        div:nth-child(3) {
-            bottom: 118px;
-            left: unset;
-            right: 38px;
-        }
-        div:nth-child(4) {
-            bottom: 129px;
-            right: 39px;
-        }
-    }
-
-    .donationInner {
-        margin-top: 15px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 60%;
-            font-size: 12px;
-            padding: 10px 0px;
-        }
-    }
-
-    .donationCycleItems {
-        padding: 10px 5px;
-    }
-
-    .userDonation {
-        img {
-            @include imgProperties(100px);
-        }
-    }
-
-    .coinDefault {
-        img {
-            @include imgProperties(50px);
-        }
-    }
-
-    .gameStepOne {
-        @include gameContentPadding(0px 0);
-    }
-
-    .avatarstepTwo {
-        animation: avatarstepTwoAnimation 4s;
-        animation-fill-mode: forwards;
-        img {
-            @include imgProperties(100px);
-        }
-    }
-
-    @keyframes avatarstepTwoAnimation {
-        100% {
-            left: 45%;
-            top: 21%;
-        }
-    }
-
-    .gameStepTwoWrapper {
-        @include gameContentPadding(0px 0);
-    }
-
-    .avatarstepThree {
-        animation: avatarstepThreeAnimation 4s;
-        animation-fill-mode: forwards;
-        img {
-            @include imgProperties(150px);
-        }
-    }
-
-    @keyframes avatarstepThreeAnimation {
-        0% {
-            left: 46%;
-            top: 20%;
-        }
-        99% {
-            opacity: 1;
-        }
-        100% {
-            left: 23.9%;
-            top: 38%;
-            opacity: 0;
-        }
-    }
-
-    .percentageWrapper {
-        img {
-            @include imgProperties(125px);
-            cursor: pointer;
-        }
-        > div:nth-child(1) {
-            position: absolute;
-            top: 32%;
-            left: 60%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(2) {
-            position: absolute;
-            top: 32%;
-            left: 78%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(3) {
-            position: absolute;
-            top: 60%;
-            left: 60%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(4) {
-            position: absolute;
-            top: 60%;
-            left: 78%;
-            img {
-                @include imgProperties(100px);
-            }
+        .donations {
+            width: 80px;
         }
 
-        .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 60%, 35.5%, 8.6%);
-            img {
-                @include imgProperties(80px);
-            }
-        }
-
-        .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 78%, 35.5%, 22.6%);
-            img {
-                @include imgProperties(80px);
-            }
-        }
-
-        .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 60%, 50.5%, 8.6%);
-            img {
-                @include imgProperties(80px);
-            }
-        }
-
-        .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 78%, 50.5%, 22.6%);
-            img {
-                @include imgProperties(80px);
-            }
-        }
-    }
-
-    .donations {
-        width: 80px;
-    }
-
-    .animationGrid {
-        height: 500px;
-        justify-content: center;
-        display: flex;
-        width: 100%;
-        > div:nth-child(1) {
-            @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
-            img {
-                @include imgProperties(50px);
-            }
-            h3 {
-                top: 90px;
-                left: -80px;
-            }
-        }
-        > div:nth-child(2) {
-            @include coinAnimation(36%, 40px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(3) {
-            @include coinAnimation(29%, 120px, unset, unset, opacityAnimation, 5s, displayAnimation, 6s, #6962df);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(4) {
-            @include coinAnimation(25%, 220px, unset, unset, opacityAnimation, 7s, displayAnimation, 9s, $red);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(5) {
-            @include coinAnimation(29%, 320px, unset, unset, opacityAnimation, 9s, displayAnimation, 10s, $yellow);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(6) {
-            @include coinAnimation(36%, 405px, unset, unset, opacityAnimation, 11s, displayAnimation, 12s, #fa632b);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(7) {
-            @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 13s, displayAnimation, 14s, #23a534);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(8) {
-            @include coinAnimation(unset, unset, 25px, 36%, opacityAnimation, 15s, displayAnimation, 16s, $red);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(9) {
-            @include coinAnimation(unset, unset, 109px, 30%, opacityAnimation, 17s, displayAnimation, 18s, $yellow);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(10) {
-            @include coinAnimation(unset, unset, 211px, 27%, opacityAnimation, 19s, displayAnimation, 19s, #fa632b);
-            img {
-                @include imgProperties(50px);
-            }
-        }
-        div:nth-child(11) {
-            @include coinAnimation(unset, unset, 340px, 4%, opacityAnimation, 20s, displayAnimation, 20s, #000);
-            position: absolute;
+        .animationGrid {
+            height: 500px;
+            justify-content: center;
             display: flex;
-            .donationCycleItems {
-                position: absolute;
-                right: -12px;
-                padding: 10px;
-                border-radius: 20px;
-                top: 0px;
+            width: 100%;
+            > div:nth-child(1) {
+                @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
                 img {
-                    width: 100px;
-                    height: 50px;
-                    object-fit: contain;
+                    @include imgProperties(50px);
+                }
+                h3 {
+                    top: 90px;
+                    left: -80px;
                 }
             }
-            .animationText {
-                width: 65%;
-                animation-name: opacityAnimation;
-                animation-duration: 23s;
-                animation-fill-mode: forwards;
+            > div:nth-child(2) {
+                @include coinAnimation(36%, 40px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(3) {
+                @include coinAnimation(29%, 120px, unset, unset, opacityAnimation, 5s, displayAnimation, 6s, #6962df);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(4) {
+                @include coinAnimation(25%, 220px, unset, unset, opacityAnimation, 7s, displayAnimation, 9s, $red);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(5) {
+                @include coinAnimation(29%, 320px, unset, unset, opacityAnimation, 9s, displayAnimation, 10s, $yellow);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(6) {
+                @include coinAnimation(36%, 405px, unset, unset, opacityAnimation, 11s, displayAnimation, 12s, #fa632b);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(7) {
+                @include coinAnimation(unset, unset, 0, unset, opacityAnimation, 13s, displayAnimation, 14s, #23a534);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(8) {
+                @include coinAnimation(unset, unset, 25px, 36%, opacityAnimation, 15s, displayAnimation, 16s, $red);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(9) {
+                @include coinAnimation(unset, unset, 109px, 30%, opacityAnimation, 17s, displayAnimation, 18s, $yellow);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(10) {
+                @include coinAnimation(unset, unset, 211px, 27%, opacityAnimation, 19s, displayAnimation, 19s, #fa632b);
+                img {
+                    @include imgProperties(50px);
+                }
+            }
+            div:nth-child(11) {
+                @include coinAnimation(unset, unset, 340px, 4%, opacityAnimation, 20s, displayAnimation, 20s, #000);
+                position: absolute;
+                display: flex;
+                .donationCycleItems {
+                    position: absolute;
+                    right: -12px;
+                    padding: 10px;
+                    border-radius: 20px;
+                    top: 0px;
+                    img {
+                        width: 100px;
+                        height: 50px;
+                        object-fit: contain;
+                    }
+                }
+                .animationText {
+                    width: 65%;
+                    animation-name: opacityAnimation;
+                    animation-duration: 23s;
+                    animation-fill-mode: forwards;
+                }
             }
         }
-    }
 
-    @keyframes example {
-        0% {
-            transform: translate(0px, 0px);
-            opacity: 1;
+        @keyframes example {
+            0% {
+                transform: translate(0px, 0px);
+                opacity: 1;
+            }
+            5% {
+                transform: translate(0px, 80px);
+                width: 37px;
+                height: 37px;
+            }
+            10% {
+                transform: translate(0px, 140px);
+            }
+            15% {
+                transform: translate(0px, 200px);
+            }
+            20% {
+                transform: translate(50px, 290px);
+            }
+            30% {
+                transform: translate(100px, 360px);
+            }
+            40% {
+                transform: translate(150px, 420px);
+            }
+            50% {
+                transform: translate(130px, 460px);
+            }
+            60% {
+                transform: translate(100px, 540px);
+            }
+            70% {
+                transform: translate(0px, 560px);
+            }
+            80% {
+                transform: translate(-50px, 540px);
+            }
+            90% {
+                transform: translate(-90px, 500px);
+            }
+            94% {
+                transform: translate(-100px, 400px);
+                width: 37px;
+                height: 37px;
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-110px, 350px);
+                width: 50px;
+                height: 50px;
+            }
         }
-        5% {
-            transform: translate(0px, 80px);
-            width: 37px;
-            height: 37px;
-        }
-        10% {
-            transform: translate(0px, 140px);
-        }
-        15% {
-            transform: translate(0px, 200px);
-        }
-        20% {
-            transform: translate(50px, 290px);
-        }
-        30% {
-            transform: translate(100px, 360px);
-        }
-        40% {
-            transform: translate(150px, 420px);
-        }
-        50% {
-            transform: translate(130px, 460px);
-        }
-        60% {
-            transform: translate(100px, 540px);
-        }
-        70% {
-            transform: translate(0px, 560px);
-        }
-        80% {
-            transform: translate(-50px, 540px);
-        }
-        90% {
-            transform: translate(-90px, 500px);
-        }
-        94% {
-            transform: translate(-100px, 400px);
-            width: 37px;
-            height: 37px;
-            opacity: 1;
-        }
-        100% {
-            transform: translate(-110px, 350px);
-            width: 50px;
-            height: 50px;
-        }
-    }
 
-    .avatarPurple {
-        @include avatar(30%, 51%);
-        @include imgProperties(100px);
-    }
+        .avatarPurple {
+            @include avatar(30%, 51%);
+            @include imgProperties(100px);
+        }
 
-    .avatarGreen {
-        @include avatar(30%, 39.8%);
-        @include imgProperties(100px);
-    }
+        .avatarGreen {
+            @include avatar(30%, 39.8%);
+            @include imgProperties(100px);
+        }
 
-    .avatarRed {
-        @include avatar(64%, 39.8%);
-        @include imgProperties(100px);
-    }
+        .avatarRed {
+            @include avatar(64%, 39.8%);
+            @include imgProperties(100px);
+        }
 
-    .avatarYellow {
-        @include avatar(64%, 51.1%);
-        @include imgProperties(100px);
-    }
+        .avatarYellow {
+            @include avatar(64%, 51.1%);
+            @include imgProperties(100px);
+        }
 
-    .avatarOrange {
-        @include avatar(73%, 45%);
-        @include imgProperties(100px);
+        .avatarOrange {
+            @include avatar(73%, 45%);
+            @include imgProperties(100px);
+        }
     }
 }
 
@@ -5087,7 +5088,7 @@
         height: 500px;
         justify-content: center;
         display: flex;
-        width: 100%;
+        width: 85%;
         > div:nth-child(1) {
             @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
             img {
@@ -5153,7 +5154,7 @@
             }
         }
         div:nth-child(11) {
-            @include coinAnimation(unset, unset, 340px, 4%, opacityAnimation, 20s, displayAnimation, 20s, #000);
+            @include coinAnimation(unset, unset, 340px, -5%, opacityAnimation, 20s, displayAnimation, 20s, #000);
             position: absolute;
             display: flex;
             .donationCycleItems {
@@ -5175,6 +5176,10 @@
                 animation-fill-mode: forwards;
             }
         }
+    }
+
+    .stepFour{
+        height: 900px;
     }
 
     @keyframes example {
@@ -5209,7 +5214,7 @@
             transform: translate(100px, 540px);
         }
         70% {
-            transform: translate(0px, 560px);
+            transform: translate(0px, 540px);
         }
         80% {
             transform: translate(-50px, 540px);
@@ -5217,14 +5222,14 @@
         90% {
             transform: translate(-90px, 500px);
         }
-        94% {
-            transform: translate(-100px, 400px);
+        95% {
+            transform: translate(-130px, 400px);
             width: 37px;
             height: 37px;
             opacity: 1;
         }
         100% {
-            transform: translate(-110px, 350px);
+            transform: translate(-130px, 350px);
             width: 50px;
             height: 50px;
         }
@@ -5529,6 +5534,10 @@
         }
     }
 
+    .stepFour {
+        height: 1020px;
+    }
+
     .percentageWrapper {
         img {
             cursor: pointer;
@@ -5611,7 +5620,7 @@
             transform: translate(50px, 610px);
         }
         70% {
-            transform: translate(0px, 620px);
+            transform: translate(0px, 610px);
         }
         80% {
             transform: translate(-50px, 580px);
@@ -5626,7 +5635,7 @@
             opacity: 1;
         }
         100% {
-            transform: translate(-140px, 400px);
+            transform: translate(-130px, 410px);
             width: 50px;
             height: 50px;
         }
@@ -5640,7 +5649,7 @@
         > div:nth-child(1) {
             @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
         }
-        div:nth-child(2) {
+        > div:nth-child(2) {
             @include coinAnimation(39%, 50px, unset, unset, opacityAnimation, 4s, displayAnimation, 5s, #23a534);
         }
         div:nth-child(3) {
@@ -5980,6 +5989,9 @@
             @include imgProperties(100px);
         }
     }
+    .stepFour {
+        height: 1030px;
+    }
 
     .percentageWrapper {
         img {
@@ -6213,6 +6225,10 @@
         @include avatar(71%, 46%);
     }
 
+    .stepFour {
+        height: 1030px;
+    }
+
     .percentageWrapper {
         img {
             @include imgProperties(125px);
@@ -6270,6 +6286,9 @@
                 @include imgProperties(165px);
             }
         }
+    }
+    .animationGrid {
+        width: 70%;
     }
 }
 
@@ -6356,5 +6375,4 @@
             }
         }
     }
-}
 }

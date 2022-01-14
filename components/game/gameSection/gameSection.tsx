@@ -139,7 +139,7 @@ const GameSection = (): JSX.Element => {
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 20;
-            const left1 = Math.abs(cardMidPointX - avatarSize - space);
+            const left1 = Math.abs(cardMidPointX - avatarSize);
             const left2 = Math.abs(cardMidPointX + space);
             const top1 = Math.abs(cardMidPointY - avatarSize - space) + fullscreen.current.scrollTop;
             const top2 = Math.abs(cardMidPointY - space) + fullscreen.current.scrollTop;
@@ -205,18 +205,21 @@ const GameSection = (): JSX.Element => {
             const width = window.innerWidth;
             setFriendsCount(freindsCount + 1);
             const mobile = 768;
+            const desktopSmall = 1350;
             const mobileTop = 20;
             const desktopTop = 40;
+            const desktopSmallTop = 25;
             const mobileTop2 = 50;
             const desktopTop2 = 80;
             const mobileLeft = 45;
             const desktopLeft = 90;
+            const desktopSmallLeft = 65;
             const mobileLeft2 = 70;
             const desktopleft2 = 115;
 
-            const topSpacing = width < mobile ? mobileTop : desktopTop;
+            const topSpacing = width < mobile ? mobileTop : width < desktopSmall ? desktopSmallTop : desktopTop;
             const top2Spacing = width < mobile ? mobileTop2 : desktopTop2;
-            const leftSpacing = width < mobile ? mobileLeft : desktopLeft;
+            const leftSpacing = width < mobile ? mobileLeft : width < desktopSmall ? desktopSmallLeft : desktopLeft;
             const left2Spacing = width < mobile ? mobileLeft2 : desktopleft2;
 
             const bounds = stepThree.current.getBoundingClientRect();
@@ -475,31 +478,33 @@ const GameSection = (): JSX.Element => {
                                         <p>${Number(donationAmount) / donationDivide}</p>
                                         <h3>Content Creators</h3>
                                     </div>
-                                    {animation ? <div className={`${animation ? styles.animationGrid : ""} position-relative`}>
-                                        <div className={styles.donationCycleItems}>
-                                            <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
-                                            <span>$0.50</span>
-                                            <h3 className="position-absolute">Early Adapters</h3>
-                                        </div>
-                                        {data.concat(friends).map((i, k) => (
-                                            <div className={styles.donationCycleItems} key={k}>
-                                                <Image {...i.image} width={56} height={63} />
-                                                <span>
-                                                    ${Number(donationAmount) / donationFormula / donationFormula}0
-                                                </span>
-                                            </div>
-                                        ))}
-                                        <div>
-                                            <div className={styles.animationText}>
-                                                <h2>Spiffy Corp.</h2>
-                                                <p>We’re totally reliant on this cents to keep us going.</p>
-                                            </div>
+                                    {animation ?
+                                        <div className={`${animation ? styles.animationGrid : ""} position-relative`}>
                                             <div className={styles.donationCycleItems}>
-                                                <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
+                                                <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                                                 <span>$0.50</span>
+                                                <h3 className="position-absolute">Early Adapters</h3>
                                             </div>
-                                        </div>
-                                    </div> : null}
+                                            {data.concat(friends).map((i, k) => (
+                                                <div className={styles.donationCycleItems} key={k}>
+                                                    <Image {...i.image} width={56} height={63} />
+                                                    <span>
+                                                        ${Number(donationAmount) / donationFormula / donationFormula}0
+                                                    </span>
+                                                </div>
+                                            ))}
+                                            <div>
+                                                <div className={styles.animationText}>
+                                                    <h2>Spiffy Corp.</h2>
+                                                    <p>We’re totally reliant on this cents to keep us going.</p>
+                                                </div>
+                                                <div className={styles.donationCycleItems}>
+                                                    <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
+                                                    <span>$0.50</span>
+                                                </div>
+                                            </div>
+                                        </div> :
+                                        null}
                                 </div>
                             </div>
                             {donationAmount ?
