@@ -1,4 +1,4 @@
-import { Element, Link, scroller } from "react-scroll";
+import { Element, Link, scroller, animateScroll as scroll } from "react-scroll";
 import Avatar from "../avatar/avatar";
 import AvatarType from "./enums/avatarTypes";
 import data from "components/game/gameSection/gameSectionContent";
@@ -41,6 +41,7 @@ const GameSection = (): JSX.Element => {
     const stepThree = React.useRef<HTMLDivElement>();
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
+    const titleRef = React.useRef<HTMLDivElement>();
 
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -441,7 +442,7 @@ const GameSection = (): JSX.Element => {
                         </Element>
 
                         <Element name={StepTypes.Four} className={styles.donationSections}>
-                            <div className={styles.card}>
+                            <div className={styles.card} ref={titleRef}>
                                 <div className={`${rowHCenter} ${styles.stepFour}`}>
                                     <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
                                     <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
@@ -451,6 +452,10 @@ const GameSection = (): JSX.Element => {
                                                 onClick={() => {
                                                     setDonationAmount(donation);
                                                     animationHandler(donation);
+                                                    titleRef.current.scroll({
+                                                        top: 200,
+                                                        behavior: 'smooth'
+                                                    });
                                                 }}>
                                                 <h4>{donation}</h4>
                                             </div>)}
@@ -479,7 +484,7 @@ const GameSection = (): JSX.Element => {
                                         <h3>Content Creators</h3>
                                     </div>
                                     {animation ?
-                                        <div className={`${animation ? styles.animationGrid : ""} position-relative`}>
+                                        <div className={`${animation ? styles.animationGrid : ""} position-relative`} >
                                             <div className={styles.donationCycleItems}>
                                                 <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
                                                 <span>$0.50</span>

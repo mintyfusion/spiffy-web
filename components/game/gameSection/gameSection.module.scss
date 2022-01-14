@@ -196,10 +196,9 @@
 
 .donationSections {
     width: 100%;
-    overflow: auto;
-    height: 100vh;
     .card {
-        height: auto;
+        overflow: auto;
+        height: 100vh;
     }
 }
 
@@ -5178,7 +5177,7 @@
         }
     }
 
-    .stepFour{
+    .stepFour {
         height: 900px;
     }
 
