@@ -7,12 +7,14 @@ export type Styles = {
   "animationText": string;
   "avatar": string;
   "avatarAnimation": string;
+  "avatarFriends": string;
   "avatarGreen": string;
   "avatarHeading": string;
   "avatarInner": string;
   "avatarOrange": string;
   "avatarPurple": string;
   "avatarRed": string;
+  "avatarSelected": string;
   "avatarstepThree": string;
   "avatarstepThreeAnimation": string;
   "avatarstepTwo": string;

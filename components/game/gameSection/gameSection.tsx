@@ -41,7 +41,6 @@ const GameSection = (): JSX.Element => {
     const stepThree = React.useRef<HTMLDivElement>();
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
-    const titleRef = React.useRef<HTMLDivElement>();
 
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -204,19 +203,19 @@ const GameSection = (): JSX.Element => {
     const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
             const width = window.innerWidth;
-            setFriendsCount(freindsCount + 1);
-            const mobile = 768;
+            // setFriendsCount(freindsCount + 1);
+            const mobile = 1000;
             const desktopSmall = 1350;
             const mobileTop = 20;
-            const desktopTop = 40;
-            const desktopSmallTop = 25;
+            const desktopTop = 50;
+            const desktopSmallTop = 50;
             const mobileTop2 = 50;
-            const desktopTop2 = 80;
+            const desktopTop2 = 120;
             const mobileLeft = 45;
-            const desktopLeft = 90;
-            const desktopSmallLeft = 65;
+            const desktopLeft = 110;
+            const desktopSmallLeft = 110;
             const mobileLeft2 = 70;
-            const desktopleft2 = 115;
+            const desktopleft2 = 170;
 
             const topSpacing = width < mobile ? mobileTop : width < desktopSmall ? desktopSmallTop : desktopTop;
             const top2Spacing = width < mobile ? mobileTop2 : desktopTop2;
@@ -381,7 +380,7 @@ const GameSection = (): JSX.Element => {
                                         smooth={true}
                                         duration={700}
                                         containerId="containerElement"
-                                        className={styles.avatar}
+                                        className={`${styles.avatar} ${step === StepTypes.Two ? styles.avatarSelected : step === StepTypes.Three ? styles.avatarFriends : ""}`}
                                         ignoreCancelEvents={true}
                                         offset={-20}
                                     >
@@ -441,8 +440,8 @@ const GameSection = (): JSX.Element => {
                             </div>
                         </Element>
 
-                        <Element name={StepTypes.Four} className={styles.donationSections}>
-                            <div className={styles.card} ref={titleRef}>
+                        <Element name={StepTypes.Four} className={styles.donationSections} id="CoinAnimation">
+                            <div className={styles.card}>
                                 <div className={`${rowHCenter} ${styles.stepFour}`}>
                                     <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
                                     <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
@@ -452,7 +451,7 @@ const GameSection = (): JSX.Element => {
                                                 onClick={() => {
                                                     setDonationAmount(donation);
                                                     animationHandler(donation);
-                                                    titleRef.current.scroll({
+                                                    document.getElementById("CoinAnimation").scroll({
                                                         top: 200,
                                                         behavior: "smooth"
                                                     });
@@ -533,7 +532,8 @@ const GameSection = (): JSX.Element => {
                                 </div>
                             </div>
                         </Element>
-                    </div></Modal.Body>
+                    </div>
+                </Modal.Body>
             </Modal>
         </div>
     );
