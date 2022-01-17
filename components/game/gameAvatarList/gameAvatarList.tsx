@@ -1,14 +1,21 @@
 import Image from "next/image";
 import React from "react";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Nav, Navbar } from "react-bootstrap";
 
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 
 import StepTypes from "../gameSection/enums/stepTypes";
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
+import useBreakpoint from "hooks/useBreakpoint";
+import Breakpoints from "common/style/breakpoints";
+import PrimaryButton from "components/common/primaryButton/primaryButton";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
+const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const percent: string[] = ["1", "5", "10", "25", "50", "100"];
 const mainAvatars = [
     "/images/Game/donationCycle/avatarPurple.png",
@@ -22,6 +29,8 @@ const donationTimeout = 6000;
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("1");
     const [avatars, setAvatars] = React.useState([]);
+    const [expanded, setExpanded] = React.useState<boolean>(false);
+    const breakpoint = useBreakpoint(Breakpoints.LG);
 
     const half = Math.ceil(avatars.length / animationSplice);
 
@@ -77,27 +86,33 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
                 <h4>Click the percentage fill rate to unlock your potential. Higher the filled rate,
                     the more money you make.</h4>
-                <div className={`${styles.donationDesktop}`}>
-                    <div className={rowHBetween}>
-                        {percent.map((percent, percentKey) => <div key={percentKey} className={`${styles.donations} ${percentage === percent ? styles.donationActive : ""}`}
-                            onClick={() => {
-                                setPercentage(percent);
-                                animationHandler(percent);
-                            }}>
-                            <h4>{percent}%</h4>
-                        </div>)}
-                    </div>
-                </div>
-                <div className={`${styles.donationMobile} w-100`}>
-                    <div className={`${rowHBetween}`}>
-                        <select onChange={(e) => {
-                            setPercentage(e.target.value);
-                            animationHandler(e.target.value);
-                        }}>
-                            {percent.map((donation, donationKey) => <option key={donationKey}>{donation}</option>)}
-                        </select>
-                    </div>
-                </div>
+
+                <Navbar expand="lg" className="w-100 justify-content-center"
+                    expanded={expanded}
+                    onClick={() => breakpoint && setExpanded(!expanded)}>
+                    <Navbar.Brand href="#home" className="d-lg-none">{percentage}</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
+                        <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
+                    </Navbar.Toggle>
+                    <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
+                            {percent.map((donation, donationKey) =>
+                                <PrimaryButton
+                                    key={donationKey}
+                                    onClick={() => {
+                                        setPercentage(donation);
+                                        animationHandler(donation);
+                                    }}
+                                    className={`${horizontalAlign} w-100 px-1 py-3`}
+                                >
+                                    {donation}
+                                </PrimaryButton>
+                            )}
+
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
 
                 <div className={`${styles.donationInner} ${colCenter} w-100 position-relative`}>
                     {avatars.slice(0, half).map((i, k) => (

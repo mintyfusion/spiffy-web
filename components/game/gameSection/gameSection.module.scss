@@ -84,7 +84,16 @@
         }
     }
 }
-
+.close {
+    position: absolute;
+    right: 10px;
+    top : 10px;
+}
+.activeTab {
+    border: 2px solid $yellow;
+    color: $yellow;
+    opacity: 1;
+}
 .container {
     width: 100%;
     display: flex;
@@ -95,7 +104,6 @@
     .card {
         background-color: #fff;
         display: flex;
-        padding: 50px 0px;
         width: 90%;
         height: calc(100vh - 40px);
         margin: 20px auto;
@@ -473,8 +481,15 @@
 .stepFour {
     width: 100%;
     height: 1140px;
+    padding: 50px 0px;
     h4 {
         @extend .regular-desktop25-mobile16;
+    }
+    nav {
+        width: 90%;
+    }
+    .navToggle {
+        border: none;
     }
 }
 
@@ -807,6 +822,7 @@
 .targetOne {
     width: 160px;
     height: 160px;
+    margin-top: 40px;
 }
 
 .targetTwo {
@@ -4199,66 +4215,6 @@
                 @include imgProperties(125px);
                 cursor: pointer;
             }
-            > div:nth-child(1) {
-                position: absolute;
-                top: 32%;
-                left: 60%;
-                img {
-                    @include imgProperties(100px);
-                }
-            }
-            div:nth-child(2) {
-                position: absolute;
-                top: 32%;
-                left: 78%;
-                img {
-                    @include imgProperties(100px);
-                }
-            }
-            div:nth-child(3) {
-                position: absolute;
-                top: 60%;
-                left: 60%;
-                img {
-                    @include imgProperties(100px);
-                }
-            }
-            div:nth-child(4) {
-                position: absolute;
-                top: 60%;
-                left: 78%;
-                img {
-                    @include imgProperties(100px);
-                }
-            }
-
-            .friendsAnimation:nth-child(1) {
-                @include friendsAnimation(animation-1, 30%, 60%, 35.5%, 8.6%);
-                img {
-                    @include imgProperties(80px);
-                }
-            }
-
-            .friendsAnimation:nth-child(2) {
-                @include friendsAnimation(animation-2, 32%, 78%, 35.5%, 22.6%);
-                img {
-                    @include imgProperties(80px);
-                }
-            }
-
-            .friendsAnimation:nth-child(3) {
-                @include friendsAnimation(animation-3, 60%, 60%, 50.5%, 8.6%);
-                img {
-                    @include imgProperties(80px);
-                }
-            }
-
-            .friendsAnimation:nth-child(4) {
-                @include friendsAnimation(animation-4, 60%, 78%, 50.5%, 22.6%);
-                img {
-                    @include imgProperties(80px);
-                }
-            }
         }
 
         .donations {
@@ -4269,7 +4225,7 @@
             height: 500px;
             justify-content: center;
             display: flex;
-            width: 100%;
+            width: 88%;
             > div:nth-child(1) {
                 @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
                 img {
@@ -4664,7 +4620,7 @@
         height: 500px;
         justify-content: center;
         display: flex;
-        width: 85%;
+        width: 95%;
         > div:nth-child(1) {
             @include coinAnimation(unset, unset, unset, unset, opacityAnimation, 2s, displayAnimation, 3s, #6962df);
             img {

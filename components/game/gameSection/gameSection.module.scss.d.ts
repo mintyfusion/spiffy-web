@@ -1,4 +1,5 @@
 export type Styles = {
+  "activeTab": string;
   "animation1": string;
   "animation2": string;
   "animation3": string;
@@ -35,6 +36,7 @@ export type Styles = {
   "boldGame41": string;
   "boldGame67": string;
   "card": string;
+  "close": string;
   "coin": string;
   "coinAnimatonMobile": string;
   "coinDefault": string;
@@ -74,6 +76,7 @@ export type Styles = {
   "gameStepTwo": string;
   "gameStepTwoWrapper": string;
   "medium25": string;
+  "navToggle": string;
   "opacityAnimation": string;
   "paddingSides": string;
   "percentageFriends": string;

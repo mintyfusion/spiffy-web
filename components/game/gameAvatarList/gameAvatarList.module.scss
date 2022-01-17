@@ -21,12 +21,22 @@
     display: block !important;
 }
 
+.activeTab {
+    border: 2px solid $yellow;
+    color: $yellow;
+    opacity: 1;
+}
+
 .gameStepFive {
     @include gameContentPadding(100px 0);
-    width: 100%;
+    width: 90%;
 
     h4 {
         @extend .regular-desktop25-mobile16;
+    }
+
+    .navToggle {
+        border: none;
     }
 }
 

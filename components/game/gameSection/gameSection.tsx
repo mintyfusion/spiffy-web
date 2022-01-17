@@ -1,4 +1,10 @@
 import { Element, Link, scroller } from "react-scroll";
+import { Nav, Navbar } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
+import React, { CSSProperties } from "react";
+import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Avatar from "../avatar/avatar";
 import AvatarType from "./enums/avatarTypes";
 import data from "components/game/gameSection/gameSectionContent";
@@ -6,12 +12,14 @@ import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import Image from "next/image";
-import Modal from "react-bootstrap/Modal";
-import React, { CSSProperties } from "react";
 import StepTypes from "./enums/stepTypes";
 import styles from "components/game/gameSection/gameSection.module.scss";
+import useBreakpoint from "hooks/useBreakpoint";
+import Breakpoints from "common/style/breakpoints";
+import PrimaryButton from "components/common/primaryButton/primaryButton";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
+const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
@@ -35,6 +43,8 @@ const GameSection = (): JSX.Element => {
     const [friendsStyle, setFriendsStyle] = React.useState<Record<AvatarType, CSSProperties> | undefined>();
     const [freindsCount, setFriendsCount] = React.useState<number>(0);
     const [show, setShow] = React.useState<boolean>(false);
+    const [expanded, setExpanded] = React.useState<boolean>(false);
+    const breakpoint = useBreakpoint(Breakpoints.LG);
 
     const start = React.createRef<HTMLDivElement>();
     const target = React.useRef<HTMLDivElement>();
@@ -53,7 +63,6 @@ const GameSection = (): JSX.Element => {
                 ignoreCancelEvents: true
             });
             timer = setTimeout(() => {
-                console.log("working");
                 setStep(StepTypes.Four);
                 clearTimeout(timer);
             }, friendsTimeout);
@@ -371,9 +380,10 @@ const GameSection = (): JSX.Element => {
         <div className={`${colCenter} ${styles.wrapper}`}>
             <button onClick={() => setShow(true)}>Fullscreen</button>
             <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
-                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px" }} id="containerElement" ref={fullscreen}>
+                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px", display : "inline-block" }} id="containerElement" ref={fullscreen}>
+                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => setShow(false)} className={styles.close} />
                     <div className={styles.container}>
-                        <div className={styles.card} ref={start}>
+                        <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
                             {Object.entries(AvatarType)
                                 .filter(([filter]) => filter !== AvatarType.Orange)
@@ -407,6 +417,7 @@ const GameSection = (): JSX.Element => {
                                         to={StepTypes.Three}
                                         smooth={true}
                                         duration={700}
+                                        offset={-20}
                                         containerId="containerElement"
                                         ignoreCancelEvents={true}>
                                         <button disabled={avatarName === ""} onClick={() => {
@@ -454,32 +465,36 @@ const GameSection = (): JSX.Element => {
                                 <div className={`${rowHCenter} ${styles.stepFour}`}>
                                     <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
                                     <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
-                                    <div className={`${styles.donationDesktop}`}>
-                                        <div className={`${rowHBetween}`}>
-                                            {donation.map((donation, donationKey) => <div key={donationKey} className={`${styles.donations} ${donationAmount === donation ? styles.donationActive : ""}`}
-                                                onClick={() => {
-                                                    setDonationAmount(donation);
-                                                    animationHandler(donation);
-                                                    document.getElementById("CoinAnimation").scroll({
-                                                        top: 200,
-                                                        behavior: "smooth"
-                                                    });
-                                                }}>
-                                                <h4>{donation}</h4>
-                                            </div>)}
-                                        </div>
-                                    </div>
-                                    <div className={"d-sm-none w-100"}>
-                                        <div className={`${rowHBetween}`}>
-                                            <select onChange={(e) => {
-                                                setDonationAmount(e.target.value);
-                                                animationHandler(e.target.value);
-                                            }}>
+                                    <Navbar expand="lg" className="justify-content-center"
+                                        expanded={expanded}
+                                        onClick={() => breakpoint && setExpanded(!expanded)}>
+                                        <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "5" : donationAmount}</Navbar.Brand>
+                                        <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
+                                            <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
+                                        </Navbar.Toggle>
+                                        <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
+                                        <Navbar.Collapse id="basic-navbar-nav">
+                                            <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
                                                 {donation.map((donation, donationKey) =>
-                                                    <option key={donationKey}>{donation}</option>)}
-                                            </select>
-                                        </div>
-                                    </div>
+                                                    <PrimaryButton
+                                                        key={donationKey}
+                                                        onClick={() => {
+                                                            setDonationAmount(donation);
+                                                            animationHandler(donation);
+                                                            document.getElementById("CoinAnimation").scroll({
+                                                                top: 230,
+                                                                behavior: "smooth"
+                                                            });
+                                                        }}
+                                                        className={`${horizontalAlign} w-100 px-1 py-3`}
+                                                    >
+                                                        {donation}
+                                                    </PrimaryButton>
+                                                )}
+
+                                            </Nav>
+                                        </Navbar.Collapse>
+                                    </Navbar>
                                     <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
                                         <h2>Donation Cycle</h2>
                                         <div className={`${animation ? styles.coin : styles.coinDefault}`}>
