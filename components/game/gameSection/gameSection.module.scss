@@ -85,75 +85,6 @@
     }
 }
 
-.avatarPurple {
-    @include avatar(27%, 50.5%);
-    @include imgProperties(148px);
-}
-
-.avatarGreen {
-    @include avatar(27%, 41.7%);
-    @include imgProperties(148px);
-}
-
-.avatarRed {
-    @include avatar(61%, 41.7%);
-    @include imgProperties(148px);
-}
-
-.avatarYellow {
-    @include avatar(61%, 50.5%);
-    @include imgProperties(148px);
-}
-
-.avatarOrange {
-    @include avatar(71%, 46%);
-    @include imgProperties(148px);
-}
-
-.avatarstepTwo {
-    animation: avatarstepTwoAnimation 4s;
-    animation-fill-mode: forwards;
-    animation-timing-function: linear;
-    img {
-        @include imgProperties(164px);
-    }
-}
-
-@keyframes avatarstepTwoAnimation {
-    100% {
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
-
-.avatarstepThree {
-    animation: avatarstepThreeAnimation 4s;
-    animation-fill-mode: forwards;
-    animation-timing-function: linear;
-    width: 222px;
-    height: 222px;
-    img {
-        @include imgProperties(222px);
-    }
-}
-
-@keyframes avatarstepThreeAnimation {
-    0% {
-        left: 46%;
-        top: 20%;
-    }
-    99% {
-        opacity: 1;
-    }
-    100% {
-        left: 20.7%;
-        top: 34%;
-        opacity: 0;
-    }
-}
-
 .container {
     width: 100%;
     display: flex;
@@ -176,21 +107,21 @@
             color: #fff;
             animation-name: fadeIn;
             animation-duration: 2s;
-            transition: 2s;
             z-index: 1;
             cursor: pointer;
         }
-        .avatarSelected {
-            > div {
-                @include imgProperties(160px);
-            }
-        }
-        .avatarFriends {
-            > div {
-                @include imgProperties(222px);
-                transition: 2s;
-            }
-        }
+    }
+}
+
+.avatarSelected {
+    > div {
+        @include imgProperties(160px);
+    }
+}
+.avatarFriends {
+    > div {
+        @include imgProperties(222px);
+        transition: 2s;
     }
 }
 
@@ -239,28 +170,24 @@
         top: 32%;
         left: 65%;
         z-index: 2;
-        transition: 2s;
     }
     div:nth-child(2) {
         position: absolute;
         top: 32%;
         left: 80%;
         z-index: 2;
-        transition: 2s;
     }
     div:nth-child(3) {
         position: absolute;
         top: 60%;
         left: 65%;
         z-index: 2;
-        transition: 2s;
     }
     div:nth-child(4) {
         position: absolute;
         top: 60%;
         left: 80%;
         z-index: 2;
-        transition: 1s;
     }
 
     .friendsAnimation:nth-child(1) {
@@ -892,6 +819,17 @@
 }
 
 @include media(">=phone", "<375px") {
+    .avatarSelected {
+        > div {
+            @include imgProperties(90px);
+        }
+    }
+    .avatarFriends {
+        > div {
+            @include imgProperties(90px);
+            transition: 2s;
+        }
+    }
     .targetOne {
         width: 90px;
         height: 90px;
@@ -912,30 +850,6 @@
         width: 90px;
         height: 90px;
         display: "block";
-    }
-    .avatarPurple {
-        @include avatar(23%, 54.3%);
-        @include imgProperties(84px);
-    }
-
-    .avatarGreen {
-        @include avatar(23%, 19.7%);
-        @include imgProperties(84px);
-    }
-
-    .avatarRed {
-        @include avatar(48%, 19.7%);
-        @include imgProperties(84px);
-    }
-
-    .avatarYellow {
-        @include avatar(48%, 54.3%);
-        @include imgProperties(84px);
-    }
-
-    .avatarOrange {
-        @include avatar(74%, 37%);
-        @include imgProperties(84px);
     }
 
     .avatarstepTwo {
@@ -1054,70 +968,6 @@
         img {
             @include imgProperties(125px);
             cursor: pointer;
-        }
-        > div:nth-child(1) {
-            position: absolute;
-            bottom: 0;
-            top: unset;
-            left: 5%;
-            img {
-                @include imgProperties((65px));
-            }
-        }
-        div:nth-child(2) {
-            position: absolute;
-            bottom: 0;
-            top: unset;
-            left: 29%;
-            img {
-                @include imgProperties((65px));
-            }
-        }
-        div:nth-child(3) {
-            position: absolute;
-            bottom: 0;
-            top: unset;
-            left: 53%;
-            img {
-                @include imgProperties((65px));
-            }
-        }
-        div:nth-child(4) {
-            position: absolute;
-            bottom: 0;
-            top: unset;
-            left: 75%;
-            img {
-                @include imgProperties(65px);
-            }
-        }
-
-        .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 80%, 5%, 20.5%, 3%);
-            img {
-                @include imgProperties(60px);
-            }
-        }
-
-        .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 80%, 29%, 20.5%, 38%);
-            img {
-                @include imgProperties(60px);
-            }
-        }
-
-        .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 80%, 53%, 39%, 3%);
-            img {
-                @include imgProperties(60px);
-            }
-        }
-
-        .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 80%, 75%, 39%, 38%);
-            img {
-                @include imgProperties(60px);
-            }
         }
     }
 
@@ -1587,6 +1437,18 @@
 }
 
 @include media(">=375px", "<425px") {
+    .avatarSelected {
+        > div {
+            @include imgProperties(90px);
+        }
+    }
+    .avatarFriends {
+        > div {
+            @include imgProperties(90px);
+            transition: 2s;
+        }
+    }
+
     .avatar {
         img {
             @include imgProperties(90px);
@@ -2282,6 +2144,17 @@
 }
 
 @include media(">=425px", "<800px") {
+    .avatarSelected {
+        > div {
+            @include imgProperties(90px);
+        }
+    }
+    .avatarFriends {
+        > div {
+            @include imgProperties(90px);
+            transition: 2s;
+        }
+    }
     .donationSections {
         .card {
             height: 100%;
@@ -2375,7 +2248,6 @@
         input {
             font-size: 16px;
             padding: 8px 10px;
-            margin-top: 0px;
         }
         button {
             font-size: 12px;
@@ -2996,7 +2868,6 @@
         input {
             font-size: 16px;
             padding: 8px 10px;
-            margin-top: 0px;
         }
         button {
             font-size: 12px;
@@ -3200,68 +3071,8 @@
 
     .percentageWrapper {
         img {
-            @include imgProperties(125px);
+            @include imgProperties(65px);
             cursor: pointer;
-        }
-        > div:nth-child(1) {
-            position: absolute;
-            top: 32%;
-            left: 60%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        > div:nth-child(2) {
-            position: absolute;
-            top: 32%;
-            left: 78%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(3) {
-            position: absolute;
-            top: 60%;
-            left: 60%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(4) {
-            position: absolute;
-            top: 60%;
-            left: 78%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-
-        .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 60%, 36.5%, 3%);
-            img {
-                @include imgProperties(84px);
-            }
-        }
-
-        .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 78%, 36.5%, 22%);
-            img {
-                @include imgProperties(84px);
-            }
-        }
-
-        .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 60%, 51%, 3%);
-            img {
-                @include imgProperties(84px);
-            }
-        }
-
-        .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 78%, 51%, 22%);
-            img {
-                @include imgProperties(84px);
-            }
         }
     }
 
@@ -3411,35 +3222,32 @@
         }
     }
 
-    .avatarPurple {
-        @include avatar(32%, 51.5%);
-        @include imgProperties(84px);
+    .targetTwo {
+        width: 90px;
+        height: 90px;
     }
 
-    .avatarGreen {
-        @include avatar(32%, 37.8%);
-        @include imgProperties(84px);
-    }
-
-    .avatarRed {
-        @include avatar(65%, 37.8%);
-        @include imgProperties(84px);
-    }
-
-    .avatarYellow {
-        @include avatar(65%, 51.5%);
-        @include imgProperties(84px);
-    }
-
-    .avatarOrange {
-        @include avatar(74%, 44.5%);
-        @include imgProperties(84px);
+    .avatarFriends {
+        > div {
+            @include imgProperties(90px);
+        }
     }
 }
 
 @include media(">=900px", "<1000px") {
     .container {
         text-align: center;
+    }
+
+    .targetTwo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .avatarFriends {
+        > div {
+            @include imgProperties(90px);
+        }
     }
 
     .avatarWrapper {
@@ -3459,7 +3267,6 @@
         input {
             font-size: 16px;
             padding: 8px 10px;
-            margin-top: 0px;
         }
         button {
             font-size: 12px;
@@ -3486,25 +3293,6 @@
                     @include imgProperties(115px);
                 }
             }
-            .friends {
-                position: absolute;
-                top: 0px;
-                img {
-                    @include imgProperties(60px);
-                }
-                div:nth-child(1) {
-                    @include friendsAvatar(unset, 23px, -6px, freindsSlideLeft, 2s);
-                }
-                div:nth-child(2) {
-                    @include friendsAvatar(unset, 136px, 56px, freindsSlideRight, 2s);
-                }
-                div:nth-child(3) {
-                    @include friendsAvatar(unset, 23px, 50px, freindsSlideLeft, 2s);
-                }
-                div:nth-child(4) {
-                    @include friendsAvatar(unset, 136px, 111px, freindsSlideRight, 2s);
-                }
-            }
         }
         .gameStepThreeFriendsColumn {
             width: 48%;
@@ -3519,28 +3307,6 @@
         }
     }
 
-    @keyframes freindsSlideRight {
-        0% {
-            opacity: 0;
-            left: 190px;
-        }
-        100% {
-            opacity: 1;
-            left: 136px;
-        }
-    }
-
-    @keyframes freindsSlideLeft {
-        0% {
-            opacity: 0;
-            left: -60px;
-        }
-        100% {
-            opacity: 1;
-            left: 23px;
-        }
-    }
-
     .percentageSelected {
         img {
             @include imgProperties(67px);
@@ -3550,24 +3316,6 @@
     .percentageFriends {
         img {
             @include imgProperties(47px);
-        }
-        div:nth-child(1) {
-            right: unset;
-            bottom: 12px;
-            left: 40px;
-        }
-        div:nth-child(2) {
-            bottom: 20px;
-            left: 40px;
-        }
-        div:nth-child(3) {
-            bottom: 118px;
-            left: unset;
-            right: 38px;
-        }
-        div:nth-child(4) {
-            bottom: 129px;
-            right: 39px;
         }
     }
 
@@ -3665,66 +3413,6 @@
         img {
             @include imgProperties(125px);
             cursor: pointer;
-        }
-        > div:nth-child(1) {
-            position: absolute;
-            top: 32%;
-            left: 60%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        > div:nth-child(2) {
-            position: absolute;
-            top: 32%;
-            left: 78%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(3) {
-            position: absolute;
-            top: 60%;
-            left: 60%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(4) {
-            position: absolute;
-            top: 60%;
-            left: 78%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-
-        .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 60%, 36.5%, 5.5%);
-            img {
-                @include imgProperties(84px);
-            }
-        }
-
-        .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 78%, 36.5%, 22%);
-            img {
-                @include imgProperties(84px);
-            }
-        }
-
-        .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 60%, 51%, 5.5%);
-            img {
-                @include imgProperties(84px);
-            }
-        }
-
-        .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 78%, 51%, 22%);
-            img {
-                @include imgProperties(84px);
-            }
         }
     }
 
@@ -3926,7 +3614,6 @@
         input {
             font-size: 16px;
             padding: 8px 10px;
-            margin-top: 0px;
         }
         button {
             font-size: 12px;
@@ -4116,66 +3803,6 @@
         img {
             @include imgProperties(125px);
             cursor: pointer;
-        }
-        > div:nth-child(1) {
-            position: absolute;
-            top: 32%;
-            left: 60%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(2) {
-            position: absolute;
-            top: 32%;
-            left: 78%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(3) {
-            position: absolute;
-            top: 60%;
-            left: 60%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-        div:nth-child(4) {
-            position: absolute;
-            top: 60%;
-            left: 78%;
-            img {
-                @include imgProperties(100px);
-            }
-        }
-
-        .friendsAnimation:nth-child(1) {
-            @include friendsAnimation(animation-1, 30%, 60%, 35.5%, 6.8%);
-            img {
-                @include imgProperties(80px);
-            }
-        }
-
-        .friendsAnimation:nth-child(2) {
-            @include friendsAnimation(animation-2, 32%, 78%, 35.5%, 22.5%);
-            img {
-                @include imgProperties(80px);
-            }
-        }
-
-        .friendsAnimation:nth-child(3) {
-            @include friendsAnimation(animation-3, 60%, 60%, 50%, 6.8%);
-            img {
-                @include imgProperties(80px);
-            }
-        }
-
-        .friendsAnimation:nth-child(4) {
-            @include friendsAnimation(animation-4, 60%, 78%, 50%, 22.5%);
-            img {
-                @include imgProperties(80px);
-            }
         }
     }
 
@@ -4837,7 +4464,6 @@
         input {
             font-size: 16px;
             padding: 8px 10px;
-            margin-top: 0px;
         }
         button {
             font-size: 12px;
@@ -4955,7 +4581,7 @@
 
     .signUpsection {
         button {
-            width: 100%;
+            width: 40%;
             font-size: 12px;
             padding: 10px 0px;
         }

@@ -16,7 +16,7 @@ const rowHBetween = flexbox({ hAlign: "between" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
 const donationDivide = 2;
-const friendsTimeout = 5000;
+const friendsTimeout = 2000;
 const avatarTimeout = 1000;
 const donationFormula = 5;
 const boundDivide = 2;
@@ -53,6 +53,7 @@ const GameSection = (): JSX.Element => {
                 ignoreCancelEvents: true
             });
             timer = setTimeout(() => {
+                console.log("working");
                 setStep(StepTypes.Four);
                 clearTimeout(timer);
             }, friendsTimeout);
@@ -132,7 +133,7 @@ const GameSection = (): JSX.Element => {
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
             const bounds = friendsRef.current.getBoundingClientRect();
-            const mobile = 768;
+            const mobile = 1000;
             const mobileAvatar = 90;
             const desktopAvatar = 160;
             const avatarSize = window.innerWidth > mobile ? desktopAvatar : mobileAvatar;
@@ -189,6 +190,7 @@ const GameSection = (): JSX.Element => {
                 ...avatatStyles, [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
+                    transition: "2s"
                 }
             });
 
@@ -236,6 +238,7 @@ const GameSection = (): JSX.Element => {
                         ...friendsStyle, [value]: {
                             top,
                             left,
+                            transition: "2s"
                         }
                     });
                     break;
@@ -244,6 +247,7 @@ const GameSection = (): JSX.Element => {
                         ...friendsStyle, [value]: {
                             top,
                             left: left2,
+                            transition: "2s"
                         }
                     });
                     break;
@@ -252,6 +256,7 @@ const GameSection = (): JSX.Element => {
                         ...friendsStyle, [value]: {
                             top: top2,
                             left,
+                            transition: "2s"
                         }
                     });
                     break;
@@ -260,6 +265,7 @@ const GameSection = (): JSX.Element => {
                         ...friendsStyle, [value]: {
                             top: top2,
                             left: left2,
+                            transition: "2s"
                         }
                     });
                     break;
@@ -288,6 +294,7 @@ const GameSection = (): JSX.Element => {
                 ...avatatStyles, [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
+                    transition: "2s"
                 }
             });
             setStep(StepTypes.Three);
@@ -358,6 +365,7 @@ const GameSection = (): JSX.Element => {
             window.removeEventListener("resize", handleResize);
         };
     }, [handleResize]);
+
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
@@ -435,7 +443,8 @@ const GameSection = (): JSX.Element => {
                                                         <Avatar color={value} />
                                                     </div>
                                                 )}
-                                        </div> : null}
+                                        </div>
+                                        : null}
                                 </div>
                             </div>
                         </Element>
