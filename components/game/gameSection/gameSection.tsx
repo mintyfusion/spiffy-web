@@ -142,7 +142,7 @@ const GameSection = (): JSX.Element => {
             const left1 = Math.abs(cardMidPointX - avatarSize);
             const left2 = Math.abs(cardMidPointX + space);
             const top1 = Math.abs(cardMidPointY - avatarSize - space) + fullscreen.current.scrollTop;
-            const top2 = Math.abs(cardMidPointY - space) + fullscreen.current.scrollTop;
+            const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollTop;
 
             const styles = {} as Record<AvatarType, CSSProperties>;
             const keyTwo = 2;
@@ -203,7 +203,7 @@ const GameSection = (): JSX.Element => {
     const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
             const width = window.innerWidth;
-            // setFriendsCount(freindsCount + 1);
+            setFriendsCount(freindsCount + 1);
             const mobile = 1000;
             const desktopSmall = 1350;
             const mobileTop = 20;

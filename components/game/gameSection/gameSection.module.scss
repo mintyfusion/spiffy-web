@@ -180,18 +180,17 @@
             z-index: 1;
             cursor: pointer;
         }
-    }
-}
-
-.avatarSelected {
-    > div {
-        @include imgProperties(160px);
-    }
-}
-.avatarFriends {
-    > div {
-        @include imgProperties(222px);
-        transition: 2s;
+        .avatarSelected {
+            > div {
+                @include imgProperties(160px);
+            }
+        }
+        .avatarFriends {
+            > div {
+                @include imgProperties(222px);
+                transition: 2s;
+            }
+        }
     }
 }
 
@@ -2283,17 +2282,6 @@
 }
 
 @include media(">=425px", "<800px") {
-    .avatarSelected {
-        > div {
-            @include imgProperties(90px);
-        }
-    }
-    .avatarFriends {
-        > div {
-            @include imgProperties(90px);
-            transition: 2s;
-        }
-    }
     .donationSections {
         .card {
             height: 100%;
@@ -5911,6 +5899,21 @@
         width: 30%;
     }
 
+    @keyframes avatarstepThreeAnimation {
+        0% {
+            left: 46%;
+            top: 20%;
+        }
+        99% {
+            opacity: 1;
+        }
+        100% {
+            left: 19.6%;
+            top: 30.2%;
+            opacity: 0;
+        }
+    }
+
     .avatarInner {
         img {
             @include imgProperties(100px);
@@ -6071,6 +6074,12 @@
                 animation-duration: 23s;
                 animation-fill-mode: forwards;
             }
+        }
+    }
+
+    .selected {
+        img {
+            @include imgProperties(222px);
         }
     }
 
