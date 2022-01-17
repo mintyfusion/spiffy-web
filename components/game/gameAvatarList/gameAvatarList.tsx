@@ -1,20 +1,19 @@
-import Image from "next/image";
-import React from "react";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar } from "react-bootstrap";
+import Image from "next/image";
+import React from "react";
 
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 
+import Breakpoints from "common/style/breakpoints";
+import PrimaryButton from "components/common/primaryButton/primaryButton";
 import StepTypes from "../gameSection/enums/stepTypes";
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 import useBreakpoint from "hooks/useBreakpoint";
-import Breakpoints from "common/style/breakpoints";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
-const rowHBetween = flexbox({ hAlign: "between" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const percent: string[] = ["1", "5", "10", "25", "50", "100"];
 const mainAvatars = [

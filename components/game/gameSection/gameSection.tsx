@@ -1,22 +1,22 @@
 import { Element, Link, scroller } from "react-scroll";
+import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
-import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Avatar from "../avatar/avatar";
 import AvatarType from "./enums/avatarTypes";
+import Breakpoints from "common/style/breakpoints";
 import data from "components/game/gameSection/gameSectionContent";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import Image from "next/image";
+import PrimaryButton from "components/common/primaryButton/primaryButton";
 import StepTypes from "./enums/stepTypes";
 import styles from "components/game/gameSection/gameSection.module.scss";
 import useBreakpoint from "hooks/useBreakpoint";
-import Breakpoints from "common/style/breakpoints";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
