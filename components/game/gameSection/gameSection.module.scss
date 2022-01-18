@@ -65,6 +65,8 @@
     top: $top;
 }
 
+$vh: var(--vh);
+
 @mixin friendsAnimation($name, $startingTop, $startingLeft, $top, $left) {
     animation-name: $name;
     animation-duration: 1s;
@@ -105,7 +107,7 @@
         background-color: #fff;
         display: flex;
         width: 90%;
-        height: calc(100vh - 40px);
+        height: calc(#{$vh} - 40px);
         margin: 20px auto;
         justify-content: center;
 
@@ -147,7 +149,7 @@
 .donationSections {
     width: 100%;
     overflow: auto;
-    height: 100vh;
+    height: $vh;
     .card {
         height: auto;
     }
@@ -1540,7 +1542,7 @@
         .card {
             width: 100%;
             margin: 0px;
-            height: 100vh;
+            height: $vh;
         }
     }
 
@@ -2252,7 +2254,7 @@
         .card {
             width: 100%;
             margin: 0;
-            height: 100vh;
+            height: $vh;
         }
     }
 
