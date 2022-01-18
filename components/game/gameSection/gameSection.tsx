@@ -31,6 +31,15 @@ const boundDivide = 2;
 const friendsLength = 4;
 const firstSectionTime = 500;
 
+function setViewportHeight() {
+    if (!window) {
+        return;
+    }
+
+    const root = document.querySelector(":root") as HTMLElement;
+    root?.style.setProperty("--vh", `${window.innerHeight}px`);
+}
+
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<IAvatar>();
@@ -334,6 +343,8 @@ const GameSection = (): JSX.Element => {
     }, []);
 
     const handleResize = React.useCallback(() => {
+        setViewportHeight();
+
         switch (step) {
             case StepTypes.One:
                 setAvatarPositions();
@@ -368,6 +379,7 @@ const GameSection = (): JSX.Element => {
     }, [setAvatarPositions, step, avatatStyles, selected]);
 
     React.useEffect(() => {
+        setViewportHeight();
         window.addEventListener("resize", handleResize);
 
         return () => {
@@ -380,7 +392,7 @@ const GameSection = (): JSX.Element => {
         <div className={`${colCenter} ${styles.wrapper}`}>
             <button onClick={() => setShow(true)}>Fullscreen</button>
             <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
-                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px", display : "inline-block" }} id="containerElement" ref={fullscreen}>
+                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px", display: "inline-block" }} id="containerElement" ref={fullscreen}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => setShow(false)} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
