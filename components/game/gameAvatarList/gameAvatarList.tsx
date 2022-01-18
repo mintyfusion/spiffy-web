@@ -104,7 +104,9 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                                         animationHandler(donation);
                                     }}
                                     className={`${horizontalAlign} 
-                                    ${styles.donationButton} ${donation === percentage ? styles.active : styles.inactive} w-100 px-1 py-3`}
+                                    ${styles.donationButton} 
+                                    ${donation === percentage ? styles.active : styles.inactive}
+                                     w-100 px-1 py-3`}
                                 >
                                     {donation}
                                 </PrimaryButton>

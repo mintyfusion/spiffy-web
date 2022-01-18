@@ -29,6 +29,9 @@ const avatarTimeout = 1000;
 const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
+const guidRandom = 36;
+const substrOne = 36;
+const substrTwo = 36;
 
 function setViewportHeight() {
     if (!window) {
@@ -39,7 +42,7 @@ function setViewportHeight() {
 }
 
 function guid() {
-    return `_${Math.random().toString(36).substr(2, 9)}`;
+    return `_${Math.random().toString(guidRandom).substr(substrOne, substrTwo)}`;
 }
 
 const GameSection = (): JSX.Element => {
@@ -55,12 +58,10 @@ const GameSection = (): JSX.Element => {
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
-    // Using useRef for CSS objects and unique id updator to re-render the component
-    // for new changes in style
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
     const [avatarStyleGUID, setAvatarStyleGUID] = React.useState("0");
     const friendsStyle = React.useRef<Record<AvatarType, CSSProperties>>();
-    const [friendsStyleGUID, setFriendsStyleGUID] = React.useState("0");
+    // const [friendsStyleGUID, setFriendsStyleGUID] = React.useState("0");
 
     const start = React.useRef<HTMLDivElement>();
     const target = React.useRef<HTMLDivElement>();
@@ -289,7 +290,7 @@ const GameSection = (): JSX.Element => {
                         left,
                         transition: "2s"
 
-                    }
+                    };
 
                     break;
                 case 1:
@@ -297,7 +298,7 @@ const GameSection = (): JSX.Element => {
                         top,
                         left: left2,
                         transition: "2s"
-                    }
+                    };
 
                     break;
                 case keyTwo:
@@ -305,7 +306,7 @@ const GameSection = (): JSX.Element => {
                         top: top2,
                         left,
                         transition: "2s"
-                    }
+                    };
 
                     break;
                 case keyThree:
@@ -313,19 +314,18 @@ const GameSection = (): JSX.Element => {
                         top: top2,
                         left: left2,
                         transition: "2s"
-                    }
+                    };
 
                     break;
             }
-
             friendsStyle.current = {
                 ...friendsStyle.current,
                 ...styles
             };
 
-            setFriendsStyleGUID(guid());
+            // setFriendsStyleGUID(guid());
         }
-    }, [freindsCount]);
+    }, [freindsCount, friends]);
 
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
@@ -339,7 +339,7 @@ const GameSection = (): JSX.Element => {
         const styles = getFriendsStyle();
         if (styles) {
             friendsStyle.current = { ...friendsStyle.current, ...styles };
-            setFriendsStyleGUID(guid());
+            // setFriendsStyleGUID(guid());
         }
     }, [getFriendsStyle]);
 
@@ -392,7 +392,7 @@ const GameSection = (): JSX.Element => {
                             left: boundsFirst.x + fullscreen.current.scrollLeft,
                         }
                     };
-                    setAvatarStyleGUID(avatarStyleGUID + 1);
+                    setAvatarStyleGUID(guid());
                 }
                 break;
             case StepTypes.Three:
@@ -408,7 +408,7 @@ const GameSection = (): JSX.Element => {
                             left: boundsSecond.x + fullscreen.current.scrollLeft,
                         }
                     };
-                    setAvatarStyleGUID(avatarStyleGUID + 1);
+                    setAvatarStyleGUID(guid());
                 }
 
                 break;
@@ -425,13 +425,13 @@ const GameSection = (): JSX.Element => {
 
     }, [handleResize]);
 
-    const closeHandler = () => {
+    const closeHandler = React.useCallback(() => {
         setStep(StepTypes.One);
         setFriends([]);
         setSelected(null);
         setShow(false);
         setFriendsCount(0);
-    };
+    }, []);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
@@ -538,7 +538,11 @@ const GameSection = (): JSX.Element => {
                                                             });
                                                         }}
                                                         className={`${horizontalAlign} 
-                                                        ${styles.donationButton} ${donation === donationAmount ? styles.active : styles.inactive} w-100 px-1 py-3`}
+                                                        ${styles.donationButton}
+                                                         ${donation === donationAmount
+                                                                ? styles.active :
+                                                                styles.inactive}
+                                                          w-100 px-1 py-3`}
                                                     >
                                                         ${donation}
                                                     </PrimaryButton>
