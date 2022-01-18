@@ -35,7 +35,6 @@ function setViewportHeight() {
     if (!window) {
         return;
     }
-
     const root = document.querySelector(":root") as HTMLElement;
     root?.style.setProperty("--vh", `${window.innerHeight}px`);
 }
@@ -204,7 +203,6 @@ const GameSection = (): JSX.Element => {
     const handleBtnClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
             const bounds = target.current.getBoundingClientRect();
-            console.log(bounds);
             setAvatatStyles({
                 ...avatatStyles, [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
@@ -215,7 +213,7 @@ const GameSection = (): JSX.Element => {
 
         }
         const Avatar = data.filter((filter) => filter.id === avatar);
-        const selectedAvatar = data.filter((filter) => filter.id !== avatar);
+        setFriends(data.filter((filter) => filter.id !== avatar));
         setSelected(avatar);
         setSeletedAvatar(Avatar[0]);
         setStep(StepTypes.Two);
@@ -380,6 +378,7 @@ const GameSection = (): JSX.Element => {
 
     React.useEffect(() => {
         setViewportHeight();
+
         window.addEventListener("resize", handleResize);
 
         return () => {
@@ -400,7 +399,7 @@ const GameSection = (): JSX.Element => {
             <button onClick={() => setShow(true)}>Play</button>
             <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
                 <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px", display: "inline-block" }} id="containerElement" ref={fullscreen}>
-                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => setShow(false)} className={styles.close} />
+                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => closeHandler()} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
