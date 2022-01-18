@@ -24,12 +24,12 @@ const rowHBetween = flexbox({ hAlign: "between" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
 const donationDivide = 2;
-const friendsTimeout = 2000;
+const friendsTimeout = 4000;
 const avatarTimeout = 1000;
 const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
-const firstSectionTime = 500;
+const firstSectionTime = 10;
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
@@ -195,6 +195,7 @@ const GameSection = (): JSX.Element => {
     const handleBtnClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
             const bounds = target.current.getBoundingClientRect();
+            console.log(bounds);
             setAvatatStyles({
                 ...avatatStyles, [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
@@ -205,7 +206,7 @@ const GameSection = (): JSX.Element => {
 
         }
         const Avatar = data.filter((filter) => filter.id === avatar);
-        setFriends(data.filter((filter) => filter.id !== avatar));
+        const selectedAvatar = data.filter((filter) => filter.id !== avatar);
         setSelected(avatar);
         setSeletedAvatar(Avatar[0]);
         setStep(StepTypes.Two);
@@ -328,7 +329,6 @@ const GameSection = (): JSX.Element => {
             duration: 700,
             smooth: true,
             containerId: "containerElement",
-            delay: 2000,
             ignoreCancelEvents: true
         });
     }, []);
@@ -373,15 +373,22 @@ const GameSection = (): JSX.Element => {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
+
     }, [handleResize]);
 
+    const closeHandler = () => {
+        setStep(StepTypes.One);
+        setFriends([]);
+        setSelected(null);
+        setShow(false);
+    };
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
-            <button onClick={() => setShow(true)}>Fullscreen</button>
+            <button onClick={() => setShow(true)}>Play</button>
             <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
-                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px", display : "inline-block" }} id="containerElement" ref={fullscreen}>
-                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => setShow(false)} className={styles.close} />
+                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px", display: "inline-block" }} id="containerElement" ref={fullscreen}>
+                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => closeHandler()} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
@@ -407,7 +414,7 @@ const GameSection = (): JSX.Element => {
                                 )}
                         </div>
 
-                        <Element name={StepTypes.Two} className={styles.card}>
+                        <Element name={StepTypes.Two} className={styles.card} id="test">
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
@@ -486,7 +493,8 @@ const GameSection = (): JSX.Element => {
                                                                 behavior: "smooth"
                                                             });
                                                         }}
-                                                        className={`${horizontalAlign} w-100 px-1 py-3`}
+                                                        className={`${horizontalAlign} 
+                                                        ${styles.donationButton} w-100 px-1 py-3`}
                                                     >
                                                         {donation}
                                                     </PrimaryButton>
@@ -524,7 +532,7 @@ const GameSection = (): JSX.Element => {
                                             <div>
                                                 <div className={styles.animationText}>
                                                     <h2>Spiffy Corp.</h2>
-                                                    <p>We’re totally reliant on this cents to keep us going.</p>
+                                                    <p>We’re totally reliant on these cents to keep us going.</p>
                                                 </div>
                                                 <div className={styles.donationCycleItems}>
                                                     <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />

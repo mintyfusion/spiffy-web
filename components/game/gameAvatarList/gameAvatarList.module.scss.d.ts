@@ -18,6 +18,7 @@ export type Styles = {
   "confetti": string;
   "confettiRight": string;
   "donationActive": string;
+  "donationButton": string;
   "donationDesktop": string;
   "donationInner": string;
   "donationMobile": string;

@@ -50,6 +50,7 @@ export type Styles = {
   "contetHide": string;
   "displayAnimation": string;
   "donationActive": string;
+  "donationButton": string;
   "donationCycleItems": string;
   "donationDesktop": string;
   "donationInner": string;
