@@ -13,7 +13,6 @@ const colAlign = flexbox({ vertical: true });
 const rowAlign = flexbox();
 
 const DetailsSection = (props: IDetailsSectionProps): JSX.Element => {
-
     // Puts the blockquotes in a two colurm container with spiffy logos
     React.useEffect(() => {
         const blockElement = document.querySelectorAll("Blockquote");

@@ -1,5 +1,5 @@
 module.exports = {
     images: {
-        domains: ['cdn.aglty.io'],
+        domains: ["cdn.aglty.io"],
     }
 }

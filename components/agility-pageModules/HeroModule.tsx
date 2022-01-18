@@ -15,8 +15,12 @@ interface IHeroModuleProps extends IContentInfo {
 
 const HeroModule = (props: ModuleProps<IHeroModuleProps>): JSX.Element => {
     const { fields } = props.module;
-    const data: ImageProps[] = fields.image.media.map(data => ({ src: data.url }));
     const [renderFullHeight, setRenderFullHeight] = React.useState<boolean>(true);
+
+    const data: ImageProps[] = React.useMemo(() =>
+        fields.image.media.map(data => ({ src: data.url }))
+        , [fields.image.media]);
+
     const renderBannerComponent = React.useMemo((): JSX.Element => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         switch (props.page?.pageID) {

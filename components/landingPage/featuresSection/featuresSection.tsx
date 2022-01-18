@@ -1,4 +1,4 @@
-import { Col, Container, Row, Stack } from "react-bootstrap";   
+import { Col, Container, Row, Stack } from "react-bootstrap";
 import Image from "next/image";
 import React from "react";
 

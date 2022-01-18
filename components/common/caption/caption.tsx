@@ -10,10 +10,7 @@ const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "s
 const rowHAlignCenter = flexbox({ hAlign: "center" });
 
 const Caption = (props: ICaptionProps): JSX.Element => {
-    const {
-        title,
-        description
-    } = props.content;
+    const { title, description } = props.content;
 
     const preparedData = React.useMemo(() => title.split("\n"), [title]);
 

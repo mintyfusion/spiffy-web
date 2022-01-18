@@ -7,7 +7,7 @@ import VerticalContentSection from "components/landingPage/verticalContentSectio
 const LandingPageVerticalModule = (props: ModuleProps<ILandingPageVerticalModuleProps>): JSX.Element => {
     const { fields } = props.module;
 
-    return <VerticalContentSection content={fields.verticalContentList}></VerticalContentSection>;
+    return <VerticalContentSection content={fields.verticalContentList} />;
 };
 
 export default LandingPageVerticalModule;

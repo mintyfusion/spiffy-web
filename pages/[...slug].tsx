@@ -10,15 +10,12 @@ import type {
     GetStaticPathsContext,
     GetStaticPropsContext,
     InferGetStaticPropsType,
-
 } from "next";
 
 import Layout from "components/common/layout/layout";
 
-// import SiteHeader from "components/common/SiteHeader";
-
 // getStaticProps function fetches data for all of your Agility Pages 
-//and Next.js will pre-render these pages at build time
+// and Next.js will pre-render these pages at build time
 export async function getStaticProps({
     preview,
     params,
@@ -53,7 +50,7 @@ export async function getStaticProps({
 
 // Next.js will statically pre-render all the paths from Agility CMS
 export async function getStaticPaths({ locales, defaultLocale }) {
-    //get the paths configured in agility
+    // Get the paths configured in agility
     const agilityPaths = await getAgilityPaths({
         preview: false,
         locales,

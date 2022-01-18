@@ -62,13 +62,7 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
 
     return (
         <div className={`${styles.contentContainer} px-2 px-md-5`}>
-            <Stack
-                className={`
-                        ${styles.content}
-                        align-items-center
-                     `}
-                gap={4}
-            >
+            <Stack className={`${styles.content} align-items-center`} gap={4}>
                 <Row className={`${styles.contentHeading} w-100 text-start`}>
                     <h2>{props.module.fields.title}</h2>
                 </Row>

@@ -7,7 +7,7 @@ import ILandingPageGetStarted from "components/agility-pageModules/landingPage/g
 
 const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.Element => {
     const { fields } = props.module;
-    const content: IGetStartedContentSectionData = {
+    const content: IGetStartedContentSectionData = React.useMemo(() => ({
         leftPart: {
             title: fields.leftTitle,
             description: fields.leftDescription
@@ -16,7 +16,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
             title: fields.rightTitle,
             description: fields.rightDescription
         }
-    };
+    }), [fields]);
 
     return <GetStarted content={content} />;
 };

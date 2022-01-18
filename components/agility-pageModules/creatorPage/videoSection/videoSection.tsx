@@ -14,10 +14,10 @@ const VideoSection = (props: ModuleProps<IVideoSectionProps>): JSX.Element => {
     const breakpoint = useBreakpoint(Breakpoints.XXL, BreakpointChecks.Greater);
     const { fields } = props.module;
 
-    const preparedData = {
+    const preparedData = React.useMemo(() => ({
         light: fields.thumbnail.url,
         url: fields.url.href
-    };
+    }), [fields.thumbnail, fields.url]);
 
     return (
         <Row className={`${styles.videoSectionContainer} m-0`}>

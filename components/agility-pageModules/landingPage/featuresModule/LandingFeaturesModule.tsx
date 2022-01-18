@@ -38,19 +38,16 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                 position-sticky
                               `}
                         >
-                            <Col
-                                className={` ${styles.leftSection}`}
-                                lg={8}
-                            >
+                            <Col className={` ${styles.leftSection}`} lg={8}>
                                 <Row className={`${styles.cardStack} flex-sm-column`}>
                                     <Col className={`${styles.card} sticky-lg-top w-100`} key={index}>
                                         <div
                                             className={`
-                                          ${flex} 
-                                          ${styles.cardContainer}
-                                          justify-content-md-center
-                                          justify-content-lg-start
-                                    `}
+                                                    ${flex} 
+                                                    ${styles.cardContainer}
+                                                    justify-content-md-center
+                                                    justify-content-lg-start
+                                                  `}
                                         >
                                             <div className={`${styles.imageContainer} position-relative`}>
                                                 <Image
@@ -85,12 +82,12 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                             </Col>
                             <Col
                                 className={`
-                            ${styles.rightSection} 
-                            ${alignCenter}
-                            sticky-lg-top
-                            align-self-start 
-                            ${index > 0 && "invisible"}
-                        `}
+                                        ${styles.rightSection} 
+                                        ${alignCenter}
+                                        sticky-lg-top
+                                        align-self-start 
+                                        ${index > 0 && "invisible"}
+                                     `}
                                 lg={4}
                                 xl="auto"
                             >

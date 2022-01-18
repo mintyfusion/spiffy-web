@@ -10,28 +10,27 @@ import ShareSection from "components/educationDetailsPage/shareSection/shareSect
 
 import styles from "components/educationDetailsPage/educationDetails.module.scss";
 
-const EducationDetailsModule = (props:
-    DynamicModuleProps<IEducationDetailsModuleProps
-        , IEducationDetailsModuleProps>): JSX.Element => {
-    const { fields } = props.dynamicPageItem;
-    const preparedData = {
-        detailsType: fields.contentType_TextField,
-        title: fields.title,
-        description: fields.description,
-        mediaSrc: fields.mediaSrc.href,
-        key: fields.name,
-        htmlContent: fields.htmlContent
-    };
+const EducationDetailsModule =
+    (props: DynamicModuleProps<IEducationDetailsModuleProps, IEducationDetailsModuleProps>): JSX.Element => {
+        const { fields } = props.dynamicPageItem;
+        const preparedData = {
+            detailsType: fields.contentType_TextField,
+            title: fields.title,
+            description: fields.description,
+            mediaSrc: fields.mediaSrc.href,
+            key: fields.name,
+            htmlContent: fields.htmlContent
+        };
 
-    return (
-        <div>
-            <div className={styles.container}>
-                <Breadcrumb blogId={fields.name} />
-                <DetailsSection {...preparedData} />
-                <ShareSection content={detailsSocialData} />
+        return (
+            <div>
+                <div className={styles.container}>
+                    <Breadcrumb blogId={fields.name} />
+                    <DetailsSection {...preparedData} />
+                    <ShareSection content={detailsSocialData} />
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    };
 
 export default EducationDetailsModule;
