@@ -1,4 +1,5 @@
 export type Styles = {
+  "active": string;
   "activeTab": string;
   "avatarHeading": string;
   "avatarInner": string;
@@ -29,6 +30,7 @@ export type Styles = {
   "fullbold109": string;
   "fullBold67": string;
   "gameStepFive": string;
+  "inactive": string;
   "medium25": string;
   "navToggle": string;
   "percentageFriends": string;

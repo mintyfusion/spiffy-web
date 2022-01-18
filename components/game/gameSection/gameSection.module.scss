@@ -491,6 +491,9 @@ $vh: var(--vh);
     .navToggle {
         border: none;
     }
+    .donationBtn {
+        margin-right: 20px;
+    }
 }
 
 .donationMobile {
@@ -836,9 +839,24 @@ $vh: var(--vh);
 
 .donationButton {
     background-color: #f3e6ca;
+    margin-right: 20px;
+    :focus {
+        outline: none;
+    }
+}
+
+.active {
+    background-color: $yellow;
+}
+
+.inactive {
+    background-color: #f3e6ca;
 }
 
 @include media(">=phone", "<375px") {
+    .donationButton {
+        margin-bottom: 10px;
+    }
     .close {
         top: 25px;
         z-index: 1;
@@ -891,7 +909,6 @@ $vh: var(--vh);
         .card {
             margin: 0px;
             width: 100%;
-            position: relative;
         }
     }
 
@@ -1462,6 +1479,9 @@ $vh: var(--vh);
 }
 
 @include media(">=375px", "<425px") {
+    .donationButton {
+        margin-bottom: 10px;
+    }
     .avatarSelected {
         > div {
             @include imgProperties(90px);
@@ -2170,6 +2190,9 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
+    .donationButton {
+        margin-bottom: 10px;
+    }
     .avatarSelected {
         > div {
             @include imgProperties(90px);
@@ -2873,6 +2896,9 @@ $vh: var(--vh);
 }
 
 @include media(">=800px", "<900px") {
+    .donationButton {
+        margin-bottom: 10px;
+    }
     .container {
         text-align: center;
     }
@@ -3261,6 +3287,9 @@ $vh: var(--vh);
 }
 
 @include media(">=900px", "<1000px") {
+    .donationButton {
+        margin-bottom: 10px;
+    }
     .container {
         text-align: center;
     }
@@ -3437,7 +3466,7 @@ $vh: var(--vh);
 
     .percentageWrapper {
         img {
-            @include imgProperties(125px);
+            @include imgProperties(60px);
             cursor: pointer;
         }
     }

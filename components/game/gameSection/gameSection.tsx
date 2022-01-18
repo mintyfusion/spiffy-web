@@ -24,7 +24,7 @@ const rowHBetween = flexbox({ hAlign: "between" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
 const donationDivide = 2;
-const friendsTimeout = 4000;
+const friendsTimeout = 2000;
 const avatarTimeout = 1000;
 const donationFormula = 5;
 const boundDivide = 2;
@@ -166,39 +166,47 @@ const GameSection = (): JSX.Element => {
             const keyTwo = 2;
             const keyThree = 3;
 
-            Object.entries(AvatarType).filter(([filter]) => filter !== selected).forEach(([value], index) => {
+            friends.map((value, index) => {
                 switch (index) {
                     case 0:
-                        styles[value] = {
-                            left: left1,
-                            top: top1,
-                        };
+                        if (!value.done) {
+                            styles[value.id] = {
+                                left: left1,
+                                top: top1,
+                            };
+                        }
                         break;
                     case 1:
-                        styles[value] = {
-                            left: left2,
-                            top: top1,
-                        };
+                        if (!value.done) {
+                            styles[value.id] = {
+                                left: left2,
+                                top: top1,
+                            };
+                        }
                         break;
                     case keyTwo:
-                        styles[value] = {
-                            left: left1,
-                            top: top2,
-                        };
+                        if (!value.done) {
+                            styles[value.id] = {
+                                left: left1,
+                                top: top2,
+                            };
+                        }
                         break;
                     case keyThree:
                     default:
-                        styles[value] = {
-                            left: left2,
-                            top: top2,
-                        };
+                        if (!value.done) {
+                            styles[value.id] = {
+                                left: left2,
+                                top: top2,
+                            };
+                        }
                         break;
                 }
             });
 
             return styles;
         }
-    }, [selected]);
+    }, [selected, friends]);
 
     const handleBtnClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
@@ -213,16 +221,18 @@ const GameSection = (): JSX.Element => {
 
         }
         const Avatar = data.filter((filter) => filter.id === avatar);
-        setFriends(data.filter((filter) => filter.id !== avatar));
+        const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
+
+        setFriends(Selected);
         setSelected(avatar);
         setSeletedAvatar(Avatar[0]);
         setStep(StepTypes.Two);
+
     }, [avatatStyles]);
 
-    const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
+    const friendsAnimation = React.useCallback((index: number, value: IAvatar) => {
         if (stepThree.current) {
             const width = window.innerWidth;
-            setFriendsCount(freindsCount + 1);
             const mobile = 1000;
             const desktopSmall = 1350;
             const mobileTop = 20;
@@ -249,44 +259,61 @@ const GameSection = (): JSX.Element => {
 
             const keyTwo = 2;
             const keyThree = 3;
+
+            setFriendsCount(freindsCount + 1);
+
+            const updatedFriends = friends.map(item => {
+                if (item.id == value.id) {
+                    return { ...item, done: true };
+                }
+
+                return item;
+            });
+            setFriends(updatedFriends);
+
             switch (index) {
                 case 0:
                     setFriendsStyle({
-                        ...friendsStyle, [value]: {
+                        ...friendsStyle, [value.id]: {
                             top,
                             left,
                             transition: "2s"
                         }
                     });
+
                     break;
                 case 1:
                     setFriendsStyle({
-                        ...friendsStyle, [value]: {
+                        ...friendsStyle, [value.id]: {
                             top,
                             left: left2,
                             transition: "2s"
                         }
                     });
+
                     break;
                 case keyTwo:
                     setFriendsStyle({
-                        ...friendsStyle, [value]: {
+                        ...friendsStyle, [value.id]: {
                             top: top2,
                             left,
                             transition: "2s"
                         }
                     });
+
                     break;
                 case keyThree:
                     setFriendsStyle({
-                        ...friendsStyle, [value]: {
+                        ...friendsStyle, [value.id]: {
                             top: top2,
                             left: left2,
                             transition: "2s"
                         }
                     });
+
                     break;
             }
+
         }
     }, [friendsStyle, freindsCount]);
 
@@ -392,6 +419,7 @@ const GameSection = (): JSX.Element => {
         setFriends([]);
         setSelected(null);
         setShow(false);
+        setFriendsCount(0);
     };
 
     return (
@@ -459,19 +487,17 @@ const GameSection = (): JSX.Element => {
                                     <h2 className={styles.avatarHeading}>Add four friends.</h2>
                                     {step === StepTypes.Three ?
                                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                                            {Object.entries(AvatarType)
-                                                .filter(([filter]) => filter !== selected)
-                                                .map(([key, value], index) =>
-                                                    <div
-                                                        key={key}
-                                                        style={{
-                                                            ...friendsStyle && friendsStyle[value],
-                                                        }}
-                                                        onClick={() => friendsAnimation(index, value)}
-                                                    >
-                                                        <Avatar color={value} />
-                                                    </div>
-                                                )}
+                                            {friends.map((key, index) =>
+                                                <div
+                                                    key={index}
+                                                    style={{
+                                                        ...friendsStyle && friendsStyle[key.id],
+                                                    }}
+                                                    onClick={() => !key.done ? friendsAnimation(index, key) : null}
+                                                >
+                                                    <Avatar color={key.id} />
+                                                </div>
+                                            )}
                                         </div>
                                         : null}
                                 </div>
@@ -492,7 +518,7 @@ const GameSection = (): JSX.Element => {
                                         </Navbar.Toggle>
                                         <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
                                         <Navbar.Collapse id="basic-navbar-nav">
-                                            <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
+                                            <Nav className={"me-auto w-100"}>
                                                 {donation.map((donation, donationKey) =>
                                                     <PrimaryButton
                                                         key={donationKey}
@@ -505,9 +531,9 @@ const GameSection = (): JSX.Element => {
                                                             });
                                                         }}
                                                         className={`${horizontalAlign} 
-                                                        ${styles.donationButton} w-100 px-1 py-3`}
+                                                        ${styles.donationButton} ${donation === donationAmount ? styles.active : styles.inactive} w-100 px-1 py-3`}
                                                     >
-                                                        {donation}
+                                                        ${donation}
                                                     </PrimaryButton>
                                                 )}
 
@@ -522,7 +548,7 @@ const GameSection = (): JSX.Element => {
                                         <div className={styles.userDonation}>
                                             <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                                         </div>
-                                        <p>${Number(donationAmount) / donationDivide}</p>
+                                        <p>{`${donationAmount !== "" ? `$${Number(donationAmount) / donationDivide}0` : ""}`}</p>
                                         <h3>Content Creators</h3>
                                     </div>
                                     {animation ?

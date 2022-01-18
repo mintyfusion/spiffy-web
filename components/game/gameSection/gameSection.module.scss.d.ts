@@ -1,4 +1,5 @@
 export type Styles = {
+  "active": string;
   "activeTab": string;
   "animation1": string;
   "animation2": string;
@@ -50,6 +51,7 @@ export type Styles = {
   "contetHide": string;
   "displayAnimation": string;
   "donationActive": string;
+  "donationBtn": string;
   "donationButton": string;
   "donationCycleItems": string;
   "donationDesktop": string;
@@ -76,6 +78,7 @@ export type Styles = {
   "gameStepThreeUserColumn": string;
   "gameStepTwo": string;
   "gameStepTwoWrapper": string;
+  "inactive": string;
   "medium25": string;
   "navToggle": string;
   "opacityAnimation": string;
