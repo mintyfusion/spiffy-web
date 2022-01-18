@@ -35,7 +35,7 @@ function setViewportHeight() {
     if (!window) {
         return;
     }
-    const root = document.querySelector(":root") as HTMLElement;
+    const root = document.querySelector<HTMLDivElement>(":root");
     root?.style.setProperty("--vh", `${window.innerHeight}px`);
 }
 
