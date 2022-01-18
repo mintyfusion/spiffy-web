@@ -29,7 +29,6 @@ const avatarTimeout = 1000;
 const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
-const firstSectionTime = 10;
 
 function setViewportHeight() {
     if (!window) {
@@ -37,6 +36,10 @@ function setViewportHeight() {
     }
     const root = document.querySelector<HTMLDivElement>(":root");
     root?.style.setProperty("--vh", `${window.innerHeight}px`);
+}
+
+function guid() {
+    return `_${Math.random().toString(36).substr(2, 9)}`;
 }
 
 const GameSection = (): JSX.Element => {
@@ -47,14 +50,19 @@ const GameSection = (): JSX.Element => {
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
-    const [avatatStyles, setAvatatStyles] = React.useState<Record<AvatarType, CSSProperties> | undefined>();
-    const [friendsStyle, setFriendsStyle] = React.useState<Record<AvatarType, CSSProperties> | undefined>();
     const [freindsCount, setFriendsCount] = React.useState<number>(0);
     const [show, setShow] = React.useState<boolean>(false);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
-    const start = React.createRef<HTMLDivElement>();
+    // Using useRef for CSS objects and unique id updator to re-render the component
+    // for new changes in style
+    const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
+    const [avatarStyleGUID, setAvatarStyleGUID] = React.useState("0");
+    const friendsStyle = React.useRef<Record<AvatarType, CSSProperties>>();
+    const [friendsStyleGUID, setFriendsStyleGUID] = React.useState("0");
+
+    const start = React.useRef<HTMLDivElement>();
     const target = React.useRef<HTMLDivElement>();
     const stepThree = React.useRef<HTMLDivElement>();
     const fullscreen = React.useRef<HTMLDivElement>();
@@ -111,6 +119,7 @@ const GameSection = (): JSX.Element => {
             const top1 = Math.abs(cardMidPointY - avatarSize + space) + fullscreen.current.scrollTop;
             const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollLeft;
             const styles = {} as Record<AvatarType, CSSProperties>;
+
             Object.entries(AvatarType).forEach(([value]) => {
                 switch (value) {
                     case AvatarType.Green:
@@ -145,7 +154,7 @@ const GameSection = (): JSX.Element => {
         }
 
         return null;
-    }, [start]);
+    }, []);
 
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
@@ -203,21 +212,22 @@ const GameSection = (): JSX.Element => {
     const handleBtnClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
             const bounds = target.current.getBoundingClientRect();
-            setAvatatStyles({
-                ...avatatStyles, [avatar]: {
+            avatarStyles.current = {
+                ...avatarStyles.current,
+                [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
                     transition: "2s"
                 }
-            });
-
+            };
+            setAvatarStyleGUID(guid());
         }
         const Avatar = data.filter((filter) => filter.id === avatar);
         setFriends(data.filter((filter) => filter.id !== avatar));
         setSelected(avatar);
         setSeletedAvatar(Avatar[0]);
         setStep(StepTypes.Two);
-    }, [avatatStyles]);
+    }, []);
 
     const friendsAnimation = React.useCallback((index: number, value: AvatarType) => {
         if (stepThree.current) {
@@ -249,87 +259,91 @@ const GameSection = (): JSX.Element => {
 
             const keyTwo = 2;
             const keyThree = 3;
+
+            const styles = {} as Record<AvatarType, CSSProperties>;
+
             switch (index) {
                 case 0:
-                    setFriendsStyle({
-                        ...friendsStyle, [value]: {
-                            top,
-                            left,
-                            transition: "2s"
-                        }
-                    });
+                    styles[value] = {
+                        top,
+                        left,
+                        transition: "2s"
+                    };
+
                     break;
                 case 1:
-                    setFriendsStyle({
-                        ...friendsStyle, [value]: {
-                            top,
-                            left: left2,
-                            transition: "2s"
-                        }
-                    });
+                    styles[value] = {
+                        top,
+                        left: left2,
+                        transition: "2s"
+                    };
+
                     break;
                 case keyTwo:
-                    setFriendsStyle({
-                        ...friendsStyle, [value]: {
-                            top: top2,
-                            left,
-                            transition: "2s"
-                        }
-                    });
+                    styles[value] = {
+                        top: top2,
+                        left,
+                        transition: "2s"
+                    };
+
                     break;
                 case keyThree:
-                    setFriendsStyle({
-                        ...friendsStyle, [value]: {
-                            top: top2,
-                            left: left2,
-                            transition: "2s"
-                        }
-                    });
+                    styles[value] = {
+                        top: top2,
+                        left: left2,
+                        transition: "2s"
+                    };
+
                     break;
             }
+
+            friendsStyle.current = {
+                ...friendsStyle.current,
+                ...styles
+            };
+
+            setFriendsStyleGUID(guid());
         }
-    }, [friendsStyle, freindsCount]);
+    }, [freindsCount]);
 
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
         if (styles) {
-            setAvatatStyles(styles);
+            avatarStyles.current = { ...avatarStyles.current, ...styles };
+            setAvatarStyleGUID(guid());
         }
     }, [getStyles]);
 
     const setFriendsPositions = React.useCallback(() => {
         const styles = getFriendsStyle();
         if (styles) {
-            setFriendsStyle({ ...friendsStyle, ...styles });
+            friendsStyle.current = { ...friendsStyle.current, ...styles };
+            setFriendsStyleGUID(guid());
         }
-    }, [getFriendsStyle, friendsStyle]);
+    }, [getFriendsStyle]);
 
     const handleBtnClick2 = React.useCallback((avatar: AvatarType) => {
         if (stepThree.current && step === StepTypes.Two) {
             const bounds = stepThree.current.getBoundingClientRect();
-            setAvatatStyles({
-                ...avatatStyles, [avatar]: {
+            avatarStyles.current = {
+                ...avatarStyles.current,
+                [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
                     transition: "2s"
                 }
-            });
+            };
+            setAvatarStyleGUID(guid());
             setStep(StepTypes.Three);
             setFriendsPositions();
         }
-    }, [avatatStyles, setFriendsPositions]);
+    }, [setFriendsPositions]);
 
     React.useEffect(() => {
-        if (step === StepTypes.One) {
-            const timer: NodeJS.Timeout = setTimeout(() => {
-                setAvatarPositions();
-                clearTimeout(timer);
-            }, firstSectionTime);
-
-            return () => clearTimeout(timer);
+        if (step === StepTypes.One && show && avatarStyleGUID === "0") {
+            setAvatarPositions();
         }
-
-    }, [setAvatarPositions, step]);
+    }, [setAvatarPositions, step, show, avatarStyleGUID]);
 
     const signupAnimation = React.useCallback(() => {
         scroller.scrollTo(StepTypes.Six, {
@@ -350,12 +364,14 @@ const GameSection = (): JSX.Element => {
             case StepTypes.Two:
                 const boundsFirst = target.current?.getBoundingClientRect();
                 if (boundsFirst) {
-                    setAvatatStyles({
-                        ...avatatStyles, [selected]: {
+                    avatarStyles.current = {
+                        ...avatarStyles.current,
+                        [selected]: {
                             top: boundsFirst.y + fullscreen.current.scrollTop,
                             left: boundsFirst.x + fullscreen.current.scrollLeft,
                         }
-                    });
+                    };
+                    setAvatarStyleGUID(avatarStyleGUID + 1);
                 }
                 break;
             case StepTypes.Three:
@@ -364,21 +380,22 @@ const GameSection = (): JSX.Element => {
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
                 if (boundsSecond) {
-                    setAvatatStyles({
-                        ...avatatStyles, [selected]: {
+                    avatarStyles.current = {
+                        ...avatarStyles.current,
+                        [selected]: {
                             top: boundsSecond.y + fullscreen.current.scrollTop,
                             left: boundsSecond.x + fullscreen.current.scrollLeft,
                         }
-                    });
+                    };
+                    setAvatarStyleGUID(avatarStyleGUID + 1);
                 }
 
                 break;
         }
-    }, [setAvatarPositions, step, avatatStyles, selected]);
+    }, [setAvatarPositions, step, selected]);
 
     React.useEffect(() => {
         setViewportHeight();
-
         window.addEventListener("resize", handleResize);
 
         return () => {
@@ -408,9 +425,7 @@ const GameSection = (): JSX.Element => {
                                 .map(([key, value]) =>
                                     <Link
                                         key={key}
-                                        style={{
-                                            ...avatatStyles && avatatStyles[value],
-                                        }}
+                                        style={avatarStyles.current && avatarStyles.current[value]}
                                         onClick={() => handleBtnClick(value)}
                                         to={StepTypes.Two}
                                         smooth={true}
@@ -464,9 +479,7 @@ const GameSection = (): JSX.Element => {
                                                 .map(([key, value], index) =>
                                                     <div
                                                         key={key}
-                                                        style={{
-                                                            ...friendsStyle && friendsStyle[value],
-                                                        }}
+                                                        style={friendsStyle.current && friendsStyle.current[value]}
                                                         onClick={() => friendsAnimation(index, value)}
                                                     >
                                                         <Avatar color={value} />
