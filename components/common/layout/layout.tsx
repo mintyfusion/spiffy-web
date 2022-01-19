@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { getPageTemplate } from "components/agility-pageTemplates";
 import Error from "next/error";
 import React from "react";
