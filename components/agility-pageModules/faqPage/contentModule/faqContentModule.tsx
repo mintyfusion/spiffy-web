@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Accordion, Nav, Navbar, Row, Stack } from "react-bootstrap";
 import { ContentItem, ModuleProps } from "@agility/nextjs";
 import { faChevronLeft, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import agility from "@agility/content-fetch";
 import React from "react";
 
+import api from "utils/api/api";
 import Breakpoints from "common/style/breakpoints";
 import ContentCategory from "components/educationPage/contentSection/enums/contentCategory";
+import FilterTypes from "utils/api/enums/filterTypes";
 import flexbox from "utils/flexbox";
 import IContentInfo from "types/IContentnfo";
+import IFaqContentModuleProps from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleProps";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
 
@@ -20,18 +19,12 @@ import styles from "components/agility-pageModules/faqPage/contentModule/faqCont
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
 
-const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
+const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.payment);
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [contentData, setContentData] = React.useState<{ items: ContentItem<IContentInfo>[] }>();
-
-    const api = React.useMemo(() =>
-        agility.getApi({
-            guid: process.env.NEXT_PUBLIC_AGILITY_GUID,
-            apiKey: process.env.NEXT_PUBLIC_AGILITY_API_PREVIEW_KEY,
-            isPreview: true
-        }), []);
+    const [isLoading, setIsLoading] = React.useState<boolean>();
 
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${horizontalAlign} ${styles.customAccordianButton}`}>
@@ -42,35 +35,30 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
             </div>
         </div>;
 
-    const getFAQList = React.useCallback(async (): Promise<any> => {
-        try {
-            const result = await api.getContentList({
-                referenceName: "FAQContentList",
-                languageCode: "en-us",
-                contentLinkDepth: 2,
-                depth: 2,
-                take: 50,
-                filters: [{
-                    property: "fields.tag_TextField",
-                    operator: api.types.FilterOperators.EQUAL_TO,
-                    value: activeTab
-                }]
-            });
+    const getFAQList = React.useCallback(async () => {
+        setIsLoading(true);
+        const result = await api.getContentList<IContentInfo>({
+            referenceName: "FAQContentList",
+            languageCode: "en-us",
+            contentLinkDepth: 2,
+            depth: 2,
+            take: 50,
+            filters: [{
+                property: "fields.tag_TextField",
+                operator: FilterTypes.EQUAL_TO,
+                value: activeTab
+            }]
+        }).finally(() => setIsLoading(false));
 
-            return result;
-        }
-
-        catch (e) {
-            return e;
-        }
-    }, [activeTab, api]);
+        return result;
+    }, [activeTab]);
 
     React.useEffect(() => {
         getFAQList()
             .then(result => setContentData(result))
-            .catch(err => err);
-    }, [api, getFAQList]);
-
+            .catch((err: unknown) => err);
+        // setIsLoading(false);
+    }, [getFAQList]);
 
     return (
         <div className={`${styles.contentContainer} px-2 px-md-5`}>
@@ -119,7 +107,9 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
                 </Navbar.Collapse>
             </Navbar>
             <Stack className="gap-4">
-                {contentData && contentData.items.map((post, index) =>
+                {!isLoading && !contentData?.items.length
+                    && <h1 className="text-center">No Blogs Found</h1>}
+                {!isLoading && contentData && contentData.items.map((post, index) =>
                     <Accordion key={index} className={styles.accordion}>
                         <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
                             <Accordion.Header className={styles.accordianHeader}>

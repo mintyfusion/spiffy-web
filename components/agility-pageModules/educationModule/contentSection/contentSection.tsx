@@ -1,16 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { ContentItem, ModuleProps } from "@agility/nextjs";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar, Row, Stack } from "react-bootstrap";
-import agility from "@agility/content-fetch";
 import React from "react";
 
+import api from "utils/api/api";
 import Breakpoints from "common/style/breakpoints";
 import CardContainer from "components/agility-pageModules/common/cardContainer/cardContainer";
 import ContentCategory from "components/educationPage/contentSection/enums/contentCategory";
+import FilterTypes from "utils/api/enums/filterTypes";
 import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
 import IContentSectionProps from "components/agility-pageModules/educationModule/contentSection/interfaces/IContentSectionProps";
@@ -26,45 +24,32 @@ const ContentSection = (props: ModuleProps<IContentSectionProps>): JSX.Element =
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [showMore, setShowMore] = React.useState({});
     const breakpoint = useBreakpoint(Breakpoints.LG);
-    const [contentData, setContentData] = React.useState<{ items: ContentItem<ICardProps>[] }>();
+    const [contentData, setContentData] = React.useState<{ items: ContentItem<ICardProps>[]; totalCount: number }>();
 
-    const api = React.useMemo(() =>
-        agility.getApi({
-            guid: process.env.NEXT_PUBLIC_AGILITY_GUID,
-            apiKey: process.env.NEXT_PUBLIC_AGILITY_API_PREVIEW_KEY,
-            isPreview: true
-        }), []);
+    const getContent = React.useCallback(async () => {
+        const result = await api.getContentList<ICardProps>({
+            referenceName: "EducationContent",
+            languageCode: "en-us",
+            contentLinkDepth: 2,
+            depth: 2,
+            take: 50,
+            filters: activeTab !== ContentCategory.all && [
+                {
+                    property: "fields.tag_TextField",
+                    operator: FilterTypes.EQUAL_TO,
+                    value: activeTab
+                }
+            ]
+        });
 
-    const getContent = React.useCallback(async (): Promise<any> => {
-        try {
-            const result = await api.getContentList({
-                referenceName: "EducationContent",
-                languageCode: "en-us",
-                contentLinkDepth: 2,
-                depth: 2,
-                take: 50,
-                filters: activeTab !== ContentCategory.all && [
-                    {
-                        property: "fields.tag_TextField",
-                        operator: api.types.FilterOperators.EQUAL_TO,
-                        value: activeTab
-                    }
-                ]
-            });
-
-            return result;
-        }
-
-        catch (e) {
-            return e;
-        }
-    }, [activeTab, api]);
+        return result;
+    }, [activeTab]);
 
     React.useEffect(() => {
         getContent()
             .then(result => setContentData(result))
-            .catch(err => err);
-    }, [api, getContent]);
+            .catch((err: unknown) => err);
+    }, [getContent]);
 
     return (
         <div className={styles.contentContainer}>
