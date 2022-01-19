@@ -12,15 +12,14 @@ import data from "components/game/gameSection/gameSectionContent";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
-import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import Image from "next/image";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import StepTypes from "./enums/stepTypes";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
-
 import IFriends from "./interfaces/IFriends";
+
 import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -38,8 +37,7 @@ const containerId = "containerElement";
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IFriends[]>([]);
-    const [seletedAvatar, setSeletedAvatar] = React.useState<IAvatar>();
-    const [selected, setSelected] = React.useState<AvatarType>();
+    const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
     const [step, setStep] = React.useState<StepTypes>(StepTypes.One);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
@@ -64,10 +62,8 @@ const GameSection = (): JSX.Element => {
         Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), []);
 
     const friendsAvatars = React.useMemo(() => data.filter((avatarObj) =>
-
-        avatarObj.id !== selected
-
-    ), [selected]);
+        avatarObj.id !== seletedAvatar
+    ), [seletedAvatar]);
 
     const donationMap = React.useMemo(() => data.concat(friends).map((i, k) => (
         <div className={styles.donationCycleItems} key={k}>
@@ -225,7 +221,7 @@ const GameSection = (): JSX.Element => {
 
             return styles;
         }
-    }, [selected, friends]);
+    }, [friends]);
 
     const handleAvatarClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
@@ -240,12 +236,11 @@ const GameSection = (): JSX.Element => {
             };
             setAvatarStyleGUID(getUniqueId());
         }
-        const Avatar = data.filter((filter) => filter.id === avatar);
+        //const Avatar = data.filter((filter) => filter.id === avatar);
         const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
 
         setFriends(Selected);
-        setSelected(avatar);
-        setSeletedAvatar(Avatar[0]);
+        setSeletedAvatar(avatar);
         setStep(StepTypes.Two);
     }, []);
 
@@ -352,7 +347,7 @@ const GameSection = (): JSX.Element => {
         }
     }, [getFriendsStyle]);
 
-    const handleContinueBtnClick = React.useCallback((avatar: AvatarType) => {
+    const handleContinueBtnClick = React.useCallback(() => {
         // Delayed execution of code helps to maintain the height of the page
         // when mobile keyboard dissmised. This help us to move to the third step.
         const t = setTimeout(() => {
@@ -360,7 +355,7 @@ const GameSection = (): JSX.Element => {
                 const bounds = stepThree.current.getBoundingClientRect();
                 avatarStyles.current = {
                     ...avatarStyles.current,
-                    [avatar]: {
+                    [seletedAvatar]: {
                         top: bounds.y + fullscreen.current.scrollTop,
                         left: bounds.x + fullscreen.current.scrollLeft,
                         transition: "2s"
@@ -380,7 +375,7 @@ const GameSection = (): JSX.Element => {
 
             clearTimeout(t);
         }, 500);
-    }, [setFriendsPositions]);
+    }, [setFriendsPositions, seletedAvatar]);
 
     React.useEffect(() => {
         if (step === StepTypes.One && isModalOpen && avatarStyleGUID === "0") {
@@ -486,7 +481,7 @@ const GameSection = (): JSX.Element => {
                 if (boundsFirst) {
                     avatarStyles.current = {
                         ...avatarStyles.current,
-                        [selected]: {
+                        [seletedAvatar]: {
                             top: boundsFirst.y + fullscreen.current.scrollTop,
                             left: boundsFirst.x + fullscreen.current.scrollLeft,
                         }
@@ -504,7 +499,7 @@ const GameSection = (): JSX.Element => {
                 if (boundsSecond) {
                     avatarStyles.current = {
                         ...avatarStyles.current,
-                        [selected]: {
+                        [seletedAvatar]: {
                             top: boundsSecond.y + fullscreen.current.scrollTop,
                             left: boundsSecond.x + fullscreen.current.scrollLeft,
                         }
@@ -514,7 +509,7 @@ const GameSection = (): JSX.Element => {
 
                 break;
         }
-    }, [setAvatarPositions, step, selected, friends]);
+    }, [setAvatarPositions, step, seletedAvatar, friends]);
 
     React.useEffect(() => {
         setViewportHeight();
@@ -529,7 +524,7 @@ const GameSection = (): JSX.Element => {
     const handleModalCloseBtnClick = React.useCallback(() => {
         setStep(StepTypes.One);
         setFriends([]);
-        setSelected(null);
+        setSeletedAvatar(null);
         closeModal();
         setFriendsCount(0);
     }, []);
@@ -575,7 +570,7 @@ const GameSection = (): JSX.Element => {
                                         className="w-100 text-center"
                                         onChange={(e) => setAvatarName(e.target.value)}
                                     />
-                                    <PrimaryButton disabled={shouldDisableContinueBtn} onClick={() => handleContinueBtnClick(selected)}>
+                                    <PrimaryButton disabled={shouldDisableContinueBtn} onClick={handleContinueBtnClick}>
                                         Continue
                                     </PrimaryButton>
                                 </div>
@@ -689,7 +684,7 @@ const GameSection = (): JSX.Element => {
                                 <div className={styles.card}>
                                     <GameAvatarList
                                         friends={friends}
-                                        selected={seletedAvatar}
+                                        seletedAvatar={seletedAvatar}
                                         name={avatarName}
                                         setStep={setStep}
                                         signupAnimation={signupAnimation} />
