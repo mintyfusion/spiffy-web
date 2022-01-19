@@ -35,24 +35,36 @@ const ContentSection = (props: ModuleProps<IContentSectionProps>): JSX.Element =
             isPreview: true
         }), []);
 
+    const getContent = React.useCallback(async (): Promise<any> => {
+        try {
+            const result = await api.getContentList({
+                referenceName: "EducationContent",
+                languageCode: "en-us",
+                contentLinkDepth: 2,
+                depth: 2,
+                take: 50,
+                filters: activeTab !== ContentCategory.all && [
+                    {
+                        property: "fields.tag_TextField",
+                        operator: api.types.FilterOperators.EQUAL_TO,
+                        value: activeTab
+                    }
+                ]
+            });
+
+            return result;
+        }
+
+        catch (e) {
+            return e;
+        }
+    }, [activeTab, api]);
+
     React.useEffect(() => {
-        api.getContentList({
-            referenceName: "EducationContent",
-            languageCode: "en-us",
-            contentLinkDepth: 2,
-            depth: 2,
-            take: 50,
-            filters: activeTab !== ContentCategory.all && [
-                {
-                    property: "fields.tag_TextField",
-                    operator: api.types.FilterOperators.EQUAL_TO,
-                    value: activeTab
-                }
-            ]
-        }).then((result) => {
-            setContentData(result);
-        });
-    }, [api, activeTab]);
+        getContent()
+            .then(result => setContentData(result))
+            .catch(err => err);
+    }, [api, getContent]);
 
     return (
         <div className={styles.contentContainer}>

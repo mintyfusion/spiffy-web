@@ -42,23 +42,35 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
             </div>
         </div>;
 
-    React.useEffect(() => {
-        api.getContentList({
-            referenceName: "FAQContentList",
-            languageCode: "en-us",
-            contentLinkDepth: 2,
-            depth: 2,
-            take: 50,
-            filters: [{
-                property: "fields.tag_TextField",
-                operator: api.types.FilterOperators.EQUAL_TO,
-                value: activeTab
-            }]
+    const getFAQList = React.useCallback(async (): Promise<any> => {
+        try {
+            const result = await api.getContentList({
+                referenceName: "FAQContentList",
+                languageCode: "en-us",
+                contentLinkDepth: 2,
+                depth: 2,
+                take: 50,
+                filters: [{
+                    property: "fields.tag_TextField",
+                    operator: api.types.FilterOperators.EQUAL_TO,
+                    value: activeTab
+                }]
+            });
 
-        }).then((result) => {
-            setContentData(result);
-        });
-    }, [api, activeTab]);
+            return result;
+        }
+
+        catch (e) {
+            return e;
+        }
+    }, [activeTab, api]);
+
+    React.useEffect(() => {
+        getFAQList()
+            .then(result => setContentData(result))
+            .catch(err => err);
+    }, [api, getFAQList]);
+
 
     return (
         <div className={`${styles.contentContainer} px-2 px-md-5`}>

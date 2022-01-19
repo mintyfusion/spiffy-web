@@ -1,13 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { AgilityPageProps } from "@agility/nextjs";
 import { getAgilityPageProps, getAgilityPaths } from "@agility/nextjs/node";
 import React from "react";
 
 import { getModule } from "components/agility-pageModules";
 
 import type {
-    GetStaticPathsContext,
     GetStaticPropsContext,
     InferGetStaticPropsType,
 } from "next";
@@ -20,15 +17,16 @@ export async function getStaticProps({
     preview,
     params,
     locale,
-    defaultLocale,
-    locales,
-}: GetStaticPropsContext<{ slug: string[] }>) {
+    defaultLocale
+}: GetStaticPropsContext<{ slug: string[] }>): Promise<{
+    props: AgilityPageProps;
+    revalidate: number;
+}> {
     // place all global here
     const globalComponents = {
         // header: SiteHeader,
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const agilityProps = await getAgilityPageProps({
         preview,
         params,
@@ -48,8 +46,12 @@ export async function getStaticProps({
     };
 }
 
-// Next.js will statically pre-render all the paths from Agility CMS
-export async function getStaticPaths({ locales, defaultLocale }) {
+export async function getStaticPaths({ locales, defaultLocale }
+    : GetStaticPropsContext<{ slug: string[] }>)
+    : Promise<{
+        paths: string[];
+        fallback: boolean;
+    }> {
     // Get the paths configured in agility
     const agilityPaths = await getAgilityPaths({
         preview: false,
