@@ -1,7 +1,7 @@
 import { Element, Link, scroller } from "react-scroll";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Row, Col } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 
@@ -59,9 +59,11 @@ const GameSection = (): JSX.Element => {
     const stepThree = React.useRef<HTMLDivElement>();
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
+    const coinRef = React.useRef<HTMLDivElement>();
+    const coinStyles = React.useRef<CSSProperties>();
 
     const step1Avatars = React.useMemo(() =>
-        Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), []);
+        Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), [selected]);
 
     const friendsAvatars = React.useMemo(() => data.filter((avatarObj) =>
 
@@ -528,6 +530,31 @@ const GameSection = (): JSX.Element => {
         setFriendsCount(0);
     }, []);
 
+    const handlStepAnimation = React.useCallback((stepIndex) => {
+        if (coinRef.current) {
+            const avatar = document.querySelector(`[data-index='${stepIndex}']`);
+            const bounds = avatar.getBoundingClientRect();
+            coinStyles.current = {
+                left: bounds.x + fullscreen.current.scrollLeft,
+                top: bounds.y + fullscreen.current.scrollTop
+            };
+            setAvatarStyleGUID(getUniqueId());
+        }
+    }, []);
+
+    const handleCoinClick = React.useCallback(() => {
+        let index = 1;
+        handlStepAnimation(index);
+        const t = setInterval(() => {
+            if (index < 10) {
+                index = index + 1;
+                handlStepAnimation(index);
+            } else {
+                clearInterval(t);
+            }
+        }, 2000);
+    }, [handlStepAnimation]);
+
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
             <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
@@ -543,7 +570,7 @@ const GameSection = (): JSX.Element => {
                                     key={key}
                                     style={avatarStyles.current && avatarStyles.current[value]}
                                     onClick={() => handleAvatarClick(value)}
-                                    to={StepTypes.Two}
+                                    to={StepTypes.Four}
                                     smooth={true}
                                     duration={700}
                                     containerId={containerId}
@@ -636,7 +663,103 @@ const GameSection = (): JSX.Element => {
                                             </Nav>
                                         </Navbar.Collapse>
                                     </Navbar>
-                                    <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
+
+                                    <div className="w-100">
+                                        <div
+                                            className={styles.coinTwo}
+                                            ref={coinRef}
+                                            onClick={handleCoinClick}
+                                            style={coinStyles.current}
+                                        />
+                                        <Row>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="0">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+
+                                            </Col>
+                                        </Row>
+                                        <Row className={`${styles.w25} ${styles.marginTopMinusFifty}`}>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="10">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="1">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                        <Row className={styles.w40}>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="9">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="2">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                        <Row className={styles.w55}>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="8">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="3">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                        <Row className={styles.w40}>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="7">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="4">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                        <Row className={`${styles.w25} ${styles.marginBottomMinusFifty}`}>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="6">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="3">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col className={horizontalAlign}>
+                                                <div className={styles.donationCycleItems} data-index="5">
+                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                    <span>0.20</span>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                    {/* <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
                                         <h2>Donation Cycle</h2>
                                         <div className={`${animation ? styles.coin : styles.coinDefault}`}>
                                             <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
@@ -670,7 +793,7 @@ const GameSection = (): JSX.Element => {
                                                 </div>
                                             </div>
                                         </div> :
-                                        null}
+                                        null} */}
                                 </div>
                             </div>
                             {donationAmount ?
