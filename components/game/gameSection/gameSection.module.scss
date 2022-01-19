@@ -153,9 +153,6 @@ $vh: var(--vh);
     width: 100%;
     overflow: auto;
     height: $vh;
-    .card {
-        height: auto;
-    }
 }
 
 .avatarHeading {
@@ -885,6 +882,7 @@ $vh: var(--vh);
     .stepFour {
         width: 90%;
         height: auto;
+        position: relative;
         select {
             width: 100%;
             text-align: center;
@@ -2242,45 +2240,13 @@ $vh: var(--vh);
         height: 90px;
         display: "block";
     }
-    .avatarPurple {
-        @include avatar(23%, 54.3%);
-        @include imgProperties(84px);
-    }
-
-    .avatarGreen {
-        @include avatar(23%, 19.7%);
-        @include imgProperties(84px);
-    }
-
-    .avatarRed {
-        @include avatar(48%, 19.7%);
-        @include imgProperties(84px);
-    }
-
-    .avatarYellow {
-        @include avatar(48%, 54.3%);
-        @include imgProperties(84px);
-    }
-
-    .avatarOrange {
-        @include avatar(74%, 37%);
-        @include imgProperties(84px);
-    }
-
-    .avatarstepTwo {
-        animation: avatarstepTwoAnimation 4s;
-        animation-fill-mode: forwards;
-        img {
-            @include imgProperties(164px);
-        }
-    }
 
     .container {
         padding: 0px;
         text-align: center;
         .card {
             width: 100%;
-            margin: 0;
+            margin: 20px;
             height: $vh;
         }
     }
@@ -2869,7 +2835,7 @@ $vh: var(--vh);
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(0px 0);
+        @include gameContentPadding(50px 0);
     }
 
     .avatarstepThree {
