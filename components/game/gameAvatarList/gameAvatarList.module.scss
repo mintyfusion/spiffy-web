@@ -224,7 +224,7 @@
     @for $i from 1 through 120 {
         .confetti:nth-child(#{$i}) {
             position: absolute;
-            top: (random(200) + 4) + px;
+            bottom: (random(200) + 4) + px;
             left: (random(50) + 4) + px;
             img {
                 width: (random(30) + 4) + px;
