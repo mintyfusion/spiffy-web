@@ -41,6 +41,7 @@ export type Styles = {
   "coin": string;
   "coinAnimatonMobile": string;
   "coinDefault": string;
+  "coinTwo": string;
   "container": string;
   "containerFadIn": string;
   "containerFadinAnimation": string;
@@ -79,6 +80,8 @@ export type Styles = {
   "gameStepTwo": string;
   "gameStepTwoWrapper": string;
   "inactive": string;
+  "marginBottomMinusFifty": string;
+  "marginTopMinusFifty": string;
   "medium25": string;
   "modalBody": string;
   "navToggle": string;
@@ -109,6 +112,9 @@ export type Styles = {
   "user": string;
   "userAvatar": string;
   "userDonation": string;
+  "w25": string;
+  "w40": string;
+  "w55": string;
   "wrapper": string;
   "yellow": string;
 };
