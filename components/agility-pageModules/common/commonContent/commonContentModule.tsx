@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
 import EducationSections from "components/agility-pageModules/educationModule/enums/educationSections";
@@ -9,7 +7,7 @@ import GetStartedSection from "components/agility-pageModules/creatorPage/getSta
 import ICommonContentProps from "components/agility-pageModules/common/commonContent/interfaces/ICommonContentProps";
 import Pages from "enums/pages";
 
-const CommonContentModule = (props: ModuleProps<ICommonContentProps>): JSX.Element => {
+const CommonContentModule = (props: ICommonContentProps): JSX.Element => {
     const { page, module } = props;
 
     const preparedData = React.useMemo(() => ({
@@ -17,7 +15,7 @@ const CommonContentModule = (props: ModuleProps<ICommonContentProps>): JSX.Eleme
         href: module.fields.href,
         section_TextField: module.fields.section_TextField
     }), [module.fields]);
-    
+
     const renderComponent = React.useMemo(() => {
         switch (page.name) {
             case Pages.education: {

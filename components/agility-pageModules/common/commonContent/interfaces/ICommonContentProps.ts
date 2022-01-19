@@ -1,6 +1,7 @@
-import IContentInfo from "types/IContentnfo";
+import { ModuleProps } from "@agility/nextjs";
 
-export default interface ICommonContentProps extends IContentInfo {
-    href: string;
-    section_TextField: string;
+import ICommonContent from "components/agility-pageModules/common/commonContent/interfaces/ICommonContent";
+
+export default interface ICommonContentProps extends Omit<ModuleProps<ICommonContent>, "page"> {
+    page: { name: string };
 }
