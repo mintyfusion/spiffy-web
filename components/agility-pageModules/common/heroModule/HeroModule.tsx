@@ -1,17 +1,13 @@
-import { ImageField, ModuleProps } from "@agility/nextjs";
 import { ImageProps } from "next/image";
+import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
 import Banner from "components/common/banner/banner";
 import CreatorBannerSection from "components/agility-pageModules/creatorPage/bannerSection/bannerSection";
 import EducationBannerSection from "components/educationPage/bannerSection/bannerSection";
-import IContentInfo from "types/IContentnfo";
+import IHeroModuleProps from "components/agility-pageModules/common/heroModule/interfaces/iHeroModuleProps";
 import LandingBannerSection from "components/landingPage/bannerSection/bannerSection";
 import PageIds from "common/pageIds";
-
-interface IHeroModuleProps extends IContentInfo {
-    image: { media: [ImageField] };
-}
 
 const HeroModule = (props: ModuleProps<IHeroModuleProps>): JSX.Element => {
     const { fields } = props.module;

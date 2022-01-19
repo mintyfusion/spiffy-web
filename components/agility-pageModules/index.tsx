@@ -5,7 +5,7 @@ import CreatorPageContentModule from "components/agility-pageModules/creatorPage
 import EducationDetailsModule from "components/agility-pageModules/educationDetailsModule/educationDetailsModule";
 import EducationListingModule from "components/agility-pageModules/educationModule/contentSection/contentSection";
 import FAQContentModule from "components/agility-pageModules/faqPage/contentModule/faqContentModule";
-import HeroModule from "components/agility-pageModules/HeroModule";
+import HeroModule from "components/agility-pageModules/common/heroModule/HeroModule";
 import LandingFeaturesModule from "components/agility-pageModules/landingPage/featuresModule/LandingFeaturesModule";
 import LandingPageEducation from "components/agility-pageModules/landingPage/educationModule/landingPageEducation";
 import LandingPageGetStarted from "components/agility-pageModules/landingPage/getStartedModule/landingPageGetStarted";
