@@ -80,6 +80,7 @@ export type Styles = {
   "gameStepTwoWrapper": string;
   "inactive": string;
   "medium25": string;
+  "modalBody": string;
   "navToggle": string;
   "opacityAnimation": string;
   "paddingSides": string;

@@ -425,7 +425,7 @@ const GameSection = (): JSX.Element => {
         <div className={`${colCenter} ${styles.wrapper}`}>
             <button onClick={() => setShow(true)}>Play</button>
             <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
-                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px", display: "inline-block" }} id={containerId} ref={fullscreen}>
+                <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`} id={containerId} ref={fullscreen}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => closeHandler()} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
