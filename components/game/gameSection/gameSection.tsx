@@ -565,7 +565,7 @@ const GameSection = (): JSX.Element => {
                                     key={key}
                                     style={avatarStyles.current && avatarStyles.current[value]}
                                     onClick={() => handleAvatarClick(value)}
-                                    to={StepTypes.Four}
+                                    to={StepTypes.Two}
                                     smooth={true}
                                     duration={700}
                                     containerId={containerId}
