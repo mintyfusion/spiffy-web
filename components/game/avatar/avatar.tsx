@@ -5,7 +5,7 @@ import AvatarType from "../gameSection/enums/avatarTypes";
 import IAvatarProps from "components/game/avatar/interfaces/IAvatarProps";
 
 const Avatar = (props: IAvatarProps) => {
-    const Avatars = React.useMemo(() => {
+    const avatarSrc = React.useMemo(() => {
         switch (props.color) {
             case AvatarType.Green:
                 return "/images/Game/avatars/avatarGreen.png";
@@ -22,6 +22,6 @@ const Avatar = (props: IAvatarProps) => {
         }
     }, [props.color]);
 
-    return <Image src={Avatars} width={148} height={148} objectFit="contain" />;
+    return <Image src={avatarSrc} width={148} height={148} objectFit="contain" />;
 };
 export default Avatar;

@@ -6,12 +6,13 @@ import React from "react";
 
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
-
 import Breakpoints from "common/style/breakpoints";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import StepTypes from "../gameSection/enums/stepTypes";
-import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 import useBreakpoint from "hooks/useBreakpoint";
+import Avatar from "../avatar/avatar";
+
+import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
@@ -130,7 +131,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <div className={`${styles.avatarInner} ${colCenter}`}>
                         <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
                         <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
-                            {props.selected ? <Image {...props.selected.image} width={119} height={119} /> : null}
+                            {props.seletedAvatar && <Avatar color={props.seletedAvatar} />}
                         </div>
 
                         <div className={styles.percentageFriends}>

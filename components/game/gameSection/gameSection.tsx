@@ -12,15 +12,14 @@ import data from "components/game/gameSection/gameSectionContent";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
-import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import Image from "next/image";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import StepTypes from "./enums/stepTypes";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
-
 import IFriends from "./interfaces/IFriends";
+
 import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -38,8 +37,7 @@ const containerId = "containerElement";
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IFriends[]>([]);
-    const [seletedAvatar, setSeletedAvatar] = React.useState<IAvatar>();
-    const [selected, setSelected] = React.useState<AvatarType>();
+    const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
     const [step, setStep] = React.useState<StepTypes>(StepTypes.One);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
@@ -63,13 +61,11 @@ const GameSection = (): JSX.Element => {
     const coinStyles = React.useRef<CSSProperties>();
 
     const step1Avatars = React.useMemo(() =>
-        Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), [selected]);
+        Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), []);
 
     const friendsAvatars = React.useMemo(() => data.filter((avatarObj) =>
-
-        avatarObj.id !== selected
-
-    ), [selected]);
+        avatarObj.id !== seletedAvatar
+    ), [seletedAvatar]);
 
     const donationMap = React.useMemo(() => data.concat(friends).map((i, k) => (
         <div className={styles.donationCycleItems} key={k}>
@@ -227,7 +223,7 @@ const GameSection = (): JSX.Element => {
 
             return styles;
         }
-    }, [selected, friends]);
+    }, [friends]);
 
     const handleAvatarClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
@@ -242,12 +238,11 @@ const GameSection = (): JSX.Element => {
             };
             setAvatarStyleGUID(getUniqueId());
         }
-        const Avatar = data.filter((filter) => filter.id === avatar);
+        //const Avatar = data.filter((filter) => filter.id === avatar);
         const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
 
         setFriends(Selected);
-        setSelected(avatar);
-        setSeletedAvatar(Avatar[0]);
+        setSeletedAvatar(avatar);
         setStep(StepTypes.Two);
     }, []);
 
@@ -354,29 +349,35 @@ const GameSection = (): JSX.Element => {
         }
     }, [getFriendsStyle]);
 
-    const handleContinueBtnClick = React.useCallback((avatar: AvatarType) => {
-        if (stepThree.current && step === StepTypes.Two) {
-            const bounds = stepThree.current.getBoundingClientRect();
-            avatarStyles.current = {
-                ...avatarStyles.current,
-                [avatar]: {
-                    top: bounds.y + fullscreen.current.scrollTop,
-                    left: bounds.x + fullscreen.current.scrollLeft,
-                    transition: "2s"
-                }
-            };
-            setAvatarStyleGUID(getUniqueId());
-            setStep(StepTypes.Three);
-            setFriendsPositions();
-            scroller.scrollTo(StepTypes.Three, {
-                duration: 700,
-                smooth: true,
-                containerId,
-                ignoreCancelEvents: true,
-                offset: -20
-            });
-        }
-    }, [setFriendsPositions]);
+    const handleContinueBtnClick = React.useCallback(() => {
+        // Delayed execution of code helps to maintain the height of the page
+        // when mobile keyboard dissmised. This help us to move to the third step.
+        const t = setTimeout(() => {
+            if (stepThree.current && step === StepTypes.Two) {
+                const bounds = stepThree.current.getBoundingClientRect();
+                avatarStyles.current = {
+                    ...avatarStyles.current,
+                    [seletedAvatar]: {
+                        top: bounds.y + fullscreen.current.scrollTop,
+                        left: bounds.x + fullscreen.current.scrollLeft,
+                        transition: "2s"
+                    }
+                };
+                setAvatarStyleGUID(getUniqueId());
+                setStep(StepTypes.Three);
+                setFriendsPositions();
+                scroller.scrollTo(StepTypes.Three, {
+                    duration: 700,
+                    smooth: true,
+                    containerId,
+                    ignoreCancelEvents: true,
+                    offset: -20
+                });
+            }
+
+            clearTimeout(t);
+        }, 500);
+    }, [setFriendsPositions, seletedAvatar]);
 
     React.useEffect(() => {
         if (step === StepTypes.One && isModalOpen && avatarStyleGUID === "0") {
@@ -472,10 +473,9 @@ const GameSection = (): JSX.Element => {
     }, [friends]);
 
     const handleResize = React.useCallback(() => {
-        setViewportHeight();
-
         switch (step) {
             case StepTypes.One:
+                setViewportHeight();
                 setAvatarPositions();
                 break;
             case StepTypes.Two:
@@ -483,7 +483,7 @@ const GameSection = (): JSX.Element => {
                 if (boundsFirst) {
                     avatarStyles.current = {
                         ...avatarStyles.current,
-                        [selected]: {
+                        [seletedAvatar]: {
                             top: boundsFirst.y + fullscreen.current.scrollTop,
                             left: boundsFirst.x + fullscreen.current.scrollLeft,
                         }
@@ -493,6 +493,7 @@ const GameSection = (): JSX.Element => {
                 break;
             case StepTypes.Three:
             default:
+                setViewportHeight();
                 setFriendsPositions();
                 friendsResizeHandler();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
@@ -500,7 +501,7 @@ const GameSection = (): JSX.Element => {
                 if (boundsSecond) {
                     avatarStyles.current = {
                         ...avatarStyles.current,
-                        [selected]: {
+                        [seletedAvatar]: {
                             top: boundsSecond.y + fullscreen.current.scrollTop,
                             left: boundsSecond.x + fullscreen.current.scrollLeft,
                         }
@@ -510,7 +511,7 @@ const GameSection = (): JSX.Element => {
 
                 break;
         }
-    }, [setAvatarPositions, step, selected, friends]);
+    }, [setAvatarPositions, step, seletedAvatar, friends]);
 
     React.useEffect(() => {
         setViewportHeight();
@@ -525,7 +526,7 @@ const GameSection = (): JSX.Element => {
     const handleModalCloseBtnClick = React.useCallback(() => {
         setStep(StepTypes.One);
         setFriends([]);
-        setSelected(null);
+        setSeletedAvatar(null);
         closeModal();
         setFriendsCount(0);
     }, []);
@@ -589,8 +590,12 @@ const GameSection = (): JSX.Element => {
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
                                     <div className={styles.targetOne} ref={target}></div>
-                                    <input placeholder="Name" className="w-100 text-center" onChange={(e) => setAvatarName(e.target.value)} />
-                                    <PrimaryButton disabled={avatarName === ""} onClick={() => handleContinueBtnClick(selected)}>
+                                    <input
+                                        placeholder="Name"
+                                        className="w-100 text-center"
+                                        onChange={(e) => setAvatarName(e.target.value)}
+                                    />
+                                    <PrimaryButton onClick={handleContinueBtnClick}>
                                         Continue
                                     </PrimaryButton>
                                 </div>
@@ -800,7 +805,7 @@ const GameSection = (): JSX.Element => {
                                 <div className={styles.card}>
                                     <GameAvatarList
                                         friends={friends}
-                                        selected={seletedAvatar}
+                                        seletedAvatar={seletedAvatar}
                                         name={avatarName}
                                         setStep={setStep}
                                         signupAnimation={signupAnimation} />
