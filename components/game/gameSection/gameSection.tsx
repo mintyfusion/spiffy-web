@@ -15,10 +15,12 @@ import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import Image from "next/image";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import StepTypes from "./enums/stepTypes";
-import styles from "components/game/gameSection/gameSection.module.scss";
 import useBreakpoint from "hooks/useBreakpoint";
 import setViewportHeight from "utils/setViewportHeight";
 import getUniqueId from "utils/getUniqueId";
+import useBoolean from "hooks/useBoolean";
+
+import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
@@ -42,7 +44,7 @@ const GameSection = (): JSX.Element => {
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
     const [freindsCount, setFriendsCount] = React.useState<number>(0);
-    const [show, setShow] = React.useState<boolean>(false);
+    const [isModalOpen, { setTrue: openModal, setFalse: closeModal }] = useBoolean(false);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
@@ -349,10 +351,10 @@ const GameSection = (): JSX.Element => {
     }, [setFriendsPositions]);
 
     React.useEffect(() => {
-        if (step === StepTypes.One && show && avatarStyleGUID === "0") {
+        if (step === StepTypes.One && isModalOpen && avatarStyleGUID === "0") {
             setAvatarPositions();
         }
-    }, [setAvatarPositions, step, show, avatarStyleGUID]);
+    }, [setAvatarPositions, step, isModalOpen, avatarStyleGUID]);
 
     const signupAnimation = React.useCallback(() => {
         scroller.scrollTo(StepTypes.Six, {
@@ -492,20 +494,20 @@ const GameSection = (): JSX.Element => {
 
     }, [handleResize]);
 
-    const closeHandler = React.useCallback(() => {
+    const handleModalCloseBtnClick = React.useCallback(() => {
         setStep(StepTypes.One);
         setFriends([]);
         setSelected(null);
-        setShow(false);
+        closeModal();
         setFriendsCount(0);
     }, []);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
-            <button onClick={() => setShow(true)}>Play</button>
-            <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
+            <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
+            <Modal show={isModalOpen} fullscreen={true} onHide={closeModal}>
                 <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`} id={containerId} ref={fullscreen}>
-                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => closeHandler()} className={styles.close} />
+                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={handleModalCloseBtnClick} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
