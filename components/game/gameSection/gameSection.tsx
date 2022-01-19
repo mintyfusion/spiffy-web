@@ -12,7 +12,6 @@ import data from "components/game/gameSection/gameSectionContent";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
-import IFriends from "./interfaces/IFriends";
 import Image from "next/image";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
@@ -21,6 +20,7 @@ import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
+import IFriendAvatar from "components/game/gameSection/interfaces/IFriendAvatar";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
@@ -39,13 +39,12 @@ const donationTotalAvatars = 10;
 const stepTwoTimeout = 10;
 
 const GameSection = (): JSX.Element => {
-    const [friends, setFriends] = React.useState<IFriends[]>([]);
+    const [addedFriends, setAddedFriends] = React.useState<IFriendAvatar[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
     const [step, setStep] = React.useState<StepTypes>(StepTypes.One);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
-    const [freindsCount, setFriendsCount] = React.useState<number>(0);
     const [isModalOpen, { setTrue: openModal, setFalse: closeModal }] = useBoolean(false);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
@@ -67,8 +66,8 @@ const GameSection = (): JSX.Element => {
         Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), []);
 
     const friendsAvatars = React.useMemo(() => data.filter((avatarObj) =>
-        avatarObj.id !== seletedAvatar
-    ), [seletedAvatar]);
+        seletedAvatar && avatarObj.id !== seletedAvatar
+    ), [seletedAvatar]) as IFriendAvatar[];
 
     // const donationMap = React.useMemo(() => data.concat(friends).map((i, k) => (
     //     <div className={styles.donationCycleItems} key={k}>
@@ -80,8 +79,7 @@ const GameSection = (): JSX.Element => {
     // )), [friends, donationAmount, donationFormula]);
 
     React.useEffect(() => {
-        let timer: NodeJS.Timeout;
-        if (freindsCount === friendsLength) {
+        if (addedFriends.length === friendsLength) {
             scroller.scrollTo(StepTypes.Four, {
                 duration: 700,
                 smooth: true,
@@ -89,14 +87,12 @@ const GameSection = (): JSX.Element => {
                 delay: 2000,
                 ignoreCancelEvents: true
             });
-            timer = setTimeout(() => {
+            const timer = setTimeout(() => {
                 setStep(StepTypes.Four);
                 clearTimeout(timer);
             }, friendsTimeout);
         }
-
-        return () => clearTimeout(timer);
-    }, [freindsCount]);
+    }, [addedFriends]);
 
     const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
@@ -186,7 +182,7 @@ const GameSection = (): JSX.Element => {
             const keyTwo = 2;
             const keyThree = 3;
 
-            friends.map((value, index) => {
+            friendsAvatars.map((value, index) => {
                 switch (index) {
                     case 0:
                         if (!value.done) {
@@ -226,7 +222,7 @@ const GameSection = (): JSX.Element => {
 
             return styles;
         }
-    }, [friends]);
+    }, [friendsAvatars]);
 
     const handleAvatarClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
@@ -242,12 +238,11 @@ const GameSection = (): JSX.Element => {
             setAvatarStyleGUID(getUniqueId());
         }
         const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
-        setFriends(Selected);
         setSeletedAvatar(avatar);
         setStep(StepTypes.Two);
     }, []);
 
-    const friendsAnimation = React.useCallback((index: number, value: IFriends) => {
+    const friendsAnimation = React.useCallback((index: number, value: IFriendAvatar) => {
         if (stepThree.current) {
             const width = window.innerWidth;
             const mobile = 1000;
@@ -277,16 +272,13 @@ const GameSection = (): JSX.Element => {
             const keyTwo = 2;
             const keyThree = 3;
 
-            setFriendsCount(freindsCount + 1);
-
-            const updatedFriends = friends.map(item => {
+            const selectedFriends: IFriendAvatar[] = [];
+            data.forEach(item => {
                 if (item.id == value.id) {
-                    return { ...item, done: true };
+                    selectedFriends.push({ ...item, done: true });
                 }
-
-                return item;
             });
-            setFriends(updatedFriends);
+            setAddedFriends((currentFriends: IFriendAvatar[]) => [...currentFriends, ...selectedFriends]);
 
             const styles = {} as Record<AvatarType, CSSProperties>;
 
@@ -332,7 +324,7 @@ const GameSection = (): JSX.Element => {
 
             setFriendsStyleGUID(getUniqueId());
         }
-    }, [freindsCount, friends]);
+    }, []);
 
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
@@ -425,7 +417,7 @@ const GameSection = (): JSX.Element => {
 
             const styles = {} as Record<AvatarType, CSSProperties>;
 
-            friends.map((value, index) => {
+            addedFriends.map((value, index) => {
                 switch (index) {
                     case 0:
                         if (value.done) {
@@ -462,6 +454,7 @@ const GameSection = (): JSX.Element => {
                         break;
                 }
             });
+
             friendsStyle.current = {
                 ...friendsStyle.current,
                 ...styles
@@ -477,6 +470,7 @@ const GameSection = (): JSX.Element => {
                 setViewportHeight();
                 setAvatarPositions();
                 break;
+
             case StepTypes.Two:
                 const boundsFirst = target.current?.getBoundingClientRect();
                 if (boundsFirst) {
@@ -490,6 +484,7 @@ const GameSection = (): JSX.Element => {
                     setAvatarStyleGUID(getUniqueId());
                 }
                 break;
+
             case StepTypes.Three:
             default:
                 setViewportHeight();
@@ -510,7 +505,7 @@ const GameSection = (): JSX.Element => {
 
                 break;
         }
-    }, [setAvatarPositions, step, seletedAvatar, friends]);
+    }, [setAvatarPositions, step, seletedAvatar]);
 
     React.useEffect(() => {
         setViewportHeight();
@@ -524,10 +519,10 @@ const GameSection = (): JSX.Element => {
 
     const handleModalCloseBtnClick = React.useCallback(() => {
         setStep(StepTypes.One);
-        setFriends([]);
+        setAddedFriends([]);
         setSeletedAvatar(null);
         closeModal();
-        setFriendsCount(0);
+        setAddedFriends([]);
     }, []);
 
     const handlStepAnimation = React.useCallback((stepIndex) => {
@@ -612,7 +607,7 @@ const GameSection = (): JSX.Element => {
                                     <h2 className={styles.avatarHeading}>Add four friends.</h2>
                                     {step === StepTypes.Three ?
                                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                                            {friendsAvatars.map((key: IFriends, index) =>
+                                            {friendsAvatars.map((key: IFriendAvatar, index) =>
                                                 <div
                                                     key={index}
                                                     style={friendsStyle.current && friendsStyle.current[key.id]}
@@ -816,7 +811,7 @@ const GameSection = (): JSX.Element => {
                             {donationAmount ?
                                 <div className={styles.card}>
                                     <GameAvatarList
-                                        friends={friends}
+                                        friends={addedFriends}
                                         seletedAvatar={seletedAvatar}
                                         name={avatarName}
                                         setStep={setStep}
