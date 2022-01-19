@@ -30,8 +30,8 @@ const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
 const guidRandom = 36;
-const substrOne = 36;
-const substrTwo = 36;
+const substrOne = 2;
+const substrTwo = 9;
 
 function setViewportHeight() {
     if (!window) {
