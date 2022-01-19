@@ -1,5 +1,6 @@
 @import "styles/includeMedia.scss";
 @import "styles/theme.scss";
+@import "styles/functions.scss";
 @import "styles/font/fontGroups.scss";
 
 .contentContainer {
@@ -83,7 +84,7 @@
 .accordianHeader {
     .faqIndex {
         color: $yellow;
-        min-width: 50px;
+        width: fluid(56px, 70px);
     }
     button {
         @extend .semiBold32;

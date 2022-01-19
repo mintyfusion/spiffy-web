@@ -124,7 +124,7 @@ const FAQContentModule = (props: ModuleProps<any>): JSX.Element => {
                         <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
                             <Accordion.Header className={styles.accordianHeader}>
                                 <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
-                                    <div className={`${styles.faqIndex} p-2`}>
+                                    <div className={`${styles.faqIndex} p-3`}>
                                         {`${index < zeroPrefixLimit && "0"}${index + 1}`}
                                     </div>
                                     <div className="w-100 p-2">{post.fields.title}</div>
