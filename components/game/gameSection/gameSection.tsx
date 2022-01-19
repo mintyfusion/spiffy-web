@@ -18,7 +18,7 @@ import StepTypes from "./enums/stepTypes";
 import useBreakpoint from "hooks/useBreakpoint";
 import setViewportHeight from "utils/setViewportHeight";
 import getUniqueId from "utils/getUniqueId";
-import useToggle from "hooks/useToggle";
+import useBoolean from "hooks/useBoolean";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
 
@@ -44,7 +44,7 @@ const GameSection = (): JSX.Element => {
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
     const [freindsCount, setFriendsCount] = React.useState<number>(0);
-    const [isModalOpen, { toggle: toggleModal }] = useToggle(false);
+    const [isModalOpen, { setTrue: openModal, setFalse: closeModal }] = useBoolean(false);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
@@ -419,14 +419,14 @@ const GameSection = (): JSX.Element => {
         setStep(StepTypes.One);
         setFriends([]);
         setSelected(null);
-        toggleModal();
+        closeModal();
         setFriendsCount(0);
     }, []);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
-            <button onClick={toggleModal}>Play</button>
-            <Modal show={isModalOpen} fullscreen={true}>
+            <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
+            <Modal show={isModalOpen} fullscreen={true} onHide={closeModal}>
                 <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`} id={containerId} ref={fullscreen}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={handleModalCloseBtnClick} className={styles.close} />
                     <div className={styles.container}>
