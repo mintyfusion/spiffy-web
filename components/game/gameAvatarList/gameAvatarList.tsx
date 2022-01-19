@@ -4,13 +4,13 @@ import { Nav, Navbar } from "react-bootstrap";
 import Image from "next/image";
 import React from "react";
 
+import Avatar from "../avatar/avatar";
+import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
-import Breakpoints from "common/style/breakpoints";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import StepTypes from "../gameSection/enums/stepTypes";
 import useBreakpoint from "hooks/useBreakpoint";
-import Avatar from "../avatar/avatar";
 
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
@@ -23,16 +23,25 @@ const mainAvatars = [
     "/images/Game/donationCycle/avatarYellow.png",
     "/images/Game/donationCycle/avatarOrange.png",
 ];
-const animationSplice = 2;
 const donationTimeout = 6000;
+const twenty = 20;
+const twentyTwo = 22;
+const twentyFive = 25;
+const twentySeven = 27;
+const thirty = 30;
+const thirtyThree = 33;
+const thirtyFive = 35;
+const thirtySeven = 37;
+const fourty = 40;
+const fifteenRandom = 15;
+const five = 5;
+const sizes = [twenty, twentyTwo, twentyFive, twentySeven, thirty, thirtyThree, thirtyFive, thirtySeven, fourty];
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("1");
     const [avatars, setAvatars] = React.useState([]);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
-
-    const half = Math.ceil(avatars.length / animationSplice);
 
     const animationHandler = (percent: string) => {
         const avatar = [...mainAvatars];
@@ -80,6 +89,45 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
 
     }, [percentage, props]);
 
+    const avatarsFlex = React.useMemo(
+        () => avatars.map((i, index) => <div key={index} className="avatar"><Image src={i} width={20} height={20} /></div>),
+        [avatars]
+    );
+
+    function getRandomMargin() {
+        return `${Math.floor(Math.random() * fifteenRandom + five)}px`;
+    }
+
+    function getRandomSize() {
+        const randomIndex = Math.floor(Math.random() * sizes.length);
+
+        return `${sizes[randomIndex]}px`;
+    }
+
+    function getRandomAlignSelf() {
+        const values = ["flex-end", "flex-start", "center"];
+        const randomIndex = Math.floor(Math.random() * values.length);
+
+        return values[randomIndex];
+    }
+
+    React.useEffect(() => {
+        const Avatars = document.querySelectorAll<HTMLElement>(".avatar");
+        for (const avatar of Avatars) {
+            avatar.style.marginTop = getRandomMargin();
+            avatar.style.marginRight = getRandomMargin();
+            avatar.style.marginBottom = getRandomMargin();
+            avatar.style.marginLeft = getRandomMargin();
+
+            const size = getRandomSize();
+            avatar.style.width = size;
+            avatar.style.height = size;
+            avatar.style.alignSelf = getRandomAlignSelf();
+        }
+    }, [percentage]);
+
+    // console.log(avatars);
+
     return (
         <div className={styles.gameStepFive}>
             <div className={`${colCenter}`}>
@@ -117,28 +165,26 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     </Navbar.Collapse>
                 </Navbar>
 
-                <div className={`${styles.donationInner} ${colCenter} w-100 position-relative`}>
-                    {avatars.slice(0, half).map((i, k) => (
-                        <div className={styles.confetti} key={k}>
-                            <Image src={i} width={20} height={20} />
-                        </div>
-                    ))}
-                    {avatars.slice(-half).map((i, k) => (
-                        <div className={styles.confettiRight} key={k}>
-                            <Image src={i} width={20} height={20} />
-                        </div>
-                    ))}
-                    <div className={`${styles.avatarInner} ${colCenter}`}>
-                        <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
-                        <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
-                            {props.seletedAvatar && <Avatar color={props.seletedAvatar} />}
-                        </div>
-
-                        <div className={styles.percentageFriends}>
-                            {props.friends.map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
-                        </div>
+                <div className={`${styles.donationInner} w-100 position-relative`}>
+                    <div className={`${styles.flexOne} ${styles.left}`}>
+                        {avatarsFlex}
                     </div>
-                    <h6>{props.name}</h6>
+                    <div>
+                        <div className={`${styles.avatarInner} ${colCenter} ${styles.flexOne}`}>
+                            <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
+                            <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
+                                {props.seletedAvatar && <Avatar color={props.seletedAvatar} />}
+                            </div>
+
+                            <div className={styles.percentageFriends}>
+                                {props.friends.map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                            </div>
+                        </div>
+                        <h6>{props.name}</h6>
+                    </div>
+                    <div className={`${styles.flexOne} ${styles.left}`}>
+                        {avatarsFlex}
+                    </div>
                 </div>
             </div>
         </div>

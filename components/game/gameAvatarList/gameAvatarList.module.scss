@@ -72,6 +72,7 @@
 }
 
 .donationInner {
+    display: flex;
     h2 {
         @extend .boldGame41;
         margin-bottom: 40px;
@@ -164,6 +165,15 @@
 
 .inactive {
     background-color: #f3e6ca;
+}
+
+.left,
+.right {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flexOne {
+    flex: 1;
 }
 
 @include media(">=phone", "<tablet") {

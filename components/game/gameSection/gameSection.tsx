@@ -1,7 +1,7 @@
+import { Col, Nav, Navbar, Row } from "react-bootstrap";
 import { Element, Link, scroller } from "react-scroll";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, Navbar, Row, Col } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 
@@ -12,13 +12,13 @@ import data from "components/game/gameSection/gameSectionContent";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
+import IFriends from "./interfaces/IFriends";
 import Image from "next/image";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import StepTypes from "./enums/stepTypes";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
-import IFriends from "./interfaces/IFriends";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
 
@@ -27,13 +27,16 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
-const donationDivide = 2;
+// const donationDivide = 2;
 const friendsTimeout = 2000;
 const avatarTimeout = 1000;
-const donationFormula = 5;
+// const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
 const containerId = "containerElement";
+const phoneKeyboardTimeout = 500;
+const donationTotalAvatars = 10;
+const stepTwoTimeout = 10;
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IFriends[]>([]);
@@ -67,14 +70,14 @@ const GameSection = (): JSX.Element => {
         avatarObj.id !== seletedAvatar
     ), [seletedAvatar]);
 
-    const donationMap = React.useMemo(() => data.concat(friends).map((i, k) => (
-        <div className={styles.donationCycleItems} key={k}>
-            <Image {...i.image} width={56} height={63} />
-            <span>
-                ${Number(donationAmount) / donationFormula / donationFormula}0
-            </span>
-        </div>
-    )), [friends, donationAmount, donationFormula]);
+    // const donationMap = React.useMemo(() => data.concat(friends).map((i, k) => (
+    //     <div className={styles.donationCycleItems} key={k}>
+    //         <Image {...i.image} width={56} height={63} />
+    //         <span>
+    //             ${Number(donationAmount) / donationFormula / donationFormula}0
+    //         </span>
+    //     </div>
+    // )), [friends, donationAmount, donationFormula]);
 
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -238,9 +241,7 @@ const GameSection = (): JSX.Element => {
             };
             setAvatarStyleGUID(getUniqueId());
         }
-        //const Avatar = data.filter((filter) => filter.id === avatar);
         const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
-
         setFriends(Selected);
         setSeletedAvatar(avatar);
         setStep(StepTypes.Two);
@@ -350,8 +351,6 @@ const GameSection = (): JSX.Element => {
     }, [getFriendsStyle]);
 
     const handleContinueBtnClick = React.useCallback(() => {
-        // Delayed execution of code helps to maintain the height of the page
-        // when mobile keyboard dissmised. This help us to move to the third step.
         const t = setTimeout(() => {
             if (stepThree.current && step === StepTypes.Two) {
                 const bounds = stepThree.current.getBoundingClientRect();
@@ -376,7 +375,7 @@ const GameSection = (): JSX.Element => {
             }
 
             clearTimeout(t);
-        }, 500);
+        }, phoneKeyboardTimeout);
     }, [setFriendsPositions, seletedAvatar]);
 
     React.useEffect(() => {
@@ -470,7 +469,7 @@ const GameSection = (): JSX.Element => {
 
             setFriendsStyleGUID(getUniqueId());
         }
-    }, [friends]);
+    }, [friends, friendsStyleGUID]);
 
     const handleResize = React.useCallback(() => {
         switch (step) {
@@ -547,13 +546,13 @@ const GameSection = (): JSX.Element => {
         let index = 1;
         handlStepAnimation(index);
         const t = setInterval(() => {
-            if (index < 10) {
+            if (index < donationTotalAvatars) {
                 index = index + 1;
                 handlStepAnimation(index);
             } else {
                 clearInterval(t);
             }
-        }, 2000);
+        }, stepTwoTimeout);
     }, [handlStepAnimation]);
 
     return (
@@ -669,7 +668,7 @@ const GameSection = (): JSX.Element => {
                                         </Navbar.Collapse>
                                     </Navbar>
 
-                                    <div className="w-100">
+                                    {animation ? <div className="w-100">
                                         <div
                                             className={styles.coinTwo}
                                             ref={coinRef}
@@ -763,8 +762,9 @@ const GameSection = (): JSX.Element => {
                                                 </div>
                                             </Col>
                                         </Row>
-                                    </div>
-                                    {/* <div className={`${styles.donationInner} ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
+                                    </div> : null}
+                                    {/* <div className={`${styles.donationInner} 
+                                    ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
                                         <h2>Donation Cycle</h2>
                                         <div className={`${animation ? styles.coin : styles.coinDefault}`}>
                                             <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
@@ -772,13 +772,22 @@ const GameSection = (): JSX.Element => {
                                         <div className={styles.userDonation}>
                                             <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                                         </div>
-                                        <p>{`${donationAmount !== "" ? `$${Number(donationAmount) / donationDivide}0` : ""}`}</p>
+                                        <p>
+                                        {`${donationAmount !== "" ?
+                                         `$${Number(donationAmount) / donationDivide}0` 
+                                         : ""}`}
+                                        </p>
                                         <h3>Content Creators</h3>
                                     </div>
                                     {animation ?
-                                        <div className={`${animation ? styles.animationGrid : ""} position-relative`} >
+                                        <div className={`${animation 
+                                            ? styles.animationGrid : 
+                                            ""} position-relative`} >
                                             <div className={styles.donationCycleItems}>
-                                                <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
+                                                <Image 
+                                                src={"/images/Game/donationCycle/avatarPurple.png"}
+                                                width={56}
+                                                height={63} />
                                                 <span>
                                                     ${Number(donationAmount) / donationFormula / donationFormula}0
                                                 </span>
@@ -791,7 +800,10 @@ const GameSection = (): JSX.Element => {
                                                     <p>We’re totally reliant on these cents to keep us going.</p>
                                                 </div>
                                                 <div className={styles.donationCycleItems}>
-                                                    <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
+                                                    <Image 
+                                                    src={"/images/Game/donationCycle/spiffy.png"}
+                                                    width={156}
+                                                    height={45} />
                                                     <span>
                                                         ${Number(donationAmount) / donationFormula / donationFormula}0
                                                     </span>
