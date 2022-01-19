@@ -462,7 +462,7 @@ const GameSection = (): JSX.Element => {
 
             setFriendsStyleGUID(getUniqueId());
         }
-    }, [friends, friendsStyleGUID]);
+    }, [friendsStyleGUID]);
 
     const handleResize = React.useCallback(() => {
         switch (step) {
