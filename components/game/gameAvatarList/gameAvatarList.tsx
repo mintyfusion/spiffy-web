@@ -108,7 +108,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                                     ${donation === percentage ? styles.active : styles.inactive}
                                      w-100 px-1 py-3`}
                                 >
-                                    {donation}
+                                    %{donation}
                                 </PrimaryButton>
                             )}
 

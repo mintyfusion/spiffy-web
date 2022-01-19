@@ -11,15 +11,16 @@ import Breakpoints from "common/style/breakpoints";
 import data from "components/game/gameSection/gameSectionContent";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
+import getUniqueId from "utils/getUniqueId";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import Image from "next/image";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
-import StepTypes from "./enums/stepTypes";
-import useBreakpoint from "hooks/useBreakpoint";
 import setViewportHeight from "utils/setViewportHeight";
-import getUniqueId from "utils/getUniqueId";
+import StepTypes from "./enums/stepTypes";
 import useBoolean from "hooks/useBoolean";
+import useBreakpoint from "hooks/useBreakpoint";
 
+import IFriends from "./interfaces/IFriends";
 import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -36,7 +37,7 @@ const friendsLength = 4;
 const containerId = "containerElement";
 
 const GameSection = (): JSX.Element => {
-    const [friends, setFriends] = React.useState<IAvatar[]>([]);
+    const [friends, setFriends] = React.useState<IFriends[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<IAvatar>();
     const [selected, setSelected] = React.useState<AvatarType>();
     const [step, setStep] = React.useState<StepTypes>(StepTypes.One);
@@ -59,13 +60,31 @@ const GameSection = (): JSX.Element => {
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
 
+    const step1Avatars = React.useMemo(() =>
+        Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), []);
+
+    const friendsAvatars = React.useMemo(() => data.filter((avatarObj) =>
+
+        avatarObj.id !== selected
+
+    ), [selected]);
+
+    const donationMap = React.useMemo(() => data.concat(friends).map((i, k) => (
+        <div className={styles.donationCycleItems} key={k}>
+            <Image {...i.image} width={56} height={63} />
+            <span>
+                ${Number(donationAmount) / donationFormula / donationFormula}0
+            </span>
+        </div>
+    )), [friends, donationAmount, donationFormula]);
+
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
         if (freindsCount === friendsLength) {
             scroller.scrollTo(StepTypes.Four, {
                 duration: 700,
                 smooth: true,
-                containerId: containerId,
+                containerId,
                 delay: 2000,
                 ignoreCancelEvents: true
             });
@@ -83,7 +102,7 @@ const GameSection = (): JSX.Element => {
             scroller.scrollTo(StepTypes.Five, {
                 duration: 700,
                 smooth: true,
-                containerId: containerId,
+                containerId,
                 delay: 2000,
                 ignoreCancelEvents: true
             });
@@ -230,7 +249,7 @@ const GameSection = (): JSX.Element => {
         setStep(StepTypes.Two);
     }, []);
 
-    const friendsAnimation = React.useCallback((index: number, value: IAvatar) => {
+    const friendsAnimation = React.useCallback((index: number, value: IFriends) => {
         if (stepThree.current) {
             const width = window.innerWidth;
             const mobile = 1000;
@@ -347,6 +366,13 @@ const GameSection = (): JSX.Element => {
             setAvatarStyleGUID(getUniqueId());
             setStep(StepTypes.Three);
             setFriendsPositions();
+            scroller.scrollTo(StepTypes.Three, {
+                duration: 700,
+                smooth: true,
+                containerId,
+                ignoreCancelEvents: true,
+                offset: -20
+            });
         }
     }, [setFriendsPositions]);
 
@@ -360,7 +386,7 @@ const GameSection = (): JSX.Element => {
         scroller.scrollTo(StepTypes.Six, {
             duration: 700,
             smooth: true,
-            containerId: containerId,
+            containerId,
             ignoreCancelEvents: true
         });
     }, []);
@@ -506,29 +532,29 @@ const GameSection = (): JSX.Element => {
         <div className={`${colCenter} ${styles.wrapper}`}>
             <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
             <Modal show={isModalOpen} fullscreen={true} onHide={closeModal}>
-                <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`} id={containerId} ref={fullscreen}>
+                <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`}
+                    id={containerId} ref={fullscreen}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={handleModalCloseBtnClick} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
-                            {Object.entries(AvatarType)
-                                .filter(([filter]) => filter !== AvatarType.Orange)
-                                .map(([key, value]) =>
-                                    <Link
-                                        key={key}
-                                        style={avatarStyles.current && avatarStyles.current[value]}
-                                        onClick={() => handleBtnClick(value)}
-                                        to={StepTypes.Two}
-                                        smooth={true}
-                                        duration={700}
-                                        containerId={containerId}
-                                        className={`${styles.avatar} ${step === StepTypes.Two ? styles.avatarSelected : step === StepTypes.Three ? styles.avatarFriends : ""}`}
-                                        ignoreCancelEvents={true}
-                                        offset={-20}
-                                    >
-                                        <Avatar color={value} />
-                                    </Link>
-                                )}
+                            {step1Avatars.map(([key, value]) =>
+                                <Link
+                                    key={key}
+                                    style={avatarStyles.current && avatarStyles.current[value]}
+                                    onClick={() => handleBtnClick(value)}
+                                    to={StepTypes.Two}
+                                    smooth={true}
+                                    duration={700}
+                                    containerId={containerId}
+                                    className={`${styles.avatar}
+                                     ${step === StepTypes.Two ? styles.avatarSelected : step === StepTypes.Three ? styles.avatarFriends : ""}`}
+                                    ignoreCancelEvents={true}
+                                    offset={-20}
+                                >
+                                    <Avatar color={value} />
+                                </Link>
+                            )}
                         </div>
 
                         <Element name={StepTypes.Two} className={styles.card} id="test">
@@ -537,19 +563,9 @@ const GameSection = (): JSX.Element => {
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
                                     <div className={styles.targetOne} ref={target}></div>
                                     <input placeholder="Name" className="w-100 text-center" onChange={(e) => setAvatarName(e.target.value)} />
-                                    <Link
-                                        to={StepTypes.Three}
-                                        smooth={true}
-                                        duration={700}
-                                        offset={-20}
-                                        containerId={containerId}
-                                        ignoreCancelEvents={true}>
-                                        <button disabled={avatarName === ""} onClick={() => {
-                                            handleBtnClick2(selected);
-                                        }}>
-                                            Continue
-                                        </button>
-                                    </Link>
+                                    <PrimaryButton disabled={avatarName === ""} onClick={() => handleBtnClick2(selected)}>
+                                        Continue
+                                    </PrimaryButton>
                                 </div>
                             </div>
                         </Element>
@@ -565,7 +581,7 @@ const GameSection = (): JSX.Element => {
                                     <h2 className={styles.avatarHeading}>Add four friends.</h2>
                                     {step === StepTypes.Three ?
                                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                                            {friends.map((key, index) =>
+                                            {friendsAvatars.map((key: IFriends, index) =>
                                                 <div
                                                     key={index}
                                                     style={friendsStyle.current && friendsStyle.current[key.id]}
@@ -588,7 +604,7 @@ const GameSection = (): JSX.Element => {
                                     <Navbar expand="lg" className="justify-content-center"
                                         expanded={expanded}
                                         onClick={() => breakpoint && setExpanded(!expanded)}>
-                                        <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "5" : donationAmount}</Navbar.Brand>
+                                        <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "Select Amount" : donationAmount}</Navbar.Brand>
                                         <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
                                             <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
                                         </Navbar.Toggle>
@@ -635,17 +651,12 @@ const GameSection = (): JSX.Element => {
                                         <div className={`${animation ? styles.animationGrid : ""} position-relative`} >
                                             <div className={styles.donationCycleItems}>
                                                 <Image src={"/images/Game/donationCycle/avatarPurple.png"} width={56} height={63} />
-                                                <span>$0.50</span>
+                                                <span>
+                                                    ${Number(donationAmount) / donationFormula / donationFormula}0
+                                                </span>
                                                 <h3 className="position-absolute">Early Adapters</h3>
                                             </div>
-                                            {data.concat(friends).map((i, k) => (
-                                                <div className={styles.donationCycleItems} key={k}>
-                                                    <Image {...i.image} width={56} height={63} />
-                                                    <span>
-                                                        ${Number(donationAmount) / donationFormula / donationFormula}0
-                                                    </span>
-                                                </div>
-                                            ))}
+                                            {donationMap}
                                             <div>
                                                 <div className={styles.animationText}>
                                                     <h2>Spiffy Corp.</h2>
@@ -653,7 +664,9 @@ const GameSection = (): JSX.Element => {
                                                 </div>
                                                 <div className={styles.donationCycleItems}>
                                                     <Image src={"/images/Game/donationCycle/spiffy.png"} width={156} height={45} />
-                                                    <span>$0.50</span>
+                                                    <span>
+                                                        ${Number(donationAmount) / donationFormula / donationFormula}0
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div> :
@@ -682,9 +695,9 @@ const GameSection = (): JSX.Element => {
                             </div>
                         </Element>
                     </div>
-                </Modal.Body>
-            </Modal>
-        </div>
+                </Modal.Body >
+            </Modal >
+        </div >
     );
 };
 
