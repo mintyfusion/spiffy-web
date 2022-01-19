@@ -353,27 +353,33 @@ const GameSection = (): JSX.Element => {
     }, [getFriendsStyle]);
 
     const handleContinueBtnClick = React.useCallback((avatar: AvatarType) => {
-        if (stepThree.current && step === StepTypes.Two) {
-            const bounds = stepThree.current.getBoundingClientRect();
-            avatarStyles.current = {
-                ...avatarStyles.current,
-                [avatar]: {
-                    top: bounds.y + fullscreen.current.scrollTop,
-                    left: bounds.x + fullscreen.current.scrollLeft,
-                    transition: "2s"
-                }
-            };
-            setAvatarStyleGUID(getUniqueId());
-            setStep(StepTypes.Three);
-            setFriendsPositions();
-            scroller.scrollTo(StepTypes.Three, {
-                duration: 700,
-                smooth: true,
-                containerId,
-                ignoreCancelEvents: true,
-                offset: -20
-            });
-        }
+        // Delayed execution of code helps to maintain the height of the page
+        // when mobile keyboard dissmised. This help us to move to the third step.
+        const t = setTimeout(() => {
+            if (stepThree.current && step === StepTypes.Two) {
+                const bounds = stepThree.current.getBoundingClientRect();
+                avatarStyles.current = {
+                    ...avatarStyles.current,
+                    [avatar]: {
+                        top: bounds.y + fullscreen.current.scrollTop,
+                        left: bounds.x + fullscreen.current.scrollLeft,
+                        transition: "2s"
+                    }
+                };
+                setAvatarStyleGUID(getUniqueId());
+                setStep(StepTypes.Three);
+                setFriendsPositions();
+                scroller.scrollTo(StepTypes.Three, {
+                    duration: 700,
+                    smooth: true,
+                    containerId,
+                    ignoreCancelEvents: true,
+                    offset: -20
+                });
+            }
+
+            clearTimeout(t);
+        }, 500);
     }, [setFriendsPositions]);
 
     React.useEffect(() => {
@@ -470,10 +476,9 @@ const GameSection = (): JSX.Element => {
     }, [friends]);
 
     const handleResize = React.useCallback(() => {
-        setViewportHeight();
-
         switch (step) {
             case StepTypes.One:
+                setViewportHeight();
                 setAvatarPositions();
                 break;
             case StepTypes.Two:
@@ -491,6 +496,7 @@ const GameSection = (): JSX.Element => {
                 break;
             case StepTypes.Three:
             default:
+                setViewportHeight();
                 setFriendsPositions();
                 friendsResizeHandler();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
@@ -528,6 +534,8 @@ const GameSection = (): JSX.Element => {
         setFriendsCount(0);
     }, []);
 
+    const shouldDisableContinueBtn = React.useMemo(() => !avatarName || !avatarName.trim(), [avatarName]);
+
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
             <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
@@ -562,8 +570,12 @@ const GameSection = (): JSX.Element => {
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
                                     <div className={styles.targetOne} ref={target}></div>
-                                    <input placeholder="Name" className="w-100 text-center" onChange={(e) => setAvatarName(e.target.value)} />
-                                    <PrimaryButton disabled={avatarName === ""} onClick={() => handleContinueBtnClick(selected)}>
+                                    <input
+                                        placeholder="Name"
+                                        className="w-100 text-center"
+                                        onChange={(e) => setAvatarName(e.target.value)}
+                                    />
+                                    <PrimaryButton disabled={shouldDisableContinueBtn} onClick={() => handleContinueBtnClick(selected)}>
                                         Continue
                                     </PrimaryButton>
                                 </div>
