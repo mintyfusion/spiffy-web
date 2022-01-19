@@ -13,7 +13,6 @@ const CommonContentModule = (props: ICommonContentProps): JSX.Element => {
     const preparedData = React.useMemo(() => ({
         content: { title: module.fields.title, description: module.fields.description },
         href: module.fields.href,
-        section_TextField: module.fields.section_TextField
     }), [module.fields]);
 
     const renderComponent = React.useMemo(() => {
