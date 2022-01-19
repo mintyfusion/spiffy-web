@@ -17,6 +17,8 @@ import PrimaryButton from "components/common/primaryButton/primaryButton";
 import StepTypes from "./enums/stepTypes";
 import styles from "components/game/gameSection/gameSection.module.scss";
 import useBreakpoint from "hooks/useBreakpoint";
+import setViewportHeight from "utils/setViewportHeight";
+import getUniqueId from "utils/getUniqueId";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
@@ -29,21 +31,7 @@ const avatarTimeout = 1000;
 const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
-const guidRandom = 36;
-const substrOne = 36;
-const substrTwo = 36;
-
-function setViewportHeight() {
-    if (!window) {
-        return;
-    }
-    const root = document.querySelector<HTMLDivElement>(":root");
-    root?.style.setProperty("--vh", `${window.innerHeight}px`);
-}
-
-function guid() {
-    return `_${Math.random().toString(guidRandom).substr(substrOne, substrTwo)}`;
-}
+const containerId = "containerElement";
 
 const GameSection = (): JSX.Element => {
     const [friends, setFriends] = React.useState<IAvatar[]>([]);
@@ -61,7 +49,7 @@ const GameSection = (): JSX.Element => {
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
     const [avatarStyleGUID, setAvatarStyleGUID] = React.useState("0");
     const friendsStyle = React.useRef<Record<AvatarType, CSSProperties>>();
-    // const [friendsStyleGUID, setFriendsStyleGUID] = React.useState("0");
+    const [friendsStyleGUID, setFriendsStyleGUID] = React.useState("0");
 
     const start = React.useRef<HTMLDivElement>();
     const target = React.useRef<HTMLDivElement>();
@@ -75,7 +63,7 @@ const GameSection = (): JSX.Element => {
             scroller.scrollTo(StepTypes.Four, {
                 duration: 700,
                 smooth: true,
-                containerId: "containerElement",
+                containerId: containerId,
                 delay: 2000,
                 ignoreCancelEvents: true
             });
@@ -93,7 +81,7 @@ const GameSection = (): JSX.Element => {
             scroller.scrollTo(StepTypes.Five, {
                 duration: 700,
                 smooth: true,
-                containerId: "containerElement",
+                containerId: containerId,
                 delay: 2000,
                 ignoreCancelEvents: true
             });
@@ -229,7 +217,7 @@ const GameSection = (): JSX.Element => {
                     transition: "2s"
                 }
             };
-            setAvatarStyleGUID(guid());
+            setAvatarStyleGUID(getUniqueId());
         }
         const Avatar = data.filter((filter) => filter.id === avatar);
         const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
@@ -323,7 +311,7 @@ const GameSection = (): JSX.Element => {
                 ...styles
             };
 
-            // setFriendsStyleGUID(guid());
+            setFriendsStyleGUID(getUniqueId());
         }
     }, [freindsCount, friends]);
 
@@ -331,7 +319,7 @@ const GameSection = (): JSX.Element => {
         const styles = getStyles();
         if (styles) {
             avatarStyles.current = { ...avatarStyles.current, ...styles };
-            setAvatarStyleGUID(guid());
+            setAvatarStyleGUID(getUniqueId());
         }
     }, [getStyles]);
 
@@ -339,7 +327,7 @@ const GameSection = (): JSX.Element => {
         const styles = getFriendsStyle();
         if (styles) {
             friendsStyle.current = { ...friendsStyle.current, ...styles };
-            // setFriendsStyleGUID(guid());
+            setFriendsStyleGUID(getUniqueId());
         }
     }, [getFriendsStyle]);
 
@@ -354,7 +342,7 @@ const GameSection = (): JSX.Element => {
                     transition: "2s"
                 }
             };
-            setAvatarStyleGUID(guid());
+            setAvatarStyleGUID(getUniqueId());
             setStep(StepTypes.Three);
             setFriendsPositions();
         }
@@ -370,7 +358,7 @@ const GameSection = (): JSX.Element => {
         scroller.scrollTo(StepTypes.Six, {
             duration: 700,
             smooth: true,
-            containerId: "containerElement",
+            containerId: containerId,
             ignoreCancelEvents: true
         });
     }, []);
@@ -392,7 +380,7 @@ const GameSection = (): JSX.Element => {
                             left: boundsFirst.x + fullscreen.current.scrollLeft,
                         }
                     };
-                    setAvatarStyleGUID(guid());
+                    setAvatarStyleGUID(getUniqueId());
                 }
                 break;
             case StepTypes.Three:
@@ -408,7 +396,7 @@ const GameSection = (): JSX.Element => {
                             left: boundsSecond.x + fullscreen.current.scrollLeft,
                         }
                     };
-                    setAvatarStyleGUID(guid());
+                    setAvatarStyleGUID(getUniqueId());
                 }
 
                 break;
@@ -437,7 +425,7 @@ const GameSection = (): JSX.Element => {
         <div className={`${colCenter} ${styles.wrapper}`}>
             <button onClick={() => setShow(true)}>Play</button>
             <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
-                <Modal.Body style={{ overflow: "hidden", backgroundColor: "#f2f2f2", width: "100%", padding: "0px", display: "inline-block" }} id="containerElement" ref={fullscreen}>
+                <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`} id={containerId} ref={fullscreen}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={() => closeHandler()} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
@@ -452,7 +440,7 @@ const GameSection = (): JSX.Element => {
                                         to={StepTypes.Two}
                                         smooth={true}
                                         duration={700}
-                                        containerId="containerElement"
+                                        containerId={containerId}
                                         className={`${styles.avatar} ${step === StepTypes.Two ? styles.avatarSelected : step === StepTypes.Three ? styles.avatarFriends : ""}`}
                                         ignoreCancelEvents={true}
                                         offset={-20}
@@ -473,7 +461,7 @@ const GameSection = (): JSX.Element => {
                                         smooth={true}
                                         duration={700}
                                         offset={-20}
-                                        containerId="containerElement"
+                                        containerId={containerId}
                                         ignoreCancelEvents={true}>
                                         <button disabled={avatarName === ""} onClick={() => {
                                             handleBtnClick2(selected);
@@ -618,4 +606,5 @@ const GameSection = (): JSX.Element => {
         </div>
     );
 };
+
 export default GameSection;
