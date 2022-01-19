@@ -365,6 +365,84 @@ const GameSection = (): JSX.Element => {
         });
     }, []);
 
+    const friendsResizeHandler = React.useCallback(() => {
+        if (stepThree.current) {
+            const width = window.innerWidth;
+            const mobile = 1000;
+            const desktopSmall = 1350;
+            const mobileTop = 20;
+            const desktopTop = 50;
+            const desktopSmallTop = 50;
+            const mobileTop2 = 50;
+            const desktopTop2 = 120;
+            const mobileLeft = 45;
+            const desktopLeft = 110;
+            const desktopSmallLeft = 110;
+            const mobileLeft2 = 70;
+            const desktopleft2 = 170;
+
+            const topSpacing = width < mobile ? mobileTop : width < desktopSmall ? desktopSmallTop : desktopTop;
+            const top2Spacing = width < mobile ? mobileTop2 : desktopTop2;
+            const leftSpacing = width < mobile ? mobileLeft : width < desktopSmall ? desktopSmallLeft : desktopLeft;
+            const left2Spacing = width < mobile ? mobileLeft2 : desktopleft2;
+
+            const bounds = stepThree.current.getBoundingClientRect();
+            const top = bounds.y + fullscreen.current.scrollTop - topSpacing;
+            const left = bounds.x + fullscreen.current.scrollLeft - leftSpacing;
+            const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing;
+            const left2 = bounds.x + fullscreen.current.scrollLeft + left2Spacing;
+
+            const keyTwo = 2;
+            const keyThree = 3;
+
+            const styles = {} as Record<AvatarType, CSSProperties>;
+
+            friends.map((value, index) => {
+                switch (index) {
+                    case 0:
+                        if (value.done) {
+                            styles[value.id] = {
+                                top,
+                                left,
+                            };
+                        }
+                        break;
+                    case 1:
+                        if (value.done) {
+                            styles[value.id] = {
+                                top,
+                                left: left2,
+                            };
+                        }
+                        break;
+                    case keyTwo:
+                        if (value.done) {
+                            styles[value.id] = {
+                                top: top2,
+                                left,
+                            };
+                        }
+                        break;
+                    case keyThree:
+                    default:
+                        if (value.done) {
+                            styles[value.id] = {
+                                top: top2,
+                                left: left2,
+                            };
+                        }
+                        break;
+                }
+            });
+            friendsStyle.current = {
+                ...friendsStyle.current,
+                ...styles
+            };
+
+            setFriendsStyleGUID(getUniqueId());
+        }
+    }, [friends]);
+
     const handleResize = React.useCallback(() => {
         setViewportHeight();
 
@@ -388,6 +466,7 @@ const GameSection = (): JSX.Element => {
             case StepTypes.Three:
             default:
                 setFriendsPositions();
+                friendsResizeHandler();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
                 if (boundsSecond) {
@@ -403,7 +482,7 @@ const GameSection = (): JSX.Element => {
 
                 break;
         }
-    }, [setAvatarPositions, step, selected]);
+    }, [setAvatarPositions, step, selected, friends]);
 
     React.useEffect(() => {
         setViewportHeight();
