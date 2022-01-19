@@ -208,7 +208,7 @@ const GameSection = (): JSX.Element => {
         }
     }, [selected, friends]);
 
-    const handleBtnClick = React.useCallback((avatar: AvatarType) => {
+    const handleAvatarClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
             const bounds = target.current.getBoundingClientRect();
             avatarStyles.current = {
@@ -333,7 +333,7 @@ const GameSection = (): JSX.Element => {
         }
     }, [getFriendsStyle]);
 
-    const handleBtnClick2 = React.useCallback((avatar: AvatarType) => {
+    const handleContinueBtnClick = React.useCallback((avatar: AvatarType) => {
         if (stepThree.current && step === StepTypes.Two) {
             const bounds = stepThree.current.getBoundingClientRect();
             avatarStyles.current = {
@@ -438,7 +438,7 @@ const GameSection = (): JSX.Element => {
                                     <Link
                                         key={key}
                                         style={avatarStyles.current && avatarStyles.current[value]}
-                                        onClick={() => handleBtnClick(value)}
+                                        onClick={() => handleAvatarClick(value)}
                                         to={StepTypes.Two}
                                         smooth={true}
                                         duration={700}
@@ -466,7 +466,7 @@ const GameSection = (): JSX.Element => {
                                         containerId={containerId}
                                         ignoreCancelEvents={true}>
                                         <button disabled={avatarName === ""} onClick={() => {
-                                            handleBtnClick2(selected);
+                                            handleContinueBtnClick(selected);
                                         }}>
                                             Continue
                                         </button>
