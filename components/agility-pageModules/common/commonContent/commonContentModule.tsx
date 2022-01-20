@@ -1,6 +1,6 @@
 import React from "react";
 
-import EducationSections from "components/agility-pageModules/educationModule/enums/educationSections";
+import EducationSections from "components/agility-pageModules/educationPage/enums/educationSections";
 import FaqSection from "components/educationPage/faqSection/faqSection";
 import GameSection from "components/educationPage/gameSection/gameSection";
 import GetStartedSection from "components/agility-pageModules/creatorPage/getStartedSection/getStartedSection";

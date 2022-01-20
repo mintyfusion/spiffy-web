@@ -11,7 +11,7 @@ import ContentCategory from "components/educationPage/contentSection/enums/conte
 import FilterTypes from "utils/api/enums/filterTypes";
 import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
-import IContentSectionProps from "components/agility-pageModules/educationModule/contentSection/interfaces/IContentSectionProps";
+import IContentSectionProps from "components/agility-pageModules/educationPage/contentListModule/interfaces/IContentListProps";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
 
@@ -19,7 +19,7 @@ import styles from "components/educationPage/contentSection/contentSection.modul
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
-const ContentSection = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
+const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.all);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [showMore, setShowMore] = React.useState({});
@@ -121,4 +121,4 @@ const ContentSection = (props: ModuleProps<IContentSectionProps>): JSX.Element =
     );
 };
 
-export default ContentSection;
+export default ContentListModule;
