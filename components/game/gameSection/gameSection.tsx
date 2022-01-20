@@ -27,16 +27,16 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
-// const donationDivide = 2;
+const donationDivide = 2;
 const friendsTimeout = 2000;
 const avatarTimeout = 1000;
-// const donationFormula = 5;
+const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
 const containerId = "containerElement";
 const phoneKeyboardTimeout = 500;
 const donationTotalAvatars = 10;
-const stepTwoTimeout = 10;
+const stepTwoTimeout = 1000;
 
 const GameSection = (): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<IFriendAvatar[]>([]);
@@ -60,6 +60,7 @@ const GameSection = (): JSX.Element => {
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
     const coinRef = React.useRef<HTMLDivElement>();
+    const coinStart = React.useRef<HTMLDivElement>();
     const coinStyles = React.useRef<CSSProperties>();
 
     const step1Avatars = React.useMemo(() =>
@@ -462,7 +463,7 @@ const GameSection = (): JSX.Element => {
 
             setFriendsStyleGUID(getUniqueId());
         }
-    }, [friendsStyleGUID]);
+    }, []);
 
     const handleResize = React.useCallback(() => {
         switch (step) {
@@ -528,17 +529,44 @@ const GameSection = (): JSX.Element => {
     const handlStepAnimation = React.useCallback((stepIndex) => {
         if (coinRef.current) {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
+            const keys = Number(avatar.getAttribute("data-index"));
             const bounds = avatar.getBoundingClientRect();
-            coinStyles.current = {
-                left: bounds.x + fullscreen.current.scrollLeft,
-                top: bounds.y + fullscreen.current.scrollTop
-            };
+            if (keys === 0) {
+                coinStyles.current = {
+                    left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 80,
+                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop
+                };
+            }
+            else if (keys < 4) {
+                coinStyles.current = {
+                    left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 150,
+                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop
+                };
+            } else if (keys === 4) {
+                coinStyles.current = {
+                    left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 170,
+                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop
+                };
+            }
+            else if (keys === 5) {
+                coinStyles.current = {
+                    left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 100,
+                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 100
+                };
+            }
+            else if (keys > 6) {
+                coinStyles.current = {
+                    left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
+                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop
+                };
+            }
+
             setAvatarStyleGUID(getUniqueId());
         }
     }, []);
 
     const handleCoinClick = React.useCallback(() => {
-        let index = 1;
+        let index = 0;
         handlStepAnimation(index);
         const t = setInterval(() => {
             if (index < donationTotalAvatars) {
@@ -565,7 +593,7 @@ const GameSection = (): JSX.Element => {
                                     key={key}
                                     style={avatarStyles.current && avatarStyles.current[value]}
                                     onClick={() => handleAvatarClick(value)}
-                                    to={StepTypes.Two}
+                                    to={StepTypes.Four}
                                     smooth={true}
                                     duration={700}
                                     containerId={containerId}
@@ -647,6 +675,7 @@ const GameSection = (): JSX.Element => {
                                                                 top: 230,
                                                                 behavior: "smooth"
                                                             });
+                                                            handleCoinClick();
                                                         }}
                                                         className={`${horizontalAlign} 
                                                         ${styles.donationButton}
@@ -663,13 +692,26 @@ const GameSection = (): JSX.Element => {
                                         </Navbar.Collapse>
                                     </Navbar>
 
-                                    {animation ? <div className="w-100">
-                                        <div
-                                            className={styles.coinTwo}
-                                            ref={coinRef}
-                                            onClick={handleCoinClick}
-                                            style={coinStyles.current}
-                                        />
+                                    <div className="w-100">
+                                        <div className={`${styles.donationInner} 
+                                                ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
+                                            <h2>Donation Cycle</h2>
+                                            <div className={styles.coinTwo}
+                                                ref={coinRef}
+                                                style={coinStyles.current}>
+                                                <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
+                                            </div>
+                                            <div ref={coinStart}></div>
+                                            <div className={styles.userDonation}>
+                                                <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
+                                            </div>
+                                            {/* <p>
+                                                {`${donationAmount !== "" ?
+                                                    `$${Number(donationAmount) / donationDivide}0`
+                                                    : ""}`}
+                                            </p>
+                                            <h3>Content Creators</h3> */}
+                                        </div>
                                         <Row>
                                             <Col className={horizontalAlign}>
                                                 <div className={styles.donationCycleItems} data-index="0">
@@ -757,7 +799,7 @@ const GameSection = (): JSX.Element => {
                                                 </div>
                                             </Col>
                                         </Row>
-                                    </div> : null}
+                                    </div>
                                     {/* <div className={`${styles.donationInner} 
                                     ${colCenter} ${animation ? styles.contentAnimation : ""}`}>
                                         <h2>Donation Cycle</h2>

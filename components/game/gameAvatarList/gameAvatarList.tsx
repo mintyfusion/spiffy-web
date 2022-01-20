@@ -169,8 +169,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <div className={`${styles.flexOne} ${styles.left}`}>
                         {avatarsFlex}
                     </div>
-                    <div>
-                        <div className={`${styles.avatarInner} ${colCenter} ${styles.flexOne}`}>
+                    <div className={`${styles.flexOne}`}>
+                        <div className={`${styles.avatarInner} ${colCenter}`}>
                             <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
                                 {props.seletedAvatar && <Avatar color={props.seletedAvatar} />}

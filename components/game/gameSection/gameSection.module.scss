@@ -96,7 +96,7 @@ $vh: var(--vh);
     margin-bottom: -50px;
 }
 
-.marginTopMinusFifty{
+.marginTopMinusFifty {
     margin-top: -50px;
 }
 
@@ -119,7 +119,7 @@ $vh: var(--vh);
     transition: 2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
     z-index: 1;
     cursor: pointer;
-    box-shadow: 0 0 20px 8px;
+    top: 28%;
 }
 
 .modalBody {
@@ -556,6 +556,7 @@ $vh: var(--vh);
 
 .donationInner {
     margin-top: 40px;
+    margin-bottom: 40px;
     h2 {
         @extend .boldGame41;
     }
@@ -568,6 +569,9 @@ $vh: var(--vh);
         font-size: 25px;
         font-weight: $bold;
         opacity: 0;
+    }
+    .userDonation {
+        margin-top: 80px;
     }
 }
 
