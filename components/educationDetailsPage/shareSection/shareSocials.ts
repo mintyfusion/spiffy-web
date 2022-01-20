@@ -12,7 +12,7 @@ const detailsSocialData: IShareSectionProps[] = [
         icon: faFacebookF
     },
     {
-        href: "#",
+        href: "https://www.instagram.com/?url=",
         icon: faInstagram
     }
 ];
