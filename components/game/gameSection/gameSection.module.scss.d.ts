@@ -81,6 +81,7 @@ export type Styles = {
   "donationCycle": string;
   "donationCycleItems": string;
   "donationDesktop": string;
+  "donationImage": string;
   "donationInner": string;
   "donationLogo": string;
   "donationMobile": string;

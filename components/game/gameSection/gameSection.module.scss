@@ -114,7 +114,6 @@ $vh: var(--vh);
     position: absolute;
     width: 50px;
     height: 50px;
-    background: yellow;
     border-radius: 50%;
     transition: 2s;
     z-index: 1;
@@ -126,6 +125,11 @@ $vh: var(--vh);
     justify-content: center;
     align-items: center;
     > div:nth-child(1) {
+        animation-name: displayAnimation;
+        animation-duration: 1s;
+        animation-delay: 21s;
+        animation-fill-mode: forwards;
+        opacity: 0;
         margin-top: -100px;
         width: 70%;
         margin-left: -80%;
@@ -881,7 +885,7 @@ $vh: var(--vh);
         justify-content: center;
         flex-direction: column;
         padding: 10px;
-        border-radius: 50px;
+        border-radius: 18px;
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
@@ -2440,6 +2444,29 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
+    .coinTwo {
+        img {
+            @include imgProperties(20px);
+        }
+    }
+    .heigth120 {
+        height: 50px;
+    }
+    .donationImage {
+        img {
+            @include imgProperties(35px);
+        }
+    }
+    .w25 {
+        width: 70%;
+    }
+
+    .w40 {
+        width: 100%;
+    }
+    .w55 {
+        width: 110%;
+    }
     .donationButton {
         margin-bottom: 10px;
     }
@@ -2494,7 +2521,7 @@ $vh: var(--vh);
         .card {
             width: 100%;
             margin: 20px;
-            height: $vh;
+            min-height: $vh;
         }
     }
 
@@ -3114,6 +3141,16 @@ $vh: var(--vh);
 }
 
 @include media(">=800px", "<900px") {
+    .w25 {
+        width: 40%;
+    }
+
+    .w40 {
+        width: 65%;
+    }
+    .w55 {
+        width: 80%;
+    }
     .donationButton {
         margin-bottom: 10px;
     }
@@ -3505,6 +3542,16 @@ $vh: var(--vh);
 }
 
 @include media(">=900px", "<1000px") {
+    .w25 {
+        width: 40%;
+    }
+
+    .w40 {
+        width: 65%;
+    }
+    .w55 {
+        width: 80%;
+    }
     .donationButton {
         margin-bottom: 10px;
     }
@@ -3863,6 +3910,16 @@ $vh: var(--vh);
 }
 
 @include media(">=1000px", "<1100px") {
+    .w25 {
+        width: 40%;
+    }
+
+    .w40 {
+        width: 65%;
+    }
+    .w55 {
+        width: 80%;
+    }
     .paddingSides {
         padding: 0px 0px !important;
     }
@@ -4257,6 +4314,16 @@ $vh: var(--vh);
 }
 
 @include media(">=1100px", "<1200px") {
+    .w25 {
+        width: 40%;
+    }
+
+    .w40 {
+        width: 65%;
+    }
+    .w55 {
+        width: 80%;
+    }
     .paddingSides {
         padding: 0px 0px !important;
     }
@@ -4630,6 +4697,16 @@ $vh: var(--vh);
 }
 
 @include media(">=1200px", "<1300px") {
+    .w25 {
+        width: 40%;
+    }
+
+    .w40 {
+        width: 65%;
+    }
+    .w55 {
+        width: 80%;
+    }
     .paddingSides {
         padding: 0px 0px !important;
     }
@@ -5009,6 +5086,9 @@ $vh: var(--vh);
 
     .w40 {
         width: 65%;
+    }
+    .w55 {
+        width: 80%;
     }
 
     .avatarWrapper {
