@@ -540,7 +540,7 @@ const GameSection = (): JSX.Element => {
             else if (keys < 3) {
                 coinStyles.current = {
                     left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 150,
-                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 50
+                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop 
                 };
             }
             else if (keys === 3) {
@@ -575,14 +575,14 @@ const GameSection = (): JSX.Element => {
             }
             else if (keys === 8) {
                 coinStyles.current = {
-                    left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 20,
+                    left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 25,
                     top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 70
                 };
             }
             else if (keys === 9) {
                 coinStyles.current = {
                     left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 50,
-                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 110
+                    top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 130
                 };
             }
             else if (keys === 10) {
