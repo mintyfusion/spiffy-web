@@ -25,8 +25,10 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
     const [showMore, setShowMore] = React.useState({});
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const [contentData, setContentData] = React.useState<{ items: ContentItem<ICardProps>[]; totalCount: number }>();
+    const [isLoading, setIsLoading] = React.useState<boolean>();
 
     const getContent = React.useCallback(async () => {
+        setIsLoading(true);
         const result = await api.getContentList<ICardProps>({
             referenceName: "EducationContent",
             languageCode: "en-us",
@@ -40,7 +42,7 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
                     value: activeTab
                 }
             ]
-        });
+        }).finally(() => setIsLoading(false));
 
         return result;
     }, [activeTab]);
@@ -106,9 +108,12 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
                         <h2>{content.fields.name}</h2>
                         <h5>{props.module.fields.title}</h5>
                     </Row>
-                    <CardContainer content={contentData} />
+                    {!isLoading && !contentData?.items.length
+                        && <h1 className="text-center">No Blogs Found</h1>
+                    }
+                    {contentData && <CardContainer content={contentData} />}
                     <Row>
-                        {!showMore[content.fields.name] &&
+                        {!showMore[content.fields.name] && !!contentData?.items.length &&
                             <PrimaryButton
                                 onClick={() => setShowMore({ [content.fields.name]: true })}
                             >

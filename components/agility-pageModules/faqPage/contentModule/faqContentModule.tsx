@@ -57,7 +57,6 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         getFAQList()
             .then(result => setContentData(result))
             .catch((err: unknown) => err);
-        // setIsLoading(false);
     }, [getFAQList]);
 
     return (
@@ -108,7 +107,8 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             </Navbar>
             <Stack className="gap-4">
                 {!isLoading && !contentData?.items.length
-                    && <h1 className="text-center">No FAQ Found</h1>}
+                    && <h1 className="text-center">No FAQ Found</h1>
+                }
                 {!isLoading && contentData && contentData.items.map((post, index) =>
                     <Accordion key={index} className={styles.accordion}>
                         <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
