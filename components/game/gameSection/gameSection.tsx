@@ -27,10 +27,10 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
-const donationDivide = 2;
+// const donationDivide = 2;
 const friendsTimeout = 2000;
 const avatarTimeout = 1000;
-const donationFormula = 5;
+// const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
 const containerId = "containerElement";
@@ -62,6 +62,7 @@ const GameSection = (): JSX.Element => {
     const coinRef = React.useRef<HTMLDivElement>();
     const coinStart = React.useRef<HTMLDivElement>();
     const coinStyles = React.useRef<CSSProperties>();
+    let coinInterval;
 
     const step1Avatars = React.useMemo(() =>
         Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), []);
@@ -238,7 +239,7 @@ const GameSection = (): JSX.Element => {
             };
             setAvatarStyleGUID(getUniqueId());
         }
-        const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
+        // const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
         setSeletedAvatar(avatar);
         setStep(StepTypes.Two);
     }, []);
@@ -325,7 +326,7 @@ const GameSection = (): JSX.Element => {
 
             setFriendsStyleGUID(getUniqueId());
         }
-    }, []);
+    }, [friendsStyleGUID]);
 
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
@@ -531,146 +532,128 @@ const GameSection = (): JSX.Element => {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
             const keys = Number(avatar.getAttribute("data-index"));
             const bounds = avatar.getBoundingClientRect();
+            const caseTwo = 2;
+            const caseThree = 3;
+            const caseFour = 4;
+            const caseFive = 5;
+            const caseSix = 6;
+            const caseSeven = 7;
+            const caseEight = 8;
+            const caseNine = 9;
+            const caseTen = 10;
+
+            const caseZeroLeft = 75;
+            const caseOneLeft = 170;
+            const caseTwoLeft = 170;
+            const caseTwoTop = 20;
+            const caseThreeLeft = 170;
+            const caseThreeTop = 20;
+            const caseFourLeft = 170;
+            const caseFourTop = 70;
+            const caseFiveTop = 110;
+            const caseSixLeft = 45;
+            const caseSixTop = 70;
+            const caseSevenTop = 20;
+            const caseSevenLeft = 40;
+            const caseEightLeft = 35;
+            const caseEightTop = 75;
+            const caseNineTop = 130;
+            const caseNineLeft = 45;
+            const caseTenLeft = 100;
+            const caseTenTop = 80;
+
             switch (keys) {
                 case 0:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 75,
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseZeroLeft,
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop
                     };
                     break;
                 case 1:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 170,
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseOneLeft,
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop
                     };
                     break;
-                case 2:
+                case caseTwo:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 170,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 20
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseTwoLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseTwoTop
                     };
                     break;
-                case 3:
+                case caseThree:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 170,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 20
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseThreeLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseThreeTop
                     };
                     break;
-                case 4:
+                case caseFour:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 170,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 70
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseFourLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseFourTop
                     };
                     break;
-                case 5:
+                case caseFive:
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 110
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseFiveTop
                     };
                     break;
-                case 6:
+                case caseSix:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 45,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 70
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + caseSixLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseSixTop
                     };
                     break;
-                case 7:
+                case caseSeven:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 40,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 20
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + caseSevenLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + caseSevenTop
                     };
                     break;
-                case 8:
+                case caseEight:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 35,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 75
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + caseEightLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + caseEightTop
                     };
                     break;
-                case 9:
+                case caseNine:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 45,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 130
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseNineLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + caseNineTop
                     };
                     break;
-                case 10:
+                case caseTen:
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 100,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 80
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseTenLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + caseTenTop
                     };
                     break;
 
             }
-            // else if (keys < 3) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 150,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop 
-            //     };
-            // }
-            // else if (keys === 3) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 150,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop
-            //     };
-            // }
-            // else if (keys === 4) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 150,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 50
-            //     };
-            // }
-            // else if (keys === 5) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 150
-            //     };
-            // }
-            // else if (keys === 6) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 50,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 80
-            //     };
-            // }
-            // else if (keys === 7) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 20,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 20
-            //     };
-            // }
-            // else if (keys === 8) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 25,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 70
-            //     };
-            // }
-            // else if (keys === 9) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 50,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 130
-            //     };
-            // }
-            // else if (keys === 10) {
-            //     coinStyles.current = {
-            //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 100,
-            //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 100
-            //     };
-            // }
 
             setAvatarStyleGUID(getUniqueId());
         }
     }, []);
 
-    const handleCoinClick = React.useCallback(() => {
-        let index = 0;
-        handlStepAnimation(index);
-        const t = setInterval(() => {
-            if (index < donationTotalAvatars) {
-                index = index + 1;
-                handlStepAnimation(index);
-            } else {
-                clearInterval(t);
-            }
-        }, stepTwoTimeout);
-    }, [handlStepAnimation]);
+    React.useEffect(() => {
+        if (donationAmount !== "") {
+            let index = 0;
+            handlStepAnimation(index);
+            coinInterval = setInterval(() => {
+                if (index < donationTotalAvatars) {
+                    index = index + 1;
+                    handlStepAnimation(index);
+                } else {
+                    clearInterval(coinInterval);
+                }
+            }, stepTwoTimeout);
+
+            return () => {
+                clearInterval(coinInterval);
+            };
+        }
+    }, [donationAmount, handlStepAnimation]);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
@@ -769,7 +752,6 @@ const GameSection = (): JSX.Element => {
                                                                 top: 230,
                                                                 behavior: "smooth"
                                                             });
-                                                            handleCoinClick();
                                                         }}
                                                         className={`${horizontalAlign} 
                                                         ${styles.donationButton}
@@ -786,7 +768,9 @@ const GameSection = (): JSX.Element => {
                                         </Navbar.Collapse>
                                     </Navbar>
 
-                                    <div className={`w-100 ${animation ? styles.contentAnimation : styles.donationCycle}`}>
+                                    <div className={`w-100 ${animation ?
+                                        styles.contentAnimation :
+                                        styles.donationCycle}`}>
                                         <div className={`${styles.donationInner} 
                                                 ${colCenter}`}>
                                             <h2>Donation Cycle</h2>
