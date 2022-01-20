@@ -11,7 +11,7 @@ import type {
 
 import Layout from "components/common/layout/layout";
 
-// getStaticProps function fetches data for all of your Agility Pages 
+// getStaticProps function fetches data for all Agility Pages 
 // and Next.js will pre-render these pages at build time
 export async function getStaticProps({
     preview,
@@ -22,26 +22,18 @@ export async function getStaticProps({
     props: AgilityPageProps;
     revalidate: number;
 }> {
-    // place all global here
-    const globalComponents = {
-        // header: SiteHeader,
-    };
 
     const agilityProps = await getAgilityPageProps({
         preview,
         params,
         locale,
         getModule,
-        defaultLocale,
-        globalComponents,
+        defaultLocale
     });
 
     return {
         // return all props
         props: agilityProps,
-
-        // Next.js will attempt to re-generate the page when a request comes in, at most once every 10 seconds
-        // Read more on Incremental Static Regenertion here: https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
         revalidate: 10,
     };
 }
