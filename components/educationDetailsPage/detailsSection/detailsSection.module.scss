@@ -64,14 +64,13 @@
             p:first-child::before {
                 content: "";
                 position: absolute;
-                margin-left: -5rem;
+                margin-left: -10%;
                 height: 115px;
                 border: none;
                 border-right: 3px solid grey;
                 margin-top: 1rem;
             }
         }
-
     }
 
     @include media("<desktop") {
