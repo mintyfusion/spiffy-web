@@ -1,6 +1,7 @@
-import { ImageField } from "@agility/nextjs";
-import IContentInfo from "types/IContentnfo";
+import { ModuleProps } from "@agility/nextjs";
 
-export default interface IHeroModuleProps extends IContentInfo {
-    image: { media: [ImageField] };
+import IHeroModuleData from "components/agility-pageModules/common/heroModule/interfaces/IHeroModuleData";
+
+export default interface IHeroModuleProps extends Omit<ModuleProps<IHeroModuleData>, "page"> {
+    page: { pageID: number };
 }

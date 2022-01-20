@@ -1,5 +1,4 @@
 import { ImageProps } from "next/image";
-import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
 import Banner from "components/common/banner/banner";
@@ -9,7 +8,7 @@ import IHeroModuleProps from "components/agility-pageModules/common/heroModule/i
 import LandingBannerSection from "components/landingPage/bannerSection/bannerSection";
 import PageIds from "common/pageIds";
 
-const HeroModule = (props: ModuleProps<IHeroModuleProps>): JSX.Element => {
+const HeroModule = (props: IHeroModuleProps): JSX.Element => {
     const { fields } = props.module;
     const [renderFullHeight, setRenderFullHeight] = React.useState<boolean>(true);
 
@@ -18,7 +17,6 @@ const HeroModule = (props: ModuleProps<IHeroModuleProps>): JSX.Element => {
         , [fields.image.media]);
 
     const renderBannerComponent = React.useMemo((): JSX.Element => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         switch (props.page?.pageID) {
             case PageIds.EDUCATION_LANDING:
             case PageIds.FAQ:
@@ -39,7 +37,6 @@ const HeroModule = (props: ModuleProps<IHeroModuleProps>): JSX.Element => {
                 return <CreatorBannerSection content={fields} />;
             }
         }
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     }, [fields, props.page?.pageID]);
 
     return (
