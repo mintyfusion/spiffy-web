@@ -6,6 +6,8 @@ import IContentModuleProps from "components/agility-pageModules/creatorPage/cont
 
 import styles from "components/agility-pageModules/creatorPage/contentModule/creatorPageContentModule.module.scss";
 
+const arrowsIcons = 5;
+
 const CreatorPageContentModule = (props: ModuleProps<IContentModuleProps>): JSX.Element => {
     const { creatorContent, reversed } = props.module.fields;
     const { title, description, image } = creatorContent.fields;
@@ -15,7 +17,7 @@ const CreatorPageContentModule = (props: ModuleProps<IContentModuleProps>): JSX.
             reversed={reversed}
             content={{ title, description }}
             image={image}
-            arrows={5}
+            arrows={!reversed && arrowsIcons}
             containerClass={reversed ? styles.containerAlternate : styles.container}
         />
     );
