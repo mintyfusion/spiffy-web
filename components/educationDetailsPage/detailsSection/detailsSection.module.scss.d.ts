@@ -1,6 +1,5 @@
 export type Styles = {
   "backgroundPattern": string;
-  "blockContainer": string;
   "bold109": string;
   "bold150": string;
   "bold178": string;

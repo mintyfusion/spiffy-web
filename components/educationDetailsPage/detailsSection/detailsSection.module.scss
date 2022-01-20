@@ -18,18 +18,12 @@
         @extend .extraBold41;
     }
 
-    .blockContainer {
-        div {
-            flex: 1;
-            margin: 2rem 4rem 2rem 0;
-        }
-
-        blockquote {
-            flex: 2;
-        }
-    }
-
     blockquote {
+        &::before {
+            content: "";
+            background-image: url("/images/educationDetailsPage/spiffy.svg");
+        }
+
         p:nth-child(odd) {
             @extend .bold-desktop41-mobile25;
         }
@@ -55,11 +49,29 @@
             margin: 5rem 0;
         }
 
-        .blockContainer {
-            div {
-                border-right: 3px solid $light-grey;
+        blockquote {
+            width: 68%;
+            margin-left: auto;
+
+            &::before {
+                position: absolute;
+                left: 0%;
+                margin-top: 1rem;
+                width: 150px;
+                height: 95px;
+            }
+
+            p:first-child::before {
+                content: "";
+                position: absolute;
+                margin-left: -5rem;
+                height: 115px;
+                border: none;
+                border-right: 3px solid grey;
+                margin-top: 1rem;
             }
         }
+
     }
 
     @include media("<desktop") {
@@ -68,12 +80,15 @@
             margin-right: 4rem;
         }
 
-        .blockContainer {
-            div {
-                width: fit-content;
-                margin: 0;
-                border-bottom: 3px solid grey;
-                padding-bottom: 1rem;
+        blockquote {
+            display: flex;
+            flex-direction: column;
+
+            &::before {
+                width: 160px;
+                height: 100px;
+                border-bottom: 3px solid $light-grey;
+                background-position-y: -5px;
             }
         }
     }
