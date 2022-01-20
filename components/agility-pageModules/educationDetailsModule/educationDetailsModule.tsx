@@ -13,7 +13,7 @@ const EducationDetailsModule =
     (props: DynamicModuleProps<IEducationDetailsModuleProps, IEducationDetailsModuleProps>): JSX.Element => {
         const { fields } = props.dynamicPageItem;
         const preparedData = {
-            detailsType: fields.contentType_TextField,
+            detailsType: fields.contentType.fields.name,
             title: fields.title,
             description: fields.description,
             mediaSrc: fields.mediaSrc.href,

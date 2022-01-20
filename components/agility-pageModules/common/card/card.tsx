@@ -22,7 +22,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
             </div>
             <BaseCard.Body className={columnAlignCenter}>
                 <BaseCard.Title className={`${styles.cardTag} mb-3`}>
-                    {fields.tag_TextField}
+                    {fields.tag.fields.name}
                 </BaseCard.Title>
                 <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 flex-grow-1`} >
                     {fields.title}
