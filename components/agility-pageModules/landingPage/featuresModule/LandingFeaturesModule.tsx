@@ -11,7 +11,7 @@ import styles from "components/landingPage/featuresSection/featuresSection.modul
 
 const colAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const colAlignStart = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });
-const rowReverseCenter = flexbox({ vertical: true, reversed: true, hAlign: "center" });
+const rowReverseCenter = flexbox({ vertical: true, reversed: true, hAlign: "center", vAlign: "center" });
 const contentAlignCenter = flexbox({ hAlign: "center" });
 const alignCenter = flexbox({ vAlign: "center", hAlign: "center" });
 const flex = flexbox();
@@ -34,7 +34,6 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                 pt-0 
                                 flex-lg-row
                                 overflow-auto
-                                align-items-center
                                 position-sticky
                               `}
                         >
