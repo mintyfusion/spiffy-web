@@ -18,7 +18,7 @@ const CommonContentModule = (props: ICommonContentProps): JSX.Element => {
     const renderComponent = React.useMemo(() => {
         switch (page.name) {
             case Pages.education: {
-                switch (module.fields.section_TextField) {
+                switch (module.fields.section.fields.name) {
                     case EducationSections.faq:
                         return <FaqSection {...preparedData} />;
 
