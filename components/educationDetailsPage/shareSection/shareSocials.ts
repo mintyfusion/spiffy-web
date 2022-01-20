@@ -4,11 +4,11 @@ import IShareSectionProps from "components/educationDetailsPage/shareSection/int
 
 const detailsSocialData: IShareSectionProps[] = [
     {
-        href: "#",
+        href: "https://twitter.com/intent/tweet?url=",
         icon: faTwitter
     },
     {
-        href: "#",
+        href: "http://www.facebook.com/sharer.php?u=",
         icon: faFacebookF
     },
     {
