@@ -121,7 +121,20 @@ $vh: var(--vh);
     cursor: pointer;
     top: 330px;
 }
-
+.donationLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > div:nth-child(1) {
+        margin-top: -100px;
+        width: 70%;
+        margin-left: -80%;
+        label {
+            display: block;
+            font-weight: $bold;
+        }
+    }
+}
 .modalBody {
     background-color: #f2f2f2;
 }
@@ -876,6 +889,9 @@ $vh: var(--vh);
         animation-fill-mode: forwards;
         visibility: hidden;
         margin-top: -100px;
+        img {
+            object-fit: contain;
+        }
     }
     .donationCycleItems {
         visibility: hidden;
@@ -4987,6 +5003,14 @@ $vh: var(--vh);
 }
 
 @include media(">=1300px", "<1400px") {
+    .w25 {
+        width: 40%;
+    }
+
+    .w40 {
+        width: 65%;
+    }
+
     .avatarWrapper {
         width: 35%;
     }
