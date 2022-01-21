@@ -68,7 +68,6 @@ export type Styles = {
   "displayAnimation": string;
   "donationActive": string;
   "donationAmount0": string;
-  "donationAmount1": string;
   "donationAmount10": string;
   "donationAmount11": string;
   "donationAmount2": string;
@@ -110,6 +109,7 @@ export type Styles = {
   "gameStepTwo": string;
   "gameStepTwoWrapper": string;
   "heigth120": string;
+  "iconAnimation": string;
   "inactive": string;
   "marginBottomMinusFifty": string;
   "marginTopMinusFifty": string;

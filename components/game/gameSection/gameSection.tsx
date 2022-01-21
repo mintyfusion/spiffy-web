@@ -547,7 +547,6 @@ const GameSection = (): JSX.Element => {
             const oneFifty = 170;
             const twentyFive = 15;
             const seventy = 70;
-            // console.log(width < mobile ? Ten : width < dektop1600 && width > 1000 ? 50 : width < tablet900 ? 0 : eigthy);
 
             const centerLeft = width < mobile ? Ten : width < dektop1600 && width > 1000 ? 50 : width < tablet900 && width > 800 ? 30 : eigthy;
             const rigthLeft = width < mobile ? Fifty : width < tablet900 && width > 800 ? 120 : oneFifty;
@@ -580,12 +579,12 @@ const GameSection = (): JSX.Element => {
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomRigthLeft
                     };
                     break;
-                // case "left":
-                //     coinStyles.current = {
-                //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
-                //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
-                //     };
-                //     break;
+                case "left":
+                    coinStyles.current = {
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
+                    };
+                    break;
                 case "bottomCenter":
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - bottomCenterLeft,
@@ -737,9 +736,7 @@ const GameSection = (): JSX.Element => {
                                         </Navbar.Collapse>
                                     </Navbar>
 
-                                    <div className={`w-100 ${animation ?
-                                        styles.contentAnimation :
-                                        styles.donationCycle}`}>
+                                    <div className={`w-100 ${styles.contentAnimation}`}>
                                         <div className={`${styles.donationInner} 
                                                 ${colCenter}`}>
                                             <h2>Donation Cycle</h2>
