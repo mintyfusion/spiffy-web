@@ -1,11 +1,9 @@
-import { ImageField } from "@agility/nextjs";
+import { ContentItem } from "@agility/nextjs";
 
-import IContentInfo from "types/IContentnfo";
+import IContentData from "components/agility-pageModules/creatorPage/contentModule/interfaces/IContentData";
 
-export default interface ICommonSectionProps {
+export default interface ICommonSectionProps extends ContentItem<IContentData> {
     reversed?: boolean;
-    image: ImageField;
-    content: IContentInfo;
     arrows?: number;
     containerClass?: string;
 }

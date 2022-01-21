@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
@@ -10,15 +11,13 @@ const arrowsIcons = 5;
 
 const CreatorPageContentModule = (props: ModuleProps<IContentModuleProps>): JSX.Element => {
     const { content, reversed } = props.module.fields;
-    const { title, description, image } = content.fields;
 
     return (
         <CommonSection
             reversed={reversed}
-            content={{ title, description }}
-            image={image}
             arrows={!reversed && arrowsIcons}
             containerClass={reversed ? styles.containerAlternate : styles.container}
+            {...content}
         />
     );
 };

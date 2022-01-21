@@ -1,11 +1,6 @@
-import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
-const BannerSection = (props?:ModuleProps<any>): JSX.Element => {
-    console.log(props.module.fields);
+const BannerSection = (): JSX.Element => <></>;
 
-    return <></>;
-
-};
 
 export default BannerSection;
