@@ -61,7 +61,6 @@ const GameSection = (): JSX.Element => {
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
     const coinRef = React.useRef<HTMLDivElement>();
-    const coinStart = React.useRef<HTMLDivElement>();
     const coinStyles = React.useRef<CSSProperties>();
     let coinInterval;
 
@@ -531,20 +530,31 @@ const GameSection = (): JSX.Element => {
     const handlStepAnimation = React.useCallback((stepIndex) => {
         if (coinRef.current) {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
-            const keys = Number(avatar.getAttribute("data-index"));
             const name = avatar.getAttribute("data-direction");
             const bounds = avatar.getBoundingClientRect();
             const width = window.innerWidth;
-            const centerTop = width < 400 ? 10 : 0;
-            const rigthLeft = width < 400 ? 50 : 150;
-            const rigthTop = width < 400 ? 10 : 20;
-            const bottomRigthLeft = width < 400 ? 40 : 100;
-            const bottomRigthTop = width < 400 ? 30 : 100;
-            const bottomCenterTop = width < 400 ? 50 : 100;
-            const bottomCenterLeft = width < 400 ? 15 : 80;
-            const bottomLeftLeft = width < 400 ? 0 : 25;
-            const bottomLeftTop = width < 400 ? 20 : 70;
-            const leftTop = width < 400 ? 0 : 30;
+            const mobile = 400;
+            const Ten = 10;
+            const Fifty = 50;
+            const hundred = 50;
+            const twenty = 20;
+            const thirty = 20;
+            const fifteen = 20;
+            const eigthy = 80;
+            const fourty = 40;
+            const oneFifty = 450;
+            const twentyFive = 15;
+            const seventy = 70;
+            const centerTop = width < mobile ? Ten : 0;
+            const rigthLeft = width < mobile ? Fifty : oneFifty;
+            const rigthTop = width < mobile ? Ten : twenty;
+            const bottomRigthLeft = width < mobile ? fourty : hundred;
+            const bottomRigthTop = width < mobile ? thirty : hundred;
+            const bottomCenterTop = width < mobile ? Fifty : hundred;
+            const bottomCenterLeft = width < mobile ? fifteen : eigthy;
+            const bottomLeftLeft = width < mobile ? 0 : twentyFive;
+            const bottomLeftTop = width < mobile ? twenty : seventy;
+            const leftTop = width < mobile ? 0 : thirty;
 
 
             switch (name) {
@@ -610,23 +620,6 @@ const GameSection = (): JSX.Element => {
         }
     }, [donationAmount, handlStepAnimation]);
 
-    // const coinStarting = React.useCallback(() => {
-    //     if (coinStart.current) {
-    //         const bounds = coinStart.current.getBoundingClientRect();
-    //         coinStyles.current = {
-    //             left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
-    //             top: bounds.y + document.getElementById("CoinAnimation").scrollTop
-    //         };
-    //     }
-    // }, [])
-
-    // React.useEffect(() => {
-    //     if (step === StepTypes.Four) {
-    //         coinStarting();
-    //     }
-    // }, [step, coinStarting, donationAmount]);
-
-
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
             <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
@@ -642,7 +635,7 @@ const GameSection = (): JSX.Element => {
                                     key={key}
                                     style={avatarStyles.current && avatarStyles.current[value]}
                                     onClick={() => handleAvatarClick(value)}
-                                    to={StepTypes.Four}
+                                    to={StepTypes.Two}
                                     smooth={true}
                                     duration={700}
                                     containerId={containerId}
@@ -816,7 +809,9 @@ const GameSection = (): JSX.Element => {
                                                 <span className={styles.donationAmount8}>0.20</span>
                                             </div>
                                         </Row>
-                                        <Row className={`${styles.w25} ${styles.marginBottomMinusFifty} ${rowHBetween}`}>
+                                        <Row className={`${styles.w25} 
+                                        ${styles.marginBottomMinusFifty} 
+                                        ${rowHBetween}`}>
                                             <div className={`${styles.cycle9} ${styles.donationImage}`} data-index="7" data-direction="bottomLeft">
                                                 <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
                                                 <span className={styles.donationAmount9}>0.20</span>
@@ -835,7 +830,7 @@ const GameSection = (): JSX.Element => {
                                     </div>
                                 </div>
                             </div>
-                            {/* {donationAmount ?
+                            {donationAmount ?
                                 <div className={styles.card}>
                                     <GameAvatarList
                                         friends={addedFriends}
@@ -844,7 +839,7 @@ const GameSection = (): JSX.Element => {
                                         setStep={setStep}
                                         signupAnimation={signupAnimation} />
                                 </div> :
-                                null} */}
+                                null}
                         </Element>
 
                         <Element name={StepTypes.Six} className={styles.card}>
