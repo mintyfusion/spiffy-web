@@ -42,6 +42,7 @@ export type Styles = {
   "coinAnimation": string;
   "coinAnimatonMobile": string;
   "coinDefault": string;
+  "coinRef": string;
   "coinTwo": string;
   "container": string;
   "containerFadIn": string;

@@ -241,7 +241,7 @@ const GameSection = (): JSX.Element => {
         }
         // const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
         setSeletedAvatar(avatar);
-        setStep(StepTypes.Two);
+        setStep(StepTypes.Four);
     }, []);
 
     const friendsAnimation = React.useCallback((index: number, value: IFriendAvatar) => {
@@ -572,7 +572,7 @@ const GameSection = (): JSX.Element => {
                 case 1:
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseOneLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 50
                     };
                     break;
                 case caseTwo:
@@ -655,6 +655,23 @@ const GameSection = (): JSX.Element => {
         }
     }, [donationAmount, handlStepAnimation]);
 
+    const coinStarting = React.useCallback(() => {
+        if (coinStart.current) {
+            const bounds = coinStart.current.getBoundingClientRect();
+            coinStyles.current = {
+                left: bounds.x,
+                top: bounds.y
+            };
+        }
+    }, [])
+
+    React.useEffect(() => {
+        if (step === StepTypes.Four) {
+            coinStarting();
+        }
+    }, [step, coinStarting]);
+
+
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
             <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
@@ -670,7 +687,7 @@ const GameSection = (): JSX.Element => {
                                     key={key}
                                     style={avatarStyles.current && avatarStyles.current[value]}
                                     onClick={() => handleAvatarClick(value)}
-                                    to={StepTypes.Two}
+                                    to={StepTypes.Four}
                                     smooth={true}
                                     duration={700}
                                     containerId={containerId}
@@ -779,7 +796,7 @@ const GameSection = (): JSX.Element => {
                                                 style={coinStyles.current}>
                                                 <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
                                             </div>
-                                            <div ref={coinStart}></div>
+                                            <div ref={coinStart} className={styles.coinRef}></div>
                                             <div className={styles.userDonation}>
                                                 <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                                             </div>
