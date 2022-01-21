@@ -25,6 +25,7 @@ import styles from "components/game/gameSection/gameSection.module.scss";
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
+const rowHEnd = flexbox({ hAlign: "end" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
 // const donationDivide = 2;
@@ -531,102 +532,47 @@ const GameSection = (): JSX.Element => {
         if (coinRef.current) {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
             const keys = Number(avatar.getAttribute("data-index"));
+            const name = avatar.getAttribute("data-direction");
+            console.log(name);
+            console.log(keys);
             const bounds = avatar.getBoundingClientRect();
-            const caseTwo = 2;
-            const caseThree = 3;
-            const caseFour = 4;
-            const caseFive = 5;
-            const caseSix = 6;
-            const caseSeven = 7;
-            const caseEight = 8;
-            const caseNine = 9;
-            const caseTen = 10;
+            const width = window.innerWidth;
 
-            const caseZeroLeft = 75;
-            const caseOneLeft = 170;
-            const caseTwoLeft = 170;
-            const caseTwoTop = 20;
-            const caseThreeLeft = 170;
-            const caseThreeTop = 20;
-            const caseFourLeft = 170;
-            const caseFourTop = 70;
-            const caseFiveTop = 110;
-            const caseSixLeft = 45;
-            const caseSixTop = 70;
-            const caseSevenTop = 20;
-            const caseSevenLeft = 40;
-            const caseEightLeft = 35;
-            const caseEightTop = 75;
-            const caseNineTop = 130;
-            const caseNineLeft = 45;
-            const caseTenLeft = 100;
-            const caseTenTop = 80;
-
-            switch (keys) {
-                case 0:
+            switch (name) {
+                case "center":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseZeroLeft,
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop
                     };
                     break;
-                case 1:
+                case "rigth":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseOneLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + 50
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 150,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 20
                     };
                     break;
-                case caseTwo:
+                case "bottomRigth":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseTwoLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseTwoTop
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 100,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 100
                     };
                     break;
-                case caseThree:
-                    coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseThreeLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseThreeTop
-                    };
-                    break;
-                case caseFour:
-                    coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseFourLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseFourTop
-                    };
-                    break;
-                case caseFive:
+                case "left":
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseFiveTop
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 30
                     };
                     break;
-                case caseSix:
+                case "bottomCenter":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + caseSixLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - caseSixTop
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 80,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 100
                     };
                     break;
-                case caseSeven:
+                case "bottomLeft":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + caseSevenLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + caseSevenTop
-                    };
-                    break;
-                case caseEight:
-                    coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + caseEightLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + caseEightTop
-                    };
-                    break;
-                case caseNine:
-                    coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseNineLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + caseNineTop
-                    };
-                    break;
-                case caseTen:
-                    coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - caseTenLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop + caseTenTop
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - 25,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 70
                     };
                     break;
 
@@ -659,8 +605,8 @@ const GameSection = (): JSX.Element => {
         if (coinStart.current) {
             const bounds = coinStart.current.getBoundingClientRect();
             coinStyles.current = {
-                left: bounds.x,
-                top: bounds.y
+                left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
+                top: bounds.y + document.getElementById("CoinAnimation").scrollTop
             };
         }
     }, [])
@@ -669,7 +615,7 @@ const GameSection = (): JSX.Element => {
         if (step === StepTypes.Four) {
             coinStarting();
         }
-    }, [step, coinStarting]);
+    }, [step, coinStarting, donationAmount]);
 
 
     return (
@@ -757,7 +703,7 @@ const GameSection = (): JSX.Element => {
                                             <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
                                         </Navbar.Toggle>
                                         <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
-                                        <Navbar.Collapse id="basic-navbar-nav">
+                                        <Navbar.Collapse id="basic-navbar-nav" className={styles.customNavbar}>
                                             <Nav className={"me-auto w-100"}>
                                                 {donation.map((donation, donationKey) =>
                                                     <PrimaryButton
@@ -807,101 +753,75 @@ const GameSection = (): JSX.Element => {
                                             </p>
                                             <h3>Content Creators</h3> */}
                                         </div>
-                                        <Row>
+                                        <Row className={rowHBetween}>
                                             <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle0} ${styles.donationImage}`} data-index="0">
+                                                <div className={`${styles.cycle0} ${styles.donationImage}`} data-index="0" data-direction="center">
                                                     <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
                                                     <span className={styles.donationAmount0}>0.20</span>
                                                 </div>
 
                                             </Col>
                                         </Row>
-                                        <Row className={`${styles.w25} ${styles.marginTopMinusFifty}`}>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={styles.donationCycleItems} data-index="10">
-                                                    <Image src="/images/Game/avatars/avatarPurple.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount1}>0.20</span>
-                                                </div>
-                                            </Col>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle2} ${styles.donationImage}`} data-index="1">
-                                                    <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount2}>0.20</span>
-                                                </div>
-                                            </Col>
+                                        <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
+                                            <div className={`${styles.cycle2} ${styles.donationImage}`} data-index="1" data-direction="rigth">
+                                                <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
+                                                <span className={styles.donationAmount2}>0.20</span>
+                                            </div>
                                         </Row>
-                                        <Row className={styles.w40}>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={styles.donationLogo}>
-                                                    <div>
-                                                        <label>Spiffy Corp.</label>
-                                                        <span>
-                                                            We’re totally reliant on these cents to keep us going.
-                                                        </span>
-                                                    </div>
-                                                    <div className={`${styles.cycle3} ${styles.donationImage}`} data-index="9">
-                                                        <Image src="/images/Game/donationCycle/spiffy.png" width={56} height={63} />
-                                                        <span className={styles.donationAmount3}>0.20</span>
-                                                    </div>
+                                        <Row className={`${styles.w40} ${rowHBetween}`}>
+                                            <div className={styles.donationLogo}>
+                                                <div>
+                                                    <label>Spiffy Corp.</label>
+                                                    <span>
+                                                        We’re totally reliant on these cents to keep us going.
+                                                    </span>
                                                 </div>
+                                                <div className={`${styles.cycle3} ${styles.donationImage}`} data-index="10" data-direction="left">
+                                                    <Image src="/images/Game/donationCycle/spiffy.png" width={56} height={63} />
+                                                    <span className={styles.donationAmount3}>0.20</span>
+                                                </div>
+                                            </div>
 
-                                            </Col>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle4} ${styles.donationImage}`} data-index="2">
-                                                    <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount4}>0.20</span>
-                                                </div>
-                                            </Col>
+                                            <div className={`${styles.cycle4} ${styles.donationImage}`} data-index="2" data-direction="rigth">
+                                                <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
+                                                <span className={styles.donationAmount4}>0.20</span>
+                                            </div>
                                         </Row>
-                                        <Row className={styles.w55}>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle5} ${styles.donationImage}`} data-index="8">
-                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount5}>0.20</span>
-                                                </div>
-                                            </Col>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle6} ${styles.donationImage}`} data-index="3">
-                                                    <Image src="/images/Game/avatars/avatarPurple.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount6}>0.20</span>
-                                                </div>
-                                            </Col>
+                                        <Row className={`${styles.w55} ${rowHBetween}`}>
+                                            <div className={`${styles.cycle5} ${styles.donationImage}`} data-index="9" data-direction="left">
+                                                <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                <span className={styles.donationAmount5}>0.20</span>
+                                            </div>
+                                            <div className={`${styles.cycle6} ${styles.donationImage}`} data-index="3" data-direction="rigth">
+                                                <Image src="/images/Game/avatars/avatarPurple.png" width={56} height={63} />
+                                                <span className={styles.donationAmount6}>0.20</span>
+                                            </div>
                                         </Row>
-                                        <Row className={styles.w40}>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle7} ${styles.donationImage}`} data-index="7">
-                                                    <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount7}>0.20</span>
-                                                </div>
-                                            </Col>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle8} ${styles.donationImage}`} data-index="4">
-                                                    <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount8}>0.20</span>
-                                                </div>
-                                            </Col>
+                                        <Row className={`${styles.w40} ${rowHBetween}`}>
+                                            <div className={`${styles.cycle7} ${styles.donationImage}`} data-index="8" data-direction="left">
+                                                <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
+                                                <span className={styles.donationAmount7}>0.20</span>
+                                            </div>
+                                            <div className={`${styles.cycle8} ${styles.donationImage}`} data-index="4" data-direction="rigth">
+                                                <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
+                                                <span className={styles.donationAmount8}>0.20</span>
+                                            </div>
                                         </Row>
-                                        <Row className={`${styles.w25} ${styles.marginBottomMinusFifty}`}>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle9} ${styles.donationImage}`} data-index="6">
-                                                    <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount9}>0.20</span>
-                                                </div>
-                                            </Col>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle10} ${styles.donationImage}`} data-index="3">
-                                                    <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount10}>0.20</span>
-                                                </div>
-                                            </Col>
+                                        <Row className={`${styles.w25} ${styles.marginBottomMinusFifty} ${rowHBetween}`}>
+                                            <div className={`${styles.cycle9} ${styles.donationImage}`} data-index="7" data-direction="bottomLeft">
+                                                <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
+                                                <span className={styles.donationAmount9}>0.20</span>
+                                            </div>
+                                            <div className={`${styles.cycle10} ${styles.donationImage}`} data-index="5" data-direction="bottomRigth">
+                                                <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
+                                                <span className={styles.donationAmount10}>0.20</span>
+                                            </div>
                                         </Row>
-                                        <Row>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle11} ${styles.donationImage}`} data-index="5">
-                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount11}>0.20</span>
-                                                </div>
-                                            </Col>
+                                        <Row className={horizontalAlign}>
+                                            <div className={`${styles.cycle11} ${styles.donationImage}`} data-index="6" data-direction="bottomCenter">
+                                                <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                <span className={styles.donationAmount11}>0.20</span>
+                                            </div>
                                         </Row>
                                     </div>
                                     {/* <div className={`${styles.donationInner} 

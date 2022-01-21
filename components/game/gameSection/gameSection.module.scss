@@ -612,6 +612,9 @@ $vh: var(--vh);
     .cycle11 {
         visibility: hidden;
     }
+    .donationLogo {
+        visibility: hidden;
+    }
 }
 
 .heigth120 {
@@ -619,6 +622,7 @@ $vh: var(--vh);
 }
 
 .contentAnimation {
+    max-width: 1000px;
     .donationCycle {
         .donationCycleItems {
             visibility: hidden;
@@ -661,63 +665,63 @@ $vh: var(--vh);
     .donationAmount3 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 21s;
+        animation-delay: 20s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
     .donationAmount4 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 5s;
+        animation-delay: 4s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
     .donationAmount5 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 15s;
+        animation-delay: 18s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
     .donationAmount6 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 7s;
+        animation-delay: 6s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
     .donationAmount7 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 17s;
+        animation-delay: 16s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
     .donationAmount8 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 9s;
+        animation-delay: 8s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
     .donationAmount9 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 15s;
+        animation-delay: 14s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
     .donationAmount10 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 11s;
+        animation-delay: 10s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
     .donationAmount11 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 13s;
+        animation-delay: 12s;
         animation-fill-mode: forwards;
         opacity: 0;
     }
@@ -733,6 +737,8 @@ $vh: var(--vh);
         animation-duration: 1s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle2 {
         display: flex;
@@ -747,6 +753,8 @@ $vh: var(--vh);
         animation-delay: 2s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle4 {
         display: flex;
@@ -761,6 +769,8 @@ $vh: var(--vh);
         animation-delay: 4s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle6 {
         display: flex;
@@ -775,6 +785,8 @@ $vh: var(--vh);
         animation-delay: 6s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle8 {
         display: flex;
@@ -789,6 +801,8 @@ $vh: var(--vh);
         animation-delay: 8s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle10 {
         display: flex;
@@ -803,6 +817,8 @@ $vh: var(--vh);
         animation-delay: 10s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle11 {
         display: flex;
@@ -817,6 +833,8 @@ $vh: var(--vh);
         animation-delay: 12s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle9 {
         display: flex;
@@ -831,6 +849,8 @@ $vh: var(--vh);
         animation-delay: 14s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle7 {
         display: flex;
@@ -845,6 +865,8 @@ $vh: var(--vh);
         animation-delay: 16s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle5 {
         display: flex;
@@ -859,6 +881,8 @@ $vh: var(--vh);
         animation-delay: 18s;
         animation-fill-mode: forwards;
         visibility: hidden;
+        width: 75px;
+        text-align: center;
     }
     .cycle3 {
         display: flex;
@@ -874,6 +898,8 @@ $vh: var(--vh);
         animation-fill-mode: forwards;
         visibility: hidden;
         margin-top: -100px;
+        width: 75px;
+        text-align: center;
         img {
             object-fit: contain;
         }
@@ -882,6 +908,7 @@ $vh: var(--vh);
         visibility: hidden;
     }
     .donationLogo {
+        width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -896,7 +923,10 @@ $vh: var(--vh);
             margin-left: -80%;
             label {
                 display: block;
-                font-weight: $bold;
+                @extend .bold-desktop25-mobile9;
+            }
+            span {
+                @extend .regular20;
             }
         }
     }
@@ -1112,6 +1142,108 @@ $vh: var(--vh);
 }
 
 @include media(">=phone", "<375px") {
+    .customNavbar {
+        position: absolute;
+        width: 100%;
+        top: 80%;
+        background-color: $white;
+        z-index: 3;
+    }
+    .donationLogo {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > div:nth-child(1) {
+            margin-top: 0px !important;
+            width: 100% !important;
+            label {
+                display: block;
+                font-weight: $bold;
+            }
+        }
+    }
+    .cycle0 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle2 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle4 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle6 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle8 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle10 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle11 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle9 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle7 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle5 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle3 {
+        width: 35px !important;
+        height: 42px !important;
+        img {
+            object-fit: contain;
+        }
+    }
+    .marginBottomMinusFifty {
+        margin-bottom: -25px;
+    }
+
+    .marginTopMinusFifty {
+        margin-top: -20px;
+    }
+
+    .coinTwo {
+        img {
+            @include imgProperties(20px);
+        }
+    }
+    .heigth120 {
+        height: 50px;
+    }
+    .donationImage {
+        img {
+            @include imgProperties(25px);
+        }
+    }
+    .w25 {
+        width: 40%;
+    }
+
+    .w40 {
+        width: 60%;
+    }
+    .w55 {
+        width: 70%;
+    }
+    .donationButton {
+        margin-bottom: 10px;
+    }
     .donationButton {
         margin-bottom: 10px;
     }
@@ -1738,6 +1870,101 @@ $vh: var(--vh);
 }
 
 @include media(">=375px", "<425px") {
+    .customNavbar {
+        position: absolute;
+        width: 100%;
+        top: 80%;
+        background-color: $white;
+        z-index: 3;
+    }
+    .customNavbar {
+        position: absolute;
+        width: 100%;
+        top: 80%;
+        background-color: $white;
+        z-index: 3;
+    }
+    .cycle0 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle2 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle4 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle6 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle8 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle10 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle11 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle9 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle7 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle5 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle3 {
+        width: 35px !important;
+        height: 42px !important;
+        img {
+            object-fit: contain;
+        }
+    }
+    .marginBottomMinusFifty {
+        margin-bottom: -25px;
+    }
+
+    .marginTopMinusFifty {
+        margin-top: -20px;
+    }
+
+    .coinTwo {
+        img {
+            @include imgProperties(20px);
+        }
+    }
+    .heigth120 {
+        height: 50px;
+    }
+    .donationImage {
+        img {
+            @include imgProperties(25px);
+        }
+    }
+    .w25 {
+        width: 35%;
+    }
+
+    .w40 {
+        width: 55%;
+    }
+    .w55 {
+        width: 65%;
+    }
+    .donationButton {
+        margin-bottom: 10px;
+    }
     .donationButton {
         margin-bottom: 10px;
     }
@@ -2449,6 +2676,73 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
+    .customNavbar {
+        position: absolute;
+        width: 100%;
+        top: 80%;
+        background-color: $white;
+        z-index: 3;
+    }
+    .coinTwo {
+        width: 20px;
+        height: 20px;
+    }
+    .cycle0 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle2 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle4 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle6 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle8 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle10 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle11 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle9 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle7 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle5 {
+        width: 35px !important;
+        height: 42px !important;
+    }
+    .cycle3 {
+        width: 35px !important;
+        height: 42px !important;
+        margin-top: -40px !important;
+        img {
+            object-fit: contain;
+        }
+    }
+    .marginBottomMinusFifty {
+        margin-bottom: -25px;
+    }
+
+    .marginTopMinusFifty {
+        margin-top: -20px;
+    }
+
     .coinTwo {
         img {
             @include imgProperties(20px);
@@ -2459,18 +2753,18 @@ $vh: var(--vh);
     }
     .donationImage {
         img {
-            @include imgProperties(35px);
+            @include imgProperties(25px);
         }
     }
     .w25 {
-        width: 70%;
+        width: 30%;
     }
 
     .w40 {
-        width: 100%;
+        width: 45%;
     }
     .w55 {
-        width: 110%;
+        width: 50%;
     }
     .donationButton {
         margin-bottom: 10px;
@@ -2773,6 +3067,9 @@ $vh: var(--vh);
             font-size: 7px;
             margin-top: 0px;
             margin-bottom: 0px;
+        }
+        .userDonation {
+            margin-top: 10px;
         }
     }
 
@@ -3548,6 +3845,9 @@ $vh: var(--vh);
 }
 
 @include media(">=900px", "<1000px") {
+    .contentAnimation {
+        max-width: 650px;
+    }
     .w25 {
         width: 40%;
     }
@@ -3916,15 +4216,18 @@ $vh: var(--vh);
 }
 
 @include media(">=1000px", "<1100px") {
+    .contentAnimation {
+        max-width: 600px;
+    }
     .w25 {
-        width: 40%;
+        width: 50%;
     }
 
     .w40 {
-        width: 65%;
+        width: 75%;
     }
     .w55 {
-        width: 80%;
+        width: 90%;
     }
     .paddingSides {
         padding: 0px 0px !important;
@@ -4320,6 +4623,9 @@ $vh: var(--vh);
 }
 
 @include media(">=1100px", "<1200px") {
+    .contentAnimation {
+        max-width: 700px;
+    }
     .w25 {
         width: 40%;
     }
@@ -4703,6 +5009,9 @@ $vh: var(--vh);
 }
 
 @include media(">=1200px", "<1300px") {
+    .contentAnimation {
+        max-width: 700px;
+    }
     .w25 {
         width: 40%;
     }
@@ -5086,6 +5395,9 @@ $vh: var(--vh);
 }
 
 @include media(">=1300px", "<1400px") {
+    .contentAnimation {
+        max-width: 700px;
+    }
     .w25 {
         width: 40%;
     }

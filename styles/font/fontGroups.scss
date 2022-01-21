@@ -101,7 +101,9 @@
 .regular-desktop25-mobile9 {
     @include typeFace($nine, $twentyFive, $regular);
 }
-
+.bold-desktop25-mobile9{
+    @include typeFace($nine, $twentyFive, $bold);
+}
 .regular-desktop25-mobile16 {
     @include typeFace($sixteen, $twentyFive, $regular);
 }
