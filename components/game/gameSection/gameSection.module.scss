@@ -1228,10 +1228,10 @@ $vh: var(--vh);
     }
 
     .w40 {
-        width: 60%;
+        width: 55%;
     }
     .w55 {
-        width: 70%;
+        width: 65%;
     }
     .donationButton {
         margin-bottom: 10px;
@@ -1862,6 +1862,11 @@ $vh: var(--vh);
 }
 
 @include media(">=375px", "<425px") {
+    .donationLogo {
+        right: unset;
+        left: -45px !important;
+        top: 5px;
+    }
     .coinTwo {
         width: 20px;
         height: 20px;
@@ -1939,11 +1944,11 @@ $vh: var(--vh);
         }
     }
     .marginBottomMinusFifty {
-        margin-bottom: -10px;
+        margin-bottom: -20px;
     }
 
     .marginTopMinusFifty {
-        margin-top: -10px;
+        margin-top: -20px;
     }
 
     .coinTwo {
@@ -1964,10 +1969,12 @@ $vh: var(--vh);
     }
 
     .w40 {
-        width: 55%;
+        width: 65%;
+        margin: 5px auto;
     }
     .w55 {
-        width: 65%;
+        width: 75%;
+        margin: 5px auto;
     }
     .donationButton {
         margin-bottom: 10px;
@@ -2684,6 +2691,9 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
+    .contentAnimation {
+        max-width: 350px;
+    }
     .donationLogo {
         right: unset;
         left: -45px !important;
@@ -2771,14 +2781,16 @@ $vh: var(--vh);
         }
     }
     .w25 {
-        width: 40%;
+        width: 50%;
     }
 
     .w40 {
-        width: 50%;
+        width: 70%;
+        margin: 5px auto;
     }
     .w55 {
-        width: 60%;
+        width: 80%;
+        margin: 5px auto;
     }
     .donationButton {
         margin-bottom: 10px;
@@ -3073,7 +3085,8 @@ $vh: var(--vh);
     }
 
     .donationInner {
-        margin-top: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         .avatarInner {
             margin-top: 60px;
         }

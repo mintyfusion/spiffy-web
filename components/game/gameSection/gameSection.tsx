@@ -542,8 +542,9 @@ const GameSection = (): JSX.Element => {
             const bottomRigthTop = width < 400 ? 30 : 100;
             const bottomCenterTop = width < 400 ? 50 : 100;
             const bottomCenterLeft = width < 400 ? 15 : 80;
-            const bottomLeftLeft = width < 400 ? 130 : 25;
+            const bottomLeftLeft = width < 400 ? 0 : 25;
             const bottomLeftTop = width < 400 ? 20 : 70;
+            const leftTop = width < 400 ? 0 : 30;
 
 
             switch (name) {
@@ -565,12 +566,12 @@ const GameSection = (): JSX.Element => {
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomRigthLeft
                     };
                     break;
-                // case "left":
-                //     coinStyles.current = {
-                //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
-                //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - 30
-                //     };
-                //     break;
+                case "left":
+                    coinStyles.current = {
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
+                    };
+                    break;
                 case "bottomCenter":
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - bottomCenterLeft,
