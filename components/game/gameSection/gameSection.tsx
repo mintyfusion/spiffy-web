@@ -535,7 +535,9 @@ const GameSection = (): JSX.Element => {
             const width = window.innerWidth;
             const mobile = 400;
             const dektop1600 = 1600;
+            const dektop1000 = 1000;
             const tablet900 = 900;
+            const tablet800 = 800;
             const Ten = 10;
             const Fifty = 50;
             const hundred = 100;
@@ -547,15 +549,22 @@ const GameSection = (): JSX.Element => {
             const oneFifty = 170;
             const twentyFive = 15;
             const seventy = 70;
+            const oneTwenty = 70;
 
-            const centerLeft = width < mobile ? Ten : width < dektop1600 && width > 1000 ? 50 : width < tablet900 && width > 800 ? 30 : eigthy;
-            const rigthLeft = width < mobile ? Fifty : width < tablet900 && width > 800 ? 120 : oneFifty;
+            const centerLeft = width < mobile ? Ten :
+                width < dektop1600 && width > dektop1000 ? Fifty :
+                    width < tablet900 && width > tablet800 ? thirty : eigthy;
+            const rigthLeft = width < mobile ? Fifty :
+                width < tablet900 && width > tablet800 ? oneTwenty :
+                    oneFifty;
             const rigthTop = width < mobile ? Ten : twenty;
             const bottomRigthLeft = width < mobile ? fourty : hundred;
             const bottomRigthTop = width < mobile ? thirty : hundred;
             const bottomCenterTop = width < mobile ? Fifty : hundred;
-            const bottomCenterLeft = width < mobile ? fifteen : width < tablet900 && width > 800 ? 30 : eigthy;
-            const bottomLeftLeft = width < mobile ? 0 : width < tablet900 && width > 800 ? 0 : twentyFive;
+            const bottomCenterLeft = width < mobile ? fifteen :
+                width < tablet900 && width > tablet800 ? thirty : eigthy;
+            const bottomLeftLeft = width < mobile ? 0 :
+                width < tablet900 && width > tablet800 ? 0 : twentyFive;
             const bottomLeftTop = width < mobile ? twenty : seventy;
             const leftTop = width < mobile ? 0 : thirty;
 
@@ -736,7 +745,9 @@ const GameSection = (): JSX.Element => {
                                         </Navbar.Collapse>
                                     </Navbar>
 
-                                    <div className={`w-100 ${styles.contentAnimation}`}>
+                                    <div className={`w-100 ${animation ?
+                                        styles.contentAnimation :
+                                        styles.donationCycle}`}>
                                         <div className={`${styles.donationInner} 
                                                 ${colCenter}`}>
                                             <h2>Donation Cycle</h2>
