@@ -29,7 +29,7 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
                     <Col>
                         <Row className={`${colCenter} ${styles.contentContainer} h-100 ${props.reversed && "text-end"}`}>
                             <Stack direction="horizontal">
-                                <h2 className={styles.title}>
+                                <h2 className={`${styles.title} w-100`}>
                                     {title}
                                     {!!props.arrows &&
                                         <Row

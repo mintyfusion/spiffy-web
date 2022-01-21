@@ -9,8 +9,8 @@ import styles from "components/agility-pageModules/creatorPage/contentModule/cre
 const arrowsIcons = 5;
 
 const CreatorPageContentModule = (props: ModuleProps<IContentModuleProps>): JSX.Element => {
-    const { creatorContent, reversed } = props.module.fields;
-    const { title, description, image } = creatorContent.fields;
+    const { content, reversed } = props.module.fields;
+    const { title, description, image } = content.fields;
 
     return (
         <CommonSection

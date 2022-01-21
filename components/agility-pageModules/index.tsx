@@ -1,5 +1,6 @@
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
 // Place Page Modules in allModules array below, passing in a name and the component.
+import AboutUsHeroModule from "components/agility-pageModules/aboutPage/heroSection/heroSection";
 import CommonContentModule from "components/agility-pageModules/common/commonContent/commonContentModule";
 import CreatorPageContentModule from "components/agility-pageModules/creatorPage/contentModule/creatorPageContentModule";
 import EducationDetailsModule from "components/agility-pageModules/educationDetailsModule/educationDetailsModule";
@@ -23,7 +24,8 @@ const allModules = [
   { name: "LandingPageVerticalModule", module: LandingPageVerticalModule },
   { name: "CreatorPageContentModule", module: CreatorPageContentModule },
   { name: "CreatorPageVideoModule", module: VideoSection },
-  { name: "FAQContentModule", module: FAQContentModule}
+  { name: "FAQContentModule", module: FAQContentModule},
+  {name:"AboutUsHeroModule",module: AboutUsHeroModule}
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
