@@ -534,6 +534,8 @@ const GameSection = (): JSX.Element => {
             const bounds = avatar.getBoundingClientRect();
             const width = window.innerWidth;
             const mobile = 400;
+            const dektop1600 = 1600;
+            const tablet900 = 900;
             const Ten = 10;
             const Fifty = 50;
             const hundred = 100;
@@ -542,18 +544,19 @@ const GameSection = (): JSX.Element => {
             const fifteen = 15;
             const eigthy = 80;
             const fourty = 40;
-            const oneFifty = 150;
+            const oneFifty = 170;
             const twentyFive = 15;
             const seventy = 70;
+            // console.log(width < mobile ? Ten : width < dektop1600 && width > 1000 ? 50 : width < tablet900 ? 0 : eigthy);
 
-            const centerTop = width < mobile ? Ten : 0;
-            const rigthLeft = width < mobile ? Fifty : oneFifty;
+            const centerLeft = width < mobile ? Ten : width < dektop1600 && width > 1000 ? 50 : width < tablet900 && width > 800 ? 30 : eigthy;
+            const rigthLeft = width < mobile ? Fifty : width < tablet900 && width > 800 ? 120 : oneFifty;
             const rigthTop = width < mobile ? Ten : twenty;
             const bottomRigthLeft = width < mobile ? fourty : hundred;
             const bottomRigthTop = width < mobile ? thirty : hundred;
             const bottomCenterTop = width < mobile ? Fifty : hundred;
-            const bottomCenterLeft = width < mobile ? fifteen : eigthy;
-            const bottomLeftLeft = width < mobile ? 0 : twentyFive;
+            const bottomCenterLeft = width < mobile ? fifteen : width < tablet900 && width > 800 ? 30 : eigthy;
+            const bottomLeftLeft = width < mobile ? 0 : width < tablet900 && width > 800 ? 0 : twentyFive;
             const bottomLeftTop = width < mobile ? twenty : seventy;
             const leftTop = width < mobile ? 0 : thirty;
 
@@ -561,7 +564,7 @@ const GameSection = (): JSX.Element => {
             switch (name) {
                 case "center":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - centerTop,
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - centerLeft,
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop
                     };
                     break;
@@ -577,12 +580,12 @@ const GameSection = (): JSX.Element => {
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomRigthLeft
                     };
                     break;
-                case "left":
-                    coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
-                    };
-                    break;
+                // case "left":
+                //     coinStyles.current = {
+                //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
+                //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
+                //     };
+                //     break;
                 case "bottomCenter":
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - bottomCenterLeft,
@@ -636,7 +639,7 @@ const GameSection = (): JSX.Element => {
                                     key={key}
                                     style={avatarStyles.current && avatarStyles.current[value]}
                                     onClick={() => handleAvatarClick(value)}
-                                    to={StepTypes.Two}
+                                    to={StepTypes.Four}
                                     smooth={true}
                                     duration={700}
                                     containerId={containerId}

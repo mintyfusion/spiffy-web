@@ -3471,6 +3471,58 @@ $vh: var(--vh);
 }
 
 @include media(">=800px", "<900px") {
+    .coinTwo{
+        width : 30px;
+        height : 30px
+    }
+    .cycle0 {
+        width: 60px !important;
+    }
+    .cycle2 {
+        width: 60px !important;
+    }
+    .cycle4 {
+        width: 60px !important;
+    }
+    .cycle6 {
+        width: 60px !important;
+    }
+    .cycle8 {
+        width: 60px !important;
+    }
+    .cycle10 {
+        width: 60px !important;
+    }
+    .cycle11 {
+        width: 60px !important;
+    }
+    .cycle9 {
+        width: 60px !important;
+    }
+    .cycle7 {
+        width: 60px !important;
+    }
+    .cycle5 {
+        width: 60px !important;
+    }
+    .cycle3 {
+        width: 60px !important;
+    }
+    .customNavbar {
+        position: absolute;
+        width: 100%;
+        top: 80%;
+        background-color: $white;
+        z-index: 3;
+    }
+    .marginBottomMinusFifty {
+        margin-bottom: -30px;
+    }
+
+    .marginTopMinusFifty {
+        margin-top: -20px;
+    }
+
     .donationLogo {
         right: -145px;
     }
@@ -3479,10 +3531,12 @@ $vh: var(--vh);
     }
 
     .w40 {
-        width: 65%;
+        width: 60%;
+        margin: 5px auto;
     }
     .w55 {
-        width: 80%;
+        width: 70%;
+        margin: 5px auto;
     }
     .donationButton {
         margin-bottom: 10px;
@@ -5429,17 +5483,19 @@ $vh: var(--vh);
 
 @include media(">=1300px", "<1400px") {
     .contentAnimation {
-        max-width: 700px;
+        max-width: 1000px;
     }
     .w25 {
-        width: 40%;
+        width: 30%;
     }
 
     .w40 {
-        width: 65%;
+        width: 45%;
+        margin: 10px auto;
     }
     .w55 {
-        width: 80%;
+        width: 51%;
+        margin: 10px auto;
     }
 
     .avatarWrapper {
