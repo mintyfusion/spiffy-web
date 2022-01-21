@@ -241,7 +241,7 @@ const GameSection = (): JSX.Element => {
         }
         // const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
         setSeletedAvatar(avatar);
-        setStep(StepTypes.Four);
+        setStep(StepTypes.Two);
     }, []);
 
     const friendsAnimation = React.useCallback((index: number, value: IFriendAvatar) => {
@@ -536,15 +536,16 @@ const GameSection = (): JSX.Element => {
             const mobile = 400;
             const Ten = 10;
             const Fifty = 50;
-            const hundred = 50;
+            const hundred = 100;
             const twenty = 20;
-            const thirty = 20;
-            const fifteen = 20;
+            const thirty = 30;
+            const fifteen = 15;
             const eigthy = 80;
             const fourty = 40;
-            const oneFifty = 450;
+            const oneFifty = 150;
             const twentyFive = 15;
             const seventy = 70;
+
             const centerTop = width < mobile ? Ten : 0;
             const rigthLeft = width < mobile ? Fifty : oneFifty;
             const rigthTop = width < mobile ? Ten : twenty;
