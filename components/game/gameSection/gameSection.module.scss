@@ -912,15 +912,18 @@ $vh: var(--vh);
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
+        left: -100px;
         > div:nth-child(1) {
             animation-name: displayAnimation;
             animation-duration: 1s;
             animation-delay: 21s;
             animation-fill-mode: forwards;
             opacity: 0;
-            margin-top: -100px;
-            width: 70%;
-            margin-left: -80%;
+            position: absolute;
+            width: 100%;
+            top: -55px;
+            right: 145px;
             label {
                 display: block;
                 @extend .bold-desktop25-mobile9;
@@ -1150,18 +1153,7 @@ $vh: var(--vh);
         z-index: 3;
     }
     .donationLogo {
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        > div:nth-child(1) {
-            margin-top: 0px !important;
-            width: 100% !important;
-            label {
-                display: block;
-                font-weight: $bold;
-            }
-        }
+        right: -145px;
     }
     .cycle0 {
         width: 35px !important;
@@ -1870,6 +1862,21 @@ $vh: var(--vh);
 }
 
 @include media(">=375px", "<425px") {
+    .coinTwo {
+        width: 20px;
+        height: 20px;
+        top: 360px;
+    }
+    .donationInner {
+        .userDonation {
+            margin-top: 25px;
+        }
+    }
+    .donationLogo {
+        right: unset;
+        left: -45px !important;
+        top: 30px;
+    }
     .customNavbar {
         position: absolute;
         width: 100%;
@@ -1932,11 +1939,11 @@ $vh: var(--vh);
         }
     }
     .marginBottomMinusFifty {
-        margin-bottom: -25px;
+        margin-bottom: -10px;
     }
 
     .marginTopMinusFifty {
-        margin-top: -20px;
+        margin-top: -10px;
     }
 
     .coinTwo {
@@ -1953,7 +1960,7 @@ $vh: var(--vh);
         }
     }
     .w25 {
-        width: 35%;
+        width: 40%;
     }
 
     .w40 {
@@ -1966,7 +1973,7 @@ $vh: var(--vh);
         margin-bottom: 10px;
     }
     .donationButton {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
     .avatarSelected {
         > div {
@@ -1993,7 +2000,7 @@ $vh: var(--vh);
     .stepFour {
         width: 90%;
         position: relative;
-        height: 640px;
+        height: auto;
         select {
             width: 100%;
             text-align: center;
@@ -2282,7 +2289,8 @@ $vh: var(--vh);
     }
 
     .donationInner {
-        margin-top: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         .avatarInner {
             margin-top: 60px;
         }
@@ -2676,6 +2684,11 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
+    .donationLogo {
+        right: unset;
+        left: -45px !important;
+        top: 5px;
+    }
     .customNavbar {
         position: absolute;
         width: 100%;
@@ -2686,6 +2699,7 @@ $vh: var(--vh);
     .coinTwo {
         width: 20px;
         height: 20px;
+        top: 355px;
     }
     .cycle0 {
         width: 35px !important;
@@ -2757,14 +2771,14 @@ $vh: var(--vh);
         }
     }
     .w25 {
-        width: 30%;
+        width: 40%;
     }
 
     .w40 {
-        width: 45%;
+        width: 50%;
     }
     .w55 {
-        width: 50%;
+        width: 60%;
     }
     .donationButton {
         margin-bottom: 10px;
@@ -3444,6 +3458,9 @@ $vh: var(--vh);
 }
 
 @include media(">=800px", "<900px") {
+    .donationLogo {
+        right: -145px;
+    }
     .w25 {
         width: 40%;
     }
@@ -3845,6 +3862,9 @@ $vh: var(--vh);
 }
 
 @include media(">=900px", "<1000px") {
+    .donationLogo {
+        right: -145px;
+    }
     .contentAnimation {
         max-width: 650px;
     }
