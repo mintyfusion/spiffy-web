@@ -1,0 +1,71 @@
+@import "styles/theme.scss";
+@import "styles/includeMedia.scss";
+@import "styles/font/fontGroups.scss";
+
+.heroContainer {
+    @extend .backgroundPattern;
+    background-color: $darkGrey;
+    color: $white;
+    min-height: 35rem;
+
+    h1 {
+        @extend .bold109;
+    }
+
+    h5 {
+        @extend .regular25;
+    }
+
+    blockquote {
+        @extend .bold41;
+
+        &::before {
+            content: "";
+            background-image: url("/images/educationDetailsPage/spiffy.svg");
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .heroContainer {
+        blockquote {
+            width: 68%;
+            margin-left: auto;
+            
+
+            &::before {
+                position: absolute;
+                left: 0%;
+                margin-top: 1rem;
+                width: 150px;
+                height: 95px;
+            }
+
+            p:first-child::before {
+                content: "";
+                position: absolute;
+                margin-left: -10%;
+                height: 115px;
+                border: none;
+                border-right: 3px solid grey;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+@include media("<desktop") {
+    .heroContainer {
+        blockquote {
+            display: flex;
+            flex-direction: column;
+
+            &::before {
+                width: 160px;
+                height: 100px;
+                border-bottom: 3px solid $light-grey;
+                background-position-y: -5px;
+            }
+        }
+    }
+}

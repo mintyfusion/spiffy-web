@@ -22,10 +22,10 @@ const allModules = [
   { name: "LandingPageGetStarted", module: LandingPageGetStarted },
   { name: "LandingFeaturesModule", module: LandingFeaturesModule },
   { name: "LandingPageVerticalModule", module: LandingPageVerticalModule },
-  { name: "CreatorPageContentModule", module: CreatorPageContentModule },
+  { name: "PageContentModule", module: CreatorPageContentModule },
   { name: "CreatorPageVideoModule", module: VideoSection },
-  { name: "FAQContentModule", module: FAQContentModule},
-  {name:"AboutUsHeroModule",module: AboutUsHeroModule}
+  { name: "FAQContentModule", module: FAQContentModule },
+  { name: "AboutUsHeroModule", module: AboutUsHeroModule }
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
