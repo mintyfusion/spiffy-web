@@ -525,6 +525,7 @@ const GameSection = (): JSX.Element => {
         setSeletedAvatar(null);
         closeModal();
         setAddedFriends([]);
+        setAvatarStyleGUID("0");
     }, []);
 
     const handlStepAnimation = React.useCallback((stepIndex) => {
@@ -631,6 +632,11 @@ const GameSection = (): JSX.Element => {
             };
         }
     }, [donationAmount, handlStepAnimation]);
+
+    // const fullscreenHandler = React.useCallback(() => {
+    //     setAvatarPositions();
+    //     openModal();
+    // }, [setAvatarPositions, openModal])
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
