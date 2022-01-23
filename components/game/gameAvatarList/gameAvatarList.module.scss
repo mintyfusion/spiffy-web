@@ -205,7 +205,22 @@
     .donationDesktop {
         display: none;
     }
-
+    .friendsBottom {
+        margin-top: -35px;
+        div {
+            img {
+                @include imgProperties(40px);
+            }
+        }
+    }
+    .friendsTop {
+        margin-bottom: -35px;
+        div {
+            img {
+                @include imgProperties(40px);
+            }
+        }
+    }
     .donationMobile {
         display: block;
 
@@ -279,6 +294,27 @@
 }
 
 @include media(">=tablet", "<990px") {
+    .percentageSelected {
+        img {
+            @include imgProperties(90px);
+        }
+    }
+    .friendsBottom {
+        margin-top: -45px;
+        div {
+            img {
+                @include imgProperties(60px);
+            }
+        }
+    }
+    .friendsTop {
+        margin-bottom: -45px;
+        div {
+            img {
+                @include imgProperties(60px);
+            }
+        }
+    }
     .donations {
         width: 69px;
     }
