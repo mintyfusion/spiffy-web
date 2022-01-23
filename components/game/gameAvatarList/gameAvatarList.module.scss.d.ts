@@ -13,6 +13,7 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "boldDesktop25Mobile9": string;
   "boldDesktop41Mobile25": string;
   "boldGame41": string;
   "boldGame67": string;
@@ -28,6 +29,9 @@ export type Styles = {
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "flexOne": string;
+  "friendsBottom": string;
+  "friendsMain": string;
+  "friendsTop": string;
   "fullbold109": string;
   "fullBold67": string;
   "gameStepFive": string;

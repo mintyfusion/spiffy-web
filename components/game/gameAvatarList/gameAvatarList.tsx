@@ -1,6 +1,6 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Row } from "react-bootstrap";
 import Image from "next/image";
 import React from "react";
 
@@ -126,7 +126,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         }
     }, [percentage]);
 
-    // console.log(avatars);
+    console.log(props.friends);
 
     return (
         <div className={styles.gameStepFive}>
@@ -172,13 +172,19 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <div className={`${styles.flexOne}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
                             <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
+                            <Row className={`${styles.friendsTop} w-100`}>
+                                <div>
+                                    {props.friends.slice(0, 2).map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                                </div>
+                            </Row>
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
                                 {props.seletedAvatar && <Avatar color={props.seletedAvatar} />}
                             </div>
-
-                            <div className={styles.percentageFriends}>
-                                {props.friends.map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
-                            </div>
+                            <Row className={`${styles.friendsBottom} w-100`}>
+                                <div>
+                                    {props.friends.slice(2, 4).map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                                </div>
+                            </Row>
                         </div>
                         <h6>{props.name}</h6>
                     </div>

@@ -26,7 +26,29 @@
     color: $yellow;
     opacity: 1;
 }
+.friendsTop {
+    margin-bottom: -60px;
+    div {
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        margin: 0 auto;
+    }
+}
 
+.friendsBottom {
+    margin-top: -65px;
+    div {
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+        margin: 0 auto;
+    }
+}
+.friendsMain {
+    max-width: 320px;
+    text-align: center;
+}
 .gameStepFive {
     @include gameContentPadding(50px 0);
     width: 90%;
