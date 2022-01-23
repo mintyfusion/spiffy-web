@@ -169,7 +169,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <div className={`${styles.flexOne} ${styles.left}`}>
                         {avatarsFlex}
                     </div>
-                    <div className={`${styles.flexOne}`}>
+                    <div className={`${styles.flexOne} ${styles.friendsMain}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
                             <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
                             <Row className={`${styles.friendsTop} w-100`}>
