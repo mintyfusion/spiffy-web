@@ -36,6 +36,8 @@ const fourty = 40;
 const fifteenRandom = 15;
 const five = 5;
 const sizes = [twenty, twentyTwo, twentyFive, twentySeven, thirty, thirtyThree, thirtyFive, thirtySeven, fourty];
+const slice = 2;
+const sliceTwo = 4;
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("1");
@@ -126,8 +128,6 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         }
     }, [percentage]);
 
-    console.log(props.friends);
-
     return (
         <div className={styles.gameStepFive}>
             <div className={`${colCenter}`}>
@@ -174,7 +174,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                             <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
-                                    {props.friends.slice(0, 2).map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                                    {props.friends.slice(0, slice)
+                                        .map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
                                 </div>
                             </Row>
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
@@ -182,7 +183,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                             </div>
                             <Row className={`${styles.friendsBottom} w-100`}>
                                 <div>
-                                    {props.friends.slice(2, 4).map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                                    {props.friends.slice(slice, sliceTwo)
+                                        .map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
                                 </div>
                             </Row>
                         </div>
