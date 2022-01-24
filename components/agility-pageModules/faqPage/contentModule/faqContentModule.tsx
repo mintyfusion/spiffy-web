@@ -1,5 +1,5 @@
 import { Accordion, Nav, Navbar, Row, Stack } from "react-bootstrap";
-import { ContentItem, ModuleProps } from "@agility/nextjs";
+import { ContentItem, ModuleProps, renderHTML } from "@agility/nextjs";
 import { faChevronLeft, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -20,7 +20,7 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
 
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
-    const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.payment);
+    const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.all);
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [contentData, setContentData] = React.useState<{ items: ContentItem<IContentInfo>[] }>();
@@ -43,7 +43,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             contentLinkDepth: 2,
             depth: 2,
             take: 50,
-            filters: [{
+            filters: activeTab !== ContentCategory.all && [{
                 property: "fields.tag_TextField",
                 operator: FilterTypes.EQUAL_TO,
                 value: activeTab
@@ -115,14 +115,14 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             <Accordion.Header className={styles.accordianHeader}>
                                 <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
                                     <div className={`${styles.faqIndex} p-3`}>
-                                        {`${index < zeroPrefixLimit && "0"}${index + 1}`}
+                                        {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
                                     </div>
                                     <div className="w-100 p-2">{post.fields.title}</div>
                                     <ContextAwareToggle eventKey={index.toString()} />
                                 </Stack>
                             </Accordion.Header>
                             <Accordion.Body className={styles.accordianBody}>
-                                {post.fields.description}
+                             <div dangerouslySetInnerHTML={renderHTML(post.fields.description)} />
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>

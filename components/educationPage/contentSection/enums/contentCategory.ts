@@ -4,7 +4,12 @@ enum ContentCategory {
     general = "General",
     payment = "Payment",
     incentives = "Incentives",
-    others = "Others"
+    others = "Others",
+    keyTerms = "Key Terms",
+    support = "Support",
+    donations = "Donations",
+    contentCreators = "Content Creators",
+    referAndEarn = "Refer and Earn"
 }
 
 export default ContentCategory;
