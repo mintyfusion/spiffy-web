@@ -106,7 +106,7 @@ $vh: var(--vh);
 }
 
 .w55 {
-    width: 54%;
+    width: 52%;
     margin: 15px auto;
 }
 
@@ -115,7 +115,7 @@ $vh: var(--vh);
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    transition: 3s;
+    transition: 2s;
     z-index: 1;
     top: 330px;
 }
@@ -618,7 +618,7 @@ $vh: var(--vh);
 }
 
 .heigth120 {
-    height: 80px;
+    max-height: 70px;
 }
 
 .contentAnimation {
@@ -655,7 +655,7 @@ $vh: var(--vh);
     .donationAmount2 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 2s;
+        animation-delay: 1s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -663,7 +663,7 @@ $vh: var(--vh);
     .donationAmount3 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 20s;
+        animation-delay: 17s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -671,7 +671,7 @@ $vh: var(--vh);
     .donationAmount4 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 4s;
+        animation-delay: 3s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -679,7 +679,7 @@ $vh: var(--vh);
     .donationAmount5 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 18s;
+        animation-delay: 13s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -687,7 +687,7 @@ $vh: var(--vh);
     .donationAmount6 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 6s;
+        animation-delay: 4s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -695,7 +695,7 @@ $vh: var(--vh);
     .donationAmount7 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 16s;
+        animation-delay: 12s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -703,7 +703,7 @@ $vh: var(--vh);
     .donationAmount8 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 8s;
+        animation-delay: 6s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -711,7 +711,7 @@ $vh: var(--vh);
     .donationAmount9 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 14s;
+        animation-delay: 10s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -719,7 +719,7 @@ $vh: var(--vh);
     .donationAmount10 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 10s;
+        animation-delay: 7s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -727,7 +727,7 @@ $vh: var(--vh);
     .donationAmount11 {
         animation-name: displayAnimation;
         animation-duration: 1s;
-        animation-delay: 12s;
+        animation-delay: 9s;
         animation-fill-mode: forwards;
         opacity: 0;
         position: absolute;
@@ -757,7 +757,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 2s;
+        animation-delay: 1s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -773,7 +773,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 4s;
+        animation-delay: 3s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -789,7 +789,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 6s;
+        animation-delay: 4s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -805,7 +805,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 8s;
+        animation-delay: 6s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -821,7 +821,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 10s;
+        animation-delay: 7s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -837,7 +837,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 12s;
+        animation-delay: 9s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -853,7 +853,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 14s;
+        animation-delay: 10s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -869,7 +869,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 16s;
+        animation-delay: 12s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -885,7 +885,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 18s;
+        animation-delay: 13s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -901,7 +901,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
-        animation-delay: 20s;
+        animation-delay: 16s;
         animation-fill-mode: forwards;
         visibility: hidden;
         margin-top: -100px;
@@ -924,20 +924,16 @@ $vh: var(--vh);
         > div:nth-child(1) {
             animation-name: iconAnimation;
             animation-duration: 1s;
-            animation-delay: 21s;
+            animation-delay: 16s;
             animation-fill-mode: forwards;
             opacity: 0;
             position: absolute;
             width: 100%;
-            top: -55px;
+            top: -25px;
             right: 235px;
             text-align: right;
-            label {
-                display: block;
-                @extend .bold-desktop25-mobile9;
-            }
             span {
-                @extend .regular20;
+                @extend .regular-desktop20-mobile7;
             }
         }
     }
@@ -1012,27 +1008,6 @@ $vh: var(--vh);
 .percentageSelected {
     img {
         @include imgProperties(191px);
-    }
-}
-
-.percentageFriends {
-    position: absolute;
-    top: 0px;
-    img {
-        @include imgProperties(119px);
-        object-fit: contain;
-    }
-    div:nth-child(1) {
-        @include percentageAvatars(65px, unset, 31px);
-    }
-    div:nth-child(2) {
-        @include percentageAvatars(unset, 136px, 149px);
-    }
-    div:nth-child(3) {
-        @include percentageAvatars(67px, unset, 144px);
-    }
-    div:nth-child(4) {
-        @include percentageAvatars(unset, 138px, 262px);
     }
 }
 
@@ -1353,8 +1328,9 @@ $vh: var(--vh);
             width: 100%;
             height: 50%;
             h2 {
-                position: absolute;
-                top: 50px;
+                position: relative;
+                top: -10px;
+                display: block;
             }
             h3 {
                 margin-top: 60px;
@@ -1876,7 +1852,10 @@ $vh: var(--vh);
 }
 
 @include media(">=375px", "<425px") {
-    .close{
+    .contentAnimation {
+        max-width: 350px;
+    }
+    .close {
         top: 20px;
     }
     .donationLogo {
@@ -1887,7 +1866,7 @@ $vh: var(--vh);
     .coinTwo {
         width: 20px;
         height: 20px;
-        top: 360px;
+        top: 310px;
     }
     .donationInner {
         .userDonation {
@@ -1994,10 +1973,7 @@ $vh: var(--vh);
         margin: 5px auto;
     }
     .donationButton {
-        margin-bottom: 10px;
-    }
-    .donationButton {
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
     .avatarSelected {
         > div {
@@ -2707,15 +2683,24 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
-    .close{
-        top : 20px;
+    .donationLogo {
+        right: -145px;
+        > div:nth-child(1) {
+            width: 50% !important;
+            top: -32px !important;
+            right: -55px !important;
+            text-align: left !important;
+        }
+    }
+    .close {
+        top: 20px;
     }
     .contentAnimation {
         max-width: 350px;
     }
     .donationLogo {
         right: unset;
-        left: -45px !important;
+        left: -80px !important;
         top: 5px;
     }
     .customNavbar {
@@ -2728,7 +2713,7 @@ $vh: var(--vh);
     .coinTwo {
         width: 20px;
         height: 20px;
-        top: 355px;
+        top: 280px;
     }
     .cycle0 {
         width: 35px !important;
@@ -2863,7 +2848,6 @@ $vh: var(--vh);
         padding: 0px;
         text-align: center;
         .card {
-            width: 100%;
             margin: 20px;
         }
     }
@@ -3489,9 +3473,24 @@ $vh: var(--vh);
 }
 
 @include media(">=800px", "<900px") {
+    .donationInner {
+        .userDonation {
+            margin-top: 25px;
+        }
+    }
+    .donationLogo {
+        right: -145px;
+        > div:nth-child(1) {
+            width: 40% !important;
+            top: -43px !important;
+            right: -35px !important;
+            text-align: left !important;
+        }
+    }
     .coinTwo {
         width: 30px;
         height: 30px;
+        top: 275px;
     }
     .cycle0 {
         width: 60px !important;
@@ -3947,8 +3946,26 @@ $vh: var(--vh);
 }
 
 @include media(">=900px", "<1000px") {
+    .customNavbar {
+        position: absolute;
+        width: 100%;
+        top: 80%;
+        background-color: $white;
+        z-index: 3;
+    }
+
+    .coinTwo {
+        top: 300px;
+    }
+
     .donationLogo {
         right: -145px;
+        > div:nth-child(1) {
+            width: 40% !important;
+            top: -43px !important;
+            right: -35px !important;
+            text-align: left !important;
+        }
     }
     .contentAnimation {
         max-width: 650px;

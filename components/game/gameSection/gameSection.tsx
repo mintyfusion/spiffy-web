@@ -37,7 +37,7 @@ const friendsLength = 4;
 const containerId = "containerElement";
 const phoneKeyboardTimeout = 500;
 const donationTotalAvatars = 10;
-const stepTwoTimeout = 2000;
+const stepTwoTimeout = 1500;
 
 const GameSection = (): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<IFriendAvatar[]>([]);
@@ -534,7 +534,8 @@ const GameSection = (): JSX.Element => {
             const name = avatar.getAttribute("data-direction");
             const bounds = avatar.getBoundingClientRect();
             const width = window.innerWidth;
-            const mobile = 400;
+            const mobile = 500;
+            const mobileMedium = 350;
             const dektop1600 = 1600;
             const dektop1000 = 1000;
             const tablet900 = 900;
@@ -542,38 +543,70 @@ const GameSection = (): JSX.Element => {
             const Ten = 10;
             const Fifty = 50;
             const hundred = 100;
+            const hundredTen = 110;
             const twenty = 20;
             const thirty = 30;
             const fifteen = 15;
             const eigthy = 80;
             const fourty = 40;
-            const oneFifty = 170;
+            const oneFifty = 150;
             const twentyFive = 15;
             const seventy = 70;
-            const oneTwenty = 70;
+            const oneTwenty = 120;
+            const oneThirty = 130;
 
             const centerLeft = width < mobile ? Ten :
                 width < dektop1600 && width > dektop1000 ? Fifty :
-                    width < tablet900 && width > tablet800 ? thirty : eigthy;
+                    width < tablet900 && width > tablet800 ? thirty :
+                        width < tablet800 && width > mobile ? seventy : eigthy;
+
+            const centerTop = width < tablet800 && width > mobile ? 0 : width < mobile && width > mobileMedium ? 0 : seventy;
+
+            const rigthTopLeft = width < tablet800 && width > mobile ? hundred :
+                width < mobile && width > mobileMedium ? Fifty : oneThirty;
+
             const rigthLeft = width < mobile ? Fifty :
                 width < tablet900 && width > tablet800 ? oneTwenty :
-                    oneFifty;
-            const rigthTop = width < mobile ? Ten : twenty;
-            const bottomRigthLeft = width < mobile ? fourty : hundred;
-            const bottomRigthTop = width < mobile ? thirty : hundred;
-            const bottomCenterTop = width < mobile ? Fifty : hundred;
+                    width < tablet800 && width > mobile ? hundredTen :
+                        oneFifty;
+
+            const rigthTop = width < mobile ? Ten :
+                width < tablet800 && width > mobile ? Ten : twenty;
+
+            const bottomRigthLeft = width < mobile ? fourty :
+                width < tablet800 && width > mobile ? thirty : hundred;
+
+            const bottomRigthTop = width < mobile ? thirty :
+                width < tablet800 && width > mobile ? hundred : hundred;
+
+            const bottomCenterTop = width < mobile ? Fifty :
+                width < tablet800 && width > mobile ? Fifty : hundred;
+
             const bottomCenterLeft = width < mobile ? fifteen :
-                width < tablet900 && width > tablet800 ? thirty : eigthy;
+                width < tablet900 && width > tablet800 ? thirty : seventy;
+
             const bottomLeftLeft = width < mobile ? 0 :
-                width < tablet900 && width > tablet800 ? 0 : twentyFive;
-            const bottomLeftTop = width < mobile ? twenty : seventy;
-            const leftTop = width < mobile ? 0 : thirty;
+                width < tablet900 && width > tablet800 ? 0 :
+                    width < tablet800 && width > mobile ? 50 :
+                        width < tablet800 && width > mobile ? 50 : twentyFive;
+
+            const bottomLeftTop = width < mobile && width > mobile ? twenty :
+                width < mobile && width > mobileMedium ? fourty : seventy;
+
+            const leftTop = width < mobile ? 0 :
+                width < tablet800 && width > mobile ? Ten : thirty;
 
 
             switch (name) {
                 case "center":
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - centerLeft,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - centerTop
+                    };
+                    break;
+                case "rigthTop":
+                    coinStyles.current = {
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - rigthTopLeft,
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop
                     };
                     break;
@@ -591,7 +624,7 @@ const GameSection = (): JSX.Element => {
                     break;
                 case "left":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft,
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 20,
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
                     };
                     break;
@@ -757,7 +790,6 @@ const GameSection = (): JSX.Element => {
                                                 style={coinStyles.current}>
                                                 <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
                                             </div>
-                                            {/* <div ref={coinStart} className={styles.coinRef}></div> */}
                                             <div className={styles.userDonation}>
                                                 <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                                             </div>
@@ -774,11 +806,10 @@ const GameSection = (): JSX.Element => {
                                                     <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
                                                     <span className={styles.donationAmount0}>0.20</span>
                                                 </div>
-
                                             </Col>
                                         </Row>
                                         <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
-                                            <div className={`${styles.cycle2} ${styles.donationImage}`} data-index="1" data-direction="rigth">
+                                            <div className={`${styles.cycle2} ${styles.donationImage}`} data-index="1" data-direction="rigthTop">
                                                 <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
                                                 <span className={styles.donationAmount2}>0.20</span>
                                             </div>
@@ -786,7 +817,6 @@ const GameSection = (): JSX.Element => {
                                         <Row className={`${styles.w40} ${rowHBetween}`}>
                                             <div className={styles.donationLogo}>
                                                 <div>
-                                                    <label>Spiffy Corp.</label>
                                                     <span>
                                                         We’re totally reliant on these cents to keep us going.
                                                     </span>
