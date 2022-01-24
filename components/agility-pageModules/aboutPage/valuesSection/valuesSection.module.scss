@@ -16,6 +16,11 @@
     animation: hide 0.3s;
 }
 
+.headingText {
+    background-color: $yellow;
+    @extend .bold36;
+}
+
 .cardContainer {
     .card {
         background-color: #916e23;

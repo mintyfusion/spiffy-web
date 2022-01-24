@@ -48,6 +48,10 @@
     @include typeFace($nine, $thirtyTwo, $bold);
 }
 
+.bold36{
+    @include typeFace($fourteen, $thirtySix, $bold);
+}
+
 .bold41 {
     @include typeFace($fourteen, $fortyOne, $bold);
 }

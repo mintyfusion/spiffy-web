@@ -20,6 +20,7 @@ export type Styles = {
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
+  "headingText": string;
   "hide": string;
   "overlay": string;
   "regular14": string;

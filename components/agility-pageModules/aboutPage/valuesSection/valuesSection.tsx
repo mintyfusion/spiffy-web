@@ -16,6 +16,7 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
 
     return (
         <div>
+            <h2 className={`p-4 p-lg-5 text-center m-0 ${styles.headingText}`}>{fields.title}</h2>
             <Row
                 className={`w-100 m-0 d-flex flex-column flex-lg-row ${styles.cardContainer} position-relative`}
             >
@@ -42,7 +43,7 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
                                 src={data.fields.image.url}
                                 layout="intrinsic"
                                 width="450px"
-                                height="450px"
+                                height={breakpoint ? "300px" :"450px"}                                
                                 objectFit="cover"
                             />
                             <div
