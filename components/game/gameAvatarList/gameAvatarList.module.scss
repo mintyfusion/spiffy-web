@@ -28,7 +28,7 @@
 }
 .friendsTop {
     margin-bottom: -60px;
-    div {
+    > div {
         width: 100%;
         justify-content: space-between;
         display: flex;
@@ -38,7 +38,7 @@
 
 .friendsBottom {
     margin-top: -65px;
-    div {
+    > div {
         width: 100%;
         justify-content: space-between;
         display: flex;
@@ -46,7 +46,7 @@
     }
 }
 .friendsMain {
-    max-width: 320px;
+    max-width: 255px;
     text-align: center;
 }
 .gameStepFive {
@@ -204,6 +204,9 @@
     }
 }
 @include media(">=phone", "<tablet") {
+    .friendsMain {
+        max-width: 120px;
+    }
     .donationButton {
         margin-bottom: 10px;
     }
@@ -211,18 +214,18 @@
         display: none;
     }
     .friendsBottom {
-        margin-top: -35px;
+        margin-top: -25px;
         div {
             img {
-                @include imgProperties(40px);
+                @include imgProperties(35px);
             }
         }
     }
     .friendsTop {
-        margin-bottom: -35px;
+        margin-bottom: -20px;
         div {
             img {
-                @include imgProperties(40px);
+                @include imgProperties(35px);
             }
         }
     }
@@ -248,7 +251,7 @@
 
     .percentageSelected {
         img {
-            @include imgProperties(67px);
+            @include imgProperties(40px);
         }
     }
 }

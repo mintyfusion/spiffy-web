@@ -633,11 +633,6 @@ const GameSection = (): JSX.Element => {
         }
     }, [donationAmount, handlStepAnimation]);
 
-    // const fullscreenHandler = React.useCallback(() => {
-    //     setAvatarPositions();
-    //     openModal();
-    // }, [setAvatarPositions, openModal])
-
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
             <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
