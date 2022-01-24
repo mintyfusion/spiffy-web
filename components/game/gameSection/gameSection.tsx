@@ -419,6 +419,8 @@ const GameSection = (): JSX.Element => {
 
             const styles = {} as Record<AvatarType, CSSProperties>;
 
+            console.log(addedFriends);
+
             addedFriends.map((value, index) => {
                 switch (index) {
                     case 0:
@@ -488,7 +490,6 @@ const GameSection = (): JSX.Element => {
                 break;
 
             case StepTypes.Three:
-            default:
                 setViewportHeight();
                 setFriendsPositions();
                 friendsResizeHandler();
@@ -563,7 +564,7 @@ const GameSection = (): JSX.Element => {
             const centerTop = width < tablet800 && width > mobile ? 0 : width < mobile && width > mobileMedium ? 0 : seventy;
 
             const rigthTopLeft = width < tablet800 && width > mobile ? hundred :
-                width < mobile && width > mobileMedium ? Fifty : oneThirty;
+                width < mobile && width > mobileMedium ? Fifty : width < mobileMedium ? fourty : oneThirty;
 
             const rigthLeft = width < mobile ? Fifty :
                 width < tablet900 && width > tablet800 ? oneTwenty :
@@ -585,13 +586,14 @@ const GameSection = (): JSX.Element => {
             const bottomCenterLeft = width < mobile ? fifteen :
                 width < tablet900 && width > tablet800 ? thirty : seventy;
 
-            const bottomLeftLeft = width < mobile ? 0 :
+            const bottomLeftLeft = width < mobile && width > mobileMedium ? 0 :
                 width < tablet900 && width > tablet800 ? 0 :
-                    width < tablet800 && width > mobile ? 50 :
-                        width < tablet800 && width > mobile ? 50 : twentyFive;
+                    width < tablet800 && width > mobile ? Fifty :
+                        width < tablet800 && width > mobile ? Fifty : width < mobileMedium ? 20 : twentyFive;
+            console.log(bottomLeftLeft);
 
             const bottomLeftTop = width < mobile && width > mobile ? twenty :
-                width < mobile && width > mobileMedium ? fourty : seventy;
+                width < mobile && width > mobileMedium ? fourty : width < mobileMedium ? thirty : seventy;
 
             const leftTop = width < mobile ? 0 :
                 width < tablet800 && width > mobile ? Ten : thirty;
@@ -622,12 +624,12 @@ const GameSection = (): JSX.Element => {
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomRigthLeft
                     };
                     break;
-                case "left":
-                    coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 20,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
-                    };
-                    break;
+                // case "left":
+                //     coinStyles.current = {
+                //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 20,
+                //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
+                //     };
+                //     break;
                 case "bottomCenter":
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - bottomCenterLeft,
@@ -640,7 +642,6 @@ const GameSection = (): JSX.Element => {
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomLeftTop
                     };
                     break;
-
             }
 
             setAvatarStyleGUID(getUniqueId());
@@ -665,6 +666,8 @@ const GameSection = (): JSX.Element => {
             };
         }
     }, [donationAmount, handlStepAnimation]);
+
+    console.log(addedFriends);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>

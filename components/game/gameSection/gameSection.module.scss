@@ -1134,6 +1134,32 @@ $vh: var(--vh);
 }
 
 @include media(">=phone", "<375px") {
+    .contentAnimation {
+        max-width: 350px;
+    }
+    .close {
+        top: 20px;
+    }
+    .donationLogo {
+        right: unset;
+        left: -45px !important;
+        top: 5px;
+    }
+    .coinTwo {
+        width: 20px;
+        height: 20px;
+        top: 345px;
+    }
+    .donationInner {
+        .userDonation {
+            margin-top: 25px;
+        }
+    }
+    .donationLogo {
+        right: unset;
+        left: -45px !important;
+        top: 30px;
+    }
     .customNavbar {
         position: absolute;
         width: 100%;
@@ -1141,8 +1167,12 @@ $vh: var(--vh);
         background-color: $white;
         z-index: 3;
     }
-    .donationLogo {
-        right: -145px;
+    .customNavbar {
+        position: absolute;
+        width: 100%;
+        top: 80%;
+        background-color: $white;
+        z-index: 3;
     }
     .cycle0 {
         width: 35px !important;
@@ -1192,7 +1222,7 @@ $vh: var(--vh);
         }
     }
     .marginBottomMinusFifty {
-        margin-bottom: -25px;
+        margin-bottom: -20px;
     }
 
     .marginTopMinusFifty {
@@ -1217,16 +1247,15 @@ $vh: var(--vh);
     }
 
     .w40 {
-        width: 55%;
+        width: 65%;
+        margin: 5px auto;
     }
     .w55 {
-        width: 65%;
+        width: 75%;
+        margin: 5px auto;
     }
     .donationButton {
-        margin-bottom: 10px;
-    }
-    .donationButton {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     .close {
         top: 25px;
@@ -1458,7 +1487,8 @@ $vh: var(--vh);
     }
 
     .donationInner {
-        margin-top: 15px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         .avatarInner {
             margin-top: 60px;
         }
