@@ -1304,7 +1304,7 @@ $vh: var(--vh);
         padding: 0px;
         text-align: center;
         .card {
-            margin: 0px;
+            margin: 20px 0;
             width: 100%;
         }
     }
@@ -1876,6 +1876,9 @@ $vh: var(--vh);
 }
 
 @include media(">=375px", "<425px") {
+    .close{
+        top: 20px;
+    }
     .donationLogo {
         right: unset;
         left: -45px !important;
@@ -2074,8 +2077,7 @@ $vh: var(--vh);
         text-align: center;
         .card {
             width: 100%;
-            margin: 0px;
-            height: $vh;
+            margin: 20px 0;
         }
     }
 
@@ -2705,6 +2707,9 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
+    .close{
+        top : 20px;
+    }
     .contentAnimation {
         max-width: 350px;
     }
@@ -2860,7 +2865,6 @@ $vh: var(--vh);
         .card {
             width: 100%;
             margin: 20px;
-            min-height: $vh;
         }
     }
 
