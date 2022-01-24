@@ -419,7 +419,7 @@ const GameSection = (): JSX.Element => {
 
             const styles = {} as Record<AvatarType, CSSProperties>;
 
-            console.log(addedFriends);
+            console.log("addedFriends:", addedFriends);
 
             addedFriends.map((value, index) => {
                 switch (index) {
@@ -525,7 +525,6 @@ const GameSection = (): JSX.Element => {
         setAddedFriends([]);
         setSeletedAvatar(null);
         closeModal();
-        setAddedFriends([]);
         setAvatarStyleGUID("0");
     }, []);
 
@@ -598,48 +597,49 @@ const GameSection = (): JSX.Element => {
             const leftTop = width < mobile ? 0 :
                 width < tablet800 && width > mobile ? Ten : thirty;
 
+            const coin = document.getElementById("CoinAnimation");
 
             switch (name) {
                 case "center":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - centerLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - centerTop
+                        left: bounds.x + coin.scrollLeft - centerLeft,
+                        top: bounds.y + coin.scrollTop - centerTop
                     };
                     break;
                 case "rigthTop":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - rigthTopLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop
+                        left: bounds.x + coin.scrollLeft - rigthTopLeft,
+                        top: bounds.y + coin.scrollTop
                     };
                     break;
                 case "rigth":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - rigthLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - rigthTop
+                        left: bounds.x + coin.scrollLeft - rigthLeft,
+                        top: bounds.y + coin.scrollTop - rigthTop
                     };
                     break;
                 case "bottomRigth":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - bottomRigthTop,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomRigthLeft
+                        left: bounds.x + coin.scrollLeft - bottomRigthTop,
+                        top: bounds.y + coin.scrollTop - bottomRigthLeft
                     };
                     break;
                 case "left":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 20,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
+                        left: bounds.x + coin.scrollLeft + 20,
+                        top: bounds.y + coin.scrollTop - leftTop
                     };
                     break;
                 case "bottomCenter":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - bottomCenterLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomCenterTop
+                        left: bounds.x + coin.scrollLeft - bottomCenterLeft,
+                        top: bounds.y + coin.scrollTop - bottomCenterTop
                     };
                     break;
                 case "bottomLeft":
                     coinStyles.current = {
-                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - bottomLeftLeft,
-                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomLeftTop
+                        left: bounds.x + coin.scrollLeft - bottomLeftLeft,
+                        top: bounds.y + coin.scrollTop - bottomLeftTop
                     };
                     break;
             }
