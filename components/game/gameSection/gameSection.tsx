@@ -624,12 +624,12 @@ const GameSection = (): JSX.Element => {
                         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - bottomRigthLeft
                     };
                     break;
-                // case "left":
-                //     coinStyles.current = {
-                //         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 20,
-                //         top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
-                //     };
-                //     break;
+                case "left":
+                    coinStyles.current = {
+                        left: bounds.x + document.getElementById("CoinAnimation").scrollLeft + 20,
+                        top: bounds.y + document.getElementById("CoinAnimation").scrollTop - leftTop
+                    };
+                    break;
                 case "bottomCenter":
                     coinStyles.current = {
                         left: bounds.x + document.getElementById("CoinAnimation").scrollLeft - bottomCenterLeft,
@@ -666,8 +666,6 @@ const GameSection = (): JSX.Element => {
             };
         }
     }, [donationAmount, handlStepAnimation]);
-
-    console.log(addedFriends);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
