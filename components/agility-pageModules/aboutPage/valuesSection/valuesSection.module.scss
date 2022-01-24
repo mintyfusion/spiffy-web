@@ -1,8 +1,25 @@
 @import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
 
-.container {
-    .cardContainer {
+@include opacityKeyFrames();
+
+// Opacity transition classes
+.show {
+    opacity: 1;
+    transition: show 1s;
+    animation: show 1s;
+}
+
+.hide {
+    opacity: 0;
+    transition: hide 0.3s;
+    animation: hide 0.3s;
+}
+
+.cardContainer {
+    .card {
         background-color: #916e23;
+        transition: flex 200ms ease-in;
 
         &:hover {
             flex: 2;
@@ -17,6 +34,15 @@
 
         .cardInfo {
             color: $white;
+            width: fit-content;
+
+            h2 {
+                @extend .bold41;
+            }
+
+            h5 {
+                @extend .regular25;
+            }
         }
     }
 
