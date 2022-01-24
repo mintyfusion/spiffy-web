@@ -4368,6 +4368,14 @@ $vh: var(--vh);
 }
 
 @include media(">=1000px", "<1100px") {
+    .coinTwo {
+        top: 300px;
+    }
+    .donationLogo {
+        > div:nth-child(1) {
+            width: 50% !important;
+        }
+    }
     .contentAnimation {
         max-width: 600px;
     }
@@ -4775,6 +4783,14 @@ $vh: var(--vh);
 }
 
 @include media(">=1100px", "<1200px") {
+    .coinTwo {
+        top: 300px;
+    }
+    .donationLogo {
+        > div:nth-child(1) {
+            width: 50% !important;
+        }
+    }
     .contentAnimation {
         max-width: 700px;
     }
@@ -5161,6 +5177,14 @@ $vh: var(--vh);
 }
 
 @include media(">=1200px", "<1300px") {
+    .coinTwo {
+        top: 300px;
+    }
+    .donationLogo {
+        > div:nth-child(1) {
+            width: 50% !important;
+        }
+    }
     .contentAnimation {
         max-width: 700px;
     }
@@ -5547,6 +5571,14 @@ $vh: var(--vh);
 }
 
 @include media(">=1300px", "<1400px") {
+    .coinTwo {
+        top: 300px;
+    }
+    .donationLogo {
+        > div:nth-child(1) {
+            width: 50% !important;
+        }
+    }
     .contentAnimation {
         max-width: 1000px;
     }
