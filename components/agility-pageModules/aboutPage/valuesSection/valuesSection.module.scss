@@ -1,0 +1,27 @@
+@import "styles/theme.scss";
+
+.container {
+    .cardContainer {
+        background-color: #916e23;
+
+        &:hover {
+            flex: 2;
+            transition: flex 200ms ease-in;
+        }
+
+        // Accessing Next JS Image parent div tag as parent is not accessible directly.
+        div {
+            width: 100%;
+            background-color: $transparent;
+        }
+
+        .cardInfo {
+            color: $white;
+        }
+    }
+
+    .overlay {
+        background-color: $yellow-dark;
+        z-index: 2;
+    }
+}
