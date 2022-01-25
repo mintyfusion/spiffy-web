@@ -64,7 +64,7 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
             >
                 <Navbar.Brand href="#home" className="d-block d-lg-none">
                     <label className="w-100">
-                        {activeTab}
+                        {activeTab.replace("_", " ")}
                     </label>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -88,7 +88,7 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
                                 ${horizontalAlign}
                              `}
                             >
-                                {content.fields.name}
+                                {content.fields.name.replace("_", " ")}
                             </PrimaryButton>
                         )}
                     </Nav>
@@ -105,7 +105,7 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
                     key={content.fields.name}
                 >
                     <Row className={`${styles.contentHeading} w-100 text-center`}>
-                        <h2>{content.fields.name}</h2>
+                        <h2>{content.fields.name.replace("_", " ")}</h2>
                         <h5>{props.module.fields.title}</h5>
                     </Row>
                     {!isLoading && !contentData?.items.length

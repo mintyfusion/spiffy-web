@@ -1,5 +1,6 @@
 enum ContentCategory {
-    all = "All Topics",
+    all = "All",
+    allTopics = "All Topics",
     gameRules = "Game Rules",
     general = "General",
     payment = "Payment",
@@ -8,7 +9,7 @@ enum ContentCategory {
     keyTerms = "Key Terms",
     support = "Support",
     donations = "Donations",
-    contentCreators = "Content Creators",
+    contentCreators = "Content_Creators",
     referAndEarn = "Refer and Earn"
 }
 

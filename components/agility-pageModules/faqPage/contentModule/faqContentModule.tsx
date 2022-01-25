@@ -19,7 +19,7 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
 
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
-    const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.all);
+    const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.allTopics);
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [contentData, setContentData] = React.useState<{ items: ContentItem<IFaqContentModuleData>[] }>();
@@ -137,7 +137,10 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                     && <h1 className="text-center">No FAQ Found</h1>
                 }
                 {!isLoading && contentData && contentData.items.map((post, index) =>
-                    <Accordion key={index} className={`${styles.accordion} ${activeTab !== ContentCategory.all && "d-none"}`}>
+                    <Accordion
+                        key={index}
+                        className={`${styles.accordion} ${activeTab !== ContentCategory.allTopics && "d-none"}`}
+                    >
                         <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
                             <Accordion.Header className={styles.accordianHeader}>
                                 <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
