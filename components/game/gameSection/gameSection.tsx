@@ -419,8 +419,6 @@ const GameSection = (): JSX.Element => {
 
             const styles = {} as Record<AvatarType, CSSProperties>;
 
-            console.log("addedFriends:", addedFriends);
-
             addedFriends.map((value, index) => {
                 switch (index) {
                     case 0:
@@ -560,7 +558,9 @@ const GameSection = (): JSX.Element => {
                     width < tablet900 && width > tablet800 ? thirty :
                         width < tablet800 && width > mobile ? seventy : eigthy;
 
-            const centerTop = width < tablet800 && width > mobile ? 0 : width < mobile && width > mobileMedium ? 0 : seventy;
+            const centerTop = width < tablet800 && width > mobile ? 0 :
+                width < mobile && width > mobileMedium ? 0 :
+                    seventy;
 
             const rigthTopLeft = width < tablet800 && width > mobile ? hundred :
                 width < mobile && width > mobileMedium ? Fifty : width < mobileMedium ? fourty : oneThirty;
@@ -588,8 +588,7 @@ const GameSection = (): JSX.Element => {
             const bottomLeftLeft = width < mobile && width > mobileMedium ? 0 :
                 width < tablet900 && width > tablet800 ? 0 :
                     width < tablet800 && width > mobile ? Fifty :
-                        width < tablet800 && width > mobile ? Fifty : width < mobileMedium ? 20 : twentyFive;
-            console.log(bottomLeftLeft);
+                        width < tablet800 && width > mobile ? Fifty : width < mobileMedium ? twenty : twentyFive;
 
             const bottomLeftTop = width < mobile && width > mobile ? twenty :
                 width < mobile && width > mobileMedium ? fourty : width < mobileMedium ? thirty : seventy;
@@ -626,7 +625,7 @@ const GameSection = (): JSX.Element => {
                     break;
                 case "left":
                     coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft + 20,
+                        left: bounds.x + coin.scrollLeft + twenty,
                         top: bounds.y + coin.scrollTop - leftTop
                     };
                     break;
