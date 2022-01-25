@@ -1039,6 +1039,14 @@ $vh: var(--vh);
 }
 
 @include media(">=375px", "<425px") {
+    .percentageWrapper {
+        width: 100%;
+        height: 100%;
+        img {
+            @include imgProperties(65px);
+            cursor: pointer;
+        }
+    }
     .contentAnimation {
         max-width: 350px;
     }

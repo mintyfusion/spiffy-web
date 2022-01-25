@@ -529,6 +529,8 @@ const GameSection = (): JSX.Element => {
         setSeletedAvatar(null);
         closeModal();
         setAvatarStyleGUID("0");
+        setDonationAmount("");
+        setAnimation(false)
     }, []);
 
     const handlStepAnimation = React.useCallback((stepIndex) => {
@@ -671,6 +673,7 @@ const GameSection = (): JSX.Element => {
                 clearInterval(coinInterval);
             };
         }
+
     }, [donationAmount, handlStepAnimation]);
 
     const coin = (style: string) => <span className={`${style} ${styles.donationAmount}`}>
@@ -775,7 +778,8 @@ const GameSection = (): JSX.Element => {
                                                                 behavior: "smooth"
                                                             });
                                                             coinStyles.current = {
-                                                                top: 230
+                                                                top: "unset",
+                                                                left: "unset"
                                                             };
                                                         }}
                                                         className={`${horizontalAlign} 
