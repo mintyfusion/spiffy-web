@@ -269,6 +269,9 @@
 }
 
 @include media(">=tablet", "<990px") {
+    .friendsMain {
+        max-width: 195px;
+    }
     .percentageSelected {
         img {
             @include imgProperties(90px);
