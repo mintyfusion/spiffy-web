@@ -18,7 +18,7 @@ const getVariant = (variant: LogoVariants): ILogoVariantData => {
         default:
             return {
                 className: styles.headerLogoDimensions,
-                fillColor: styles.white
+                fillColor: styles.red
             };
     }
 };
