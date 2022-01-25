@@ -122,3 +122,6 @@
 .regular-desktop30-mobile20 {
     @include typeFace($twenty, $thirty, $bold);
 }
+.regular-desktop16-mobile7 {
+    @include typeFace($seven, $sixteen, $regular);
+}

@@ -36,8 +36,11 @@ const fourty = 40;
 const fifteenRandom = 15;
 const five = 5;
 const sizes = [twenty, twentyTwo, twentyFive, twentySeven, thirty, thirtyThree, thirtyFive, thirtySeven, fourty];
+const sizesMobile = [twenty, twentyTwo, twentyFive, twentySeven, thirty];
 const slice = 2;
 const sliceTwo = 4;
+const width = window.innerWidth;
+const mobile = 770;
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("1");
@@ -92,16 +95,29 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     }, [percentage, props]);
 
     const avatarsFlex = React.useMemo(
-        () => avatars.map((i, index) => <div key={index} className="avatar"><Image src={i} width={20} height={20} /></div>),
+        () => avatars.map((i, index) => <div key={index} className="avatar"><Image src={i} width={20} height={20} objectFit="contain" /></div>),
         [avatars]
     );
 
     function getRandomMargin() {
+        if (width < mobile) {
+            return `${Math.floor(Math.random() * five + five)}px`;
+        }
+
         return `${Math.floor(Math.random() * fifteenRandom + five)}px`;
+
     }
 
     function getRandomSize() {
-        const randomIndex = Math.floor(Math.random() * sizes.length);
+        let randomIndex: number;
+
+        if (width < mobile) {
+            randomIndex = Math.floor(Math.random() * sizesMobile.length);
+        }
+        else {
+            randomIndex = Math.floor(Math.random() * sizes.length);
+        }
+
 
         return `${sizes[randomIndex]}px`;
     }

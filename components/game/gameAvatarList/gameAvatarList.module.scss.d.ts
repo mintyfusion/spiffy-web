@@ -48,6 +48,7 @@ export type Styles = {
   "regular25": string;
   "regular32": string;
   "regular90": string;
+  "regularDesktop16Mobile7": string;
   "regularDesktop20Mobile7": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;

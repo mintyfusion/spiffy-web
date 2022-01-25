@@ -8,7 +8,6 @@ export type Styles = {
   "animationGrid": string;
   "animationText": string;
   "avatar": string;
-  "avatarAnimation": string;
   "avatarFriends": string;
   "avatarGreen": string;
   "avatarHeading": string;
@@ -46,15 +45,11 @@ export type Styles = {
   "coinRef": string;
   "coinTwo": string;
   "container": string;
-  "containerFadIn": string;
-  "containerFadinAnimation": string;
-  "containerFadOut": string;
-  "containerFadoutAnimation": string;
   "contentAnimation": string;
   "contentShow": string;
   "contetHide": string;
   "customNavbar": string;
-  "cycle0": string;
+  "cycle": string;
   "cycle10": string;
   "cycle11": string;
   "cycle2": string;
@@ -93,7 +88,6 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
-  "fadeIn": string;
   "fadeOut": string;
   "freindsSlideLeft": string;
   "freindsSlideRight": string;
@@ -128,6 +122,7 @@ export type Styles = {
   "regular25": string;
   "regular32": string;
   "regular90": string;
+  "regularDesktop16Mobile7": string;
   "regularDesktop20Mobile7": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
@@ -135,7 +130,6 @@ export type Styles = {
   "selected": string;
   "selectedAnimation": string;
   "semiBold90": string;
-  "show": string;
   "signUpsection": string;
   "stepFour": string;
   "targetOne": string;
