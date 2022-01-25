@@ -596,12 +596,13 @@ const GameSection = (): JSX.Element => {
                 width < tablet900 && width > tablet800 ? 0 :
                     width < tablet800 && width > mobile ? Fifty :
                         width < tablet800 && width > mobile ? Fifty :
-                            width < mobileMedium ? twenty : twentyFive;
+                            width < mobileMedium ? 20 : twentyFive;
+            console.log(bottomLeftLeft);
 
             const bottomLeftTop = width < mobile && width > mobile ? twenty :
                 width < mobile && width > mobileMedium ? fourty :
                     width < tablet800 && width > mobile ? fourty :
-                        width < mobileMedium ? thirty : seventy;
+                        width < mobileMedium ? 30 : seventy;
 
             const leftTop = width < mobile ? 0 :
                 width < tablet800 && width > mobile ? Ten : thirty;
@@ -647,7 +648,7 @@ const GameSection = (): JSX.Element => {
                     break;
                 case Position.BottomLeft:
                     coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft - bottomLeftLeft,
+                        left: width < mobileMedium ? bounds.x + coin.scrollLeft + bottomLeftLeft : bounds.x + coin.scrollLeft - bottomLeftLeft,
                         top: bounds.y + coin.scrollTop - bottomLeftTop
                     };
             }
