@@ -39,7 +39,6 @@ const sizes = [twenty, twentyTwo, twentyFive, twentySeven, thirty, thirtyThree, 
 const sizesMobile = [twenty, twentyTwo, twentyFive, twentySeven, thirty];
 const slice = 2;
 const sliceTwo = 4;
-const width = window.innerWidth;
 const mobile = 770;
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
@@ -100,6 +99,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     );
 
     function getRandomMargin() {
+        const width = window.innerWidth;
         if (width < mobile) {
             return `${Math.floor(Math.random() * five + five)}px`;
         }
@@ -109,6 +109,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     }
 
     function getRandomSize() {
+        const width = window.innerWidth;
         let randomIndex: number;
 
         if (width < mobile) {
