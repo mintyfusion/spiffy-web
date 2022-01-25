@@ -67,7 +67,7 @@ export type Styles = {
   "cycle9": string;
   "displayAnimation": string;
   "donationActive": string;
-  "donationAmount0": string;
+  "donationAmount": string;
   "donationAmount10": string;
   "donationAmount11": string;
   "donationAmount2": string;

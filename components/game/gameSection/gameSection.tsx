@@ -12,14 +12,14 @@ import data from "components/game/gameSection/gameSectionContent";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
+import IFriendAvatar from "components/game/gameSection/interfaces/IFriendAvatar";
 import Image from "next/image";
+import Position from "components/game/gameSection/enums/gameSectionCoinAvatarPosition";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import StepTypes from "./enums/stepTypes";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
-import Position from "components/game/gameSection/enums/gameSectionCoinAvatarPosition";
-import IFriendAvatar from "components/game/gameSection/interfaces/IFriendAvatar";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
 
@@ -809,14 +809,16 @@ const GameSection = (): JSX.Element => {
                                             <Col className={`${horizontalAlign} ${styles.heigth120}`}>
                                                 <div className={`${styles.cycle0} ${styles.donationImage}`} data-index="0" data-position={Position.Center}>
                                                     <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount0}>0.20</span>
+                                                    <span className={styles.donationAmount}>0.20</span>
                                                 </div>
                                             </Col>
                                         </Row>
                                         <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
                                             <div className={`${styles.cycle2} ${styles.donationImage}`} data-index="1" data-position={Position.RightTop}>
                                                 <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
-                                                <span className={styles.donationAmount2}>0.20</span>
+                                                <span className={`${styles.donationAmount2} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                         </Row>
                                         <Row className={`${styles.w40} ${rowHBetween}`}>
@@ -828,33 +830,47 @@ const GameSection = (): JSX.Element => {
                                                 </div>
                                                 <div className={`${styles.cycle3} ${styles.donationImage}`} data-index="10" data-position={Position.Left}>
                                                     <Image src="/images/Game/donationCycle/spiffy.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount3}>0.20</span>
+                                                    <span
+                                                        className={`${styles.donationAmount3} 
+                                                    ${styles.donationAmount}`}>
+                                                        0.20
+                                                    </span>
                                                 </div>
                                             </div>
 
                                             <div className={`${styles.cycle4} ${styles.donationImage}`} data-index="2" data-position={Position.Right}>
                                                 <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
-                                                <span className={styles.donationAmount4}>0.20</span>
+                                                <span className={`${styles.donationAmount4} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                         </Row>
                                         <Row className={`${styles.w55} ${rowHBetween}`}>
                                             <div className={`${styles.cycle5} ${styles.donationImage}`} data-index="9" data-position={Position.Left}>
                                                 <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
-                                                <span className={styles.donationAmount5}>0.20</span>
+                                                <span className={`${styles.donationAmount5} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                             <div className={`${styles.cycle6} ${styles.donationImage}`} data-index="3" data-position={Position.Right}>
                                                 <Image src="/images/Game/avatars/avatarPurple.png" width={56} height={63} />
-                                                <span className={styles.donationAmount6}>0.20</span>
+                                                <span className={`${styles.donationAmount6} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                         </Row>
                                         <Row className={`${styles.w40} ${rowHBetween}`}>
                                             <div className={`${styles.cycle7} ${styles.donationImage}`} data-index="8" data-position={Position.Left}>
                                                 <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
-                                                <span className={styles.donationAmount7}>0.20</span>
+                                                <span className={`${styles.donationAmount7} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                             <div className={`${styles.cycle8} ${styles.donationImage}`} data-index="4" data-position={Position.Right}>
                                                 <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
-                                                <span className={styles.donationAmount8}>0.20</span>
+                                                <span className={`${styles.donationAmount8} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                         </Row>
                                         <Row className={`${styles.w25} 
@@ -862,17 +878,23 @@ const GameSection = (): JSX.Element => {
                                         ${rowHBetween}`}>
                                             <div className={`${styles.cycle9} ${styles.donationImage}`} data-index="7" data-position={Position.BottomLeft}>
                                                 <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
-                                                <span className={styles.donationAmount9}>0.20</span>
+                                                <span className={`${styles.donationAmount9} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                             <div className={`${styles.cycle10} ${styles.donationImage}`} data-index="5" data-position={Position.BottomRight}>
                                                 <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
-                                                <span className={styles.donationAmount10}>0.20</span>
+                                                <span className={`${styles.donationAmount10} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                         </Row>
                                         <Row className={horizontalAlign}>
                                             <div className={`${styles.cycle11} ${styles.donationImage}`} data-index="6" data-position={Position.BottomCenter}>
                                                 <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
-                                                <span className={styles.donationAmount11}>0.20</span>
+                                                <span className={`${styles.donationAmount11} ${styles.donationAmount}`}>
+                                                    0.20
+                                                </span>
                                             </div>
                                         </Row>
                                     </div>
