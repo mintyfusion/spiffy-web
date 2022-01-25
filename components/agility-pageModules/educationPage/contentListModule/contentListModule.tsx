@@ -7,7 +7,7 @@ import React from "react";
 import api from "utils/api/api";
 import Breakpoints from "common/style/breakpoints";
 import CardContainer from "components/agility-pageModules/common/cardContainer/cardContainer";
-import ContentCategory from "components/educationPage/contentSection/enums/contentCategory";
+import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import FilterTypes from "utils/api/enums/filterTypes";
 import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
@@ -60,7 +60,7 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
                 expand="lg"
                 expanded={expanded}
                 onClick={() => breakpoint && setExpanded(!expanded)}
-                className="mb-1 mb-md-4"
+                className={`mb-1 mb-md-4 overflow-auto ${styles.navbar}`}
             >
                 <Navbar.Brand href="#home" className="d-block d-lg-none">
                     <label className="w-100">

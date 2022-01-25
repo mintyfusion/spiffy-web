@@ -1,4 +1,4 @@
-import ContentCategory from "components/educationPage/contentSection/enums/contentCategory";
+import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import ICardData from "types/ICardData";
 import IContentInfo from "types/IContentnfo";
 

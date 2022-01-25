@@ -11,6 +11,7 @@ export type Styles = {
   "bold24": string;
   "bold25": string;
   "bold32": string;
+  "bold36": string;
   "bold41": string;
   "bold60": string;
   "bold67": string;
@@ -30,6 +31,7 @@ export type Styles = {
   "fullbold109": string;
   "fullBold67": string;
   "inactive": string;
+  "navbar": string;
   "regular14": string;
   "regular16": string;
   "regular24": string;

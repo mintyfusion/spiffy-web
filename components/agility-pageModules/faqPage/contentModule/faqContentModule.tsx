@@ -6,10 +6,9 @@ import React from "react";
 
 import api from "utils/api/api";
 import Breakpoints from "common/style/breakpoints";
-import ContentCategory from "components/educationPage/contentSection/enums/contentCategory";
-import FilterTypes from "utils/api/enums/filterTypes";
+import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import flexbox from "utils/flexbox";
-import IContentInfo from "types/IContentnfo";
+import IFaqContentModuleData from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleData";
 import IFaqContentModuleProps from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleProps";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
@@ -23,7 +22,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.all);
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const [expanded, setExpanded] = React.useState<boolean>(false);
-    const [contentData, setContentData] = React.useState<{ items: ContentItem<IContentInfo>[] }>();
+    const [contentData, setContentData] = React.useState<{ items: ContentItem<IFaqContentModuleData>[] }>();
     const [isLoading, setIsLoading] = React.useState<boolean>();
 
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
@@ -37,27 +36,55 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
 
     const getFAQList = React.useCallback(async () => {
         setIsLoading(true);
-        const result = await api.getContentList<IContentInfo>({
+        const result = await api.getContentList<IFaqContentModuleData>({
             referenceName: "FAQContentList",
             languageCode: "en-us",
             contentLinkDepth: 2,
             depth: 2,
-            take: 50,
-            filters: activeTab !== ContentCategory.all && [{
-                property: "fields.tag_TextField",
-                operator: FilterTypes.EQUAL_TO,
-                value: activeTab
-            }]
+            take: 50
         }).finally(() => setIsLoading(false));
 
         return result;
-    }, [activeTab]);
+    }, []);
 
     React.useEffect(() => {
         getFAQList()
             .then(result => setContentData(result))
             .catch((err: unknown) => err);
     }, [getFAQList]);
+
+    const tags = props.module.fields.tags.map(tag => tag.fields.name);
+
+    const data = React.useMemo(() =>
+        tags.map((tag) => {
+            if (tag === ContentCategory.all) {
+                return;
+            }
+
+            return (
+                <>
+                    {contentData
+                        && contentData.items.filter(data => data.fields.tag.fields.name === tag).map((post, index) =>
+                            <Accordion key={`${tag} ${index}`} className={`${styles.accordion} ${tag !== activeTab && "d-none"}`}>
+                                <Accordion.Item eventKey={`${tag} ${index}`} className="position-relative border-0">
+                                    <Accordion.Header className={styles.accordianHeader}>
+                                        <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
+                                            <div className={`${styles.faqIndex} p-3`}>
+                                                {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
+                                            </div>
+                                            <div className="w-100 p-2">{post.fields.title}</div>
+                                            <ContextAwareToggle eventKey={`${tag} ${index}`} />
+                                        </Stack>
+                                    </Accordion.Header>
+                                    <Accordion.Body className={styles.accordianBody}>
+                                        <div dangerouslySetInnerHTML={renderHTML(post.fields.description)} />
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
+                        )}
+                </>
+            );
+        }), [tags, contentData, activeTab]);
 
     return (
         <div className={`${styles.contentContainer} px-2 px-md-5`}>
@@ -71,7 +98,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                 expand="lg"
                 expanded={expanded}
                 onClick={() => breakpoint && setExpanded(!expanded)}
-                className="mb-1 mb-md-4"
+                className={`mb-1 mb-md-4 overflow-auto ${styles.navbar}`}
             >
                 <Navbar.Brand href="#home" className="d-block d-lg-none">
                     <label className="w-100">
@@ -110,7 +137,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                     && <h1 className="text-center">No FAQ Found</h1>
                 }
                 {!isLoading && contentData && contentData.items.map((post, index) =>
-                    <Accordion key={index} className={styles.accordion}>
+                    <Accordion key={index} className={`${styles.accordion} ${activeTab !== ContentCategory.all && "d-none"}`}>
                         <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
                             <Accordion.Header className={styles.accordianHeader}>
                                 <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
@@ -122,11 +149,12 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                                 </Stack>
                             </Accordion.Header>
                             <Accordion.Body className={styles.accordianBody}>
-                             <div dangerouslySetInnerHTML={renderHTML(post.fields.description)} />
+                                <div dangerouslySetInnerHTML={renderHTML(post.fields.description)} />
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
                 )}
+                {data.map(data => data)}
             </Stack>
         </div>
     );

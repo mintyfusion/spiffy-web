@@ -7,6 +7,19 @@
     padding: 3rem 1rem;
     background: $dirty-white;
 
+    .navbar {
+        &::-webkit-scrollbar {
+            height: 4px;
+            width: 10px;
+            border: 1px solid $transparent;
+            border-radius: 5px;
+        }
+        &::-webkit-scrollbar-thumb:horizontal {
+            background: $light-grey;
+            border-radius: 10px;
+        }
+    }
+
     nav {
         :global(.navbar-toggler) {
             border: none;
@@ -40,6 +53,8 @@
 }
 
 .tab {
+    min-width: 300px;
+
     &.active {
         background-color: $yellow;
     }

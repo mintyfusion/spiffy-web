@@ -5,7 +5,7 @@ import React from "react";
 
 import Breakpoints from "common/style/breakpoints";
 import CardContainer from "components/common/cardContainer/cardContainer";
-import ContentCategory from "components/educationPage/contentSection/enums/contentCategory";
+import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import flexbox from "utils/flexbox";
 import IContentSectionProps from "components/educationPage/contentSection/interfaces/IContentSectionProps";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
