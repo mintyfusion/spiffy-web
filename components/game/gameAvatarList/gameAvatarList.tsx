@@ -35,8 +35,9 @@ const thirtySeven = 37;
 const fourty = 40;
 const fifteenRandom = 15;
 const five = 5;
+const Ten = 10;
 const sizes = [twenty, twentyTwo, twentyFive, twentySeven, thirty, thirtyThree, thirtyFive, thirtySeven, fourty];
-const sizesMobile = [fifteenRandom, twenty, twentyTwo, twentyFive];
+const sizesMobile = [Ten, fifteenRandom, twenty, twentyTwo];
 const slice = 2;
 const sliceTwo = 4;
 const mobile = 770;
@@ -142,6 +143,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
             avatar.style.width = size;
             avatar.style.height = size;
             avatar.style.alignSelf = getRandomAlignSelf();
+            avatar.style.transition = "500ms";
         }
     }, [percentage]);
 
