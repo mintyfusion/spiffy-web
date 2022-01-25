@@ -15,7 +15,7 @@ import IContentSectionProps from "components/agility-pageModules/educationPage/c
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
 
-import styles from "components/educationPage/contentSection/contentSection.module.scss";
+import styles from "components/agility-pageModules/educationPage/contentSection/contentSection.module.scss";
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
