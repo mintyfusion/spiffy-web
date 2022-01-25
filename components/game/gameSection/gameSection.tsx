@@ -530,7 +530,7 @@ const GameSection = (): JSX.Element => {
         closeModal();
         setAvatarStyleGUID("0");
         setDonationAmount("");
-        setAnimation(false)
+        setAnimation(false);
     }, []);
 
     const handlStepAnimation = React.useCallback((stepIndex) => {
@@ -596,13 +596,12 @@ const GameSection = (): JSX.Element => {
                 width < tablet900 && width > tablet800 ? 0 :
                     width < tablet800 && width > mobile ? Fifty :
                         width < tablet800 && width > mobile ? Fifty :
-                            width < mobileMedium ? 20 : twentyFive;
-            console.log(bottomLeftLeft);
+                            width < mobileMedium ? twenty : twentyFive;
 
             const bottomLeftTop = width < mobile && width > mobile ? twenty :
                 width < mobile && width > mobileMedium ? fourty :
                     width < tablet800 && width > mobile ? fourty :
-                        width < mobileMedium ? 30 : seventy;
+                        width < mobileMedium ? thirty : seventy;
 
             const leftTop = width < mobile ? 0 :
                 width < tablet800 && width > mobile ? Ten : thirty;
@@ -648,7 +647,8 @@ const GameSection = (): JSX.Element => {
                     break;
                 case Position.BottomLeft:
                     coinStyles.current = {
-                        left: width < mobileMedium ? bounds.x + coin.scrollLeft + bottomLeftLeft : bounds.x + coin.scrollLeft - bottomLeftLeft,
+                        left: width < mobileMedium ? bounds.x + coin.scrollLeft + bottomLeftLeft
+                            : bounds.x + coin.scrollLeft - bottomLeftLeft,
                         top: bounds.y + coin.scrollTop - bottomLeftTop
                     };
             }
