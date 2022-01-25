@@ -95,6 +95,7 @@
 
 .donationInner {
     display: flex;
+    margin-top: 40px;
     h2 {
         @extend .boldGame41;
         margin-bottom: 40px;
@@ -203,7 +204,18 @@
         height: 100%;
     }
 }
+
 @include media(">=phone", "<tablet") {
+    .donationInner {
+        h6 {
+            margin-top: 30px;
+        }
+    }
+    .gameStepFive {
+        nav {
+            padding: 0 20px;
+        }
+    }
     .friendsMain {
         max-width: 120px;
     }
@@ -246,7 +258,7 @@
 
     .gameStepFive {
         @include gameContentPadding(50px 0px);
-        width: 80%;
+        width: 100%;
     }
 
     .percentageSelected {
