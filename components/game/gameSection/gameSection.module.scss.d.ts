@@ -1,27 +1,14 @@
 export type Styles = {
   "active": string;
   "activeTab": string;
-  "animation1": string;
-  "animation2": string;
-  "animation3": string;
-  "animation4": string;
   "animationGrid": string;
-  "animationText": string;
   "avatar": string;
   "avatarFriends": string;
-  "avatarGreen": string;
   "avatarHeading": string;
   "avatarInner": string;
-  "avatarOrange": string;
-  "avatarPurple": string;
-  "avatarRed": string;
   "avatarSelected": string;
-  "avatarstepThree": string;
-  "avatarstepThreeAnimation": string;
   "avatarstepTwo": string;
   "avatarstepTwoAnimation": string;
-  "avatarWrapper": string;
-  "avatarYellow": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold150": string;
@@ -40,7 +27,6 @@ export type Styles = {
   "close": string;
   "coin": string;
   "coinAnimation": string;
-  "coinAnimatonMobile": string;
   "coinDefault": string;
   "coinRef": string;
   "coinTwo": string;
@@ -89,10 +75,6 @@ export type Styles = {
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "fadeOut": string;
-  "freindsSlideLeft": string;
-  "freindsSlideRight": string;
-  "friends": string;
-  "friendsAnimation": string;
   "fullbold109": string;
   "fullBold67": string;
   "gameStepOne": string;
@@ -112,8 +94,6 @@ export type Styles = {
   "navToggle": string;
   "opacityAnimation": string;
   "paddingSides": string;
-  "percentageFriends": string;
-  "percentageSelected": string;
   "percentageWrapper": string;
   "regular14": string;
   "regular16": string;
@@ -127,8 +107,6 @@ export type Styles = {
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "regularDesktop30Mobile20": string;
-  "selected": string;
-  "selectedAnimation": string;
   "semiBold90": string;
   "signUpsection": string;
   "stepFour": string;
