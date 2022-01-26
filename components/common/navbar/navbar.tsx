@@ -97,12 +97,12 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                 id="responsive-navbar-nav"
             >
                 <Nav className={`me-auto align-items-start ${styles.links} ${breakpoint && "w-100"}`}>
-                    <Link
+                    {/* <Link
                         href="/subscribers"
                         className={`${styles.link} me-lg-3 me-xl-5 py-3 px-4 px-lg-0`}
                     >
                         FOR SUBSCRIBERS
-                    </Link>
+                    </Link> */}
                     <Link
                         href="/creator"
                         className={`${styles.link} me-lg-3 me-xl-5 py-3 px-4 px-lg-0`}
