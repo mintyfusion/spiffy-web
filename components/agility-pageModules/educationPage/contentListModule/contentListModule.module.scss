@@ -51,6 +51,7 @@
 
 .tab {
     border: none;
+    text-transform: initial;
 
     &.active {
         background-color: $yellow;

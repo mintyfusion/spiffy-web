@@ -55,6 +55,7 @@
 .tab {
     min-width: 300px;
     border: none;
+    text-transform: initial;
 
     &.active {
         background-color: $yellow;
