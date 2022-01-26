@@ -13,6 +13,7 @@ const BannerSection = (props: IContentInfo): JSX.Element => {
     const { title, description } = props;
     const [searchedText, setSearchedText] = React.useState<string>("");
     const [disableSearchInput, setDisableSearchInput] = React.useState<boolean>(false);
+    const containerRef = React.useRef<HTMLDivElement>();
     const searchRef = React.useRef<HTMLInputElement>();
     const data: ISearchInfo = React.useContext(SearchContext);
 
@@ -31,14 +32,15 @@ const BannerSection = (props: IContentInfo): JSX.Element => {
         } else {
             data.setSearch("");
             setDisableSearchInput(false);
+            containerRef.current.scrollIntoView();
         }
     }, [data, searchedText]);
 
     return (
-        <div className={`text-start position-absolute bottom-0 ${styles.bannerContentContainer}`}>
+        <div className={`text-start position-absolute bottom-0 ${styles.bannerContentContainer}`} ref={containerRef}>
             <h1 className={styles.title}>{title}</h1>
             <h5 className={styles.description}>{description}</h5>
-            <div className={`position-relative ${styles.searchContainer} mt-3`}>
+            <div className={`position-relative ${styles.searchContainer} mt-3`} >
                 <input
                     type="text"
                     placeholder="Search"
