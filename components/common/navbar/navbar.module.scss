@@ -108,7 +108,7 @@ $backroundTransition: background-color 0.2s;
 }
 /* ANIMATION END */
 
-@include media(">=phone", "<992px") {
+@include media("<992px") {
   .navbarItems {
     transition: height 0.5s;
 
