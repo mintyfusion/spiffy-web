@@ -538,9 +538,15 @@ const GameSection = (): JSX.Element => {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
             const bounds = avatar.getBoundingClientRect();
             const coin = document.getElementById("CoinAnimation");
+            const width = window.innerWidth;
+            const left = width < 400 ? 10 :
+                width > 400 && width < 500 ? 50 :
+                    width > 500 && width < 800 ? 65 :
+                        width > 800 && width < 1100 ? 35 :
+                            70
 
             coinStyles.current = {
-                left: bounds.x + coin.scrollLeft - 80,
+                left: bounds.x + coin.scrollLeft - left,
                 top: bounds.y + coin.scrollTop
             };
 

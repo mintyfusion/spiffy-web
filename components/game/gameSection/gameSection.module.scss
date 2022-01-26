@@ -1456,11 +1456,11 @@ $vh: var(--vh);
 
     .w40 {
         width: 70%;
-        margin: 5px auto;
+        margin: 10px auto;
     }
     .w55 {
         width: 80%;
-        margin: 5px auto;
+        margin: 15px auto;
     }
     .donationButton {
         margin-bottom: 10px;
@@ -2119,8 +2119,8 @@ $vh: var(--vh);
         right: -145px;
         > div:nth-child(1) {
             width: 40% !important;
-            top: -43px !important;
-            right: -35px !important;
+            top: -30px !important;
+            right: -48px !important;
             text-align: left !important;
         }
     }
@@ -2131,6 +2131,12 @@ $vh: var(--vh);
     }
     .cycle {
         width: 60px !important;
+    }
+    .cycle3 {
+        margin-top: -50px !important;
+        width: 50% !important;
+        border-radius: 12px !important;
+        padding: 10px !important;
     }
     .customNavbar {
         position: absolute;
@@ -2159,8 +2165,8 @@ $vh: var(--vh);
         margin: 5px auto;
     }
     .w55 {
-        width: 60%;
-        margin: 5px auto;
+        width: 57%;
+        margin: 15px auto;
     }
     .donationButton {
         margin-bottom: 10px;
@@ -2362,8 +2368,8 @@ $vh: var(--vh);
         right: -145px;
         > div:nth-child(1) {
             width: 40% !important;
-            top: -43px !important;
-            right: -35px !important;
+            top: -24px !important;
+            right: -60px !important;
             text-align: left !important;
         }
     }
@@ -2718,7 +2724,8 @@ $vh: var(--vh);
     }
     .donationLogo {
         > div:nth-child(1) {
-            width: 50% !important;
+            width: 35% !important;
+            top: -26px !important;
         }
     }
     .contentAnimation {
