@@ -29,10 +29,9 @@ const rowHBetween = flexbox({ hAlign: "between" });
 const rowHEnd = flexbox({ hAlign: "end" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
-// const donationDivide = 2;
 const friendsTimeout = 3000;
 const avatarTimeout = 1000;
-// const donationFormula = 5;
+const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
 const containerId = "containerElement";
@@ -388,7 +387,8 @@ const GameSection = (): JSX.Element => {
             duration: 700,
             smooth: true,
             containerId,
-            ignoreCancelEvents: true
+            ignoreCancelEvents: true,
+            delay: 3000
         });
     }, []);
 
@@ -539,11 +539,20 @@ const GameSection = (): JSX.Element => {
             const bounds = avatar.getBoundingClientRect();
             const coin = document.getElementById("CoinAnimation");
             const width = window.innerWidth;
-            const left = width < 400 ? 10 :
-                width > 400 && width < 500 ? 50 :
-                    width > 500 && width < 800 ? 65 :
-                        width > 800 && width < 1100 ? 35 :
-                            70
+            const fourHundred = 400;
+            const Ten = 10;
+            const fiveHundred = 500;
+            const fifty = 50;
+            const eightHundred = 800;
+            const sixtyFive = 65;
+            const elevenHundred = 1100;
+            const thiryFive = 35;
+            const sixty = 60;
+            const left = width < fourHundred ? Ten :
+                width > fourHundred && width < fiveHundred ? fifty :
+                    width > fiveHundred && width < eightHundred ? sixtyFive :
+                        width > eightHundred && width < elevenHundred ? thiryFive :
+                            sixty;
 
             coinStyles.current = {
                 left: bounds.x + coin.scrollLeft - left,
@@ -575,7 +584,7 @@ const GameSection = (): JSX.Element => {
     }, [donationAmount, handlStepAnimation]);
 
     const coin = (style: string) => <span className={`${style} ${styles.donationAmount}`}>
-        20¢
+        ${Number(donationAmount) / donationFormula / donationFormula}¢
     </span>;
 
     return (
@@ -654,7 +663,9 @@ const GameSection = (): JSX.Element => {
                             <div className={styles.card}>
                                 <div className={`${rowHCenter} ${styles.stepFour}`}>
                                     <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
-                                    <h4>Add donation in increments of $5, and discover where your donation is going.</h4>
+                                    <h4>
+                                        Add donation in increments of $5, and discover where your donation is going.
+                                    </h4>
                                     <Navbar expand="lg" className="justify-content-center"
                                         expanded={expanded}
                                         onClick={() => breakpoint && setExpanded(!expanded)}>
@@ -720,7 +731,9 @@ const GameSection = (): JSX.Element => {
                                             <Col className={`${horizontalAlign} ${styles.heigth120}`}>
                                                 <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1" data-position={Position.Center}>
                                                     <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount}>20¢</span>
+                                                    <span className={styles.donationAmount}>
+                                                        ${Number(donationAmount) / donationFormula / donationFormula}¢
+                                                    </span>
                                                 </div>
                                             </Col>
                                         </Row>
