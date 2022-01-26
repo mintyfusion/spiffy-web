@@ -526,6 +526,10 @@ const GameSection = (): JSX.Element => {
         setAvatarStyleGUID("0");
         setDonationAmount("");
         setAnimation(false);
+        coinStyles.current = {
+            left: null,
+            top: null
+        };
     }, []);
 
     const handlStepAnimation = React.useCallback((stepIndex) => {
@@ -613,7 +617,7 @@ const GameSection = (): JSX.Element => {
 
                         <Element name={StepTypes.Two} className={styles.card} id="test">
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
-                                <h2 className={`${styles.avatarHeading}`}>Name your avatar.</h2>
+                                <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
                                     <div className={styles.targetOne} ref={target}></div>
                                     <input
@@ -636,7 +640,7 @@ const GameSection = (): JSX.Element => {
                                     <h3>{avatarName}</h3>
                                 </div>
                                 <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`} ref={friendsRef}>
-                                    <h2 className={styles.avatarHeading}>Add four friends.</h2>
+                                    <h2 className={styles.avatarHeading}>Add four friends</h2>
                                     {step === StepTypes.Three ?
                                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
                                             {friendsAvatars.map((key: IFriendAvatar, index) =>
@@ -682,8 +686,8 @@ const GameSection = (): JSX.Element => {
                                                                 behavior: "smooth"
                                                             });
                                                             coinStyles.current = {
-                                                                top: "unset",
-                                                                left: "unset"
+                                                                left: null,
+                                                                top: null
                                                             };
                                                         }}
                                                         className={`${horizontalAlign} 
