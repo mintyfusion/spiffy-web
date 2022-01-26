@@ -22,7 +22,7 @@ import styles from "components/agility-pageModules/educationPage/contentListModu
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
 const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
-    const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.all);
+    const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [showMore, setShowMore] = React.useState({});
     const breakpoint = useBreakpoint(Breakpoints.LG);

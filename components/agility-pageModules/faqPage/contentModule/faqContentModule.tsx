@@ -20,7 +20,7 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
 
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
-    const [activeTab, setActiveTab] = React.useState<ContentCategory>(ContentCategory.allTopics);
+    const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.allTopics);
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [contentData, setContentData] = React.useState<{ items: ContentItem<IFaqContentModuleData>[] }>();
@@ -56,7 +56,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             .catch((err: unknown) => err);
     }, [getFAQList]);
 
-    const tags = props.module.fields.tags.map(tag => tag.fields.name);
+    const tags = React.useMemo(() => props.module.fields.tags.map(tag => tag.fields.name), [props.module.fields.tags]);
 
     const faqData = React.useMemo(() =>
         tags.map((tag) => {
