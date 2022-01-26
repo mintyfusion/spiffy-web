@@ -512,6 +512,10 @@ $vh: var(--vh);
         width: 75px;
         text-align: center;
         z-index: 2;
+        max-height: 90px;
+        img {
+            object-fit: contain;
+        }
     }
     .cycle2 {
         animation-delay: 1s;
