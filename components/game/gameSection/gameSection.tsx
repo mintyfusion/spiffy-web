@@ -37,7 +37,7 @@ const boundDivide = 2;
 const friendsLength = 4;
 const containerId = "containerElement";
 const phoneKeyboardTimeout = 500;
-const donationTotalAvatars = 9;
+const donationTotalAvatars = 11;
 const stepTwoTimeout = 1500;
 
 const GameSection = (): JSX.Element => {
@@ -235,7 +235,7 @@ const GameSection = (): JSX.Element => {
                 [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
-                    transition: "2s"
+                    transition: "1s"
                 }
             };
             setAvatarStyleGUID(getUniqueId());
@@ -290,7 +290,7 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top,
                         left,
-                        transition: "2s"
+                        // transition: "2s"
 
                     };
 
@@ -299,7 +299,7 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top,
                         left: left2,
-                        transition: "2s"
+                        // transition: "2s"
                     };
 
                     break;
@@ -307,7 +307,7 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top: top2,
                         left,
-                        transition: "2s"
+                        // transition: "2s"
                     };
 
                     break;
@@ -315,7 +315,7 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top: top2,
                         left: left2,
-                        transition: "2s"
+                        // transition: "2s"
                     };
 
                     break;
@@ -358,14 +358,14 @@ const GameSection = (): JSX.Element => {
                     [seletedAvatar]: {
                         top: bounds.y + fullscreen.current.scrollTop,
                         left: bounds.x + fullscreen.current.scrollLeft,
-                        transition: "2s"
+                        transition: "1s"
                     }
                 };
                 setAvatarStyleGUID(getUniqueId());
                 setStep(StepTypes.Three);
                 setFriendsPositions();
                 scroller.scrollTo(StepTypes.Three, {
-                    duration: 700,
+                    duration: 500,
                     smooth: true,
                     containerId,
                     ignoreCancelEvents: true,
@@ -536,122 +536,13 @@ const GameSection = (): JSX.Element => {
     const handlStepAnimation = React.useCallback((stepIndex) => {
         if (coinRef.current) {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
-            const dataPosition = avatar.getAttribute("data-position") as Position;
             const bounds = avatar.getBoundingClientRect();
-            const width = window.innerWidth;
-            const mobile = 500;
-            const mobileMedium = 350;
-            const dektop1600 = 1600;
-            const dektop1000 = 1000;
-            const tablet900 = 900;
-            const tablet800 = 800;
-            const Ten = 10;
-            const Fifty = 50;
-            const hundred = 100;
-            const hundredTen = 110;
-            const twenty = 20;
-            const thirty = 30;
-            const fifteen = 15;
-            const fourty = 40;
-            const oneFifty = 150;
-            const twentyFive = 15;
-            const seventy = 70;
-            const seventyFive = 75;
-            const oneTwenty = 120;
-            const oneSeventy = 170;
-
-            const centerLeft = width < mobile ? Ten :
-                width < dektop1600 && width > dektop1000 ? Fifty :
-                    width < tablet900 && width > tablet800 ? thirty :
-                        width < tablet800 && width > mobile ? seventy : seventyFive;
-
-            const centerTop = width < tablet800 && width > mobile ? 0 :
-                width < mobile && width > mobileMedium ? 0 :
-                    0;
-
-            const rigthTopLeft = width < tablet800 && width > mobile ? hundred :
-                width < mobile && width > mobileMedium ? Fifty : width < mobileMedium ? fourty : oneFifty;
-
-            const rigthLeft = width < mobile ? Fifty :
-                width < tablet900 && width > tablet800 ? oneTwenty :
-                    width < tablet800 && width > mobile ? hundredTen :
-                        oneSeventy;
-
-            const rigthTop = width < mobile ? Ten :
-                width < tablet800 && width > mobile ? Ten : twenty;
-
-            const bottomRigthLeft = width < mobile ? fourty :
-                width < tablet800 && width > mobile ? thirty : hundred;
-
-            const bottomRigthTop = width < mobile ? thirty :
-                width < tablet800 && width > mobile ? hundred : hundred;
-
-            const bottomCenterTop = width < mobile ? Fifty :
-                width < tablet800 && width > mobile ? Fifty : hundred;
-
-            const bottomCenterLeft = width < mobile ? fifteen :
-                width < tablet900 && width > tablet800 ? thirty : seventy;
-
-            const bottomLeftLeft = width < mobile && width > mobileMedium ? 0 :
-                width < tablet900 && width > tablet800 ? 0 :
-                    width < tablet800 && width > mobile ? Fifty :
-                        width < tablet800 && width > mobile ? Fifty :
-                            width < mobileMedium ? twenty : twentyFive;
-
-            const bottomLeftTop = width < mobile && width > mobile ? twenty :
-                width < mobile && width > mobileMedium ? fourty :
-                    width < tablet800 && width > mobile ? fourty :
-                        width < mobileMedium ? thirty : seventy;
-
-            const leftTop = width < mobile ? 0 :
-                width < tablet800 && width > mobile ? Ten : thirty;
-
             const coin = document.getElementById("CoinAnimation");
 
-            switch (dataPosition) {
-                case Position.Center:
-                    coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft - centerLeft,
-                        top: bounds.y + coin.scrollTop - centerTop
-                    };
-                    break;
-                case Position.RightTop:
-                    coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft - rigthTopLeft,
-                        top: bounds.y + coin.scrollTop
-                    };
-                    break;
-                case Position.Right:
-                    coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft - rigthLeft,
-                        top: bounds.y + coin.scrollTop - rigthTop
-                    };
-                    break;
-                case Position.BottomRight:
-                    coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft - bottomRigthTop,
-                        top: bounds.y + coin.scrollTop - bottomRigthLeft
-                    };
-                    break;
-                case Position.Left:
-                    coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft + twenty,
-                        top: bounds.y + coin.scrollTop - leftTop
-                    };
-                    break;
-                case Position.BottomCenter:
-                    coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft - bottomCenterLeft,
-                        top: bounds.y + coin.scrollTop - bottomCenterTop
-                    };
-                    break;
-                case Position.BottomLeft:
-                    coinStyles.current = {
-                        left: width < mobileMedium ? bounds.x + coin.scrollLeft + bottomLeftLeft
-                            : bounds.x + coin.scrollLeft - bottomLeftLeft,
-                        top: bounds.y + coin.scrollTop - bottomLeftTop
-                    };
-            }
+            coinStyles.current = {
+                left: bounds.x + coin.scrollLeft - 80,
+                top: bounds.y + coin.scrollTop
+            };
 
             setAvatarStyleGUID(getUniqueId());
         }
@@ -678,7 +569,7 @@ const GameSection = (): JSX.Element => {
     }, [donationAmount, handlStepAnimation]);
 
     const coin = (style: string) => <span className={`${style} ${styles.donationAmount}`}>
-        0.20
+        20¢
     </span>;
 
     return (
@@ -690,7 +581,7 @@ const GameSection = (): JSX.Element => {
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={handleModalCloseBtnClick} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
-                            <h2 className={`${styles.avatarHeading}`}>Choose your Avatar.</h2>
+                            <h2 className={`${styles.avatarHeading}`}>Choose your avatar</h2>
                             {step1Avatars.map(([key, value]) =>
                                 <Link
                                     key={key}
@@ -698,7 +589,7 @@ const GameSection = (): JSX.Element => {
                                     onClick={() => handleAvatarClick(value)}
                                     to={StepTypes.Two}
                                     smooth={true}
-                                    duration={700}
+                                    duration={500}
                                     containerId={containerId}
                                     className={`${styles.avatar}
                                      ${step === StepTypes.Two ? styles.avatarSelected : step === StepTypes.Three ? styles.avatarFriends : ""}`}
@@ -730,7 +621,7 @@ const GameSection = (): JSX.Element => {
                         <Element name={StepTypes.Three} className={`${styles.card} ${styles.transparent}`}>
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
-                                    <h2 className={styles.avatarHeading}>Add four friends.</h2>
+                                    <h2 className={styles.avatarHeading}>Add four friends</h2>
                                     <div className={styles.targetTwo} ref={stepThree}></div>
                                     <h3>{avatarName}</h3>
                                 </div>
@@ -757,7 +648,7 @@ const GameSection = (): JSX.Element => {
                             <div className={styles.card}>
                                 <div className={`${rowHCenter} ${styles.stepFour}`}>
                                     <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
-                                    <h4>Add donation in increments of $5 and discover where the donation is going.</h4>
+                                    <h4>Add donation in increments of $5, and discover where your donation is going.</h4>
                                     <Navbar expand="lg" className="justify-content-center"
                                         expanded={expanded}
                                         onClick={() => breakpoint && setExpanded(!expanded)}>
@@ -809,7 +700,7 @@ const GameSection = (): JSX.Element => {
                                                 style={coinStyles.current}>
                                                 <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
                                             </div>
-                                            <div className={styles.userDonation}>
+                                            <div className={styles.userDonation} data-index="0">
                                                 <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                                             </div>
                                             {/* <p>
@@ -821,14 +712,14 @@ const GameSection = (): JSX.Element => {
                                         </div>
                                         <Row className={rowHBetween}>
                                             <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle} ${styles.donationImage}`} data-index="0" data-position={Position.Center}>
+                                                <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1" data-position={Position.Center}>
                                                     <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount}>0.20</span>
+                                                    <span className={styles.donationAmount}>20¢</span>
                                                 </div>
                                             </Col>
                                         </Row>
                                         <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
-                                            <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle}`} data-index="1" data-position={Position.RightTop}>
+                                            <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2" data-position={Position.RightTop}>
                                                 <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
                                                 {coin(styles.donationAmount2)}
                                             </div>
@@ -840,33 +731,33 @@ const GameSection = (): JSX.Element => {
                                                         We’re totally reliant on these cents to keep us going.
                                                     </span>
                                                 </div>
-                                                <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle}`} data-index="10" data-position={Position.Left}>
+                                                <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11" data-position={Position.Left}>
                                                     <Image src="/images/Game/donationCycle/spiffy.png" width={155} height={44} />
                                                     {coin(styles.donationAmount3)}
                                                 </div>
                                             </div>
 
-                                            <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle}`} data-index="2" data-position={Position.Right}>
+                                            <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3" data-position={Position.Right}>
                                                 <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
                                                 {coin(styles.donationAmount4)}
                                             </div>
                                         </Row>
                                         <Row className={`${styles.w55} ${rowHBetween}`}>
-                                            <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle}`} data-index="9" data-position={Position.Left}>
+                                            <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10" data-position={Position.Left}>
                                                 <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
                                                 {coin(styles.donationAmount5)}
                                             </div>
-                                            <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle}`} data-index="3" data-position={Position.Right}>
+                                            <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4" data-position={Position.Right}>
                                                 <Image src="/images/Game/avatars/avatarPurple.png" width={56} height={63} />
                                                 {coin(styles.donationAmount6)}
                                             </div>
                                         </Row>
                                         <Row className={`${styles.w40} ${rowHBetween}`}>
-                                            <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle}`} data-index="8" data-position={Position.Left}>
+                                            <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9" data-position={Position.Left}>
                                                 <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
                                                 {coin(styles.donationAmount7)}
                                             </div>
-                                            <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle}`} data-index="4" data-position={Position.Right}>
+                                            <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5" data-position={Position.Right}>
                                                 <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
                                                 {coin(styles.donationAmount8)}
                                             </div>
@@ -874,17 +765,17 @@ const GameSection = (): JSX.Element => {
                                         <Row className={`${styles.w25} 
                                         ${styles.marginBottomMinusFifty} 
                                         ${rowHBetween}`}>
-                                            <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle}`} data-index="7" data-position={Position.BottomLeft}>
+                                            <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8" data-position={Position.BottomLeft}>
                                                 <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
                                                 {coin(styles.donationAmount9)}
                                             </div>
-                                            <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle}`} data-index="5" data-position={Position.BottomRight}>
+                                            <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6" data-position={Position.BottomRight}>
                                                 <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
                                                 {coin(styles.donationAmount10)}
                                             </div>
                                         </Row>
                                         <Row className={horizontalAlign}>
-                                            <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle}`} data-index="6" data-position={Position.BottomCenter}>
+                                            <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7" data-position={Position.BottomCenter}>
                                                 <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
                                                 {coin(styles.donationAmount11)}
                                             </div>

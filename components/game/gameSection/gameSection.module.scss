@@ -319,7 +319,7 @@ $vh: var(--vh);
         font-size: 24px;
         color: $neutralBlack800;
         text-align: center;
-        margin-top: 170px;
+        margin-top: 0;
     }
 }
 
@@ -463,8 +463,8 @@ $vh: var(--vh);
         animation-name: displayAnimation;
         animation-duration: 1s;
         animation-fill-mode: forwards;
-        opacity: 0;
-        position: absolute;
+        height: 20px;
+        overflow: hidden;
         @extend .regular-desktop16-mobile7;
     }
     .donationAmount2 {
@@ -511,6 +511,7 @@ $vh: var(--vh);
         visibility: hidden;
         width: 75px;
         text-align: center;
+        z-index: 2;
     }
     .cycle2 {
         animation-delay: 1s;
@@ -586,12 +587,10 @@ $vh: var(--vh);
 
 @keyframes displayAnimation {
     99% {
-        opacity: 1;
-        position: relative;
+        height: 20px;
     }
     100% {
-        position: absolute;
-        opacity: 0;
+        height: 0;
     }
 }
 @keyframes iconAnimation {
@@ -703,6 +702,7 @@ $vh: var(--vh);
 .donationButton {
     background-color: #f3e6ca;
     margin-right: 20px;
+    border: none;
     :focus {
         outline: none;
     }
