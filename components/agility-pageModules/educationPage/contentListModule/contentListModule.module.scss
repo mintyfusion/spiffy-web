@@ -50,6 +50,8 @@
 }
 
 .tab {
+    border: none;
+
     &.active {
         background-color: $yellow;
     }

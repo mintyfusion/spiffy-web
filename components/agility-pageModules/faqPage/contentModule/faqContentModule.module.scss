@@ -54,6 +54,7 @@
 
 .tab {
     min-width: 300px;
+    border: none;
 
     &.active {
         background-color: $yellow;
