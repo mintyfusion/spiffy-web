@@ -239,7 +239,6 @@ const GameSection = (): JSX.Element => {
             };
             setAvatarStyleGUID(getUniqueId());
         }
-        // const Selected = data.filter((filter) => filter.id !== avatar).map((i) => ({ ...i, done: false }));
         setSeletedAvatar(avatar);
         setStep(StepTypes.Two);
     }, []);
@@ -289,7 +288,6 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top,
                         left,
-                        // transition: "2s"
 
                     };
 
@@ -298,7 +296,6 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top,
                         left: left2,
-                        // transition: "2s"
                     };
 
                     break;
@@ -306,7 +303,6 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top: top2,
                         left,
-                        // transition: "2s"
                     };
 
                     break;
@@ -314,7 +310,6 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top: top2,
                         left: left2,
-                        // transition: "2s"
                     };
 
                     break;
@@ -547,12 +542,12 @@ const GameSection = (): JSX.Element => {
             const sixtyFive = 65;
             const elevenHundred = 1100;
             const thiryFive = 35;
-            const sixty = 60;
+            const seventy = 70;
             const left = width < fourHundred ? Ten :
                 width > fourHundred && width < fiveHundred ? fifty :
                     width > fiveHundred && width < eightHundred ? sixtyFive :
                         width > eightHundred && width < elevenHundred ? thiryFive :
-                            sixty;
+                            seventy;
 
             coinStyles.current = {
                 left: bounds.x + coin.scrollLeft - left,
