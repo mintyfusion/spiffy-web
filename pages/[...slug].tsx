@@ -56,8 +56,25 @@ export async function getStaticPaths({ locales, defaultLocale }
         fallback: true,
     };
 }
+// Context API value for passing search string across children components where required
+export const SearchContext = React.createContext({ searchValue: "", setSearch() { this; } });
 
-const Index = (props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element =>
-    <Layout {...props}></Layout>;
+const Index = (props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element => {
+    const [searchValue, setSearchedValue] = React.useState<string>("");
+
+    // Reset search value on page change
+    React.useEffect(() => {
+        setSearchedValue("");
+    }, [props.page]);
+
+    const searchItems = React.useMemo(() => ({
+        searchValue,
+        setSearch: setSearchedValue as (value?: string) => void
+    }), [searchValue]);
+
+    return (<SearchContext.Provider value={searchItems}>
+        <Layout {...props}></Layout>
+    </SearchContext.Provider>);
+};
 
 export default Index;

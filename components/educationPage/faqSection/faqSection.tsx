@@ -13,7 +13,6 @@ const FaqSection = (props: IFaqContentData): JSX.Element =>
             href="/"
             buttonText="FAQ's"
             content={props.content}
-            showButtonArrow={false}
             contentClassName={styles.contentContainer}
         />
     </div>;

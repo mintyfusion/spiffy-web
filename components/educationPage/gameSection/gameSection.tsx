@@ -13,7 +13,6 @@ const GameSection = (props: IGameContentData): JSX.Element =>
             href="/"
             buttonText="PLAY"
             content={props.content}
-            showButtonArrow={false}
             contentClassName={styles.contentContainer}
         />
     </div>;
