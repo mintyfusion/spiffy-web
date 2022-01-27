@@ -69,11 +69,16 @@
 .avatarHeading {
     @extend .regular-desktop30-mobile20;
 }
-.donation {
-    animation: fadein;
-    animation-duration: 1s;
+
+.fadeIn {
     opacity: 0;
+    animation-name: fadein;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
+}
+
+.fadeOut {
+    opacity: 0;
 }
 
 @keyframes fadein {

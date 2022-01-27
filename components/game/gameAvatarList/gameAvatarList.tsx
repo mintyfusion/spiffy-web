@@ -47,6 +47,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [amount, setAmount] = React.useState<string>("");
     const [avatars, setAvatars] = React.useState(mainAvatars);
     const [expanded, setExpanded] = React.useState<boolean>(false);
+    const [toggle, setToggle] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
     const animationHandler = (percent: string) => {
@@ -199,6 +200,10 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                                     onClick={() => {
                                         setPercentage(donation);
                                         animationHandler(donation);
+                                        setToggle(false);
+                                        setTimeout(() => {
+                                            setToggle(true);
+                                        }, 1000);
                                     }}
                                     className={`${horizontalAlign} 
                                     ${styles.donationButton} 
@@ -219,7 +224,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     </div>
                     <div className={`${styles.flexOne} ${styles.friendsMain}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
-                            <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>${amount}</h2>
+                            <h2 className={`${styles.avatarHeading} ${styles.yellow}`}><span className={toggle ? `${styles.fadeIn}` : `${styles.fadeOut}`}>${amount}</span></h2>
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
                                     {props.friends.slice(0, slice)
