@@ -137,7 +137,6 @@ $vh: var(--vh);
 
 .avatarHeading {
     @extend .regular-desktop30-mobile20;
-    opacity: 0;
 }
 
 .percentageWrapper {
@@ -394,7 +393,7 @@ $vh: var(--vh);
         animation-delay: 8s;
     }
     .donationAmount11 {
-        animation-delay: 16s;
+        animation-delay: 10s;
     }
     .cycle {
         display: flex;
@@ -2165,6 +2164,7 @@ $vh: var(--vh);
     .coinTwo {
         top: 300px;
     }
+
     .donationLogo {
         > div:nth-child(1) {
             width: 50% !important;
@@ -2226,6 +2226,11 @@ $vh: var(--vh);
 }
 
 @include media(">=1400px", "<1500px") {
+    .donationLogo {
+        > div:nth-child(1) {
+            width: 80% !important;
+        }
+    }
     .avatarInner {
         img {
             @include imgProperties(100px);

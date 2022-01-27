@@ -549,12 +549,15 @@ const GameSection = (): JSX.Element => {
             const threeHundred = 300;
             const fourty = 40;
             const fourtyFive = 45;
+            const twelveHundred = 1300;
 
             const left = width < fourHundred ? Ten :
                 width > fourHundred && width < fiveHundred ? fifty :
                     width > fiveHundred && width < eightHundred ? sixtyFive :
                         width > eightHundred && width < elevenHundred ? thiryFive :
-                            seventy;
+                            width > thousand && width < twelveHundred ? thirty :
+                                seventy;
+
             const startingLeft = width < seventeenHundred && width > sixteenHundreed ? thiryFive :
                 width > thousand && width < sixteenHundreed ? thirty :
                     width > fourHundred && width < sevenHundred ? fourty :
