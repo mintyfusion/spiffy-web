@@ -613,6 +613,7 @@ $vh: var(--vh);
 
 .inactive {
     background-color: #f3e6ca;
+    color: $darkGrey;
 }
 
 @include media(">=phone", "<375px") {
