@@ -24,6 +24,7 @@ const mainAvatars = [
     "/images/Game/donationCycle/avatarOrange.png",
 ];
 const donationTimeout = 6000;
+const toggleTimeout = 1000;
 const twenty = 20;
 const twentyTwo = 22;
 const twentyFive = 25;
@@ -47,7 +48,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [amount, setAmount] = React.useState<string>("");
     const [avatars, setAvatars] = React.useState(mainAvatars);
     const [expanded, setExpanded] = React.useState<boolean>(false);
-    const [toggle, setToggle] = React.useState<boolean>(false);
+    const [toggle, setToggle] = React.useState<boolean>(true);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
     const animationHandler = (percent: string) => {
@@ -203,7 +204,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                                         setToggle(false);
                                         setTimeout(() => {
                                             setToggle(true);
-                                        }, 1000);
+                                        }, toggleTimeout);
                                     }}
                                     className={`${horizontalAlign} 
                                     ${styles.donationButton} 
@@ -224,7 +225,9 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     </div>
                     <div className={`${styles.flexOne} ${styles.friendsMain}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
-                            <h2 className={`${styles.avatarHeading} ${styles.yellow}`}><span className={toggle ? `${styles.fadeIn}` : `${styles.fadeOut}`}>${amount}</span></h2>
+                            <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>
+                                <span className={toggle ? `${styles.fadeIn}` : `${styles.fadeOut}`}>${amount}
+                                </span></h2>
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
                                     {props.friends.slice(0, slice)
