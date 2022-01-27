@@ -28,6 +28,10 @@
     @include typeFace($thirtyFive, $ninety, $regular);
 }
 
+.semiBold20 {
+    @include typeFace($twelve, $twenty, $semi-bold);
+}
+
 .semiBold32 {
     @include typeFace($eighteen, $thirtyTwo, $semi-bold);
 }
@@ -40,15 +44,15 @@
     @include typeFace($fourteen, $twentyFour, $bold);
 }
 
-.bold25{
-     @include typeFace($sixteen, $twentyFive, $bold);
+.bold25 {
+    @include typeFace($sixteen, $twentyFive, $bold);
 }
 
 .bold32 {
     @include typeFace($nine, $thirtyTwo, $bold);
 }
 
-.bold36{
+.bold36 {
     @include typeFace($fourteen, $thirtySix, $bold);
 }
 

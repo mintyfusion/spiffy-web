@@ -1,0 +1,105 @@
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
+
+.container {
+    padding: 3rem 0;
+    background-color: $dirty-white;
+
+    h2 {
+        @extend .bold67;
+    }
+
+    h3 {
+        @extend .bold41;
+    }
+
+    h4 {
+        @extend .regular25;
+    }
+
+    h5 {
+        @extend .bold24;
+    }
+
+    h6,
+    label {
+        @extend .regular16;
+    }
+
+    .contextContainer {
+        & > div {
+            padding: 2rem 7rem;
+        }
+
+        .topContextContainer {
+            background-color: $neutral-light-black;
+
+            .buttonFAQ {
+                @extend .bold24;
+            }
+        }
+    }
+
+    .formContainer {
+        .formContent {
+            background-color: $white;
+            padding: 2rem;
+            border-radius: 5px;
+            border: 1px solid $light-transparent-grey;
+            box-shadow: 29px 26px 2px 6px $dirty-grey;
+
+            .countryflagContainer {
+                @extend .regular24;
+                padding: 10px;
+                min-width: 120px;
+                background: url("/images/contactpage/flags/icon-usa.svg") no-repeat;
+                background-position: 30%;
+                border: 1px solid $neutral-black;
+                border-right: 0;
+                border-radius: 12px 0 0 12px;
+                text-align: right;
+            }
+
+            input,
+            textarea {
+                @extend .regular24;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: $neutral-light-black;
+                border: 1px solid $light-transparent-grey;
+                outline-color: $light-transparent-grey;
+
+                &:focus-visible {
+                    transition: all 200ms;
+                    outline-color: $yellow;
+                    border-color: $yellow;
+                }
+            }
+
+            .inputPhoneNumber {
+                background-color: initial;
+                border: 1px solid $neutral-black;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+        }
+
+        .userTypeButton {
+            @extend .semiBold20;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .formContent {
+        max-width: 66%;
+        min-width: 400px;
+    }
+}
+
+@include media("<desktop") {
+    .formContent {
+        width: 100%;
+    }
+}

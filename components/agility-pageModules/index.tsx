@@ -3,6 +3,7 @@
 import AboutUsHeroModule from "components/agility-pageModules/aboutPage/heroSection/heroSection";
 import AboutUsValuesModule from "components/agility-pageModules/aboutPage/valuesSection/valuesSection";
 import CommonContentModule from "components/agility-pageModules/common/commonContent/commonContentModule";
+import ContactForm from "components/agility-pageModules/contactPage/contactForm";
 import CreatorPageContentModule from "components/agility-pageModules/creatorPage/contentModule/creatorPageContentModule";
 import EducationDetailsModule from "components/agility-pageModules/educationDetailsModule/educationDetailsModule";
 import EducationListingModule from "components/agility-pageModules/educationPage/contentListModule/contentListModule";
@@ -27,7 +28,8 @@ const allModules = [
   { name: "CreatorPageVideoModule", module: VideoSection },
   { name: "FAQContentModule", module: FAQContentModule },
   { name: "AboutUsHeroModule", module: AboutUsHeroModule },
-  { name: "AboutUsValuesModule", module: AboutUsValuesModule }
+  { name: "AboutUsValuesModule", module: AboutUsValuesModule },
+  { name: "ContactFormModule", module: ContactForm }
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
