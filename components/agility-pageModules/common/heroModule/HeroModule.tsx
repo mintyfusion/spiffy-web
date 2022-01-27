@@ -26,6 +26,18 @@ const HeroModule = (props: IHeroModuleProps): JSX.Element => {
                     return <EducationBannerSection title={fields.title} description={fields.description} />;
                 }
 
+            case PageIds.CONTACT:
+                {
+                    setRenderFullHeight(false);
+
+                    return (
+                        <EducationBannerSection
+                            title={fields.title}
+                            description={fields.description}
+                            renderSearch={false}
+                        />);
+                }
+
             case PageIds.LANDING: {
                 setRenderFullHeight(true);
 

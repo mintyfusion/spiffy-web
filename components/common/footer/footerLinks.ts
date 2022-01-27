@@ -13,7 +13,7 @@ const footerLinks: IFooterLinks[] = [
         linkHeaderText: "Resources",
         links: [
             { children: "FAQ's", href: "/faq" },
-            { children: "Contact Us", href: "/" }
+            { children: "Contact Us", href: "/contact" }
         ]
     },
     {

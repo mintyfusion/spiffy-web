@@ -4,7 +4,8 @@ enum PageIds {
     EDUCATION_DETAILS = 18,
     CREATOR_LANDING = 19,
     FAQ = 20,
-    ABOUT = 22
+    ABOUT = 22,
+    CONTACT = 23
 }
 
 export default PageIds;
