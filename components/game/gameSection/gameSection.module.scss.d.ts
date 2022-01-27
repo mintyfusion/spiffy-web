@@ -74,7 +74,6 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
-  "fadeOut": string;
   "fullbold109": string;
   "fullBold67": string;
   "gameStepOne": string;

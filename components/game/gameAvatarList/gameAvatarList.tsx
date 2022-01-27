@@ -157,7 +157,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 <Navbar expand="lg" className="w-100 justify-content-center"
                     expanded={expanded}
                     onClick={() => breakpoint && setExpanded(!expanded)}>
-                    <Navbar.Brand href="#home" className="d-lg-none">{percentage}</Navbar.Brand>
+                    <Navbar.Brand href="#home" className="d-lg-none">{percentage}%</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
                         <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
                     </Navbar.Toggle>

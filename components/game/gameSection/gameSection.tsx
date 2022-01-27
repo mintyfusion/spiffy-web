@@ -31,13 +31,15 @@ const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
 const friendsTimeout = 3000;
 const avatarTimeout = 1000;
-const donationFormula = 5;
 const boundDivide = 2;
 const friendsLength = 4;
 const containerId = "containerElement";
 const phoneKeyboardTimeout = 500;
 const donationTotalAvatars = 11;
 const stepTwoTimeout = 1500;
+const contentCreatorFormula = 50;
+const friendsFormula = 4;
+const spiffyFormula = 10;
 
 const GameSection = (): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<IFriendAvatar[]>([]);
@@ -70,15 +72,6 @@ const GameSection = (): JSX.Element => {
     const friendsAvatars = React.useMemo(() => data.filter((avatarObj) =>
         seletedAvatar && avatarObj.id !== seletedAvatar
     ), [seletedAvatar]) as IFriendAvatar[];
-
-    // const donationMap = React.useMemo(() => data.concat(friends).map((i, k) => (
-    //     <div className={styles.donationCycleItems} key={k}>
-    //         <Image {...i.image} width={56} height={63} />
-    //         <span>
-    //             ${Number(donationAmount) / donationFormula / donationFormula}0
-    //         </span>
-    //     </div>
-    // )), [friends, donationAmount, donationFormula]);
 
     React.useEffect(() => {
         if (addedFriends.length === friendsLength) {
@@ -535,6 +528,7 @@ const GameSection = (): JSX.Element => {
     const handlStepAnimation = React.useCallback((stepIndex) => {
         if (coinRef.current) {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
+            const index = avatar.getAttribute("data-index");
             const bounds = avatar.getBoundingClientRect();
             const coin = document.getElementById("CoinAnimation");
             const width = window.innerWidth;
@@ -547,23 +541,55 @@ const GameSection = (): JSX.Element => {
             const elevenHundred = 1100;
             const thiryFive = 35;
             const seventy = 70;
+            const thirty = 30;
+            const seventeenHundred = 1700;
+            const sixteenHundreed = 1600;
+            const thousand = 1000;
+            const sevenHundred = 700;
+            const threeHundred = 300;
+            const fourty = 40;
+            const fourtyFive = 45;
+
             const left = width < fourHundred ? Ten :
                 width > fourHundred && width < fiveHundred ? fifty :
                     width > fiveHundred && width < eightHundred ? sixtyFive :
                         width > eightHundred && width < elevenHundred ? thiryFive :
                             seventy;
+            const startingLeft = width < seventeenHundred && width > sixteenHundreed ? thiryFive :
+                width > thousand && width < sixteenHundreed ? thirty :
+                    width > fourHundred && width < sevenHundred ? fourty :
+                        width > threeHundred && width < fourHundred ? 0 : fourtyFive;
 
-            coinStyles.current = {
-                left: bounds.x + coin.scrollLeft - left,
-                top: bounds.y + coin.scrollTop
-            };
+            switch (index) {
+                case "0":
+                    coinStyles.current = {
+                        left: bounds.x + coin.scrollLeft - startingLeft,
+                        top: bounds.y + coin.scrollTop,
+                        transition: "2s"
+                    };
+                    break;
+                case "11":
+                    coinStyles.current = {
+                        left: bounds.x + coin.scrollLeft - startingLeft,
+                        top: bounds.y + coin.scrollTop,
+                        transition: "2s"
+                    };
+                default:
+                    coinStyles.current = {
+                        left: bounds.x + coin.scrollLeft - left,
+                        top: bounds.y + coin.scrollTop,
+                        transition: "2s",
+                    };
+            }
+
+
 
             setAvatarStyleGUID(getUniqueId());
         }
     }, []);
 
     React.useEffect(() => {
-        if (donationAmount !== "") {
+        if (animation) {
             let index = 0;
             handlStepAnimation(index);
             coinInterval = setInterval(() => {
@@ -580,11 +606,24 @@ const GameSection = (): JSX.Element => {
             };
         }
 
-    }, [donationAmount, handlStepAnimation]);
+    }, [animation, handlStepAnimation]);
 
-    const coin = (style: string) => <span className={`${style} ${styles.donationAmount}`}>
-        ${Number(donationAmount) / donationFormula / donationFormula}¢
-    </span>;
+    const donationCalulation = (donation: number) => {
+        const percentage = 100;
+        const donationFixed = 2;
+        const amount = (donation / percentage * Number(donationAmount)).toFixed(donationFixed);
+
+        return <span>{amount.charAt(0) === "0" ? `${amount}¢` : `$${amount}`}</span>;
+    };
+
+    const coin = (style: string) => {
+        if (donationAmount !== "") {
+            return <span className={`${style} ${styles.donationAmount}`}>
+                {donationCalulation(friendsFormula)}
+            </span>;
+        }
+
+    };
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
@@ -668,7 +707,7 @@ const GameSection = (): JSX.Element => {
                                     <Navbar expand="lg" className="justify-content-center"
                                         expanded={expanded}
                                         onClick={() => breakpoint && setExpanded(!expanded)}>
-                                        <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "Select Amount" : donationAmount}</Navbar.Brand>
+                                        <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "Select Amount" : `$${donationAmount}`}</Navbar.Brand>
                                         <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
                                             <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
                                         </Navbar.Toggle>
@@ -719,19 +758,16 @@ const GameSection = (): JSX.Element => {
                                             <div className={styles.userDonation} data-index="0">
                                                 <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                                             </div>
-                                            {/* <p>
-                                                {`${donationAmount !== "" ?
-                                                    `$${Number(donationAmount) / donationDivide}0`
-                                                    : ""}`}
+                                            <p>
+                                                {donationCalulation(contentCreatorFormula)}
                                             </p>
-                                            <h3>Content Creators</h3> */}
                                         </div>
                                         <Row className={rowHBetween}>
                                             <Col className={`${horizontalAlign} ${styles.heigth120}`}>
                                                 <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1" data-position={Position.Center}>
                                                     <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
                                                     <span className={styles.donationAmount}>
-                                                        ${Number(donationAmount) / donationFormula / donationFormula}¢
+                                                        {donationCalulation(friendsFormula)}
                                                     </span>
                                                 </div>
                                             </Col>
@@ -751,7 +787,7 @@ const GameSection = (): JSX.Element => {
                                                 </div>
                                                 <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11" data-position={Position.Left}>
                                                     <Image src="/images/Game/donationCycle/spiffy.png" width={155} height={44} />
-                                                    {coin(styles.donationAmount3)}
+                                                    {donationCalulation(spiffyFormula)}
                                                 </div>
                                             </div>
 
