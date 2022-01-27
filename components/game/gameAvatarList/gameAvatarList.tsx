@@ -45,7 +45,7 @@ const mobile = 770;
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("1");
     const [amount, setAmount] = React.useState<string>("");
-    const [avatars, setAvatars] = React.useState([]);
+    const [avatars, setAvatars] = React.useState(mainAvatars);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
@@ -56,6 +56,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         const twentyfivePercent = 4;
         const fiftyPercent = 6;
         const hundredPercent = 15;
+        const onePercent = 1;
         if (percent === "5") {
             const avatarDuplicate = Array(fivePercent).fill(avatar);
             setAvatars(avatarDuplicate.flat());
@@ -77,7 +78,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
             props.signupAnimation();
         }
         else if (percent === "1") {
-            setAvatars([]);
+            const avatarDuplicate = Array(onePercent).fill(avatar);
+            setAvatars(avatarDuplicate.flat());
         }
     };
 
