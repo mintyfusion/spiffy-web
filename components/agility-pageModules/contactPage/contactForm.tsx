@@ -12,7 +12,7 @@ const ContactForm = (props: ModuleProps<any>): JSX.Element => {
     console.log(fields);
 
     return (
-        <Row className={`${styles.container} w-100`}>
+        <Row className={`${styles.container} w-100 m-0`}>
             <Col className={`${styles.contextContainer} d-flex flex-column justify-content-center`}>
                 <Row className={styles.topContextContainer}>
                     <div>
