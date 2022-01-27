@@ -763,7 +763,7 @@ const GameSection = (): JSX.Element => {
                                                 <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                                             </div>
                                             <p>
-                                                {donationCalulation(contentCreatorFormula)}
+                                                {donationAmount !== "" ? donationCalulation(contentCreatorFormula) : null}
                                             </p>
                                         </div>
                                         <Row className={rowHBetween}>
