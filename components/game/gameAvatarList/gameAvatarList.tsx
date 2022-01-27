@@ -44,6 +44,7 @@ const mobile = 770;
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("1");
+    const [amount, setAmount] = React.useState<string>("");
     const [avatars, setAvatars] = React.useState([]);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
@@ -147,6 +148,32 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         }
     }, [percentage]);
 
+    React.useEffect(() => {
+        switch (percentage) {
+            case "1":
+                setAmount("2,798");
+                break;
+            case "10":
+                setAmount("27,980");
+                break;
+            case "25":
+                setAmount("69,950");
+                break;
+            case "50":
+                setAmount("139,900");
+                break;
+            case "100":
+                setAmount("279,800");
+                break;
+            case "5":
+                setAmount("13,990");
+                break;
+            default:
+                setAmount("2,798");
+
+        }
+    }, [percentage]);
+
     return (
         <div className={styles.gameStepFive}>
             <div className={`${colCenter}`}>
@@ -190,7 +217,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     </div>
                     <div className={`${styles.flexOne} ${styles.friendsMain}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
-                            <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>$69,905</h2>
+                            <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>${amount}</h2>
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
                                     {props.friends.slice(0, slice)

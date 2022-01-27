@@ -127,13 +127,6 @@ $vh: var(--vh);
 
 .wrapper {
     padding: 30px;
-    button {
-        padding: 15px 50px;
-        border: none;
-        background: $yellow;
-        color: #fff;
-        border-radius: 10px;
-    }
 }
 
 .donationSections {
@@ -144,6 +137,7 @@ $vh: var(--vh);
 
 .avatarHeading {
     @extend .regular-desktop30-mobile20;
+    opacity: 0;
 }
 
 .percentageWrapper {

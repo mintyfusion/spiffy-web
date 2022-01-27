@@ -19,6 +19,7 @@ export type Styles = {
   "boldGame67": string;
   "confetti": string;
   "confettiRight": string;
+  "donation": string;
   "donationActive": string;
   "donationButton": string;
   "donationDesktop": string;
@@ -28,6 +29,7 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
+  "fadein": string;
   "flexOne": string;
   "friendsBottom": string;
   "friendsMain": string;

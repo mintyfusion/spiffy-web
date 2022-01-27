@@ -69,7 +69,21 @@
 .avatarHeading {
     @extend .regular-desktop30-mobile20;
 }
+.donation {
+    animation: fadein;
+    animation-duration: 1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
 
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .donations {
     padding: 10px 0px;
     background-color: #f3e6ca;
@@ -188,6 +202,7 @@
 
 .inactive {
     background-color: #f3e6ca;
+    border: none;
 }
 
 .left,

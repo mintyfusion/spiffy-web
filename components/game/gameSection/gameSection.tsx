@@ -574,6 +574,7 @@ const GameSection = (): JSX.Element => {
                         top: bounds.y + coin.scrollTop,
                         transition: "2s"
                     };
+                    break;
                 default:
                     coinStyles.current = {
                         left: bounds.x + coin.scrollLeft - left,
