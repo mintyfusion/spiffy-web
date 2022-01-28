@@ -2,7 +2,7 @@ import IBannerContentData from "components/game/gameHead/interfaces/IGameHeadCon
 
 const bannerContent: IBannerContentData = {
     content: {
-        description: "Learn about spiffy.",
+        description: "Learn more about spiffy.",
         title: "Spiffy Game",
     },
 };

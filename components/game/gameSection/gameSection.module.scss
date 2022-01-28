@@ -243,7 +243,7 @@ $vh: var(--vh);
         background-color: $white;
         padding: 50px 80px;
         h2 {
-            margin-top: 75px;
+            margin-top: 50px;
         }
     }
 
@@ -252,7 +252,7 @@ $vh: var(--vh);
         font-size: 24px;
         color: $neutralBlack800;
         text-align: center;
-        margin-top: 0;
+        margin-top: 90px;
     }
 }
 
@@ -360,13 +360,14 @@ $vh: var(--vh);
     .donationAmount {
         animation-name: displayAnimation;
         animation-duration: 1s;
+        animation-delay: 2s;
         animation-fill-mode: forwards;
         height: 20px;
         overflow: hidden;
         @extend .regular-desktop16-mobile7;
     }
     .donationAmount2 {
-        animation-delay: 3s;
+        animation-delay: 4s;
     }
     .donationAmount3 {
         animation-delay: 15s;
@@ -405,6 +406,7 @@ $vh: var(--vh);
         background-color: #f4f4f4;
         animation-name: coinAnimation;
         animation-duration: 1s;
+        animation-delay: 2s;
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -416,31 +418,31 @@ $vh: var(--vh);
         }
     }
     .cycle2 {
-        animation-delay: 3s;
-    }
-    .cycle4 {
         animation-delay: 4s;
     }
-    .cycle6 {
+    .cycle4 {
         animation-delay: 5s;
     }
-    .cycle8 {
+    .cycle6 {
         animation-delay: 7s;
     }
-    .cycle10 {
-        animation-delay: 8s;
+    .cycle8 {
+        animation-delay: 9s;
     }
-    .cycle11 {
+    .cycle10 {
         animation-delay: 10s;
     }
-    .cycle9 {
+    .cycle11 {
         animation-delay: 11s;
     }
-    .cycle7 {
+    .cycle9 {
         animation-delay: 13s;
     }
-    .cycle5 {
+    .cycle7 {
         animation-delay: 14s;
+    }
+    .cycle5 {
+        animation-delay: 15s;
     }
     .cycle3 {
         animation-delay: 15s;

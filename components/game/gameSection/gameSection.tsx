@@ -79,7 +79,7 @@ const GameSection = (): JSX.Element => {
                 duration: 700,
                 smooth: true,
                 containerId,
-                delay: 2000,
+                delay: 500,
                 ignoreCancelEvents: true
             });
             const timer = setTimeout(() => {
@@ -91,13 +91,6 @@ const GameSection = (): JSX.Element => {
 
     const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
-            scroller.scrollTo(StepTypes.Five, {
-                duration: 700,
-                smooth: true,
-                containerId,
-                delay: 2000,
-                ignoreCancelEvents: true
-            });
             setAnimation(false);
             setTimeout(() => {
                 setAnimation(true);
@@ -281,7 +274,6 @@ const GameSection = (): JSX.Element => {
                     styles[value.id] = {
                         top,
                         left,
-
                     };
 
                     break;
@@ -484,6 +476,10 @@ const GameSection = (): JSX.Element => {
                 setViewportHeight();
                 setFriendsPositions();
                 friendsResizeHandler();
+                scroller.scrollTo(StepTypes.Three, {
+                    containerId,
+                    ignoreCancelEvents: true,
+                });
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
                 if (boundsSecond) {

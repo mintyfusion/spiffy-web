@@ -24,7 +24,7 @@ const mainAvatars = [
     "/images/Game/donationCycle/avatarOrange.png",
 ];
 const donationTimeout = 6000;
-const toggleTimeout = 1000;
+const toggleTimeout = 500;
 const twenty = 20;
 const twentyTwo = 22;
 const twentyFive = 25;
