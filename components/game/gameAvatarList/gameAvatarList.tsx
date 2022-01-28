@@ -185,7 +185,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 <h4>Click the percentage fill rate to unlock your potential. Higher the filled rate,
                     the more money you make.</h4>
 
-                <Navbar expand="lg" className="w-100 justify-content-center"
+                <Navbar expand="lg" className="w-100 d-block"
                     expanded={expanded}
                     onClick={() => breakpoint && setExpanded(!expanded)}>
                     <Navbar.Brand href="#home" className="d-lg-none">{percentage}%</Navbar.Brand>
