@@ -452,6 +452,11 @@ const GameSection = (): JSX.Element => {
     }, [addedFriends]);
 
     const handleResize = React.useCallback(() => {
+        scroller.scrollTo(step, {
+            containerId,
+            ignoreCancelEvents: true,
+            offset: -20
+        });
         switch (step) {
             case StepTypes.One:
                 setViewportHeight();
@@ -476,10 +481,6 @@ const GameSection = (): JSX.Element => {
                 setViewportHeight();
                 setFriendsPositions();
                 friendsResizeHandler();
-                scroller.scrollTo(StepTypes.Three, {
-                    containerId,
-                    ignoreCancelEvents: true,
-                });
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
                 if (boundsSecond) {

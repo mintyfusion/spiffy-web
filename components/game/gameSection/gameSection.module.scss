@@ -388,7 +388,7 @@ $vh: var(--vh);
         animation-delay: 9s;
     }
     .donationAmount9 {
-        animation-delay: 11s;
+        animation-delay: 13s;
     }
     .donationAmount10 {
         animation-delay: 10s;
@@ -457,6 +457,7 @@ $vh: var(--vh);
             animation-fill-mode: forwards;
             height: 20px;
             overflow: hidden;
+            @extend .regular-desktop16-mobile7;
         }
         img {
             object-fit: contain;
@@ -498,7 +499,7 @@ $vh: var(--vh);
 }
 
 @keyframes displayAnimation {
-    99% {
+    90% {
         height: 20px;
     }
     100% {
