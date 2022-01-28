@@ -767,8 +767,8 @@ const GameSection = (): JSX.Element => {
                                         <Row className={rowHBetween}>
                                             <Col className={`${horizontalAlign} ${styles.heigth120}`}>
                                                 <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1" data-position={Position.Center}>
-                                                    <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
-                                                    <span className={styles.donationAmount}>
+                                                    <Avatar color={AvatarType.Green} width={56} height={63} />
+                                                    <span className={`${styles.donationAmount} d-block`}>
                                                         {donationCalulation(friendsFormula)}
                                                     </span>
                                                 </div>
@@ -776,7 +776,7 @@ const GameSection = (): JSX.Element => {
                                         </Row>
                                         <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
                                             <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2" data-position={Position.RightTop}>
-                                                <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Red} width={56} height={63} />
                                                 {coin(styles.donationAmount2)}
                                             </div>
                                         </Row>
@@ -794,27 +794,27 @@ const GameSection = (): JSX.Element => {
                                             </div>
 
                                             <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3" data-position={Position.Right}>
-                                                <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Yellow} width={56} height={63} />
                                                 {coin(styles.donationAmount4)}
                                             </div>
                                         </Row>
                                         <Row className={`${styles.w55} ${rowHBetween}`}>
                                             <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10" data-position={Position.Left}>
-                                                <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Green} width={56} height={63} />
                                                 {coin(styles.donationAmount5)}
                                             </div>
                                             <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4" data-position={Position.Right}>
-                                                <Image src="/images/Game/avatars/avatarPurple.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Purple} width={56} height={63} />
                                                 {coin(styles.donationAmount6)}
                                             </div>
                                         </Row>
                                         <Row className={`${styles.w40} ${rowHBetween}`}>
                                             <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9" data-position={Position.Left}>
-                                                <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Yellow} width={56} height={63} />
                                                 {coin(styles.donationAmount7)}
                                             </div>
                                             <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5" data-position={Position.Right}>
-                                                <Image src="/images/Game/avatars/avatarYellow.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Yellow} width={56} height={63} />
                                                 {coin(styles.donationAmount8)}
                                             </div>
                                         </Row>
@@ -822,17 +822,17 @@ const GameSection = (): JSX.Element => {
                                         ${styles.marginBottomMinusFifty} 
                                         ${rowHBetween}`}>
                                             <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8" data-position={Position.BottomLeft}>
-                                                <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Red} width={56} height={63} />
                                                 {coin(styles.donationAmount9)}
                                             </div>
                                             <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6" data-position={Position.BottomRight}>
-                                                <Image src="/images/Game/avatars/avatarRed.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Red} width={56} height={63} />
                                                 {coin(styles.donationAmount10)}
                                             </div>
                                         </Row>
                                         <Row className={horizontalAlign}>
                                             <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7" data-position={Position.BottomCenter}>
-                                                <Image src="/images/Game/avatars/avatarGreen.png" width={56} height={63} />
+                                                <Avatar color={AvatarType.Green} width={56} height={63} />
                                                 {coin(styles.donationAmount11)}
                                             </div>
                                         </Row>

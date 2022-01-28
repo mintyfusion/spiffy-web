@@ -239,7 +239,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
                                     {props.friends.slice(0, slice)
-                                        .map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                                        .map((i, k) => <Avatar color={i.id} key={k} width={87} height={87} />)}
                                 </div>
                             </Row>
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
@@ -248,7 +248,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                             <Row className={`${styles.friendsBottom} w-100`}>
                                 <div>
                                     {props.friends.slice(slice, sliceTwo)
-                                        .map((i, k) => <Image {...i.image} key={k} width={87} height={87} />)}
+                                        .map((i, k) => <Avatar color={i.id} key={k} width={87} height={87} />)}
                                 </div>
                             </Row>
                         </div>

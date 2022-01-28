@@ -405,7 +405,7 @@ $vh: var(--vh);
         border-radius: 50px;
         background-color: #f4f4f4;
         animation-name: coinAnimation;
-        animation-duration: 1s;
+        animation-duration: 0.5s;
         animation-delay: 2s;
         animation-fill-mode: forwards;
         visibility: hidden;
@@ -453,7 +453,7 @@ $vh: var(--vh);
         span {
             animation-delay: 17s;
             animation-name: displayAnimation;
-            animation-duration: 1s;
+            animation-duration: 0.5s;
             animation-fill-mode: forwards;
             height: 20px;
             overflow: hidden;
@@ -499,7 +499,7 @@ $vh: var(--vh);
 }
 
 @keyframes displayAnimation {
-    90% {
+    30% {
         height: 20px;
     }
     100% {
