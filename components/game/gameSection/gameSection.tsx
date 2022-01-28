@@ -768,7 +768,7 @@ const GameSection = (): JSX.Element => {
                                             <Col className={`${horizontalAlign} ${styles.heigth120}`}>
                                                 <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1" data-position={Position.Center}>
                                                     <Avatar color={AvatarType.Green} width={56} height={63} />
-                                                    <span className={`${styles.donationAmount} d-block`}>
+                                                    <span className={styles.donationAmount}>
                                                         {donationCalulation(friendsFormula)}
                                                     </span>
                                                 </div>
@@ -783,7 +783,7 @@ const GameSection = (): JSX.Element => {
                                         <Row className={`${styles.w40} ${rowHBetween}`}>
                                             <div className={styles.donationLogo}>
                                                 <div>
-                                                    <span>
+                                                    <span className="d-block">
                                                         We’re totally reliant on these cents to keep us going.
                                                     </span>
                                                 </div>
