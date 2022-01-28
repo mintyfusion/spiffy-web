@@ -36,12 +36,44 @@ const thirtySeven = 37;
 const fourty = 40;
 const fifteenRandom = 15;
 const five = 5;
-const Ten = 10;
+const ten = 10;
 const sizes = [twenty, twentyTwo, twentyFive, twentySeven, thirty, thirtyThree, thirtyFive, thirtySeven, fourty];
-const sizesMobile = [five, Ten, fifteenRandom];
+const sizesMobile = [five, 6, 7, 8, 9, ten, 11, 12, 13, 14, fifteenRandom];
 const slice = 2;
 const sliceTwo = 4;
 const mobile = 770;
+
+function getRandomMargin() {
+    const width = window.innerWidth;
+    if (width < mobile) {
+        return `${Math.floor(Math.random() * five + five)}px`;
+    }
+
+    return `${Math.floor(Math.random() * fifteenRandom + five)}px`;
+
+}
+
+function getRandomSize() {
+    const width = window.innerWidth;
+    let randomIndex: number;
+
+    if (width < mobile) {
+        randomIndex = Math.floor(Math.random() * sizesMobile.length);
+    }
+    else {
+        randomIndex = Math.floor(Math.random() * sizes.length);
+    }
+
+
+    return `${sizes[randomIndex]}px`;
+}
+
+function getRandomAlignSelf() {
+    const values = ["flex-end", "flex-start", "center"];
+    const randomIndex = Math.floor(Math.random() * values.length);
+
+    return values[randomIndex];
+}
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [percentage, setPercentage] = React.useState<string>("1");
@@ -103,38 +135,6 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         () => avatars.map((i, index) => <div key={index} className="avatar"><Image src={i} width={20} height={20} objectFit="contain" /></div>),
         [avatars]
     );
-
-    function getRandomMargin() {
-        const width = window.innerWidth;
-        if (width < mobile) {
-            return `${Math.floor(Math.random() * five + five)}px`;
-        }
-
-        return `${Math.floor(Math.random() * fifteenRandom + five)}px`;
-
-    }
-
-    function getRandomSize() {
-        const width = window.innerWidth;
-        let randomIndex: number;
-
-        if (width < mobile) {
-            randomIndex = Math.floor(Math.random() * sizesMobile.length);
-        }
-        else {
-            randomIndex = Math.floor(Math.random() * sizes.length);
-        }
-
-
-        return `${sizes[randomIndex]}px`;
-    }
-
-    function getRandomAlignSelf() {
-        const values = ["flex-end", "flex-start", "center"];
-        const randomIndex = Math.floor(Math.random() * values.length);
-
-        return values[randomIndex];
-    }
 
     React.useEffect(() => {
         const Avatars = document.querySelectorAll<HTMLElement>(".avatar");

@@ -455,11 +455,12 @@ const GameSection = (): JSX.Element => {
         scroller.scrollTo(step, {
             containerId,
             ignoreCancelEvents: true,
-            offset: -20
+            offset: -20,
         });
+        setViewportHeight();
+
         switch (step) {
             case StepTypes.One:
-                setViewportHeight();
                 setAvatarPositions();
                 break;
 
@@ -478,7 +479,6 @@ const GameSection = (): JSX.Element => {
                 break;
 
             case StepTypes.Three:
-                setViewportHeight();
                 setFriendsPositions();
                 friendsResizeHandler();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
