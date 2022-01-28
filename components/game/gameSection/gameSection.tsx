@@ -572,7 +572,8 @@ const GameSection = (): JSX.Element => {
                     coinStyles.current = {
                         left: bounds.x + coin.scrollLeft - startingLeft,
                         top: bounds.y + coin.scrollTop,
-                        transition: "2s"
+                        transition: "2s",
+                        opacity: "0"
                     };
                     break;
                 default:
@@ -705,7 +706,7 @@ const GameSection = (): JSX.Element => {
                                     <h4>
                                         Add donation in increments of $5, and discover where your donation is going.
                                     </h4>
-                                    <Navbar expand="lg" className="justify-content-center"
+                                    <Navbar expand="lg" className="d-block"
                                         expanded={expanded}
                                         onClick={() => breakpoint && setExpanded(!expanded)}>
                                         <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "Select Amount" : `$${donationAmount}`}</Navbar.Brand>
