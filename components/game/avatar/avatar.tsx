@@ -4,24 +4,33 @@ import React from "react";
 import AvatarType from "../gameSection/enums/avatarTypes";
 import IAvatarProps from "components/game/avatar/interfaces/IAvatarProps";
 
-const Avatar = (props: IAvatarProps) => {
+const baseUrl = "/images/Game/avatars/";
+
+const Avatar = ({ color, ...props }: IAvatarProps) => {
     const avatarSrc = React.useMemo(() => {
-        switch (props.color) {
+        switch (color) {
             case AvatarType.Green:
-                return "/images/Game/avatars/avatarGreen.png";
+                return "avatarGreen.png";
             case AvatarType.Purple:
-                return "/images/Game/avatars/avatarPurple.png";
+                return "avatarPurple.png";
             case AvatarType.Yellow:
-                return "/images/Game/avatars/avatarYellow.png";
+                return "avatarYellow.png";
             case AvatarType.Red:
-                return "/images/Game/avatars/avatarRed.png";
+                return "avatarRed.png";
             case AvatarType.Orange:
-                return "/images/Game/avatars/avatarOrange.png";
+                return "avatarOrange.png";
             default:
                 return null;
         }
-    }, [props.color]);
+    }, [color]);
 
-    return <Image src={avatarSrc} width={148} height={148} objectFit="contain" />;
+    return <Image src={`${baseUrl}${avatarSrc}`} {...props} objectFit="contain" />;
 };
-export default Avatar;
+
+export default React.memo(Avatar);
+
+const size = 148;
+Avatar.defaultProps = {
+    width: size,
+    height: size,
+};
