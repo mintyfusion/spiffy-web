@@ -370,31 +370,31 @@ $vh: var(--vh);
         animation-delay: 4s;
     }
     .donationAmount3 {
-        animation-delay: 15s;
+        animation-delay: 17s;
     }
     .donationAmount4 {
-        animation-delay: 4s;
-    }
-    .donationAmount5 {
-        animation-delay: 14s;
-    }
-    .donationAmount6 {
         animation-delay: 5s;
     }
+    .donationAmount5 {
+        animation-delay: 16s;
+    }
+    .donationAmount6 {
+        animation-delay: 7s;
+    }
     .donationAmount7 {
-        animation-delay: 13s;
+        animation-delay: 15s;
     }
     .donationAmount8 {
-        animation-delay: 7s;
+        animation-delay: 9s;
     }
     .donationAmount9 {
         animation-delay: 11s;
     }
     .donationAmount10 {
-        animation-delay: 8s;
+        animation-delay: 10s;
     }
     .donationAmount11 {
-        animation-delay: 10s;
+        animation-delay: 11s;
     }
     .cycle {
         display: flex;
@@ -439,17 +439,25 @@ $vh: var(--vh);
         animation-delay: 13s;
     }
     .cycle7 {
-        animation-delay: 14s;
+        animation-delay: 15s;
     }
     .cycle5 {
-        animation-delay: 15s;
+        animation-delay: 16s;
     }
     .cycle3 {
-        animation-delay: 15s;
-        margin-top: -130px;
+        animation-delay: 17s;
+        margin-top: -100px;
         width: 50%;
         border-radius: 18px;
         padding: 20px;
+        span {
+            animation-delay: 17s;
+            animation-name: displayAnimation;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            height: 20px;
+            overflow: hidden;
+        }
         img {
             object-fit: contain;
             width: 100%;
@@ -465,7 +473,7 @@ $vh: var(--vh);
         justify-content: center;
         align-items: center;
         position: relative;
-        left: -35%;
+        left: -25%;
         > div:nth-child(1) {
             animation-name: iconAnimation;
             animation-duration: 1s;
@@ -474,7 +482,7 @@ $vh: var(--vh);
             opacity: 0;
             position: absolute;
             width: 100%;
-            top: -55px;
+            top: -40px;
             right: 280px;
             text-align: right;
             span {
@@ -1522,12 +1530,13 @@ $vh: var(--vh);
             margin-top: 25px;
         }
     }
+
     .donationLogo {
-        right: -145px;
+        left: -30% !important;
         > div:nth-child(1) {
             width: 40% !important;
-            top: -40px !important;
-            right: -48px !important;
+            top: -25px !important;
+            right: -60px !important;
             text-align: left !important;
         }
     }
@@ -1540,7 +1549,7 @@ $vh: var(--vh);
         width: 60px !important;
     }
     .cycle3 {
-        margin-top: -75px !important;
+        margin-top: -55px !important;
         width: 50% !important;
         border-radius: 12px !important;
         padding: 10px !important;
@@ -1704,11 +1713,15 @@ $vh: var(--vh);
         top: 300px;
     }
 
+    .cycle3 {
+        margin-top: -40px !important;
+    }
+
     .donationLogo {
-        right: -145px;
+        left: -30% !important;
         > div:nth-child(1) {
             width: 40% !important;
-            top: -24px !important;
+            top: -15px !important;
             right: -60px !important;
             text-align: left !important;
         }
@@ -1840,10 +1853,13 @@ $vh: var(--vh);
     .coinTwo {
         top: 300px;
     }
+    .cycle3 {
+        margin-top: -80px !important;
+    }
     .donationLogo {
         > div:nth-child(1) {
-            width: 35% !important;
-            top: -26px !important;
+            width: 55% !important;
+            top: -25px !important;
         }
     }
     .contentAnimation {
@@ -1945,9 +1961,13 @@ $vh: var(--vh);
     .coinTwo {
         top: 300px;
     }
+    .cycle3 {
+        margin-top: -80px !important;
+    }
     .donationLogo {
         > div:nth-child(1) {
-            width: 50% !important;
+            width: 65% !important;
+            top: -25px !important;
         }
     }
     .contentAnimation {
@@ -1961,7 +1981,7 @@ $vh: var(--vh);
         width: 65%;
     }
     .w55 {
-        width: 80%;
+        width: 75%;
     }
     .paddingSides {
         padding: 0px 0px !important;
@@ -2228,9 +2248,13 @@ $vh: var(--vh);
 }
 
 @include media(">=1400px", "<1500px") {
+    .cycle3 {
+        margin-top: -75px !important;
+    }
     .donationLogo {
         > div:nth-child(1) {
             width: 80% !important;
+            top: -25px !important;
         }
     }
     .avatarInner {
@@ -2279,6 +2303,14 @@ $vh: var(--vh);
 }
 
 @include media(">=1500px", "<1600px") {
+    .cycle3 {
+        margin-top: -75px !important;
+    }
+    .donationLogo {
+        > div:nth-child(1) {
+            top: -25px !important;
+        }
+    }
     .avatarInner {
         img {
             @include imgProperties(100px);
