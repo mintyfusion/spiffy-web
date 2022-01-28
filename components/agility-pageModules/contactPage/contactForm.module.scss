@@ -27,6 +27,10 @@
         @extend .regular16;
     }
 
+    .overlay {
+        background-color: $overlay-grey;
+    }
+
     .contextContainer {
         & > div {
             padding: 2rem 7rem;
@@ -44,10 +48,13 @@
     .formContainer {
         .formContent {
             background-color: $white;
-            padding: 2rem;
             border-radius: 5px;
             border: 1px solid $light-transparent-grey;
             box-shadow: 29px 26px 2px 6px $dirty-grey;
+
+            form {
+                padding: 2rem;
+            }
 
             .countryflagContainer {
                 @extend .regular24;
@@ -87,6 +94,33 @@
 
         .userTypeButton {
             @extend .semiBold20;
+        }
+
+        .inactive {
+            background-color: $faded-yellow;
+        }
+    }
+
+    .thankYou {
+        padding: 152px 0;
+        // background: $link-text-color;
+        // box-shadow: 0px 2px 7px $card-shadow-color;
+        border-radius: 12px;
+        margin-top: 30px;
+
+        img {
+            margin-bottom: 22px;
+        }
+
+        .title {
+            // @include text-styles(24, 33, 36, 48, 0.66px, $text-color, 600, $graphik-semibold);
+            margin-bottom: 22px;
+        }
+
+        .note {
+            // @include text-styles(14, 16, 18, 25, 0.32px, $text-color);
+            margin-bottom: 10px;
+            padding: 0 60px;
         }
     }
 }
