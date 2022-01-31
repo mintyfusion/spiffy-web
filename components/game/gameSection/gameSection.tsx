@@ -63,7 +63,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
     const coinRef = React.useRef<HTMLDivElement>();
-    const coinAnimation = React.useRef<HTMLDivElement & Element>();
+    const coinAnimation = React.useRef<HTMLDivElement>();
     const coinStyles = React.useRef<CSSProperties>();
     let coinInterval;
 
@@ -528,7 +528,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
             const index = avatar.getAttribute("data-index");
             const bounds = avatar.getBoundingClientRect();
-            const coin = document.getElementById("CoinAnimation");
+            const coin = coinAnimation.current;
             const width = window.innerWidth;
             const fourHundred = 400;
             const Ten = 10;
@@ -699,8 +699,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             </div>
                         </Element>
 
-                        <Element name={StepTypes.Four} className={styles.donationSections} id="CoinAnimation" ref={coinAnimation}>
-                            <div>
+                        <Element name={StepTypes.Four} className="w-100">
+                            <div ref={coinAnimation} className={styles.donationSections}>
                                 <div className={styles.card}>
                                     <div className={`${rowHCenter} ${styles.stepFour}`}>
                                         <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
