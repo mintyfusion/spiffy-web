@@ -1346,6 +1346,10 @@ $vh: var(--vh);
             .percentageWrapper {
                 width: 100%;
                 height: 100%;
+                img {
+                    @include imgProperties(65px);
+                    cursor: pointer;
+                }
             }
         }
     }
