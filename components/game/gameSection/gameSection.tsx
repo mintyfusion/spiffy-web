@@ -13,12 +13,12 @@ import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
 import IFriendAvatar from "components/game/gameSection/interfaces/IFriendAvatar";
+import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
 import Image from "next/image";
 import Position from "components/game/gameSection/enums/gameSectionCoinAvatarPosition";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import StepTypes from "./enums/stepTypes";
-import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
@@ -40,15 +40,15 @@ const stepTwoTimeout = 1500;
 const contentCreatorFormula = 50;
 const friendsFormula = 4;
 const spiffyFormula = 10;
+const stepOne = 500;
 
-const GameSection = (): JSX.Element => {
+const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<IFriendAvatar[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
     const [step, setStep] = React.useState<StepTypes>(StepTypes.One);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, setAnimation] = React.useState<boolean>(false);
-    const [isModalOpen, { setTrue: openModal, setFalse: closeModal }] = useBoolean(false);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
@@ -63,6 +63,7 @@ const GameSection = (): JSX.Element => {
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
     const coinRef = React.useRef<HTMLDivElement>();
+    const coinAnimation = React.useRef<HTMLDivElement & Element>();
     const coinStyles = React.useRef<CSSProperties>();
     let coinInterval;
 
@@ -121,18 +122,24 @@ const GameSection = (): JSX.Element => {
                         styles[value] = {
                             left: left1,
                             top: top1,
+                            opacity: "1",
+                            transition: "1s"
                         };
                         break;
                     case AvatarType.Red:
                         styles[value] = {
                             left: left2,
                             top: top1,
+                            opacity: "1",
+                            transition: "1s"
                         };
                         break;
                     case AvatarType.Yellow:
                         styles[value] = {
                             left: left1,
                             top: top2,
+                            opacity: "1",
+                            transition: "1s"
                         };
                         break;
                     case AvatarType.Purple:
@@ -140,6 +147,8 @@ const GameSection = (): JSX.Element => {
                         styles[value] = {
                             left: left2,
                             top: top2,
+                            opacity: "1",
+                            transition: "1s"
                         };
                         break;
                 }
@@ -220,7 +229,8 @@ const GameSection = (): JSX.Element => {
                 [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
-                    transition: "1s"
+                    transition: "1s",
+                    opacity: "1"
                 }
             };
             setAvatarStyleGUID(getUniqueId());
@@ -337,7 +347,8 @@ const GameSection = (): JSX.Element => {
                     [seletedAvatar]: {
                         top: bounds.y + fullscreen.current.scrollTop,
                         left: bounds.x + fullscreen.current.scrollLeft,
-                        transition: "1s"
+                        transition: "1s",
+                        opacity: "1"
                     }
                 };
                 setAvatarStyleGUID(getUniqueId());
@@ -357,10 +368,12 @@ const GameSection = (): JSX.Element => {
     }, [setFriendsPositions, seletedAvatar, avatarName]);
 
     React.useEffect(() => {
-        if (step === StepTypes.One && isModalOpen && avatarStyleGUID === "0") {
-            setAvatarPositions();
+        if (step === StepTypes.One && avatarStyleGUID === "0") {
+            setTimeout(() => {
+                setAvatarPositions();
+            }, stepOne);
         }
-    }, [setAvatarPositions, step, isModalOpen, avatarStyleGUID]);
+    }, [setAvatarPositions, step, avatarStyleGUID]);
 
     const signupAnimation = React.useCallback(() => {
         scroller.scrollTo(StepTypes.Six, {
@@ -472,6 +485,7 @@ const GameSection = (): JSX.Element => {
                         [seletedAvatar]: {
                             top: boundsFirst.y + fullscreen.current.scrollTop,
                             left: boundsFirst.x + fullscreen.current.scrollLeft,
+                            opacity: "1"
                         }
                     };
                     setAvatarStyleGUID(getUniqueId());
@@ -489,6 +503,7 @@ const GameSection = (): JSX.Element => {
                         [seletedAvatar]: {
                             top: boundsSecond.y + fullscreen.current.scrollTop,
                             left: boundsSecond.x + fullscreen.current.scrollLeft,
+                            opacity: "1"
                         }
                     };
                     setAvatarStyleGUID(getUniqueId());
@@ -507,20 +522,6 @@ const GameSection = (): JSX.Element => {
         };
 
     }, [handleResize]);
-
-    const handleModalCloseBtnClick = React.useCallback(() => {
-        setStep(StepTypes.One);
-        setAddedFriends([]);
-        setSeletedAvatar(null);
-        closeModal();
-        setAvatarStyleGUID("0");
-        setDonationAmount("");
-        setAnimation(false);
-        coinStyles.current = {
-            left: null,
-            top: null
-        };
-    }, []);
 
     const handlStepAnimation = React.useCallback((stepIndex) => {
         if (coinRef.current) {
@@ -629,11 +630,10 @@ const GameSection = (): JSX.Element => {
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
-            <PrimaryButton onClick={openModal}>Play Game</PrimaryButton>
-            <Modal show={isModalOpen} fullscreen={true} onHide={closeModal}>
+            <Modal show={true} fullscreen={true} onHide={props.closeModal}>
                 <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`}
                     id={containerId} ref={fullscreen}>
-                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={handleModalCloseBtnClick} className={styles.close} />
+                    <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={props.closeModal} className={styles.close} />
                     <div className={styles.container}>
                         <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your avatar</h2>
@@ -656,7 +656,7 @@ const GameSection = (): JSX.Element => {
                             )}
                         </div>
 
-                        <Element name={StepTypes.Two} className={styles.card} id="test">
+                        <Element name={StepTypes.Two} className={styles.card}>
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
@@ -699,156 +699,158 @@ const GameSection = (): JSX.Element => {
                             </div>
                         </Element>
 
-                        <Element name={StepTypes.Four} className={styles.donationSections} id="CoinAnimation">
-                            <div className={styles.card}>
-                                <div className={`${rowHCenter} ${styles.stepFour}`}>
-                                    <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
-                                    <h4>
-                                        Add donation in increments of $5, and discover where your donation is going.
-                                    </h4>
-                                    <Navbar expand="lg" className="d-block"
-                                        expanded={expanded}
-                                        onClick={() => breakpoint && setExpanded(!expanded)}>
-                                        <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "Select Amount" : `$${donationAmount}`}</Navbar.Brand>
-                                        <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
-                                            <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
-                                        </Navbar.Toggle>
-                                        <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
-                                        <Navbar.Collapse id="basic-navbar-nav" className={styles.customNavbar}>
-                                            <Nav className={"me-auto w-100"}>
-                                                {donation.map((donation, donationKey) =>
-                                                    <PrimaryButton
-                                                        key={donationKey}
-                                                        onClick={() => {
-                                                            setDonationAmount(donation);
-                                                            animationHandler(donation);
-                                                            document.getElementById("CoinAnimation").scroll({
-                                                                top: 230,
-                                                                behavior: "smooth"
-                                                            });
-                                                            coinStyles.current = {
-                                                                left: null,
-                                                                top: null
-                                                            };
-                                                        }}
-                                                        className={`${horizontalAlign} 
+                        <Element name={StepTypes.Four} className={styles.donationSections} id="CoinAnimation" ref={coinAnimation}>
+                            <div>
+                                <div className={styles.card}>
+                                    <div className={`${rowHCenter} ${styles.stepFour}`}>
+                                        <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
+                                        <h4>
+                                            Add donation in increments of $5, and discover where your donation is going.
+                                        </h4>
+                                        <Navbar expand="lg" className="d-block"
+                                            expanded={expanded}
+                                            onClick={() => breakpoint && setExpanded(!expanded)}>
+                                            <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "Select Amount" : `$${donationAmount}`}</Navbar.Brand>
+                                            <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
+                                                <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
+                                            </Navbar.Toggle>
+                                            <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
+                                            <Navbar.Collapse id="basic-navbar-nav" className={styles.customNavbar}>
+                                                <Nav className={"me-auto w-100"}>
+                                                    {donation.map((donation, donationKey) =>
+                                                        <PrimaryButton
+                                                            key={donationKey}
+                                                            onClick={() => {
+                                                                setDonationAmount(donation);
+                                                                animationHandler(donation);
+                                                                document.getElementById("CoinAnimation").scroll({
+                                                                    top: 230,
+                                                                    behavior: "smooth"
+                                                                });
+                                                                coinStyles.current = {
+                                                                    left: null,
+                                                                    top: null
+                                                                };
+                                                            }}
+                                                            className={`${horizontalAlign} 
                                                         ${styles.donationButton}
                                                          ${donation === donationAmount
-                                                                ? styles.active :
-                                                                styles.inactive}
+                                                                    ? styles.active :
+                                                                    styles.inactive}
                                                           w-100 px-1 py-3`}
-                                                    >
-                                                        ${donation}
-                                                    </PrimaryButton>
-                                                )}
+                                                        >
+                                                            ${donation}
+                                                        </PrimaryButton>
+                                                    )}
 
-                                            </Nav>
-                                        </Navbar.Collapse>
-                                    </Navbar>
+                                                </Nav>
+                                            </Navbar.Collapse>
+                                        </Navbar>
 
-                                    <div className={`w-100 ${animation ?
-                                        styles.contentAnimation :
-                                        styles.donationCycle}`}>
-                                        <div className={`${styles.donationInner} 
+                                        <div className={`w-100 ${animation ?
+                                            styles.contentAnimation :
+                                            styles.donationCycle}`}>
+                                            <div className={`${styles.donationInner} 
                                                 ${colCenter}`}>
-                                            <h2>Donation Cycle</h2>
-                                            <div className={styles.coinTwo}
-                                                ref={coinRef}
-                                                style={coinStyles.current}>
-                                                <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
-                                            </div>
-                                            <div className={styles.userDonation} data-index="0">
-                                                <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
-                                            </div>
-                                            <p>
-                                                {donationAmount !== "" ? donationCalulation(contentCreatorFormula) : null}
-                                            </p>
-                                        </div>
-                                        <Row className={rowHBetween}>
-                                            <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1" data-position={Position.Center}>
-                                                    <Avatar color={AvatarType.Green} width={56} height={63} />
-                                                    <span className={styles.donationAmount}>
-                                                        {donationCalulation(friendsFormula)}
-                                                    </span>
+                                                <h2>Donation Cycle</h2>
+                                                <div className={styles.coinTwo}
+                                                    ref={coinRef}
+                                                    style={coinStyles.current}>
+                                                    <Image src={"/images/Game/coin.png"} alt="Coin" width={76} height={76} />
                                                 </div>
-                                            </Col>
-                                        </Row>
-                                        <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
-                                            <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2" data-position={Position.RightTop}>
-                                                <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                {coin(styles.donationAmount2)}
-                                            </div>
-                                        </Row>
-                                        <Row className={`${styles.w40} ${rowHBetween}`}>
-                                            <div className={styles.donationLogo}>
-                                                <div>
-                                                    <span className="d-block">
-                                                        We’re totally reliant on these cents to keep us going.
-                                                    </span>
+                                                <div className={styles.userDonation} data-index="0">
+                                                    <Image src={"/images/Game/user.png"} alt="User" width={149} height={129} />
                                                 </div>
-                                                <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11" data-position={Position.Left}>
-                                                    <Image src="/images/Game/donationCycle/spiffy.png" width={155} height={44} />
-                                                    {donationCalulation(spiffyFormula)}
-                                                </div>
+                                                <p>
+                                                    {donationAmount !== "" ? donationCalulation(contentCreatorFormula) : null}
+                                                </p>
                                             </div>
+                                            <Row className={rowHBetween}>
+                                                <Col className={`${horizontalAlign} ${styles.heigth120}`}>
+                                                    <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1" data-position={Position.Center}>
+                                                        <Avatar color={AvatarType.Green} width={56} height={63} />
+                                                        <span className={styles.donationAmount}>
+                                                            {donationCalulation(friendsFormula)}
+                                                        </span>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                            <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
+                                                <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2" data-position={Position.RightTop}>
+                                                    <Avatar color={AvatarType.Red} width={56} height={63} />
+                                                    {coin(styles.donationAmount2)}
+                                                </div>
+                                            </Row>
+                                            <Row className={`${styles.w40} ${rowHBetween}`}>
+                                                <div className={styles.donationLogo}>
+                                                    <div>
+                                                        <span className="d-block">
+                                                            We’re totally reliant on these cents to keep us going.
+                                                        </span>
+                                                    </div>
+                                                    <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11" data-position={Position.Left}>
+                                                        <Image src="/images/Game/donationCycle/spiffy.png" width={155} height={44} />
+                                                        {donationCalulation(spiffyFormula)}
+                                                    </div>
+                                                </div>
 
-                                            <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3" data-position={Position.Right}>
-                                                <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                {coin(styles.donationAmount4)}
-                                            </div>
-                                        </Row>
-                                        <Row className={`${styles.w55} ${rowHBetween}`}>
-                                            <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10" data-position={Position.Left}>
-                                                <Avatar color={AvatarType.Green} width={56} height={63} />
-                                                {coin(styles.donationAmount5)}
-                                            </div>
-                                            <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4" data-position={Position.Right}>
-                                                <Avatar color={AvatarType.Purple} width={56} height={63} />
-                                                {coin(styles.donationAmount6)}
-                                            </div>
-                                        </Row>
-                                        <Row className={`${styles.w40} ${rowHBetween}`}>
-                                            <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9" data-position={Position.Left}>
-                                                <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                {coin(styles.donationAmount7)}
-                                            </div>
-                                            <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5" data-position={Position.Right}>
-                                                <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                {coin(styles.donationAmount8)}
-                                            </div>
-                                        </Row>
-                                        <Row className={`${styles.w25} 
+                                                <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3" data-position={Position.Right}>
+                                                    <Avatar color={AvatarType.Yellow} width={56} height={63} />
+                                                    {coin(styles.donationAmount4)}
+                                                </div>
+                                            </Row>
+                                            <Row className={`${styles.w55} ${rowHBetween}`}>
+                                                <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10" data-position={Position.Left}>
+                                                    <Avatar color={AvatarType.Green} width={56} height={63} />
+                                                    {coin(styles.donationAmount5)}
+                                                </div>
+                                                <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4" data-position={Position.Right}>
+                                                    <Avatar color={AvatarType.Purple} width={56} height={63} />
+                                                    {coin(styles.donationAmount6)}
+                                                </div>
+                                            </Row>
+                                            <Row className={`${styles.w40} ${rowHBetween}`}>
+                                                <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9" data-position={Position.Left}>
+                                                    <Avatar color={AvatarType.Yellow} width={56} height={63} />
+                                                    {coin(styles.donationAmount7)}
+                                                </div>
+                                                <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5" data-position={Position.Right}>
+                                                    <Avatar color={AvatarType.Yellow} width={56} height={63} />
+                                                    {coin(styles.donationAmount8)}
+                                                </div>
+                                            </Row>
+                                            <Row className={`${styles.w25} 
                                         ${styles.marginBottomMinusFifty} 
                                         ${rowHBetween}`}>
-                                            <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8" data-position={Position.BottomLeft}>
-                                                <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                {coin(styles.donationAmount9)}
-                                            </div>
-                                            <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6" data-position={Position.BottomRight}>
-                                                <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                {coin(styles.donationAmount10)}
-                                            </div>
-                                        </Row>
-                                        <Row className={horizontalAlign}>
-                                            <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7" data-position={Position.BottomCenter}>
-                                                <Avatar color={AvatarType.Green} width={56} height={63} />
-                                                {coin(styles.donationAmount11)}
-                                            </div>
-                                        </Row>
+                                                <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8" data-position={Position.BottomLeft}>
+                                                    <Avatar color={AvatarType.Red} width={56} height={63} />
+                                                    {coin(styles.donationAmount9)}
+                                                </div>
+                                                <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6" data-position={Position.BottomRight}>
+                                                    <Avatar color={AvatarType.Red} width={56} height={63} />
+                                                    {coin(styles.donationAmount10)}
+                                                </div>
+                                            </Row>
+                                            <Row className={horizontalAlign}>
+                                                <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7" data-position={Position.BottomCenter}>
+                                                    <Avatar color={AvatarType.Green} width={56} height={63} />
+                                                    {coin(styles.donationAmount11)}
+                                                </div>
+                                            </Row>
+                                        </div>
                                     </div>
                                 </div>
+                                {donationAmount ?
+                                    <div className={styles.card}>
+                                        <GameAvatarList
+                                            friends={addedFriends}
+                                            seletedAvatar={seletedAvatar}
+                                            name={avatarName}
+                                            setStep={setStep}
+                                            signupAnimation={signupAnimation} />
+                                    </div> :
+                                    null}
                             </div>
-                            {donationAmount ?
-                                <div className={styles.card}>
-                                    <GameAvatarList
-                                        friends={addedFriends}
-                                        seletedAvatar={seletedAvatar}
-                                        name={avatarName}
-                                        setStep={setStep}
-                                        signupAnimation={signupAnimation} />
-                                </div> :
-                                null}
                         </Element>
 
                         <Element name={StepTypes.Six} className={styles.card}>
