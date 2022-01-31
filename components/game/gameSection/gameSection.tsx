@@ -466,13 +466,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     }, [addedFriends]);
 
     const handleResize = React.useCallback(() => {
-        scroller.scrollTo(step, {
-            containerId,
-            ignoreCancelEvents: true,
-            offset: -20,
-        });
         setViewportHeight();
-
         switch (step) {
             case StepTypes.One:
                 setAvatarPositions();
@@ -494,6 +488,11 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
 
             case StepTypes.Three:
+                scroller.scrollTo(step, {
+                    containerId,
+                    ignoreCancelEvents: true,
+                    offset: -20,
+                });
                 setFriendsPositions();
                 friendsResizeHandler();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
@@ -724,7 +723,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                             onClick={() => {
                                                                 setDonationAmount(donation);
                                                                 animationHandler(donation);
-                                                                document.getElementById("CoinAnimation").scroll({
+                                                                console.log(coinAnimation);
+                                                                coinAnimation.current.scroll({
                                                                     top: 230,
                                                                     behavior: "smooth"
                                                                 });
