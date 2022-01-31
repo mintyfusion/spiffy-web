@@ -270,9 +270,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const keyThree = 3;
 
             const selectedFriends: IFriendAvatar[] = [];
-            data.forEach(item => {
+            data.forEach((item, key) => {
                 if (item.id == value.id) {
-                    selectedFriends.push({ ...item, done: true });
+                    selectedFriends.push({ ...item, done: true, key });
                 }
             });
             setAddedFriends((currentFriends: IFriendAvatar[]) => [...currentFriends, ...selectedFriends]);
@@ -414,12 +414,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
             const keyTwo = 2;
             const keyThree = 3;
+            const keyFour = 4;
 
             const styles = {} as Record<AvatarType, CSSProperties>;
 
-            addedFriends.map((value, index) => {
-                switch (index) {
-                    case 0:
+            addedFriends.map((value) => {
+                switch (value.key) {
+                    case 1:
                         if (value.done) {
                             styles[value.id] = {
                                 top,
@@ -427,7 +428,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             };
                         }
                         break;
-                    case 1:
+                    case keyTwo:
                         if (value.done) {
                             styles[value.id] = {
                                 top,
@@ -435,7 +436,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             };
                         }
                         break;
-                    case keyTwo:
+                    case keyThree:
                         if (value.done) {
                             styles[value.id] = {
                                 top: top2,
@@ -443,7 +444,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             };
                         }
                         break;
-                    case keyThree:
+                    case keyFour:
                     default:
                         if (value.done) {
                             styles[value.id] = {
