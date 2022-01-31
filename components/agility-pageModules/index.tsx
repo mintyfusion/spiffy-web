@@ -10,6 +10,7 @@ import EducationDetailsModule from "components/agility-pageModules/educationDeta
 import EducationListingModule from "components/agility-pageModules/educationPage/contentListModule/contentListModule";
 import FAQContentModule from "components/agility-pageModules/faqPage/contentModule/faqContentModule";
 import HeroModule from "components/agility-pageModules/common/heroModule/HeroModule";
+import HtmlContentModule from "components/agility-pageModules/common/htmlContentModule/htmlContentModule";
 import LandingFeaturesModule from "components/agility-pageModules/landingPage/featuresModule/LandingFeaturesModule";
 import LandingPageEducation from "components/agility-pageModules/landingPage/educationModule/landingPageEducation";
 import LandingPageGetStarted from "components/agility-pageModules/landingPage/getStartedModule/landingPageGetStarted";
@@ -31,7 +32,8 @@ const allModules = [
   { name: "AboutUsHeroModule", module: AboutUsHeroModule },
   { name: "AboutUsValuesModule", module: AboutUsValuesModule },
   { name: "ContactFormModule", module: ContactForm },
-  { name: "HeroModulewithDate", module: DateHeroModule }
+  { name: "HeroModulewithDate", module: DateHeroModule },
+  { name: "HTMLTemplate", module: HtmlContentModule }
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
