@@ -75,6 +75,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     ), [seletedAvatar]) as IFriendAvatar[];
 
     React.useEffect(() => {
+        let timer: NodeJS.Timeout;
         if (addedFriends.length === friendsLength) {
             scroller.scrollTo(StepTypes.Four, {
                 duration: 700,
@@ -83,11 +84,15 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 delay: 500,
                 ignoreCancelEvents: true
             });
-            const timer = setTimeout(() => {
+            timer = setTimeout(() => {
                 setStep(StepTypes.Four);
                 clearTimeout(timer);
             }, friendsTimeout);
         }
+        
+        return () => {
+            clearTimeout(timer);
+        };
     }, [addedFriends]);
 
     const animationHandler = React.useCallback((donation: string) => {
@@ -270,7 +275,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const keyThree = 3;
 
             const selectedFriends: IFriendAvatar[] = [];
-            data.forEach((item, key) => {
+            data.filter((filter) => filter.id !== seletedAvatar).forEach((item, key) => {
                 if (item.id == value.id) {
                     selectedFriends.push({ ...item, done: true, key });
                 }
@@ -414,13 +419,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
             const keyTwo = 2;
             const keyThree = 3;
-            const keyFour = 4;
 
             const styles = {} as Record<AvatarType, CSSProperties>;
 
             addedFriends.map((value) => {
                 switch (value.key) {
-                    case 1:
+                    case 0:
                         if (value.done) {
                             styles[value.id] = {
                                 top,
@@ -428,7 +432,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             };
                         }
                         break;
-                    case keyTwo:
+                    case 1:
                         if (value.done) {
                             styles[value.id] = {
                                 top,
@@ -436,7 +440,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             };
                         }
                         break;
-                    case keyThree:
+                    case keyTwo:
                         if (value.done) {
                             styles[value.id] = {
                                 top: top2,
@@ -444,8 +448,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             };
                         }
                         break;
-                    case keyFour:
-                    default:
+                    case keyThree:
                         if (value.done) {
                             styles[value.id] = {
                                 top: top2,
