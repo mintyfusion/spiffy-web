@@ -723,7 +723,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                             onClick={() => {
                                                                 setDonationAmount(donation);
                                                                 animationHandler(donation);
-                                                                console.log(coinAnimation);
                                                                 coinAnimation.current.scroll({
                                                                     top: 230,
                                                                     behavior: "smooth"
