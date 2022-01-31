@@ -113,7 +113,6 @@ export type Styles = {
   "targetTwo": string;
   "transparent": string;
   "user": string;
-  "userAvatar": string;
   "userDonation": string;
   "w25": string;
   "w40": string;

@@ -687,6 +687,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             {friendsAvatars.map((key: IFriendAvatar, index) =>
                                                 <div
                                                     key={index}
+                                                    className="position-absolute"
                                                     style={friendsStyle.current && friendsStyle.current[key.id]}
                                                     onClick={() => !key.done ? friendsAnimation(index, key) : null}
                                                 >
