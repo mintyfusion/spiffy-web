@@ -4,7 +4,9 @@ import React from "react";
 
 import BaseField from "components/agility-pageModules/common/baseField/baseField";
 import ContactFormFieldNames from "components/agility-pageModules/contactPage/enums/contactFormFieldNames";
+import contactFormFields from "components/agility-pageModules/contactPage/contentFormFieldData";
 import flexbox from "utils/flexbox";
+import IContactFormProps from "components/agility-pageModules/contactPage/interfaces/IContactFormProps";
 import IField from "types/IField";
 import postData from "utils/postData";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
@@ -18,54 +20,11 @@ const EMAIL_PATTERN = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 
 const centerAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
-const ContactForm = (props: ModuleProps<any>): JSX.Element => {
+const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
     const { fields } = props.module;
     const [submitted, setSubmitted] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const [userType, setUserType] = React.useState<UserTypes>(UserTypes.Creator);
-
-    // eslint-disable-next-line no-console
-    console.log(fields);
-
-    const contactFormFields = React.useMemo((): Record<ContactFormFieldNames, IField> => ({
-        [ContactFormFieldNames.fullName]: {
-            type: "text",
-            placeHolder: "Full Name",
-            label: "Full Name",
-            value: "",
-            error: "Please enter name",
-            validated: true,
-            fullWidth: false,
-        },
-        [ContactFormFieldNames.email]: {
-            type: "email",
-            placeHolder: "Email",
-            label: "Email",
-            value: "",
-            error: "Please enter valid email",
-            validated: true,
-            fullWidth: false,
-        },
-        [ContactFormFieldNames.phoneNumber]: {
-            type: "text",
-            placeHolder: "Phone Number",
-            label: "Phone Number",
-            value: "",
-            error: "Please enter phone number",
-            validated: true,
-            fullWidth: false,
-        },
-        [ContactFormFieldNames.message]: {
-            type: "textarea",
-            placeHolder: "Message",
-            label: "Message",
-            value: "",
-            error: "Please enter a brief message",
-            validated: true,
-            fullWidth: true,
-        },
-    }), []);
-
     const [formFields, setFields] = React.useState<Record<string, IField>>(contactFormFields);
 
     const handleChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement & HTMLTextAreaElement>): void => {
@@ -172,38 +131,32 @@ const ContactForm = (props: ModuleProps<any>): JSX.Element => {
 
             setLoading(false);
         }
-    }, [contactFormFields, formFields, loading, userType]);
+    }, [formFields, loading, userType]);
 
     return (
         <Row className={`${styles.container} w-100 m-0`}>
             <Col className={`${styles.contextContainer} d-flex flex-column justify-content-center`}>
                 <Row className={styles.topContextContainer}>
                     <div>
-                        <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+                        <h2>{fields.title}</h2>
                         <p>
-                            <h4>
-                                Spiffy is where millions of Content creators come together to accept donations
-                                from your audience and connect with your biggest fans
-                            </h4>
+                            <h4>{fields.description}</h4>
                         </p>
                         <p>
-                            <h4>or find an answer on FAQ’s</h4>
-                        </p>
-                        <p>
-                            <PrimaryButton className={styles.buttonFaq} linkProps={{ href: "/faq" }}>
-                                {`${"FAQ's"}`}
+                            <PrimaryButton
+                                className={styles.buttonFaq}
+                                linkProps={{ href: fields.redirectPageButton.href }}
+                            >
+                                {fields.redirectPageButton.text}
                             </PrimaryButton>
                         </p>
                     </div>
                 </Row>
                 <Row>
                     <div>
-                        <h3>Media & Press</h3>
+                        <h3>{fields.subTitle}</h3>
                         <p>
-                            <h4>
-                                For general media and press queries, including partnership opportunities,
-                                please email info@spiffy.biz
-                            </h4>
+                            <h4>{fields.subDescription}</h4>
                         </p>
                     </div>
                 </Row>
