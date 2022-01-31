@@ -190,7 +190,9 @@ const ContactForm = (props: ModuleProps<any>): JSX.Element => {
                             <h4>or find an answer on FAQ’s</h4>
                         </p>
                         <p>
-                            <PrimaryButton className={styles.buttonFaq}>{`${"FAQ's"}`}</PrimaryButton>
+                            <PrimaryButton className={styles.buttonFaq} linkProps={{ href: "/faq" }}>
+                                {`${"FAQ's"}`}
+                            </PrimaryButton>
                         </p>
                     </div>
                 </Row>
