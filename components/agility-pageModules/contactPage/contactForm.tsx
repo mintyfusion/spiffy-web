@@ -165,10 +165,8 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 <div className={`${styles.formContent} position-relative`}>
                     {!submitted
                         ? <form onSubmit={handleSubmit}>
-                            <h6>Contact Us</h6>
-                            <p>
-                                <h5>Lorem ipsum dosul</h5>
-                            </p>
+                            <h6>{fields.formTitle}</h6>
+                            <p><h5>{fields.formDescription}</h5></p>
                             <div className="d-flex flex-row gap-3">
                                 <PrimaryButton
                                     className={`
@@ -193,19 +191,18 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                                 {finalFields}
                             </Stack>
                             <Stack className="py-3">
-                                <PrimaryButton className="w-100" type="submit" >GET IN TOUCH</PrimaryButton>
+                                <PrimaryButton className="w-100" type="submit">
+                                    {fields.formSubmitButtonText}
+                                </PrimaryButton>
                             </Stack>
                             <div className="text-center p-2" style={{ maxWidth: "400px", margin: "auto" }}>
-                                <label>
-                                    By clicking the above button you agree to our Terms and
-                                    have read and understood our Privacy Policy.
-                                </label>
+                                <label>{fields.formBottomText}</label>
                             </div>
                         </form>
                         : <Col className={`${styles.thankYou} text-center`}>
                             {/* <img {...props.afterSuccessContent.image} /> */}
-                            <h1 className={styles.title}>Thank You</h1>
-                            <p className={styles.note}>We will get back to you soon</p>
+                            <h1 className={styles.title}>{fields.confirmationTitle}</h1>
+                            <p className={styles.note}>{fields.confirmationDescription}</p>
                         </Col>
                     }
                     {loading &&
