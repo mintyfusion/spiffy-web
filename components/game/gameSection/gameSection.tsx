@@ -89,7 +89,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 clearTimeout(timer);
             }, friendsTimeout);
         }
-        
+
         return () => {
             clearTimeout(timer);
         };
@@ -714,7 +714,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                         <Navbar expand="lg" className="d-block"
                                             expanded={expanded}
                                             onClick={() => breakpoint && setExpanded(!expanded)}>
-                                            <Navbar.Brand href="#home" className="d-lg-none">{donationAmount === "" ? "Select Amount" : `$${donationAmount}`}</Navbar.Brand>
+                                            <Navbar.Brand className="d-lg-none">{donationAmount === "" ? "Select Amount" : `$${donationAmount}`}</Navbar.Brand>
                                             <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
                                                 <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
                                             </Navbar.Toggle>
