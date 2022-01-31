@@ -2,14 +2,14 @@
 @import "styles/includeMedia.scss";
 @import "styles/font/fontGroups.scss";
 
-
 .contentContainer {
     background-color: $neutral-light-black;
 
     h5,
+    p,
+    li,
     h5 span {
         @extend .regular-desktop25-mobile16;
-        color: $light-grey;
         margin: 1rem 0;
     }
 

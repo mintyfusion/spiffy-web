@@ -8,7 +8,7 @@ import styles from "components/agility-pageModules/common/htmlContentModule/html
 const HtmlContentModule = (props: ModuleProps<IHtmlContentModuleProps>): JSX.Element => {
     const { content } = props.module.fields;
 
-    return <div className={`${styles.contentContainer} p-3`} dangerouslySetInnerHTML={renderHTML(content)}></div>;
+    return <div className={`${styles.contentContainer} p-5`} dangerouslySetInnerHTML={renderHTML(content)}></div>;
 
 };
 
