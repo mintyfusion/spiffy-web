@@ -43,6 +43,7 @@ const HeroModule = (props: IHeroModuleProps): JSX.Element => {
 
                 return <LandingBannerSection content={fields} />;
             }
+            
             case PageIds.CREATOR_LANDING: {
                 setRenderFullHeight(true);
 

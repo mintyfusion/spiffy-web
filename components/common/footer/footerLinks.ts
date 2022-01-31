@@ -5,8 +5,8 @@ const footerLinks: IFooterLinks[] = [
         linkHeaderText: "Company",
         links: [
             { children: "About Us", href: "/about" },
-            { children: "Terms and Conditions", href: "/" },
-            { children: "Privacy Policy", href: "/" },
+            { children: "Terms and Conditions", href: "/terms" },
+            { children: "Privacy Policy", href: "/privacy" },
         ]
     },
     {

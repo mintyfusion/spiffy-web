@@ -5,6 +5,7 @@ import AboutUsValuesModule from "components/agility-pageModules/aboutPage/values
 import CommonContentModule from "components/agility-pageModules/common/commonContent/commonContentModule";
 import ContactForm from "components/agility-pageModules/contactPage/contactForm";
 import CreatorPageContentModule from "components/agility-pageModules/creatorPage/contentModule/creatorPageContentModule";
+import DateHeroModule from "components/agility-pageModules/common/dateHeroModule/dateHeroModule";
 import EducationDetailsModule from "components/agility-pageModules/educationDetailsModule/educationDetailsModule";
 import EducationListingModule from "components/agility-pageModules/educationPage/contentListModule/contentListModule";
 import FAQContentModule from "components/agility-pageModules/faqPage/contentModule/faqContentModule";
@@ -29,7 +30,8 @@ const allModules = [
   { name: "FAQContentModule", module: FAQContentModule },
   { name: "AboutUsHeroModule", module: AboutUsHeroModule },
   { name: "AboutUsValuesModule", module: AboutUsValuesModule },
-  { name: "ContactFormModule", module: ContactForm }
+  { name: "ContactFormModule", module: ContactForm },
+  { name: "HeroModulewithDate", module: DateHeroModule }
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
