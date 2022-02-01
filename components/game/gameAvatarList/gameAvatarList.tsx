@@ -151,13 +151,13 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 break;
             case "100":
                 setAmount("279,800");
+                props.signupAnimation();
                 break;
             case "5":
                 setAmount("13,990");
                 break;
             default:
                 setAmount("2,798");
-
         }
     }, [selectedKey]);
 

@@ -326,7 +326,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     }, []);
 
     const friendsResizeHandler = React.useCallback(() => {
-        // friendsStyleHandler(addedFriends);
         if (stepThree.current) {
             const width = window.innerWidth;
             const mobile = 1000;
