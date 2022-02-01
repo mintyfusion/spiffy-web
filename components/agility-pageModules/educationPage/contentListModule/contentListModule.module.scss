@@ -37,6 +37,16 @@
     opacity: 1;
 }
 
+.tabArrow {
+    cursor: pointer;
+    transition: color 100ms;
+
+    &:hover {
+        color: $yellow;
+        transition: color 100ms;
+    }
+}
+
 .content {
     background: $dirty-white;
 
@@ -50,6 +60,7 @@
 }
 
 .tab {
+    min-width: 300px;
     border: none;
     text-transform: initial;
 
