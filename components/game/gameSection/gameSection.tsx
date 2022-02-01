@@ -40,7 +40,7 @@ const stepTwoTimeout = 1500;
 const contentCreatorFormula = 50;
 const friendsFormula = 4;
 const spiffyFormula = 10;
-const stepOne = 500;
+const stepOneTimeout = 500;
 
 const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<IFriendAvatar[]>([]);
@@ -349,8 +349,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing;
             const left2 = bounds.x + fullscreen.current.scrollLeft + left2Spacing;
 
-            const keyTwo = 2;
-            const keyThree = 3;
+            const caseTwo = 2;
+            const caseThree = 3;
 
             const selectedFriends: IFriendAvatar[] = [];
             data.filter((filter) => filter.id !== seletedAvatar).forEach((item, key) => {
@@ -377,14 +377,14 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     };
 
                     break;
-                case keyTwo:
+                case caseTwo:
                     styles[value.id] = {
                         top: top2,
                         left,
                     };
 
                     break;
-                case keyThree:
+                case caseThree:
                     styles[value.id] = {
                         top: top2,
                         left: left2,
@@ -454,7 +454,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         if (step === StepTypes.One && avatarStyleGUID === "0") {
             setTimeout(() => {
                 setAvatarPositions();
-            }, stepOne);
+            }, stepOneTimeout);
         }
     }, [setAvatarPositions, step, avatarStyleGUID]);
 
@@ -496,8 +496,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing;
             const left2 = bounds.x + fullscreen.current.scrollLeft + left2Spacing;
 
-            const keyTwo = 2;
-            const keyThree = 3;
+            const caseTwo = 2;
+            const caseThree = 3;
 
             const styles = {} as Record<AvatarType, CSSProperties>;
 
@@ -519,7 +519,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             };
                         }
                         break;
-                    case keyTwo:
+                    case caseTwo:
                         if (value.done) {
                             styles[value.id] = {
                                 top: top2,
@@ -527,7 +527,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             };
                         }
                         break;
-                    case keyThree:
+                    case caseThree:
                         if (value.done) {
                             styles[value.id] = {
                                 top: top2,
