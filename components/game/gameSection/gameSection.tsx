@@ -533,7 +533,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const bounds = avatar.getBoundingClientRect();
             const coin = coinAnimation.current;
             const width = window.innerWidth;
-            const fourHundred = 400;
+            const fourHundred = 420;
             const Ten = 10;
             const fiveHundred = 500;
             const fifty = 50;
