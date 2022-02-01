@@ -140,9 +140,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 <Row className={styles.topContextContainer}>
                     <div>
                         <h2>{fields.title}</h2>
-                        <p>
-                            <h4>{fields.description}</h4>
-                        </p>
+                        <h4 className="mb-3">{fields.description}</h4>
                         <p>
                             <PrimaryButton
                                 className={styles.buttonFaq}
@@ -156,9 +154,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 <Row>
                     <div>
                         <h3>{fields.subTitle}</h3>
-                        <p>
-                            <h4>{fields.subDescription}</h4>
-                        </p>
+                        <h4 className="mb-3">{fields.subDescription}</h4>
                     </div>
                 </Row>
             </Col>
@@ -167,7 +163,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                     {!submitted
                         ? <form onSubmit={handleSubmit}>
                             <h6>{fields.formTitle}</h6>
-                            <p><h5>{fields.formDescription}</h5></p>
+                            <h5 className="mb-3">{fields.formDescription}</h5>
                             <div className="d-flex flex-row gap-3">
                                 <PrimaryButton
                                     className={`
