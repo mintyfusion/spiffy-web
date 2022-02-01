@@ -1,6 +1,6 @@
 import { Accordion, Nav, Navbar, Row, Stack } from "react-bootstrap";
 import { ContentItem, ModuleProps, renderHTML } from "@agility/nextjs";
-import { faChevronLeft, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faCaretSquareLeft, faCaretSquareRight, faChevronLeft, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
@@ -18,15 +18,25 @@ import styles from "components/agility-pageModules/faqPage/contentModule/faqCont
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
+const scrollAmount = 200;
 
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.allTopics);
-    const breakpoint = useBreakpoint(Breakpoints.LG);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [contentData, setContentData] = React.useState<{ items: ContentItem<IFaqContentModuleData>[] }>();
     const [isLoading, setIsLoading] = React.useState<boolean>();
+    const breakpoint = useBreakpoint(Breakpoints.LG);
     const contentRef = React.useRef<HTMLDivElement>();
+    const tabsRef = React.useRef<HTMLDivElement>();
     const data = React.useContext(SearchContext);
+
+    const handleArrowScrollLeft = React.useCallback(() => {
+        tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft - scrollAmount, behavior: "smooth" });
+    }, [tabsRef]);
+
+    const handleArrowScrollRight = React.useCallback(() => {
+        tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft + scrollAmount, behavior: "smooth" });
+    }, [tabsRef]);
 
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${horizontalAlign} ${styles.customAccordianButton}`}>
@@ -101,45 +111,65 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                 </Row>
             </Stack>
             {!data.searchValue &&
-                <Navbar
-                    bg={styles.dirtyWhite}
-                    expand="lg"
-                    expanded={expanded}
-                    onClick={() => breakpoint && setExpanded(!expanded)}
-                    className={`mb-1 mb-md-4 overflow-auto ${styles.navbar}`}
-                >
-                    <Navbar.Brand href="#home" className="d-block d-lg-none">
-                        <label className="w-100">
-                            {activeTab}
-                        </label>
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav">
-                        <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
-                    </Navbar.Toggle>
-                    <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
-                            {props.module.fields.tags.map(content =>
-                                <PrimaryButton
-                                    key={content.fields.name}
-                                    onClick={() => setActiveTab(content.fields.name)}
-                                    className={`
+                <div className={`${horizontalAlign} gap-2 mb-1 mb-md-4`}>
+                    <FontAwesomeIcon
+                        icon={faCaretSquareLeft}
+                        width="50"
+                        height="50"
+                        onClick={handleArrowScrollLeft}
+                        id="arrowScrollLeft"
+                        className={`${styles.tabArrow} ${breakpoint && "d-none"}`}
+                    />
+                    <Navbar
+                        bg={styles.dirtyWhite}
+                        expand="lg"
+                        expanded={expanded}
+                        onClick={() => breakpoint && setExpanded(!expanded)}
+                        className={`overflow-hidden ${styles.navbar} flex-grow-1`}
+                        ref={tabsRef}
+                    >
+                        <Navbar.Brand href="#home" className="d-block d-lg-none">
+                            <label className="w-100">
+                                {activeTab}
+                            </label>
+                        </Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav">
+                            <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
+                        </Navbar.Toggle>
+                        <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
+                                {props.module.fields.tags.map(content =>
+                                    <PrimaryButton
+                                        key={content.fields.name}
+                                        onClick={() => setActiveTab(content.fields.name)}
+                                        className={`
                                 w-100
                                 px-1
                                 py-3 
                                 ${styles.tab} 
                                 ${activeTab === content.fields.name
-                                            ? styles.active
-                                            : styles.inactive}
+                                                ? styles.active
+                                                : styles.inactive}
                                 ${horizontalAlign}
                              `}
-                                >
-                                    {content.fields.name}
-                                </PrimaryButton>
-                            )}
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>}
+                                    >
+                                        {content.fields.name}
+                                    </PrimaryButton>
+                                )}
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
+                    <FontAwesomeIcon
+                        icon={faCaretSquareRight}
+                        width="50"
+                        height="50"
+                        onClick={handleArrowScrollRight}
+                        id="arrowScrollRight"
+                        className={`${styles.tabArrow} ${breakpoint && "d-none"}`}
+                    />
+                </div>
+            }
             <Stack className="gap-4" ref={contentRef}>
                 {!isLoading && !contentData?.items.length
                     && <h1 className="text-center">No FAQ Found</h1>
