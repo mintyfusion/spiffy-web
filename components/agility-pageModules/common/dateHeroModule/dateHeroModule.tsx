@@ -5,7 +5,7 @@ import React from "react";
 import Banner from "components/common/banner/banner";
 import IDateHeroModuleProps from "components/agility-pageModules/common/dateHeroModule/interfaces/IDateHeroModuleProps";
 
-import styles from "C:/Work/Spiffy/public-web/components/agility-pageModules/common/dateHeroModule/dateHeroModule.module.scss";
+import styles from "components/agility-pageModules/common/dateHeroModule/dateHeroModule.module.scss";
 
 const DateHeroModule = (props: ModuleProps<IDateHeroModuleProps>): JSX.Element => {
     const { title, lastUpdated, image } = props.module.fields;
