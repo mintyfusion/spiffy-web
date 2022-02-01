@@ -71,7 +71,10 @@ const GetStarted = (props: IGetStartedSectionProps): JSX.Element => {
                     <Section
                         direction={SectionSide.left}
                         content={leftPart}
-                        buttonClassName={`${styles.btnGetStarted} ${!isBreakpointMatched && "opacity-0"}`}
+                        buttonClassName={`
+                            ${styles.btnGetStarted} 
+                            ${!isBreakpointMatched && side !== SectionSide.left && "opacity-0"}
+                        `}
                         contentClassName={styles.leftSectionRight}
                         href="/"
                         buttonText="Get Started"
@@ -86,7 +89,10 @@ const GetStarted = (props: IGetStartedSectionProps): JSX.Element => {
                     <Section
                         direction={SectionSide.right}
                         content={rightPart}
-                        buttonClassName={`${styles.btnGetStarted} ${!isBreakpointMatched && "opacity-0"}`}
+                        buttonClassName={`
+                            ${styles.btnGetStarted}
+                            ${!isBreakpointMatched && side !== SectionSide.right && "opacity-0"}
+                        `}
                         contentClassName={styles.rightSectionLeft}
                         href="/"
                         buttonText="Get Started"
