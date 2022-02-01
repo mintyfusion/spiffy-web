@@ -60,7 +60,7 @@ const VerticalContentSection = (props: IVerticalSectionProps): JSX.Element => {
                                     </Stack>
                                 </Col>
                                 {isViewportDesktop &&
-                                    <Col className="p-0">
+                                    <Col className="p-0 ms-3">
                                         <Image
                                             src={content.fields.image.url}
                                             width="1045"
