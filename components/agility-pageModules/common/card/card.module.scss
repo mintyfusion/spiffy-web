@@ -12,6 +12,7 @@
 
     .cardTitle {
         @extend .regular25;
+        min-height: 88px;
     }
 
     .cardDescription {

@@ -7,7 +7,7 @@ import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
 import Link from "components/common/link/link";
 
-import styles from "components/common/card/card.module.scss";
+import styles from "components/agility-pageModules/common/card/card.module.scss";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });
 const columnAlign = flexbox({ vertical: true });
@@ -24,7 +24,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
                 <BaseCard.Title className={`${styles.cardTag} mb-3`}>
                     {fields.tag.fields.name.replace("_"," ")}
                 </BaseCard.Title>
-                <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 flex-grow-1`} >
+                <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 `} >
                     {fields.title}
                 </BaseCard.Text>
                 {!!fields.description &&

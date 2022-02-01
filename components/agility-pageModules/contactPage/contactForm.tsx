@@ -118,9 +118,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
             }
 
             postObj["userType"] = userType;
-
             const response = await postData<Record<string, string>>(process.env.NEXT_PUBLIC_CONTACT_API_URL, postObj);
-
             setFields(formFields);
 
             if (response) {
