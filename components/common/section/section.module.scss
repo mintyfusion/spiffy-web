@@ -12,6 +12,7 @@
 
 .sectionButton {
     @extend .bold32;
+    min-width: 200px;
     width: max-content;
 
     label {
@@ -22,7 +23,7 @@
 
 @include media(">1200px") {
     .sectionButton {
-        padding: 1rem 4rem 1rem 1rem;
+        padding: 1rem 2rem 1rem 1rem;
         width: max-content;
         opacity: 0;
 

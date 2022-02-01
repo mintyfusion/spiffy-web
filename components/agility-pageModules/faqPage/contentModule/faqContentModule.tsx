@@ -199,7 +199,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                                 </Accordion.Item>
                             </Accordion>
                         )}
-                {faqData.map(data => data)}
+                {faqData.map((data, index) => <div key={index}>{data}</div>)}
             </Stack>
         </div>
     );
