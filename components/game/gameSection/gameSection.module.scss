@@ -56,6 +56,7 @@ $vh: var(--vh);
     right: 10px;
     top: 10px;
     cursor: pointer;
+    z-index: 10;
 }
 .activeTab {
     border: 2px solid $yellow;
@@ -1440,6 +1441,11 @@ $vh: var(--vh);
     }
 }
 
+@include media(">=550px", "<800px") {
+    .coinTwo {
+        top: 285px;
+    }
+}
 @include media(">=800px", "<900px") {
     .donationInner {
         .userDonation {

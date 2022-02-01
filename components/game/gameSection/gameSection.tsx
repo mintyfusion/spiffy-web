@@ -29,7 +29,7 @@ const rowHBetween = flexbox({ hAlign: "between" });
 const rowHEnd = flexbox({ hAlign: "end" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
 const donation: string[] = ["5", "10", "15", "25", "50"];
-const friendsTimeout = 3000;
+const friendsTimeout = 2000;
 const avatarTimeout = 1000;
 const boundDivide = 2;
 const friendsLength = 4;
@@ -164,6 +164,84 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
         return null;
     }, []);
+
+    // const friendsStyleHandler = React.useCallback((friends) => {
+    //     if (stepThree.current) {
+    //         const width = window.innerWidth;
+    //         const mobile = 1000;
+    //         const desktopSmall = 1350;
+    //         const mobileTop = 20;
+    //         const desktopTop = 50;
+    //         const desktopSmallTop = 50;
+    //         const mobileTop2 = 50;
+    //         const desktopTop2 = 120;
+    //         const mobileLeft = 45;
+    //         const desktopLeft = 110;
+    //         const desktopSmallLeft = 110;
+    //         const mobileLeft2 = 70;
+    //         const desktopleft2 = 170;
+
+    //         const topSpacing = width < mobile ? mobileTop : width < desktopSmall ? desktopSmallTop : desktopTop;
+    //         const top2Spacing = width < mobile ? mobileTop2 : desktopTop2;
+    //         const leftSpacing = width < mobile ? mobileLeft : width < desktopSmall ? desktopSmallLeft : desktopLeft;
+    //         const left2Spacing = width < mobile ? mobileLeft2 : desktopleft2;
+
+    //         const bounds = stepThree.current.getBoundingClientRect();
+    //         const top = bounds.y + fullscreen.current.scrollTop - topSpacing;
+    //         const left = bounds.x + fullscreen.current.scrollLeft - leftSpacing;
+    //         const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing;
+    //         const left2 = bounds.x + fullscreen.current.scrollLeft + left2Spacing;
+
+    //         const keyTwo = 2;
+    //         const keyThree = 3;
+
+    //         const styles = {} as Record<AvatarType, CSSProperties>;
+
+    //         friends.map((value: { key: any; done: any; id: string | number }) => {
+    //             switch (value.key) {
+    //                 case 0:
+    //                     if (value.done) {
+    //                         styles[value.id] = {
+    //                             top,
+    //                             left,
+    //                         };
+    //                     }
+    //                     break;
+    //                 case 1:
+    //                     if (value.done) {
+    //                         styles[value.id] = {
+    //                             top,
+    //                             left: left2,
+    //                         };
+    //                     }
+    //                     break;
+    //                 case keyTwo:
+    //                     if (value.done) {
+    //                         styles[value.id] = {
+    //                             top: top2,
+    //                             left,
+    //                         };
+    //                     }
+    //                     break;
+    //                 case keyThree:
+    //                     if (value.done) {
+    //                         styles[value.id] = {
+    //                             top: top2,
+    //                             left: left2,
+    //                         };
+    //                     }
+    //                     break;
+    //             }
+    //         });
+
+    //         friendsStyle.current = {
+    //             ...friendsStyle.current,
+    //             ...styles
+    //         };
+
+    //         setFriendsStyleGUID(getUniqueId());
+    //     }
+    // }, []);
 
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
@@ -391,6 +469,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     }, []);
 
     const friendsResizeHandler = React.useCallback(() => {
+        // friendsStyleHandler(addedFriends);
         if (stepThree.current) {
             const width = window.innerWidth;
             const mobile = 1000;
@@ -631,6 +710,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
     };
 
+    console.log(step);
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
             <Modal show={true} fullscreen={true} onHide={props.closeModal}>
