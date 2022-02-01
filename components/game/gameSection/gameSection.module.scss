@@ -575,6 +575,23 @@ $vh: var(--vh);
 }
 
 @include media(">=phone", "<375px") {
+    .friendsTop {
+        width: 50%;
+        margin-top: -80px;
+        min-height: 60px;
+        img {
+            @include imgProperties(50px);
+        }
+    }
+
+    .friendsBottom {
+        width: 50%;
+        margin-top: -90px;
+        min-height: 60px;
+        img {
+            @include imgProperties(50px);
+        }
+    }
     .contentAnimation {
         max-width: 350px;
     }
@@ -869,7 +886,35 @@ $vh: var(--vh);
     }
 }
 
+.friendsTop {
+    width: 55%;
+    margin-bottom: -111px;
+    min-height: 148px;
+}
+
+.friendsBottom {
+    width: 55%;
+    margin-top: -100px;
+    min-height: 148px;
+}
 @include media(">=375px", "<425px") {
+    .friendsTop {
+        width: 50%;
+        margin-top: -80px;
+        min-height: 60px;
+        img {
+            @include imgProperties(60px);
+        }
+    }
+
+    .friendsBottom {
+        width: 50%;
+        margin-top: -40px;
+        min-height: 60px;
+        img {
+            @include imgProperties(60px);
+        }
+    }
     .percentageWrapper {
         width: 100%;
         height: 100%;
@@ -1172,6 +1217,24 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
+    .friendsTop {
+        width: 50%;
+        margin-top: -80px;
+        min-height: 60px;
+        img {
+            @include imgProperties(60px);
+        }
+    }
+
+    .friendsBottom {
+        width: 50%;
+        margin-top: -40px;
+        min-height: 60px;
+        img {
+            @include imgProperties(60px);
+        }
+    }
+
     .donationLogo {
         right: -145px;
         > div:nth-child(1) {
@@ -1288,7 +1351,6 @@ $vh: var(--vh);
     .targetTwo {
         width: 90px;
         height: 90px;
-        margin-top: 100px;
     }
 
     .container {
@@ -1328,7 +1390,7 @@ $vh: var(--vh);
             height: 50%;
             h2 {
                 position: relative;
-                top: 50px;
+                top: -20px;
                 display: block;
             }
             h3 {
@@ -1446,6 +1508,7 @@ $vh: var(--vh);
         top: 285px;
     }
 }
+
 @include media(">=800px", "<900px") {
     .donationInner {
         .userDonation {
@@ -1620,6 +1683,23 @@ $vh: var(--vh);
             @include imgProperties(90px);
         }
     }
+    .friendsTop {
+        width: 55%;
+        margin-top: -80px;
+        min-height: 60px;
+        img {
+            @include imgProperties(60px);
+        }
+    }
+
+    .friendsBottom {
+        width: 55%;
+        margin-top: -40px;
+        min-height: 60px;
+        img {
+            @include imgProperties(60px);
+        }
+    }
 }
 
 @include media(">=900px", "<1000px") {
@@ -1769,6 +1849,24 @@ $vh: var(--vh);
     .donations {
         width: 80px;
     }
+
+    .friendsTop {
+        width: 50%;
+        margin-top: -80px;
+        min-height: 60px;
+        img {
+            @include imgProperties(60px);
+        }
+    }
+
+    .friendsBottom {
+        width: 50%;
+        margin-top: -40px;
+        min-height: 60px;
+        img {
+            @include imgProperties(60px);
+        }
+    }
 }
 
 @include media(">=1000px", "<1100px") {
@@ -1876,6 +1974,14 @@ $vh: var(--vh);
 
     .donations {
         width: 80px;
+    }
+
+    .friendsBottom {
+        width: 95%;
+    }
+
+    .friendsTop {
+        width: 95%;
     }
 }
 
@@ -1991,6 +2097,13 @@ $vh: var(--vh);
     .stepFour {
         height: 1040px;
     }
+    .friendsBottom {
+        width: 90%;
+    }
+
+    .friendsTop {
+        width: 90%;
+    }
 }
 
 @include media(">=1200px", "<1300px") {
@@ -2102,6 +2215,14 @@ $vh: var(--vh);
     .stepFour {
         height: 1040px;
     }
+
+    .friendsBottom {
+        width: 85%;
+    }
+
+    .friendsTop {
+        width: 85%;
+    }
 }
 
 @include media(">=1300px", "<1400px") {
@@ -2147,6 +2268,13 @@ $vh: var(--vh);
     .gameStepThree {
         max-width: 1170px;
     }
+    .friendsBottom {
+        width: 80%;
+    }
+
+    .friendsTop {
+        width: 80%;
+    }
 }
 
 @include media(">=1400px", "<1500px") {
@@ -2182,6 +2310,14 @@ $vh: var(--vh);
     .gameStepThree {
         max-width: 1260px;
     }
+
+    .friendsBottom {
+        width: 75%;
+    }
+
+    .friendsTop {
+        width: 75%;
+    }
 }
 
 @include media(">=1500px", "<1600px") {
@@ -2213,6 +2349,14 @@ $vh: var(--vh);
     .gameStepThree {
         max-width: 1350px;
     }
+
+    .friendsBottom {
+        width: 70%;
+    }
+
+    .friendsTop {
+        width: 70%;
+    }
 }
 
 @include media(">=1600px", "<1700px") {
@@ -2233,6 +2377,20 @@ $vh: var(--vh);
     .gameStepThree {
         max-width: 1400px;
     }
+    .friendsTop {
+        width: 60%;
+    }
+
+    .friendsBottom {
+        width: 65%;
+    }
+    .friendsTop {
+        width: 65%;
+    }
+
+    .friendsBottom {
+        width: 60%;
+    }
 }
 
 @include media(">=1700px", "<1800px") {
@@ -2248,6 +2406,13 @@ $vh: var(--vh);
     }
     .animationGrid {
         width: 70%;
+    }
+    .friendsTop {
+        width: 60%;
+    }
+
+    .friendsBottom {
+        width: 60%;
     }
 }
 

@@ -41,6 +41,8 @@ const contentCreatorFormula = 50;
 const friendsFormula = 4;
 const spiffyFormula = 10;
 const stepOneTimeout = 500;
+const slice = 2;
+const sliceTwo = 4;
 
 const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<IFriendAvatar[]>([]);
@@ -165,84 +167,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return null;
     }, []);
 
-    // const friendsStyleHandler = React.useCallback((friends) => {
-    //     if (stepThree.current) {
-    //         const width = window.innerWidth;
-    //         const mobile = 1000;
-    //         const desktopSmall = 1350;
-    //         const mobileTop = 20;
-    //         const desktopTop = 50;
-    //         const desktopSmallTop = 50;
-    //         const mobileTop2 = 50;
-    //         const desktopTop2 = 120;
-    //         const mobileLeft = 45;
-    //         const desktopLeft = 110;
-    //         const desktopSmallLeft = 110;
-    //         const mobileLeft2 = 70;
-    //         const desktopleft2 = 170;
-
-    //         const topSpacing = width < mobile ? mobileTop : width < desktopSmall ? desktopSmallTop : desktopTop;
-    //         const top2Spacing = width < mobile ? mobileTop2 : desktopTop2;
-    //         const leftSpacing = width < mobile ? mobileLeft : width < desktopSmall ? desktopSmallLeft : desktopLeft;
-    //         const left2Spacing = width < mobile ? mobileLeft2 : desktopleft2;
-
-    //         const bounds = stepThree.current.getBoundingClientRect();
-    //         const top = bounds.y + fullscreen.current.scrollTop - topSpacing;
-    //         const left = bounds.x + fullscreen.current.scrollLeft - leftSpacing;
-    //         const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing;
-    //         const left2 = bounds.x + fullscreen.current.scrollLeft + left2Spacing;
-
-    //         const keyTwo = 2;
-    //         const keyThree = 3;
-
-    //         const styles = {} as Record<AvatarType, CSSProperties>;
-
-    //         friends.map((value: { key: any; done: any; id: string | number }) => {
-    //             switch (value.key) {
-    //                 case 0:
-    //                     if (value.done) {
-    //                         styles[value.id] = {
-    //                             top,
-    //                             left,
-    //                         };
-    //                     }
-    //                     break;
-    //                 case 1:
-    //                     if (value.done) {
-    //                         styles[value.id] = {
-    //                             top,
-    //                             left: left2,
-    //                         };
-    //                     }
-    //                     break;
-    //                 case keyTwo:
-    //                     if (value.done) {
-    //                         styles[value.id] = {
-    //                             top: top2,
-    //                             left,
-    //                         };
-    //                     }
-    //                     break;
-    //                 case keyThree:
-    //                     if (value.done) {
-    //                         styles[value.id] = {
-    //                             top: top2,
-    //                             left: left2,
-    //                         };
-    //                     }
-    //                     break;
-    //             }
-    //         });
-
-    //         friendsStyle.current = {
-    //             ...friendsStyle.current,
-    //             ...styles
-    //         };
-
-    //         setFriendsStyleGUID(getUniqueId());
-    //     }
-    // }, []);
-
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
             const bounds = friendsRef.current.getBoundingClientRect();
@@ -324,34 +248,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
     const friendsAnimation = React.useCallback((index: number, value: IFriendAvatar) => {
         if (stepThree.current) {
-            const width = window.innerWidth;
-            const mobile = 1000;
-            const desktopSmall = 1350;
-            const mobileTop = 20;
-            const desktopTop = 50;
-            const desktopSmallTop = 50;
-            const mobileTop2 = 50;
-            const desktopTop2 = 120;
-            const mobileLeft = 45;
-            const desktopLeft = 110;
-            const desktopSmallLeft = 110;
-            const mobileLeft2 = 70;
-            const desktopleft2 = 170;
-
-            const topSpacing = width < mobile ? mobileTop : width < desktopSmall ? desktopSmallTop : desktopTop;
-            const top2Spacing = width < mobile ? mobileTop2 : desktopTop2;
-            const leftSpacing = width < mobile ? mobileLeft : width < desktopSmall ? desktopSmallLeft : desktopLeft;
-            const left2Spacing = width < mobile ? mobileLeft2 : desktopleft2;
-
-            const bounds = stepThree.current.getBoundingClientRect();
-            const top = bounds.y + fullscreen.current.scrollTop - topSpacing;
-            const left = bounds.x + fullscreen.current.scrollLeft - leftSpacing;
-            const top2 = bounds.y + fullscreen.current.scrollTop + top2Spacing;
-            const left2 = bounds.x + fullscreen.current.scrollLeft + left2Spacing;
-
-            const caseTwo = 2;
-            const caseThree = 3;
-
             const selectedFriends: IFriendAvatar[] = [];
             data.filter((filter) => filter.id !== seletedAvatar).forEach((item, key) => {
                 if (item.id == value.id) {
@@ -359,45 +255,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 }
             });
             setAddedFriends((currentFriends: IFriendAvatar[]) => [...currentFriends, ...selectedFriends]);
-
-            const styles = {} as Record<AvatarType, CSSProperties>;
-
-            switch (index) {
-                case 0:
-                    styles[value.id] = {
-                        top,
-                        left,
-                    };
-
-                    break;
-                case 1:
-                    styles[value.id] = {
-                        top,
-                        left: left2,
-                    };
-
-                    break;
-                case caseTwo:
-                    styles[value.id] = {
-                        top: top2,
-                        left,
-                    };
-
-                    break;
-                case caseThree:
-                    styles[value.id] = {
-                        top: top2,
-                        left: left2,
-                    };
-
-                    break;
-            }
-            friendsStyle.current = {
-                ...friendsStyle.current,
-                ...styles
-            };
-
-            setFriendsStyleGUID(getUniqueId());
         }
     }, [friendsStyleGUID]);
 
@@ -576,7 +433,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     offset: -20,
                 });
                 setFriendsPositions();
-                friendsResizeHandler();
+                // friendsResizeHandler();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
                 if (boundsSecond) {
@@ -759,22 +616,39 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                                     <h2 className={styles.avatarHeading}>Add four friends</h2>
-                                    <div className={styles.targetTwo} ref={stepThree}></div>
+                                    <Row className={`${horizontalAlign} w-100`}>
+                                        <div className={`${styles.friendsTop} ${rowHBetween}`}>
+                                            {addedFriends.slice(0, slice)
+                                            .map((friend, friendKey) => <Avatar color={friend.id} key={friendKey} />)}
+                                        </div>
+                                    </Row>
+                                    <Row className={`${horizontalAlign} w-100`}>
+                                        <div className={styles.targetTwo} ref={stepThree}></div>
+                                    </Row>
+                                    <Row className={`${horizontalAlign} w-100`}>
+                                        <div className={`${styles.friendsBottom} ${rowHBetween}`}>
+                                            {addedFriends.slice(slice, sliceTwo)
+                                            .map((friend, friendKey) => <Avatar color={friend.id} key={friendKey} />)}
+                                        </div>
+                                    </Row>
+
                                     <h3>{avatarName}</h3>
                                 </div>
                                 <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`} ref={friendsRef}>
                                     <h2 className={styles.avatarHeading}>Add four friends</h2>
                                     {step === StepTypes.Three ?
                                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                                            {friendsAvatars.map((key: IFriendAvatar, index) =>
-                                                <div
-                                                    key={index}
-                                                    className="position-absolute"
-                                                    style={friendsStyle.current && friendsStyle.current[key.id]}
-                                                    onClick={() => !key.done ? friendsAnimation(index, key) : null}
-                                                >
-                                                    <Avatar color={key.id} />
-                                                </div>
+                                            {friendsAvatars.map((key: IFriendAvatar, index) => (
+                                                <React.Fragment key={index}>
+                                                    {!key.done ? <div
+                                                        className="position-absolute"
+                                                        style={friendsStyle.current && friendsStyle.current[key.id]}
+                                                        onClick={() => !key.done ? friendsAnimation(index, key) : null}
+                                                    >
+                                                        <Avatar color={key.id} />
+                                                    </div> : null}
+                                                </React.Fragment>
+                                            )
                                             )}
                                         </div>
                                         : null}

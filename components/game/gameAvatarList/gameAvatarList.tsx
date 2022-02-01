@@ -1,29 +1,21 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar, Row } from "react-bootstrap";
-import Image from "next/image";
-import React from "react";
+import React, { CSSProperties } from "react";
 
-import Avatar from "../avatar/avatar";
+import Avatar from "components/game/avatar/avatar";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
-import StepTypes from "../gameSection/enums/stepTypes";
 import useBreakpoint from "hooks/useBreakpoint";
 
+import AvatarType from "../gameSection/enums/avatarTypes";
+import percentages from "./gameAvatarListContent";
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
-const percent: string[] = ["1", "5", "10", "25", "50", "100"];
-const mainAvatars = [
-    "/images/Game/donationCycle/avatarPurple.png",
-    "/images/Game/donationCycle/avatarGreen.png",
-    "/images/Game/donationCycle/avatarYellow.png",
-    "/images/Game/donationCycle/avatarOrange.png",
-];
-const donationTimeout = 6000;
 const toggleTimeout = 500;
 const twenty = 20;
 const twentyTwo = 22;
@@ -51,6 +43,8 @@ const slice = 2;
 const sliceTwo = 4;
 const mobile = 770;
 
+const avatars = Object.values(AvatarType);
+
 function getRandomMargin() {
     const width = window.innerWidth;
     if (width < mobile) {
@@ -73,7 +67,7 @@ function getRandomSize() {
     }
 
 
-    return `${sizes[randomIndex]}px`;
+    return sizes[randomIndex];
 }
 
 function getRandomAlignSelf() {
@@ -83,68 +77,51 @@ function getRandomAlignSelf() {
     return values[randomIndex];
 }
 
+function getRandomAvatars() {
+    const randomIndex = Math.floor(Math.random() * avatars.length);
+
+    return avatars[randomIndex];
+}
+
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
-    const [percentage, setPercentage] = React.useState<string>("1");
+    const [selectedKey, setSelectedKey] = React.useState("1");
     const [amount, setAmount] = React.useState<string>("");
-    const [avatars, setAvatars] = React.useState(mainAvatars);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [toggle, setToggle] = React.useState<boolean>(true);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
-    const animationHandler = (percent: string) => {
-        const avatar = [...mainAvatars];
-        const fivePercent = 2;
-        const tenPercent = 3;
-        const twentyfivePercent = 4;
-        const fiftyPercent = 6;
-        const hundredPercent = 15;
-        const onePercent = 1;
-        switch (percent) {
-            case "5":
-                const avatarDuplicate1 = Array(fivePercent).fill(avatar).flat();
-                setAvatars(avatarDuplicate1);
-                break;
-            case "10":
-                const avatarDuplicate2 = Array(tenPercent).fill(avatar).flat();
-                setAvatars(avatarDuplicate2);
-                break;
-            case "25":
-                const avatarDuplicate3 = Array(twentyfivePercent).fill(avatar).flat();
-                setAvatars(avatarDuplicate3);
-                break;
-            case "50":
-                const avatarDuplicate4 = Array(fiftyPercent).fill(avatar).flat();
-                setAvatars(avatarDuplicate4);
-                break;
-            case "100":
-                const avatarDuplicate5 = Array(hundredPercent).fill(avatar).flat();
-                setAvatars(avatarDuplicate5);
-                props.signupAnimation();
-                break;
-            default:
-                const avatarDuplicate = Array(onePercent).fill(avatar).flat();
-                setAvatars(avatarDuplicate);
-        }
-    };
+    const handleBtnClick = React.useCallback((key: string) => {
+        setSelectedKey(key);
+    }, []);
 
-    React.useEffect(() => {
-        let timer: NodeJS.Timeout;
-        if (percentage !== "1") {
-            timer = setTimeout(() => {
-                window.scroll(0, 0);
-                props.setStep(StepTypes.Six);
-                clearTimeout(timer);
-            }, donationTimeout);
+    const avatarArr = React.useMemo(() => {
+        const { totalAvatarsToShow } = percentages[selectedKey];
+        const arr: JSX.Element[] = [];
+        for (let i = 0; i < totalAvatarsToShow; i++) {
+            const size = getRandomSize();
+            const style: CSSProperties = {
+                height: size,
+                width: size,
+                marginTop: getRandomMargin(),
+                marginRight: getRandomMargin(),
+                marginBottom: getRandomMargin(),
+                marginLeft: getRandomMargin(),
+                alignSelf: getRandomAlignSelf(),
+                transition: ".5s",
+            };
+            arr.push(
+                <div key={i} style={style}>
+                    <Avatar
+                        color={getRandomAvatars()}
+                        width={size}
+                        height={size}
+                    />
+                </div>
+            );
         }
 
-        return () => clearTimeout(timer);
-
-    }, [percentage, props]);
-
-    const avatarsFlex = React.useMemo(
-        () => avatars.map((i, index) => <div key={index} className="avatar"><Image src={i} width={20} height={20} objectFit="contain" /></div>),
-        [avatars]
-    );
+        return arr;
+    }, [selectedKey]);
 
     React.useEffect(() => {
         const Avatars = document.querySelectorAll<HTMLElement>(".avatar");
@@ -153,17 +130,13 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
             avatar.style.marginRight = getRandomMargin();
             avatar.style.marginBottom = getRandomMargin();
             avatar.style.marginLeft = getRandomMargin();
-
-            const size = getRandomSize();
-            avatar.style.width = size;
-            avatar.style.height = size;
             avatar.style.alignSelf = getRandomAlignSelf();
             avatar.style.transition = "500ms";
         }
-    }, [percentage]);
+    }, [selectedKey]);
 
     React.useEffect(() => {
-        switch (percentage) {
+        switch (selectedKey) {
             case "1":
                 setAmount("2,798");
                 break;
@@ -186,7 +159,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 setAmount("2,798");
 
         }
-    }, [percentage]);
+    }, [selectedKey]);
 
     return (
         <div className={styles.gameStepFive}>
@@ -198,40 +171,35 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 <Navbar expand="lg" className="w-100 d-block"
                     expanded={expanded}
                     onClick={() => breakpoint && setExpanded(!expanded)}>
-                    <Navbar.Brand href="#home" className="d-lg-none">{percentage}%</Navbar.Brand>
+                    <Navbar.Brand href="#home" className="d-lg-none">{selectedKey}%</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
                         <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
                     </Navbar.Toggle>
                     <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
-                            {percent.map((donation, donationKey) =>
-                                <PrimaryButton
-                                    key={donationKey}
-                                    onClick={() => {
-                                        setPercentage(donation);
-                                        animationHandler(donation);
-                                        setToggle(false);
-                                        setTimeout(() => {
-                                            setToggle(true);
-                                        }, toggleTimeout);
-                                    }}
-                                    className={`${horizontalAlign} 
-                                    ${styles.donationButton} 
-                                    ${donation === percentage ? styles.active : styles.inactive}
-                                     w-100 px-1 py-3`}
-                                >
-                                    {donation}%
+                            {Object.entries(percentages).map(([key], index) => (
+                                <PrimaryButton key={index} onClick={() => {
+                                    handleBtnClick(key);
+                                    setToggle(false);
+                                    setTimeout(() => {
+                                        setToggle(true);
+                                    }, toggleTimeout);
+                                }} className={`${horizontalAlign} 
+                                ${styles.donationButton} 
+                                ${selectedKey === key ? styles.active : styles.inactive}
+                                 w-100 px-1 py-3`}>
+                                    {key}
                                 </PrimaryButton>
-                            )}
+                            ))}
 
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
 
                 <div className={`${styles.donationInner} w-100 position-relative`}>
-                    <div className={`${styles.flexOne} ${styles.left}`}>
-                        {avatarsFlex}
+                    <div className="d-flex flex-wrap h-100 flex-row-reverse" style={{ flex: 1 }}>
+                        {avatarArr}
                     </div>
                     <div className={`${styles.flexOne} ${styles.friendsMain}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
@@ -256,8 +224,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                         </div>
                         <h6>{props.name}</h6>
                     </div>
-                    <div className={`${styles.flexOne} ${styles.left}`}>
-                        {avatarsFlex}
+                    <div className="d-flex flex-wrap h-100 flex-row-reverse" style={{ flex: 1 }}>
+                        {avatarArr}
                     </div>
                 </div>
             </div>
