@@ -1,5 +1,6 @@
 import { Col, Row, Stack } from "react-bootstrap";
 import { ModuleProps } from "@agility/nextjs";
+import Image from "next/image";
 import React from "react";
 
 import BaseField from "components/agility-pageModules/common/baseField/baseField";
@@ -200,7 +201,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                             </div>
                         </form>
                         : <Col className={`${styles.thankYou} text-center`}>
-                            {/* <img {...props.afterSuccessContent.image} /> */}
+                            <Image layout="fixed" width={100} height={100} src={fields.confirmationImage.url} />
                             <h1 className={styles.title}>{fields.confirmationTitle}</h1>
                             <p className={styles.note}>{fields.confirmationDescription}</p>
                         </Col>
