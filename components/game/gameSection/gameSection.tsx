@@ -710,7 +710,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
     };
 
-    console.log(step);
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
             <Modal show={true} fullscreen={true} onHide={props.closeModal}>

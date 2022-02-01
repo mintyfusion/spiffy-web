@@ -101,29 +101,29 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         const onePercent = 1;
         switch (percent) {
             case "5":
-                const avatarDuplicate1 = Array(fivePercent).fill(avatar);
-                setAvatars(avatarDuplicate1.flat());
+                const avatarDuplicate1 = Array(fivePercent).fill(avatar).flat();
+                setAvatars(avatarDuplicate1);
                 break;
             case "10":
-                const avatarDuplicate2 = Array(tenPercent).fill(avatar);
-                setAvatars(avatarDuplicate2.flat());
+                const avatarDuplicate2 = Array(tenPercent).fill(avatar).flat();
+                setAvatars(avatarDuplicate2);
                 break;
             case "25":
-                const avatarDuplicate3 = Array(twentyfivePercent).fill(avatar);
-                setAvatars(avatarDuplicate3.flat());
+                const avatarDuplicate3 = Array(twentyfivePercent).fill(avatar).flat();
+                setAvatars(avatarDuplicate3);
                 break;
             case "50":
-                const avatarDuplicate4 = Array(fiftyPercent).fill(avatar);
-                setAvatars(avatarDuplicate4.flat());
+                const avatarDuplicate4 = Array(fiftyPercent).fill(avatar).flat();
+                setAvatars(avatarDuplicate4);
                 break;
             case "100":
-                const avatarDuplicate5 = Array(hundredPercent).fill(avatar);
-                setAvatars(avatarDuplicate5.flat());
+                const avatarDuplicate5 = Array(hundredPercent).fill(avatar).flat();
+                setAvatars(avatarDuplicate5);
                 props.signupAnimation();
                 break;
             default:
-                const avatarDuplicate = Array(onePercent).fill(avatar);
-                setAvatars(avatarDuplicate.flat());
+                const avatarDuplicate = Array(onePercent).fill(avatar).flat();
+                setAvatars(avatarDuplicate);
         }
     };
 
