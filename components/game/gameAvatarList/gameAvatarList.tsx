@@ -23,8 +23,8 @@ const five = 5;
 // No need to understand the number, array itself tells the meaning.
 const sizes = [20, 22, 25, 27, 30, 33, 35, 37, 40]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const sizesMobile = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // eslint-disable-line @typescript-eslint/no-magic-numbers
-const slice = 2;
-const sliceTwo = 4;
+const sliceTwo = 2;
+const sliceFour = 4;
 const mobile = 770;
 
 const avatars = Object.values(AvatarType);
@@ -183,9 +183,9 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                                 </span></h2>
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
-                                    {props.friends.slice(0, slice)
-                                        .map((avatar, index) => 
-                                        <Avatar color={avatar.id} key={index} width={87} height={87} />)}
+                                    {props.friends.slice(0, sliceTwo)
+                                        .map((avatar, index) =>
+                                            <Avatar color={avatar.id} key={index} width={87} height={87} />)}
                                 </div>
                             </Row>
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
@@ -193,9 +193,9 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                             </div>
                             <Row className={`${styles.friendsBottom} w-100`}>
                                 <div>
-                                    {props.friends.slice(slice, sliceTwo)
-                                        .map((avatar, index) => 
-                                        <Avatar color={avatar.id} key={index} width={87} height={87} />)}
+                                    {props.friends.slice(sliceTwo, sliceFour)
+                                        .map((avatar, index) =>
+                                            <Avatar color={avatar.id} key={index} width={87} height={87} />)}
                                 </div>
                             </Row>
                         </div>

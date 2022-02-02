@@ -41,8 +41,8 @@ const contentCreatorFormula = 50;
 const friendsFormula = 4;
 const spiffyFormula = 10;
 const stepOneTimeout = 500;
-const slice = 2;
-const sliceTwo = 4;
+const sliceTwo = 2;
+const sliceFour = 4;
 
 /**
  * first section remove orange avatar.
@@ -633,7 +633,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     <h2 className={styles.avatarHeading}>Add four friends</h2>
                                     <Row className={`${horizontalAlign} w-100`}>
                                         <div className={`${styles.friendsTop} ${rowHBetween}`}>
-                                            {addedFriends.slice(0, slice)
+                                            {addedFriends.slice(0, sliceTwo)
                                                 .map((friend, friendKey) =>
                                                     <Avatar color={friend.id} key={friendKey} />)}
                                         </div>
@@ -643,7 +643,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     </Row>
                                     <Row className={`${horizontalAlign} w-100`}>
                                         <div className={`${styles.friendsBottom} ${rowHBetween}`}>
-                                            {addedFriends.slice(slice, sliceTwo)
+                                            {addedFriends.slice(sliceTwo, sliceFour)
                                                 .map((friend, friendKey) =>
                                                     <Avatar color={friend.id} key={friendKey} />)}
                                         </div>
