@@ -541,7 +541,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     <Row className={`${horizontalAlign} w-100`}>
                                         <div className={`${styles.friendsTop} ${rowHBetween}`}>
                                             {addedFriends.slice(0, slice)
-                                                .map((friend, friendKey) => <Avatar color={friend.id} key={friendKey} />)}
+                                                .map((friend, friendKey) =>
+                                                    <Avatar color={friend.id} key={friendKey} />)}
                                         </div>
                                     </Row>
                                     <Row className={`${horizontalAlign} w-100`}>
@@ -550,7 +551,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     <Row className={`${horizontalAlign} w-100`}>
                                         <div className={`${styles.friendsBottom} ${rowHBetween}`}>
                                             {addedFriends.slice(slice, sliceTwo)
-                                                .map((friend, friendKey) => <Avatar color={friend.id} key={friendKey} />)}
+                                                .map((friend, friendKey) =>
+                                                    <Avatar color={friend.id} key={friendKey} />)}
                                         </div>
                                     </Row>
 
@@ -560,18 +562,22 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     <h2 className={styles.avatarHeading}>Add four friends</h2>
                                     {step === StepTypes.Three ?
                                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
-                                            {friendsAvatars.filter((elem) => !addedFriends.find(({ id }) => elem.id === id)).map((key: IFriendAvatar, index) => (
-                                                <React.Fragment key={index}>
-                                                    {!key.done ? <div
-                                                        className="position-absolute"
-                                                        style={friendsStyle.current && friendsStyle.current[key.id]}
-                                                        onClick={() => !key.done ? friendsAnimation(index, key) : null}
-                                                    >
-                                                        <Avatar color={key.id} />
-                                                    </div> : null}
-                                                </React.Fragment>
-                                            )
-                                            )}
+                                            {friendsAvatars
+                                                .filter((f) => !addedFriends.find(({ id }) => f.id === id))
+                                                .map((key: IFriendAvatar, index) => (
+                                                    <React.Fragment key={index}>
+                                                        {!key.done ? <div
+                                                            className="position-absolute"
+                                                            style={friendsStyle.current && friendsStyle.current[key.id]}
+                                                            onClick={() => !key.done ?
+                                                                friendsAnimation(index, key) :
+                                                                null}
+                                                        >
+                                                            <Avatar color={key.id} />
+                                                        </div> : null}
+                                                    </React.Fragment>
+                                                )
+                                                )}
                                         </div>
                                         : null}
                                 </div>

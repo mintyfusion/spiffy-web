@@ -85,7 +85,6 @@ function getRandomAvatars() {
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [selectedKey, setSelectedKey] = React.useState("1");
-    const [amount, setAmount] = React.useState<string>("");
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [toggle, setToggle] = React.useState<boolean>(true);
     const breakpoint = useBreakpoint(Breakpoints.LG);
@@ -172,7 +171,9 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <div className={`${styles.flexOne} ${styles.friendsMain}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
                             <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>
-                                <span className={toggle ? `${styles.fadeIn}` : `${styles.fadeOut}`}>${percentages[selectedKey].amount}
+                                <span
+                                    className={toggle ? `${styles.fadeIn}`
+                                        : `${styles.fadeOut}`}>${percentages[selectedKey].amount}
                                 </span></h2>
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
