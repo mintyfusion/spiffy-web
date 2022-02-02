@@ -1,6 +1,6 @@
-import IPercentageValue from "components/game/gameAvatarList/interfaces/IPercentageValue";
+import gameAvatarDonations from "components/game/gameAvatarList/interfaces/gameAvatarDonations";
 
-const percentages: Record<string, IPercentageValue> = {
+const percentages: Record<string, gameAvatarDonations> = {
     "1": {
         totalAvatarsToShow: 4,
         amount: "2,798",
