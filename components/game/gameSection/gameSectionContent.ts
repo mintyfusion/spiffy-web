@@ -6,7 +6,7 @@ function getAvatars() {
         id: key,
         done : false,
         image: {
-            src: `/images/Game/avatars/avatar${key}.png`,
+            src: `/images/Game/avatars/avatar-${key}.png`,
             alt: `avatar-${value}`,
             width: "148",
             height: "148",

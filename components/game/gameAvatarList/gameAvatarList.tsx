@@ -45,6 +45,7 @@ const mobile = 770;
 
 const avatars = Object.values(AvatarType);
 
+// random margin for avatars.
 function getRandomMargin() {
     const width = window.innerWidth;
     if (width < mobile) {
@@ -55,6 +56,7 @@ function getRandomMargin() {
 
 }
 
+// random size for avatars.
 function getRandomSize() {
     const width = window.innerWidth;
     let randomIndex: number;
@@ -69,7 +71,7 @@ function getRandomSize() {
 
     return sizes[randomIndex];
 }
-
+// random flex-align for avatars.
 function getRandomAlignSelf() {
     const values = ["flex-end", "flex-start", "center"];
     const randomIndex = Math.floor(Math.random() * values.length);
@@ -77,6 +79,7 @@ function getRandomAlignSelf() {
     return values[randomIndex];
 }
 
+// random colors for avatars.
 function getRandomAvatars() {
     const randomIndex = Math.floor(Math.random() * avatars.length);
 
@@ -93,7 +96,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         setSelectedKey(key);
     }, []);
 
-    const avatarArr = React.useMemo(() => {
+    // rendering avatars
+    const avatars = React.useMemo(() => {
         const { totalAvatarsToShow } = percentages[selectedKey];
         const arr: JSX.Element[] = [];
         for (let i = 0; i < totalAvatarsToShow; i++) {
@@ -122,6 +126,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         return arr;
     }, [selectedKey]);
 
+    // scroll function on 100%
     React.useEffect(() => {
         if (selectedKey === "100") {
             props.signupAnimation();
@@ -166,7 +171,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
 
                 <div className={`${styles.donationInner} w-100 position-relative h-100`}>
                     <div className="d-flex flex-wrap h-100 flex-row-reverse" style={{ flex: 1 }}>
-                        {avatarArr}
+                        {avatars}
                     </div>
                     <div className={`${styles.flexOne} ${styles.friendsMain}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
@@ -194,7 +199,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                         <h6>{props.name}</h6>
                     </div>
                     <div className="d-flex flex-wrap h-100 flex-row-reverse" style={{ flex: 1 }}>
-                        {avatarArr}
+                        {avatars}
                     </div>
                 </div>
             </div>

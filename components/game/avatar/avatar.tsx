@@ -10,15 +10,15 @@ const Avatar = ({ color, ...props }: IAvatarProps) => {
     const avatarSrc = React.useMemo(() => {
         switch (color) {
             case AvatarType.Green:
-                return "avatarGreen.png";
+                return "avatar-green.png";
             case AvatarType.Purple:
-                return "avatarPurple.png";
+                return "avatar-purple.png";
             case AvatarType.Yellow:
-                return "avatarYellow.png";
+                return "avatar-yellow.png";
             case AvatarType.Red:
-                return "avatarRed.png";
+                return "avatar-red.png";
             case AvatarType.Orange:
-                return "avatarOrange.png";
+                return "avatar-orange.png";
             default:
                 return null;
         }
