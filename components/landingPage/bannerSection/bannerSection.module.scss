@@ -3,7 +3,7 @@
 @import "styles/font/fontGroups.scss";
 
 .bannerCaption {
-    [role="emphasis-text"] {
+    h2 > span {
         color: $yellow;
     }
 }
