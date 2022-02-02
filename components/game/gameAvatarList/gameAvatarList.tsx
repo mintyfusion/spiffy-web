@@ -124,46 +124,14 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     }, [selectedKey]);
 
     React.useEffect(() => {
-        const Avatars = document.querySelectorAll<HTMLElement>(".avatar");
-        for (const avatar of Avatars) {
-            avatar.style.marginTop = getRandomMargin();
-            avatar.style.marginRight = getRandomMargin();
-            avatar.style.marginBottom = getRandomMargin();
-            avatar.style.marginLeft = getRandomMargin();
-            avatar.style.alignSelf = getRandomAlignSelf();
-            avatar.style.transition = "500ms";
-        }
-    }, [selectedKey]);
-
-    React.useEffect(() => {
-        switch (selectedKey) {
-            case "1":
-                setAmount("2,798");
-                break;
-            case "10":
-                setAmount("27,980");
-                break;
-            case "25":
-                setAmount("69,950");
-                break;
-            case "50":
-                setAmount("139,900");
-                break;
-            case "100":
-                setAmount("279,800");
-                props.signupAnimation();
-                break;
-            case "5":
-                setAmount("13,990");
-                break;
-            default:
-                setAmount("2,798");
+        if (selectedKey === "100") {
+            props.signupAnimation();
         }
     }, [selectedKey]);
 
     return (
         <div className={styles.gameStepFive}>
-            <div className={`${colCenter}`}>
+            <div className={`${colCenter} h-100`}>
                 <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
                 <h4>Click the percentage fill rate to unlock your potential. Higher the filled rate,
                     the more money you make.</h4>
@@ -197,14 +165,14 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     </Navbar.Collapse>
                 </Navbar>
 
-                <div className={`${styles.donationInner} w-100 position-relative`}>
+                <div className={`${styles.donationInner} w-100 position-relative h-100`}>
                     <div className="d-flex flex-wrap h-100 flex-row-reverse" style={{ flex: 1 }}>
                         {avatarArr}
                     </div>
                     <div className={`${styles.flexOne} ${styles.friendsMain}`}>
                         <div className={`${styles.avatarInner} ${colCenter}`}>
                             <h2 className={`${styles.avatarHeading} ${styles.yellow}`}>
-                                <span className={toggle ? `${styles.fadeIn}` : `${styles.fadeOut}`}>${amount}
+                                <span className={toggle ? `${styles.fadeIn}` : `${styles.fadeOut}`}>${percentages[selectedKey].amount}
                                 </span></h2>
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
