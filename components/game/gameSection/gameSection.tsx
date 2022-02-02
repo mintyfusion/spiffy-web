@@ -44,6 +44,11 @@ const stepOneTimeout = 500;
 const slice = 2;
 const sliceTwo = 4;
 
+/**
+ * first section remove orange avatar.
+ */
+const step1Avatars = Object.entries(AvatarType).filter(([, value]) => value !== AvatarType.Orange);
+
 const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<IFriendAvatar[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
@@ -65,19 +70,19 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const fullscreen = React.useRef<HTMLDivElement>();
     const friendsRef = React.useRef<HTMLDivElement>();
     const coinRef = React.useRef<HTMLDivElement>();
-    const coinAnimation = React.useRef<HTMLDivElement>();
+    const coinAnimationWrapperRef = React.useRef<HTMLDivElement>();
     const coinStyles = React.useRef<CSSProperties>();
-    let coinInterval;
 
-    // friends filter with selected avatar.
-    const step1Avatars = React.useMemo(() =>
-        Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), []);
-
+    /**
+     * filter avatars array with user selected avatar for friends.
+     */
     const friendsAvatars = React.useMemo(() => data.filter((avatarObj) =>
         seletedAvatar && avatarObj.id !== seletedAvatar
     ), [seletedAvatar]) as IFriendAvatar[];
 
-    // scroll function adding friends.
+    /**
+     * useEffect to check all four friends are added.
+     */
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
         if (addedFriends.length === friendsLength) {
@@ -99,7 +104,10 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         };
     }, [addedFriends]);
 
-    // Donation cycle animation timeout.
+    /**
+     * function to start or reset the donation cycle animation.
+     * @param donation user select amount of donation.
+     */
     const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
             setAnimation(false);
@@ -109,7 +117,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [donationAmount]);
 
-    // style for first section avatars.
+    /**
+     * get styles of avatars in first section.
+     */
     const getStyles = React.useCallback(() => {
         if (start.current) {
             const mobile = 768;
@@ -127,7 +137,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollLeft;
             const styles = {} as Record<AvatarType, CSSProperties>;
 
-            Object.entries(AvatarType).forEach(([value]) => {
+            Object.entries(AvatarType).forEach(([, value]) => {
                 switch (value) {
                     case AvatarType.Green:
                         styles[value] = {
@@ -171,7 +181,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return null;
     }, []);
 
-    // style for third section  friends avatars.
+    /**
+     * get styles of fiends avatars in third section.
+     */
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
             const bounds = friendsRef.current.getBoundingClientRect();
@@ -233,7 +245,10 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [friendsAvatars]);
 
-    // avatar function on scroll.
+    /**
+     * section one animation and scroll on selecting avatar.
+     * @param avatar user selected avatar in first section.
+     */
     const handleAvatarClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
             const bounds = target.current.getBoundingClientRect();
@@ -252,13 +267,16 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         setStep(StepTypes.Two);
     }, []);
 
-    // selecting friend function in third section.
-    const friendsAnimation = React.useCallback((index: number, value: IFriendAvatar) => {
+    /**
+     * filter selected friends from avatars.
+     * @param friendAvatar user selected friends.
+     */
+    const friendsAnimation = React.useCallback((friendAvatar: IFriendAvatar) => {
         if (stepThree.current) {
             const selectedFriends: IFriendAvatar[] = [];
-            data.filter((filter) => filter.id !== seletedAvatar).forEach((item) => {
-                if (item.id == value.id) {
-                    selectedFriends.push({ ...item, done: true });
+            data.filter((avatar) => avatar.id !== seletedAvatar).forEach((avatar) => {
+                if (avatar.id == friendAvatar.id) {
+                    selectedFriends.push({ ...avatar, done: true });
                 }
             });
             setAddedFriends((currentFriends: IFriendAvatar[]) => [...currentFriends, ...selectedFriends]);
@@ -267,7 +285,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [friendsStyleGUID]);
 
-    // first section avatars styles.
+    /**
+     * setting styles of avatars in first section.
+     */
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
         if (styles) {
@@ -276,7 +296,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [getStyles]);
 
-    // third section avatars styles.
+    /**
+     * setting styles of friends in third section.
+     */
     const setFriendsPositions = React.useCallback(() => {
         const styles = getFriendsStyle();
         if (styles) {
@@ -285,7 +307,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [getFriendsStyle]);
 
-    // second section scroll function.
+    /**
+     * section two animation and scroll on continue.
+     */
     const handleContinueBtnClick = React.useCallback(() => {
         if (!avatarName) {
             return;
@@ -319,7 +343,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }, phoneKeyboardTimeout);
     }, [setFriendsPositions, seletedAvatar, avatarName]);
 
-    // setting first section styles.
+    /**
+     * first section avatars style.
+     */
     React.useEffect(() => {
         if (step === StepTypes.One && avatarStyleGUID === "0") {
             setTimeout(() => {
@@ -328,7 +354,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [setAvatarPositions, step, avatarStyleGUID]);
 
-    // avatar list scroll function.
+    /**
+     * section five animation and scroll on 100% to signup section.
+     */
     const signupAnimation = React.useCallback(() => {
         scroller.scrollTo(StepTypes.Six, {
             duration: 700,
@@ -339,11 +367,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         });
     }, []);
 
-    // resize function.
+    /**
+     * resize function
+     */
     const handleResize = React.useCallback(() => {
-        setViewportHeight();
         switch (step) {
             case StepTypes.One:
+                setViewportHeight();
                 setAvatarPositions();
                 break;
 
@@ -363,6 +393,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
 
             case StepTypes.Three:
+                setViewportHeight();
                 scroller.scrollTo(step, {
                     containerId,
                     ignoreCancelEvents: true,
@@ -387,7 +418,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [setAvatarPositions, step, seletedAvatar]);
 
-    // resize function.
+    /**
+     * resize function
+     */
     React.useEffect(() => {
         setViewportHeight();
         window.addEventListener("resize", handleResize);
@@ -398,13 +431,16 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
     }, [handleResize]);
 
-    // donation cycle animations.
+    /**
+     * donation cycle style and animation.
+     * @param stepIndex index of cycle item.
+     */
     const handlStepAnimation = React.useCallback((stepIndex) => {
         if (coinRef.current) {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
             const index = avatar.getAttribute("data-index");
             const bounds = avatar.getBoundingClientRect();
-            const coin = coinAnimation.current;
+            const coin = coinAnimationWrapperRef.current;
             const width = window.innerWidth;
             const fourHundred = 420;
             const Ten = 10;
@@ -467,8 +503,11 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, []);
 
-    // donation cycle animations onClick.
+    /**
+     * function to start or reset the donation cycle animation.
+     */
     React.useEffect(() => {
+        let coinInterval: NodeJS.Timer;
         if (animation) {
             let index = 0;
             handlStepAnimation(index);
@@ -488,7 +527,10 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
     }, [animation, handlStepAnimation]);
 
-    // donation Cycle donation calculation.
+    /**
+     * donation cycle calclutions.
+     * @param donation selected amount in donation cycle.
+     */
     const donationCalulation = (donation: number) => {
         const percentage = 100;
         const donationFixed = 2;
@@ -497,7 +539,10 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return <span>{amount.charAt(0) === "0" ? `${amount}¢` : `$${amount}`}</span>;
     };
 
-    // donation cycyle donation amount rendering.
+    /**
+     * donation cycle items.
+     * @param style classNames of cycle items.
+     */
     const donation = (style: string) => {
         if (donationAmount !== "") {
             return <span className={`${style} ${styles.donationAmount}`}>
@@ -506,6 +551,36 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
 
     };
+
+    /**
+     * donation amount rendering.
+     */
+    const donationCycle = React.useMemo(() =>
+        donationValues.map((donation, index) =>
+            <PrimaryButton
+                key={index}
+                onClick={() => {
+                    setDonationAmount(donation);
+                    animationHandler(donation);
+                    coinAnimationWrapperRef.current.scroll({
+                        top: 230,
+                        behavior: "smooth"
+                    });
+                    coinStyles.current = {
+                        left: null,
+                        top: null
+                    };
+                }}
+                className={`${horizontalAlign} 
+                ${styles.donationButton}
+                ${donation === donationAmount
+                        ? styles.active :
+                        styles.inactive}
+                w-100 px-1 py-3`}
+            >
+                ${donation}
+            </PrimaryButton>
+        ), []);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
@@ -581,14 +656,15 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     {step === StepTypes.Three ?
                                         <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
                                             {friendsAvatars
-                                                .filter((f) => !addedFriends.find(({ id }) => f.id === id))
+                                                .filter((avatarObj) => !addedFriends
+                                                    .find(({ id }) => avatarObj.id === id))
                                                 .map((key: IFriendAvatar, index) => (
                                                     <React.Fragment key={index}>
                                                         {!key.done ? <div
                                                             className="position-absolute"
                                                             style={friendsStyle.current && friendsStyle.current[key.id]}
                                                             onClick={() => !key.done ?
-                                                                friendsAnimation(index, key) :
+                                                                friendsAnimation(key) :
                                                                 null}
                                                         >
                                                             <Avatar color={key.id} />
@@ -603,7 +679,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         </Element>
 
                         <Element name={StepTypes.Four} className="w-100">
-                            <div ref={coinAnimation} className={styles.donationSections}>
+                            <div ref={coinAnimationWrapperRef} className={styles.donationSections}>
                                 <div className={styles.card}>
                                     <div className={`${rowHCenter} ${styles.stepFour}`}>
                                         <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
@@ -620,32 +696,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
                                             <Navbar.Collapse id="basic-navbar-nav" className={styles.customNavbar}>
                                                 <Nav className={"me-auto w-100"}>
-                                                    {donationValues.map((donation, donationKey) =>
-                                                        <PrimaryButton
-                                                            key={donationKey}
-                                                            onClick={() => {
-                                                                setDonationAmount(donation);
-                                                                animationHandler(donation);
-                                                                coinAnimation.current.scroll({
-                                                                    top: 230,
-                                                                    behavior: "smooth"
-                                                                });
-                                                                coinStyles.current = {
-                                                                    left: null,
-                                                                    top: null
-                                                                };
-                                                            }}
-                                                            className={`${horizontalAlign} 
-                                                        ${styles.donationButton}
-                                                         ${donation === donationAmount
-                                                                    ? styles.active :
-                                                                    styles.inactive}
-                                                          w-100 px-1 py-3`}
-                                                        >
-                                                            ${donation}
-                                                        </PrimaryButton>
-                                                    )}
-
+                                                    {donationCycle}
                                                 </Nav>
                                             </Navbar.Collapse>
                                         </Navbar>

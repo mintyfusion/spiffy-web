@@ -17,35 +17,21 @@ import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const toggleTimeout = 500;
-const twenty = 20;
-const twentyTwo = 22;
-const twentyFive = 25;
-const twentySeven = 27;
-const thirty = 30;
-const thirtyThree = 33;
-const thirtyFive = 35;
-const thirtySeven = 37;
-const fourty = 40;
 const fifteenRandom = 15;
 const five = 5;
-const ten = 10;
-const six = 6;
-const seven = 7;
-const eigth = 8;
-const nine = 9;
-const eleven = 11;
-const twelve = 12;
-const thirteen = 13;
-const fourteen = 14;
-const sizes = [twenty, twentyTwo, twentyFive, twentySeven, thirty, thirtyThree, thirtyFive, thirtySeven, fourty];
-const sizesMobile = [five, six, seven, eigth, nine, ten, eleven, twelve, thirteen, fourteen, fifteenRandom];
+// Avatar random sizes numbers
+// No need to understand the number, array itself tells the meaning.
+const sizes = [20, 22, 25, 27, 30, 33, 35, 37, 40]; // eslint-disable-line @typescript-eslint/no-magic-numbers
+const sizesMobile = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const slice = 2;
 const sliceTwo = 4;
 const mobile = 770;
 
 const avatars = Object.values(AvatarType);
 
-// random margin for avatars.
+/**
+ * random margin for avatars.
+*/
 function getRandomMargin() {
     const width = window.innerWidth;
     if (width < mobile) {
@@ -56,7 +42,9 @@ function getRandomMargin() {
 
 }
 
-// random size for avatars.
+/**
+ * random size for avatars.
+*/
 function getRandomSize() {
     const width = window.innerWidth;
     let randomIndex: number;
@@ -71,7 +59,9 @@ function getRandomSize() {
 
     return sizes[randomIndex];
 }
-// random flex-align for avatars.
+/**
+ * random flex-align for avatars.
+*/
 function getRandomAlignSelf() {
     const values = ["flex-end", "flex-start", "center"];
     const randomIndex = Math.floor(Math.random() * values.length);
@@ -79,7 +69,9 @@ function getRandomAlignSelf() {
     return values[randomIndex];
 }
 
-// random colors for avatars.
+/**
+ * random colors for avatars.
+*/
 function getRandomAvatars() {
     const randomIndex = Math.floor(Math.random() * avatars.length);
 
@@ -96,7 +88,9 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         setSelectedKey(key);
     }, []);
 
-    // rendering avatars
+    /**
+     * rendering avatars
+    */
     const avatars = React.useMemo(() => {
         const { totalAvatarsToShow } = percentages[selectedKey];
         const arr: JSX.Element[] = [];
@@ -126,12 +120,33 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         return arr;
     }, [selectedKey]);
 
-    // scroll function on 100%
+    /**
+     * section five animation and scroll on 100% to signup section.
+     */
     React.useEffect(() => {
         if (selectedKey === "100") {
             props.signupAnimation();
         }
     }, [selectedKey]);
+
+    /**
+     * donation percentage rendering.
+     */
+    const donationPercentage = React.useMemo(() =>
+        Object.entries(percentages).map(([key], index) => (
+            <PrimaryButton key={index} onClick={() => {
+                handleBtnClick(key);
+                setToggle(false);
+                setTimeout(() => {
+                    setToggle(true);
+                }, toggleTimeout);
+            }} className={`${horizontalAlign} 
+            ${styles.donationButton} 
+            ${selectedKey === key ? styles.active : styles.inactive}
+             w-100 px-1 py-3`}>
+                {key}
+            </PrimaryButton>
+        )), []);
 
     return (
         <div className={styles.gameStepFive}>
@@ -150,21 +165,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
-                            {Object.entries(percentages).map(([key], index) => (
-                                <PrimaryButton key={index} onClick={() => {
-                                    handleBtnClick(key);
-                                    setToggle(false);
-                                    setTimeout(() => {
-                                        setToggle(true);
-                                    }, toggleTimeout);
-                                }} className={`${horizontalAlign} 
-                                ${styles.donationButton} 
-                                ${selectedKey === key ? styles.active : styles.inactive}
-                                 w-100 px-1 py-3`}>
-                                    {key}
-                                </PrimaryButton>
-                            ))}
-
+                            {donationPercentage}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
@@ -183,7 +184,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                             <Row className={`${styles.friendsTop} w-100`}>
                                 <div>
                                     {props.friends.slice(0, slice)
-                                        .map((i, k) => <Avatar color={i.id} key={k} width={87} height={87} />)}
+                                        .map((avatar, index) => 
+                                        <Avatar color={avatar.id} key={index} width={87} height={87} />)}
                                 </div>
                             </Row>
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
@@ -192,7 +194,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                             <Row className={`${styles.friendsBottom} w-100`}>
                                 <div>
                                     {props.friends.slice(slice, sliceTwo)
-                                        .map((i, k) => <Avatar color={i.id} key={k} width={87} height={87} />)}
+                                        .map((avatar, index) => 
+                                        <Avatar color={avatar.id} key={index} width={87} height={87} />)}
                                 </div>
                             </Row>
                         </div>
