@@ -1,5 +1,5 @@
-interface gameAvatarDonations {
+interface IGameAvatarDonation {
     totalAvatarsToShow: number;
     amount: string;
 }
-export default gameAvatarDonations;
+export default IGameAvatarDonation;

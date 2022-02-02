@@ -28,7 +28,7 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHEnd = flexbox({ hAlign: "end" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
-const donation: string[] = ["5", "10", "15", "25", "50"];
+const donationValues: string[] = ["5", "10", "15", "25", "50"];
 const friendsTimeout = 2000;
 const avatarTimeout = 1000;
 const boundDivide = 2;
@@ -69,6 +69,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const coinStyles = React.useRef<CSSProperties>();
     let coinInterval;
 
+    // friends filter with selected avatar.
     const step1Avatars = React.useMemo(() =>
         Object.entries(AvatarType).filter(([value]) => value !== AvatarType.Orange), []);
 
@@ -76,6 +77,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         seletedAvatar && avatarObj.id !== seletedAvatar
     ), [seletedAvatar]) as IFriendAvatar[];
 
+    // scroll function adding friends.
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
         if (addedFriends.length === friendsLength) {
@@ -97,6 +99,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         };
     }, [addedFriends]);
 
+    // Donation cycle animation timeout.
     const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
             setAnimation(false);
@@ -106,6 +109,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [donationAmount]);
 
+    // style for first section avatars.
     const getStyles = React.useCallback(() => {
         if (start.current) {
             const mobile = 768;
@@ -167,6 +171,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return null;
     }, []);
 
+    // style for third section  friends avatars.
     const getFriendsStyle = React.useCallback(() => {
         if (friendsRef.current) {
             const bounds = friendsRef.current.getBoundingClientRect();
@@ -228,6 +233,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [friendsAvatars]);
 
+    // avatar function on scroll.
     const handleAvatarClick = React.useCallback((avatar: AvatarType) => {
         if (target.current) {
             const bounds = target.current.getBoundingClientRect();
@@ -246,6 +252,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         setStep(StepTypes.Two);
     }, []);
 
+    // selecting friend function in third section.
     const friendsAnimation = React.useCallback((index: number, value: IFriendAvatar) => {
         if (stepThree.current) {
             const selectedFriends: IFriendAvatar[] = [];
@@ -260,6 +267,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [friendsStyleGUID]);
 
+    // first section avatars styles.
     const setAvatarPositions = React.useCallback(() => {
         const styles = getStyles();
         if (styles) {
@@ -268,6 +276,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [getStyles]);
 
+    // third section avatars styles.
     const setFriendsPositions = React.useCallback(() => {
         const styles = getFriendsStyle();
         if (styles) {
@@ -276,6 +285,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [getFriendsStyle]);
 
+    // second section scroll function.
     const handleContinueBtnClick = React.useCallback(() => {
         if (!avatarName) {
             return;
@@ -309,6 +319,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }, phoneKeyboardTimeout);
     }, [setFriendsPositions, seletedAvatar, avatarName]);
 
+    // setting first section styles.
     React.useEffect(() => {
         if (step === StepTypes.One && avatarStyleGUID === "0") {
             setTimeout(() => {
@@ -317,6 +328,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [setAvatarPositions, step, avatarStyleGUID]);
 
+    // avatar list scroll function.
     const signupAnimation = React.useCallback(() => {
         scroller.scrollTo(StepTypes.Six, {
             duration: 700,
@@ -327,6 +339,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         });
     }, []);
 
+    // resize function.
     const handleResize = React.useCallback(() => {
         setViewportHeight();
         switch (step) {
@@ -374,6 +387,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [setAvatarPositions, step, seletedAvatar]);
 
+    // resize function.
     React.useEffect(() => {
         setViewportHeight();
         window.addEventListener("resize", handleResize);
@@ -384,6 +398,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
     }, [handleResize]);
 
+    // donation cycle animations.
     const handlStepAnimation = React.useCallback((stepIndex) => {
         if (coinRef.current) {
             const avatar = document.querySelector(`[data-index='${stepIndex}']`);
@@ -452,6 +467,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, []);
 
+    // donation cycle animations onClick.
     React.useEffect(() => {
         if (animation) {
             let index = 0;
@@ -472,6 +488,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
     }, [animation, handlStepAnimation]);
 
+    // donation Cycle donation calculation.
     const donationCalulation = (donation: number) => {
         const percentage = 100;
         const donationFixed = 2;
@@ -480,7 +497,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return <span>{amount.charAt(0) === "0" ? `${amount}¢` : `$${amount}`}</span>;
     };
 
-    const coin = (style: string) => {
+    // donation cycyle donation amount rendering.
+    const donation = (style: string) => {
         if (donationAmount !== "") {
             return <span className={`${style} ${styles.donationAmount}`}>
                 {donationCalulation(friendsFormula)}
@@ -602,7 +620,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
                                             <Navbar.Collapse id="basic-navbar-nav" className={styles.customNavbar}>
                                                 <Nav className={"me-auto w-100"}>
-                                                    {donation.map((donation, donationKey) =>
+                                                    {donationValues.map((donation, donationKey) =>
                                                         <PrimaryButton
                                                             key={donationKey}
                                                             onClick={() => {
@@ -663,7 +681,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
                                                 <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2" data-position={Position.RightTop}>
                                                     <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                    {coin(styles.donationAmount2)}
+                                                    {donation(styles.donationAmount2)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w40} ${rowHBetween}`}>
@@ -681,27 +699,27 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
                                                 <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3" data-position={Position.Right}>
                                                     <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                    {coin(styles.donationAmount4)}
+                                                    {donation(styles.donationAmount4)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w55} ${rowHBetween}`}>
                                                 <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10" data-position={Position.Left}>
                                                     <Avatar color={AvatarType.Green} width={56} height={63} />
-                                                    {coin(styles.donationAmount5)}
+                                                    {donation(styles.donationAmount5)}
                                                 </div>
                                                 <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4" data-position={Position.Right}>
                                                     <Avatar color={AvatarType.Purple} width={56} height={63} />
-                                                    {coin(styles.donationAmount6)}
+                                                    {donation(styles.donationAmount6)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w40} ${rowHBetween}`}>
                                                 <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9" data-position={Position.Left}>
                                                     <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                    {coin(styles.donationAmount7)}
+                                                    {donation(styles.donationAmount7)}
                                                 </div>
                                                 <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5" data-position={Position.Right}>
                                                     <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                    {coin(styles.donationAmount8)}
+                                                    {donation(styles.donationAmount8)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w25} 
@@ -709,17 +727,17 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                         ${rowHBetween}`}>
                                                 <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8" data-position={Position.BottomLeft}>
                                                     <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                    {coin(styles.donationAmount9)}
+                                                    {donation(styles.donationAmount9)}
                                                 </div>
                                                 <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6" data-position={Position.BottomRight}>
                                                     <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                    {coin(styles.donationAmount10)}
+                                                    {donation(styles.donationAmount10)}
                                                 </div>
                                             </Row>
                                             <Row className={horizontalAlign}>
                                                 <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7" data-position={Position.BottomCenter}>
                                                     <Avatar color={AvatarType.Green} width={56} height={63} />
-                                                    {coin(styles.donationAmount11)}
+                                                    {donation(styles.donationAmount11)}
                                                 </div>
                                             </Row>
                                         </div>

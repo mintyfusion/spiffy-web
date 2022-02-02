@@ -206,7 +206,6 @@ $vh: var(--vh);
 
 .stepFour {
     width: 100%;
-    height: 1186px;
     padding: 50px 0px;
     position: relative;
     h4 {
@@ -701,7 +700,6 @@ $vh: var(--vh);
     }
     .stepFour {
         width: 90%;
-        height: auto;
         position: relative;
         select {
             width: 100%;
@@ -1035,8 +1033,6 @@ $vh: var(--vh);
     }
     .stepFour {
         width: 90%;
-        position: relative;
-        height: auto;
         select {
             width: 100%;
             text-align: center;
@@ -1337,7 +1333,6 @@ $vh: var(--vh);
     }
     .stepFour {
         width: 80%;
-        height: auto;
         position: relative;
         select {
             width: 100%;
@@ -2094,9 +2089,6 @@ $vh: var(--vh);
         width: 80px;
     }
 
-    .stepFour {
-        height: 1040px;
-    }
     .friendsBottom {
         width: 90%;
     }
@@ -2212,10 +2204,6 @@ $vh: var(--vh);
         width: 80px;
     }
 
-    .stepFour {
-        height: 1040px;
-    }
-
     .friendsBottom {
         width: 85%;
     }
@@ -2293,10 +2281,6 @@ $vh: var(--vh);
         }
     }
 
-    .stepFour {
-        height: 1140px;
-    }
-
     .percentageWrapper {
         img {
             cursor: pointer;
@@ -2365,9 +2349,6 @@ $vh: var(--vh);
             @include imgProperties(100px);
         }
     }
-    .stepFour {
-        height: 1155px;
-    }
 
     .donations {
         width: 150px;
@@ -2394,10 +2375,6 @@ $vh: var(--vh);
 }
 
 @include media(">=1700px", "<1800px") {
-    .stepFour {
-        height: 1182px;
-    }
-
     .percentageWrapper {
         img {
             @include imgProperties(165px);
