@@ -70,8 +70,10 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
 
     const faqData = React.useMemo(() =>
         tags.map((tag) => {
-            if (tag === ContentCategory.all) {
+            if (tag.toLowerCase().includes(ContentCategory.all.toLowerCase())) {
                 return;
+            } if (contentData?.items.filter(data => data.fields.tag.fields.name === tag).length === 0) {
+                return <h1 className="text-center">No FAQ Found</h1>;
             }
 
             return (
@@ -199,6 +201,12 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                                 </Accordion.Item>
                             </Accordion>
                         )}
+
+                {isLoading &&
+                    <div className="spinner-border text-warning align-self-center" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                }
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>
         </div>
