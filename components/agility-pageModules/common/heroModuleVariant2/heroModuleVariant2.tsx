@@ -2,7 +2,7 @@ import { ImageProps } from "next/image";
 import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
-import Banner from "components/common/banner/banner";
+import Banner from "components/agility-pageModules/common/banner/banner";
 import Caption from "components/common/caption/caption";
 import IHeroModuleVariant2Props from "components/agility-pageModules/common/heroModuleVariant2/interfaces/IHeroModuleVariant2Props";
 

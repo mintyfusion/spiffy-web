@@ -5,7 +5,7 @@ import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
 import { SearchContext } from "pages/[...slug]";
-import Banner from "components/common/banner/banner";
+import Banner from "components/agility-pageModules/common/banner/banner";
 import IHeroModuleVariant1Props from "components/agility-pageModules/common/heroModuleVariant1/interfaces/IHeroModuleVariant1Props";
 import ISearchInfo from "components/agility-pageModules/common/heroModuleVariant1/interfaces/ISearchInfo";
 import PrimaryButton from "components/common/primaryButton/primaryButton";

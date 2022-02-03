@@ -2,9 +2,9 @@ import { Carousel } from "react-bootstrap";
 import Image, { ImageProps } from "next/image";
 import React, { PropsWithChildren } from "react";
 
-import IBannerProps from "components/common/banner/interfaces/IBannerProps";
+import IBannerProps from "components/agility-pageModules/common/banner/interfaces/IBannerProps";
 
-import styles from "components/common/banner/banner.module.scss";
+import styles from "components/agility-pageModules/common/banner/banner.module.scss";
 
 const Banner = (props: PropsWithChildren<IBannerProps>): JSX.Element =>
     <div className={`position-relative ${styles.bannerContainer}`}>

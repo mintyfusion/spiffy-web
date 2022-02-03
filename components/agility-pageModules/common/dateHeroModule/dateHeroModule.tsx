@@ -2,7 +2,7 @@ import { ImageProps } from "next/image";
 import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
-import Banner from "components/common/banner/banner";
+import Banner from "components/agility-pageModules/common/banner/banner";
 import IDateHeroModuleProps from "components/agility-pageModules/common/dateHeroModule/interfaces/IDateHeroModuleProps";
 
 import styles from "components/agility-pageModules/common/dateHeroModule/dateHeroModule.module.scss";
