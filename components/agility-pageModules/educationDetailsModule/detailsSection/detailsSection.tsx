@@ -2,11 +2,11 @@ import { renderHTML } from "@agility/nextjs";
 import Image from "next/image";
 import React from "react";
 
-import DetailsType from "components/educationDetailsPage/detailsSection/enums/detailsType";
-import IDetailsSectionProps from "components/educationDetailsPage/detailsSection/interfaces/IDetailsSectionProps";
+import DetailsType from "components/agility-pageModules/educationDetailsModule/detailsSection/enums/detailsType";
+import IDetailsSectionProps from "components/agility-pageModules/educationDetailsModule/detailsSection/interfaces/IDetailsSectionProps";
 import VideoPlayer from "components/common/videoPlayer/videoPlayer";
 
-import styles from "components/educationDetailsPage/detailsSection/detailsSection.module.scss";
+import styles from "components/agility-pageModules/educationDetailsModule/detailsSection/detailsSection.module.scss";
 
 const DetailsSection = (props: IDetailsSectionProps): JSX.Element => 
         <div className={`${styles.detailsContainer} position-relative`}>

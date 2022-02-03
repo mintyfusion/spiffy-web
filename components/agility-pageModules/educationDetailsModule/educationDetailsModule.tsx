@@ -1,13 +1,13 @@
 import { DynamicModuleProps } from "@agility/nextjs";
 import React from "react";
 
-import Breadcrumb from "components/educationDetailsPage/breadcrumbSection/breadcrumb";
-import DetailsSection from "components/educationDetailsPage/detailsSection/detailsSection";
-import detailsSocialData from "components/educationDetailsPage/shareSection/shareSocials";
+import Breadcrumb from "components/agility-pageModules/educationDetailsModule/breadcrumbSection/breadcrumb";
+import DetailsSection from "components/agility-pageModules/educationDetailsModule/detailsSection/detailsSection";
+import detailsSocialData from "components/agility-pageModules/educationDetailsModule/shareSection/shareSocials";
 import IEducationDetailsModuleProps from "components/agility-pageModules/educationDetailsModule/interfaces/IEducationDetailsModuleProps";
-import ShareSection from "components/educationDetailsPage/shareSection/shareSection";
+import ShareSection from "components/agility-pageModules/educationDetailsModule/shareSection/shareSection";
 
-import styles from "components/educationDetailsPage/educationDetails.module.scss";
+import styles from "components/agility-pageModules/educationDetailsModule/educationDetails.module.scss";
 
 const EducationDetailsModule =
     (props: DynamicModuleProps<IEducationDetailsModuleProps, IEducationDetailsModuleProps>): JSX.Element => {

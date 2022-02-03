@@ -1,6 +1,6 @@
 import { faFacebookF, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
-import IShareSectionProps from "components/educationDetailsPage/shareSection/interfaces/IShareSectionData";
+import IShareSectionProps from "components/agility-pageModules/educationDetailsModule/shareSection/interfaces/IShareSectionData";
 
 const detailsSocialData: IShareSectionProps[] = [
     {

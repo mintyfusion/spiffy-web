@@ -72,9 +72,11 @@ const Index = (props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Eleme
         setSearch: setSearchedValue as (value?: string) => void
     }), [searchValue]);
 
-    return (<SearchContext.Provider value={searchItems}>
-        <Layout {...props}></Layout>
-    </SearchContext.Provider>);
+    return (
+        <SearchContext.Provider value={searchItems}>
+            <Layout {...props}></Layout>
+        </SearchContext.Provider>
+    );
 };
 
 export default Index;
