@@ -7,7 +7,7 @@ import flexbox from "utils/flexbox";
 import ILandingPageEducationProps from "components/agility-pageModules/landingPage/educationModule/interfaces/ILandingPageEducationProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 
-import styles from "components/landingPage/learnSection/learnSection.module.scss";
+import styles from "components/agility-pageModules/landingPage/educationModule/landingPageEducation.module.scss";
 
 const horizontalAlign = flexbox({ hAlign: "center" });
 
