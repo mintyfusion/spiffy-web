@@ -90,12 +90,12 @@ $vh: var(--vh);
 }
 
 .avatarSelected {
-    > div {
+    > svg {
         @include imgProperties(160px);
     }
 }
 .avatarFriends {
-    > div {
+    > svg {
         @include imgProperties(222px);
         transition: 2s;
     }
@@ -116,7 +116,7 @@ $vh: var(--vh);
 }
 
 .percentageWrapper {
-    img {
+    svg {
         @include imgProperties(165px);
         cursor: pointer;
     }
@@ -684,12 +684,12 @@ $vh: var(--vh);
     }
 
     .avatarSelected {
-        > div {
+        > svg {
             @include imgProperties(90px);
         }
     }
     .avatarFriends {
-        > div {
+        > svg {
             @include imgProperties(90px);
             transition: 2s;
         }
@@ -789,7 +789,7 @@ $vh: var(--vh);
     .percentageWrapper {
         width: 100%;
         height: 100%;
-        img {
+        svg {
             @include imgProperties(65px);
             cursor: pointer;
         }
@@ -916,7 +916,7 @@ $vh: var(--vh);
     .percentageWrapper {
         width: 100%;
         height: 100%;
-        img {
+        svg {
             @include imgProperties(65px);
             cursor: pointer;
         }
@@ -1010,12 +1010,12 @@ $vh: var(--vh);
         margin-bottom: 5px;
     }
     .avatarSelected {
-        > div {
+        > svg {
             @include imgProperties(90px);
         }
     }
     .avatarFriends {
-        > div {
+        > svg {
             @include imgProperties(90px);
             transition: 2s;
         }
@@ -1311,12 +1311,12 @@ $vh: var(--vh);
         margin-bottom: 10px;
     }
     .avatarSelected {
-        > div {
+        > svg {
             @include imgProperties(90px);
         }
     }
     .avatarFriends {
-        > div {
+        > svg {
             @include imgProperties(90px);
             transition: 2s;
         }
@@ -1404,18 +1404,16 @@ $vh: var(--vh);
             .percentageWrapper {
                 width: 100%;
                 height: 100%;
-                img {
+                svg {
                     @include imgProperties(65px);
-                    cursor: pointer;
                 }
             }
         }
     }
 
     .percentageWrapper {
-        img {
+        svg {
             @include imgProperties(125px);
-            cursor: pointer;
         }
     }
 
@@ -1658,9 +1656,8 @@ $vh: var(--vh);
     }
 
     .percentageWrapper {
-        img {
+        svg {
             @include imgProperties(65px);
-            cursor: pointer;
         }
     }
 
@@ -1835,9 +1832,8 @@ $vh: var(--vh);
     }
 
     .percentageWrapper {
-        img {
+        svg {
             @include imgProperties(60px);
-            cursor: pointer;
         }
     }
 
@@ -1961,9 +1957,8 @@ $vh: var(--vh);
     }
 
     .percentageWrapper {
-        img {
+        svg {
             @include imgProperties(125px);
-            cursor: pointer;
         }
     }
 
@@ -2079,9 +2074,8 @@ $vh: var(--vh);
     }
 
     .percentageWrapper {
-        img {
+        svg {
             @include imgProperties(165px);
-            cursor: pointer;
         }
     }
 
@@ -2194,9 +2188,8 @@ $vh: var(--vh);
     }
 
     .percentageWrapper {
-        img {
+        svg {
             @include imgProperties(165px);
-            cursor: pointer;
         }
     }
 
@@ -2243,12 +2236,6 @@ $vh: var(--vh);
         }
     }
 
-    .percentageWrapper {
-        img {
-            cursor: pointer;
-        }
-    }
-
     .donations {
         width: 150px;
     }
@@ -2281,12 +2268,6 @@ $vh: var(--vh);
         }
     }
 
-    .percentageWrapper {
-        img {
-            cursor: pointer;
-        }
-    }
-
     .donations {
         width: 150px;
     }
@@ -2316,12 +2297,6 @@ $vh: var(--vh);
     .avatarInner {
         img {
             @include imgProperties(100px);
-        }
-    }
-
-    .percentageWrapper {
-        img {
-            cursor: pointer;
         }
     }
 
@@ -2376,9 +2351,8 @@ $vh: var(--vh);
 
 @include media(">=1700px", "<1800px") {
     .percentageWrapper {
-        img {
+        svg {
             @include imgProperties(165px);
-            cursor: pointer;
         }
     }
     .animationGrid {
@@ -2395,7 +2369,7 @@ $vh: var(--vh);
 
 @include media(">=1800px", "<1900px") {
     .percentageWrapper {
-        img {
+        svg {
             @include imgProperties(165px);
             cursor: pointer;
         }

@@ -146,7 +146,7 @@
 }
 
 .percentageSelected {
-    img {
+    svg {
         @include imgProperties(119px);
     }
 }
@@ -247,17 +247,17 @@
         display: none;
     }
     .friendsBottom {
-        margin-top: -25px;
+        margin-top: -21px;
         div {
-            img {
+            svg {
                 @include imgProperties(35px);
             }
         }
     }
     .friendsTop {
-        margin-bottom: -20px;
+        margin-bottom: -18px;
         div {
-            img {
+            svg {
                 @include imgProperties(35px);
             }
         }
@@ -283,7 +283,7 @@
     }
 
     .percentageSelected {
-        img {
+        svg {
             @include imgProperties(40px);
         }
     }
@@ -294,14 +294,14 @@
         max-width: 195px;
     }
     .percentageSelected {
-        img {
+        svg {
             @include imgProperties(90px);
         }
     }
     .friendsBottom {
         margin-top: -45px;
         div {
-            img {
+            svg {
                 @include imgProperties(60px);
             }
         }
@@ -309,7 +309,7 @@
     .friendsTop {
         margin-bottom: -45px;
         div {
-            img {
+            svg {
                 @include imgProperties(60px);
             }
         }

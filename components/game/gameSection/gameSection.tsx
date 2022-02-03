@@ -589,7 +589,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     id={containerId} ref={fullscreen}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={props.closeModal} className={styles.close} />
                     <div className={styles.container}>
-                        <div className={`${styles.card}  ${styles.gameStepTwoWrapper}`} ref={start}>
+                        <div className={`${styles.card} ${styles.gameStepTwoWrapper}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your avatar</h2>
                             {step1Avatars.map(([key, value]) =>
                                 <Link
