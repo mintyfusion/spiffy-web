@@ -1,6 +1,6 @@
 import { faFacebookF, faInstagram, faTiktok, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
-import IFooterSocials from "components/common/footer/interfaces/IFooterSocials";
+import IFooterSocials from "components/agility-pageModules/common/footer/interfaces/IFooterSocials";
 
 const footerSocialsData: IFooterSocials[] = [
     {

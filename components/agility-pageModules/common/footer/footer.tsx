@@ -3,16 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React from "react";
 
-import footerLinks from "components/common/footer/footerLinks";
-import footerSocialsData from "components/common/footer/footerSocials";
-import IFooterLink from "components/common/footer/interfaces/IFooterLink";
-import IFooterLinks from "components/common/footer/interfaces/IFooterLinks";
-import IFooterSocials from "components/common/footer/interfaces/IFooterSocials";
+import footerLinks from "components/agility-pageModules/common/footer/footerLinks";
+import footerSocialsData from "components/agility-pageModules/common/footer/footerSocials";
+import IFooterLink from "components/agility-pageModules/common/footer/interfaces/IFooterLink";
+import IFooterLinks from "components/agility-pageModules/common/footer/interfaces/IFooterLinks";
+import IFooterSocials from "components/agility-pageModules/common/footer/interfaces/IFooterSocials";
 import Link from "components/agility-pageModules/common/link/link";
 import Logo from "components/common/logo/logo";
 import LogoVariants from "components/common/logo/enums/logoVariants";
 
-import styles from "components/common/footer/footer.module.scss";
+import styles from "components/agility-pageModules/common/footer/footer.module.scss";
 
 const Footer = (): JSX.Element =>
     <Stack className={styles.footerContainer}>

@@ -1,7 +1,7 @@
 import NextHead from "next/head";
 import React from "react";
 
-import IFavicon from "components/common/head/interfaces/IFavicon";
+import IFavicon from "components/agility-pageModules/common/head/interfaces/IFavicon";
 
 const favicons: IFavicon[] = [
     {

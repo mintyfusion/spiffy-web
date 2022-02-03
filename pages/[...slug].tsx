@@ -9,7 +9,7 @@ import type {
     InferGetStaticPropsType,
 } from "next";
 
-import Layout from "components/common/layout/layout";
+import Layout from "components/agility-pageModules/common/layout/layout";
 
 // getStaticProps function fetches data for all Agility Pages 
 // and Next.js will pre-render these pages at build time

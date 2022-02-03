@@ -3,10 +3,10 @@ import { getPageTemplate } from "components/agility-pageTemplates";
 import Error from "next/error";
 import React from "react";
 
-import Footer from "components/common/footer/footer";
-import Head from "components/common/head/head";
-import ILayoutProps from "components/common/layout/interfaces/ILayoutProps";
-import Navbar from "components/common/navbar/navbar";
+import Footer from "components/agility-pageModules/common/footer/footer";
+import Head from "components/agility-pageModules/common/head/head";
+import ILayoutProps from "components/agility-pageModules/common/layout/interfaces/ILayoutProps";
+import Navbar from "components/agility-pageModules/common/navbar/navbar";
 import PageIds from "common/pageIds";
 
 const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {

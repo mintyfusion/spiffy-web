@@ -1,4 +1,4 @@
-import IFooterLinks from "components/common/footer/interfaces/IFooterLinks";
+import IFooterLinks from "components/agility-pageModules/common/footer/interfaces/IFooterLinks";
 
 const footerLinks: IFooterLinks[] = [
     {
