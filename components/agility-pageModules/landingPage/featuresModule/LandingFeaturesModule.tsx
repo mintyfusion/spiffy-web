@@ -3,11 +3,11 @@ import { ModuleProps } from "@agility/nextjs";
 import Image from "next/image";
 import React from "react";
 
-import ArrowIcon from "components/common/arrowIcon/arrowIcon";
+import ArrowIcon from "components/agility-pageModules/common/arrowIcon/arrowIcon";
 import flexbox from "utils/flexbox";
 import ILandingFeaturesModuleProps from "components/agility-pageModules/landingPage/featuresModule/interfaces/ILandingFeaturesModuleProps";
 
-import styles from "components/landingPage/featuresSection/featuresSection.module.scss";
+import styles from "components/agility-pageModules/landingPage/featuresModule/featuresSection.module.scss";
 
 const colAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const colAlignStart = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });

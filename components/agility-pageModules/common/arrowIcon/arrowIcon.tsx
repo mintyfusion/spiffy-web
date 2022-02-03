@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import IArrowIconProps from "components/common/arrowIcon/interfaces/IArrowIconProps";
+import IArrowIconProps from "components/agility-pageModules/common/arrowIcon/interfaces/IArrowIconProps";
 
 const ArrowIcon = (props: IArrowIconProps): JSX.Element => {
     const arrowsGeneration = React.useMemo(() =>

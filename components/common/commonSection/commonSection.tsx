@@ -2,7 +2,7 @@ import { Col, Container, Row, Stack } from "react-bootstrap";
 import Image from "next/image";
 import React from "react";
 
-import ArrowIcon from "components/common/arrowIcon/arrowIcon";
+import ArrowIcon from "components/agility-pageModules/common/arrowIcon/arrowIcon";
 import flexbox from "utils/flexbox";
 import ICommonSectionProps from "components/common/commonSection/interfaces/ICommonSectionProps";
 
