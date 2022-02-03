@@ -170,7 +170,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 </Navbar>
 
                 <div className={`${styles.donationInner} w-100 position-relative h-100`}>
-                    <div className="d-flex flex-wrap h-100 flex-row-reverse" style={{ flex: 1 }}>
+                    <div className="d-flex flex-wrap h-100" style={{ flex: 1 }}>
                         {avatars}
                     </div>
                     <div className={`${styles.flexOne} ${styles.friendsMain}`}>
