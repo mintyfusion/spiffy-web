@@ -7,7 +7,7 @@ import flexbox from "utils/flexbox";
 import ICardContainerProps from "components/agility-pageModules/common/cardContainer/interfaces/ICardContainerProps";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
 
-import styles from "components/common/cardContainer/cardContainer.module.scss";
+import styles from "components/agility-pageModules/common/cardContainer/cardContainer.module.scss";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });
 const horizontalAlign = flexbox({ hAlign: "center" });

@@ -4,9 +4,9 @@ import React from "react";
 
 import ArrowIcon from "components/agility-pageModules/common/arrowIcon/arrowIcon";
 import flexbox from "utils/flexbox";
-import ICommonSectionProps from "components/common/commonSection/interfaces/ICommonSectionProps";
+import ICommonSectionProps from "components/agility-pageModules/common/commonSection/interfaces/ICommonSectionProps";
 
-import styles from "components/common/commonSection/commonSection.module.scss";
+import styles from "components/agility-pageModules/common/commonSection/commonSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center" });
