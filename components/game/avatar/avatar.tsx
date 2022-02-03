@@ -1,7 +1,7 @@
 import React from "react";
 
-import IAvatarProps from "components/game/avatar/interfaces/IAvatarProps";
 import AvatarType from "components/game/gameSection/enums/avatarTypes";
+import IAvatarProps from "components/game/avatar/interfaces/IAvatarProps";
 import styles from "components/game/avatar/avatar.module.scss";
 
 const Avatar = ({ color, ...props }: IAvatarProps) => {
@@ -33,9 +33,9 @@ const Avatar = ({ color, ...props }: IAvatarProps) => {
         <path d="M113.671 78.0557C113.875 78.4083 113.875 78.8427 113.671 79.1953L106.019 92.4487C105.816 92.8013 105.439 93.0185 105.032 93.0185L89.7285 93.0185C89.3214 93.0185 88.9451 92.8013 88.7416 92.4487L81.0897 79.1953C80.8861 78.8427 80.8861 78.4083 81.0897 78.0557L88.7416 64.8023C88.9451 64.4497 89.3214 64.2325 89.7285 64.2325L105.032 64.2325C105.439 64.2325 105.816 64.4497 106.019 64.8023L113.671 78.0557Z" fill="#FDFFFC" />
         <path d="M105.434 78.183C105.592 78.4573 105.592 78.7952 105.434 79.0694L101.79 85.3795C101.632 85.6538 101.339 85.8227 101.023 85.8227L93.7365 85.8227C93.4198 85.8227 93.1272 85.6538 92.9689 85.3795L89.3257 79.0694C89.1674 78.7952 89.1674 78.4573 89.3257 78.183L92.9689 71.8729C93.1272 71.5987 93.4198 71.4297 93.7365 71.4297L101.023 71.4297C101.339 71.4297 101.632 71.5987 101.79 71.8729L105.434 78.183Z" fill="#333333" />
         <path d="M53.8516 118.311C61.644 133.833 83.5602 133.833 91.8397 118.311" stroke="#674806" strokeWidth="4.50381" strokeLinecap="round" />
-    </svg>
+    </svg>;
 
-}
+};
 
 export default React.memo(Avatar);
 

@@ -283,7 +283,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
 
         }
-    }, [friendsStyleGUID]);
+    }, [seletedAvatar]);
 
     /**
      * setting styles of avatars in first section.
@@ -341,7 +341,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
             clearTimeout(t);
         }, phoneKeyboardTimeout);
-    }, [setFriendsPositions, seletedAvatar, avatarName]);
+    }, [setFriendsPositions, seletedAvatar, avatarName, step]);
 
     /**
      * first section avatars style.
@@ -377,7 +377,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 setAvatarPositions();
                 break;
 
-            case StepTypes.Two:
+            case StepTypes.Two: {
                 const boundsFirst = target.current?.getBoundingClientRect();
                 if (boundsFirst) {
                     avatarStyles.current = {
@@ -391,8 +391,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     setAvatarStyleGUID(getUniqueId());
                 }
                 break;
+            }
 
-            case StepTypes.Three:
+            case StepTypes.Three: {
                 setViewportHeight();
                 scroller.scrollTo(step, {
                     containerId,
@@ -413,10 +414,10 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     };
                     setAvatarStyleGUID(getUniqueId());
                 }
-
                 break;
+            }
         }
-    }, [setAvatarPositions, step, seletedAvatar]);
+    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions]);
 
     /**
      * resize function
@@ -580,7 +581,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             >
                 ${donation}
             </PrimaryButton>
-        ), []);
+        ), [animationHandler, donationAmount]);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
