@@ -9,9 +9,9 @@ import DateHeroModule from "components/agility-pageModules/common/dateHeroModule
 import EducationDetailsModule from "components/agility-pageModules/educationDetailsModule/educationDetailsModule";
 import EducationListingModule from "components/agility-pageModules/educationPage/contentListModule/contentListModule";
 import FAQContentModule from "components/agility-pageModules/faqPage/contentModule/faqContentModule";
-import HeroModule from "components/agility-pageModules/common/heroModule/HeroModule";
 import HeroModuleVariant1 from "components/agility-pageModules/common/heroModuleVariant1/heroModuleVariant1";
 import HeroModuleVariant2 from "components/agility-pageModules/common/heroModuleVariant2/heroModuleVariant2";
+import HeroModuleVariant3 from "components/agility-pageModules/common/heroModuleVariant3/heroModuleVariant3";
 import HtmlContentModule from "components/agility-pageModules/common/htmlContentModule/htmlContentModule";
 import LandingFeaturesModule from "components/agility-pageModules/landingPage/featuresModule/LandingFeaturesModule";
 import LandingPageEducation from "components/agility-pageModules/landingPage/educationModule/landingPageEducation";
@@ -21,7 +21,7 @@ import VideoSection from "components/agility-pageModules/creatorPage/videoSectio
 
 const allModules = [
   { name: "EducationListingModule", module: EducationListingModule },
-  { name: "HeroModule", module: HeroModule },
+  { name: "HeroModule", module: HeroModuleVariant3 },
   { name: "LandingPageEducation", module: LandingPageEducation },
   { name: "CommonContentModule", module: CommonContentModule },
   { name: "EducationDetailsModule", module: EducationDetailsModule },

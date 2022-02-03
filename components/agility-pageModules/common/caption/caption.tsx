@@ -2,10 +2,10 @@ import { Col, Row, Stack, } from "react-bootstrap";
 import React from "react";
 
 import flexbox from "utils/flexbox";
-import ICaptionProps from "components/common/caption/interfaces/ICaptionProps";
+import ICaptionProps from "components/agility-pageModules/common/caption/interfaces/ICaptionProps";
 import styleWords from "utils/styleWords";
 
-import styles from "components/common/caption/caption.module.scss";
+import styles from "components/agility-pageModules/common/caption/caption.module.scss";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });
 const rowHAlignCenter = flexbox({ hAlign: "center" });
