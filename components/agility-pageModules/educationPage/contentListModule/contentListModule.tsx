@@ -32,7 +32,6 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
     const data = React.useContext(SearchContext);
     const tabsRef = React.useRef<HTMLDivElement>();
 
-
     const handleArrowScrollLeft = React.useCallback(() => {
         tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft - scrollAmount, behavior: "smooth" });
     }, [tabsRef]);
