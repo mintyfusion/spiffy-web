@@ -4,7 +4,7 @@ import React from "react";
 
 import DetailsType from "components/agility-pageModules/educationDetailsModule/detailsSection/enums/detailsType";
 import IDetailsSectionProps from "components/agility-pageModules/educationDetailsModule/detailsSection/interfaces/IDetailsSectionProps";
-import VideoPlayer from "components/common/videoPlayer/videoPlayer";
+import VideoPlayer from "components/agility-pageModules/common/videoPlayer/videoPlayer";
 
 import styles from "components/agility-pageModules/educationDetailsModule/detailsSection/detailsSection.module.scss";
 

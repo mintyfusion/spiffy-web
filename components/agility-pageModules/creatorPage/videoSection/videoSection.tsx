@@ -6,7 +6,7 @@ import BreakpointChecks from "hooks/enums/breakpointChecks";
 import Breakpoints from "common/style/breakpoints";
 import IVideoSectionProps from "components/agility-pageModules/creatorPage/videoSection/interfaces/IVideoSectionProps";
 import useBreakpoint from "hooks/useBreakpoint";
-import VideoPlayer from "components/common/videoPlayer/videoPlayer";
+import VideoPlayer from "components/agility-pageModules/common/videoPlayer/videoPlayer";
 
 import styles from "components/agility-pageModules/creatorPage/videoSection/videoSection.module.scss";
 

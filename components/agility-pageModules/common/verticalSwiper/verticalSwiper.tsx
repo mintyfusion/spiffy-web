@@ -2,13 +2,13 @@ import { Swiper } from "swiper/react";
 import React, { PropsWithChildren } from "react";
 import SwiperCore, { Mousewheel, Pagination } from "swiper";
 
-import IVerticalSwiperProps from "components/common/verticalSwiper/interfaces/IVerticalSwiperProps";
+import IVerticalSwiperProps from "components/agility-pageModules/common/verticalSwiper/interfaces/IVerticalSwiperProps";
 
 // Importing css swiper
 import "swiper/css";
 import "swiper/css/pagination";
 
-import styles from "components/common/verticalSwiper/verticalSwiper.module.scss";
+import styles from "components/agility-pageModules/common/verticalSwiper/verticalSwiper.module.scss";
 
 // install Swiper modules
 SwiperCore.use([Mousewheel, Pagination]);

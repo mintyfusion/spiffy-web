@@ -1,10 +1,10 @@
 import React from "react";
 
-import ILogoProps from "components/common/logo/interfaces/ILogoProps";
-import ILogoVariantData from "components/common/logo/interfaces/ILogoVariantData";
-import LogoVariants from "components/common/logo/enums/logoVariants";
+import ILogoProps from "components/agility-pageModules/common/logo/interfaces/ILogoProps";
+import ILogoVariantData from "components/agility-pageModules/common/logo/interfaces/ILogoVariantData";
+import LogoVariants from "components/agility-pageModules/common/logo/enums/logoVariants";
 
-import styles from "/components/common/logo/logo.module.scss";
+import styles from "components/agility-pageModules/common/logo/logo.module.scss";
 
 const getVariant = (variant: LogoVariants): ILogoVariantData => {
     switch (variant) {

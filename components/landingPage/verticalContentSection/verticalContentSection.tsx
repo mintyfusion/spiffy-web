@@ -12,7 +12,7 @@ import IVerticalContentData from "components/landingPage/verticalContentSection/
 import IVerticalSectionProps from "components/landingPage/verticalContentSection/interfaces/IVerticalSectionProps";
 import styleWords from "utils/styleWords";
 import useBreakpoint from "hooks/useBreakpoint";
-import VerticalSwiper from "components/common/verticalSwiper/verticalSwiper";
+import VerticalSwiper from "components/agility-pageModules/common/verticalSwiper/verticalSwiper";
 
 import styles from "components/landingPage/verticalContentSection/verticalContentSection.module.scss";
 

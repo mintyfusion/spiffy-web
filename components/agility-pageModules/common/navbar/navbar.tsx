@@ -5,8 +5,8 @@ import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import INavbarProps from "components/agility-pageModules/common/navbar/interfaces/INavbarProps";
 import Link from "components/agility-pageModules/common/link/link";
-import Logo from "components/common/logo/logo";
-import LogoVariants from "components/common/logo/enums/logoVariants";
+import Logo from "components/agility-pageModules/common/logo/logo";
+import LogoVariants from "components/agility-pageModules/common/logo/enums/logoVariants";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
 

@@ -9,8 +9,8 @@ import IFooterLink from "components/agility-pageModules/common/footer/interfaces
 import IFooterLinks from "components/agility-pageModules/common/footer/interfaces/IFooterLinks";
 import IFooterSocials from "components/agility-pageModules/common/footer/interfaces/IFooterSocials";
 import Link from "components/agility-pageModules/common/link/link";
-import Logo from "components/common/logo/logo";
-import LogoVariants from "components/common/logo/enums/logoVariants";
+import Logo from "components/agility-pageModules/common/logo/logo";
+import LogoVariants from "components/agility-pageModules/common/logo/enums/logoVariants";
 
 import styles from "components/agility-pageModules/common/footer/footer.module.scss";
 
