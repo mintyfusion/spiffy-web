@@ -35,10 +35,10 @@ const avatars = Object.values(AvatarType);
 function getRandomMargin() {
     const width = window.innerWidth;
     if (width < mobile) {
-        return `${Math.floor(Math.random() * five + five)}px`;
+        return Math.floor(Math.random() * five + five);
     }
 
-    return `${Math.floor(Math.random() * fifteenRandom + five)}px`;
+    return Math.floor(Math.random() * fifteenRandom + five);
 
 }
 
@@ -47,17 +47,13 @@ function getRandomMargin() {
 */
 function getRandomSize() {
     const width = window.innerWidth;
-    let randomIndex: number;
 
     if (width < mobile) {
-        randomIndex = Math.floor(Math.random() * sizesMobile.length);
-    }
-    else {
-        randomIndex = Math.floor(Math.random() * sizes.length);
+        return Math.floor(Math.random() * sizesMobile.length) + five;
     }
 
+    return Math.floor(Math.random() * sizes.length);
 
-    return sizes[randomIndex];
 }
 /**
  * random flex-align for avatars.
