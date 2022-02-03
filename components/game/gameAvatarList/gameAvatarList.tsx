@@ -49,11 +49,14 @@ function getRandomSize() {
     const width = window.innerWidth;
 
     if (width < mobile) {
-        return Math.floor(Math.random() * sizesMobile.length) + five;
+        const randomIndex = Math.floor(Math.random() * sizesMobile.length);
+
+        return sizesMobile[randomIndex];
     }
 
-    return Math.floor(Math.random() * sizes.length);
+    const randomIndex = Math.floor(Math.random() * sizes.length);
 
+    return sizes[randomIndex];
 }
 /**
  * random flex-align for avatars.
