@@ -578,7 +578,7 @@ $vh: var(--vh);
         width: 50%;
         margin-top: -80px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(50px);
         }
     }
@@ -587,7 +587,7 @@ $vh: var(--vh);
         width: 50%;
         margin-top: -90px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(50px);
         }
     }
@@ -734,7 +734,7 @@ $vh: var(--vh);
     }
 
     .avatar {
-        img {
+        svg {
             @include imgProperties(90px);
         }
     }
@@ -900,7 +900,7 @@ $vh: var(--vh);
         width: 50%;
         margin-top: -80px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(60px);
         }
     }
@@ -1022,7 +1022,7 @@ $vh: var(--vh);
     }
 
     .avatar {
-        img {
+        svg {
             @include imgProperties(90px);
         }
     }
@@ -1217,7 +1217,7 @@ $vh: var(--vh);
         width: 50%;
         margin-top: -80px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(60px);
         }
     }
@@ -1226,7 +1226,7 @@ $vh: var(--vh);
         width: 50%;
         margin-top: -40px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(60px);
         }
     }
@@ -1323,7 +1323,7 @@ $vh: var(--vh);
     }
 
     .avatar {
-        img {
+        svg {
             @include imgProperties(90px);
         }
     }
@@ -1679,7 +1679,7 @@ $vh: var(--vh);
         width: 55%;
         margin-top: -80px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(60px);
         }
     }
@@ -1688,7 +1688,7 @@ $vh: var(--vh);
         width: 55%;
         margin-top: -40px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(60px);
         }
     }
@@ -1845,7 +1845,7 @@ $vh: var(--vh);
         width: 50%;
         margin-top: -80px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(60px);
         }
     }
@@ -1854,7 +1854,7 @@ $vh: var(--vh);
         width: 50%;
         margin-top: -40px;
         min-height: 60px;
-        img {
+        svg {
             @include imgProperties(60px);
         }
     }

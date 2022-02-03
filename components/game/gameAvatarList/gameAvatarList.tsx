@@ -126,26 +126,29 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         if (selectedKey === "100") {
             props.signupAnimation();
         }
-    }, [selectedKey]);
+    }, [selectedKey, props]);
 
     /**
      * donation percentage rendering.
      */
-    const donationPercentage = React.useMemo(() =>
-        Object.entries(percentages).map(([key], index) => (
+    const donationPercentage = React.useMemo(() => Object.entries(percentages).map(([key], index) => (
             <PrimaryButton key={index} onClick={() => {
                 handleBtnClick(key);
                 setToggle(false);
-                setTimeout(() => {
+                /*eslint-env browser*/
+                const t = setTimeout(() => {
                     setToggle(true);
                 }, toggleTimeout);
+                clearTimeout(t);
             }} className={`${horizontalAlign} 
             ${styles.donationButton} 
             ${selectedKey === key ? styles.active : styles.inactive}
              w-100 px-1 py-3`}>
                 {key}
             </PrimaryButton>
-        )), []);
+        )
+        ), [handleBtnClick, selectedKey]);
+
 
     return (
         <div className={styles.gameStepFive}>
