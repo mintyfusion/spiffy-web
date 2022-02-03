@@ -10,7 +10,7 @@ import flexbox from "utils/flexbox";
 import IContactFormProps from "components/agility-pageModules/contactPage/interfaces/IContactFormProps";
 import IField from "types/IField";
 import postData from "utils/postData";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import UserTypes from "components/agility-pageModules/contactPage/enums/userTypes";
 
 import styles from "components/agility-pageModules/contactPage/contactForm.module.scss";

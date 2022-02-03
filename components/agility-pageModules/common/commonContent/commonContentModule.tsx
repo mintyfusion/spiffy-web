@@ -1,32 +1,26 @@
+import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 
-import FaqSection from "components/educationPage/faqSection/faqSection";
-import GameSection from "components/educationPage/gameSection/gameSection";
 import ICommonContentProps from "components/agility-pageModules/common/commonContent/interfaces/ICommonContentProps";
+import Section from "components/agility-pageModules/common/section/section";
+import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 
-const CommonContentModule = (props: ICommonContentProps): JSX.Element => {
-    const { module } = props;
+import styles from "components/agility-pageModules/common/commonContent/commonContentmodule.module.scss";
 
-    const preparedData = React.useMemo(() => ({
-        content: { title: module.fields.title, description: module.fields.description },
-        href: module.fields.href,
-    }), [module.fields]);
+const CommonContentModule = (props: ModuleProps<ICommonContentProps>): JSX.Element => {
+    const { title, description, invertedColors, href } = props.module.fields;
 
-    const renderComponent = React.useMemo(() => {
-        switch (props.module.fields.invertedColors) {
-            case "false":
-                return <FaqSection {...preparedData} />;
-
-            case "true":
-                return <GameSection {...preparedData} />;
-
-            default:
-                return <FaqSection {...preparedData} />;
-        }
-
-    }, [preparedData, props.module.fields.invertedColors]);
-
-    return <div>{renderComponent}</div>;
+    return (
+        <div className={`${invertedColors === "true" && styles.inverted} p-3 p-sm-5 gap-3 gap-sm-5 `}>
+            <Section
+                direction={SectionSide.center}
+                href={href.href}
+                buttonText={href.text}
+                content={{ title, description }}
+                contentClassName={styles.contentContainer}
+            />
+        </div>
+    );
 };
 
 export default CommonContentModule;

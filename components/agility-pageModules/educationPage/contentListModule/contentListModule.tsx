@@ -14,7 +14,7 @@ import FilterTypes from "utils/api/enums/filterTypes";
 import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
 import IContentSectionProps from "components/agility-pageModules/educationPage/contentListModule/interfaces/IContentListProps";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/educationPage/contentListModule/contentListModule.module.scss";

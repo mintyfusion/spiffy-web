@@ -4,7 +4,7 @@ import React from "react";
 
 import flexbox from "utils/flexbox";
 import ICardProps from "types/ICardData";
-import Link from "components/common/link/link";
+import Link from "components/agility-pageModules/common/link/link";
 
 import styles from "components/common/card/card.module.scss";
 

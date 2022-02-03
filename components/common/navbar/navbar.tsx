@@ -4,10 +4,10 @@ import React from "react";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import INavbarProps from "components/common/navbar/interfaces/INavbarProps";
-import Link from "components/common/link/link";
+import Link from "components/agility-pageModules/common/link/link";
 import Logo from "components/common/logo/logo";
 import LogoVariants from "components/common/logo/enums/logoVariants";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/common/navbar/navbar.module.scss";

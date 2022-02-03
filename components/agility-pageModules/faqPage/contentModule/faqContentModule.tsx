@@ -11,7 +11,7 @@ import ContentCategory from "components/agility-pageModules/educationPage/conten
 import flexbox from "utils/flexbox";
 import IFaqContentModuleData from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleData";
 import IFaqContentModuleProps from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleProps";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/faqPage/contentModule/faqContentModule.module.scss";

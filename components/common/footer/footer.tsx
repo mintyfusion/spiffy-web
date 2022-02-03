@@ -8,7 +8,7 @@ import footerSocialsData from "components/common/footer/footerSocials";
 import IFooterLink from "components/common/footer/interfaces/IFooterLink";
 import IFooterLinks from "components/common/footer/interfaces/IFooterLinks";
 import IFooterSocials from "components/common/footer/interfaces/IFooterSocials";
-import Link from "components/common/link/link";
+import Link from "components/agility-pageModules/common/link/link";
 import Logo from "components/common/logo/logo";
 import LogoVariants from "components/common/logo/enums/logoVariants";
 

@@ -5,7 +5,7 @@ import React from "react";
 import CardContainer from "components/agility-pageModules/common/cardContainer/cardContainer";
 import flexbox from "utils/flexbox";
 import ILandingPageEducationProps from "components/agility-pageModules/landingPage/educationModule/interfaces/ILandingPageEducationProps";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 
 import styles from "components/landingPage/learnSection/learnSection.module.scss";
 

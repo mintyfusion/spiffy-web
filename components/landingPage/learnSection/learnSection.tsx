@@ -4,7 +4,7 @@ import React from "react";
 import Card from "components/common/card/card";
 import flexbox from "utils/flexbox";
 import learnContent from "components/landingPage/learnSection/learnContent";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 
 import styles from "components/landingPage/learnSection/learnSection.module.scss";
 

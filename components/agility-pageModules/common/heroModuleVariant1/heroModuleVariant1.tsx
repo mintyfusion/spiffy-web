@@ -8,7 +8,7 @@ import { SearchContext } from "pages/[...slug]";
 import Banner from "components/agility-pageModules/common/banner/banner";
 import IHeroModuleVariant1Props from "components/agility-pageModules/common/heroModuleVariant1/interfaces/IHeroModuleVariant1Props";
 import ISearchInfo from "components/agility-pageModules/common/heroModuleVariant1/interfaces/ISearchInfo";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 
 import styles from "components/agility-pageModules/common/heroModuleVariant1/heroModuleVariant1.module.scss";
 

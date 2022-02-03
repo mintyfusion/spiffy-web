@@ -2,12 +2,12 @@ import { Col, Row } from "react-bootstrap";
 import React from "react";
 
 import flexbox from "utils/flexbox";
-import ISectionProps from "components/common/section/interfaces/ISectionProps";
-import SectionSide from "components/common/section/enums/SectionSide";
+import ISectionProps from "components/agility-pageModules/common/section/interfaces/ISectionProps";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
+import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
 
-import PrimaryButton from "components/common/primaryButton/primaryButton";
-import styles from "components/common/section/section.module.scss";
+import styles from "components/agility-pageModules/common/section/section.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const colEnd = flexbox({ vertical: true, hAlign: "center", vAlign: "end" });

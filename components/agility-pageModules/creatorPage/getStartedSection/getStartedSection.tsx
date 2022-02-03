@@ -3,8 +3,8 @@ import React from "react";
 
 import flexbox from "utils/flexbox";
 import IGetStartedSectionContentData from "components/agility-pageModules/creatorPage/getStartedSection/interfaces/IGetStartedSectionContentData";
-import Section from "components/common/section/section";
-import SectionSide from "components/common/section/enums/SectionSide";
+import Section from "components/agility-pageModules/common/section/section";
+import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 
 import styles from "components/agility-pageModules/creatorPage/getStartedSection/getStartedSection.module.scss";
 

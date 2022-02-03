@@ -4,10 +4,10 @@ import React, { PropsWithChildren } from "react";
 
 import flexbox from "utils/flexbox";
 import getStartedArrow from "public/images/homepage/get-started-section/getstarted-arrow.svg";
-import IPrimaryButtonProps from "components/common/primaryButton/interfaces/IPrimaryButtonProps";
-import Link from "components/common/link/link";
+import IPrimaryButtonProps from "components/agility-pageModules/common/primaryButton/interfaces/IPrimaryButtonProps";
+import Link from "components/agility-pageModules/common/link/link";
 
-import styles from "components/common/primaryButton/primaryButton.module.scss";
+import styles from "components/agility-pageModules/common/primaryButton/primaryButton.module.scss";
 
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center" });
 

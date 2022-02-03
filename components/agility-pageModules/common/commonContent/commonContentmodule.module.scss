@@ -1,5 +1,4 @@
 @import "styles/font/fontGroups.scss";
-@import "styles/mixins.scss";
 @import "styles/theme.scss";
 
 .contentContainer {
@@ -12,7 +11,7 @@
     }
 }
 
-.gameSectionContainer {
+.inverted {
     @extend .backgroundPattern;
     color: $white;
 }

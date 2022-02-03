@@ -1,7 +1,7 @@
 import * as React from "react";
 import { default as NextLink } from "next/link";
 
-import ILinkProps from "components/common/link/interfaces/ILinkProps";
+import ILinkProps from "components/agility-pageModules/common/link/interfaces/ILinkProps";
 
 const Link = (props: React.PropsWithChildren<ILinkProps>): JSX.Element => (
     <NextLink href={props.href} passHref={props.passHref}>
