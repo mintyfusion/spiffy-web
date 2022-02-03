@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import AvatarType from "../gameSection/enums/avatarTypes";
+import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import IAvatarProps from "components/game/avatar/interfaces/IAvatarProps";
 
 const baseUrl = "/images/Game/avatars/";
