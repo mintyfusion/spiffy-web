@@ -1213,6 +1213,10 @@ $vh: var(--vh);
 }
 
 @include media(">=425px", "<800px") {
+    .gameStepThreeUserColumnInner {
+        max-width: 400px;
+    }
+    
     .friendsTop {
         width: 50%;
         margin-top: -80px;
@@ -1503,6 +1507,10 @@ $vh: var(--vh);
 }
 
 @include media(">=800px", "<900px") {
+    .targetOne {
+        width: 90px;
+        height: 90px;
+    }
     .avatar {
         svg {
             @include imgProperties(90px);

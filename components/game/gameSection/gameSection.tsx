@@ -625,26 +625,28 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         <Element name={StepTypes.Three} className={`${styles.card} ${styles.transparent}`}>
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
-                                    <h2 className={styles.avatarHeading}>Add four friends</h2>
-                                    <Row className={`${horizontalAlign} w-100`}>
-                                        <div className={`${styles.friendsTop} ${rowHBetween}`}>
-                                            {addedFriends.slice(0, sliceTwo)
-                                                .map((friend, friendKey) =>
-                                                    <Avatar color={friend.id} key={friendKey} />)}
-                                        </div>
-                                    </Row>
-                                    <Row className={`${horizontalAlign} w-100`}>
-                                        <div className={styles.targetTwo} ref={stepThree}></div>
-                                    </Row>
-                                    <Row className={`${horizontalAlign} w-100`}>
-                                        <div className={`${styles.friendsBottom} ${rowHBetween}`}>
-                                            {addedFriends.slice(sliceTwo, sliceFour)
-                                                .map((friend, friendKey) =>
-                                                    <Avatar color={friend.id} key={friendKey} />)}
-                                        </div>
-                                    </Row>
+                                    <div className={`${styles.gameStepThreeUserColumnInner} w-100`}>
+                                        <h2 className={styles.avatarHeading}>Add four friends</h2>
+                                        <Row className={`${horizontalAlign} w-100`}>
+                                            <div className={`${styles.friendsTop} ${rowHBetween}`}>
+                                                {addedFriends.slice(0, sliceTwo)
+                                                    .map((friend, friendKey) =>
+                                                        <Avatar color={friend.id} key={friendKey} />)}
+                                            </div>
+                                        </Row>
+                                        <Row className={`${horizontalAlign} w-100`}>
+                                            <div className={styles.targetTwo} ref={stepThree}></div>
+                                        </Row>
+                                        <Row className={`${horizontalAlign} w-100`}>
+                                            <div className={`${styles.friendsBottom} ${rowHBetween}`}>
+                                                {addedFriends.slice(sliceTwo, sliceFour)
+                                                    .map((friend, friendKey) =>
+                                                        <Avatar color={friend.id} key={friendKey} />)}
+                                            </div>
+                                        </Row>
 
-                                    <h3>{avatarName}</h3>
+                                        <h3>{avatarName}</h3>
+                                    </div>
                                 </div>
                                 <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`} ref={friendsRef}>
                                     <h2 className={styles.avatarHeading}>Add four friends</h2>
