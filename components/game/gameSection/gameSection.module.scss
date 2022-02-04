@@ -576,8 +576,8 @@ $vh: var(--vh);
 @include media(">=phone", "<375px") {
     .friendsTop {
         width: 50%;
-        margin-top: -80px;
-        min-height: 60px;
+        margin-bottom: -50px !important;
+        min-height: 60px !important;
         svg {
             @include imgProperties(50px);
         }
@@ -585,8 +585,8 @@ $vh: var(--vh);
 
     .friendsBottom {
         width: 50%;
-        margin-top: -90px;
-        min-height: 60px;
+        margin-top: -34px !important;
+        min-height: 60px !important;
         svg {
             @include imgProperties(50px);
         }
@@ -713,7 +713,6 @@ $vh: var(--vh);
     .targetTwo {
         width: 90px;
         height: 90px;
-        display: "block";
     }
 
     .avatarstepTwo {
@@ -1216,7 +1215,7 @@ $vh: var(--vh);
     .gameStepThreeUserColumnInner {
         max-width: 400px;
     }
-    
+
     .friendsTop {
         width: 50%;
         margin-top: -80px;
