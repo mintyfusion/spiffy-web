@@ -9,8 +9,8 @@
 @mixin opacityTransition($showSection, $hideSection) {
     #{$showSection} {
         opacity: 1;
-        transition: show 2s;
-        animation: show 2s;
+        transition: show 0.3s;
+        animation: show 0.3s;
     }
 
     #{$hideSection} {
@@ -25,6 +25,7 @@
         from {
             left: #{$start};
         }
+        
         to {
             left: #{$end};
         }
