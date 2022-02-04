@@ -1503,6 +1503,12 @@ $vh: var(--vh);
 }
 
 @include media(">=800px", "<900px") {
+    .avatar {
+        svg {
+            @include imgProperties(90px);
+        }
+    }
+
     .donationInner {
         .userDonation {
             margin-top: 25px;

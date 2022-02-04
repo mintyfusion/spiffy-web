@@ -121,7 +121,7 @@
     flex: 1;
 }
 
-@include media(">=phone", "<tablet") {
+@include media(">=phone", "<1000px") {
     .donationInner {
         h6 {
             margin-top: 30px;
@@ -139,11 +139,7 @@
     }
 
     .donationButton {
-        margin-bottom: 10px;
-    }
-
-    .donationDesktop {
-        display: none;
+        margin-bottom: 10px !important;
     }
 
     .friendsBottom {
