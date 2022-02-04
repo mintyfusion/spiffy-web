@@ -10,7 +10,7 @@ import styles from "components/agility-pageModules/educationDetailsModule/detail
 
 const DetailsSection = (props: IDetailsSectionProps): JSX.Element => 
         <div className={`${styles.detailsContainer} position-relative`}>
-            <h5>{props.title}</h5>
+            <h5 className="text-capitalize">{props.title}</h5>
             <h1>{props.description}</h1>
             <div className={styles.mediaContainer}>
                 {props.detailsType == DetailsType.guide
