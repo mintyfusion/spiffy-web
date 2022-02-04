@@ -1,14 +1,16 @@
+import { renderHTML } from "@agility/nextjs";
 import NextHead from "next/head";
 import React from "react";
 
 import IFavicon from "components/agility-pageModules/common/head/interfaces/IFavicon";
+import IHeadProps from "components/agility-pageModules/common/head/interfaces/IHeadProps";
 
 const favicons: IFavicon[] = [
     {
         rel: "shortcut icon",
         type: "image/icon",
         sizes: "16x16",
-        href: "/images/favicons/favicon.ico" 
+        href: "/images/favicons/favicon.ico"
     },
     {
         rel: "icon",
@@ -92,9 +94,9 @@ const favicons: IFavicon[] = [
 
 const faviconsList = favicons.map((favicon: IFavicon, index: number) => <link key={index} {...favicon} />);
 
-const Head = (): JSX.Element =>
+const Head = (props: IHeadProps): JSX.Element =>
     <NextHead>
-        <title>Earn Money and Support Your Favorite YouTube Channel with Spiffy</title>
+        <title>{props.title}</title>
         {/* Favicons Start */}
         {faviconsList}
         {/* Windows 8 IE 10 */}
@@ -103,7 +105,11 @@ const Head = (): JSX.Element =>
         <meta name="msapplication-config" content="/images/favicons/browserconfig.xml" />
         {/* Favicons End */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="See how Spiffy helps turn YouTube channel fan base into paid supporters." />
+        <meta name="description" content={props.description} />
+        <meta name="keywords" content={props.keywords} />
+        {props.metaHTML &&
+            <span dangerouslySetInnerHTML={renderHTML(props.metaHTML)} />
+        }
     </NextHead>;
 
 export default Head;

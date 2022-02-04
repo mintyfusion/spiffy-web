@@ -29,7 +29,12 @@ const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
 
     return (
         <div>
-            <Head />
+            <Head
+                title={props.sitemapNode?.title}
+                description={props.page?.seo.metaDescription}
+                keywords={props.page?.seo.metaKeywords}
+                metaHTML={props.page?.seo.metaHTML}
+            />
             <Navbar sticky={showStickyHeader} />
             {AgilityPageTemplate
                 ? <AgilityPageTemplate {...props} />
