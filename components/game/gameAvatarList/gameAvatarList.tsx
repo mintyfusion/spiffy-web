@@ -81,7 +81,7 @@ function getRandomAvatars() {
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [selectedKey, setSelectedKey] = React.useState("1");
-    const [toggle, { setTrue: toggleTrue, setFalse: toggleFalse }] = UseBoolean(false);
+    const [toggle, { setTrue: toggleTrue, setFalse: toggleFalse }] = UseBoolean(true);
     const [expanded, { toggle: navToggle }] = UseBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
 
@@ -166,7 +166,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     className="w-100 d-block"
                     expanded={expanded}
                     onClick={() => isLG && navToggle()}>
-                    <Navbar.Brand className="d-lg-none">{percentages[selectedKey].amount}%</Navbar.Brand>
+                    <Navbar.Brand className="d-lg-none">{selectedKey}%</Navbar.Brand>
                     <Navbar.Toggle className={styles.navToggle}>
                         <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
                     </Navbar.Toggle>

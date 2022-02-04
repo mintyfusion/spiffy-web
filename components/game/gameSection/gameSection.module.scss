@@ -20,6 +20,10 @@ $vh: var(--vh);
     margin: 0 auto;
 }
 
+.gameStepThreeUserColumnInner {
+    max-width: 450px;
+}
+
 .marginBottomMinusFifty {
     margin-bottom: -50px;
 }
@@ -48,7 +52,7 @@ $vh: var(--vh);
 }
 
 .modalBody {
-    background-color: #f2f2f2;
+    background-color: $dirty-white;
 }
 
 .close {
@@ -63,29 +67,17 @@ $vh: var(--vh);
     color: $yellow;
     opacity: 1;
 }
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
-    .card {
-        background-color: #fff;
-        display: flex;
-        width: 90%;
-        min-height: calc(#{$vh} - 40px);
-        margin: 20px auto;
-        justify-content: center;
+.card {
+    background-color: #fff;
+    width: 90%;
+    min-height: calc(#{$vh} - 40px);
+    margin: 20px auto;
 
-        .avatar {
-            position: absolute;
-            text-align: center;
-            color: #fff;
-            z-index: 1;
-            cursor: pointer;
-            opacity: 0;
-        }
+    .avatar {
+        color: $white;
+        cursor: pointer;
+        opacity: 0;
     }
 }
 
@@ -125,6 +117,10 @@ $vh: var(--vh);
 .gameStepTwoWrapper {
     @include gameContentPadding(50px 0);
     width: 100%;
+    
+    button {
+        margin-top: 40px;
+    }
 }
 
 .gameStepSix {
@@ -152,17 +148,6 @@ $vh: var(--vh);
     }
     a {
         width: 100%;
-    }
-
-    button {
-        width: 100%;
-        margin-top: 30px;
-        background-color: $yellow;
-        border: 1px solid $yellow;
-        padding: 20px 0px;
-        font-size: 20px;
-        color: #212429;
-        font-weight: $semi-bold;
     }
 }
 
@@ -196,10 +181,7 @@ $vh: var(--vh);
     }
 
     h3 {
-        font-weight: $medium;
-        font-size: 24px;
-        color: $neutralBlack800;
-        text-align: center;
+        @extend .regular24;
         margin-top: 90px;
     }
 }
@@ -207,7 +189,6 @@ $vh: var(--vh);
 .stepFour {
     width: 100%;
     padding: 50px 0px;
-    position: relative;
     h4 {
         @extend .regular-desktop25-mobile16;
     }
@@ -222,45 +203,16 @@ $vh: var(--vh);
     }
 }
 
-.donationMobile {
-    display: none;
-}
-
-.donations {
-    padding: 10px 0px;
-    background-color: #f3e6ca;
-    width: 169px;
-    text-align: center;
-    margin-right: 30px;
-    cursor: pointer;
-    user-select: none;
-    &:hover {
-        background-color: $yellow;
-    }
-    h4 {
-        margin: 0px;
-    }
-}
-
 .donationInner {
     margin-top: 40px;
     margin-bottom: 40px;
+
     h2 {
         @extend .boldGame41;
     }
-    p {
-        margin-top: 10px;
-        color: #ff9872;
-        opacity: 1;
-    }
-    h3 {
-        font-size: 25px;
-        font-weight: $bold;
-        opacity: 0;
-    }
+
     .userDonation {
         margin-top: 80px;
-        position: relative;
         z-index: 2;
     }
 }
@@ -269,9 +221,11 @@ $vh: var(--vh);
     .donationCycleItems {
         visibility: hidden;
     }
+
     .cycle {
         visibility: hidden;
     }
+
     .donationLogo {
         visibility: hidden;
     }
@@ -292,6 +246,7 @@ $vh: var(--vh);
         animation-name: contetHide;
         animation-duration: 5s;
         animation-fill-mode: forwards;
+        color: #ff9872;
     }
 
     h3 {
@@ -304,6 +259,7 @@ $vh: var(--vh);
         margin-top: 20px;
         transition: 1s;
     }
+
     .donationAmount {
         animation-name: displayAnimation;
         animation-duration: 1s;
@@ -313,36 +269,47 @@ $vh: var(--vh);
         overflow: hidden;
         @extend .regular-desktop16-mobile7;
     }
+
     .donationAmount2 {
         animation-delay: 4s;
     }
+
     .donationAmount3 {
         animation-delay: 17s;
     }
+
     .donationAmount4 {
         animation-delay: 5s;
     }
+
     .donationAmount5 {
         animation-delay: 16s;
     }
+
     .donationAmount6 {
         animation-delay: 7s;
     }
+
     .donationAmount7 {
         animation-delay: 15s;
     }
+
     .donationAmount8 {
         animation-delay: 9s;
     }
+
     .donationAmount9 {
         animation-delay: 13s;
     }
+
     .donationAmount10 {
         animation-delay: 10s;
     }
+
     .donationAmount11 {
         animation-delay: 11s;
     }
+
     .cycle {
         display: flex;
         align-items: center;
@@ -364,33 +331,43 @@ $vh: var(--vh);
             object-fit: contain;
         }
     }
+
     .cycle2 {
         animation-delay: 4s;
     }
+
     .cycle4 {
         animation-delay: 5s;
     }
+
     .cycle6 {
         animation-delay: 7s;
     }
+
     .cycle8 {
         animation-delay: 9s;
     }
+
     .cycle10 {
         animation-delay: 10s;
     }
+
     .cycle11 {
         animation-delay: 11s;
     }
+
     .cycle9 {
         animation-delay: 13s;
     }
+
     .cycle7 {
         animation-delay: 15s;
     }
+
     .cycle5 {
         animation-delay: 16s;
     }
+
     .cycle3 {
         animation-delay: 17s;
         margin-top: -100px;
@@ -412,9 +389,11 @@ $vh: var(--vh);
             height: 100%;
         }
     }
+
     .donationCycleItems {
         visibility: hidden;
     }
+
     .donationLogo {
         width: 80%;
         display: flex;
@@ -422,6 +401,7 @@ $vh: var(--vh);
         align-items: center;
         position: relative;
         left: -25%;
+
         > div:nth-child(1) {
             animation-name: iconAnimation;
             animation-duration: 1s;
@@ -489,14 +469,6 @@ $vh: var(--vh);
         overflow: hidden;
     }
 }
-@keyframes coinAnimation {
-    0% {
-        visibility: hidden;
-    }
-    100% {
-        visibility: visible;
-    }
-}
 
 .donationActive {
     background-color: $yellow;
@@ -507,16 +479,6 @@ $vh: var(--vh);
 }
 
 .signUpsection {
-    button {
-        width: 30%;
-        margin-top: 55px;
-        background-color: $yellow;
-        border: 1px solid $yellow;
-        padding: 20px 0px;
-        font-size: 20px;
-        color: #212429;
-        font-weight: $semi-bold;
-    }
     h2 {
         margin-top: 40px;
     }
@@ -552,11 +514,11 @@ $vh: var(--vh);
 }
 
 .transparent {
-    background-color: $transparent !important;
+    background-color: $transparent;
 }
 
 .donationButton {
-    background-color: #f3e6ca;
+    background-color: $faded-yellow;
     margin-right: 20px;
     border: none;
     :focus {
@@ -569,27 +531,35 @@ $vh: var(--vh);
 }
 
 .inactive {
-    background-color: #f3e6ca;
+    background-color: $faded-yellow;
     color: $darkGrey;
 }
 
+.friendsTop {
+    margin-bottom: -111px;
+    min-height: 148px;
+}
+
+.friendsBottom {
+    margin-top: -100px;
+    min-height: 148px;
+}
+
 @include media(">=phone", "<375px") {
-    .friendsTop {
-        width: 50%;
-        margin-bottom: -50px !important;
-        min-height: 60px !important;
+    .friendsTop,
+    .friendsBottom {
+        width: 55%;
+        min-height: 60px;
         svg {
             @include imgProperties(50px);
         }
     }
+    .friendsTop {
+        margin-bottom: -50px;
+    }
 
     .friendsBottom {
-        width: 50%;
-        margin-top: -34px !important;
-        min-height: 60px !important;
-        svg {
-            @include imgProperties(50px);
-        }
+        margin-top: -34px;
     }
     .contentAnimation {
         max-width: 350px;
@@ -744,14 +714,8 @@ $vh: var(--vh);
             @include imgProperties(84px);
         }
         input {
-            font-size: 16px;
             padding: 8px 10px;
             margin-top: 40px;
-        }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
         }
     }
 
@@ -794,25 +758,6 @@ $vh: var(--vh);
         }
     }
 
-    .donationDesktop {
-        display: none;
-    }
-
-    .donationMobile {
-        display: block;
-        width: 100%;
-        select {
-            width: 100%;
-            text-align: center;
-            border: none;
-            border-bottom: 4px solid $yellow;
-            padding: 5px;
-        }
-        select:focus-visible {
-            outline: none;
-        }
-    }
-
     .donationInner {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -823,14 +768,6 @@ $vh: var(--vh);
             font-size: 7px;
             margin-top: 0px;
             margin-bottom: 0px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 60%;
-            font-size: 12px;
-            padding: 10px 0px;
         }
     }
 
@@ -882,21 +819,9 @@ $vh: var(--vh);
         padding: 30px 0px;
     }
 }
-
-.friendsTop {
-    width: 55%;
-    margin-bottom: -111px;
-    min-height: 148px;
-}
-
-.friendsBottom {
-    width: 55%;
-    margin-top: -100px;
-    min-height: 148px;
-}
 @include media(">=375px", "<425px") {
     .friendsTop {
-        width: 50%;
+        width: 60%;
         margin-top: -80px;
         min-height: 60px;
         svg {
@@ -905,7 +830,7 @@ $vh: var(--vh);
     }
 
     .friendsBottom {
-        width: 50%;
+        width: 60%;
         margin-top: -40px;
         min-height: 60px;
         svg {
@@ -1032,13 +957,6 @@ $vh: var(--vh);
     }
     .stepFour {
         width: 90%;
-        select {
-            width: 100%;
-            text-align: center;
-            border: none;
-            border-bottom: 4px solid #f9b930;
-            padding: 5px;
-        }
     }
 
     .targetTwo {
@@ -1073,11 +991,6 @@ $vh: var(--vh);
             font-size: 16px;
             padding: 8px 10px;
             margin-top: 0px;
-        }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
         }
     }
 
@@ -1116,25 +1029,6 @@ $vh: var(--vh);
         height: 100%;
     }
 
-    .donationDesktop {
-        display: none;
-    }
-
-    .donationMobile {
-        display: block;
-        width: 100%;
-        select {
-            width: 100%;
-            text-align: center;
-            border: none;
-            border-bottom: 4px solid $yellow;
-            padding: 5px;
-        }
-        select:focus-visible {
-            outline: none;
-        }
-    }
-
     .donationInner {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -1145,14 +1039,6 @@ $vh: var(--vh);
             font-size: 7px;
             margin-top: 0px;
             margin-bottom: 0px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 60%;
-            font-size: 12px;
-            padding: 10px 0px;
         }
     }
 
@@ -1368,11 +1254,6 @@ $vh: var(--vh);
             font-size: 16px;
             padding: 8px 10px;
         }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
-        }
     }
 
     .gameStepThree {
@@ -1420,25 +1301,6 @@ $vh: var(--vh);
         }
     }
 
-    .donationDesktop {
-        display: none;
-    }
-
-    .donationMobile {
-        display: block;
-        width: 100%;
-        select {
-            width: 100%;
-            text-align: center;
-            border: none;
-            border-bottom: 4px solid $yellow;
-            padding: 5px;
-        }
-        select:focus-visible {
-            outline: none;
-        }
-    }
-
     .donationInner {
         margin-top: 0px;
         margin-bottom: 0px;
@@ -1452,14 +1314,6 @@ $vh: var(--vh);
         }
         .userDonation {
             margin-top: 10px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 60%;
-            font-size: 12px;
-            padding: 10px 0px;
         }
     }
 
@@ -1591,11 +1445,6 @@ $vh: var(--vh);
             font-size: 16px;
             padding: 8px 10px;
         }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
-        }
     }
 
     .gameStepThree {
@@ -1627,14 +1476,6 @@ $vh: var(--vh);
             font-size: 7px;
             margin-top: 0px;
             margin-bottom: 0px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 60%;
-            font-size: 12px;
-            padding: 10px 0px;
         }
     }
 
@@ -1773,11 +1614,6 @@ $vh: var(--vh);
             font-size: 16px;
             padding: 8px 10px;
         }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
-        }
     }
 
     .gameStepThree {
@@ -1809,14 +1645,6 @@ $vh: var(--vh);
             font-size: 7px;
             margin-top: 0px;
             margin-bottom: 0px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 60%;
-            font-size: 12px;
-            padding: 10px 0px;
         }
     }
 
@@ -1914,11 +1742,6 @@ $vh: var(--vh);
             font-size: 16px;
             padding: 8px 10px;
         }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
-        }
     }
 
     .gameStepThree {
@@ -1940,14 +1763,6 @@ $vh: var(--vh);
         margin-top: 15px;
         .avatarInner {
             margin-top: 60px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 60%;
-            font-size: 12px;
-            padding: 10px 0px;
         }
     }
 
@@ -2030,11 +1845,6 @@ $vh: var(--vh);
             font-size: 16px;
             padding: 8px 10px;
         }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
-        }
     }
 
     .gameStepThree {
@@ -2057,14 +1867,6 @@ $vh: var(--vh);
         margin-top: 15px;
         .avatarInner {
             margin-top: 60px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 40%;
-            font-size: 12px;
-            padding: 10px 0px;
         }
     }
 
@@ -2145,11 +1947,6 @@ $vh: var(--vh);
             font-size: 16px;
             padding: 8px 10px;
         }
-        button {
-            font-size: 12px;
-            padding: 10px 0px;
-            margin-top: 30px;
-        }
     }
 
     .gameStepThree {
@@ -2171,14 +1968,6 @@ $vh: var(--vh);
         margin-top: 15px;
         .avatarInner {
             margin-top: 60px;
-        }
-    }
-
-    .signUpsection {
-        button {
-            width: 40%;
-            font-size: 12px;
-            padding: 10px 0px;
         }
     }
 

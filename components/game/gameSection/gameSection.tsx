@@ -25,6 +25,7 @@ import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
+const rowCenter = flexbox({ hAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHEnd = flexbox({ hAlign: "end" });
 const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
@@ -583,8 +584,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`}
                     id={containerId} ref={fullscreen}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={props.closeModal} className={styles.close} />
-                    <div className={styles.container}>
-                        <div className={`${styles.card} ${styles.gameStepTwoWrapper}`} ref={start}>
+                    <div className={`w-100 ${rowHCenter}`}>
+                        <div className={`${styles.card} ${styles.gameStepTwoWrapper} ${rowCenter}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your avatar</h2>
                             {step1Avatars.map(([key, value]) =>
                                 <Link
@@ -596,7 +597,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     duration={500}
                                     containerId={containerId}
                                     className={`${styles.avatar}
-                                     ${step === StepTypes.Two ? styles.avatarSelected : step === StepTypes.Three ? styles.avatarFriends : ""}`}
+                                     ${step === StepTypes.Two ? styles.avatarSelected : step === StepTypes.Three ? styles.avatarFriends : ""}
+                                      position-absolute text-center`}
                                     ignoreCancelEvents={true}
                                     offset={-20}
                                 >
@@ -605,7 +607,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             )}
                         </div>
 
-                        <Element name={StepTypes.Two} className={styles.card}>
+                        <Element name={StepTypes.Two} className={`${styles.card} ${rowCenter}`}>
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
@@ -615,29 +617,29 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                         className="w-100 text-center"
                                         onChange={(e) => setAvatarName(e.target.value)}
                                     />
-                                    <PrimaryButton onClick={handleContinueBtnClick}>
+                                    <PrimaryButton onClick={handleContinueBtnClick} className="w-100">
                                         Continue
                                     </PrimaryButton>
                                 </div>
                             </div>
                         </Element>
 
-                        <Element name={StepTypes.Three} className={`${styles.card} ${styles.transparent}`}>
+                        <Element name={StepTypes.Three} className={`${styles.card} ${styles.transparent} ${rowCenter}`}>
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
                                     <div className={`${styles.gameStepThreeUserColumnInner} w-100`}>
-                                        <h2 className={styles.avatarHeading}>Add four friends</h2>
-                                        <Row className={`${horizontalAlign} w-100`}>
+                                        <h2 className={`${styles.avatarHeading} text-center`}>Add four friends</h2>
+                                        <Row className={`${horizontalAlign} w-100 m-0`}>
                                             <div className={`${styles.friendsTop} ${rowHBetween}`}>
                                                 {addedFriends.slice(0, sliceTwo)
                                                     .map((friend, friendKey) =>
                                                         <Avatar color={friend.id} key={friendKey} />)}
                                             </div>
                                         </Row>
-                                        <Row className={`${horizontalAlign} w-100`}>
+                                        <Row className={`${horizontalAlign} w-100 m-0`}>
                                             <div className={styles.targetTwo} ref={stepThree}></div>
                                         </Row>
-                                        <Row className={`${horizontalAlign} w-100`}>
+                                        <Row className={`${horizontalAlign} w-100 m-0`}>
                                             <div className={`${styles.friendsBottom} ${rowHBetween}`}>
                                                 {addedFriends.slice(sliceTwo, sliceFour)
                                                     .map((friend, friendKey) =>
@@ -645,7 +647,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             </div>
                                         </Row>
 
-                                        <h3>{avatarName}</h3>
+                                        <h3 className="text-center">{avatarName}</h3>
                                     </div>
                                 </div>
                                 <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`} ref={friendsRef}>
@@ -674,13 +676,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
                         <Element name={StepTypes.Four} className="w-100">
                             <div ref={coinAnimationWrapperRef} className={styles.donationSections}>
-                                <div className={styles.card}>
-                                    <div className={`${rowHCenter} ${styles.stepFour}`}>
-                                        <h2 className={`${styles.avatarHeading}`}>How much do you want to donate?</h2>
-                                        <h4>
+                                <div className={`${styles.card} ${rowCenter}`}>
+                                    <div className={`${rowHCenter} ${styles.stepFour} position-relative`}>
+                                        <h2 className={`${styles.avatarHeading} text-center`}>How much do you want to donate?</h2>
+                                        <h4 className="text-center">
                                             Add donation in increments of $5, and discover where your donation is going.
                                         </h4>
-                                        <Navbar expand="lg" className="d-block"
+                                        <Navbar expand="lg" className="d-block text-center"
                                             expanded={expanded}
                                             onClick={() => breakpoint && setExpanded(!expanded)}>
                                             <Navbar.Brand className="d-lg-none">{donationAmount === "" ? "Select Amount" : `$${donationAmount}`}</Navbar.Brand>
@@ -706,7 +708,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     style={coinStyles.current}>
                                                     <Image src={"/images/game/coin.png"} alt="Coin" width={76} height={76} />
                                                 </div>
-                                                <div className={styles.userDonation} data-index="0">
+                                                <div className={`${styles.userDonation} position-relative`} data-index="0">
                                                     <Image src={"/images/game/user.png"} alt="User" width={149} height={129} />
                                                 </div>
                                                 <p>
@@ -789,7 +791,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     </div>
                                 </div>
                                 {donationAmount ?
-                                    <div className={styles.card}>
+                                    <div className={`${styles.card} ${rowCenter}`}>
                                         <GameAvatarList
                                             friends={addedFriends}
                                             seletedAvatar={seletedAvatar}
@@ -801,12 +803,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             </div>
                         </Element>
 
-                        <Element name={StepTypes.Six} className={styles.card}>
+                        <Element name={StepTypes.Six} className={`${styles.card} ${rowCenter}`}>
                             <div className={styles.gameStepSix}>
                                 <div className={`${colCenter} ${styles.signUpsection}`}>
                                     <Image src={"/images/game/trophy.png"} alt="trophy" width={291} height={318} />
                                     <h2 className={`${styles.avatarHeading}`}>Congratulations!</h2>
-                                    <button>SIGN UP</button>
+                                    <PrimaryButton>Sign Up</PrimaryButton>
                                 </div>
                             </div>
                         </Element>
