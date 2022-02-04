@@ -17,12 +17,12 @@ import IContentSectionProps from "components/agility-pageModules/educationPage/c
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBreakpoint from "hooks/useBreakpoint";
 
-import styles from "components/agility-pageModules/educationPage/contentListModule/contentListModule.module.scss";
+import styles from "components/agility-pageModules/educationPage/contentListModule/educationPageContentListModule.module.scss";
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const scrollAmount = 200;
 
-const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
+const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
     const [expanded, setExpanded] = React.useState<boolean>(false);
     const [showMore, setShowMore] = React.useState({});
@@ -197,4 +197,4 @@ const ContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Elemen
     );
 };
 
-export default ContentListModule;
+export default EducationPageContentListModule;

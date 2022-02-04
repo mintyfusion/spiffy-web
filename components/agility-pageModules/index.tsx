@@ -7,7 +7,7 @@ import ContactForm from "components/agility-pageModules/contactPage/contactForm"
 import CreatorPageContentModule from "components/agility-pageModules/creatorPage/contentModule/creatorPageContentModule";
 import DateHeroModule from "components/agility-pageModules/common/dateHeroModule/dateHeroModule";
 import EducationDetailsModule from "components/agility-pageModules/educationDetailsModule/educationDetailsModule";
-import EducationListingModule from "components/agility-pageModules/educationPage/contentListModule/contentListModule";
+import EducationListingModule from "components/agility-pageModules/educationPage/contentListModule/educationPageContentListModule";
 import FAQContentModule from "components/agility-pageModules/faqPage/contentModule/faqContentModule";
 import HeroModuleVariant1 from "components/agility-pageModules/common/heroModuleVariant1/heroModuleVariant1";
 import HeroModuleVariant2 from "components/agility-pageModules/common/heroModuleVariant2/heroModuleVariant2";
