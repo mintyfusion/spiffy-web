@@ -17,14 +17,9 @@ export type Styles = {
   "boldDesktop41Mobile25": string;
   "boldGame41": string;
   "boldGame67": string;
-  "confetti": string;
-  "confettiRight": string;
   "donationActive": string;
   "donationButton": string;
-  "donationDesktop": string;
   "donationInner": string;
-  "donationMobile": string;
-  "donations": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
@@ -39,10 +34,8 @@ export type Styles = {
   "fullBold67": string;
   "gameStepFive": string;
   "inactive": string;
-  "left": string;
   "medium25": string;
   "navToggle": string;
-  "percentageFriends": string;
   "percentageSelected": string;
   "regular14": string;
   "regular16": string;
@@ -56,9 +49,7 @@ export type Styles = {
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "regularDesktop30Mobile20": string;
-  "right": string;
   "semiBold90": string;
-  "yellow": string;
 };
 
 export type ClassNames = keyof Styles;

@@ -83,6 +83,7 @@ export type Styles = {
   "gameStepThree": string;
   "gameStepThreeFriendsColumn": string;
   "gameStepThreeUserColumn": string;
+  "gameStepThreeUserColumnInner": string;
   "gameStepTwo": string;
   "gameStepTwoWrapper": string;
   "heigth120": string;
