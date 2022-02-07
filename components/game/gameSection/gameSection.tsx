@@ -122,8 +122,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [donationAmount]);
 
-
-    const styleHandler = (refrence: React.MutableRefObject<HTMLDivElement>) => {
+    const styleHandler = React.useCallback((refrence: React.MutableRefObject<HTMLDivElement>) => {
         if (refrence.current) {
             const mobileAvatar = 90;
             const desktopAvatar = 160;
@@ -139,7 +138,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
             return { left1, left2, top1, top2 };
         }
-    };
+    }, [isLG]);
 
     /**
      * get styles of avatars in first section.
