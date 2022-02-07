@@ -78,6 +78,7 @@ $vh: var(--vh);
         color: $white;
         cursor: pointer;
         opacity: 0;
+        transition: 1s;
     }
 }
 
@@ -1432,6 +1433,17 @@ $vh: var(--vh);
 }
 
 @include media(">=900px", "<1000px") {
+    .targetOne {
+        width: 90px;
+        height: 90px;
+    }
+
+    .avatar {
+        svg {
+            @include imgProperties(90px);
+        }
+    }
+
     .customNavbar {
         position: absolute;
         width: 100%;
@@ -1654,14 +1666,6 @@ $vh: var(--vh);
             @include imgProperties(125px);
         }
     }
-
-    .friendsBottom {
-        width: 95%;
-    }
-
-    .friendsTop {
-        width: 95%;
-    }
 }
 
 @include media(">=1100px", "<1200px") {
@@ -1749,14 +1753,6 @@ $vh: var(--vh);
             @include imgProperties(165px);
         }
     }
-
-    .friendsBottom {
-        width: 90%;
-    }
-
-    .friendsTop {
-        width: 90%;
-    }
 }
 
 @include media(">=1200px", "<1300px") {
@@ -1840,14 +1836,6 @@ $vh: var(--vh);
             @include imgProperties(165px);
         }
     }
-
-    .friendsBottom {
-        width: 85%;
-    }
-
-    .friendsTop {
-        width: 85%;
-    }
 }
 
 @include media(">=1300px", "<1400px") {
@@ -1879,14 +1867,6 @@ $vh: var(--vh);
     .gameStepThree {
         max-width: 1170px;
     }
-
-    .friendsBottom {
-        width: 80%;
-    }
-
-    .friendsTop {
-        width: 80%;
-    }
 }
 
 @include media(">=1400px", "<1500px") {
@@ -1904,14 +1884,6 @@ $vh: var(--vh);
 
     .gameStepThree {
         max-width: 1260px;
-    }
-
-    .friendsBottom {
-        width: 75%;
-    }
-
-    .friendsTop {
-        width: 75%;
     }
 }
 
@@ -1931,38 +1903,16 @@ $vh: var(--vh);
     .gameStepThree {
         max-width: 1350px;
     }
-
-    .friendsBottom {
-        width: 70%;
-    }
-
-    .friendsTop {
-        width: 70%;
-    }
 }
 
 @include media(">=1600px", "<1700px") {
     .gameStepThree {
         max-width: 1400px;
     }
-    .friendsTop {
-        width: 60%;
-    }
-
-    .friendsBottom {
-        width: 65%;
-    }
 }
 
 @include media(">=1700px", "<1800px") {
     .animationGrid {
         width: 70%;
-    }
-    .friendsTop {
-        width: 60%;
-    }
-
-    .friendsBottom {
-        width: 60%;
     }
 }

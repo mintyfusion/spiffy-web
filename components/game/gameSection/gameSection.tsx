@@ -15,7 +15,6 @@ import getUniqueId from "utils/getUniqueId";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
 import Image from "next/image";
-import Position from "components/game/gameSection/enums/gameSectionCoinAvatarPosition";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import StepTypes from "components/game/gameSection/enums/stepTypes";
@@ -129,7 +128,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const mobileAvatar = 90;
             const desktopAvatar = 160;
             const bounds = refrence.current.getBoundingClientRect();
-            const avatarSize = isMD ? mobileAvatar : desktopAvatar;
+            const avatarSize = isLG ? mobileAvatar : desktopAvatar;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 10;
@@ -155,7 +154,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         left: styleHandler(start).left1,
                         top: styleHandler(start).top1,
                         opacity: "1",
-                        transition: "1s"
                     };
                     break;
                 case AvatarType.Red:
@@ -163,7 +161,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         left: styleHandler(start).left2,
                         top: styleHandler(start).top1,
                         opacity: "1",
-                        transition: "1s"
                     };
                     break;
                 case AvatarType.Yellow:
@@ -171,7 +168,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         left: styleHandler(start).left1,
                         top: styleHandler(start).top2,
                         opacity: "1",
-                        transition: "1s"
                     };
                     break;
                 case AvatarType.Purple:
@@ -180,7 +176,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         left: styleHandler(start).left2,
                         top: styleHandler(start).top2,
                         opacity: "1",
-                        transition: "1s"
                     };
                     break;
             }
@@ -714,7 +709,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             </div>
                                             <Row className={rowHBetween}>
                                                 <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                    <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1" data-position={Position.Center}>
+                                                    <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1">
                                                         <Avatar color={AvatarType.Green} width={56} height={63} />
                                                         <span className={styles.donationAmount}>
                                                             {donationCalulation(friendsFormula)}
@@ -723,7 +718,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                 </Col>
                                             </Row>
                                             <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
-                                                <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2" data-position={Position.RightTop}>
+                                                <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2">
                                                     {donation(styles.donationAmount2, AvatarType.Red)}
                                                 </div>
                                             </Row>
@@ -734,32 +729,32 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                             We’re totally reliant on these cents to keep us going.
                                                         </span>
                                                     </div>
-                                                    <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11" data-position={Position.Left}>
+                                                    <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11">
                                                         <Image src="/images/game/donationCycle/spiffy.png" width={155} height={44} />
                                                         {donationCalulation(spiffyFormula)}
                                                     </div>
                                                 </div>
 
-                                                <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3" data-position={Position.Right}>
+                                                <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3">
                                                     {donation(styles.donationAmount4, AvatarType.Yellow)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w55} ${rowHBetween}`}>
-                                                <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10" data-position={Position.Left}>
+                                                <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10">
 
                                                     {donation(styles.donationAmount5, AvatarType.Green)}
                                                 </div>
-                                                <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4" data-position={Position.Right}>
+                                                <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4">
 
                                                     {donation(styles.donationAmount6, AvatarType.Purple)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w40} ${rowHBetween}`}>
-                                                <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9" data-position={Position.Left}>
+                                                <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9">
 
                                                     {donation(styles.donationAmount7, AvatarType.Yellow)}
                                                 </div>
-                                                <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5" data-position={Position.Right}>
+                                                <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5">
 
                                                     {donation(styles.donationAmount8, AvatarType.Yellow)}
                                                 </div>
@@ -767,17 +762,17 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             <Row className={`${styles.w25} 
                                         ${styles.marginBottomMinusFifty} 
                                         ${rowHBetween}`}>
-                                                <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8" data-position={Position.BottomLeft}>
+                                                <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8">
 
                                                     {donation(styles.donationAmount9, AvatarType.Red)}
                                                 </div>
-                                                <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6" data-position={Position.BottomRight}>
+                                                <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6">
 
                                                     {donation(styles.donationAmount10, AvatarType.Red)}
                                                 </div>
                                             </Row>
                                             <Row className={horizontalAlign}>
-                                                <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7" data-position={Position.BottomCenter}>
+                                                <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7">
 
                                                     {donation(styles.donationAmount11, AvatarType.Green)}
                                                 </div>
