@@ -59,7 +59,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = UseBoolean(false);
     const [expanded, { toggle: navToggle }] = UseBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
-    const isMD = useBreakpoint(Breakpoints.MD);
 
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
     const [avatarStyleGUID, setAvatarStyleGUID] = React.useState("0");
@@ -511,19 +510,26 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * donation cycle calclutions.
      * @param donation selected amount in donation cycle.
      */
-    const donationCalulation = (donation: number) => {
+    const donationCalulation = React.useCallback((donation: number) => {
         const percentage = 100;
         const donationFixed = 2;
         const amount = (donation / percentage * Number(donationAmount)).toFixed(donationFixed);
 
         return <span>{amount.charAt(0) === "0" ? `${amount}¢` : `$${amount}`}</span>;
-    };
+    }, [donationAmount]);
+    // const donationCalulation = (donation: number) => {
+    //     const percentage = 100;
+    //     const donationFixed = 2;
+    //     const amount = (donation / percentage * Number(donationAmount)).toFixed(donationFixed);
+
+    //     return <span>{amount.charAt(0) === "0" ? `${amount}¢` : `$${amount}`}</span>;
+    // };
 
     /**
      * donation cycle items.
      * @param style classNames of cycle items.
      */
-    const donation = (style: string, color: string) => {
+    const donation = React.useCallback((style: string, color: string) => {
         if (donationAmount !== "") {
             return <>
                 <Avatar color={color} width={56} height={63} />
@@ -534,8 +540,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 </span>
             </>;
         }
-
-    };
+    }, [friendsFormula, donationAmount]);
 
     /**
      * donation amount rendering.
