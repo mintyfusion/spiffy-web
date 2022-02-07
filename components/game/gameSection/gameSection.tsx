@@ -114,8 +114,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
             setAnimation(false);
-            setTimeout(() => {
+            const animationTimeout = setTimeout(() => {
                 setAnimation(true);
+                clearTimeout(animationTimeout);
             }, avatarTimeout);
         }
     }, [donationAmount]);
@@ -182,7 +183,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
 
         return null;
-    }, []);
+    }, [breakpoint]);
 
     /**
      * get styles of fiends avatars in third section.
@@ -678,7 +679,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             <div ref={coinAnimationWrapperRef} className={styles.donationSections}>
                                 <div className={`${styles.card} ${rowCenter}`}>
                                     <div className={`${rowHCenter} ${styles.stepFour} position-relative`}>
-                                        <h2 className={`${styles.avatarHeading} text-center`}>How much do you want to donate?</h2>
+                                        <h2 className={`${styles.avatarHeading} text-center`}>
+                                            How much do you want to donate?
+                                        </h2>
                                         <h4 className="text-center">
                                             Add donation in increments of $5, and discover where your donation is going.
                                         </h4>
