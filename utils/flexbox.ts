@@ -27,7 +27,7 @@ const flexbox = (params?: IFlexboxParams): string => {
     }
 
     if (params?.wrap) {
-        classNames = classNames.concat(params.wrap ? "flex-wrap" : "flex-nowrap");
+        classNames = classNames.concat(params.wrap ? " flex-wrap" : " flex-nowrap");
     }
 
     return classNames;

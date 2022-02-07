@@ -69,7 +69,7 @@ $vh: var(--vh);
 }
 
 .card {
-    background-color: #fff;
+    background-color: $white;
     width: 90%;
     min-height: calc(#{$vh} - 40px);
     margin: 20px auto;
@@ -138,7 +138,7 @@ $vh: var(--vh);
     }
 
     input {
-        border: 1px solid $gameInput;
+        border: 1px solid $silver;
         padding: 20px 10px;
         border-radius: 12px;
         margin-top: 40px;
@@ -247,7 +247,7 @@ $vh: var(--vh);
         animation-name: contetHide;
         animation-duration: 5s;
         animation-fill-mode: forwards;
-        color: #ff9872;
+        color: $yellow-dark;
     }
 
     h3 {
@@ -318,7 +318,7 @@ $vh: var(--vh);
         flex-direction: column;
         padding: 10px;
         border-radius: 50px;
-        background-color: #f4f4f4;
+        background-color: $dirty-white;
         animation-name: opacityAnimation;
         animation-duration: 0.5s;
         animation-delay: 2s;

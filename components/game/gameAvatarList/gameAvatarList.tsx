@@ -18,7 +18,6 @@ import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
-const toggleTimeout = 500;
 const fifteenRandom = 15;
 const five = 5;
 // Avatar random sizes numbers
@@ -81,7 +80,6 @@ function getRandomAvatars() {
 
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [selectedKey, setSelectedKey] = React.useState("1");
-    const [toggle, { setTrue: toggleTrue, setFalse: toggleFalse }] = UseBoolean(true);
     const [expanded, { toggle: navToggle }] = UseBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
 
@@ -137,11 +135,6 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const donationPercentage = React.useMemo(() => Object.entries(percentages).map(([key], index) => (
         <PrimaryButton key={index} onClick={() => {
             handleBtnClick(key);
-            toggleFalse();
-            /*eslint-env browser*/
-            setTimeout(() => {
-                toggleTrue();
-            }, toggleTimeout);
         }}
             className={`
             ${horizontalAlign} 

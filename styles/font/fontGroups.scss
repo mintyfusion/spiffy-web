@@ -31,8 +31,9 @@
 .regular90 {
     @include typeFace($thirtyFive, $ninety, $regular);
 }
+
 .medium25 {
-    @include typeFace($twentyFive, $sixteen, $medium);
+    @include typeFace($sixteen, $twentyFive, $medium);
 }
 
 .semiBold90 {
@@ -62,9 +63,11 @@
 .bold67 {
     @include typeFace($twentyFive, $sixtySeven, $bold);
 }
+
 .boldGame67 {
     @include typeFace($thirty, $sixtySeven, $bold);
 }
+
 .bold90 {
     @include typeFace($thirtyFive, $ninety, $bold);
 }
@@ -101,12 +104,15 @@
 .regular-desktop25-mobile9 {
     @include typeFace($nine, $twentyFive, $regular);
 }
+
 .regular-desktop20-mobile7 {
     @include typeFace($seven, $twenty, $regular);
 }
+
 .bold-desktop25-mobile9 {
     @include typeFace($nine, $twentyFive, $bold);
 }
+
 .regular-desktop25-mobile16 {
     @include typeFace($sixteen, $twentyFive, $regular);
 }

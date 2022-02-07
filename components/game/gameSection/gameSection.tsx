@@ -2,6 +2,7 @@ import { Col, Nav, Navbar, Row } from "react-bootstrap";
 import { Element, Link, scroller } from "react-scroll";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 
@@ -14,11 +15,10 @@ import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
 import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
-import Image from "next/image";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import StepTypes from "components/game/gameSection/enums/stepTypes";
-import UseBoolean from "hooks/useBoolean";
+import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/game/gameSection/gameSection.module.scss";
@@ -56,8 +56,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [step, setStep] = React.useState<StepTypes>(StepTypes.One);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
-    const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = UseBoolean(false);
-    const [expanded, { toggle: navToggle }] = UseBoolean(false);
+    const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = useBoolean(false);
+    const [expanded, { toggle: navToggle }] = useBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
 
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
@@ -190,29 +190,29 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         const keyTwo = 2;
         const keyThree = 3;
 
-        friendsAvatars.map((value, index) => {
+        friendsAvatars.map((avatar, index) => {
             switch (index) {
                 case 0:
-                    styles[value.id] = {
+                    styles[avatar.id] = {
                         left: styleHandler(friendsRef).left1,
                         top: styleHandler(friendsRef).top1,
                     };
                     break;
                 case 1:
-                    styles[value.id] = {
+                    styles[avatar.id] = {
                         left: styleHandler(friendsRef).left2,
                         top: styleHandler(friendsRef).top1,
                     };
                     break;
                 case keyTwo:
-                    styles[value.id] = {
+                    styles[avatar.id] = {
                         left: styleHandler(friendsRef).left1,
                         top: styleHandler(friendsRef).top2,
                     };
                     break;
                 case keyThree:
                 default:
-                    styles[value.id] = {
+                    styles[avatar.id] = {
                         left: styleHandler(friendsRef).left2,
                         top: styleHandler(friendsRef).top2,
                     };
@@ -235,7 +235,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 [avatar]: {
                     top: bounds.y + fullscreen.current.scrollTop,
                     left: bounds.x + fullscreen.current.scrollLeft,
-                    transition: "1s",
                     opacity: "1"
                 }
             };
@@ -301,7 +300,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     [seletedAvatar]: {
                         top: bounds.y + fullscreen.current.scrollTop,
                         left: bounds.x + fullscreen.current.scrollLeft,
-                        transition: "1s",
                         opacity: "1"
                     }
                 };
@@ -714,7 +712,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className={`${styles.donationRow1} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
+                                            <Row className={
+                                                `${styles.donationRow1} ${styles.marginTopMinusFifty} ${rowHEnd}`
+                                            }>
                                                 <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2">
                                                     {donation(styles.donationAmount2, AvatarType.Red)}
                                                 </div>

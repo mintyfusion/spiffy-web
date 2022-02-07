@@ -1,10 +1,10 @@
 import IBannerContentData from "components/game/gameHead/interfaces/IGameHeadContentData";
 
-const bannerContent: IBannerContentData = {
+const IGameHeadBannerContentData: IBannerContentData = {
     content: {
         description: "Learn more about spiffy.",
         title: "Spiffy Game",
     },
 };
 
-export default bannerContent;
+export default IGameHeadBannerContentData;

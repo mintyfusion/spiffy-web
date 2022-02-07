@@ -12,6 +12,7 @@ export default interface IUseBooleanCallbacks {
      */
 
     setFalse(): void;
+    
     /**
      * Toggle the value. Always has the same identity.
      */
