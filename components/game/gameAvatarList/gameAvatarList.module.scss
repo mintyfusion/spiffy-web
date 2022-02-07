@@ -4,10 +4,6 @@
 @import "styles/font/fontGroups.scss";
 @import "styles/mixins.scss";
 
-@mixin gameContentPadding($padding) {
-    padding: $padding;
-}
-
 @mixin imgProperties($size) {
     width: $size;
     height: $size;
@@ -39,7 +35,7 @@
 }
 
 .gameStepFive {
-    @include gameContentPadding(50px 0);
+    padding: 50px 0;
     width: 90%;
 
     h4 {
@@ -160,7 +156,7 @@
     }
 
     .gameStepFive {
-        @include gameContentPadding(50px 0px);
+        padding: 50px 0;
         width: 100%;
     }
 

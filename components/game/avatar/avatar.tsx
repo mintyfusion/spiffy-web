@@ -4,7 +4,7 @@ import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import IAvatarProps from "components/game/avatar/interfaces/IAvatarProps";
 import styles from "components/game/avatar/avatar.module.scss";
 
-const Avatar = ({ color, ...props }: IAvatarProps) => {
+const Avatar = ({ color, size }: IAvatarProps) => {
     const avatarColor = React.useMemo(() => {
         switch (color) {
             case AvatarType.Green:
@@ -39,7 +39,6 @@ const Avatar = ({ color, ...props }: IAvatarProps) => {
 
 export default React.memo(Avatar);
 
-const size = 148;
 Avatar.defaultProps = {
-    size: size,
+    size: 148
 };

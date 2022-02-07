@@ -180,7 +180,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         });
 
         return styles;
-    }, [isLG]);
+    }, [isLG, styleHandler]);
 
     /**
      * get styles of fiends avatars in third section.
@@ -221,7 +221,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         });
 
         return styles;
-    }, [friendsAvatars]);
+    }, [friendsAvatars, styleHandler]);
 
     /**
      * section one animation and scroll on selecting avatar.
@@ -517,13 +517,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
         return <span>{amount.charAt(0) === "0" ? `${amount}¢` : `$${amount}`}</span>;
     }, [donationAmount]);
-    // const donationCalulation = (donation: number) => {
-    //     const percentage = 100;
-    //     const donationFixed = 2;
-    //     const amount = (donation / percentage * Number(donationAmount)).toFixed(donationFixed);
-
-    //     return <span>{amount.charAt(0) === "0" ? `${amount}¢` : `$${amount}`}</span>;
-    // };
 
     /**
      * donation cycle items.
@@ -790,7 +783,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             friends={addedFriends}
                                             seletedAvatar={seletedAvatar}
                                             name={avatarName}
-                                            setStep={setStep}
                                             signupAnimation={signupAnimation} />
                                     </div> :
                                     null}
