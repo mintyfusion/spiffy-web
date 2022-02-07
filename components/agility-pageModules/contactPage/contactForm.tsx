@@ -190,7 +190,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                                     {fields.formSubmitButtonText}
                                 </PrimaryButton>
                             </Stack>
-                            <div className="text-center p-2" style={{ maxWidth: "400px", margin: "auto" }}>
+                            <div className={`text-center p-2 ${styles.formBottomContent} m-auto`} >
                                 <label>{fields.formBottomText}</label>
                             </div>
                         </form>

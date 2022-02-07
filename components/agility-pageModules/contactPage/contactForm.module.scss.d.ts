@@ -20,6 +20,7 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
+  "formBottomContent": string;
   "formContainer": string;
   "formContent": string;
   "fullbold109": string;
