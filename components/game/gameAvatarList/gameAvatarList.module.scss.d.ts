@@ -23,9 +23,7 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
-  "fadein": string;
-  "fadeIn": string;
-  "fadeOut": string;
+  "fadeout": string;
   "flexOne": string;
   "friendsBottom": string;
   "friendsMain": string;

@@ -184,9 +184,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <div className={`${styles.flexOne} ${styles.friendsMain} text-center`}>
                         <div className={`${styles.avatarInner} ${colCenter} position-relative`}>
                             <h2 className={`${styles.avatarHeading}`}>
-                                <span
-                                    className={toggle ? `${styles.fadeIn}`
-                                        : `${styles.fadeOut}`}>${percentages[selectedKey].amount}
+                                <span key={percentages[selectedKey].amount}>${percentages[selectedKey].amount}
                                 </span>
                             </h2>
                             <Row className={`${styles.friendsTop} w-100`}>

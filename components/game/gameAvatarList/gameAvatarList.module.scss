@@ -50,25 +50,19 @@
 .avatarHeading {
     @extend .regular-desktop30-mobile20;
     color: $yellow;
-}
-
-.fadeIn {
-    opacity: 0;
-    animation-name: fadein;
-    animation-duration: 100ms;
-    animation-fill-mode: forwards;
-}
-
-.fadeOut {
-    visibility: hidden;
-}
-
-@keyframes fadein {
-    0% {
-        opacity: 0;
+    span {
+        animation: fadeout ease 0.3s;
+        display: block;
     }
+}
+
+@keyframes fadeout {
+    0% {
+        transform: scale(0);
+    }
+
     100% {
-        opacity: 1;
+        transform: scale(1);
     }
 }
 
