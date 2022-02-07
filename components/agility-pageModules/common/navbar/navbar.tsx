@@ -107,7 +107,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                         href="/creator"
                         className={`${styles.link} me-lg-3 me-xl-5 py-3 px-4 px-lg-0`}
                     >
-                        FOR YOUTUBE CHANNELS
+                        For Content Creators
                     </Link>
                 </Nav>
                 <Nav className="m-2">
