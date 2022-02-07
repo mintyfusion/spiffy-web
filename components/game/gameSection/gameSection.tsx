@@ -28,7 +28,7 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowCenter = flexbox({ hAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHEnd = flexbox({ hAlign: "end" });
-const rowHCenter = flexbox({ vAlign: "center", vertical: true, });
+const rowVCenter = flexbox({ vAlign: "center", vertical: true, });
 const donationValues: string[] = ["5", "10", "15", "25", "50"];
 const friendsTimeout = 2000;
 const avatarTimeout = 1000;
@@ -85,16 +85,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * useEffect to check all four friends are added.
      */
     React.useEffect(() => {
-
         let timer: NodeJS.Timeout;
         if (addedFriends.length === friendsLength) {
-            scroller.scrollTo(StepTypes.Four, {
-                duration: 700,
-                smooth: true,
-                containerId,
-                delay: 500,
-                ignoreCancelEvents: true
-            });
+            scrollHandler(StepTypes.Four);
             /*eslint-env browser*/
             timer = setTimeout(() => {
                 setStep(StepTypes.Four);
@@ -106,6 +99,16 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             clearTimeout(timer);
         };
     }, [addedFriends]);
+
+    const scrollHandler = React.useCallback((value: string) => {
+        scroller.scrollTo(value, {
+            duration: 700,
+            smooth: true,
+            containerId,
+            ignoreCancelEvents: true,
+            offset: -20,
+        });
+    }, []);
 
     /**
      * function to start or reset the donation cycle animation.
@@ -121,7 +124,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [donationAmount]);
 
-    const styleHandler = React.useCallback((refrence: React.MutableRefObject<HTMLDivElement>) => {
+    const avatarStyleHandler = React.useCallback((refrence: React.MutableRefObject<HTMLDivElement>) => {
         if (refrence.current) {
             const mobileAvatar = 90;
             const desktopAvatar = 160;
@@ -142,37 +145,37 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     /**
      * get styles of avatars in first section.
      */
-    const getStyles = React.useCallback(() => {
+    const getAvatarStyles = React.useCallback(() => {
         const styles = {} as Record<AvatarType, CSSProperties>;
 
         Object.entries(AvatarType).forEach(([, value]) => {
             switch (value) {
                 case AvatarType.Green:
                     styles[value] = {
-                        left: styleHandler(start).left1,
-                        top: styleHandler(start).top1,
+                        left: avatarStyleHandler(start).left1,
+                        top: avatarStyleHandler(start).top1,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Red:
                     styles[value] = {
-                        left: styleHandler(start).left2,
-                        top: styleHandler(start).top1,
+                        left: avatarStyleHandler(start).left2,
+                        top: avatarStyleHandler(start).top1,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Yellow:
                     styles[value] = {
-                        left: styleHandler(start).left1,
-                        top: styleHandler(start).top2,
+                        left: avatarStyleHandler(start).left1,
+                        top: avatarStyleHandler(start).top2,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Purple:
                 default:
                     styles[value] = {
-                        left: styleHandler(start).left2,
-                        top: styleHandler(start).top2,
+                        left: avatarStyleHandler(start).left2,
+                        top: avatarStyleHandler(start).top2,
                         opacity: "1",
                     };
                     break;
@@ -180,7 +183,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         });
 
         return styles;
-    }, [isLG, styleHandler]);
+    }, [isLG, avatarStyleHandler]);
 
     /**
      * get styles of fiends avatars in third section.
@@ -194,34 +197,34 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             switch (index) {
                 case 0:
                     styles[avatar.id] = {
-                        left: styleHandler(friendsRef).left1,
-                        top: styleHandler(friendsRef).top1,
+                        left: avatarStyleHandler(friendsRef).left1,
+                        top: avatarStyleHandler(friendsRef).top1,
                     };
                     break;
                 case 1:
                     styles[avatar.id] = {
-                        left: styleHandler(friendsRef).left2,
-                        top: styleHandler(friendsRef).top1,
+                        left: avatarStyleHandler(friendsRef).left2,
+                        top: avatarStyleHandler(friendsRef).top1,
                     };
                     break;
                 case keyTwo:
                     styles[avatar.id] = {
-                        left: styleHandler(friendsRef).left1,
-                        top: styleHandler(friendsRef).top2,
+                        left: avatarStyleHandler(friendsRef).left1,
+                        top: avatarStyleHandler(friendsRef).top2,
                     };
                     break;
                 case keyThree:
                 default:
                     styles[avatar.id] = {
-                        left: styleHandler(friendsRef).left2,
-                        top: styleHandler(friendsRef).top2,
+                        left: avatarStyleHandler(friendsRef).left2,
+                        top: avatarStyleHandler(friendsRef).top2,
                     };
                     break;
             }
         });
 
         return styles;
-    }, [friendsAvatars, styleHandler]);
+    }, [friendsAvatars, avatarStyleHandler]);
 
     /**
      * section one animation and scroll on selecting avatar.
@@ -248,7 +251,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * filter selected friends from avatars.
      * @param friendAvatar user selected friends.
      */
-    const friendsAnimation = React.useCallback((friendAvatar: IAvatar) => {
+    const selectedFriendsHandler = React.useCallback((friendAvatar: IAvatar) => {
         if (stepThree.current) {
             const selectedFriends: IAvatar[] = [];
             data.filter((avatar) => avatar.id !== seletedAvatar).forEach((avatar) => {
@@ -257,8 +260,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 }
             });
             setAddedFriends((currentFriends: IAvatar[]) => [...currentFriends, ...selectedFriends]);
-
-
         }
     }, [seletedAvatar]);
 
@@ -266,12 +267,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * setting styles of avatars in first section.
      */
     const setAvatarPositions = React.useCallback(() => {
-        const styles = getStyles();
+        const styles = getAvatarStyles();
         if (styles) {
             avatarStyles.current = { ...avatarStyles.current, ...styles };
             setAvatarStyleGUID(getUniqueId());
         }
-    }, [getStyles]);
+    }, [getAvatarStyles]);
 
     /**
      * setting styles of friends in third section.
@@ -306,13 +307,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 setAvatarStyleGUID(getUniqueId());
                 setStep(StepTypes.Three);
                 setFriendsPositions();
-                scroller.scrollTo(StepTypes.Three, {
-                    duration: 500,
-                    smooth: true,
-                    containerId,
-                    ignoreCancelEvents: true,
-                    offset: -20
-                });
+                scrollHandler(StepTypes.Three);
             }
 
             clearTimeout(t);
@@ -371,11 +366,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
             case StepTypes.Three: {
                 setViewportHeight();
-                scroller.scrollTo(step, {
-                    containerId,
-                    ignoreCancelEvents: true,
-                    offset: -20,
-                });
+                scrollHandler(StepTypes.Three)
                 setFriendsPositions();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
@@ -569,7 +560,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 <Modal.Body className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`}
                     id={containerId} ref={fullscreen}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={props.closeModal} className={styles.close} />
-                    <div className={`w-100 ${rowHCenter}`}>
+                    <div className={`w-100 ${rowVCenter}`}>
                         <div className={`${styles.card} ${styles.gameStepTwoWrapper} ${rowCenter}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your avatar</h2>
                             {step1Avatars.map(([key, value]) =>
@@ -635,10 +626,10 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                         <h3 className="text-center">{avatarName}</h3>
                                     </div>
                                 </div>
-                                <div className={`${styles.gameStepThreeFriendsColumn} ${rowHCenter}`} ref={friendsRef}>
+                                <div className={`${styles.gameStepThreeFriendsColumn} ${rowVCenter}`} ref={friendsRef}>
                                     <h2 className={styles.avatarHeading}>Add four friends</h2>
                                     {step === StepTypes.Three ?
-                                        <div className={`${styles.percentageWrapper} ${rowHCenter} flex-wrap`}>
+                                        <div className={`${styles.percentageWrapper} ${rowVCenter} flex-wrap`}>
                                             {friendsAvatars
                                                 .filter((avatarObj) => !addedFriends
                                                     .find(({ id }) => avatarObj.id === id))
@@ -647,7 +638,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                         <div
                                                             className="position-absolute"
                                                             style={friendsStyle.current && friendsStyle.current[key.id]}
-                                                            onClick={() => friendsAnimation(key)}>
+                                                            onClick={() => selectedFriendsHandler(key)}>
                                                             <Avatar color={key.id} />
                                                         </div>
                                                     </React.Fragment>
@@ -662,7 +653,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         <Element name={StepTypes.Four} className="w-100">
                             <div ref={coinAnimationWrapperRef} className={styles.donationSections}>
                                 <div className={`${styles.card} ${rowCenter}`}>
-                                    <div className={`${rowHCenter} ${styles.stepFour} position-relative`}>
+                                    <div className={`${rowVCenter} ${styles.stepFour} position-relative`}>
                                         <h2 className={`${styles.avatarHeading} text-center`}>
                                             How much do you want to donate?
                                         </h2>
