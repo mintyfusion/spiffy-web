@@ -96,7 +96,7 @@ const faviconsList = favicons.map((favicon: IFavicon, index: number) => <link ke
 
 const Head = (props: IHeadProps): JSX.Element =>
     <NextHead>
-        <title>{props.title.replace(/-/g, " ")}</title>
+        <title>{props.title && props.title.replace(/-/g, " ")}</title>
         {/* Favicons Start */}
         {faviconsList}
         {/* Windows 8 IE 10 */}
