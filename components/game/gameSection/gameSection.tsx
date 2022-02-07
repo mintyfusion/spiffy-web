@@ -44,11 +44,11 @@ const spiffyFormula = 10;
 const stepOneTimeout = 500;
 const sliceTwo = 2;
 const sliceFour = 4;
-
+const avatars = Object.values(AvatarType);
 /**
  * first section remove orange avatar.
  */
-const step1Avatars = Object.entries(AvatarType).filter(([, value]) => value !== AvatarType.Orange);
+const step1Avatars = avatars.filter((avatar) => avatar !== AvatarType.Orange);
 
 const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<IAvatar[]>([]);
@@ -148,24 +148,24 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const getAvatarStyles = React.useCallback(() => {
         const styles = {} as Record<AvatarType, CSSProperties>;
 
-        Object.entries(AvatarType).forEach(([, value]) => {
-            switch (value) {
+        avatars.forEach((avatar) => {
+            switch (avatar) {
                 case AvatarType.Green:
-                    styles[value] = {
+                    styles[avatar] = {
                         left: avatarStyleHandler(start).left1,
                         top: avatarStyleHandler(start).top1,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Red:
-                    styles[value] = {
+                    styles[avatar] = {
                         left: avatarStyleHandler(start).left2,
                         top: avatarStyleHandler(start).top1,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Yellow:
-                    styles[value] = {
+                    styles[avatar] = {
                         left: avatarStyleHandler(start).left1,
                         top: avatarStyleHandler(start).top2,
                         opacity: "1",
@@ -173,7 +173,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     break;
                 case AvatarType.Purple:
                 default:
-                    styles[value] = {
+                    styles[avatar] = {
                         left: avatarStyleHandler(start).left2,
                         top: avatarStyleHandler(start).top2,
                         opacity: "1",
@@ -318,11 +318,16 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * first section avatars style.
      */
     React.useEffect(() => {
+        let avatarTimeout: NodeJS.Timeout;
         if (step === StepTypes.One && avatarStyleGUID === "0") {
-            setTimeout(() => {
+            avatarTimeout = setTimeout(() => {
                 setAvatarPositions();
             }, stepOneTimeout);
         }
+
+        return () => {
+            clearTimeout(avatarTimeout);
+        };
     }, [setAvatarPositions, step, avatarStyleGUID]);
 
     /**
@@ -344,11 +349,11 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const handleResize = React.useCallback(() => {
         switch (step) {
             case StepTypes.One:
-                setViewportHeight();
                 setAvatarPositions();
                 break;
 
             case StepTypes.Two: {
+                isLG && setViewportHeight();
                 const boundsFirst = target.current?.getBoundingClientRect();
                 if (boundsFirst) {
                     avatarStyles.current = {
@@ -365,8 +370,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             }
 
             case StepTypes.Three: {
-                setViewportHeight();
-                scrollHandler(StepTypes.Three)
+                scrollHandler(StepTypes.Three);
                 setFriendsPositions();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
@@ -396,7 +400,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-
     }, [handleResize]);
 
     /**
@@ -563,11 +566,11 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     <div className={`w-100 ${rowVCenter}`}>
                         <div className={`${styles.card} ${styles.gameStepTwoWrapper} ${rowCenter}`} ref={start}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your avatar</h2>
-                            {step1Avatars.map(([key, value]) =>
+                            {step1Avatars.map((avatar, index) =>
                                 <Link
-                                    key={key}
-                                    style={avatarStyles.current && avatarStyles.current[value]}
-                                    onClick={() => handleAvatarClick(value)}
+                                    key={index}
+                                    style={avatarStyles.current && avatarStyles.current[avatar]}
+                                    onClick={() => handleAvatarClick(avatar)}
                                     to={StepTypes.Two}
                                     smooth={true}
                                     duration={500}
@@ -578,7 +581,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     ignoreCancelEvents={true}
                                     offset={-20}
                                 >
-                                    <Avatar color={value} />
+                                    <Avatar color={avatar} />
                                 </Link>
                             )}
                         </div>
