@@ -15,7 +15,7 @@
 
 $vh: var(--vh);
 
-.w25 {
+.donationRow1 {
     width: 30%;
     margin: 0 auto;
 }
@@ -32,12 +32,12 @@ $vh: var(--vh);
     margin-top: -30px;
 }
 
-.w40 {
+.donationRow2 {
     width: 45%;
     margin: 15px auto;
 }
 
-.w55 {
+.donationRow3 {
     width: 52%;
     margin: 15px auto;
 }
@@ -636,15 +636,15 @@ $vh: var(--vh);
             @include imgProperties(25px);
         }
     }
-    .w25 {
+    .donationRow1 {
         width: 40%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 65%;
         margin: 5px auto;
     }
-    .w55 {
+    .donationRow3 {
         width: 75%;
         margin: 5px auto;
     }
@@ -883,16 +883,16 @@ $vh: var(--vh);
             @include imgProperties(25px);
         }
     }
-    .w25 {
+    .donationRow1 {
         width: 40%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 65%;
         margin: 5px auto;
     }
 
-    .w55 {
+    .donationRow3 {
         width: 75%;
         margin: 5px auto;
     }
@@ -1096,16 +1096,16 @@ $vh: var(--vh);
             @include imgProperties(25px);
         }
     }
-    .w25 {
+    .donationRow1 {
         width: 50%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 70%;
         margin: 10px auto;
     }
 
-    .w55 {
+    .donationRow3 {
         width: 80%;
         margin: 15px auto;
     }
@@ -1301,15 +1301,15 @@ $vh: var(--vh);
     .donationLogo {
         right: -145px;
     }
-    .w25 {
+    .donationRow1 {
         width: 35%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 50%;
         margin: 5px auto;
     }
-    .w55 {
+    .donationRow3 {
         width: 57%;
         margin: 15px auto;
     }
@@ -1478,15 +1478,15 @@ $vh: var(--vh);
         }
     }
 
-    .w25 {
+    .donationRow1 {
         width: 40%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 65%;
     }
 
-    .w55 {
+    .donationRow3 {
         width: 80%;
     }
 
@@ -1602,15 +1602,15 @@ $vh: var(--vh);
         }
     }
 
-    .w25 {
+    .donationRow1 {
         width: 50%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 75%;
     }
 
-    .w55 {
+    .donationRow3 {
         width: 90%;
     }
 
@@ -1688,15 +1688,15 @@ $vh: var(--vh);
         }
     }
 
-    .w25 {
+    .donationRow1 {
         width: 40%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 65%;
     }
 
-    .w55 {
+    .donationRow3 {
         width: 75%;
     }
 
@@ -1772,15 +1772,15 @@ $vh: var(--vh);
         }
     }
 
-    .w25 {
+    .donationRow1 {
         width: 40%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 65%;
     }
 
-    .w55 {
+    .donationRow3 {
         width: 75%;
     }
 
@@ -1851,15 +1851,15 @@ $vh: var(--vh);
         }
     }
 
-    .w25 {
+    .donationRow1 {
         width: 30%;
     }
 
-    .w40 {
+    .donationRow2 {
         width: 45%;
         margin: 10px auto;
     }
-    .w55 {
+    .donationRow3 {
         width: 51%;
         margin: 10px auto;
     }

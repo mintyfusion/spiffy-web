@@ -714,12 +714,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
+                                            <Row className={`${styles.donationRow1} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
                                                 <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2">
                                                     {donation(styles.donationAmount2, AvatarType.Red)}
                                                 </div>
                                             </Row>
-                                            <Row className={`${styles.w40} ${rowHBetween}`}>
+                                            <Row className={`${styles.donationRow2} ${rowHBetween}`}>
                                                 <div className={styles.donationLogo}>
                                                     <div>
                                                         <span className="d-block">
@@ -736,7 +736,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     {donation(styles.donationAmount4, AvatarType.Yellow)}
                                                 </div>
                                             </Row>
-                                            <Row className={`${styles.w55} ${rowHBetween}`}>
+                                            <Row className={`${styles.donationRow3} ${rowHBetween}`}>
                                                 <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10">
 
                                                     {donation(styles.donationAmount5, AvatarType.Green)}
@@ -746,7 +746,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     {donation(styles.donationAmount6, AvatarType.Purple)}
                                                 </div>
                                             </Row>
-                                            <Row className={`${styles.w40} ${rowHBetween}`}>
+                                            <Row className={`${styles.donationRow2} ${rowHBetween}`}>
                                                 <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9">
 
                                                     {donation(styles.donationAmount7, AvatarType.Yellow)}
@@ -756,7 +756,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     {donation(styles.donationAmount8, AvatarType.Yellow)}
                                                 </div>
                                             </Row>
-                                            <Row className={`${styles.w25} 
+                                            <Row className={`${styles.donationRow1} 
                                         ${styles.marginBottomMinusFifty} 
                                         ${rowHBetween}`}>
                                                 <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8">

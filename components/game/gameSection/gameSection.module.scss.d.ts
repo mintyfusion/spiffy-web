@@ -65,6 +65,9 @@ export type Styles = {
   "donationImage": string;
   "donationInner": string;
   "donationLogo": string;
+  "donationRow1": string;
+  "donationRow2": string;
+  "donationRow3": string;
   "donations": string;
   "donationSections": string;
   "example": string;
@@ -114,9 +117,6 @@ export type Styles = {
   "transparent": string;
   "user": string;
   "userDonation": string;
-  "w25": string;
-  "w40": string;
-  "w55": string;
   "wrapper": string;
   "yellow": string;
 };
