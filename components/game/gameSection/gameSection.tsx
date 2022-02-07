@@ -6,21 +6,22 @@ import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/avatar";
-import AvatarType from "./enums/avatarTypes";
+import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import Breakpoints from "common/style/breakpoints";
 import data from "components/game/gameSection/gameSectionAvatars";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
+import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
 import Image from "next/image";
 import Position from "components/game/gameSection/enums/gameSectionCoinAvatarPosition";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
-import StepTypes from "./enums/stepTypes";
+import StepTypes from "components/game/gameSection/enums/stepTypes";
+import UseBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
-import IAvatar from "./interfaces/IAvatar";
 import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -56,9 +57,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [step, setStep] = React.useState<StepTypes>(StepTypes.One);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const [donationAmount, setDonationAmount] = React.useState<string>("");
-    const [animation, setAnimation] = React.useState<boolean>(false);
-    const [expanded, setExpanded] = React.useState<boolean>(false);
-    const breakpoint = useBreakpoint(Breakpoints.LG);
+    const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = UseBoolean(false);
+    const [expanded, { toggle: navToggle }] = UseBoolean(false);
+    const isLG = useBreakpoint(Breakpoints.LG);
 
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
     const [avatarStyleGUID, setAvatarStyleGUID] = React.useState("0");
@@ -113,9 +114,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      */
     const animationHandler = React.useCallback((donation: string) => {
         if (donation !== donationAmount) {
-            setAnimation(false);
+            animationFalse();
             const animationTimeout = setTimeout(() => {
-                setAnimation(true);
+                animationTrue();
                 clearTimeout(animationTimeout);
             }, avatarTimeout);
         }
@@ -183,7 +184,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
 
         return null;
-    }, [breakpoint]);
+    }, [isLG]);
 
     /**
      * get styles of fiends avatars in third section.
@@ -540,11 +541,16 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * donation cycle items.
      * @param style classNames of cycle items.
      */
-    const donation = (style: string) => {
+    const donation = (style: string, color: string) => {
         if (donationAmount !== "") {
-            return <span className={`${style} ${styles.donationAmount}`}>
-                {donationCalulation(friendsFormula)}
-            </span>;
+            return <>
+                <Avatar color={color} width={56} height={63} />
+                <span className={styles.donationAmount}>
+                    <span className={`${style} ${styles.donationAmount}`}>
+                        {donationCalulation(friendsFormula)}
+                    </span>
+                </span>
+            </>;
         }
 
     };
@@ -687,7 +693,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                         </h4>
                                         <Navbar expand="lg" className="d-block text-center"
                                             expanded={expanded}
-                                            onClick={() => breakpoint && setExpanded(!expanded)}>
+                                            onClick={() => isLG && navToggle()}>
                                             <Navbar.Brand className="d-lg-none">{donationAmount === "" ? "Select Amount" : `$${donationAmount}`}</Navbar.Brand>
                                             <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.navToggle}>
                                                 <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
@@ -730,8 +736,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             </Row>
                                             <Row className={`${styles.w25} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
                                                 <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2" data-position={Position.RightTop}>
-                                                    <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                    {donation(styles.donationAmount2)}
+                                                    {donation(styles.donationAmount2, AvatarType.Red)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w40} ${rowHBetween}`}>
@@ -748,46 +753,45 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                 </div>
 
                                                 <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3" data-position={Position.Right}>
-                                                    <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                    {donation(styles.donationAmount4)}
+                                                    {donation(styles.donationAmount4, AvatarType.Yellow)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w55} ${rowHBetween}`}>
                                                 <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10" data-position={Position.Left}>
-                                                    <Avatar color={AvatarType.Green} width={56} height={63} />
-                                                    {donation(styles.donationAmount5)}
+
+                                                    {donation(styles.donationAmount5, AvatarType.Green)}
                                                 </div>
                                                 <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4" data-position={Position.Right}>
-                                                    <Avatar color={AvatarType.Purple} width={56} height={63} />
-                                                    {donation(styles.donationAmount6)}
+
+                                                    {donation(styles.donationAmount6, AvatarType.Purple)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w40} ${rowHBetween}`}>
                                                 <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9" data-position={Position.Left}>
-                                                    <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                    {donation(styles.donationAmount7)}
+
+                                                    {donation(styles.donationAmount7, AvatarType.Yellow)}
                                                 </div>
                                                 <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5" data-position={Position.Right}>
-                                                    <Avatar color={AvatarType.Yellow} width={56} height={63} />
-                                                    {donation(styles.donationAmount8)}
+
+                                                    {donation(styles.donationAmount8, AvatarType.Yellow)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.w25} 
                                         ${styles.marginBottomMinusFifty} 
                                         ${rowHBetween}`}>
                                                 <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8" data-position={Position.BottomLeft}>
-                                                    <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                    {donation(styles.donationAmount9)}
+
+                                                    {donation(styles.donationAmount9, AvatarType.Red)}
                                                 </div>
                                                 <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6" data-position={Position.BottomRight}>
-                                                    <Avatar color={AvatarType.Red} width={56} height={63} />
-                                                    {donation(styles.donationAmount10)}
+
+                                                    {donation(styles.donationAmount10, AvatarType.Red)}
                                                 </div>
                                             </Row>
                                             <Row className={horizontalAlign}>
                                                 <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7" data-position={Position.BottomCenter}>
-                                                    <Avatar color={AvatarType.Green} width={56} height={63} />
-                                                    {donation(styles.donationAmount11)}
+
+                                                    {donation(styles.donationAmount11, AvatarType.Green)}
                                                 </div>
                                             </Row>
                                         </div>
