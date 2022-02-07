@@ -1,0 +1,25 @@
+@include media(">=1500px", "<1600px") {
+    .contentAnimation {
+        .cycle3 {
+            margin-top: -75px;
+        }
+
+        .donationLogo {
+            > div:nth-child(1) {
+                top: -25px;
+            }
+        }
+    }
+
+    .gameStepThree {
+        max-width: 1350px;
+    }
+
+    .friendsBottom {
+        width: 70%;
+    }
+
+    .friendsTop {
+        width: 70%;
+    }
+}

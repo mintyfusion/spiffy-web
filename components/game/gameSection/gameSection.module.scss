@@ -554,6 +554,7 @@ $vh: var(--vh);
             @include imgProperties(50px);
         }
     }
+
     .friendsTop {
         margin-bottom: -50px;
     }
@@ -565,6 +566,19 @@ $vh: var(--vh);
         max-width: 350px;
         h3 {
             font-size: 9px;
+        }
+
+        .cycle {
+            width: 35px;
+            height: 42px;
+            padding: 5px;
+        }
+
+        .cycle3 {
+            margin-top: -90px;
+            width: 50%;
+            border-radius: 12px;
+            padding: 5px;
         }
     }
 
@@ -602,19 +616,6 @@ $vh: var(--vh);
         top: 80%;
         background-color: $white;
         z-index: 3;
-    }
-    .contentAnimation {
-        .cycle {
-            width: 35px;
-            height: 42px;
-            padding: 5px;
-        }
-        .cycle3 {
-            margin-top: -90px;
-            width: 50%;
-            border-radius: 12px;
-            padding: 5px;
-        }
     }
 
     .marginBottomMinusFifty {
@@ -775,23 +776,23 @@ $vh: var(--vh);
 }
 
 @include media(">=375px", "<425px") {
-    .friendsTop {
-        width: 60%;
-        margin-top: -80px;
+    .friendsTop,
+    .friendsBottom {
+        width: 55%;
         min-height: 60px;
         svg {
             @include imgProperties(60px);
         }
     }
 
-    .friendsBottom {
-        width: 60%;
-        margin-top: -40px;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
-        }
+    .friendsTop {
+        margin-top: -80px;
     }
+
+    .friendsBottom {
+        margin-top: -40px;
+    }
+
     .percentageWrapper {
         width: 100%;
         height: 100%;
@@ -802,54 +803,67 @@ $vh: var(--vh);
     }
     .contentAnimation {
         max-width: 350px;
+
+        h3 {
+            font-size: 9px;
+        }
+
+        .cycle {
+            width: 35px;
+            height: 42px;
+            padding: 5px;
+        }
+
+        .cycle3 {
+            margin-top: -90px;
+            width: 50%;
+            border-radius: 12px;
+            padding: 5px;
+        }
+
+        .donationLogo {
+            right: unset;
+            left: -45px;
+            top: 5px;
+        }
     }
     .close {
         top: 20px;
     }
-    .donationLogo {
-        right: unset;
-        left: -45px !important;
-        top: 5px;
-    }
+
     .coinTwo {
-        width: 20px;
-        height: 20px;
+        img {
+            @include imgProperties(20px);
+        }
+
         top: 310px;
     }
+
     .donationInner {
         .userDonation {
             margin-top: 25px;
+            @include imgProperties(67px);
+        }
+
+        margin-top: 0px;
+        margin-bottom: 0px;
+        .avatarInner {
+            margin-top: 60px;
+        }
+
+        p {
+            font-size: 7px;
+            margin-top: 0px;
+            margin-bottom: 0px;
         }
     }
-    .donationLogo {
-        right: unset;
-        left: -60px !important;
-        top: 30px;
-    }
+
     .customNavbar {
         position: absolute;
         width: 100%;
         top: 80%;
         background-color: $white;
         z-index: 3;
-    }
-    .customNavbar {
-        position: absolute;
-        width: 100%;
-        top: 80%;
-        background-color: $white;
-        z-index: 3;
-    }
-    .cycle {
-        width: 35px !important;
-        height: 42px;
-        padding: 5px !important;
-    }
-    .cycle3 {
-        margin-top: -90px !important;
-        width: 50% !important;
-        border-radius: 12px !important;
-        padding: 5px !important;
     }
 
     .marginBottomMinusFifty {
@@ -860,11 +874,6 @@ $vh: var(--vh);
         margin-top: -20px;
     }
 
-    .coinTwo {
-        img {
-            @include imgProperties(20px);
-        }
-    }
     .heigth120 {
         height: 50px;
     }
@@ -881,18 +890,22 @@ $vh: var(--vh);
         width: 65%;
         margin: 5px auto;
     }
+
     .w55 {
         width: 75%;
         margin: 5px auto;
     }
+
     .donationButton {
         margin-bottom: 5px;
     }
+
     .avatarSelected {
         > svg {
             @include imgProperties(90px);
         }
     }
+
     .avatarFriends {
         > svg {
             @include imgProperties(90px);
@@ -910,6 +923,7 @@ $vh: var(--vh);
         height: 90px;
         margin-bottom: 40px;
     }
+
     .stepFour {
         width: 90%;
     }
@@ -917,7 +931,6 @@ $vh: var(--vh);
     .targetTwo {
         width: 90px;
         height: 90px;
-        display: "block";
     }
 
     .avatarstepTwo {
@@ -928,13 +941,9 @@ $vh: var(--vh);
         }
     }
 
-    .container {
-        padding: 0px;
-        text-align: center;
-        .card {
-            width: 100%;
-            margin: 20px 0;
-        }
+    .card {
+        width: 100%;
+        margin: 20px 0;
     }
 
     .gameStepTwo {
@@ -979,63 +988,12 @@ $vh: var(--vh);
         }
     }
 
-    .percentageWrapper {
-        width: 100%;
-        height: 100%;
-    }
-
-    .donationInner {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-        p {
-            font-size: 7px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-    }
-
     .donationCycleItems {
         padding: 10px 5px;
     }
 
-    .userDonation {
-        img {
-            @include imgProperties(67px);
-        }
-    }
-
-    .coinDefault {
-        img {
-            @include imgProperties(23px);
-        }
-    }
-
-    .contentAnimation {
-        h3 {
-            font-size: 9px;
-        }
-    }
-
     .gameStepOne {
         @include gameContentPadding(0px 0);
-    }
-
-    .avatarstepTwo {
-        animation: avatarstepTwoAnimation 4s;
-        animation-fill-mode: forwards;
-        img {
-            @include imgProperties(84px);
-        }
-    }
-
-    @keyframes avatarstepTwoAnimation {
-        100% {
-            left: 36%;
-            top: 20%;
-        }
     }
 
     .gameStepTwoWrapper {
@@ -1046,10 +1004,6 @@ $vh: var(--vh);
         height: 100px;
         margin-top: 0px;
     }
-
-    .paddingSides {
-        padding: 30px 0px;
-    }
 }
 
 @include media(">=425px", "<800px") {
@@ -1057,44 +1011,57 @@ $vh: var(--vh);
         max-width: 400px;
     }
 
-    .friendsTop {
+    .friendsTop,
+    .friendsBottom {
         width: 50%;
-        margin-top: -80px;
         min-height: 60px;
         svg {
             @include imgProperties(60px);
         }
+    }
+
+    .friendsTop {
+        margin-top: -80px;
+        min-height: 60px;
     }
 
     .friendsBottom {
-        width: 50%;
         margin-top: -40px;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
-        }
     }
 
-    .donationLogo {
-        right: -145px;
-        > div:nth-child(1) {
-            width: 50% !important;
-            top: -20px !important;
-            right: -55px !important;
-            text-align: left !important;
-        }
-    }
     .close {
         top: 20px;
     }
     .contentAnimation {
         max-width: 350px;
+        h3 {
+            font-size: 9px;
+        }
+
+        .cycle {
+            width: 35px;
+            height: 42px;
+            padding: 5px;
+        }
+
+        .cycle3 {
+            margin-top: -50px;
+            width: 50%;
+            border-radius: 12px;
+            padding: 5px;
+        }
+
+        .donationLogo {
+            right: -145px;
+            > div:nth-child(1) {
+                width: 50%;
+                top: -20px;
+                right: -55px;
+                text-align: left;
+            }
+        }
     }
-    .donationLogo {
-        right: unset;
-        left: -80px !important;
-        top: 5px;
-    }
+
     .customNavbar {
         position: absolute;
         width: 100%;
@@ -1102,22 +1069,16 @@ $vh: var(--vh);
         background-color: $white;
         z-index: 3;
     }
+
     .coinTwo {
         width: 20px;
         height: 20px;
         top: 305px;
+        img {
+            @include imgProperties(20px);
+        }
     }
-    .cycle {
-        width: 35px !important;
-        height: 42px;
-        padding: 5px !important;
-    }
-    .cycle3 {
-        margin-top: -50px !important;
-        width: 50% !important;
-        border-radius: 12px !important;
-        padding: 5px !important;
-    }
+
     .marginBottomMinusFifty {
         margin-bottom: -25px;
     }
@@ -1126,11 +1087,6 @@ $vh: var(--vh);
         margin-top: -20px;
     }
 
-    .coinTwo {
-        img {
-            @include imgProperties(20px);
-        }
-    }
     .heigth120 {
         height: 50px;
     }
@@ -1147,18 +1103,22 @@ $vh: var(--vh);
         width: 70%;
         margin: 10px auto;
     }
+
     .w55 {
         width: 80%;
         margin: 15px auto;
     }
+
     .donationButton {
         margin-bottom: 10px;
     }
+
     .avatarSelected {
         > svg {
             @include imgProperties(90px);
         }
     }
+
     .avatarFriends {
         > svg {
             @include imgProperties(90px);
@@ -1175,6 +1135,7 @@ $vh: var(--vh);
         width: 90px;
         height: 90px;
     }
+
     .stepFour {
         width: 80%;
         position: relative;
@@ -1185,12 +1146,8 @@ $vh: var(--vh);
         height: 90px;
     }
 
-    .container {
-        padding: 0px;
-        text-align: center;
-        .card {
-            margin: 20px;
-        }
+    .card {
+        margin: 20px;
     }
 
     .gameStepTwo {
@@ -1243,48 +1200,30 @@ $vh: var(--vh);
         }
     }
 
-    .percentageWrapper {
-        svg {
-            @include imgProperties(125px);
-        }
-    }
-
     .donationInner {
         margin-top: 0px;
         margin-bottom: 0px;
         .avatarInner {
             margin-top: 60px;
         }
+
         p {
             font-size: 7px;
             margin-top: 0px;
             margin-bottom: 0px;
         }
+
         .userDonation {
             margin-top: 10px;
+
+            img {
+                @include imgProperties(67px);
+            }
         }
     }
 
     .donationCycleItems {
         padding: 10px 5px;
-    }
-
-    .userDonation {
-        img {
-            @include imgProperties(67px);
-        }
-    }
-
-    .coinDefault {
-        img {
-            @include imgProperties(23px);
-        }
-    }
-
-    .contentAnimation {
-        h3 {
-            font-size: 9px;
-        }
     }
 
     .gameStepTwoWrapper {
@@ -1294,10 +1233,6 @@ $vh: var(--vh);
     .avatarInner {
         height: 100px;
         margin-top: 0px;
-    }
-
-    .paddingSides {
-        padding: 30px 0px;
     }
 }
 
@@ -1509,22 +1444,28 @@ $vh: var(--vh);
         top: 300px;
     }
 
-    .cycle3 {
-        margin-top: -40px !important;
-    }
-
-    .donationLogo {
-        left: -30% !important;
-        > div:nth-child(1) {
-            width: 40% !important;
-            top: -5px !important;
-            right: -60px !important;
-            text-align: left !important;
-        }
-    }
     .contentAnimation {
         max-width: 650px;
+
+        h3 {
+            font-size: 9px;
+        }
+
+        .cycle3 {
+            margin-top: -40px;
+        }
+
+        .donationLogo {
+            left: -30%;
+            > div:nth-child(1) {
+                width: 40%;
+                top: -5px;
+                right: -60px;
+                text-align: left;
+            }
+        }
     }
+
     .w25 {
         width: 40%;
     }
@@ -1532,14 +1473,13 @@ $vh: var(--vh);
     .w40 {
         width: 65%;
     }
+
     .w55 {
         width: 80%;
     }
+
     .donationButton {
         margin-bottom: 10px;
-    }
-    .container {
-        text-align: center;
     }
 
     .targetTwo {
@@ -1596,28 +1536,14 @@ $vh: var(--vh);
         }
     }
 
-    .donationCycleItems {
-        padding: 10px 5px;
-    }
-
     .userDonation {
         img {
             @include imgProperties(100px);
         }
     }
 
-    .contentAnimation {
-        h3 {
-            font-size: 9px;
-        }
-    }
-
     .gameStepTwoWrapper {
         @include gameContentPadding(50px 0);
-    }
-
-    .paddingSides {
-        padding: 0px 0px !important;
     }
 
     .percentageWrapper {
@@ -1626,26 +1552,21 @@ $vh: var(--vh);
         }
     }
 
-    .donations {
-        width: 80px;
+    .friendsTop,
+    .friendsBottom {
+        width: 50%;
+        min-height: 60px;
+        svg {
+            @include imgProperties(60px);
+        }
     }
 
     .friendsTop {
-        width: 50%;
         margin-top: -80px;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
-        }
     }
 
     .friendsBottom {
-        width: 50%;
         margin-top: -40px;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
-        }
     }
 }
 
@@ -1653,18 +1574,22 @@ $vh: var(--vh);
     .coinTwo {
         top: 300px;
     }
-    .cycle3 {
-        margin-top: -80px !important;
-    }
-    .donationLogo {
-        > div:nth-child(1) {
-            width: 55% !important;
-            top: -25px !important;
-        }
-    }
+
     .contentAnimation {
         max-width: 600px;
+
+        .cycle3 {
+            margin-top: -80px;
+        }
+
+        .donationLogo {
+            > div:nth-child(1) {
+                width: 55%;
+                top: -25px;
+            }
+        }
     }
+
     .w25 {
         width: 50%;
     }
@@ -1672,15 +1597,11 @@ $vh: var(--vh);
     .w40 {
         width: 75%;
     }
+
     .w55 {
         width: 90%;
     }
-    .paddingSides {
-        padding: 0px 0px !important;
-    }
-    .container {
-        text-align: center;
-    }
+
     .gameStepTwo {
         width: 35%;
         img {
@@ -1712,10 +1633,6 @@ $vh: var(--vh);
         .avatarInner {
             margin-top: 60px;
         }
-    }
-
-    .donationCycleItems {
-        padding: 10px 5px;
     }
 
     .userDonation {
@@ -1738,10 +1655,6 @@ $vh: var(--vh);
         }
     }
 
-    .donations {
-        width: 80px;
-    }
-
     .friendsBottom {
         width: 95%;
     }
@@ -1755,18 +1668,22 @@ $vh: var(--vh);
     .coinTwo {
         top: 300px;
     }
-    .cycle3 {
-        margin-top: -80px !important;
-    }
-    .donationLogo {
-        > div:nth-child(1) {
-            width: 65% !important;
-            top: -25px !important;
-        }
-    }
+
     .contentAnimation {
         max-width: 700px;
+
+        .cycle3 {
+            margin-top: -80px;
+        }
+
+        .donationLogo {
+            > div:nth-child(1) {
+                width: 65%;
+                top: -25px;
+            }
+        }
     }
+
     .w25 {
         width: 40%;
     }
@@ -1774,14 +1691,9 @@ $vh: var(--vh);
     .w40 {
         width: 65%;
     }
+
     .w55 {
         width: 75%;
-    }
-    .paddingSides {
-        padding: 0px 0px !important;
-    }
-    .container {
-        text-align: center;
     }
 
     .gameStepTwo {
@@ -1818,10 +1730,6 @@ $vh: var(--vh);
         }
     }
 
-    .donationCycleItems {
-        padding: 10px 5px;
-    }
-
     .userDonation {
         img {
             @include imgProperties(100px);
@@ -1840,10 +1748,6 @@ $vh: var(--vh);
         svg {
             @include imgProperties(165px);
         }
-    }
-
-    .donations {
-        width: 80px;
     }
 
     .friendsBottom {
@@ -1861,14 +1765,17 @@ $vh: var(--vh);
         width: 40px;
         height: 40px;
     }
-    .donationLogo {
-        > div:nth-child(1) {
-            width: 50% !important;
-        }
-    }
+
     .contentAnimation {
         max-width: 700px;
+
+        .donationLogo {
+            > div:nth-child(1) {
+                width: 50%;
+            }
+        }
     }
+
     .w25 {
         width: 40%;
     }
@@ -1876,14 +1783,9 @@ $vh: var(--vh);
     .w40 {
         width: 65%;
     }
+
     .w55 {
         width: 75%;
-    }
-    .paddingSides {
-        padding: 0px 0px !important;
-    }
-    .container {
-        text-align: center;
     }
 
     .gameStepTwo {
@@ -1919,10 +1821,6 @@ $vh: var(--vh);
         }
     }
 
-    .donationCycleItems {
-        padding: 10px 5px;
-    }
-
     .userDonation {
         img {
             @include imgProperties(100px);
@@ -1943,10 +1841,6 @@ $vh: var(--vh);
         }
     }
 
-    .donations {
-        width: 80px;
-    }
-
     .friendsBottom {
         width: 85%;
     }
@@ -1961,9 +1855,11 @@ $vh: var(--vh);
         top: 300px;
     }
 
-    .donationLogo {
-        > div:nth-child(1) {
-            width: 50% !important;
+    .contentAnimation {
+        .donationLogo {
+            > div:nth-child(1) {
+                width: 50%;
+            }
         }
     }
 
@@ -1980,19 +1876,10 @@ $vh: var(--vh);
         margin: 10px auto;
     }
 
-    .avatarInner {
-        img {
-            @include imgProperties(100px);
-        }
-    }
-
-    .donations {
-        width: 150px;
-    }
-
     .gameStepThree {
         max-width: 1170px;
     }
+
     .friendsBottom {
         width: 80%;
     }
@@ -2003,23 +1890,16 @@ $vh: var(--vh);
 }
 
 @include media(">=1400px", "<1500px") {
-    .cycle3 {
-        margin-top: -75px !important;
-    }
-    .donationLogo {
-        > div:nth-child(1) {
-            width: 80% !important;
-            top: -25px !important;
+    .contentAnimation {
+        .cycle3 {
+            margin-top: -75px;
         }
-    }
-    .avatarInner {
-        img {
-            @include imgProperties(100px);
+        .donationLogo {
+            > div:nth-child(1) {
+                width: 80%;
+                top: -25px;
+            }
         }
-    }
-
-    .donations {
-        width: 150px;
     }
 
     .gameStepThree {
@@ -2036,17 +1916,15 @@ $vh: var(--vh);
 }
 
 @include media(">=1500px", "<1600px") {
-    .cycle3 {
-        margin-top: -75px !important;
-    }
-    .donationLogo {
-        > div:nth-child(1) {
-            top: -25px !important;
+    .contentAnimation {
+        .cycle3 {
+            margin-top: -75px;
         }
-    }
-    .avatarInner {
-        img {
-            @include imgProperties(100px);
+
+        .donationLogo {
+            > div:nth-child(1) {
+                top: -25px;
+            }
         }
     }
 
@@ -2064,12 +1942,6 @@ $vh: var(--vh);
 }
 
 @include media(">=1600px", "<1700px") {
-    .avatarInner {
-        img {
-            @include imgProperties(100px);
-        }
-    }
-
     .gameStepThree {
         max-width: 1400px;
     }
@@ -2080,21 +1952,9 @@ $vh: var(--vh);
     .friendsBottom {
         width: 65%;
     }
-    .friendsTop {
-        width: 65%;
-    }
-
-    .friendsBottom {
-        width: 60%;
-    }
 }
 
 @include media(">=1700px", "<1800px") {
-    .percentageWrapper {
-        svg {
-            @include imgProperties(165px);
-        }
-    }
     .animationGrid {
         width: 70%;
     }
@@ -2104,14 +1964,5 @@ $vh: var(--vh);
 
     .friendsBottom {
         width: 60%;
-    }
-}
-
-@include media(">=1800px", "<1900px") {
-    .percentageWrapper {
-        svg {
-            @include imgProperties(165px);
-            cursor: pointer;
-        }
     }
 }

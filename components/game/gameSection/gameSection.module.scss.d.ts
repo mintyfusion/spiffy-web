@@ -26,7 +26,6 @@ export type Styles = {
   "card": string;
   "close": string;
   "coin": string;
-  "coinAnimation": string;
   "coinDefault": string;
   "coinRef": string;
   "coinTwo": string;
@@ -63,11 +62,9 @@ export type Styles = {
   "donationButton": string;
   "donationCycle": string;
   "donationCycleItems": string;
-  "donationDesktop": string;
   "donationImage": string;
   "donationInner": string;
   "donationLogo": string;
-  "donationMobile": string;
   "donations": string;
   "donationSections": string;
   "example": string;
