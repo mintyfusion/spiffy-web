@@ -532,7 +532,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const donation = React.useCallback((style: string, color: string) => {
         if (donationAmount !== "") {
             return <>
-                <Avatar color={color} width={56} height={63} />
+                <Avatar color={color} size={56} />
                 <span className={styles.donationAmount}>
                     <span className={`${style} ${styles.donationAmount}`}>
                         {donationCalulation(friendsFormula)}
@@ -714,7 +714,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             <Row className={rowHBetween}>
                                                 <Col className={`${horizontalAlign} ${styles.heigth120}`}>
                                                     <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1">
-                                                        <Avatar color={AvatarType.Green} width={56} height={63} />
+                                                        <Avatar color={AvatarType.Green} size={56} />
                                                         <span className={styles.donationAmount}>
                                                             {donationCalulation(friendsFormula)}
                                                         </span>

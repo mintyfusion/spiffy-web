@@ -22,7 +22,7 @@ const Avatar = ({ color, ...props }: IAvatarProps) => {
         }
     }, [color]);
 
-    return <svg {...props} viewBox="0 0 145 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return <svg width={size} height={size} viewBox="0 0 145 171" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="53.7184" y1="20.8525" x2="53.7184" y2="36.6808" stroke="#674806" strokeWidth="2.37423" />
         <circle cx="54.0502" cy="11.5541" r="11.2787" fill={avatarColor} />
         <line x1="91.1793" y1="20.8516" x2="91.1793" y2="36.6798" stroke="#674806" strokeWidth="2.37423" />
@@ -41,6 +41,5 @@ export default React.memo(Avatar);
 
 const size = 148;
 Avatar.defaultProps = {
-    width: size,
-    height: size,
+    size: size,
 };

@@ -113,8 +113,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 <div key={i} style={style}>
                     <Avatar
                         color={getRandomAvatars()}
-                        width={size}
-                        height={size}
+                        size={size}
                     />
                 </div>
             );
@@ -194,7 +193,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                                 <div className={`${rowHBetween} w-100`}>
                                     {props.friends.slice(0, sliceTwo)
                                         .map((avatar, index) =>
-                                            <Avatar color={avatar.id} key={index} width={87} height={87} />)}
+                                            <Avatar color={avatar.id} key={index} size={87} />)}
                                 </div>
                             </Row>
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
@@ -204,7 +203,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                                 <div className={`${rowHBetween} w-100`}>
                                     {props.friends.slice(sliceTwo, sliceFour)
                                         .map((avatar, index) =>
-                                            <Avatar color={avatar.id} key={index} width={87} height={87} />)}
+                                            <Avatar color={avatar.id} key={index} size={87} />)}
                                 </div>
                             </Row>
                         </div>
