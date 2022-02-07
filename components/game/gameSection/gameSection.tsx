@@ -60,6 +60,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = UseBoolean(false);
     const [expanded, { toggle: navToggle }] = UseBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
+    const isMD = useBreakpoint(Breakpoints.MD);
 
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
     const [avatarStyleGUID, setAvatarStyleGUID] = React.useState("0");
@@ -122,124 +123,111 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [donationAmount]);
 
+
+    const styleHandler = (refrence: React.MutableRefObject<HTMLDivElement>) => {
+        if (refrence.current) {
+            const mobileAvatar = 90;
+            const desktopAvatar = 160;
+            const bounds = refrence.current.getBoundingClientRect();
+            const avatarSize = isMD ? mobileAvatar : desktopAvatar;
+            const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
+            const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
+            const space = 10;
+            const left1 = Math.abs(cardMidPointX - avatarSize);
+            const left2 = Math.abs(cardMidPointX + space);
+            const top1 = Math.abs(cardMidPointY - avatarSize - space) + fullscreen.current.scrollTop;
+            const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollTop;
+
+            return { left1, left2, top1, top2 };
+        }
+    };
+
     /**
      * get styles of avatars in first section.
      */
     const getStyles = React.useCallback(() => {
-        if (start.current) {
-            const mobile = 768;
-            const mobileAvatar = 90;
-            const desktopAvatar = 160;
-            const width = window.innerWidth;
-            const bounds = start.current.getBoundingClientRect();
-            const avatarSize = width < mobile ? mobileAvatar : desktopAvatar;
-            const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
-            const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
-            const space = 10;
-            const left1 = Math.abs(cardMidPointX - avatarSize - space);
-            const left2 = Math.abs(cardMidPointX + space);
-            const top1 = Math.abs(cardMidPointY - avatarSize + space) + fullscreen.current.scrollTop;
-            const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollLeft;
-            const styles = {} as Record<AvatarType, CSSProperties>;
+        const styles = {} as Record<AvatarType, CSSProperties>;
 
-            Object.entries(AvatarType).forEach(([, value]) => {
-                switch (value) {
-                    case AvatarType.Green:
-                        styles[value] = {
-                            left: left1,
-                            top: top1,
-                            opacity: "1",
-                            transition: "1s"
-                        };
-                        break;
-                    case AvatarType.Red:
-                        styles[value] = {
-                            left: left2,
-                            top: top1,
-                            opacity: "1",
-                            transition: "1s"
-                        };
-                        break;
-                    case AvatarType.Yellow:
-                        styles[value] = {
-                            left: left1,
-                            top: top2,
-                            opacity: "1",
-                            transition: "1s"
-                        };
-                        break;
-                    case AvatarType.Purple:
-                    default:
-                        styles[value] = {
-                            left: left2,
-                            top: top2,
-                            opacity: "1",
-                            transition: "1s"
-                        };
-                        break;
-                }
-            });
+        Object.entries(AvatarType).forEach(([, value]) => {
+            switch (value) {
+                case AvatarType.Green:
+                    styles[value] = {
+                        left: styleHandler(start).left1,
+                        top: styleHandler(start).top1,
+                        opacity: "1",
+                        transition: "1s"
+                    };
+                    break;
+                case AvatarType.Red:
+                    styles[value] = {
+                        left: styleHandler(start).left2,
+                        top: styleHandler(start).top1,
+                        opacity: "1",
+                        transition: "1s"
+                    };
+                    break;
+                case AvatarType.Yellow:
+                    styles[value] = {
+                        left: styleHandler(start).left1,
+                        top: styleHandler(start).top2,
+                        opacity: "1",
+                        transition: "1s"
+                    };
+                    break;
+                case AvatarType.Purple:
+                default:
+                    styles[value] = {
+                        left: styleHandler(start).left2,
+                        top: styleHandler(start).top2,
+                        opacity: "1",
+                        transition: "1s"
+                    };
+                    break;
+            }
+        });
 
-            return styles;
-        }
-
-        return null;
+        return styles;
     }, [isLG]);
 
     /**
      * get styles of fiends avatars in third section.
      */
     const getFriendsStyle = React.useCallback(() => {
-        if (friendsRef.current) {
-            const bounds = friendsRef.current.getBoundingClientRect();
-            const mobile = 1000;
-            const mobileAvatar = 90;
-            const desktopAvatar = 160;
-            const avatarSize = window.innerWidth > mobile ? desktopAvatar : mobileAvatar;
-            const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
-            const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
-            const space = 20;
-            const left1 = Math.abs(cardMidPointX - avatarSize);
-            const left2 = Math.abs(cardMidPointX + space);
-            const top1 = Math.abs(cardMidPointY - avatarSize - space) + fullscreen.current.scrollTop;
-            const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollTop;
+        const styles = {} as Record<AvatarType, CSSProperties>;
+        const keyTwo = 2;
+        const keyThree = 3;
 
-            const styles = {} as Record<AvatarType, CSSProperties>;
-            const keyTwo = 2;
-            const keyThree = 3;
+        friendsAvatars.map((value, index) => {
+            switch (index) {
+                case 0:
+                    styles[value.id] = {
+                        left: styleHandler(friendsRef).left1,
+                        top: styleHandler(friendsRef).top1,
+                    };
+                    break;
+                case 1:
+                    styles[value.id] = {
+                        left: styleHandler(friendsRef).left2,
+                        top: styleHandler(friendsRef).top1,
+                    };
+                    break;
+                case keyTwo:
+                    styles[value.id] = {
+                        left: styleHandler(friendsRef).left1,
+                        top: styleHandler(friendsRef).top2,
+                    };
+                    break;
+                case keyThree:
+                default:
+                    styles[value.id] = {
+                        left: styleHandler(friendsRef).left2,
+                        top: styleHandler(friendsRef).top2,
+                    };
+                    break;
+            }
+        });
 
-            friendsAvatars.map((value, index) => {
-                switch (index) {
-                    case 0:
-                        styles[value.id] = {
-                            left: left1,
-                            top: top1,
-                        };
-                        break;
-                    case 1:
-                        styles[value.id] = {
-                            left: left2,
-                            top: top1,
-                        };
-                        break;
-                    case keyTwo:
-                        styles[value.id] = {
-                            left: left1,
-                            top: top2,
-                        };
-                        break;
-                    case keyThree:
-                    default:
-                        styles[value.id] = {
-                            left: left2,
-                            top: top2,
-                        };
-                        break;
-                }
-            });
-
-            return styles;
-        }
+        return styles;
     }, [friendsAvatars]);
 
     /**
