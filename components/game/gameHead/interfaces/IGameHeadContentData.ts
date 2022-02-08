@@ -1,5 +1,5 @@
 import IContentInfo from "types/IContentnfo";
 
-export default interface IBannerContentData {
+export default interface IGameHeadBannerContentData {
     content: IContentInfo;
 }

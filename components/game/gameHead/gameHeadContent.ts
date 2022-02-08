@@ -1,6 +1,6 @@
-import IBannerContentData from "components/game/gameHead/interfaces/IGameHeadContentData";
+import IGameHeadBannerContentData from "components/game/gameHead/interfaces/IGameHeadContentData";
 
-const gameHeadContent: IBannerContentData = {
+const gameHeadContent: IGameHeadBannerContentData = {
     content: {
         description: "Learn more about spiffy.",
         title: "Spiffy Game",
