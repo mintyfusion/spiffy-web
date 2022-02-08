@@ -127,7 +127,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         if (selectedKey === "100") {
             props.signupAnimation();
         }
-    }, [selectedKey, props.signupAnimation]);
+    }, [selectedKey]);
 
     /**
      * Donation percentage rendering.
@@ -161,7 +161,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <Avatar color={avatar} key={index} size={87} />)}
             </div>
         </Row>;
-    }, [props.friends, friendsSliceTwo, friendsSliceFour]);
+    }, [props.friends]);
 
     return (
         <div className={styles.gameStepFive}>

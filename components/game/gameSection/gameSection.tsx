@@ -101,6 +101,16 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         seletedAvatar && avatarObj !== seletedAvatar
     ), [seletedAvatar]);
 
+    const scrollHandler = React.useCallback((value: string) => {
+        scroller.scrollTo(value, {
+            duration: 700,
+            smooth: true,
+            containerId,
+            ignoreCancelEvents: true,
+            offset: -20,
+        });
+    }, []);
+
     /**
      * UseEffect to check all four friends are added.
      */
@@ -118,17 +128,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return () => {
             clearTimeout(timer);
         };
-    }, [addedFriends, friendsAvatars, seletedAvatar]);
-
-    const scrollHandler = React.useCallback((value: string) => {
-        scroller.scrollTo(value, {
-            duration: 700,
-            smooth: true,
-            containerId,
-            ignoreCancelEvents: true,
-            offset: -20,
-        });
-    }, []);
+    }, [addedFriends, friendsAvatars, seletedAvatar, scrollHandler]);
 
     /**
      * Reset the donation cycle animation.
@@ -142,7 +142,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 clearTimeout(animationTimeout);
             }, avatarTimeout);
         }
-    }, [donationAmount]);
+    }, [donationAmount, animationFalse, animationTrue]);
 
     const avatarStyleHandler = React.useCallback((refrence: React.MutableRefObject<HTMLDivElement>) => {
         if (refrence.current) {
@@ -203,7 +203,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         });
 
         return styles;
-    }, [isLG, avatarStyleHandler]);
+    }, [avatarStyleHandler]);
 
     /**
      * Get styles of fiends avatars in third section.
@@ -332,7 +332,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
             clearTimeout(t);
         }, phoneKeyboardTimeout);
-    }, [setFriendsPositions, seletedAvatar, avatarName, step]);
+    }, [setFriendsPositions, seletedAvatar, avatarName, step, scrollHandler]);
 
     /**
      * First section avatars style.
@@ -409,7 +409,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
             }
         }
-    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions]);
+    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, isLG, scrollHandler]);
 
     /**
      * Resize function
@@ -538,7 +538,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 </span>
             </>;
         }
-    }, [friendsFormula, donationAmount]);
+    }, [donationAmount, donationAmountHandler]);
 
     /**
      * Donation amount rendering.
@@ -581,7 +581,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             {arrFriends.map((friend, friendKey) =>
                 <Avatar color={friend} key={friendKey} />)}
         </div>;
-    }, [addedFriends, friendsSliceTwo, friendsSliceFour]);
+    }, [addedFriends]);
 
     const classes = React.useMemo(() => {
         const className = `${styles.avatar} position-absolute text-center`;
@@ -596,7 +596,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             default:
                 return className;
         }
-    }, [StepTypes, step]);
+    }, [step]);
 
     return (
         <div className={`${colCenter} ${styles.wrapper}`}>
