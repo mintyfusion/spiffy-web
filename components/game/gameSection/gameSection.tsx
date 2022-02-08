@@ -466,18 +466,21 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 startingLeft = fourtyFive;
             }
 
+            const leftStyle = bounds.x + coin.scrollLeft - startingLeft;
+            const topStyle = bounds.y + coin.scrollTop
+
             switch (stepIndex) {
                 case 0:
                     coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft - startingLeft,
-                        top: bounds.y + coin.scrollTop,
+                        left: leftStyle,
+                        top: topStyle,
                         transition: "2s"
                     };
                     break;
                 case eleven:
                     coinStyles.current = {
-                        left: bounds.x + coin.scrollLeft - startingLeft,
-                        top: bounds.y + coin.scrollTop,
+                        left: leftStyle,
+                        top: topStyle,
                         transition: "2s",
                         opacity: "0"
                     };
