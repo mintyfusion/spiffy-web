@@ -5,4 +5,5 @@ enum AvatarType {
     Yellow = "Yellow",
     Orange = "Orange",
 }
+
 export default AvatarType;

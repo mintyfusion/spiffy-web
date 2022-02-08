@@ -26,4 +26,5 @@ const percentages: Record<string, IGameAvatarDonation> = {
         amount: "13,990",
     },
 };
+
 export default percentages;

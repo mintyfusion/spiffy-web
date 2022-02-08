@@ -6,10 +6,7 @@ import gameheadContentData from "components/game/gameHead/gameHeadContent";
 import styles from "components/game/gameHead/gameHead.module.scss";
 
 const GameHead = (): JSX.Element => {
-    const {
-        title,
-        description
-    } = gameheadContentData.content;
+    const { title, description } = gameheadContentData.content;
 
     return <div className={`${styles.gameHead}`}>
         <Col sm="6">
@@ -18,4 +15,5 @@ const GameHead = (): JSX.Element => {
         </Col>
     </div>;
 };
+
 export default GameHead;

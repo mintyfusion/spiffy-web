@@ -1,9 +1,10 @@
 enum StepTypes {
-    One = "1",
-    Two = "2",
-    Three = "3",
-    Four = "4",
-    Five = "5",
-    Six = "6",
+    First = "1",
+    Second = "2",
+    Third = "3",
+    Fourth = "4",
+    Fifth = "5",
+    Sixth = "6",
 }
+
 export default StepTypes;

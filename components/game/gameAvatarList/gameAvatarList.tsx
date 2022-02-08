@@ -24,9 +24,9 @@ const five = 5;
 // No need to understand the number, array itself tells the meaning.
 const sizes = [20, 22, 25, 27, 30, 33, 35, 37, 40]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const sizesMobile = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // eslint-disable-line @typescript-eslint/no-magic-numbers
-const sliceTwo = 2;
-const sliceFour = 4;
 const mobile = 770;
+const friendsSliceTwo = 2;
+const friendsSliceFour = 4;
 
 const avatars = Object.values(AvatarType);
 
@@ -104,7 +104,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 marginBottom: getRandomMargin(),
                 marginLeft: getRandomMargin(),
                 alignSelf: getRandomAlignSelf(),
-                transition: ".5s",
+                transition: ".3s",
             };
 
             arr.push(
@@ -141,10 +141,27 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
             ${styles.donationButton} 
             ${selectedKey === key ? styles.active : styles.inactive}
              w-100 px-1 py-3`}>
-            {key}
+            {key}%
         </PrimaryButton>
     )
     ), [handleBtnClick, selectedKey]);
+
+    const addedFriendsRender = React.useCallback((isTop: boolean) => {
+        const arrFriends = isTop
+            ? props.friends.slice(0, friendsSliceTwo)
+            : props.friends.slice(friendsSliceTwo, friendsSliceFour);
+
+        const style = isTop
+            ? styles.friendsTop
+            : styles.friendsBottom;
+
+        return <Row className={`${style} w-100`}>
+            <div className={`${rowHBetween} w-100`}>
+                {arrFriends.map((avatar, index) =>
+                    <Avatar color={avatar.id} key={index} size={87} />)}
+            </div>
+        </Row>;
+    }, [props.friends, friendsSliceTwo, friendsSliceFour]);
 
     return (
         <div className={styles.gameStepFive}>
@@ -165,13 +182,13 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
                     <Navbar.Collapse>
                         <Nav className={`me-auto ${!isLG && "gap-4"} w-100`}>
-                            {donationPercentage}
+                            {donationPercentage}%
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
 
                 <div className={`${styles.donationInner} d-flex w-100 position-relative h-100`}>
-                    <div className="d-flex flex-wrap h-100" style={{ flex: 1 }}>
+                    <div className={`${styles.flexOne} d-flex flex-wrap h-100`}>
                         {avatars}
                     </div>
                     <div className={`${styles.flexOne} ${styles.friendsMain} text-center`}>
@@ -180,27 +197,15 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                                 <span key={percentages[selectedKey].amount}>${percentages[selectedKey].amount}
                                 </span>
                             </h2>
-                            <Row className={`${styles.friendsTop} w-100`}>
-                                <div className={`${rowHBetween} w-100`}>
-                                    {props.friends.slice(0, sliceTwo)
-                                        .map((avatar, index) =>
-                                            <Avatar color={avatar.id} key={index} size={87} />)}
-                                </div>
-                            </Row>
+                            {addedFriendsRender(true)}
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
                                 {props.seletedAvatar && <Avatar color={props.seletedAvatar} />}
                             </div>
-                            <Row className={`${styles.friendsBottom} ${rowHBetween}  w-100`}>
-                                <div className={`${rowHBetween} w-100`}>
-                                    {props.friends.slice(sliceTwo, sliceFour)
-                                        .map((avatar, index) =>
-                                            <Avatar color={avatar.id} key={index} size={87} />)}
-                                </div>
-                            </Row>
+                            {addedFriendsRender(false)}
                         </div>
                         <h6>{props.name}</h6>
                     </div>
-                    <div className="d-flex flex-wrap h-100 flex-row-reverse" style={{ flex: 1 }}>
+                    <div className={`${styles.flexOne} d-flex flex-wrap h-100 flex-row-reverse`}>
                         {avatars}
                     </div>
                 </div>
