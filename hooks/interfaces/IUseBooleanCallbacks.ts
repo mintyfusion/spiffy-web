@@ -10,9 +10,8 @@ export default interface IUseBooleanCallbacks {
     /**
      * Set the value to false. Always has the same identity.
      */
-
     setFalse(): void;
-    
+
     /**
      * Toggle the value. Always has the same identity.
      */
