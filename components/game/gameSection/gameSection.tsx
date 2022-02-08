@@ -79,6 +79,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = useBoolean(false);
     const [expanded, { toggle: navToggle }] = useBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
+    const isMD = useBreakpoint(Breakpoints.MD);
 
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
     const [avatarStyleGUID, setAvatarStyleGUID] = React.useState("0");
@@ -374,7 +375,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
 
             case StepTypes.Second: {
-                isLG && setViewportHeight();
+                isMD && setViewportHeight();
                 const boundsFirst = target.current?.getBoundingClientRect();
                 if (boundsFirst) {
                     avatarStyles.current = {
@@ -409,7 +410,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
             }
         }
-    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, isLG, scrollHandler]);
+    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, scrollHandler]);
 
     /**
      * Resize function
