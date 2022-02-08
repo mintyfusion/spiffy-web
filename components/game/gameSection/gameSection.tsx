@@ -326,6 +326,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     }
                 };
                 setAvatarStyleGUID(getUniqueId());
+                /** SetStep to animate scroll to next section */
                 setStep(StepTypes.Third);
                 setFriendsPositions();
                 scrollHandler(StepTypes.Third);
