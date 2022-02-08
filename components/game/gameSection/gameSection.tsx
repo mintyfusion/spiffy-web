@@ -9,11 +9,9 @@ import React, { CSSProperties } from "react";
 import Avatar from "components/game/avatar/avatar";
 import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import Breakpoints from "common/style/breakpoints";
-import data from "components/game/gameSection/gameSectionAvatars";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
-import IAvatar from "components/game/gameSection/interfaces/IAvatar";
 import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
@@ -64,6 +62,7 @@ const threeHundred = 300;
 const fourty = 40;
 const fourtyFive = 45;
 const twelveHundred = 1300;
+const twenty = 20;
 
 const avatars = Object.values(AvatarType);
 /**
@@ -72,7 +71,7 @@ const avatars = Object.values(AvatarType);
 const step1Avatars = avatars.filter((avatar) => avatar !== AvatarType.Orange);
 
 const GameSection = (props: IGameSectionProps): JSX.Element => {
-    const [addedFriends, setAddedFriends] = React.useState<IAvatar[]>([]);
+    const [addedFriends, setAddedFriends] = React.useState<AvatarType[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
     const [step, setStep] = React.useState<StepTypes>(StepTypes.First);
     const [avatarName, setAvatarName] = React.useState<string>("");
@@ -98,8 +97,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     /**
      * Filter avatars array with user selected avatar for friends.
      */
-    const friendsAvatars = React.useMemo(() => data.filter((avatarObj) =>
-        seletedAvatar && avatarObj.id !== seletedAvatar
+    const friendsAvatars = React.useMemo(() => avatars.filter((avatarObj) =>
+        seletedAvatar && avatarObj !== seletedAvatar
     ), [seletedAvatar]);
 
     /**
@@ -217,26 +216,26 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         friendsAvatars.map((avatar, index) => {
             switch (index) {
                 case 0:
-                    styles[avatar.id] = {
+                    styles[avatar] = {
                         left: avatarStyleHandler(friendsRef).left1,
                         top: avatarStyleHandler(friendsRef).top1,
                     };
                     break;
                 case 1:
-                    styles[avatar.id] = {
+                    styles[avatar] = {
                         left: avatarStyleHandler(friendsRef).left2,
                         top: avatarStyleHandler(friendsRef).top1,
                     };
                     break;
                 case keyTwo:
-                    styles[avatar.id] = {
+                    styles[avatar] = {
                         left: avatarStyleHandler(friendsRef).left1,
                         top: avatarStyleHandler(friendsRef).top2,
                     };
                     break;
                 case keyThree:
                 default:
-                    styles[avatar.id] = {
+                    styles[avatar] = {
                         left: avatarStyleHandler(friendsRef).left2,
                         top: avatarStyleHandler(friendsRef).top2,
                     };
@@ -272,15 +271,15 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * Filter selected friends from avatars.
      * @param friendAvatar user selected friends.
      */
-    const selectedFriendsHandler = React.useCallback((friendAvatar: IAvatar) => {
+    const selectedFriendsHandler = React.useCallback((friendAvatar: AvatarType) => {
         if (stepThree.current) {
-            const selectedFriends: IAvatar[] = [];
-            data.filter((avatar) => avatar.id !== seletedAvatar).forEach((avatar) => {
-                if (avatar.id == friendAvatar.id) {
+            const selectedFriends: AvatarType[] = [];
+            avatars.filter((avatar) => avatar !== seletedAvatar).forEach((avatar) => {
+                if (avatar == friendAvatar) {
                     selectedFriends.push(avatar);
                 }
             });
-            setAddedFriends((currentFriends: IAvatar[]) => [...currentFriends, ...selectedFriends]);
+            setAddedFriends((currentFriends: AvatarType[]) => [...currentFriends, ...selectedFriends]);
         }
     }, [seletedAvatar]);
 
@@ -470,7 +469,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         left: bounds.x + coin.scrollLeft - startingLeft,
                         top: bounds.y + coin.scrollTop,
                         transition: "2s"
-                    };;
+                    };
                     break;
                 case eleven:
                     coinStyles.current = {
@@ -478,12 +477,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         top: bounds.y + coin.scrollTop,
                         transition: "2s",
                         opacity: "0"
-                    };;
+                    };
                     break;
                 default:
                     coinStyles.current = {
                         left: bounds.x + coin.scrollLeft - left,
-                        top: bounds.y + coin.scrollTop - 20,
+                        top: bounds.y + coin.scrollTop - twenty,
                         transition: "2s",
                     };
             }
@@ -580,7 +579,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
         return <div className={`${style} ${rowHBetween}`}>
             {arrFriends.map((friend, friendKey) =>
-                <Avatar color={friend.id} key={friendKey} />)}
+                <Avatar color={friend} key={friendKey} />)}
         </div>;
     }, [addedFriends, friendsSliceTwo, friendsSliceFour]);
 
@@ -668,21 +667,21 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     <h2 className={styles.avatarHeading}>Add four friends</h2>
                                     {step === StepTypes.Third
                                         ? <div className={`${styles.percentageWrapper} ${rowVCenter} flex-wrap`}>
-                                            {friendsAvatars.map((avatar: IAvatar) => {
-                                                if (addedFriends.find(({ id }) => avatar.id === id)) {
+                                            {friendsAvatars.map((avatar: AvatarType) => {
+                                                if (addedFriends.find((addedAvatar) => addedAvatar === avatar)) {
                                                     return null;
                                                 }
 
                                                 return (
-                                                    <React.Fragment key={avatar.id}>
+                                                    <React.Fragment key={avatar}>
                                                         <div
                                                             className="position-absolute"
                                                             style={
                                                                 friendsStyle.current
-                                                                && friendsStyle.current[avatar.id]
+                                                                && friendsStyle.current[avatar]
                                                             }
                                                             onClick={() => selectedFriendsHandler(avatar)}>
-                                                            <Avatar color={avatar.id} />
+                                                            <Avatar color={avatar} />
                                                         </div>
                                                     </React.Fragment>
                                                 );
@@ -742,7 +741,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             </div>
                                             <Row className={rowHBetween}>
                                                 <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                    <div className={`${styles.cycle} ${styles.cycle1} ${styles.donationImage} position-relative`} data-index="1">
+                                                    <div className={`${styles.cycle} ${colCenter} ${styles.cycle1} ${styles.donationImage} position-relative`} data-index="1">
                                                         <Avatar color={AvatarType.Green} size={56} />
                                                         <span
                                                             className={
@@ -754,7 +753,11 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className={`${styles.donationRow1} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
+                                            <Row
+                                                className={`
+                                                ${styles.donationRow1}
+                                                ${styles.marginTopMinusFifty}
+                                                ${rowHEnd}`}>
                                                 <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2">
                                                     {donation(styles.donationAmount2, AvatarType.Red)}
                                                 </div>

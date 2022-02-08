@@ -158,7 +158,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         return <Row className={`${style} w-100`}>
             <div className={`${rowHBetween} w-100`}>
                 {arrFriends.map((avatar, index) =>
-                    <Avatar color={avatar.id} key={index} size={87} />)}
+                    <Avatar color={avatar} key={index} size={87} />)}
             </div>
         </Row>;
     }, [props.friends, friendsSliceTwo, friendsSliceFour]);
@@ -182,7 +182,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
                     <Navbar.Collapse>
                         <Nav className={`me-auto ${!isLG && "gap-4"} w-100`}>
-                            {donationPercentage}%
+                            {donationPercentage}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
