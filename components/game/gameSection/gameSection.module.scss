@@ -13,6 +13,12 @@
     padding: $padding;
 }
 
+@mixin animation($name, $time) {
+    animation-name: $name;
+    animation-duration: $time;
+    animation-fill-mode: forwards;
+}
+
 $vh: var(--vh);
 
 .donationRow1 {
@@ -244,15 +250,13 @@ $vh: var(--vh);
         }
     }
     p {
-        animation-name: contetHide;
-        animation-duration: 5s;
+        @include animation(contetHide, 5s);
         animation-fill-mode: forwards;
         color: $yellow-dark;
     }
 
     h3 {
-        animation-name: contentShow;
-        animation-duration: 2s;
+        @include animation(contetHide, 5s);
         opacity: 0;
     }
 
@@ -262,53 +266,29 @@ $vh: var(--vh);
     }
 
     .donationAmount {
-        animation-name: displayAnimation;
-        animation-duration: 1s;
-        animation-delay: 2s;
+        @include animation(displayAnimation, 1s);
         animation-fill-mode: forwards;
         height: 20px;
         overflow: hidden;
         @extend .regular-desktop16-mobile7;
     }
 
-    .donationAmount2 {
-        animation-delay: 4s;
+    $amountDelays: 3s, 4s, 6s, 7s, 8s, 11s, 12s, 14s, 15s, 17s, 18s;
+
+    $cycleDelays: 2s, 3s, 5s, 6s, 7s, 10s, 11s, 13s, 14s, 16s, 17s;
+
+    @each $delay in $amountDelays {
+        $i: index($amountDelays, $delay);
+        .donationAmount#{$i} {
+            animation-delay: $delay;
+        }
     }
 
-    .donationAmount3 {
-        animation-delay: 17s;
-    }
-
-    .donationAmount4 {
-        animation-delay: 5s;
-    }
-
-    .donationAmount5 {
-        animation-delay: 16s;
-    }
-
-    .donationAmount6 {
-        animation-delay: 7s;
-    }
-
-    .donationAmount7 {
-        animation-delay: 15s;
-    }
-
-    .donationAmount8 {
-        animation-delay: 9s;
-    }
-
-    .donationAmount9 {
-        animation-delay: 13s;
-    }
-
-    .donationAmount10 {
-        animation-delay: 10s;
-    }
-
-    .donationAmount11 {
-        animation-delay: 11s;
+    @each $delay in $cycleDelays {
+        $i: index($cycleDelays, $delay);
+        .cycle#{$i} {
+            animation-delay: $delay;
+        }
     }
 
     .cycle {
@@ -319,9 +299,7 @@ $vh: var(--vh);
         padding: 10px;
         border-radius: 50px;
         background-color: $dirty-white;
-        animation-name: opacityAnimation;
-        animation-duration: 0.5s;
-        animation-delay: 2s;
+        @include animation(opacityAnimation, 0.5s);
         animation-fill-mode: forwards;
         visibility: hidden;
         width: 75px;
@@ -333,52 +311,13 @@ $vh: var(--vh);
         }
     }
 
-    .cycle2 {
-        animation-delay: 4s;
-    }
-
-    .cycle4 {
-        animation-delay: 5s;
-    }
-
-    .cycle6 {
-        animation-delay: 7s;
-    }
-
-    .cycle8 {
-        animation-delay: 9s;
-    }
-
-    .cycle10 {
-        animation-delay: 10s;
-    }
-
     .cycle11 {
-        animation-delay: 11s;
-    }
-
-    .cycle9 {
-        animation-delay: 13s;
-    }
-
-    .cycle7 {
-        animation-delay: 15s;
-    }
-
-    .cycle5 {
-        animation-delay: 16s;
-    }
-
-    .cycle3 {
-        animation-delay: 17s;
         margin-top: -100px;
         width: 50%;
         border-radius: 18px;
         padding: 20px;
         span {
-            animation-delay: 17s;
-            animation-name: displayAnimation;
-            animation-duration: 0.5s;
+            @include animation(displayAnimation, 0.5s);
             animation-fill-mode: forwards;
             height: 20px;
             overflow: hidden;
@@ -404,8 +343,7 @@ $vh: var(--vh);
         left: -25%;
 
         > div:nth-child(1) {
-            animation-name: iconAnimation;
-            animation-duration: 1s;
+            @include animation(iconAnimation, 1s);
             animation-delay: 16s;
             animation-fill-mode: forwards;
             opacity: 0;
@@ -483,15 +421,6 @@ $vh: var(--vh);
     h2 {
         margin-top: 40px;
     }
-}
-
-.coin {
-    width: 75px;
-    height: 75px;
-    animation-name: example;
-    animation-duration: 20s;
-    animation-fill-mode: forwards;
-    opacity: 1;
 }
 
 @keyframes opacityAnimation {

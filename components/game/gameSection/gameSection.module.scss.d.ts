@@ -25,7 +25,6 @@ export type Styles = {
   "boldGame67": string;
   "card": string;
   "close": string;
-  "coin": string;
   "coinDefault": string;
   "coinRef": string;
   "coinTwo": string;
@@ -35,6 +34,7 @@ export type Styles = {
   "contetHide": string;
   "customNavbar": string;
   "cycle": string;
+  "cycle1": string;
   "cycle10": string;
   "cycle11": string;
   "cycle2": string;
@@ -48,6 +48,7 @@ export type Styles = {
   "displayAnimation": string;
   "donationActive": string;
   "donationAmount": string;
+  "donationAmount1": string;
   "donationAmount10": string;
   "donationAmount11": string;
   "donationAmount2": string;
@@ -70,7 +71,6 @@ export type Styles = {
   "donationRow3": string;
   "donations": string;
   "donationSections": string;
-  "example": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;

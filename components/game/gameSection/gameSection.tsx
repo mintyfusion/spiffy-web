@@ -33,7 +33,6 @@ const donationValues: string[] = ["5", "10", "15", "25", "50"];
 const friendsTimeout = 2000;
 const avatarTimeout = 1000;
 const boundDivide = 2;
-const friendsLength = 4;
 const containerId = "containerElement";
 const phoneKeyboardTimeout = 500;
 const donationTotalAvatars = 11;
@@ -44,7 +43,6 @@ const spiffyFormula = 10;
 const stepOneTimeout = 500;
 const friendsSliceTwo = 2;
 const friendsSliceFour = 4;
-const avatars = Object.values(AvatarType);
 
 /** Donation Cycle Animation Style */
 const fourHundred = 420;
@@ -67,6 +65,7 @@ const fourty = 40;
 const fourtyFive = 45;
 const twelveHundred = 1300;
 
+const avatars = Object.values(AvatarType);
 /**
  * First section remove orange avatar.
  */
@@ -108,7 +107,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      */
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
-        if (addedFriends.length === friendsLength) {
+        if (seletedAvatar && addedFriends.length === friendsAvatars.length) {
             scrollHandler(StepTypes.Fourth);
             /*eslint-env browser*/
             timer = setTimeout(() => {
@@ -120,7 +119,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return () => {
             clearTimeout(timer);
         };
-    }, [addedFriends]);
+    }, [addedFriends, friendsAvatars, seletedAvatar]);
 
     const scrollHandler = React.useCallback((value: string) => {
         scroller.scrollTo(value, {
@@ -471,7 +470,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         left: bounds.x + coin.scrollLeft - startingLeft,
                         top: bounds.y + coin.scrollTop,
                         transition: "2s"
-                    };
+                    };;
                     break;
                 case eleven:
                     coinStyles.current = {
@@ -479,12 +478,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         top: bounds.y + coin.scrollTop,
                         transition: "2s",
                         opacity: "0"
-                    };
+                    };;
                     break;
                 default:
                     coinStyles.current = {
                         left: bounds.x + coin.scrollLeft - left,
-                        top: bounds.y + coin.scrollTop,
+                        top: bounds.y + coin.scrollTop - 20,
                         transition: "2s",
                     };
             }
@@ -535,10 +534,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         if (donationAmount) {
             return <>
                 <Avatar color={color} size={56} />
-                <span className={styles.donationAmount}>
-                    <span className={`${style} ${styles.donationAmount}`}>
-                        {donationAmountHandler(friendsFormula)}
-                    </span>
+                <span className={`${style} ${styles.donationAmount}`}>
+                    {donationAmountHandler(friendsFormula)}
                 </span>
             </>;
         }
@@ -745,17 +742,19 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             </div>
                                             <Row className={rowHBetween}>
                                                 <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                                                    <div className={`${styles.cycle} ${styles.donationImage} position-relative`} data-index="1">
+                                                    <div className={`${styles.cycle} ${styles.cycle1} ${styles.donationImage} position-relative`} data-index="1">
                                                         <Avatar color={AvatarType.Green} size={56} />
-                                                        <span className={styles.donationAmount}>
+                                                        <span
+                                                            className={
+                                                                `${styles.donationAmount}
+                                                                ${styles.donationAmount1}`
+                                                            }>
                                                             {donationAmountHandler(friendsFormula)}
                                                         </span>
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <Row className={
-                                                `${styles.donationRow1} ${styles.marginTopMinusFifty} ${rowHEnd}`
-                                            }>
+                                            <Row className={`${styles.donationRow1} ${styles.marginTopMinusFifty} ${rowHEnd}`}>
                                                 <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2">
                                                     {donation(styles.donationAmount2, AvatarType.Red)}
                                                 </div>
@@ -767,45 +766,45 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                             We’re totally reliant on these cents to keep us going.
                                                         </span>
                                                     </div>
-                                                    <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11">
+                                                    <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11">
                                                         <Image src="/images/game/donationCycle/spiffy.png" width={155} height={44} />
                                                         {donationAmountHandler(spiffyFormula)}
                                                     </div>
                                                 </div>
 
-                                                <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3">
-                                                    {donation(styles.donationAmount4, AvatarType.Yellow)}
+                                                <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3">
+                                                    {donation(styles.donationAmount3, AvatarType.Yellow)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.donationRow3} ${rowHBetween}`}>
-                                                <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10">
-                                                    {donation(styles.donationAmount5, AvatarType.Green)}
+                                                <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10">
+                                                    {donation(styles.donationAmount10, AvatarType.Green)}
                                                 </div>
-                                                <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4">
-                                                    {donation(styles.donationAmount6, AvatarType.Purple)}
+                                                <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4">
+                                                    {donation(styles.donationAmount4, AvatarType.Purple)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.donationRow2} ${rowHBetween}`}>
-                                                <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9">
-                                                    {donation(styles.donationAmount7, AvatarType.Yellow)}
+                                                <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9">
+                                                    {donation(styles.donationAmount9, AvatarType.Yellow)}
                                                 </div>
-                                                <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5">
-                                                    {donation(styles.donationAmount8, AvatarType.Yellow)}
+                                                <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5">
+                                                    {donation(styles.donationAmount5, AvatarType.Yellow)}
                                                 </div>
                                             </Row>
                                             <Row className={`${styles.donationRow1}
                                                     ${styles.marginBottomMinusFifty} 
                                                     ${rowHBetween}`}>
-                                                <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8">
-                                                    {donation(styles.donationAmount9, AvatarType.Red)}
+                                                <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8">
+                                                    {donation(styles.donationAmount8, AvatarType.Red)}
                                                 </div>
-                                                <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6">
-                                                    {donation(styles.donationAmount10, AvatarType.Red)}
+                                                <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6">
+                                                    {donation(styles.donationAmount6, AvatarType.Red)}
                                                 </div>
                                             </Row>
                                             <Row className={horizontalAlign}>
-                                                <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7">
-                                                    {donation(styles.donationAmount11, AvatarType.Green)}
+                                                <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7">
+                                                    {donation(styles.donationAmount7, AvatarType.Green)}
                                                 </div>
                                             </Row>
                                         </div>
