@@ -272,14 +272,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * Filter selected friends from avatars.
      * @param friendAvatar user selected friends.
      */
-    const selectedFriendsHandler = React.useCallback((friendAvatar: AvatarType) => {
+    const addFriends = React.useCallback((friendAvatar: AvatarType) => {
         if (stepThree.current) {
-            const selectedFriends: AvatarType[] = [];
-            avatars.filter((avatar) => avatar !== seletedAvatar).forEach((avatar) => {
-                if (avatar == friendAvatar) {
-                    selectedFriends.push(avatar);
-                }
-            });
+            const selectedFriends: AvatarType[] = friendsAvatars.filter((avatar) => avatar == friendAvatar);
             setAddedFriends((currentFriends: AvatarType[]) => [...currentFriends, ...selectedFriends]);
         }
     }, [seletedAvatar]);
@@ -574,7 +569,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             </PrimaryButton>
         ), [animationHandler, donationAmount]);
 
-    const addedFriendsRender = React.useCallback((isTop: boolean) => {
+    const renderAddedFriends = React.useCallback((isTop: boolean) => {
         const arrFriends = isTop
             ? addedFriends.slice(0, friendsSliceTwo)
             : addedFriends.slice(friendsSliceTwo, friendsSliceFour);
@@ -657,13 +652,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     <div className={`${styles.gameStepThreeUserColumnInner} w-100`}>
                                         <h2 className={`${styles.avatarHeading} text-center`}>Add four friends</h2>
                                         <Row className={`${horizontalAlign} w-100 m-0`}>
-                                            {addedFriendsRender(true)}
+                                            {renderAddedFriends(true)}
                                         </Row>
                                         <Row className={`${horizontalAlign} w-100 m-0`}>
                                             <div className={styles.targetTwo} ref={stepThree}></div>
                                         </Row>
                                         <Row className={`${horizontalAlign} w-100 m-0`}>
-                                            {addedFriendsRender(false)}
+                                            {renderAddedFriends(false)}
                                         </Row>
 
                                         <h3 className="text-center">{avatarName}</h3>
@@ -686,7 +681,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                                 friendsStyle.current
                                                                 && friendsStyle.current[avatar]
                                                             }
-                                                            onClick={() => selectedFriendsHandler(avatar)}>
+                                                            onClick={() => addFriends(avatar)}>
                                                             <Avatar color={avatar} />
                                                         </div>
                                                     </React.Fragment>

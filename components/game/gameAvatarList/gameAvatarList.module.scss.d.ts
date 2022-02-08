@@ -23,7 +23,6 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
-  "fadeout": string;
   "flexOne": string;
   "friendsBottom": string;
   "friendsMain": string;
@@ -47,6 +46,7 @@ export type Styles = {
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "regularDesktop30Mobile20": string;
+  "scaleOut": string;
   "semiBold90": string;
 };
 

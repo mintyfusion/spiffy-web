@@ -51,12 +51,12 @@
     @extend .regular-desktop30-mobile20;
     color: $yellow;
     span {
-        animation: fadeout ease 0.3s;
+        animation: scaleOut ease 0.3s;
         display: block;
     }
 }
 
-@keyframes fadeout {
+@keyframes scaleOut {
     0% {
         transform: scale(0);
     }
