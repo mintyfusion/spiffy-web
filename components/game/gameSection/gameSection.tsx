@@ -329,6 +329,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 setStep(StepTypes.Third);
                 setFriendsPositions();
                 scrollHandler(StepTypes.Third);
+                clearTimeout(t);
             }
 
             clearTimeout(t);
