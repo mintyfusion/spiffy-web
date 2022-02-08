@@ -523,7 +523,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * Donation cycle calclutions.
      * @param donation selected amount in donation cycle.
      */
-    const donationAmountHandler = React.useCallback((donation: number) => {
+    const getDonationAmout = React.useCallback((donation: number) => {
         const percentage = 100;
         const donationFixed = 2;
         const amount = (donation / percentage * Number(donationAmount)).toFixed(donationFixed);
@@ -540,11 +540,11 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             return <>
                 <Avatar color={color} size={56} />
                 <span className={`${style} ${styles.donationAmount}`}>
-                    {donationAmountHandler(friendsFormula)}
+                    {getDonationAmout(friendsFormula)}
                 </span>
             </>;
         }
-    }, [donationAmount, donationAmountHandler]);
+    }, [donationAmount, getDonationAmout]);
 
     /**
      * Donation amount rendering.
@@ -742,7 +742,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     <Image src="/images/game/user.png" alt="User" width={149} height={129} />
                                                 </div>
                                                 <p>
-                                                    {donationAmount && donationAmountHandler(contentCreatorFormula)}
+                                                    {donationAmount && getDonationAmout(contentCreatorFormula)}
                                                 </p>
                                             </div>
                                             <Row className={rowHBetween}>
@@ -754,7 +754,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                                 `${styles.donationAmount}
                                                                 ${styles.donationAmount1}`
                                                             }>
-                                                            {donationAmountHandler(friendsFormula)}
+                                                            {getDonationAmout(friendsFormula)}
                                                         </span>
                                                     </div>
                                                 </Col>
@@ -777,7 +777,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                     </div>
                                                     <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11">
                                                         <Image src="/images/game/donationCycle/spiffy.png" width={155} height={44} />
-                                                        {donationAmountHandler(spiffyFormula)}
+                                                        {getDonationAmout(spiffyFormula)}
                                                     </div>
                                                 </div>
 
