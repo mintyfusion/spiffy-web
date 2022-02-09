@@ -105,7 +105,7 @@
 
 @include media(">=1370px") {
     .footerSocials {
-        @include footerSocialContent(58px, 15px);
+        @include footerSocialContent(38px, 10px);
     }
 }
 
