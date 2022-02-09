@@ -181,9 +181,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                                     Subscriber
                                 </PrimaryButton>
                             </div>
-                            <Stack>
-                                {finalFields}
-                            </Stack>
+                            <Stack>{finalFields}</Stack>
                             <Stack className="py-3">
                                 <PrimaryButton className="w-100" type="submit">
                                     {fields.formSubmitButtonText}

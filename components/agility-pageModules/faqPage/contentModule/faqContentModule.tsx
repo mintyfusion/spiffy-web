@@ -39,6 +39,10 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft + scrollAmount, behavior: "smooth" });
     }, [tabsRef]);
 
+    const handleNavigation = React.useCallback(() => {
+        breakpoint && setExpanded(!expanded);
+    }, [breakpoint, expanded]);
+
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${horizontalAlign} ${styles.customAccordianButton}`}>
             <div>
@@ -127,7 +131,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                         bg={styles.dirtyWhite}
                         expand="lg"
                         expanded={expanded}
-                        onClick={() => breakpoint && setExpanded(!expanded)}
+                        onClick={handleNavigation}
                         className={`overflow-hidden ${styles.navbar} flex-grow-1`}
                         ref={tabsRef}
                     >
@@ -202,7 +206,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             </Accordion>
                         )}
 
-                {isLoading && <Spinner/> }
+                {isLoading && <Spinner />}
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>
         </div>
