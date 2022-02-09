@@ -425,7 +425,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                         type="text"
                                         placeholder="Enter name"
                                         className="w-100 text-center"
-                                        onChange={(e) => setAvatarName(e.target.value)}
+                                        onChange={(e: React.FormEvent<HTMLInputElement>) => setAvatarName(e.currentTarget.value)}
                                     />
                                     <PrimaryButton onClick={handleContinueBtnClick} className="w-100">
                                         Continue
