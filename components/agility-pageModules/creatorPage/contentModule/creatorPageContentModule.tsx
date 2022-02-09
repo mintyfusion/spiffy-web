@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ModuleProps } from "@agility/nextjs";
 import React from "react";
 

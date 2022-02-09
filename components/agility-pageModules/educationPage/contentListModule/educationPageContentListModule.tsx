@@ -57,8 +57,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                         value: activeTab
                     }
                 ]
-            })
-                .finally(() => setIsLoading(false))
+            }).finally(() => setIsLoading(false))
             : await api.getContentList<ICardProps>({
                 referenceName: "EducationContent",
                 languageCode: "en-us",

@@ -14,8 +14,8 @@ const ShareSection = (props: IShareSectionProps): JSX.Element => {
 
     return <Stack direction="horizontal" gap={3} className={styles.socials}>
         <h3 className={`${styles.shareText} my-1 me-1 me-md-4`}>Share</h3>
-        {props.content.map((data: IShareSectionData, key) =>
-            <div key={key}>
+        {props.content.map((data: IShareSectionData, index: number) =>
+            <div key={index}>
                 <a className={`${styles.social}`} href={`${data.href}${currentURL}`} target="_blank" rel="noreferrer">
                     <FontAwesomeIcon icon={data.icon} />
                 </a>

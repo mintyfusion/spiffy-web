@@ -74,8 +74,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
         >
             {renderInput(fieldKey, field, field.type === "textarea")}
         </BaseField>
-    )
-        , [formFields, renderInput]);
+    ), [formFields, renderInput]);
 
     const handleSubmit = React.useCallback(async (e: React.ChangeEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
@@ -126,7 +125,6 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 setSubmitted(true);
             } else {
                 setSubmitted(false);
-                // await router.push("/404");
             }
 
             setLoading(false);
@@ -166,18 +164,18 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                             <div className="d-flex flex-row gap-3">
                                 <PrimaryButton
                                     className={`
-                                    w-100 ${styles.userTypeButton} 
-                                    ${userType !== UserTypes.Creator && styles.inactive}
-                                 `}
+                                        w-100 ${styles.userTypeButton} 
+                                        ${userType !== UserTypes.Creator && styles.inactive}
+                                     `}
                                     onClick={() => setUserType(UserTypes.Creator)}
                                 >
                                     Content Creator
                                 </PrimaryButton>
                                 <PrimaryButton
                                     className={`
-                                    w-100 ${styles.userTypeButton} 
-                                    ${userType !== UserTypes.Subscriber && styles.inactive}
-                                 `}
+                                        w-100 ${styles.userTypeButton} 
+                                        ${userType !== UserTypes.Subscriber && styles.inactive}
+                                      `}
                                     onClick={() => setUserType(UserTypes.Subscriber)}
                                 >
                                     Subscriber
