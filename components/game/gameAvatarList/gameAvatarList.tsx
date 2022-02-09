@@ -82,6 +82,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [selectedKey, setSelectedKey] = React.useState("1");
     const [expanded, { toggle: navToggle }] = UseBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
+    const { signupAnimation } = props;
 
     const handleBtnClick = React.useCallback((key: string) => {
         setSelectedKey(key);
@@ -125,9 +126,9 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
      */
     React.useEffect(() => {
         if (selectedKey === "100") {
-            props.signupAnimation();
+            signupAnimation();
         }
-    }, [selectedKey]);
+    }, [selectedKey, signupAnimation]);
 
     /**
      * Donation percentage rendering.

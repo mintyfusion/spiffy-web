@@ -277,7 +277,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const selectedFriends: AvatarType[] = friendsAvatars.filter((avatar) => avatar == friendAvatar);
             setAddedFriends((currentFriends: AvatarType[]) => [...currentFriends, ...selectedFriends]);
         }
-    }, [seletedAvatar]);
+    }, [friendsAvatars]);
 
     /**
      * Setting styles of avatars in first section.
@@ -407,7 +407,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
             }
         }
-    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, scrollHandler]);
+    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, scrollHandler, isMD]);
 
     /**
      * Resize function
@@ -462,7 +462,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             }
 
             const leftStyle = bounds.x + coin.scrollLeft - startingLeft;
-            const topStyle = bounds.y + coin.scrollTop
+            const topStyle = bounds.y + coin.scrollTop;
 
             switch (stepIndex) {
                 case 0:
