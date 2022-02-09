@@ -24,7 +24,7 @@ const LandingPageEducation = (props: ModuleProps<ILandingPageEducationProps>): J
         <Row>
             <PrimaryButton linkProps={{ href: "/education" }}>Learn More</PrimaryButton>
         </Row>
-    </Stack >;
+    </Stack>;
 };
 
 export default LandingPageEducation;
