@@ -25,7 +25,7 @@ const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
         return <Error statusCode={404} />;
     }
 
-    const AgilityPageTemplate: React.ComponentClass = getPageTemplate(pageTemplateName);
+    const AgilityPageTemplate = getPageTemplate(pageTemplateName);
 
     return (
         <div>

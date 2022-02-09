@@ -122,7 +122,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                         <Navbar.Toggle aria-controls="basic-navbar-nav">
                             <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
                         </Navbar.Toggle>
-                        <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
+                        <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
                                 {props.module.fields.educationTags.map(content =>
@@ -130,15 +130,15 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                                         key={content.fields.name}
                                         onClick={() => setActiveTab(content.fields.name)}
                                         className={`
-                                w-100
-                                px-1
-                                py-3 
-                                ${styles.tab} 
-                                ${activeTab === content.fields.name
+                                            w-100
+                                            px-1
+                                            py-3 
+                                            ${styles.tab} 
+                                            ${activeTab === content.fields.name
                                                 ? styles.active
                                                 : styles.inactive}
-                                ${horizontalAlign}
-                             `}
+                                            ${horizontalAlign}
+                                         `}
                                     >
                                         {content.fields.name.replace("_", " ")}
                                     </PrimaryButton>
@@ -151,7 +151,6 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                         width="50"
                         height="50"
                         onClick={handleArrowScrollRight}
-                        id="arrowScrollRight"
                         className={`${styles.tabArrow} ${breakpoint && "d-none"}`}
                     />
                 </div>
@@ -174,7 +173,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                                 : `Showing search results for ${data.searchValue}`}
                         </h5>
                     </Row>
-                    {isLoading && <Spinner/>}
+                    {isLoading && <Spinner />}
                     {!isLoading && !contentData?.items?.length
                         && <h1 className="text-center">No Blogs Found</h1>
                     }

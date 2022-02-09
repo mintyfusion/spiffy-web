@@ -1,6 +1,7 @@
 import { ContentItem } from "@agility/nextjs";
 
-export default interface IFaqContentModuleProps {
+import IContentInfo from "types/IContentnfo";
+
+export default interface IFaqContentModuleProps extends Pick<IContentInfo,"title"> {
     tags: ContentItem<{ name: string }>[];
-    title: string;
 }

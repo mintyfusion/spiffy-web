@@ -24,11 +24,14 @@
         :global(.navbar-toggler) {
             border: none;
             box-shadow: none;
-            transition: transform 0.3s;
         }
 
         :global(.collapsed) {
             transform: rotate(180deg);
+        }
+
+        :global(.navbar-toggler),
+        :global(.collapsed) {
             transition: transform 0.3s;
         }
     }
@@ -37,7 +40,6 @@
 .activeTab {
     border: 2px solid $yellow;
     color: $yellow;
-    opacity: 1;
 }
 
 .tabArrow {
@@ -164,7 +166,7 @@
     .accordion {
         :global(.accordion-button) {
             .customAccordianButton div {
-                 width: 70px;
+                width: 70px;
             }
         }
     }

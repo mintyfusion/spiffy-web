@@ -139,7 +139,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                         <Navbar.Toggle aria-controls="basic-navbar-nav">
                             <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
                         </Navbar.Toggle>
-                        <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
+                        <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
                                 {props.module.fields.tags.map(content =>
@@ -168,7 +168,6 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                         width="50"
                         height="50"
                         onClick={handleArrowScrollRight}
-                        id="arrowScrollRight"
                         className={`${styles.tabArrow} ${breakpoint && "d-none"}`}
                     />
                 </div>
