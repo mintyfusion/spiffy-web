@@ -59,7 +59,6 @@
             .countryflagContainer {
                 @extend .regular24;
                 padding: 10px;
-                min-width: 120px;
                 background: url("/images/contactpage/flags/icon-usa.svg") no-repeat;
                 background-position: 30%;
                 border: 1px solid $neutral-black;
@@ -130,10 +129,20 @@
         max-width: 66%;
         min-width: 400px;
     }
+
+    
+    .countryflagContainer {
+        min-width: 120px;
+    }
 }
 
 @include media("<desktop") {
     .formContent {
         width: 100%;
+    }
+
+    
+    .countryflagContainer {
+        min-width: 90px;
     }
 }
