@@ -159,6 +159,12 @@
             @include imgProperties(40px);
         }
     }
+
+    .gameStepFive {
+        h4 {
+            padding: 0 25px;
+        }
+    }
 }
 
 @include media(">=tablet", "<990px") {

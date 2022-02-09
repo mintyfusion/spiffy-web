@@ -20,40 +20,8 @@
     animation-fill-mode: forwards;
 }
 
-.donationRow1 {
-    width: 30%;
-    margin: 0 auto;
-}
-
 .gameStepThreeUserColumnInner {
     max-width: 450px;
-}
-
-.marginBottomMinusFifty {
-    margin-bottom: -50px;
-}
-
-.marginTopMinusFifty {
-    margin-top: -30px;
-}
-
-.donationRow2 {
-    width: 45%;
-    margin: 15px auto;
-}
-
-.donationRow3 {
-    width: 52%;
-    margin: 15px auto;
-}
-
-.coinTwo {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    z-index: 1;
-    top: 330px;
 }
 
 .modalBody {
@@ -66,11 +34,6 @@
     top: 10px;
     cursor: pointer;
     z-index: 10;
-}
-.activeTab {
-    border: 2px solid $yellow;
-    color: $yellow;
-    opacity: 1;
 }
 
 .card {
@@ -101,12 +64,6 @@
 
 .wrapper {
     padding: 30px;
-}
-
-.donationSections {
-    width: 100%;
-    overflow: auto;
-    height: $vh;
 }
 
 .avatarHeading {
@@ -192,220 +149,9 @@
     }
 }
 
-.stepFour {
-    width: 100%;
-    padding: 50px 0px;
-    h4 {
-        @extend .regular-desktop25-mobile16;
-    }
-    nav {
-        width: 90%;
-    }
-    .navToggle {
-        border: none;
-    }
-    .donationBtn {
-        margin-right: 20px;
-    }
-}
-
-.donationInner {
-    margin-top: 40px;
-    margin-bottom: 40px;
-
-    h2 {
-        @extend .boldGame41;
-    }
-
-    .userDonation {
-        margin-top: 80px;
-        z-index: 2;
-    }
-}
-
-.donationCycle {
-    .donationCycleItems {
-        visibility: hidden;
-    }
-
-    .cycle {
-        visibility: hidden;
-    }
-
-    .donationLogo {
-        visibility: hidden;
-    }
-}
-
-.heigth120 {
-    max-height: 70px;
-}
-
-.contentAnimation {
-    max-width: 1000px;
-    .donationCycle {
-        .donationCycleItems {
-            visibility: hidden;
-        }
-    }
-    p {
-        @include animation(contetHide, 5s);
-        animation-fill-mode: forwards;
-        color: $yellow-dark;
-    }
-
-    h3 {
-        @include animation(contetHide, 5s);
-        opacity: 0;
-    }
-
-    .userDonation {
-        margin-top: 20px;
-        transition: 1s;
-    }
-
-    .donationAmount {
-        @include animation(displayAnimation, 1s);
-        animation-fill-mode: forwards;
-        height: 20px;
-        overflow: hidden;
-        @extend .regular-desktop16-mobile7;
-    }
-
-    $amountDelays: 3s, 4s, 6s, 7s, 8s, 11s, 12s, 14s, 15s, 17s, 18s;
-
-    $cycleDelays: 2s, 3s, 5s, 6s, 7s, 10s, 11s, 13s, 14s, 16s, 17s;
-
-    @each $delay in $amountDelays {
-        $i: index($amountDelays, $delay);
-        .donationAmount#{$i} {
-            animation-delay: $delay;
-        }
-    }
-
-    @each $delay in $cycleDelays {
-        $i: index($cycleDelays, $delay);
-        .cycle#{$i} {
-            animation-delay: $delay;
-        }
-    }
-
-    .cycle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 10px;
-        border-radius: 50px;
-        background-color: $dirty-white;
-        @include animation(opacityAnimation, 0.5s);
-        animation-fill-mode: forwards;
-        visibility: hidden;
-        width: 75px;
-        text-align: center;
-        z-index: 2;
-        max-height: 90px;
-        img {
-            object-fit: contain;
-        }
-    }
-
-    .cycle11 {
-        margin-top: -100px;
-        width: 50%;
-        border-radius: 18px;
-        padding: 20px;
-        span {
-            @include animation(displayAnimation, 0.5s);
-            animation-fill-mode: forwards;
-            height: 20px;
-            overflow: hidden;
-            @extend .regular-desktop16-mobile7;
-        }
-        img {
-            object-fit: contain;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .donationCycleItems {
-        visibility: hidden;
-    }
-
-    .donationLogo {
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        left: -25%;
-
-        > div:nth-child(1) {
-            @include animation(iconAnimation, 1s);
-            animation-delay: 16s;
-            animation-fill-mode: forwards;
-            opacity: 0;
-            position: absolute;
-            width: 100%;
-            top: -40px;
-            right: 280px;
-            text-align: right;
-            span {
-                @extend .regular-desktop20-mobile7;
-            }
-        }
-    }
-}
-
 .coinRef {
     width: 50px;
     height: 50px;
-}
-
-@keyframes displayAnimation {
-    30% {
-        height: 20px;
-    }
-    100% {
-        height: 0;
-    }
-}
-@keyframes iconAnimation {
-    99% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes contentShow {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 0;
-    }
-    75% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        height: 0px;
-        overflow: hidden;
-    }
-}
-
-@keyframes contetHide {
-    99% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        height: 0px;
-        overflow: hidden;
-    }
 }
 
 .donationActive {
@@ -420,20 +166,11 @@
     h2 {
         margin-top: 40px;
     }
-    
+
     button {
         margin-top: 40px;
         max-width: 25%;
         width: 100%;
-    }
-}
-
-@keyframes opacityAnimation {
-    99% {
-        visibility: hidden;
-    }
-    100% {
-        visibility: visible;
     }
 }
 
@@ -450,24 +187,6 @@
 
 .transparent {
     background-color: $transparent;
-}
-
-.donationButton {
-    background-color: $faded-yellow;
-    margin-right: 20px;
-    border: none;
-    :focus {
-        outline: none;
-    }
-}
-
-.active {
-    background-color: $yellow;
-}
-
-.inactive {
-    background-color: $faded-yellow;
-    color: $darkGrey;
 }
 
 .friendsTop {
@@ -497,94 +216,7 @@
     .friendsBottom {
         margin-top: -34px;
     }
-    .contentAnimation {
-        max-width: 350px;
-        h3 {
-            font-size: 9px;
-        }
 
-        .cycle {
-            width: 35px;
-            height: 42px;
-            padding: 5px;
-        }
-
-        .cycle3 {
-            margin-top: -90px;
-            width: 50%;
-            border-radius: 12px;
-            padding: 5px;
-        }
-    }
-
-    .donationLogo {
-        right: unset;
-        left: -45px;
-        top: 5px;
-    }
-    .coinTwo {
-        width: 20px;
-        height: 20px;
-        top: 330px;
-        img {
-            @include imgProperties(20px);
-        }
-    }
-    .donationInner {
-        margin-top: 0px;
-        margin-bottom: 0px;
-
-        p {
-            font-size: 7px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
-        .userDonation {
-            @include imgProperties(67px);
-            margin-top: 25px;
-        }
-    }
-    .customNavbar {
-        position: absolute;
-        width: 100%;
-        top: 80%;
-        background-color: $white;
-        z-index: 3;
-    }
-
-    .marginBottomMinusFifty {
-        margin-bottom: -20px;
-    }
-
-    .marginTopMinusFifty {
-        margin-top: -20px;
-    }
-
-    .heigth120 {
-        height: 50px;
-    }
-
-    .donationImage {
-        img {
-            @include imgProperties(25px);
-        }
-    }
-    .donationRow1 {
-        width: 40%;
-    }
-
-    .donationRow2 {
-        width: 65%;
-        margin: 5px auto;
-    }
-    .donationRow3 {
-        width: 75%;
-        margin: 5px auto;
-    }
-    .donationButton {
-        margin-bottom: 5px;
-    }
     .close {
         top: 25px;
         z-index: 1;
@@ -694,13 +326,6 @@
         @include gameContentPadding(0px 0);
     }
 
-    @keyframes avatarstepTwoAnimation {
-        100% {
-            left: 36%;
-            top: 20%;
-        }
-    }
-
     .gameStepTwoWrapper {
         @include gameContentPadding(50px 0);
     }
@@ -736,32 +361,7 @@
             cursor: pointer;
         }
     }
-    .contentAnimation {
-        max-width: 350px;
 
-        h3 {
-            font-size: 9px;
-        }
-
-        .cycle {
-            width: 35px;
-            height: 42px;
-            padding: 5px;
-        }
-
-        .cycle3 {
-            margin-top: -90px;
-            width: 50%;
-            border-radius: 12px;
-            padding: 5px;
-        }
-
-        .donationLogo {
-            right: unset;
-            left: -45px;
-            top: 5px;
-        }
-    }
     .close {
         top: 20px;
     }
@@ -772,33 +372,6 @@
         }
 
         top: 310px;
-    }
-
-    .donationInner {
-        .userDonation {
-            margin-top: 25px;
-            @include imgProperties(67px);
-        }
-
-        margin-top: 0px;
-        margin-bottom: 0px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-
-        p {
-            font-size: 7px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-    }
-
-    .customNavbar {
-        position: absolute;
-        width: 100%;
-        top: 80%;
-        background-color: $white;
-        z-index: 3;
     }
 
     .marginBottomMinusFifty {
@@ -967,86 +540,6 @@
     .close {
         top: 20px;
     }
-    .contentAnimation {
-        max-width: 350px;
-        h3 {
-            font-size: 9px;
-        }
-
-        .cycle {
-            width: 35px;
-            height: 42px;
-            padding: 5px;
-        }
-
-        .cycle3 {
-            margin-top: -50px;
-            width: 50%;
-            border-radius: 12px;
-            padding: 5px;
-        }
-
-        .donationLogo {
-            right: -145px;
-            > div:nth-child(1) {
-                width: 50%;
-                top: -20px;
-                right: -55px;
-                text-align: left;
-            }
-        }
-    }
-
-    .customNavbar {
-        position: absolute;
-        width: 100%;
-        top: 80%;
-        background-color: $white;
-        z-index: 3;
-    }
-
-    .coinTwo {
-        width: 20px;
-        height: 20px;
-        top: 305px;
-        img {
-            @include imgProperties(20px);
-        }
-    }
-
-    .marginBottomMinusFifty {
-        margin-bottom: -25px;
-    }
-
-    .marginTopMinusFifty {
-        margin-top: -20px;
-    }
-
-    .heigth120 {
-        height: 50px;
-    }
-    .donationImage {
-        img {
-            @include imgProperties(25px);
-        }
-    }
-    .donationRow1 {
-        width: 50%;
-    }
-
-    .donationRow2 {
-        width: 70%;
-        margin: 10px auto;
-    }
-
-    .donationRow3 {
-        width: 80%;
-        margin: 15px auto;
-    }
-
-    .donationButton {
-        margin-bottom: 10px;
-    }
 
     .avatarSelected {
         > svg {
@@ -1135,32 +628,6 @@
         }
     }
 
-    .donationInner {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-
-        p {
-            font-size: 7px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
-        .userDonation {
-            margin-top: 10px;
-
-            img {
-                @include imgProperties(67px);
-            }
-        }
-    }
-
-    .donationCycleItems {
-        padding: 10px 5px;
-    }
-
     .gameStepTwoWrapper {
         @include gameContentPadding(50px 0);
     }
@@ -1171,87 +638,16 @@
     }
 }
 
-@include media(">=550px", "<800px") {
-    .coinTwo {
-        top: 285px;
-    }
-}
-
 @include media(">=800px", "<900px") {
     .targetOne {
         width: 90px;
         height: 90px;
     }
+
     .avatar {
         svg {
             @include imgProperties(90px);
         }
-    }
-
-    .donationInner {
-        .userDonation {
-            margin-top: 25px;
-        }
-    }
-
-    .donationLogo {
-        left: -30% !important;
-        > div:nth-child(1) {
-            width: 40% !important;
-            top: -20px !important;
-            right: -60px !important;
-            text-align: left !important;
-        }
-    }
-    .coinTwo {
-        width: 30px;
-        height: 30px;
-        top: 275px;
-    }
-    .cycle {
-        width: 60px !important;
-    }
-    .cycle3 {
-        margin-top: -55px !important;
-        width: 50% !important;
-        border-radius: 12px !important;
-        padding: 10px !important;
-    }
-    .customNavbar {
-        position: absolute;
-        width: 100%;
-        top: 80%;
-        background-color: $white;
-        z-index: 3;
-    }
-    .marginBottomMinusFifty {
-        margin-bottom: -30px;
-    }
-
-    .marginTopMinusFifty {
-        margin-top: -20px;
-    }
-
-    .donationLogo {
-        right: -145px;
-    }
-    .donationRow1 {
-        width: 35%;
-    }
-
-    .donationRow2 {
-        width: 50%;
-        margin: 5px auto;
-    }
-    .donationRow3 {
-        width: 57%;
-        margin: 15px auto;
-    }
-    .donationButton {
-        margin-bottom: 10px;
-    }
-    .container {
-        text-align: center;
     }
 
     .gameStepTwo {
@@ -1285,40 +681,6 @@
         }
     }
 
-    .donationInner {
-        margin-top: 15px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-        p {
-            font-size: 7px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-    }
-
-    .donationCycleItems {
-        padding: 10px 5px;
-    }
-
-    .userDonation {
-        img {
-            @include imgProperties(100px);
-        }
-    }
-
-    .coinDefault {
-        img {
-            @include imgProperties(50px);
-        }
-    }
-
-    .contentAnimation {
-        h3 {
-            font-size: 9px;
-        }
-    }
-
     .gameStepTwoWrapper {
         @include gameContentPadding(50px 0);
     }
@@ -1331,10 +693,6 @@
         svg {
             @include imgProperties(65px);
         }
-    }
-
-    .donations {
-        width: 80px;
     }
 
     .targetTwo {
@@ -1378,56 +736,6 @@
         }
     }
 
-    .customNavbar {
-        position: absolute;
-        width: 100%;
-        top: 80%;
-        background-color: $white;
-        z-index: 3;
-    }
-
-    .coinTwo {
-        top: 300px;
-    }
-
-    .contentAnimation {
-        max-width: 650px;
-
-        h3 {
-            font-size: 9px;
-        }
-
-        .cycle3 {
-            margin-top: -40px;
-        }
-
-        .donationLogo {
-            left: -30%;
-            > div:nth-child(1) {
-                width: 40%;
-                top: -5px;
-                right: -60px;
-                text-align: left;
-            }
-        }
-    }
-
-    .donationRow1 {
-        width: 40%;
-    }
-
-    .donationRow2 {
-        width: 65%;
-    }
-
-    .donationRow3 {
-        width: 80%;
-    }
-
-    .donationButton {
-        margin-bottom: 10px;
-    }
-
     .targetTwo {
         width: 90px;
         height: 90px;
@@ -1470,24 +778,6 @@
         }
     }
 
-    .donationInner {
-        margin-top: 15px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-        p {
-            font-size: 7px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-    }
-
-    .userDonation {
-        img {
-            @include imgProperties(100px);
-        }
-    }
-
     .gameStepTwoWrapper {
         @include gameContentPadding(50px 0);
     }
@@ -1517,37 +807,6 @@
 }
 
 @include media(">=1000px", "<1100px") {
-    .coinTwo {
-        top: 300px;
-    }
-
-    .contentAnimation {
-        max-width: 600px;
-
-        .cycle3 {
-            margin-top: -80px;
-        }
-
-        .donationLogo {
-            > div:nth-child(1) {
-                width: 55%;
-                top: -25px;
-            }
-        }
-    }
-
-    .donationRow1 {
-        width: 50%;
-    }
-
-    .donationRow2 {
-        width: 75%;
-    }
-
-    .donationRow3 {
-        width: 90%;
-    }
-
     .gameStepTwo {
         width: 35%;
         img {
@@ -1571,19 +830,6 @@
         .gameStepThreeFriendsColumn {
             width: 48%;
             padding: 0px;
-        }
-    }
-
-    .donationInner {
-        margin-top: 15px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-    }
-
-    .userDonation {
-        img {
-            @include imgProperties(100px);
         }
     }
 
@@ -1603,37 +849,6 @@
 }
 
 @include media(">=1100px", "<1200px") {
-    .coinTwo {
-        top: 300px;
-    }
-
-    .contentAnimation {
-        max-width: 700px;
-
-        .cycle3 {
-            margin-top: -80px;
-        }
-
-        .donationLogo {
-            > div:nth-child(1) {
-                width: 65%;
-                top: -25px;
-            }
-        }
-    }
-
-    .donationRow1 {
-        width: 40%;
-    }
-
-    .donationRow2 {
-        width: 65%;
-    }
-
-    .donationRow3 {
-        width: 75%;
-    }
-
     .gameStepTwo {
         width: 35%;
         img {
@@ -1658,19 +873,6 @@
         .gameStepThreeFriendsColumn {
             width: 48%;
             padding: 0px;
-        }
-    }
-
-    .donationInner {
-        margin-top: 15px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-    }
-
-    .userDonation {
-        img {
-            @include imgProperties(100px);
         }
     }
 
@@ -1690,34 +892,6 @@
 }
 
 @include media(">=1200px", "<1300px") {
-    .coinTwo {
-        top: 300px;
-        width: 40px;
-        height: 40px;
-    }
-
-    .contentAnimation {
-        max-width: 700px;
-
-        .donationLogo {
-            > div:nth-child(1) {
-                width: 50%;
-            }
-        }
-    }
-
-    .donationRow1 {
-        width: 40%;
-    }
-
-    .donationRow2 {
-        width: 65%;
-    }
-
-    .donationRow3 {
-        width: 75%;
-    }
-
     .gameStepTwo {
         width: 35%;
         img {
@@ -1744,19 +918,6 @@
         }
     }
 
-    .donationInner {
-        margin-top: 15px;
-        .avatarInner {
-            margin-top: 60px;
-        }
-    }
-
-    .userDonation {
-        img {
-            @include imgProperties(100px);
-        }
-    }
-
     .gameStepOne {
         @include gameContentPadding(0px 0);
     }
@@ -1773,67 +934,18 @@
 }
 
 @include media(">=1300px", "<1400px") {
-    .coinTwo {
-        top: 300px;
-    }
-
-    .contentAnimation {
-        .donationLogo {
-            > div:nth-child(1) {
-                width: 50%;
-            }
-        }
-    }
-
-    .donationRow1 {
-        width: 30%;
-    }
-
-    .donationRow2 {
-        width: 45%;
-        margin: 10px auto;
-    }
-    .donationRow3 {
-        width: 51%;
-        margin: 10px auto;
-    }
-
     .gameStepThree {
         max-width: 1170px;
     }
 }
 
 @include media(">=1400px", "<1500px") {
-    .contentAnimation {
-        .cycle3 {
-            margin-top: -75px;
-        }
-        .donationLogo {
-            > div:nth-child(1) {
-                width: 80%;
-                top: -25px;
-            }
-        }
-    }
-
     .gameStepThree {
         max-width: 1260px;
     }
 }
 
 @include media(">=1500px", "<1600px") {
-    .contentAnimation {
-        .cycle3 {
-            margin-top: -75px;
-        }
-
-        .donationLogo {
-            > div:nth-child(1) {
-                top: -25px;
-            }
-        }
-    }
-
     .gameStepThree {
         max-width: 1350px;
     }
@@ -1842,11 +954,5 @@
 @include media(">=1600px", "<1700px") {
     .gameStepThree {
         max-width: 1400px;
-    }
-}
-
-@include media(">=1700px", "<1800px") {
-    .animationGrid {
-        width: 70%;
     }
 }

@@ -1,0 +1,461 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+@mixin animation($name, $time) {
+    animation-name: $name;
+    animation-duration: $time;
+    animation-fill-mode: forwards;
+}
+
+@mixin imgProperties($size) {
+    width: $size;
+    height: $size;
+    object-fit: contain;
+}
+
+.donationSections {
+    width: 100%;
+    overflow: auto;
+    height: $vh;
+
+    .card {
+        background-color: $white;
+        width: 90%;
+        min-height: calc(#{$vh} - 40px);
+        margin: 20px auto;
+    }
+
+    .stepFour {
+        width: 100%;
+        padding: 50px 0px;
+        h4 {
+            @extend .regular-desktop25-mobile16;
+        }
+        nav {
+            width: 90%;
+        }
+        .navToggle {
+            border: none;
+        }
+        .donationBtn {
+            margin-right: 20px;
+        }
+    }
+
+    .avatarHeading {
+        @extend .regular-desktop30-mobile20;
+    }
+
+    .activeTab {
+        border: 2px solid $yellow;
+        color: $yellow;
+        opacity: 1;
+    }
+
+    .donationCycle {
+        .donationCycleItems {
+            visibility: hidden;
+        }
+
+        .cycle {
+            visibility: hidden;
+        }
+
+        .donationLogo {
+            visibility: hidden;
+        }
+    }
+
+    .contentAnimation {
+        max-width: 1000px;
+        p {
+            @include animation(contetHide, 5s);
+            animation-fill-mode: forwards;
+            color: $yellow-dark;
+        }
+
+        h3 {
+            @include animation(contetHide, 5s);
+            opacity: 0;
+        }
+
+        .userDonation {
+            margin-top: 20px;
+            transition: 1s;
+        }
+
+        .donationAmount {
+            @include animation(displayAnimation, 1s);
+            animation-fill-mode: forwards;
+            height: 20px;
+            overflow: hidden;
+            @extend .regular-desktop16-mobile7;
+        }
+
+        $amountDelays: 3s, 4s, 6s, 7s, 8s, 11s, 12s, 14s, 15s, 17s, 18s;
+
+        $cycleDelays: 2s, 3s, 5s, 6s, 7s, 10s, 11s, 13s, 14s, 16s, 17s;
+
+        @each $delay in $amountDelays {
+            $i: index($amountDelays, $delay);
+            .donationAmount#{$i} {
+                animation-delay: $delay;
+            }
+        }
+
+        @each $delay in $cycleDelays {
+            $i: index($cycleDelays, $delay);
+            .cycle#{$i} {
+                animation-delay: $delay;
+            }
+        }
+
+        .cycle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 50px;
+            background-color: $dirty-white;
+            @include animation(opacityAnimation, 0.5s);
+            animation-fill-mode: forwards;
+            visibility: hidden;
+            width: 75px;
+            text-align: center;
+            z-index: 2;
+            max-height: 90px;
+            img {
+                object-fit: contain;
+            }
+        }
+
+        .cycle11 {
+            margin-top: -100px;
+            width: 50%;
+            border-radius: 18px;
+            padding: 20px;
+            span {
+                @include animation(displayAnimation, 0.5s);
+                animation-fill-mode: forwards;
+                height: 20px;
+                overflow: hidden;
+                @extend .regular-desktop16-mobile7;
+            }
+            img {
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .donationCycleItems {
+            visibility: hidden;
+        }
+
+        .donationLogo {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: -25%;
+
+            > div:nth-child(1) {
+                @include animation(iconAnimation, 1s);
+                animation-delay: 16s;
+                animation-fill-mode: forwards;
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                top: -40px;
+                right: 280px;
+                text-align: right;
+                span {
+                    @extend .regular-desktop20-mobile7;
+                }
+            }
+        }
+    }
+
+    .donationInner {
+        margin-top: 40px;
+        margin-bottom: 40px;
+
+        h2 {
+            @extend .boldGame41;
+        }
+
+        .userDonation {
+            margin-top: 80px;
+            z-index: 2;
+        }
+    }
+
+    .coin {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        z-index: 1;
+        top: 330px;
+    }
+
+    .heigth120 {
+        max-height: 70px;
+    }
+
+    .donationImage {
+        img {
+            @include imgProperties(25px);
+        }
+    }
+
+    .donationRow1 {
+        width: 30%;
+        margin: 0 auto;
+    }
+
+    .marginBottomMinusFifty {
+        margin-bottom: -50px;
+    }
+
+    .marginTopMinusFifty {
+        margin-top: -30px;
+    }
+
+    .donationRow2 {
+        width: 45%;
+        margin: 15px auto;
+    }
+
+    .donationRow3 {
+        width: 52%;
+        margin: 15px auto;
+    }
+
+    .donationButton {
+        background-color: $faded-yellow;
+        margin-right: 20px;
+        border: none;
+        :focus {
+            outline: none;
+        }
+    }
+
+    .active {
+        background-color: $yellow;
+    }
+
+    .inactive {
+        background-color: $faded-yellow;
+        color: $darkGrey;
+    }
+
+    @keyframes opacityAnimation {
+        99% {
+            visibility: hidden;
+        }
+        100% {
+            visibility: visible;
+        }
+    }
+
+    @keyframes displayAnimation {
+        30% {
+            height: 20px;
+        }
+        100% {
+            height: 0;
+        }
+    }
+    @keyframes iconAnimation {
+        99% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes contentShow {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0;
+        }
+        75% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            height: 0px;
+            overflow: hidden;
+        }
+    }
+
+    @keyframes contetHide {
+        99% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            height: 0px;
+            overflow: hidden;
+        }
+    }
+}
+
+@include media(">=phone", "<990px") {
+    .donationSections {
+        .stepFour {
+            h2,
+            h4 {
+                padding: 0 25px;
+            }
+        }
+
+        .contentAnimation {
+            max-width: 350px;
+            h3 {
+                font-size: 9px;
+            }
+
+            .cycle {
+                width: 35px;
+                height: 42px;
+                padding: 5px;
+            }
+
+            .cycle11 {
+                margin-top: -40px;
+                width: 50%;
+                border-radius: 12px;
+                padding: 5px;
+                margin-left: -75px;
+            }
+
+            .donationLogo {
+                right: -145px;
+                > div:nth-child(1) {
+                    width: 50%;
+                    top: -20px;
+                    right: -15px;
+                    text-align: left;
+                }
+            }
+        }
+
+        .coin {
+            width: 20px;
+            height: 20px;
+            top: 330px;
+            img {
+                @include imgProperties(20px);
+            }
+        }
+
+        .donationInner {
+            margin-top: 0px;
+            margin-bottom: 0px;
+
+            p {
+                font-size: 7px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+
+            .userDonation {
+                @include imgProperties(67px);
+                margin-top: 25px;
+            }
+        }
+
+        .marginBottomMinusFifty {
+            margin-bottom: -20px;
+        }
+
+        .marginTopMinusFifty {
+            margin-top: -20px;
+        }
+
+        .heigth120 {
+            height: 50px;
+        }
+
+        .donationRow1 {
+            width: 40%;
+        }
+
+        .donationRow2 {
+            width: 65%;
+            margin: 5px auto;
+        }
+
+        .donationRow3 {
+            width: 75%;
+            margin: 5px auto;
+        }
+
+        .donationButton {
+            margin-bottom: 5px;
+        }
+
+        .customNavbar {
+            position: absolute;
+            width: 100%;
+            top: 80%;
+            background-color: $white;
+            z-index: 3;
+        }
+    }
+}
+
+@include media(">=420px", "<500px") {
+    .donationSections {
+        .coin {
+            top: 305px;
+        }
+    }
+}
+
+@include media(">=500px", "<900px") {
+    .donationSections {
+        .coin {
+            top: 290px;
+        }
+    }
+}
+
+@include media(">=900px", "<990px") {
+    .donationSections {
+        .coin {
+            top: 270px;
+        }
+    }
+}
+
+@include media(">=1000px", "<1400px") {
+    .donationSections {
+        .coin {
+            top: 310px;
+        }
+    }
+}
+
+@include media(">=1000px", "<1400px") {
+    .donationSections {
+        .contentAnimation {
+            .donationLogo {
+                > div:nth-child(1) {
+                    width: 60%;
+                    top: -29px;
+                }
+            }
+        }
+    }
+}

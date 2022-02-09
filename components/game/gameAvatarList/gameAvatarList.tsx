@@ -168,12 +168,12 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         <div className={styles.gameStepFive}>
             <div className={`${colCenter} h-100`}>
                 <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
-                <h4>Click the percentage fill rate to unlock your potential. Higher the filled rate,
+                <h4 className="text-center">Click the percentage fill rate to unlock your potential. Higher the filled rate,
                     the more money you make.</h4>
 
                 <Navbar
                     expand="lg"
-                    className="w-100 d-block"
+                    className="w-100 d-block text-center"
                     expanded={expanded}
                     onClick={() => isLG && navToggle()}>
                     <Navbar.Brand className="d-lg-none">{selectedKey}%</Navbar.Brand>
