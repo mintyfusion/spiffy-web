@@ -560,7 +560,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         top: null
                     };
                 }}
-                className={`${horizontalAlign} 
+                className={`
+                ${horizontalAlign} 
                 ${styles.donationButton}
                 ${donation === donationAmount ? styles.active : styles.inactive}
                 w-100 px-1 py-3`}
