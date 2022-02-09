@@ -70,6 +70,16 @@ const avatars = Object.values(AvatarType);
  */
 const step1Avatars = avatars.filter((avatar) => avatar !== AvatarType.Orange);
 
+const scrollTo = ((value: string) => {
+    scroller.scrollTo(value, {
+        duration: 700,
+        smooth: true,
+        containerId,
+        ignoreCancelEvents: true,
+        offset: -20,
+    });
+});
+
 const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [addedFriends, setAddedFriends] = React.useState<AvatarType[]>([]);
     const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
@@ -102,23 +112,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         seletedAvatar && avatarObj !== seletedAvatar
     ), [seletedAvatar]);
 
-    const scrollHandler = React.useCallback((value: string) => {
-        scroller.scrollTo(value, {
-            duration: 700,
-            smooth: true,
-            containerId,
-            ignoreCancelEvents: true,
-            offset: -20,
-        });
-    }, []);
-
     /**
      * UseEffect to check all four friends are added.
      */
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
         if (seletedAvatar && addedFriends.length === friendsAvatars.length) {
-            scrollHandler(StepTypes.Fourth);
+            scrollTo(StepTypes.Fourth);
             /*eslint-env browser*/
             timer = setTimeout(() => {
                 setStep(StepTypes.Fourth);
@@ -129,7 +129,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         return () => {
             clearTimeout(timer);
         };
-    }, [addedFriends, friendsAvatars, seletedAvatar, scrollHandler]);
+    }, [addedFriends, friendsAvatars, seletedAvatar]);
 
     /**
      * Reset the donation cycle animation.
@@ -324,13 +324,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 /** SetStep to animate scroll to next section */
                 setStep(StepTypes.Third);
                 setFriendsPositions();
-                scrollHandler(StepTypes.Third);
+                scrollTo(StepTypes.Third);
                 clearTimeout(t);
             }
 
             clearTimeout(t);
         }, phoneKeyboardTimeout);
-    }, [setFriendsPositions, seletedAvatar, avatarName, step, scrollHandler]);
+    }, [setFriendsPositions, seletedAvatar, avatarName, step]);
 
     /**
      * First section avatars style.
@@ -389,7 +389,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             }
 
             case StepTypes.Third: {
-                scrollHandler(StepTypes.Third);
+                scrollTo(StepTypes.Third);
                 setFriendsPositions();
                 const boundsSecond = stepThree.current?.getBoundingClientRect();
 
@@ -407,7 +407,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
             }
         }
-    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, scrollHandler, isMD]);
+    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, isMD]);
 
     /**
      * Resize function
