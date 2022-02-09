@@ -1,13 +1,12 @@
 import { AgilityPageProps } from "@agility/nextjs";
 import { getAgilityPageProps, getAgilityPaths } from "@agility/nextjs/node";
 import React from "react";
-
-import { getModule } from "components/agility-pageModules";
-
 import type {
     GetStaticPropsContext,
     InferGetStaticPropsType,
 } from "next";
+
+import { getModule } from "components/agility-pageModules";
 
 import Layout from "components/agility-pageModules/common/layout/layout";
 
@@ -56,6 +55,7 @@ export async function getStaticPaths({ locales, defaultLocale }
         fallback: true,
     };
 }
+
 // Context API value for passing search string across children components where required
 export const SearchContext = React.createContext({ searchValue: "", setSearch() { this; } });
 

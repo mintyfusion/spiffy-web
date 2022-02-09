@@ -1,5 +1,3 @@
-// All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
-// Place Page Modules in allModules array below, passing in a name and the component.
 import AboutUsHeroModule from "components/agility-pageModules/aboutPage/heroSection/heroSection";
 import AboutUsValuesModule from "components/agility-pageModules/aboutPage/valuesSection/valuesSection";
 import CommonContentModule from "components/agility-pageModules/common/commonContent/commonContentModule";
@@ -19,6 +17,8 @@ import LandingPageGetStarted from "components/agility-pageModules/landingPage/ge
 import LandingPageVerticalModule from "components/agility-pageModules/landingPage/verticalModule/landingPageVerticalModule";
 import VideoSection from "components/agility-pageModules/creatorPage/videoSection/videoSection";
 
+// All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
+// Place Page Modules in allModules array below, passing in a name and the component.
 const allModules = [
   { name: "EducationListingModule", module: EducationListingModule },
   { name: "HeroModule", module: HeroModuleVariant3 },
