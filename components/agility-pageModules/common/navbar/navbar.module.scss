@@ -35,6 +35,7 @@ $backroundTransition: background-color 0.2s;
       &:hover {
         color: $yellow;
         transition: color 0.2s ease-in, background 0.2s ease-in;
+        cursor: pointer
       }
     }
 

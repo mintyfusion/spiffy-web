@@ -36,6 +36,14 @@ const Navbar = (props: INavbarProps): JSX.Element => {
         setBackgroundClass(props.sticky ? styles.backgroundDark : "");
     }, [props.sticky]);
 
+    const handleNavbarToggle = React.useCallback(() => {
+        breakpoint && setToggle(!toggle);
+    }, [breakpoint, toggle]);
+
+    const closeNavbar = React.useCallback(() => {
+        setToggle(false);
+    }, []);
+
     return <>
         <BTNavbar
             collapseOnSelect
@@ -54,8 +62,8 @@ const Navbar = (props: INavbarProps): JSX.Element => {
             `}
             variant="dark"
         >
-            <Link href="/" className={`${styles.headerLogo} me-lg-3 me-xl-5`}>
-                <Logo variant={LogoVariants.header} />
+            <Link href="/" className={`${styles.headerLogo} me-lg-3 me-xl-5`} >
+                <span onClick={closeNavbar}><Logo variant={LogoVariants.header} /></span>
             </Link>
             <div
                 className={`
@@ -68,7 +76,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                     position-relative 
                     ${rowCenter}
                     `}
-                onClick={() => setToggle(!toggle)}
+                onClick={handleNavbarToggle}
             >
                 <div className={`${styles.menuButtonBurger} ${rowCenter}`}></div>
             </div>
@@ -97,17 +105,16 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                 id="responsive-navbar-nav"
             >
                 <Nav className={`me-auto align-items-start ${styles.links} ${breakpoint && "w-100"}`}>
-                    {/* <Link
-                        href="/subscribers"
-                        className={`${styles.link} me-lg-3 me-xl-5 py-3 px-4 px-lg-0`}
-                    >
-                        FOR SUBSCRIBERS
-                    </Link> */}
                     <Link
                         href="/creator"
-                        className={`${styles.link} me-lg-3 me-xl-5 py-3 px-4 px-lg-0`}
+                        className="w-100 me-lg-3 me-xl-5"
                     >
-                        For Content Creators
+                        <label
+                            onClick={handleNavbarToggle}
+                            className={`${styles.link} py-3 px-4 px-lg-0 `}
+                        >
+                            For Content Creators
+                        </label>
                     </Link>
                 </Nav>
                 <Nav className="m-2">
