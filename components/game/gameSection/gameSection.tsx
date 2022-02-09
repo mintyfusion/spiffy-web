@@ -214,7 +214,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         const keyTwo = 2;
         const keyThree = 3;
 
-        friendsAvatars.map((avatar, index) => {
+        friendsAvatars.forEach((avatar, index) => {
             switch (index) {
                 case 0:
                     styles[avatar] = {
