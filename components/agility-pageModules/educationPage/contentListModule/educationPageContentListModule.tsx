@@ -15,6 +15,7 @@ import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
 import IContentSectionProps from "components/agility-pageModules/educationPage/contentListModule/interfaces/IContentListProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
+import Spinner from "components/agility-pageModules/common/spinner/Spinner";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/educationPage/contentListModule/educationPageContentListModule.module.scss";
@@ -173,11 +174,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                                 : `Showing search results for ${data.searchValue}`}
                         </h5>
                     </Row>
-                    {isLoading &&
-                        <div className="spinner-border text-warning" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                    }
+                    {isLoading && <Spinner/>}
                     {!isLoading && !contentData?.items?.length
                         && <h1 className="text-center">No Blogs Found</h1>
                     }

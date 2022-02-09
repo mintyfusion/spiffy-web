@@ -12,6 +12,7 @@ import flexbox from "utils/flexbox";
 import IFaqContentModuleData from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleData";
 import IFaqContentModuleProps from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
+import Spinner from "components/agility-pageModules/common/spinner/Spinner";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/faqPage/contentModule/faqContentModule.module.scss";
@@ -202,11 +203,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             </Accordion>
                         )}
 
-                {isLoading &&
-                    <div className="spinner-border text-warning align-self-center" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
-                }
+                {isLoading && <Spinner/> }
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>
         </div>

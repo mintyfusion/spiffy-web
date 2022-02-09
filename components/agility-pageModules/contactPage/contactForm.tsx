@@ -11,6 +11,7 @@ import IContactFormProps from "components/agility-pageModules/contactPage/interf
 import IField from "types/IField";
 import postData from "utils/postData";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
+import Spinner from "components/agility-pageModules/common/spinner/Spinner";
 import UserTypes from "components/agility-pageModules/contactPage/enums/userTypes";
 
 import styles from "components/agility-pageModules/contactPage/contactForm.module.scss";
@@ -201,12 +202,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                         </Col>
                     }
                     {loading &&
-                        <div className={`${styles.overlay} ${centerAlign} position-absolute top-0 w-100 h-100`}>
-                            <div className="spinner-border text-warning" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                    }
+                        <Spinner className={`${styles.overlay} ${centerAlign} position-absolute top-0 w-100 h-100`} />}
                 </div>
             </Col>
         </Row >

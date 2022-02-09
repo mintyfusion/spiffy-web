@@ -1,3 +1,5 @@
+import { ComponentWithInit } from "@agility/nextjs";
+
 import AboutUsHeroModule from "components/agility-pageModules/aboutPage/heroSection/heroSection";
 import AboutUsValuesModule from "components/agility-pageModules/aboutPage/valuesSection/valuesSection";
 import CommonContentModule from "components/agility-pageModules/common/commonContent/commonContentModule";
@@ -11,6 +13,7 @@ import HeroModuleVariant1 from "components/agility-pageModules/common/heroModule
 import HeroModuleVariant2 from "components/agility-pageModules/common/heroModuleVariant2/heroModuleVariant2";
 import HeroModuleVariant3 from "components/agility-pageModules/common/heroModuleVariant3/heroModuleVariant3";
 import HtmlContentModule from "components/agility-pageModules/common/htmlContentModule/htmlContentModule";
+import IModules from "typings/interfaces/IModules";
 import LandingFeaturesModule from "components/agility-pageModules/landingPage/featuresModule/LandingFeaturesModule";
 import LandingPageEducation from "components/agility-pageModules/landingPage/educationModule/landingPageEducation";
 import LandingPageGetStarted from "components/agility-pageModules/landingPage/getStartedModule/landingPageGetStarted";
@@ -19,7 +22,7 @@ import VideoSection from "components/agility-pageModules/creatorPage/videoSectio
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
 // Place Page Modules in allModules array below, passing in a name and the component.
-const allModules = [
+const allModules: IModules[] = [
   { name: "EducationListingModule", module: EducationListingModule },
   { name: "HeroModule", module: HeroModuleVariant3 },
   { name: "LandingPageEducation", module: LandingPageEducation },
@@ -40,8 +43,7 @@ const allModules = [
   { name: "HeroModuleVariant2", module: HeroModuleVariant2 }
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const getModule = (moduleName: string): any => {
+export const getModule = (moduleName: string): ComponentWithInit => {
   if (!moduleName) { return null; }
 
   const obj = allModules.find((m) =>
