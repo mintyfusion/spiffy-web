@@ -206,9 +206,9 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
     }, [animation, handlStepAnimation]);
 
     /**
- * Donation cycle calclutions.
- * @param donation selected amount in donation cycle.
- */
+    * Donation cycle calclutions.
+    * @param donation selected amount in donation cycle.
+    */
     const getDonationAmout = React.useCallback((donation: number) => {
         const percentage = 100;
         const donationFixed = 2;

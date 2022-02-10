@@ -357,6 +357,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         };
     }, [handleResize]);
 
+    /** Render added friends */
     const renderAddedFriends = React.useCallback((isTop: boolean) => {
         const arrFriends = isTop
             ? addedFriends.slice(0, friendsSliceTwo)
@@ -372,6 +373,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         </div>;
     }, [addedFriends]);
 
+    /** Avatar dynamic classes */
     const classes = React.useMemo(() => {
         const className = `${styles.avatar} position-absolute text-center`;
 
