@@ -23,7 +23,7 @@
 
 .cardContainer {
     .card {
-        background-color: #916e23;
+        background-color: $dirty-yellow;
         transition: flex 200ms ease-in;
 
         &:hover {

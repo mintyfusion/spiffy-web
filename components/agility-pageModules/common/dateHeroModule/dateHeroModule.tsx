@@ -23,7 +23,7 @@ const DateHeroModule = (props: ModuleProps<IDateHeroModuleProps>): JSX.Element =
             <div className={`text-start position-absolute bottom-0 ${styles.bannerContentContainer}`}>
                 <h1 className={styles.title}>{title}</h1>
                 <h5 className={styles.date}>Updated {formattedDate}</h5>
-            </div >
+            </div>
         </Banner>
     );
 };

@@ -28,7 +28,7 @@ const CardContainer = (props: ICardContainerProps): JSX.Element =>
                         flex-md-grow-0
                     `}
             >
-                <Card {...card} ></Card>
+                <Card {...card} />
             </Col>
         )}
     </Row>;

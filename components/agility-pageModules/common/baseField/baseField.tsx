@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import IBaseField from "components/agility-pageModules/common/baseField/interfaces/IBaseField";
 
@@ -11,7 +11,7 @@ const BaseField = (props: React.PropsWithChildren<IBaseField>): JSX.Element => (
             {props.children}
             <div className={`
                ${styles.error} 
-                ${props.shouldShowError
+               ${props.shouldShowError
                     ? styles.show
                     : styles.hide} 
             `}>

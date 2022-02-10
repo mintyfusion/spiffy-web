@@ -20,7 +20,7 @@
 
         &::before {
             content: "";
-            background-image: url("/images/educationDetailsPage/spiffy.svg");
+            background-image: url("/images/education-details-page/spiffy.svg");
         }
     }
 }
@@ -31,7 +31,6 @@
             width: 68%;
             margin-left: auto;
             
-
             &::before {
                 position: absolute;
                 left: 5%;
@@ -56,9 +55,6 @@
 @include media("<desktop") {
     .heroContainer {
         blockquote {
-            display: flex;
-            flex-direction: column;
-
             &::before {
                 width: 160px;
                 height: 100px;
