@@ -55,6 +55,7 @@
         @include imgProperties(160px);
     }
 }
+
 .avatarFriends {
     > svg {
         @include imgProperties(222px);
