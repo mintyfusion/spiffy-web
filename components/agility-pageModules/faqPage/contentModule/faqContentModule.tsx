@@ -20,6 +20,10 @@ import styles from "components/agility-pageModules/faqPage/contentModule/faqCont
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
 const scrollAmount = 200;
+const scrollParams = {
+    top: 0,
+    behavior: "smooth" as ScrollBehavior
+};
 
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.allTopics);
@@ -32,12 +36,12 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     const data = React.useContext(SearchContext);
 
     const handleArrowScrollLeft = React.useCallback(() => {
-        tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft - scrollAmount, behavior: "smooth" });
-    }, [tabsRef]);
+        tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft - scrollAmount, ...scrollParams });
+    }, []);
 
     const handleArrowScrollRight = React.useCallback(() => {
-        tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft + scrollAmount, behavior: "smooth" });
-    }, [tabsRef]);
+        tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft + scrollAmount, ...scrollParams });
+    }, []);
 
     const handleNavigation = React.useCallback(() => {
         breakpoint && setExpanded(!expanded);
