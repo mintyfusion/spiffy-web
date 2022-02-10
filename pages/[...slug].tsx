@@ -7,7 +7,7 @@ import type {
 } from "next";
 
 import { getModule } from "components/agility-pageModules";
-
+import ISearchContextProps from "types/ISearchContextProps";
 import Layout from "components/agility-pageModules/common/layout/layout";
 
 // getStaticProps function fetches data for all Agility Pages 
@@ -57,7 +57,7 @@ export async function getStaticPaths({ locales, defaultLocale }
 }
 
 // Context API value for passing search string across children components where required
-export const SearchContext = React.createContext({ searchValue: "", setSearch() { this; } });
+export const SearchContext = React.createContext({} as ISearchContextProps);
 
 const Index = (props: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element => {
     const [searchValue, setSearchedValue] = React.useState<string>("");

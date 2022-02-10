@@ -78,7 +78,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     const tags = React.useMemo(() => props.module.fields.tags.map(tag => tag.fields.name), [props.module.fields.tags]);
 
     const faqData = React.useMemo(() =>
-        tags.map((tag) => {
+        tags.map((tag, index) => {
             if (tag.toLowerCase().includes(ContentCategory.all.toLowerCase())) {
                 return;
             } if (contentData?.items.filter(data => data.fields.tag.fields.name === tag).length === 0) {
@@ -86,7 +86,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             }
 
             return (
-                <>
+                <React.Fragment key={index}>
                     {contentData
                         && contentData.items.filter(data => data.fields.tag.fields.name === tag).map((post, index) =>
                             <Accordion key={`${tag} ${index}`} className={`${styles.accordion} ${tag !== activeTab && "d-none"}`}>
@@ -106,7 +106,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                                 </Accordion.Item>
                             </Accordion>
                         )}
-                </>
+                </React.Fragment>
             );
         }), [tags, contentData, activeTab]);
 
