@@ -58,7 +58,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 : fieldName === ContactFormFieldNames.phoneNumber
                     ? (
                         <div className="d-flex align-items-center justify-content-center">
-                            <div className={styles.countryflagContainer}>+1</div>
+                            <div className={`${styles.countryflagContainer} text-end`}>+1</div>
                             <input {...fieldProps} />
                         </div>
                     )

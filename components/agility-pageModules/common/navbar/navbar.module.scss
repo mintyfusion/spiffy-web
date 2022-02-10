@@ -11,8 +11,8 @@ $backroundTransition: background-color 0.2s;
 
 .navbar {
   transition: $backroundTransition;
-  z-index: 4;
 
+  &,
   .headerLogo {
     z-index: 4;
   }
@@ -35,7 +35,7 @@ $backroundTransition: background-color 0.2s;
       &:hover {
         color: $yellow;
         transition: color 0.2s ease-in, background 0.2s ease-in;
-        cursor: pointer
+        cursor: pointer;
       }
     }
 
