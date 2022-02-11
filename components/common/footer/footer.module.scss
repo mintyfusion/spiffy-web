@@ -18,7 +18,6 @@
 
 .footerContainer {
     @extend .backgroundPattern;
-    z-index: 1;
 
     .footerContentContainer {
         .column {

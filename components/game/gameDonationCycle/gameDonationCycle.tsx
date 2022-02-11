@@ -275,12 +275,14 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     </Navbar.Collapse>
                 </Navbar>
 
-                <div className={`w-100 ${animation
-                    ? styles.contentAnimation
-                    : styles.donationCycle}`}>
+                <div
+                    className={`w-100 ${animation
+                        ? styles.contentAnimation
+                        : styles.donationCycle}`}>
                     <div className={`${styles.donationInner} ${colCenter}`}>
                         <h2>Donation Cycle</h2>
-                        <div className={styles.coin}
+                        <div
+                            className={styles.coin}
                             ref={coinRef}
                             style={coinStyles.current}>
                             <Image src="/images/game/coin.png" alt="Coin" width={76} height={76} />

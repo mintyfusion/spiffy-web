@@ -4,22 +4,6 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
 
-@mixin imgProperties($size) {
-    width: $size;
-    height: $size;
-    object-fit: contain;
-}
-
-@mixin gameContentPadding($padding) {
-    padding: $padding;
-}
-
-@mixin animation($name, $time) {
-    animation-name: $name;
-    animation-duration: $time;
-    animation-fill-mode: forwards;
-}
-
 .gameStepThreeUserColumnInner {
     max-width: 450px;
 }
@@ -79,7 +63,7 @@
 }
 
 .gameStepTwoWrapper {
-    @include gameContentPadding(50px 0);
+    padding: 50px 0;
     width: 100%;
 
     button {
@@ -88,7 +72,7 @@
 }
 
 .gameStepSix {
-    @include gameContentPadding(100px 0);
+    padding: 100px 0;
     width: 100%;
 }
 
@@ -324,11 +308,11 @@
     }
 
     .gameStepOne {
-        @include gameContentPadding(0px 0);
+        padding: 0;
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(50px 0);
+        padding: 50px 0;
     }
 
     .paddingSides {
@@ -502,11 +486,11 @@
     }
 
     .gameStepOne {
-        @include gameContentPadding(0px 0);
+        padding: 0;
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(50px 0);
+        padding: 50px 0;
     }
 
     .avatarInner {
@@ -630,7 +614,7 @@
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(50px 0);
+        padding: 50px 0;
     }
 
     .avatarInner {
@@ -683,7 +667,7 @@
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(50px 0);
+        padding: 50px 0;
     }
 
     .paddingSides {
@@ -780,7 +764,7 @@
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(50px 0);
+        padding: 50px 0;
     }
 
     .percentageWrapper {
@@ -835,11 +819,11 @@
     }
 
     .gameStepOne {
-        @include gameContentPadding(0px 0);
+        padding: 0;
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(50px 0);
+        padding: 50px 0;
     }
 
     .percentageWrapper {
@@ -878,11 +862,11 @@
     }
 
     .gameStepOne {
-        @include gameContentPadding(0px 0);
+        padding: 0;
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(50px 0);
+        padding: 50px 0;
     }
 
     .percentageWrapper {
@@ -920,11 +904,11 @@
     }
 
     .gameStepOne {
-        @include gameContentPadding(0px 0);
+        padding: 0px;
     }
 
     .gameStepTwoWrapper {
-        @include gameContentPadding(50px 0);
+        padding: 50px 0;
     }
 
     .percentageWrapper {

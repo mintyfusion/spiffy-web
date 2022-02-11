@@ -189,10 +189,10 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 </Navbar>
 
                 <div className={`${styles.donationInner} d-flex w-100 position-relative h-100`}>
-                    <div className={`${styles.flexOne} d-flex flex-wrap h-100`}>
+                    <div className={`${styles.flex1} d-flex flex-wrap h-100`}>
                         {avatars}
                     </div>
-                    <div className={`${styles.flexOne} ${styles.friendsMain} text-center`}>
+                    <div className={`${styles.flex1} ${styles.friendsMain} text-center`}>
                         <div className={`${styles.avatarInner} ${colCenter} position-relative`}>
                             <h2 className={`${styles.avatarHeading}`}>
                                 <span key={percentages[selectedKey].amount}>${percentages[selectedKey].amount}
@@ -206,7 +206,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                         </div>
                         <h6>{props.name}</h6>
                     </div>
-                    <div className={`${styles.flexOne} d-flex flex-wrap h-100 flex-row-reverse`}>
+                    <div className={`${styles.flex1} d-flex flex-wrap h-100 flex-row-reverse`}>
                         {avatars}
                     </div>
                 </div>

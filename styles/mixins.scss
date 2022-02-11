@@ -52,3 +52,17 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
 @mixin fluidDimension($property, $minValue, $maxValue) {
     #{$property}: fluid($minValue, $maxValue);
 }
+
+// Take property size for dynamic width and height of image.
+@mixin imgProperties($size) {
+    width: $size;
+    height: $size;
+    object-fit: contain;
+}
+
+// Take property name and time for dynamic animation name nad time.
+@mixin animation($name, $time) {
+    animation-name: $name;
+    animation-duration: $time;
+    animation-fill-mode: forwards;
+}

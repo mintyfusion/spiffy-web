@@ -23,7 +23,7 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
-  "flexOne": string;
+  "flex1": string;
   "friendsBottom": string;
   "friendsMain": string;
   "friendsTop": string;

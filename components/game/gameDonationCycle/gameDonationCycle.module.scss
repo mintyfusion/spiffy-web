@@ -4,18 +4,6 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
 
-@mixin animation($name, $time) {
-    animation-name: $name;
-    animation-duration: $time;
-    animation-fill-mode: forwards;
-}
-
-@mixin imgProperties($size) {
-    width: $size;
-    height: $size;
-    object-fit: contain;
-}
-
 .donationSections {
     width: 100%;
     overflow: auto;
@@ -254,61 +242,6 @@
         background-color: $faded-yellow;
         color: $darkGrey;
     }
-
-    @keyframes opacityAnimation {
-        99% {
-            visibility: hidden;
-        }
-        100% {
-            visibility: visible;
-        }
-    }
-
-    @keyframes displayAnimation {
-        30% {
-            height: 20px;
-        }
-        100% {
-            height: 0;
-        }
-    }
-    
-    @keyframes iconAnimation {
-        99% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes contentShow {
-        0% {
-            opacity: 0;
-        }
-        50% {
-            opacity: 0;
-        }
-        75% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-            height: 0px;
-            overflow: hidden;
-        }
-    }
-
-    @keyframes contetHide {
-        99% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-            height: 0px;
-            overflow: hidden;
-        }
-    }
 }
 
 @include media(">=phone", "<990px") {
@@ -458,5 +391,60 @@
                 }
             }
         }
+    }
+}
+
+@keyframes opacityAnimation {
+    99% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+@keyframes displayAnimation {
+    30% {
+        height: 20px;
+    }
+    100% {
+        height: 0;
+    }
+}
+
+@keyframes iconAnimation {
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes contentShow {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        height: 0px;
+        overflow: hidden;
+    }
+}
+
+@keyframes contetHide {
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        height: 0px;
+        overflow: hidden;
     }
 }
