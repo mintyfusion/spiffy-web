@@ -113,7 +113,7 @@
     }
 
     .donationButton {
-        margin-bottom: 10px !important;
+        margin-bottom: 10px;
     }
 
     .friendsBottom {
@@ -126,10 +126,8 @@
 
     .friendsTop,
     .friendsBottom {
-        div {
-            svg {
-                @include imgProperties(35px);
-            }
+        div svg {
+            @include imgProperties(35px);
         }
     }
 
@@ -172,10 +170,8 @@
 
     .friendsTop,
     .friendsBottom {
-        div {
-            svg {
-                @include imgProperties(60px);
-            }
+        div svg {
+            @include imgProperties(60px);
         }
     }
 }

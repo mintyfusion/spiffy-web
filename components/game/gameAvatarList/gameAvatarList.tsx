@@ -3,30 +3,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar, Row } from "react-bootstrap";
 import React, { CSSProperties } from "react";
 
-import Avatar from "components/game/avatar/avatar";
+import Avatar from "components/game/avatar/gameAvatar";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import UseBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
-
 import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import percentages from "components/game/gameAvatarList/gameAvatarListContent";
+
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
-const fifteenRandom = 15;
-const five = 5;
+const marginFifteen = 15;
+const marginFive = 5;
 // Avatar random sizes numbers
 // No need to understand the number, array itself tells the meaning.
 const sizes = [20, 22, 25, 27, 30, 33, 35, 37, 40]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const sizesMobile = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const mobile = 770;
-const friendsSliceTwo = 2;
-const friendsSliceFour = 4;
+const friendsSliceindex1 = 2;
+const friendsSliceindex2 = 4;
 
 const avatars = Object.values(AvatarType);
 
@@ -36,10 +36,11 @@ const avatars = Object.values(AvatarType);
 function getRandomMargin() {
     const width = window.innerWidth;
     if (width < mobile) {
-        return Math.floor(Math.random() * five + five);
+        return Math.floor(Math.random() * marginFive + marginFive);
     }
 
-    return Math.floor(Math.random() * fifteenRandom + five);
+    /** Plus marginFive is for random margin will not be generated below 5 */
+    return Math.floor(Math.random() * marginFifteen + marginFive);
 }
 
 /**
@@ -149,8 +150,8 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
 
     const addedFriendsRender = React.useCallback((isTop: boolean) => {
         const arrFriends = isTop
-            ? props.friends.slice(0, friendsSliceTwo)
-            : props.friends.slice(friendsSliceTwo, friendsSliceFour);
+            ? props.friends.slice(0, friendsSliceindex1)
+            : props.friends.slice(friendsSliceindex1, friendsSliceindex2);
 
         const style = isTop
             ? styles.friendsTop

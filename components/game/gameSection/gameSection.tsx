@@ -6,7 +6,7 @@ import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 
-import Avatar from "components/game/avatar/avatar";
+import Avatar from "components/game/avatar/gameAvatar";
 import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
@@ -390,7 +390,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     }, [step]);
 
     return (
-        <div className={`${colCenter} ${styles.wrapper}`}>
+        <div className={`${colCenter}`}>
             <Modal show={true} fullscreen={true} onHide={props.closeModal}>
                 <Modal.Body
                     className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`}
@@ -441,7 +441,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         <Element name={StepTypes.Third} className={`${styles.card} ${styles.transparent} ${rowCenter}`}>
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.gameStepThreeUserColumn} ${colCenter}`}>
-                                    <div className={`${styles.gameStepThreeUserColumnInner} w-100`}>
+                                    <div className={`${styles.gameStepTwo} w-100`}>
                                         <h2 className={`${styles.avatarHeading} text-center`}>Add four friends</h2>
                                         <Row className={`${horizontalAlign} w-100 m-0`}>
                                             {renderAddedFriends(true)}

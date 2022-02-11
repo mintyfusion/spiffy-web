@@ -2,10 +2,7 @@ export type Styles = {
   "avatar": string;
   "avatarFriends": string;
   "avatarHeading": string;
-  "avatarInner": string;
   "avatarSelected": string;
-  "avatarstepTwo": string;
-  "avatarstepTwoAnimation": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold150": string;
@@ -22,15 +19,6 @@ export type Styles = {
   "boldGame67": string;
   "card": string;
   "close": string;
-  "coinRef": string;
-  "coinTwo": string;
-  "donationActive": string;
-  "donationButton": string;
-  "donationCycleItems": string;
-  "donationImage": string;
-  "donationRow1": string;
-  "donationRow2": string;
-  "donationRow3": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
@@ -38,7 +26,6 @@ export type Styles = {
   "friendsTop": string;
   "fullbold109": string;
   "fullBold67": string;
-  "gameStepOne": string;
   "gameStepSix": string;
   "gameStepThree": string;
   "gameStepThreeFriendsColumn": string;
@@ -46,12 +33,8 @@ export type Styles = {
   "gameStepThreeUserColumnInner": string;
   "gameStepTwo": string;
   "gameStepTwoWrapper": string;
-  "heigth120": string;
-  "marginBottomMinusFifty": string;
-  "marginTopMinusFifty": string;
   "medium25": string;
   "modalBody": string;
-  "paddingSides": string;
   "percentageWrapper": string;
   "regular14": string;
   "regular16": string;
@@ -67,13 +50,10 @@ export type Styles = {
   "regularDesktop30Mobile20": string;
   "semiBold90": string;
   "signUpsection": string;
-  "stepFour": string;
   "targetOne": string;
   "targetTwo": string;
   "transparent": string;
   "user": string;
-  "wrapper": string;
-  "yellow": string;
 };
 
 export type ClassNames = keyof Styles;

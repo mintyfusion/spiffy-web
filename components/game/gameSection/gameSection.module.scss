@@ -4,940 +4,833 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
 
-.gameStepThreeUserColumnInner {
-    max-width: 450px;
-}
-
 .modalBody {
     background-color: $dirty-white;
-}
 
-.close {
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.card {
-    background-color: $white;
-    width: 90%;
-    min-height: calc(#{$vh} - 40px);
-    margin: 20px auto;
-
-    .avatar {
-        color: $white;
-        cursor: pointer;
-        opacity: 0;
-        transition: 1s;
-    }
-}
-
-.avatarSelected {
-    > svg {
-        @include imgProperties(160px);
-    }
-}
-
-.avatarFriends {
-    > svg {
-        @include imgProperties(222px);
-        transition: 2s;
-    }
-}
-
-.wrapper {
-    padding: 30px;
-}
-
-.avatarHeading {
-    @extend .regular-desktop30-mobile20;
-}
-
-.percentageWrapper {
-    svg {
-        @include imgProperties(165px);
-        cursor: pointer;
-    }
-}
-
-.gameStepTwoWrapper {
-    padding: 50px 0;
-    width: 100%;
-
-    button {
-        margin-top: 40px;
-    }
-}
-
-.gameStepSix {
-    padding: 100px 0;
-    width: 100%;
-}
-
-.gameStepTwo {
-    width: 30%;
-    margin-top: 0px;
-
-    img {
-        visibility: hidden;
-    }
-
-    input {
-        border: 1px solid $silver;
-        padding: 20px 10px;
-        border-radius: 12px;
-        margin-top: 40px;
-    }
-
-    input:focus-visible {
-        outline: 0px;
-    }
-    a {
-        width: 100%;
-    }
-}
-
-.gameStepThree {
-    display: flex;
-    background-color: $dirty-white;
-    width: 100%;
-    .user {
-        img {
-            visibility: hidden;
-        }
-    }
-
-    .gameStepThreeUserColumn {
-        width: 48%;
+    .card {
         background-color: $white;
-        h2 {
-            display: none;
-            position: absolute;
-            top: 60px;
-        }
+        width: 90%;
+        min-height: calc(#{$vh} - 40px);
+        margin: 20px auto;
     }
 
-    .gameStepThreeFriendsColumn {
-        width: 48%;
-        background-color: $white;
-        padding: 50px 80px;
-        h2 {
-            margin-top: 50px;
-        }
+    .close {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+        z-index: 10;
     }
 
-    h3 {
-        @extend .regular24;
-        margin-top: 90px;
-    }
-}
-
-.coinRef {
-    width: 50px;
-    height: 50px;
-}
-
-.donationActive {
-    background-color: $yellow;
-}
-
-.yellow {
-    color: $yellow;
-}
-
-.signUpsection {
-    h2 {
-        margin-top: 40px;
-    }
-
-    button {
-        margin-top: 40px;
-        max-width: 25%;
+    .gameStepTwoWrapper {
+        padding: 50px 0;
         width: 100%;
+
+        .avatarHeading {
+            @extend .regular-desktop30-mobile20;
+        }
+
+        .avatar {
+            color: $white;
+            cursor: pointer;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        .avatarSelected svg {
+            @include imgProperties(160px);
+        }
+
+        .avatarFriends svg {
+            @include imgProperties(222px);
+            transition: 2s;
+        }
+
+        .gameStepTwo {
+            width: 30%;
+            margin-top: 0px;
+
+            button {
+                margin-top: 40px;
+            }
+
+            .targetOne {
+                width: 160px;
+                height: 160px;
+                margin-top: 40px;
+            }
+
+            img {
+                visibility: hidden;
+            }
+
+            input {
+                border: 1px solid $silver;
+                padding: 20px 10px;
+                border-radius: 12px;
+                margin-top: 40px;
+            }
+
+            input:focus-visible {
+                outline: 0px;
+            }
+
+            a {
+                width: 100%;
+            }
+        }
     }
-}
 
-.targetOne {
-    width: 160px;
-    height: 160px;
-    margin-top: 40px;
-}
+    .transparent {
+        background-color: $transparent;
+    }
 
-.targetTwo {
-    width: 222px;
-    height: 222px;
-}
+    .gameStepThree {
+        display: flex;
+        background-color: $dirty-white;
+        width: 100%;
 
-.transparent {
-    background-color: $transparent;
-}
+        .avatarHeading {
+            @extend .regular-desktop30-mobile20;
+        }
 
-.friendsTop {
-    margin-bottom: -111px;
-    min-height: 148px;
-}
+        .user {
+            img {
+                visibility: hidden;
+            }
+        }
 
-.friendsBottom {
-    margin-top: -100px;
-    min-height: 148px;
+        .gameStepThreeUserColumn {
+            width: 48%;
+            background-color: $white;
+            h2 {
+                display: none;
+                position: absolute;
+                top: 60px;
+            }
+        }
+
+        .gameStepThreeFriendsColumn {
+            width: 48%;
+            background-color: $white;
+            padding: 50px 80px;
+
+            h2 {
+                margin-top: 50px;
+            }
+        }
+
+        h3 {
+            @extend .regular24;
+            margin-top: 90px;
+        }
+
+        .targetTwo {
+            width: 222px;
+            height: 222px;
+        }
+
+        .gameStepThreeUserColumnInner {
+            max-width: 450px;
+        }
+
+        .friendsTop,
+        .friendsBottom {
+            min-height: 148px;
+        }
+
+        .friendsTop {
+            margin-bottom: -111px;
+        }
+
+        .friendsBottom {
+            margin-top: -100px;
+        }
+    }
+
+    .gameStepSix {
+        .signUpsection {
+            button {
+                max-width: 25%;
+            }
+        }
+    }
 }
 
 @include media(">=phone", "<375px") {
-    .friendsTop,
-    .friendsBottom {
-        width: 55%;
-        min-height: 60px;
-        svg {
-            @include imgProperties(50px);
+    .modalBody {
+        .close {
+            top: 25px;
+            z-index: 1;
         }
-    }
 
-    .friendsTop {
-        margin-bottom: -50px;
-    }
-
-    .friendsBottom {
-        margin-top: -34px;
-    }
-
-    .close {
-        top: 25px;
-        z-index: 1;
-    }
-
-    .avatarSelected {
-        > svg {
-            @include imgProperties(90px);
-        }
-    }
-    .avatarFriends {
-        > svg {
-            @include imgProperties(90px);
-            transition: 2s;
-        }
-    }
-    .targetOne {
-        width: 90px;
-        height: 90px;
-    }
-    .stepFour {
-        width: 90%;
-        position: relative;
-    }
-
-    .targetTwo {
-        width: 90px;
-        height: 90px;
-    }
-
-    .avatarstepTwo {
-        animation: avatarstepTwoAnimation 4s;
-        animation-fill-mode: forwards;
-        img {
-            @include imgProperties(164px);
-        }
-    }
-
-    .card {
-        margin: 20px 0;
-        width: 100%;
-    }
-
-    .avatar {
-        svg {
-            @include imgProperties(90px);
-        }
-    }
-
-    .gameStepTwo {
-        width: 75%;
-        img {
-            @include imgProperties(84px);
-        }
-        input {
-            padding: 8px 10px;
-            margin-top: 40px;
-        }
-    }
-
-    .gameStepThree {
-        flex-direction: column !important;
-        height: auto;
-        .user {
-            img {
-                visibility: hidden;
-            }
-        }
-        .gameStepThreeUserColumn {
+        .card {
+            margin: 20px 0;
             width: 100%;
-            height: 50%;
-            h2 {
-                position: relative;
-                top: -10px;
-                display: block;
+        }
+
+        .gameStepTwoWrapper {
+            padding: 50px 0;
+
+            .avatarSelected svg {
+                @include imgProperties(90px);
             }
 
-            h3 {
-                margin-top: 60px;
+            .avatarFriends svg {
+                @include imgProperties(90px);
+                transition: 2s;
+            }
+
+            .avatar svg {
+                @include imgProperties(90px);
+            }
+
+            .gameStepTwo {
+                width: 75%;
+
+                img {
+                    @include imgProperties(84px);
+                }
+
+                input {
+                    padding: 8px 10px;
+                    margin-top: 40px;
+                }
+
+                .targetOne {
+                    width: 90px;
+                    height: 90px;
+                }
             }
         }
 
-        .gameStepThreeFriendsColumn {
-            width: 100%;
-            padding: 0px;
-            height: 50%;
-            h2 {
-                display: none;
-            }
-        }
-    }
+        .gameStepThree {
+            flex-direction: column !important;
+            height: auto;
 
-    .percentageWrapper {
-        width: 100%;
-        height: 100%;
-        svg {
-            @include imgProperties(65px);
-            cursor: pointer;
-        }
-    }
-
-    .donationCycleItems {
-        padding: 10px 5px;
-    }
-
-    .gameStepOne {
-        padding: 0;
-    }
-
-    .gameStepTwoWrapper {
-        padding: 50px 0;
-    }
-
-    .paddingSides {
-        padding: 30px 0px;
-    }
-}
-
-@include media(">=375px", "<425px") {
-    .friendsTop,
-    .friendsBottom {
-        width: 55%;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
-        }
-    }
-
-    .friendsTop {
-        margin-top: -80px;
-    }
-
-    .friendsBottom {
-        margin-top: -40px;
-    }
-
-    .percentageWrapper {
-        width: 100%;
-        height: 100%;
-        svg {
-            @include imgProperties(65px);
-            cursor: pointer;
-        }
-    }
-
-    .close {
-        top: 20px;
-    }
-
-    .coinTwo {
-        img {
-            @include imgProperties(20px);
-        }
-
-        top: 310px;
-    }
-
-    .marginBottomMinusFifty {
-        margin-bottom: -20px;
-    }
-
-    .marginTopMinusFifty {
-        margin-top: -20px;
-    }
-
-    .heigth120 {
-        height: 50px;
-    }
-    .donationImage {
-        img {
-            @include imgProperties(25px);
-        }
-    }
-    .donationRow1 {
-        width: 40%;
-    }
-
-    .donationRow2 {
-        width: 65%;
-        margin: 5px auto;
-    }
-
-    .donationRow3 {
-        width: 75%;
-        margin: 5px auto;
-    }
-
-    .donationButton {
-        margin-bottom: 5px;
-    }
-
-    .avatarSelected {
-        > svg {
-            @include imgProperties(90px);
-        }
-    }
-
-    .avatarFriends {
-        > svg {
-            @include imgProperties(90px);
-            transition: 2s;
-        }
-    }
-
-    .avatar {
-        svg {
-            @include imgProperties(90px);
-        }
-    }
-    .targetOne {
-        width: 90px;
-        height: 90px;
-        margin-bottom: 40px;
-    }
-
-    .stepFour {
-        width: 90%;
-    }
-
-    .targetTwo {
-        width: 90px;
-        height: 90px;
-    }
-
-    .avatarstepTwo {
-        animation: avatarstepTwoAnimation 4s;
-        animation-fill-mode: forwards;
-        img {
-            @include imgProperties(164px);
-        }
-    }
-
-    .card {
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .gameStepTwo {
-        width: 75%;
-        img {
-            @include imgProperties(84px);
-        }
-        input {
-            font-size: 16px;
-            padding: 8px 10px;
-            margin-top: 0px;
-        }
-    }
-
-    .gameStepThree {
-        flex-direction: column !important;
-        height: auto;
-        .user {
-            img {
-                visibility: hidden;
-            }
-        }
-        .gameStepThreeUserColumn {
-            width: 100%;
-            height: 50%;
-            h2 {
-                position: relative;
-                top: -30px;
-                display: block;
-            }
-            h3 {
-                margin-top: 40px;
-            }
-        }
-        .gameStepThreeFriendsColumn {
-            width: 100%;
-            padding: 0px;
-            height: 50%;
-            h2 {
-                display: none;
-            }
-        }
-    }
-
-    .donationCycleItems {
-        padding: 10px 5px;
-    }
-
-    .gameStepOne {
-        padding: 0;
-    }
-
-    .gameStepTwoWrapper {
-        padding: 50px 0;
-    }
-
-    .avatarInner {
-        height: 100px;
-        margin-top: 0px;
-    }
-}
-
-@include media(">=425px", "<800px") {
-    .gameStepThreeUserColumnInner {
-        max-width: 400px;
-    }
-
-    .friendsTop,
-    .friendsBottom {
-        width: 50%;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
-        }
-    }
-
-    .friendsTop {
-        margin-top: -80px;
-        min-height: 60px;
-    }
-
-    .friendsBottom {
-        margin-top: -40px;
-    }
-
-    .close {
-        top: 20px;
-    }
-
-    .avatarSelected {
-        > svg {
-            @include imgProperties(90px);
-        }
-    }
-
-    .avatarFriends {
-        > svg {
-            @include imgProperties(90px);
-            transition: 2s;
-        }
-    }
-
-    .avatar {
-        svg {
-            @include imgProperties(90px);
-        }
-    }
-    .targetOne {
-        width: 90px;
-        height: 90px;
-    }
-
-    .stepFour {
-        width: 80%;
-        position: relative;
-    }
-
-    .targetTwo {
-        width: 90px;
-        height: 90px;
-    }
-
-    .card {
-        margin: 20px;
-    }
-
-    .gameStepTwo {
-        width: 75%;
-        img {
-            @include imgProperties(84px);
-        }
-        input {
-            font-size: 16px;
-            padding: 8px 10px;
-        }
-    }
-
-    .gameStepThree {
-        flex-direction: column !important;
-        height: auto;
-        .user {
-            img {
-                visibility: hidden;
-            }
-        }
-        .gameStepThreeUserColumn {
-            width: 100%;
-            height: 50%;
-            h2 {
-                position: relative;
-                top: -20px;
-                display: block;
-            }
-            h3 {
-                margin-bottom: 40px;
-                margin-top: 40px;
-            }
-        }
-        .gameStepThreeFriendsColumn {
-            width: 100%;
-            padding: 0px;
-            height: 50%;
-            h2 {
-                display: none;
+            .targetTwo {
+                width: 90px;
+                height: 90px;
             }
 
-            .percentageWrapper {
+            .gameStepThreeUserColumn {
                 width: 100%;
-                height: 100%;
-                svg {
-                    @include imgProperties(65px);
+                height: 50%;
+                h2 {
+                    position: relative;
+                    top: -10px;
+                    display: block;
+                }
+
+                h3 {
+                    margin-top: 60px;
+                }
+
+                .friendsTop,
+                .friendsBottom {
+                    width: 55%;
+                    min-height: 60px;
+                    svg {
+                        @include imgProperties(50px);
+                    }
+                }
+
+                .friendsTop {
+                    margin-bottom: -50px;
+                }
+
+                .friendsBottom {
+                    margin-top: -34px;
+                }
+            }
+
+            .gameStepThreeFriendsColumn {
+                width: 100%;
+                padding: 0px;
+                height: 50%;
+
+                h2 {
+                    display: none;
+                }
+
+                .percentageWrapper {
+                    width: 100%;
+                    height: 100%;
+                    svg {
+                        @include imgProperties(65px);
+                    }
+                }
+            }
+        }
+
+        .gameStepSix {
+            .signUpsection {
+                button {
+                    max-width: 80%;
                 }
             }
         }
     }
+}
 
-    .gameStepTwoWrapper {
-        padding: 50px 0;
+@include media(">=375px", "<425px") {
+    .modalBody {
+        .card {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .close {
+            top: 20px;
+        }
+
+        .gameStepTwoWrapper {
+            padding: 50px 0;
+
+            .avatar svg {
+                @include imgProperties(90px);
+            }
+
+            .avatarSelected svg {
+                @include imgProperties(90px);
+            }
+
+            .avatarFriends svg {
+                @include imgProperties(90px);
+                transition: 2s;
+            }
+
+            .gameStepTwo {
+                width: 75%;
+
+                img {
+                    @include imgProperties(84px);
+                }
+                input {
+                    font-size: 16px;
+                    padding: 8px 10px;
+                    margin-top: 0px;
+                }
+
+                .targetOne {
+                    width: 90px;
+                    height: 90px;
+                    margin-bottom: 40px;
+                }
+            }
+        }
+
+        .gameStepThree {
+            flex-direction: column !important;
+            height: auto;
+
+            .targetTwo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .friendsTop,
+            .friendsBottom {
+                width: 55%;
+                min-height: 60px;
+                svg {
+                    @include imgProperties(60px);
+                }
+            }
+
+            .friendsTop {
+                margin-top: -80px;
+            }
+
+            .friendsBottom {
+                margin-top: -40px;
+            }
+
+            .gameStepThreeUserColumn {
+                width: 100%;
+                height: 50%;
+
+                h2 {
+                    position: relative;
+                    top: -30px;
+                    display: block;
+                }
+
+                h3 {
+                    margin-top: 40px;
+                }
+            }
+
+            .gameStepThreeFriendsColumn {
+                width: 100%;
+                padding: 0px;
+                height: 50%;
+
+                h2 {
+                    display: none;
+                }
+
+                .percentageWrapper {
+                    width: 100%;
+                    height: 100%;
+
+                    svg {
+                        @include imgProperties(65px);
+                    }
+                }
+            }
+        }
+
+        .gameStepSix {
+            .signUpsection {
+                button {
+                    max-width: 80%;
+                }
+            }
+        }
     }
+}
 
-    .avatarInner {
-        height: 100px;
-        margin-top: 0px;
+@include media(">=425px", "<800px") {
+    .modalBody {
+        .close {
+            top: 20px;
+        }
+
+        .card {
+            margin: 20px;
+        }
+
+        .gameStepTwoWrapper {
+            padding: 50px 0;
+
+            .avatarSelected svg {
+                @include imgProperties(90px);
+            }
+
+            .avatarFriends svg {
+                @include imgProperties(90px);
+                transition: 2s;
+            }
+
+            .avatar svg {
+                @include imgProperties(90px);
+            }
+
+            .gameStepTwo {
+                width: 75%;
+
+                img {
+                    @include imgProperties(84px);
+                }
+
+                input {
+                    font-size: 16px;
+                    padding: 8px 10px;
+                }
+
+                .targetOne {
+                    width: 90px;
+                    height: 90px;
+                }
+            }
+        }
+
+        .gameStepThree {
+            flex-direction: column !important;
+            height: auto;
+
+            .friendsTop,
+            .friendsBottom {
+                width: 50%;
+                min-height: 60px;
+                svg {
+                    @include imgProperties(60px);
+                }
+            }
+
+            .friendsTop {
+                margin-top: -80px;
+                min-height: 60px;
+            }
+
+            .friendsBottom {
+                margin-top: -40px;
+            }
+
+            .targetTwo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .gameStepThreeFriendsColumn {
+                width: 100%;
+                padding: 0px;
+                height: 50%;
+                h2 {
+                    display: none;
+                }
+
+                .percentageWrapper {
+                    width: 100%;
+                    height: 100%;
+                    svg {
+                        @include imgProperties(65px);
+                    }
+                }
+            }
+
+            .gameStepThreeUserColumn {
+                width: 100%;
+                height: 50%;
+                max-width: 400px;
+                h2 {
+                    position: relative;
+                    top: -20px;
+                    display: block;
+                }
+                h3 {
+                    margin-bottom: 40px;
+                    margin-top: 40px;
+                }
+            }
+        }
+
+        .gameStepSix {
+            .signUpsection {
+                button {
+                    max-width: 80%;
+                }
+            }
+        }
     }
 }
 
 @include media(">=800px", "<900px") {
-    .targetOne {
-        width: 90px;
-        height: 90px;
-    }
+    .modalBody {
+        .gameStepTwoWrapper {
+            padding: 50px 0;
 
-    .avatar {
-        svg {
-            @include imgProperties(90px);
-        }
-    }
+            .avatar svg {
+                @include imgProperties(90px);
+            }
 
-    .gameStepTwo {
-        width: 35%;
-        img {
-            @include imgProperties(84px);
-        }
-        input {
-            font-size: 16px;
-            padding: 8px 10px;
-        }
-    }
+            .avatarFriends svg {
+                @include imgProperties(90px);
+            }
 
-    .gameStepThree {
-        .user {
-            img {
-                visibility: hidden;
+            .gameStepTwo {
+                width: 35%;
+
+                .targetOne {
+                    width: 90px;
+                    height: 90px;
+                }
+
+                img {
+                    @include imgProperties(84px);
+                }
+
+                input {
+                    font-size: 16px;
+                    padding: 8px 10px;
+                }
             }
         }
-        .gameStepThreeUserColumn {
-            width: 48%;
-            h3 {
-                font-size: 11px;
-                word-break: break-all;
-                text-align: center;
+
+        .gameStepThree {
+            .targetTwo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .gameStepThreeUserColumn {
+                width: 48%;
+                h3 {
+                    font-size: 11px;
+                    word-break: break-all;
+                    text-align: center;
+                }
+
+                .friendsTop,
+                .friendsBottom {
+                    width: 55%;
+                    min-height: 60px;
+                    svg {
+                        @include imgProperties(60px);
+                    }
+                }
+
+                .friendsTop {
+                    margin-top: -80px;
+                }
+
+                .friendsBottom {
+                    margin-top: -40px;
+                }
+            }
+
+            .gameStepThreeFriendsColumn {
+                width: 48%;
+                padding: 0px;
+
+                .percentageWrapper svg {
+                    @include imgProperties(65px);
+                }
             }
         }
-        .gameStepThreeFriendsColumn {
-            width: 48%;
-            padding: 0px;
-        }
-    }
 
-    .gameStepTwoWrapper {
-        padding: 50px 0;
-    }
-
-    .paddingSides {
-        padding: 0px 0px !important;
-    }
-
-    .percentageWrapper {
-        svg {
-            @include imgProperties(65px);
-        }
-    }
-
-    .targetTwo {
-        width: 90px;
-        height: 90px;
-    }
-
-    .avatarFriends {
-        > div {
-            @include imgProperties(90px);
-        }
-    }
-    .friendsTop {
-        width: 55%;
-        margin-top: -80px;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
-        }
-    }
-
-    .friendsBottom {
-        width: 55%;
-        margin-top: -40px;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
+        .gameStepSix {
+            .signUpsection {
+                button {
+                    max-width: 50%;
+                }
+            }
         }
     }
 }
 
 @include media(">=900px", "<1000px") {
-    .targetOne {
-        width: 90px;
-        height: 90px;
-    }
+    .modalBody {
+        .gameStepTwoWrapper {
+            padding: 50px 0;
 
-    .avatar {
-        svg {
-            @include imgProperties(90px);
-        }
-    }
+            .avatar svg {
+                @include imgProperties(90px);
+            }
 
-    .targetTwo {
-        width: 90px;
-        height: 90px;
-    }
+            .avatarFriends svg {
+                @include imgProperties(90px);
+            }
 
-    .avatarFriends {
-        > div {
-            @include imgProperties(90px);
-        }
-    }
+            .gameStepTwo {
+                width: 35%;
 
-    .gameStepTwo {
-        width: 35%;
-        img {
-            @include imgProperties(84px);
-        }
-        input {
-            font-size: 16px;
-            padding: 8px 10px;
-        }
-    }
+                img {
+                    @include imgProperties(84px);
+                }
 
-    .gameStepThree {
-        .user {
-            img {
-                visibility: hidden;
+                input {
+                    font-size: 16px;
+                    padding: 8px 10px;
+                }
+
+                .targetOne {
+                    width: 90px;
+                    height: 90px;
+                }
             }
         }
-        .gameStepThreeUserColumn {
-            width: 48%;
-            h3 {
-                font-size: 11px;
-                word-break: break-all;
-                text-align: center;
+
+        .gameStepThree {
+            .targetTwo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .gameStepThreeUserColumn {
+                width: 48%;
+
+                h3 {
+                    font-size: 11px;
+                    word-break: break-all;
+                    text-align: center;
+                }
+
+                .friendsTop,
+                .friendsBottom {
+                    width: 50%;
+                    min-height: 60px;
+                    svg {
+                        @include imgProperties(60px);
+                    }
+                }
+
+                .friendsTop {
+                    margin-top: -80px;
+                }
+
+                .friendsBottom {
+                    margin-top: -40px;
+                }
+            }
+
+            .gameStepThreeFriendsColumn {
+                width: 48%;
+                padding: 0px;
+
+                .percentageWrapper svg {
+                    @include imgProperties(60px);
+                }
             }
         }
-        .gameStepThreeFriendsColumn {
-            width: 48%;
-            padding: 0px;
+
+        .gameStepSix {
+            .signUpsection {
+                button {
+                    max-width: 50%;
+                }
+            }
         }
-    }
-
-    .gameStepTwoWrapper {
-        padding: 50px 0;
-    }
-
-    .percentageWrapper {
-        svg {
-            @include imgProperties(60px);
-        }
-    }
-
-    .friendsTop,
-    .friendsBottom {
-        width: 50%;
-        min-height: 60px;
-        svg {
-            @include imgProperties(60px);
-        }
-    }
-
-    .friendsTop {
-        margin-top: -80px;
-    }
-
-    .friendsBottom {
-        margin-top: -40px;
     }
 }
 
 @include media(">=1000px", "<1100px") {
-    .gameStepTwo {
-        width: 35%;
-        img {
-            @include imgProperties(100px);
-        }
-        input {
-            font-size: 16px;
-            padding: 8px 10px;
-        }
-    }
+    .modalBody {
+        .gameStepTwoWrapper {
+            padding: 50px 0;
 
-    .gameStepThree {
-        .user {
-            img {
-                visibility: hidden;
+            .gameStepTwo {
+                width: 35%;
+                img {
+                    @include imgProperties(100px);
+                }
+                input {
+                    font-size: 16px;
+                    padding: 8px 10px;
+                }
             }
         }
-        .gameStepThreeUserColumn {
-            width: 48%;
+
+        .gameStepThree {
+            .gameStepThreeUserColumn {
+                width: 48%;
+            }
+
+            .gameStepThreeFriendsColumn {
+                width: 48%;
+                padding: 0px;
+
+                .percentageWrapper svg {
+                    @include imgProperties(125px);
+                }
+            }
         }
-        .gameStepThreeFriendsColumn {
-            width: 48%;
-            padding: 0px;
-        }
-    }
 
-    .gameStepOne {
-        padding: 0;
-    }
-
-    .gameStepTwoWrapper {
-        padding: 50px 0;
-    }
-
-    .percentageWrapper {
-        svg {
-            @include imgProperties(125px);
+        .gameStepSix {
+            .signUpsection {
+                button {
+                    max-width: 40%;
+                }
+            }
         }
     }
 }
 
 @include media(">=1100px", "<1200px") {
-    .gameStepTwo {
-        width: 35%;
-        img {
-            @include imgProperties(100px);
-        }
-        input {
-            font-size: 16px;
-            padding: 8px 10px;
-        }
-    }
+    .modalBody {
+        .gameStepTwoWrapper {
+            padding: 50px 0;
 
-    .gameStepThree {
-        .user {
-            img {
-                visibility: hidden;
+            .gameStepTwo {
+                width: 35%;
+
+                svg {
+                    @include imgProperties(100px);
+                }
+
+                input {
+                    font-size: 16px;
+                    padding: 8px 10px;
+                }
             }
         }
-        .gameStepThreeUserColumn {
-            width: 48%;
+
+        .gameStepThree {
+            .gameStepThreeUserColumn {
+                width: 48%;
+            }
+
+            .gameStepThreeFriendsColumn {
+                width: 48%;
+                padding: 0px;
+
+                .percentageWrapper svg {
+                    @include imgProperties(165px);
+                }
+            }
         }
 
-        .gameStepThreeFriendsColumn {
-            width: 48%;
-            padding: 0px;
-        }
-    }
-
-    .gameStepOne {
-        padding: 0;
-    }
-
-    .gameStepTwoWrapper {
-        padding: 50px 0;
-    }
-
-    .percentageWrapper {
-        svg {
-            @include imgProperties(165px);
+        .gameStepSix {
+            .signUpsection {
+                button {
+                    max-width: 40%;
+                }
+            }
         }
     }
 }
 
 @include media(">=1200px", "<1300px") {
-    .gameStepTwo {
-        width: 35%;
-        img {
-            @include imgProperties(100px);
-        }
-        input {
-            font-size: 16px;
-            padding: 8px 10px;
-        }
-    }
+    .modalBody {
+        .gameStepTwoWrapper {
+            padding: 50px 0;
 
-    .gameStepThree {
-        .user {
-            img {
-                visibility: hidden;
+            .gameStepTwo {
+                width: 35%;
+                svg {
+                    @include imgProperties(100px);
+                }
+                input {
+                    font-size: 16px;
+                    padding: 8px 10px;
+                }
             }
         }
-        .gameStepThreeUserColumn {
-            width: 48%;
+
+        .gameStepThree {
+            .gameStepThreeUserColumn {
+                width: 48%;
+            }
+
+            .gameStepThreeFriendsColumn {
+                width: 48%;
+                padding: 0px;
+
+                .percentageWrapper svg {
+                    @include imgProperties(165px);
+                }
+            }
         }
-        .gameStepThreeFriendsColumn {
-            width: 48%;
-            padding: 0px;
-        }
-    }
 
-    .gameStepOne {
-        padding: 0px;
-    }
-
-    .gameStepTwoWrapper {
-        padding: 50px 0;
-    }
-
-    .percentageWrapper {
-        svg {
-            @include imgProperties(165px);
+        .gameStepSix {
+            .signUpsection {
+                button {
+                    max-width: 40%;
+                }
+            }
         }
     }
 }
 
 @include media(">=1300px", "<1400px") {
-    .gameStepThree {
-        max-width: 1170px;
+    .modalBody {
+        .gameStepThree {
+            max-width: 1170px;
+        }
     }
 }
 
 @include media(">=1400px", "<1500px") {
-    .gameStepThree {
-        max-width: 1260px;
+    .modalBody {
+        .gameStepThree {
+            max-width: 1260px;
+        }
     }
 }
 
 @include media(">=1500px", "<1600px") {
-    .gameStepThree {
-        max-width: 1350px;
+    .modalBody {
+        .gameStepThree {
+            max-width: 1350px;
+        }
     }
 }
 
 @include media(">=1600px", "<1700px") {
-    .gameStepThree {
-        max-width: 1400px;
+    .modalBody {
+        .gameStepThree {
+            max-width: 1400px;
+        }
     }
 }

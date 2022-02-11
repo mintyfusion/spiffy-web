@@ -5,7 +5,7 @@ import { scroller } from "react-scroll";
 import Image from "next/image";
 import React, { CSSProperties } from "react";
 
-import Avatar from "components/game/avatar/avatar";
+import Avatar from "components/game/avatar/gameAvatar";
 import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
