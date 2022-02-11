@@ -16,6 +16,7 @@ import ICardProps from "components/agility-pageModules/common/card/interfaces/IC
 import IContentSectionProps from "components/agility-pageModules/educationPage/contentListModule/interfaces/IContentListProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import Spinner from "components/agility-pageModules/common/spinner/Spinner";
+import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/educationPage/contentListModule/educationPageContentListModule.module.scss";
@@ -32,13 +33,13 @@ const educationContentListParams = {
 
 const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
-    const [expanded, setExpanded] = React.useState<boolean>(false);
     const [showMore, setShowMore] = React.useState({});
     const [contentData, setContentData] = React.useState<{ items: ContentItem<ICardProps>[]; totalCount: number }>();
-    const [isLoading, setIsLoading] = React.useState<boolean>();
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const data = React.useContext(SearchContext);
     const tabsRef = React.useRef<HTMLDivElement>();
+    const [expanded, { toggle: toggleExpanding }] = useBoolean(false);
+    const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] = useBoolean(false);
     const searchFilterParams = React.useMemo(() => ({
         operator: FilterTypes.LIKE,
         value: data.searchValue
@@ -52,8 +53,12 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
         tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft + scrollAmount, behavior: "smooth" });
     }, [tabsRef]);
 
+    const handleNavigation = React.useCallback(() => {
+        breakpoint && toggleExpanding();
+    }, [breakpoint, toggleExpanding]);
+
     const getContent = React.useCallback(async () => {
-        setIsLoading(true);
+        setLoadingTrue();
         const result = !data.searchValue
             ? await api.getContentList<ICardProps>({
                 ...educationContentListParams,
@@ -64,7 +69,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                         value: activeTab
                     }
                 ]
-            }).finally(() => setIsLoading(false))
+            }).finally(() => setLoadingFalse())
             : await api.getContentList<ICardProps>({
                 ...educationContentListParams,
                 filters: [
@@ -78,21 +83,21 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                     }
                 ],
                 filtersLogicOperator: FilterLogicTypes.OR
-            }).finally(() => setIsLoading(false));
+            }).finally(() => setLoadingFalse());
 
         return result;
-    }, [activeTab, data.searchValue, searchFilterParams]);
+    }, [activeTab, data.searchValue, searchFilterParams, setLoadingFalse, setLoadingTrue]);
 
     React.useEffect(() => {
         getContent()
             .then(result => {
-                setIsLoading(true);
+                setLoadingTrue();
                 setContentData({ items: [], totalCount: 0 });
                 setContentData(result);
-                setIsLoading(false);
+                setLoadingFalse();
             })
             .catch((err: unknown) => err);
-    }, [getContent]);
+    }, [getContent, setLoadingFalse, setLoadingTrue]);
 
     return (
         <div className={styles.contentContainer}>
@@ -110,7 +115,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                         bg={styles.dirtyWhite}
                         expand="lg"
                         expanded={expanded}
-                        onClick={() => breakpoint && setExpanded(!expanded)}
+                        onClick={handleNavigation}
                         className={`overflow-hidden flex-grow-1 ${styles.navbar}`}
                         ref={tabsRef}
                     >
@@ -173,12 +178,12 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                                 : `Showing search results for ${data.searchValue}`}
                         </h5>
                     </Row>
-                    {isLoading && <Spinner className={horizontalAlign} />}
-                    {!isLoading && !contentData?.items?.length
+                    {loading && <Spinner className={horizontalAlign} />}
+                    {!loading && !contentData?.items?.length
                         && <h1 className="text-center">No Blogs Found</h1>
                     }
-                    {!isLoading && contentData && <CardContainer content={contentData} />}
-                    {!isLoading &&
+                    {!loading && contentData && <CardContainer content={contentData} />}
+                    {!loading &&
                         <Row>
                             {!showMore[content.fields.name] && !!contentData?.items?.length &&
                                 <PrimaryButton
