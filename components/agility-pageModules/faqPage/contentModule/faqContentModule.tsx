@@ -34,12 +34,12 @@ const contentListParams = {
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.allTopics);
     const [contentData, setContentData] = React.useState<{ items: ContentItem<IFaqContentModuleData>[] }>();
-    const [isLoading, setIsLoading] = React.useState<boolean>();
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const contentRef = React.useRef<HTMLDivElement>();
     const tabsRef = React.useRef<HTMLDivElement>();
     const data = React.useContext(SearchContext);
-    const [expanded, expandControls] = useBoolean(false);
+    const [expanded, { toggle: toggleExpanding }] = useBoolean(false);
+    const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] = useBoolean(false);
 
     const handleArrowScrollLeft = React.useCallback(() => {
         tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft - scrollAmount, ...scrollParams });
@@ -50,8 +50,8 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     }, []);
 
     const handleNavigation = React.useCallback(() => {
-        breakpoint && expandControls.toggle();
-    }, [breakpoint, expandControls]);
+        breakpoint && toggleExpanding();
+    }, [breakpoint, toggleExpanding]);
 
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${horizontalAlign} ${styles.customAccordianButton}`}>
@@ -63,15 +63,15 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         </div>;
 
     const getFAQList = React.useCallback(async () => {
-        setIsLoading(true);
+        setLoadingTrue();
         const result = await api.getContentList<IFaqContentModuleData>({
             referenceName: "FAQContentList",
             languageCode: "en-us",
             ...contentListParams
-        }).finally(() => setIsLoading(false));
+        }).finally(() => setLoadingFalse());
 
         return result;
-    }, []);
+    }, [setLoadingFalse, setLoadingTrue]);
 
     React.useEffect(() => {
         getFAQList()
@@ -185,10 +185,10 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                 </div>
             }
             <Stack className="gap-4" ref={contentRef}>
-                {!isLoading && !contentData?.items.length
+                {!loading && !contentData?.items.length
                     && <h1 className="text-center">No FAQ Found</h1>
                 }
-                {!isLoading
+                {!loading
                     && contentData
                     && contentData.items
                         .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
@@ -214,7 +214,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             </Accordion>
                         )}
 
-                {isLoading && <Spinner className={horizontalAlign} />}
+                {loading && <Spinner className={horizontalAlign} />}
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>
         </div>
