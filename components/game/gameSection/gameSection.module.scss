@@ -149,9 +149,18 @@
     }
 
     .gameStepSix {
+        padding: 100px 0;
+        width: 100%;
+
         .signUpsection {
+            h2 {
+                margin-top: 40px;
+            }
+
             button {
+                margin-top: 40px;
                 max-width: 25%;
+                width: 100%;
             }
         }
     }
