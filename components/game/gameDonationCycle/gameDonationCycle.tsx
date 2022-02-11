@@ -282,7 +282,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     <div className={`${styles.donationInner} ${colCenter}`}>
                         <h2>Donation Cycle</h2>
                         <div
-                            className={styles.coin}
+                            className={`${styles.coin} position-absolute`}
                             ref={coinRef}
                             style={coinStyles.current}>
                             <Image src="/images/game/coin.png" alt="Coin" width={76} height={76} />

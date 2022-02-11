@@ -270,15 +270,9 @@
             }
         }
 
-        .donationInner {
+        .donationInner & p {
             margin-top: 0px;
             margin-bottom: 0px;
-
-            p {
-                font-size: 7px;
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
 
             .userDonation {
                 @include imgProperties(67px);
@@ -335,24 +329,20 @@
 }
 
 @include media(">=500px", "<900px") {
-    .donationSections {
-        .coin {
-            top: 290px;
-        }
+    .donationSections .coin {
+        top: 290px;
     }
 }
 
-@include media(">=900px", "<990px") {
+@include media(">=900px", "<1000px") {
     .donationSections .coin {
         top: 270px;
     }
 }
 
 @include media(">=1000px", "<1400px") {
-    .donationSections {
-        .coin {
-            top: 310px;
-        }
+    .donationSections .coin {
+        top: 310px;
 
         .contentAnimation .donationLogo > div:nth-child(1) {
             width: 60%;
