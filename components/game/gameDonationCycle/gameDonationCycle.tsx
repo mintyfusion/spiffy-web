@@ -258,7 +258,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     expand="lg"
                     className="d-block text-center"
                     expanded={expanded}
-                    onClick={() => isLG && navToggle()}>
+                    onClick={() => isLG && navToggle}>
                     <Navbar.Brand className="d-lg-none">
                         {!donationAmount
                             ? "Select Amount"
