@@ -143,7 +143,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                         className={`overflow-hidden ${styles.navbar} flex-grow-1`}
                         ref={tabsRef}
                     >
-                        <Navbar.Brand href="#home" className="d-block d-lg-none">
+                        <Navbar.Brand className="d-block d-lg-none">
                             <label className="w-100">
                                 {activeTab}
                             </label>

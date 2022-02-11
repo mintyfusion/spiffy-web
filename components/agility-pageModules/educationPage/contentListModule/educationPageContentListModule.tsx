@@ -123,7 +123,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                         className={`overflow-hidden flex-grow-1 ${styles.navbar}`}
                         ref={tabsRef}
                     >
-                        <Navbar.Brand href="#home" className="d-block d-lg-none">
+                        <Navbar.Brand className="d-block d-lg-none">
                             <label className="w-100">
                                 {activeTab.replace("_", " ")}
                             </label>
