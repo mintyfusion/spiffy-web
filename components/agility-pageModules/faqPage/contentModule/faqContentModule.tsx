@@ -24,6 +24,11 @@ const scrollParams = {
     top: 0,
     behavior: "smooth" as ScrollBehavior
 };
+const contentListParams = {
+    contentLinkDepth: 2,
+    depth: 2,
+    take: 50
+};
 
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.allTopics);
@@ -61,9 +66,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         const result = await api.getContentList<IFaqContentModuleData>({
             referenceName: "FAQContentList",
             languageCode: "en-us",
-            contentLinkDepth: 2,
-            depth: 2,
-            take: 50
+            ...contentListParams
         }).finally(() => setIsLoading(false));
 
         return result;
