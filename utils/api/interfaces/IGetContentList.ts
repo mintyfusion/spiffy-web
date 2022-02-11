@@ -1,3 +1,4 @@
+import ContentListOrder from "utils/api/enums/contentListOrder";
 import FilterLogicTypes from "utils/api/enums/filterLogicTypes";
 import FilterTypes from "utils/api/enums/filterTypes";
 
@@ -11,10 +12,7 @@ export default interface IGetContentList {
     take?: number;
     skip?: number;
     sort?: string;
-    direction?: {
-        ASC: string;
-        DESC: string;
-    };
+    direction?: ContentListOrder;
     filters?: {
         property: string;
         operator: FilterTypes;
