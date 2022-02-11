@@ -1,4 +1,3 @@
-import { AgilityPageProps } from "@agility/nextjs";
 import { getAgilityPageProps, getAgilityPaths } from "@agility/nextjs/node";
 import React from "react";
 import type {
@@ -7,6 +6,7 @@ import type {
 } from "next";
 
 import { getModule } from "components/agility-pageModules";
+import ICustomAgilityPageProps from "components/agility-pageModules/common/layout/interfaces/ICustomAgilityPageProps";
 import ISearchContextProps from "types/ISearchContextProps";
 import Layout from "components/agility-pageModules/common/layout/layout";
 
@@ -18,7 +18,7 @@ export async function getStaticProps({
     locale,
     defaultLocale
 }: GetStaticPropsContext<{ slug: string[] }>): Promise<{
-    props: AgilityPageProps;
+    props: ICustomAgilityPageProps;
     revalidate: number;
 }> {
 

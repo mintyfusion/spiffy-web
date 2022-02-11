@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { getPageTemplate } from "components/agility-pageTemplates";
 import Error from "next/error";
 import React from "react";
@@ -11,6 +10,7 @@ import PageIds from "common/pageIds";
 
 const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
     const { notFound, pageTemplateName } = props;
+    const AgilityPageTemplate = React.useMemo(() => getPageTemplate(pageTemplateName), [pageTemplateName]);
 
     const showStickyHeader: boolean = React.useMemo(() => {
         if (props.page?.pageID === PageIds.EDUCATION_DETAILS || props.page?.pageID === PageIds.ABOUT) {
@@ -24,8 +24,6 @@ const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
     if (notFound === true) {
         return <Error statusCode={404} />;
     }
-
-    const AgilityPageTemplate = getPageTemplate(pageTemplateName);
 
     return (
         <div>
