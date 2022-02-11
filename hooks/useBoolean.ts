@@ -19,6 +19,6 @@ export default function useBoolean(initialState: boolean): [boolean, IUseBoolean
     const toggle = React.useCallback(() => {
         setValue((currentValue: boolean) => !currentValue);
     }, []);
-    
-    return [value, { setTrue, setFalse, toggle }];
+
+    return [value, { toggle, setTrue, setFalse, }];
 }

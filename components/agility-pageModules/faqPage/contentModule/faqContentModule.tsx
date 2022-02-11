@@ -13,6 +13,7 @@ import IFaqContentModuleData from "components/agility-pageModules/faqPage/conten
 import IFaqContentModuleProps from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import Spinner from "components/agility-pageModules/common/spinner/Spinner";
+import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/faqPage/contentModule/faqContentModule.module.scss";
@@ -32,13 +33,13 @@ const contentListParams = {
 
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.allTopics);
-    const [expanded, setExpanded] = React.useState<boolean>(false);
     const [contentData, setContentData] = React.useState<{ items: ContentItem<IFaqContentModuleData>[] }>();
     const [isLoading, setIsLoading] = React.useState<boolean>();
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const contentRef = React.useRef<HTMLDivElement>();
     const tabsRef = React.useRef<HTMLDivElement>();
     const data = React.useContext(SearchContext);
+    const [expanded, expandControls] = useBoolean(false);
 
     const handleArrowScrollLeft = React.useCallback(() => {
         tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft - scrollAmount, ...scrollParams });
@@ -49,8 +50,8 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     }, []);
 
     const handleNavigation = React.useCallback(() => {
-        breakpoint && setExpanded(!expanded);
-    }, [breakpoint, expanded]);
+        breakpoint && expandControls.toggle();
+    }, [breakpoint, expandControls]);
 
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${horizontalAlign} ${styles.customAccordianButton}`}>
@@ -213,7 +214,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             </Accordion>
                         )}
 
-                {isLoading && <Spinner />}
+                {isLoading && <Spinner className={horizontalAlign} />}
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>
         </div>

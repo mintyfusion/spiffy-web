@@ -172,7 +172,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                                 : `Showing search results for ${data.searchValue}`}
                         </h5>
                     </Row>
-                    {isLoading && <Spinner />}
+                    {isLoading && <Spinner className={horizontalAlign} />}
                     {!isLoading && !contentData?.items?.length
                         && <h1 className="text-center">No Blogs Found</h1>
                     }
