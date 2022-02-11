@@ -32,6 +32,10 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const data = React.useContext(SearchContext);
     const tabsRef = React.useRef<HTMLDivElement>();
+    const searchFilterParams = React.useMemo(() => ({
+        operator: FilterTypes.LIKE,
+        value: data.searchValue
+    }), [data.searchValue]);
 
     const handleArrowScrollLeft = React.useCallback(() => {
         tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft - scrollAmount, behavior: "smooth" });
@@ -67,20 +71,18 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                 filters: [
                     {
                         property: "fields.title",
-                        operator: FilterTypes.LIKE,
-                        value: data.searchValue
+                        ...searchFilterParams
                     },
                     {
                         property: "fields.tag_TextField",
-                        operator: FilterTypes.LIKE,
-                        value: data.searchValue
+                        ...searchFilterParams
                     }
                 ],
                 filtersLogicOperator: FilterLogicTypes.OR
             }).finally(() => setIsLoading(false));
 
         return result;
-    }, [activeTab, data.searchValue]);
+    }, [activeTab, data.searchValue, searchFilterParams]);
 
     React.useEffect(() => {
         getContent()
