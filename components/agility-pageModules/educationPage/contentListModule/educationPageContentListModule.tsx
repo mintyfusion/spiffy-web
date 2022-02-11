@@ -23,6 +23,10 @@ import styles from "components/agility-pageModules/educationPage/contentListModu
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const scrollAmount = 200;
+const scrollParams = {
+    top: 0,
+    behavior: "smooth" as ScrollBehavior
+};
 const educationContentListParams = {
     referenceName: "EducationContent",
     languageCode: "en-us",
@@ -46,12 +50,12 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
     }), [data.searchValue]);
 
     const handleArrowScrollLeft = React.useCallback(() => {
-        tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft - scrollAmount, behavior: "smooth" });
-    }, [tabsRef]);
+        tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft - scrollAmount, ...scrollParams });
+    }, []);
 
     const handleArrowScrollRight = React.useCallback(() => {
-        tabsRef.current.scrollTo({ top: 0, left: tabsRef.current.scrollLeft + scrollAmount, behavior: "smooth" });
-    }, [tabsRef]);
+        tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft + scrollAmount, ...scrollParams });
+    }, []);
 
     const handleNavigation = React.useCallback(() => {
         breakpoint && toggleExpanding();
