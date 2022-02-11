@@ -22,6 +22,13 @@ import styles from "components/agility-pageModules/educationPage/contentListModu
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const scrollAmount = 200;
+const educationContentListParams = {
+    referenceName: "EducationContent",
+    languageCode: "en-us",
+    contentLinkDepth: 2,
+    depth: 2,
+    take: 50
+};
 
 const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
@@ -49,11 +56,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
         setIsLoading(true);
         const result = !data.searchValue
             ? await api.getContentList<ICardProps>({
-                referenceName: "EducationContent",
-                languageCode: "en-us",
-                contentLinkDepth: 2,
-                depth: 2,
-                take: 50,
+                ...educationContentListParams,
                 filters: activeTab !== ContentCategory.all && [
                     {
                         property: "fields.tag_TextField",
@@ -63,11 +66,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                 ]
             }).finally(() => setIsLoading(false))
             : await api.getContentList<ICardProps>({
-                referenceName: "EducationContent",
-                languageCode: "en-us",
-                contentLinkDepth: 2,
-                depth: 2,
-                take: 50,
+                ...educationContentListParams,
                 filters: [
                     {
                         property: "fields.title",
