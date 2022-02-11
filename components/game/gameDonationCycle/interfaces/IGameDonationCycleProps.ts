@@ -4,7 +4,7 @@ interface IGameDonationCycle {
     seletedAvatar: AvatarType;
     friends: AvatarType[];
     name: string;
-    avatarId: (value: string) => void;
+    setAvatarStyleGUID: (value: string) => void;
 }
 
 export default IGameDonationCycle;

@@ -4,7 +4,6 @@ import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import IAvatarProps from "components/game/avatar/interfaces/IAvatarProps";
 
 import styles from "components/game/avatar/avatar.module.scss";
-import styleWords from "utils/styleWords";
 
 const Avatar = ({ color, size }: IAvatarProps) => {
     const avatarColor = React.useMemo(() => {

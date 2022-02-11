@@ -34,6 +34,7 @@ export type Styles = {
   "cycle7": string;
   "cycle8": string;
   "cycle9": string;
+  "cycleheigth": string;
   "displayAnimation": string;
   "donationAmount": string;
   "donationAmount1": string;

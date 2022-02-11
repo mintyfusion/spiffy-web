@@ -4,14 +4,14 @@ import { Nav, Navbar, Row } from "react-bootstrap";
 import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
+import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
-import UseBoolean from "hooks/useBoolean";
-import useBreakpoint from "hooks/useBreakpoint";
-import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import percentages from "components/game/gameAvatarList/gameAvatarListContent";
+import PrimaryButton from "components/common/primaryButton/primaryButton";
+import useBoolean from "hooks/useBoolean";
+import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
@@ -21,7 +21,7 @@ const rowHBetween = flexbox({ hAlign: "between" });
 const marginFifteen = 15;
 const marginFive = 5;
 // Avatar random sizes numbers
-// No need to understand the number, array itself tells the meaning.
+// No need to understand the numbers, array itself tells the meaning.
 const sizes = [20, 22, 25, 27, 30, 33, 35, 37, 40]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const sizesMobile = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const mobile = 770;
@@ -32,7 +32,7 @@ const avatars = Object.values(AvatarType);
 
 /**
  * Random margin for avatars.
-*/
+ */
 function getRandomMargin() {
     const width = window.innerWidth;
     if (width < mobile) {
@@ -45,7 +45,7 @@ function getRandomMargin() {
 
 /**
  * Random size for avatars.
-*/
+ */
 function getRandomSize() {
     const width = window.innerWidth;
 
@@ -62,7 +62,7 @@ function getRandomSize() {
 
 /**
  * Random flex-align for avatars.
-*/
+ */
 function getRandomAlignSelf() {
     const values = ["flex-end", "flex-start", "center"];
     const randomIndex = Math.floor(Math.random() * values.length);
@@ -72,16 +72,17 @@ function getRandomAlignSelf() {
 
 /**
  * Random colors for avatars.
-*/
+ */
 function getRandomAvatars() {
     const randomIndex = Math.floor(Math.random() * avatars.length);
 
     return avatars[randomIndex];
 }
 
+const percentage = Object.entries(percentages);
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [selectedKey, setSelectedKey] = React.useState("1");
-    const [expanded, { toggle: navToggle }] = UseBoolean(false);
+    const [expanded, { toggle: navToggle }] = useBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
     const { signupAnimation } = props;
 
@@ -91,7 +92,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
 
     /**
      * Rendering avatars
-    */
+     */
     const avatars = React.useMemo(() => {
         const { totalAvatarsToShow } = percentages[selectedKey];
         const arr: JSX.Element[] = [];
@@ -134,21 +135,22 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     /**
      * Donation percentage rendering.
      */
-    const donationPercentage = React.useMemo(() => Object.entries(percentages).map(([key], index) => (
-        <PrimaryButton key={index} onClick={() => {
-            handleBtnClick(key);
-        }}
+    const donationPercentage = React.useMemo(() => percentage.map(([key], index) => (
+        <PrimaryButton
+            key={index}
+            onClick={() => handleBtnClick(key)}
             className={`
             ${horizontalAlign} 
             ${styles.donationButton} 
             ${selectedKey === key ? styles.active : styles.inactive}
-             w-100 px-1 py-3`}>
+            w-100 px-1 py-3`}
+        >
             {key}%
         </PrimaryButton>
     )
     ), [handleBtnClick, selectedKey]);
 
-    const addedFriendsRender = React.useCallback((isTop: boolean) => {
+    const renderAddedFriends = React.useCallback((isTop: boolean) => {
         const arrFriends = isTop
             ? props.friends.slice(0, friendsSliceindex1)
             : props.friends.slice(friendsSliceindex1, friendsSliceindex2);
@@ -169,8 +171,10 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         <div className={styles.gameStepFive}>
             <div className={`${colCenter} h-100`}>
                 <h2 className={`${styles.avatarHeading}`}>How much can you make?</h2>
-                <h4 className="text-center">Click the percentage fill rate to unlock your potential. Higher the filled rate,
-                    the more money you make.</h4>
+                <h4 className="text-center">
+                    Click the percentage fill rate to unlock your potential. Higher the filled rate,
+                    the more money you make.
+                </h4>
 
                 <Navbar
                     expand="lg"
@@ -196,14 +200,15 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <div className={`${styles.flex1} ${styles.friendsMain} text-center`}>
                         <div className={`${styles.avatarInner} ${colCenter} position-relative`}>
                             <h2 className={`${styles.avatarHeading}`}>
-                                <span key={percentages[selectedKey].amount}>${percentages[selectedKey].amount}
+                                <span key={percentages[selectedKey].amount}>
+                                    ${percentages[selectedKey].amount}
                                 </span>
                             </h2>
-                            {addedFriendsRender(true)}
+                            {renderAddedFriends(true)}
                             <div className={`${props.friends.length ? styles.percentageSelected : ""}`}>
                                 {props.seletedAvatar && <Avatar color={props.seletedAvatar} />}
                             </div>
-                            {addedFriendsRender(false)}
+                            {renderAddedFriends(false)}
                         </div>
                         <h6>{props.name}</h6>
                     </div>

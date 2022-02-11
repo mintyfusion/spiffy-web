@@ -65,7 +65,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
     const coinRef = React.useRef<HTMLDivElement>();
     const coinStyles = React.useRef<CSSProperties>();
 
-    const { avatarId } = props;
+    const { setAvatarStyleGUID } = props;
 
     /**
     * Reset the donation cycle animation.
@@ -178,9 +178,9 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         transition: "2s",
                     };
             }
-            avatarId(getUniqueId());
+            setAvatarStyleGUID(getUniqueId());
         }
-    }, [avatarId]);
+    }, [setAvatarStyleGUID]);
 
     /**
      * Function to start or reset the donation cycle animation.
@@ -245,7 +245,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
         });
     }, []);
 
-    return <div ref={coinAnimationWrapperRef} className={styles.donationSections}>
+    return <div ref={coinAnimationWrapperRef} className={`${styles.donationSections} w-100 overflow-auto`}>
         <div className={`${styles.card} ${rowCenter}`}>
             <div className={`${rowVCenter} ${styles.stepFour} position-relative`}>
                 <h2 className={`${styles.avatarHeading} text-center`}>
@@ -295,13 +295,12 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         </p>
                     </div>
                     <Row className={rowHBetween}>
-                        <Col className={`${horizontalAlign} ${styles.heigth120}`}>
-                            <div className={`${styles.cycle} ${colCenter} ${styles.cycle1} ${styles.donationImage} position-relative`} data-index="1">
+                        <Col className={`${horizontalAlign} ${styles.cycleheigth}`}>
+                            <div className={`${styles.cycle} ${colCenter} ${styles.cycle1} ${styles.donationImage} position-relative text-center`} data-index="1">
                                 <Avatar color={AvatarType.Green} size={56} />
                                 <span
                                     className={
-                                        `${styles.donationAmount}
-                                    ${styles.donationAmount1}`
+                                        `${styles.donationAmount} ${styles.donationAmount1} `
                                     }>
                                     {getDonationAmout(friendsFormula)}
                                 </span>
@@ -313,71 +312,72 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     ${styles.donationRow1}
                     ${styles.marginTopMinusFifty}
                     ${rowHEnd}`}>
-                        <div className={`${styles.cycle2} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2">
+                        <div className={`${styles.cycle2} ${colCenter} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2">
                             {donation(styles.donationAmount2, AvatarType.Red)}
                         </div>
                     </Row>
                     <Row className={`${styles.donationRow2} ${rowHBetween}`}>
-                        <div className={styles.donationLogo}>
-                            <div>
+                        <div className={`${styles.donationLogo} ${colCenter} position-relative`}>
+                            <div className="text-lg-right">
                                 <span className="d-block">
                                     We’re totally reliant on these cents to keep us going.
                                 </span>
                             </div>
-                            <div className={`${styles.cycle11} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="11">
+                            <div className={`${styles.cycle11} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="11">
                                 <Image src="/images/game/donationCycle/spiffy.png" width={155} height={44} />
                                 {getDonationAmout(spiffyFormula)}
                             </div>
                         </div>
 
-                        <div className={`${styles.cycle3} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="3">
+                        <div className={`${styles.cycle3} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="3">
                             {donation(styles.donationAmount3, AvatarType.Yellow)}
                         </div>
                     </Row>
                     <Row className={`${styles.donationRow3} ${rowHBetween}`}>
-                        <div className={`${styles.cycle10} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="10">
+                        <div className={`${styles.cycle10} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="10">
                             {donation(styles.donationAmount10, AvatarType.Green)}
                         </div>
-                        <div className={`${styles.cycle4} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="4">
+                        <div className={`${styles.cycle4} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="4">
                             {donation(styles.donationAmount4, AvatarType.Purple)}
                         </div>
                     </Row>
                     <Row className={`${styles.donationRow2} ${rowHBetween}`}>
-                        <div className={`${styles.cycle9} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="9">
+                        <div className={`${styles.cycle9} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="9">
                             {donation(styles.donationAmount9, AvatarType.Yellow)}
                         </div>
-                        <div className={`${styles.cycle5} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="5">
+                        <div className={`${styles.cycle5} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="5">
                             {donation(styles.donationAmount5, AvatarType.Yellow)}
                         </div>
                     </Row>
                     <Row className={`${styles.donationRow1}
                         ${styles.marginBottomMinusFifty} 
                         ${rowHBetween}`}>
-                        <div className={`${styles.cycle8} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="8">
+                        <div className={`${styles.cycle8} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="8">
                             {donation(styles.donationAmount8, AvatarType.Red)}
                         </div>
-                        <div className={`${styles.cycle6} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="6">
+                        <div className={`${styles.cycle6} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="6">
                             {donation(styles.donationAmount6, AvatarType.Red)}
                         </div>
                     </Row>
                     <Row className={horizontalAlign}>
-                        <div className={`${styles.cycle7} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="7">
+                        <div className={`${styles.cycle7} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="7">
                             {donation(styles.donationAmount7, AvatarType.Green)}
                         </div>
                     </Row>
                 </div>
             </div>
-        </div>
-        {donationAmount
-            ? <div className={`${styles.card} ${rowCenter}`}>
-                <GameAvatarList
-                    friends={props.friends}
-                    seletedAvatar={props.seletedAvatar}
-                    name={props.name}
-                    signupAnimation={signupAnimation} />
-            </div>
-            : null}
-    </div>;
+        </div >
+        {
+            donationAmount
+                ? <div className={`${styles.card} ${rowCenter}`}>
+                    <GameAvatarList
+                        friends={props.friends}
+                        seletedAvatar={props.seletedAvatar}
+                        name={props.name}
+                        signupAnimation={signupAnimation} />
+                </div >
+                : null}
+    </div >;
 };
 
 export default GameDonationCycle;

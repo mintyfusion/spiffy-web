@@ -32,6 +32,7 @@ const phoneKeyboardTimeout = 500;
 const stepOneTimeout = 500;
 const friendsSliceTwo = 2;
 const friendsSliceFour = 4;
+const breakpointPlus = 8;
 
 const avatars = Object.values(AvatarType);
 /**
@@ -54,7 +55,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
     const [step, setStep] = React.useState<StepTypes>(StepTypes.First);
     const [avatarName, setAvatarName] = React.useState<string>("");
-    const isLG = useBreakpoint(Breakpoints.LG);
+    const isLG = useBreakpoint(Breakpoints.LG + breakpointPlus);
     const isMD = useBreakpoint(Breakpoints.MD);
 
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
@@ -489,7 +490,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                 friends={addedFriends}
                                 seletedAvatar={seletedAvatar}
                                 name={avatarName}
-                                avatarId={setAvatarStyleGUID} />
+                                setAvatarStyleGUID={setAvatarStyleGUID} />
                         </Element>
 
                         <Element name={StepTypes.Sixth} className={`${styles.card} ${rowCenter}`}>
