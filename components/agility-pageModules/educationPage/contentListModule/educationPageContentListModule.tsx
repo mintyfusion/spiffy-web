@@ -179,19 +179,23 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                         </h5>
                     </Row>
                     {loading && <Spinner className={horizontalAlign} />}
-                    {!loading && !contentData?.items?.length
-                        && <h1 className="text-center">No Blogs Found</h1>
+                    {!loading
+                        ? !contentData?.items?.length
+                            ? <h1 className="text-center">No Blogs Found</h1>
+                            : contentData &&
+                            <>
+                                <CardContainer content={contentData} />
+                                <Row>
+                                    {!showMore[content.fields.name] && !!contentData?.items?.length &&
+                                        <PrimaryButton
+                                            onClick={() => setShowMore({ [content.fields.name]: true })}
+                                        >
+                                            Show More
+                                        </PrimaryButton>}
+                                </Row>
+                            </>
+                        : ""
                     }
-                    {!loading && contentData && <CardContainer content={contentData} />}
-                    {!loading &&
-                        <Row>
-                            {!showMore[content.fields.name] && !!contentData?.items?.length &&
-                                <PrimaryButton
-                                    onClick={() => setShowMore({ [content.fields.name]: true })}
-                                >
-                                    Show More
-                                </PrimaryButton>}
-                        </Row>}
                 </Stack>
             )}
         </div>
