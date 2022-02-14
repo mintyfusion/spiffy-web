@@ -236,7 +236,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
     * Section five animation and scroll on 100% to signup section.
     */
     const signupAnimation = React.useCallback(() => {
-        scroller.scrollTo(StepTypes.Sixth, {
+        scroller.scrollTo(StepTypes.signupSection, {
             duration: 700,
             smooth: true,
             containerId,
