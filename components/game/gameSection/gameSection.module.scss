@@ -123,6 +123,10 @@
             h2 {
                 margin-top: 50px;
             }
+
+            .percentageWrapper svg {
+                cursor: pointer;
+            }
         }
 
         h3 {
@@ -272,6 +276,7 @@
                     height: 100%;
                     svg {
                         @include imgProperties(65px);
+                        cursor: pointer;
                     }
                 }
             }

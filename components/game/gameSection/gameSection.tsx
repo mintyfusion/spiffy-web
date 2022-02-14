@@ -30,8 +30,8 @@ const boundDivide = 2;
 const containerId = "containerElement";
 const phoneKeyboardTimeout = 500;
 const stepOneTimeout = 500;
-const friendsSliceTwo = 2;
-const friendsSliceFour = 4;
+const friendsSliceindex1 = 2;
+const friendsSliceindex2 = 4;
 const breakpointPlus = 8;
 
 const avatars = Object.values(AvatarType);
@@ -40,8 +40,8 @@ const avatars = Object.values(AvatarType);
  */
 const step1Avatars = avatars.filter((avatar) => avatar !== AvatarType.Orange);
 
-const scrollTo = (value: string) => {
-    scroller.scrollTo(value, {
+const scrollTo = (step: StepTypes) => {
+    scroller.scrollTo(step, {
         duration: 700,
         smooth: true,
         containerId,
@@ -63,11 +63,11 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const friendsStyle = React.useRef<Record<AvatarType, CSSProperties>>();
     const [, setFriendsStyleGUID] = React.useState("0");
 
-    const start = React.useRef<HTMLDivElement>();
-    const target = React.useRef<HTMLDivElement>();
-    const stepThree = React.useRef<HTMLDivElement>();
-    const fullscreen = React.useRef<HTMLDivElement>();
-    const friendsRef = React.useRef<HTMLDivElement>();
+    const step1Ref = React.useRef<HTMLDivElement>();
+    const step2TargetRef = React.useRef<HTMLDivElement>();
+    const step3Ref = React.useRef<HTMLDivElement>();
+    const modalBodyRef = React.useRef<HTMLDivElement>();
+    const friendsSectionRef = React.useRef<HTMLDivElement>();
 
     /**
      * Filter avatars array with user selected avatar for friends.
@@ -83,7 +83,6 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         let timer: NodeJS.Timeout;
         if (seletedAvatar && addedFriends.length === friendsAvatars.length) {
             scrollTo(StepTypes.Fourth);
-            /*eslint-env browser*/
             timer = setTimeout(() => {
                 setStep(StepTypes.Fourth);
                 clearTimeout(timer);
@@ -106,8 +105,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             const space = 10;
             const left1 = Math.abs(cardMidPointX - avatarSize);
             const left2 = Math.abs(cardMidPointX + space);
-            const top1 = Math.abs(cardMidPointY - avatarSize - space) + fullscreen.current.scrollTop;
-            const top2 = Math.abs(cardMidPointY + space) + fullscreen.current.scrollTop;
+            const top1 = Math.abs(cardMidPointY - avatarSize - space) + modalBodyRef.current.scrollTop;
+            const top2 = Math.abs(cardMidPointY + space) + modalBodyRef.current.scrollTop;
 
             return { left1, left2, top1, top2 };
         }
@@ -123,30 +122,30 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             switch (avatar) {
                 case AvatarType.Green:
                     styles[avatar] = {
-                        left: avatarStyleHandler(start).left1,
-                        top: avatarStyleHandler(start).top1,
+                        left: avatarStyleHandler(step1Ref).left1,
+                        top: avatarStyleHandler(step1Ref).top1,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Red:
                     styles[avatar] = {
-                        left: avatarStyleHandler(start).left2,
-                        top: avatarStyleHandler(start).top1,
+                        left: avatarStyleHandler(step1Ref).left2,
+                        top: avatarStyleHandler(step1Ref).top1,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Yellow:
                     styles[avatar] = {
-                        left: avatarStyleHandler(start).left1,
-                        top: avatarStyleHandler(start).top2,
+                        left: avatarStyleHandler(step1Ref).left1,
+                        top: avatarStyleHandler(step1Ref).top2,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Purple:
                 default:
                     styles[avatar] = {
-                        left: avatarStyleHandler(start).left2,
-                        top: avatarStyleHandler(start).top2,
+                        left: avatarStyleHandler(step1Ref).left2,
+                        top: avatarStyleHandler(step1Ref).top2,
                         opacity: "1",
                     };
                     break;
@@ -168,27 +167,27 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             switch (index) {
                 case 0:
                     styles[avatar] = {
-                        left: avatarStyleHandler(friendsRef).left1,
-                        top: avatarStyleHandler(friendsRef).top1,
+                        left: avatarStyleHandler(friendsSectionRef).left1,
+                        top: avatarStyleHandler(friendsSectionRef).top1,
                     };
                     break;
                 case 1:
                     styles[avatar] = {
-                        left: avatarStyleHandler(friendsRef).left2,
-                        top: avatarStyleHandler(friendsRef).top1,
+                        left: avatarStyleHandler(friendsSectionRef).left2,
+                        top: avatarStyleHandler(friendsSectionRef).top1,
                     };
                     break;
                 case keyTwo:
                     styles[avatar] = {
-                        left: avatarStyleHandler(friendsRef).left1,
-                        top: avatarStyleHandler(friendsRef).top2,
+                        left: avatarStyleHandler(friendsSectionRef).left1,
+                        top: avatarStyleHandler(friendsSectionRef).top2,
                     };
                     break;
                 case keyThree:
                 default:
                     styles[avatar] = {
-                        left: avatarStyleHandler(friendsRef).left2,
-                        top: avatarStyleHandler(friendsRef).top2,
+                        left: avatarStyleHandler(friendsSectionRef).left2,
+                        top: avatarStyleHandler(friendsSectionRef).top2,
                     };
                     break;
             }
@@ -202,13 +201,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * @param avatar user selected avatar in first section.
      */
     const handleAvatarClick = React.useCallback((avatar: AvatarType) => {
-        if (target.current) {
-            const bounds = target.current.getBoundingClientRect();
+        if (step2TargetRef.current) {
+            const bounds = step2TargetRef.current.getBoundingClientRect();
             avatarStyles.current = {
                 ...avatarStyles.current,
                 [avatar]: {
-                    top: bounds.y + fullscreen.current.scrollTop,
-                    left: bounds.x + fullscreen.current.scrollLeft,
+                    top: bounds.y + modalBodyRef.current.scrollTop,
+                    left: bounds.x + modalBodyRef.current.scrollLeft,
                     opacity: "1"
                 }
             };
@@ -223,7 +222,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * @param friendAvatar user selected friends.
      */
     const addFriends = React.useCallback((friendAvatar: AvatarType) => {
-        if (stepThree.current) {
+        if (step3Ref.current) {
             const selectedFriends: AvatarType[] = friendsAvatars.filter((avatar) => avatar == friendAvatar);
             setAddedFriends((currentFriends: AvatarType[]) => [...currentFriends, ...selectedFriends]);
         }
@@ -260,13 +259,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
 
         const t = setTimeout(() => {
-            if (stepThree.current && step === StepTypes.Second) {
-                const bounds = stepThree.current.getBoundingClientRect();
+            if (step3Ref.current && step === StepTypes.Second) {
+                const bounds = step3Ref.current.getBoundingClientRect();
                 avatarStyles.current = {
                     ...avatarStyles.current,
                     [seletedAvatar]: {
-                        top: bounds.y + fullscreen.current.scrollTop,
-                        left: bounds.x + fullscreen.current.scrollLeft,
+                        top: bounds.y + modalBodyRef.current.scrollTop,
+                        left: bounds.x + modalBodyRef.current.scrollLeft,
                         opacity: "1"
                     }
                 };
@@ -310,13 +309,13 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
             case StepTypes.Second: {
                 isMD && setViewportHeight();
-                const boundsFirst = target.current?.getBoundingClientRect();
+                const boundsFirst = step2TargetRef.current?.getBoundingClientRect();
                 if (boundsFirst) {
                     avatarStyles.current = {
                         ...avatarStyles.current,
                         [seletedAvatar]: {
-                            top: boundsFirst.y + fullscreen.current.scrollTop,
-                            left: boundsFirst.x + fullscreen.current.scrollLeft,
+                            top: boundsFirst.y + modalBodyRef.current.scrollTop,
+                            left: boundsFirst.x + modalBodyRef.current.scrollLeft,
                             opacity: "1"
                         }
                     };
@@ -328,14 +327,14 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             case StepTypes.Third: {
                 scrollTo(StepTypes.Third);
                 setFriendsPositions();
-                const boundsSecond = stepThree.current?.getBoundingClientRect();
+                const boundsSecond = step3Ref.current?.getBoundingClientRect();
 
                 if (boundsSecond) {
                     avatarStyles.current = {
                         ...avatarStyles.current,
                         [seletedAvatar]: {
-                            top: boundsSecond.y + fullscreen.current.scrollTop,
-                            left: boundsSecond.x + fullscreen.current.scrollLeft,
+                            top: boundsSecond.y + modalBodyRef.current.scrollTop,
+                            left: boundsSecond.x + modalBodyRef.current.scrollLeft,
                             opacity: "1"
                         }
                     };
@@ -361,8 +360,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     /** Render added friends */
     const renderAddedFriends = React.useCallback((isTop: boolean) => {
         const arrFriends = isTop
-            ? addedFriends.slice(0, friendsSliceTwo)
-            : addedFriends.slice(friendsSliceTwo, friendsSliceFour);
+            ? addedFriends.slice(0, friendsSliceindex1)
+            : addedFriends.slice(friendsSliceindex1, friendsSliceindex2);
 
         const style = isTop
             ? styles.friendsTop
@@ -396,10 +395,10 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 <Modal.Body
                     className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`}
                     id={containerId}
-                    ref={fullscreen}>
+                    ref={modalBodyRef}>
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={props.closeModal} className={styles.close} />
                     <div className={`w-100 ${rowVCenter}`}>
-                        <div className={`${styles.card} ${styles.gameStepTwoWrapper} ${rowCenter}`} ref={start}>
+                        <div className={`${styles.card} ${styles.gameStepTwoWrapper} ${rowCenter}`} ref={step1Ref}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your avatar</h2>
                             {step1Avatars.map((avatar, index) =>
                                 <Link
@@ -423,7 +422,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
-                                    <div className={styles.targetOne} ref={target}></div>
+                                    <div className={styles.targetOne} ref={step2TargetRef}></div>
                                     <input
                                         type="text"
                                         placeholder="Enter name"
@@ -448,7 +447,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                             {renderAddedFriends(true)}
                                         </Row>
                                         <Row className={`${horizontalAlign} w-100 m-0`}>
-                                            <div className={styles.targetTwo} ref={stepThree}></div>
+                                            <div className={styles.targetTwo} ref={step3Ref}></div>
                                         </Row>
                                         <Row className={`${horizontalAlign} w-100 m-0`}>
                                             {renderAddedFriends(false)}
@@ -457,7 +456,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                         <h3 className="text-center">{avatarName}</h3>
                                     </div>
                                 </div>
-                                <div className={`${styles.gameStepThreeFriendsColumn} ${rowVCenter}`} ref={friendsRef}>
+                                <div
+                                    className={`${styles.gameStepThreeFriendsColumn} ${rowVCenter}`}
+                                    ref={friendsSectionRef}>
                                     <h2 className={styles.avatarHeading}>Add four friends</h2>
                                     {step === StepTypes.Third
                                         ? <div className={`${styles.percentageWrapper} ${rowVCenter} flex-wrap`}>

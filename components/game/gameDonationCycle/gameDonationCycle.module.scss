@@ -116,8 +116,13 @@
                 height: 20px;
                 @extend .regular-desktop16-mobile7;
             }
-            img {
+            svg {
                 @include imgProperties(100%);
+                g:nth-child(1) {
+                    path {
+                        fill: #000;
+                    }
+                }
             }
         }
 

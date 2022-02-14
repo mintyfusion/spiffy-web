@@ -12,6 +12,8 @@ import flexbox from "utils/flexbox";
 import GameAvatarList from "../gameAvatarList/gameAvatarList";
 import getUniqueId from "utils/getUniqueId";
 import IGameDonationCycle from "./interfaces/IGameDonationCycleProps";
+import Logo from "components/common/logo/logo";
+import LogoVariants from "components/common/logo/enums/logoVariants";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import StepTypes from "../gameSection/enums/stepTypes";
 import styles from "components/game/gameDonationCycle/gameDonationCycle.module.scss";
@@ -75,7 +77,6 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
         if (donation !== donationAmount) {
             animationFalse();
             const animationTimeout = setTimeout(() => {
-                /*eslint-env browser*/
                 animationTrue();
                 clearTimeout(animationTimeout);
             }, avatarTimeout);
@@ -324,7 +325,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                                 </span>
                             </div>
                             <div className={`${styles.cycle11} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="11">
-                                <Image src="/images/game/donationCycle/spiffy.png" width={155} height={44} />
+                                <Logo variant={LogoVariants.footer} />
                                 {getDonationAmout(spiffyFormula)}
                             </div>
                         </div>
