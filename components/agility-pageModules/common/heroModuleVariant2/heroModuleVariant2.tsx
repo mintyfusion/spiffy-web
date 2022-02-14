@@ -4,11 +4,14 @@ import React from "react";
 
 import Banner from "components/agility-pageModules/common/banner/banner";
 import Caption from "components/agility-pageModules/common/caption/caption";
-import IHeroModuleVariant2Props from "components/agility-pageModules/common/heroModuleVariant2/interfaces/IHeroModuleVariant2Props";
+import IContentInfo from "types/IContentnfo";
+import IImageField from "types/IImageFIeld";
 
 import styles from "components/agility-pageModules/common/heroModuleVariant2/heroModuleVariant2.module.scss";
 
-const HeroModuleVariant2 = (props: ModuleProps<IHeroModuleVariant2Props>): JSX.Element => {
+type HeroModuleVariant2PropType = IContentInfo & IImageField;
+
+const HeroModuleVariant2 = (props: ModuleProps<HeroModuleVariant2PropType>): JSX.Element => {
     const { image } = props.module.fields;
     const galleryData: ImageProps[] = React.useMemo(() => image.media.map(data => ({ src: data.url })), [image.media]);
 
