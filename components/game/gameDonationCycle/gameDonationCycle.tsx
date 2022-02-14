@@ -81,35 +81,35 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
         }
     }, [donationAmount, animationFalse, animationTrue]);
 
+    const handleBtnClick = React.useCallback((donation: string) => {
+        setDonationAmount(donation);
+        animationHandler(donation);
+        coinAnimationWrapperRef.current.scroll({
+            top: 230,
+            behavior: "smooth"
+        });
+        coinStyles.current = {
+            left: null,
+            top: null
+        };
+    }, [animationHandler]);
+
     /**
     * Donation amount rendering.
     */
-    const donationCycle = React.useMemo(() =>
-        donationValues.map((donation) =>
+    const renderButtons = React.useMemo(() => {
+        const classes = `${horizontalAlign}  ${styles.donationButton} w-100 px-1 py-3`;
+
+        return donationValues.map((donation) =>
             <PrimaryButton
                 key={donation}
-                onClick={() => {
-                    setDonationAmount(donation);
-                    animationHandler(donation);
-                    coinAnimationWrapperRef.current.scroll({
-                        top: 230,
-                        behavior: "smooth"
-                    });
-                    coinStyles.current = {
-                        left: null,
-                        top: null
-                    };
-                }}
-                className={`
-              ${horizontalAlign} 
-              ${styles.donationButton}
-              ${donation === donationAmount ? styles.active : styles.inactive}
-              w-100 px-1 py-3`}
+                onClick={() => handleBtnClick(donation)}
+                className={`${classes} ${donation === donationAmount ? styles.active : styles.inactive}`}
             >
                 ${donation}
             </PrimaryButton>
-        ), [animationHandler, donationAmount]);
-
+        );
+    }, [donationAmount]);
 
     /**
      * Donation cycle style and animation.
@@ -270,7 +270,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
                     <Navbar.Collapse className={styles.customNavbar}>
                         <Nav className={"me-auto w-100"}>
-                            {donationCycle}
+                            {renderButtons}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
