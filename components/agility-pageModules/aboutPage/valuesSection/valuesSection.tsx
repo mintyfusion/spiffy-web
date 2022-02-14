@@ -46,7 +46,6 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
                             `}
                         >
                             <Image
-                                className="test"
                                 src={data.fields.image.url}
                                 layout="intrinsic"
                                 width="450px"
