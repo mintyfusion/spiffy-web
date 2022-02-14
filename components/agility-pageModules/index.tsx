@@ -13,7 +13,6 @@ import HeroModuleVariant1 from "components/agility-pageModules/common/heroModule
 import HeroModuleVariant2 from "components/agility-pageModules/common/heroModuleVariant2/heroModuleVariant2";
 import HeroModuleVariant3 from "components/agility-pageModules/common/heroModuleVariant3/heroModuleVariant3";
 import HtmlContentModule from "components/agility-pageModules/common/htmlContentModule/htmlContentModule";
-import IModules from "typings/interfaces/IModules";
 import LandingFeaturesModule from "components/agility-pageModules/landingPage/featuresModule/LandingFeaturesModule";
 import LandingPageEducation from "components/agility-pageModules/landingPage/educationModule/landingPageEducation";
 import LandingPageGetStarted from "components/agility-pageModules/landingPage/getStartedModule/landingPageGetStarted";
@@ -22,35 +21,33 @@ import VideoSection from "components/agility-pageModules/creatorPage/videoSectio
 
 // All of the Agility Page Module Components that are in use in this site need to be imported into this index file.
 // Place Page Modules in allModules array below, passing in a name and the component.
-const allModules: IModules[] = [
-  { name: "EducationListingModule", module: EducationListingModule },
-  { name: "HeroModule", module: HeroModuleVariant3 },
-  { name: "LandingPageEducation", module: LandingPageEducation },
-  { name: "CommonContentModule", module: CommonContentModule },
-  { name: "EducationDetailsModule", module: EducationDetailsModule },
-  { name: "LandingPageGetStarted", module: LandingPageGetStarted },
-  { name: "LandingFeaturesModule", module: LandingFeaturesModule },
-  { name: "LandingPageVerticalModule", module: LandingPageVerticalModule },
-  { name: "PageContentModule", module: CreatorPageContentModule },
-  { name: "CreatorPageVideoModule", module: VideoSection },
-  { name: "FAQContentModule", module: FAQContentModule },
-  { name: "AboutUsHeroModule", module: AboutUsHeroModule },
-  { name: "AboutUsValuesModule", module: AboutUsValuesModule },
-  { name: "ContactFormModule", module: ContactForm },
-  { name: "HeroModulewithDate", module: DateHeroModule },
-  { name: "HTMLTemplate", module: HtmlContentModule },
-  { name: "HeroModuleVariant1", module: HeroModuleVariant1 },
-  { name: "HeroModuleVariant2", module: HeroModuleVariant2 }
-];
+const allModules: Record<string, ComponentWithInit> = {
+  EducationListingModule,
+  "HeroModule": HeroModuleVariant3,
+  LandingPageEducation,
+  CommonContentModule,
+  EducationDetailsModule,
+  LandingPageGetStarted,
+  LandingFeaturesModule,
+  LandingPageVerticalModule,
+  "PageContentModule": CreatorPageContentModule,
+  "CreatorPageVideoModule": VideoSection,
+  FAQContentModule,
+  AboutUsHeroModule,
+  AboutUsValuesModule,
+  "ContactFormModule": ContactForm,
+  "HeroModulewithDate": DateHeroModule,
+  "HTMLTemplate": HtmlContentModule,
+  HeroModuleVariant1,
+  HeroModuleVariant2
+};
 
 export const getModule = (moduleName: string): ComponentWithInit => {
   if (!moduleName) { return null; }
 
-  const obj = allModules.find((m) =>
-    m.name.toLowerCase() === moduleName.toLowerCase()
-  );
+  const obj = allModules[moduleName];
 
   if (!obj) return null;
 
-  return obj.module;
+  return obj;
 };
