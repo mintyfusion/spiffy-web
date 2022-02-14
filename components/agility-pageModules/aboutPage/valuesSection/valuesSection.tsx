@@ -14,6 +14,16 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
     const { fields } = props.module;
     const [cardFocused, setIsCardFocused] = React.useState<number>(0);
 
+    const cardVisibility = React.useCallback((index: number) => cardFocused && cardFocused !== index + 1 && !breakpoint
+        ? styles.hide
+        : styles.show, [breakpoint, cardFocused]);
+
+    const ImageVisibility = React.useCallback((index: number) => cardFocused === index + 1
+        ? `d-block ${styles.show}`
+        : breakpoint
+            ? `d-block ${styles.show}`
+            : "d-none", [breakpoint, cardFocused]);
+
     return (
         <div>
             <h2 className={`p-4 p-lg-5 text-center m-0 ${styles.headingText}`}>{fields.title}</h2>
@@ -30,36 +40,28 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
                         <Stack
                             direction="horizontal"
                             className={`
-                        w-100 
-                        ${cardFocused && cardFocused !== index + 1 && !breakpoint
-                                    ? styles.hide
-                                    : styles.show
-                                }
-                        position-relative
-                         `}
+                                ${cardVisibility(index)}
+                                w-100 
+                                position-relative
+                            `}
                         >
                             <Image
                                 className="test"
                                 src={data.fields.image.url}
                                 layout="intrinsic"
                                 width="450px"
-                                height={breakpoint ? "300px" :"450px"}                                
+                                height={breakpoint ? "300px" : "450px"}
                                 objectFit="cover"
                             />
                             <div
                                 className={`
-                               ${cardFocused === index + 1
-                                        ? `d-block ${styles.show}`
-                                        : breakpoint
-                                            ? `d-block ${styles.show}`
-                                            : "d-none"
-                                    } 
-                                ${styles.cardInfo} 
-                                position-absolute
-                                bottom-0 
-                                start-0
-                                p-5
-                            `}
+                                    ${ImageVisibility(index)} 
+                                    ${styles.cardInfo} 
+                                    position-absolute
+                                    bottom-0 
+                                    start-0
+                                    p-5
+                                `}
                             >
                                 <h2>{data.fields.title}</h2>
                                 <h5>{data.fields.description}</h5>

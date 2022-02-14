@@ -43,6 +43,10 @@ const HeroModuleVariant1 = (props: ModuleProps<IHeroModuleVariant1Props>): JSX.E
         }
     }, [data, searchedText]);
 
+    const handleInputChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        !disableSearchInput && setSearchedText(e.target.value);
+    }, [disableSearchInput]);
+
     return (
         <Banner images={galleryData} fullHeight={false}>
             <div
@@ -57,7 +61,7 @@ const HeroModuleVariant1 = (props: ModuleProps<IHeroModuleVariant1Props>): JSX.E
                             type="text"
                             placeholder="Search"
                             value={searchedText}
-                            onChange={(e) => !disableSearchInput && setSearchedText(e.target.value)}
+                            onChange={handleInputChange}
                             ref={searchRef}
                             disabled={disableSearchInput}
                         />
