@@ -66,7 +66,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         ...contentListParams
     }), []);
 
-    const [{ loading, data: resultData }] = useGetContentList<IFaqContentModuleData>(finalParams);
+    const [{ isLoading, data: resultData }] = useGetContentList<IFaqContentModuleData>(finalParams);
 
     const tags = React.useMemo(() => props.module.fields.tags.map(tag => tag.fields.name), [props.module.fields.tags]);
 
@@ -141,7 +141,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
                         </Navbar.Toggle>
                         <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
-                        <Navbar.Collapse id="basic-navbar-nav">
+                        <Navbar.Collapse>
                             <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
                                 {props.module.fields.tags.map(content =>
                                     <PrimaryButton
@@ -174,10 +174,10 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                 </div>
             }
             <Stack className="gap-4" ref={contentRef}>
-                {!loading && !resultData?.items.length
+                {!isLoading && !resultData?.items.length
                     && <h1 className="text-center">No FAQ Found</h1>
                 }
-                {!loading
+                {!isLoading
                     && resultData
                     && resultData.items
                         .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
@@ -203,7 +203,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             </Accordion>
                         )}
 
-                {loading && <Spinner className={horizontalAlign} />}
+                {isLoading && <Spinner className={horizontalAlign} />}
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>
         </div>

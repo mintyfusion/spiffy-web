@@ -78,7 +78,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
         filtersLogicOperator: FilterLogicTypes.OR
     }), [activeTab, searchData.searchValue, searchFilterParams]);
 
-    const [{ loading, data: resultData }] = useGetContentList<ICardProps>(finalParams);
+    const [{ isLoading, data: resultData }] = useGetContentList<ICardProps>(finalParams);
 
     return (
         <div className={styles.contentContainer}>
@@ -109,7 +109,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                             <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
                         </Navbar.Toggle>
                         <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
-                        <Navbar.Collapse id="basic-navbar-nav">
+                        <Navbar.Collapse>
                             <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
                                 {props.module.fields.educationTags.map(content =>
                                     <PrimaryButton
@@ -159,8 +159,8 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                                 : `Showing search results for ${searchData.searchValue}`}
                         </h5>
                     </Row>
-                    {loading && <Spinner className={horizontalAlign} />}
-                    {!loading
+                    {isLoading && <Spinner className={horizontalAlign} />}
+                    {!isLoading
                         ? !resultData?.items?.length
                             ? <h1 className="text-center">No Blogs Found</h1>
                             : resultData &&

@@ -1,7 +1,6 @@
-import { ImageField } from "@agility/nextjs";
 import IContentInfo from "types/IContentnfo";
+import IImageField from "types/IImageFIeld";
 
-export default interface IDateHeroModuleProps extends Pick<IContentInfo, "title"> {
+export default interface IDateHeroModuleProps extends Pick<IContentInfo, "title">, IImageField {
     lastUpdated: string;
-    image: { media: [ImageField] };
 }

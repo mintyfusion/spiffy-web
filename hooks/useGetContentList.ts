@@ -5,7 +5,7 @@ import IGetContentList from "utils/api/interfaces/IGetContentList";
 import IUseGetContentListData from "utils/api/interfaces/IUseGetContentListData";
 
 export default function useGetContentList<T>(params: IGetContentList): IUseGetContentListData<T>[] {
-    const [loading, setLoading] = React.useState(true);
+    const [isLoading, setIsLoading] = React.useState(true);
     const [error, setError] = React.useState<string>();
     const [data, setData] = React.useState(null);
 
@@ -16,13 +16,13 @@ export default function useGetContentList<T>(params: IGetContentList): IUseGetCo
     }, [params]);
 
     React.useEffect(() => {
-        setLoading(true);
+        setIsLoading(true);
         fetchContentListApi()
             .then(result => setData(result))
             .catch(err => setError(err))
-            .finally(() => setLoading(false));
+            .finally(() => setIsLoading(false));
 
     }, [fetchContentListApi]);
 
-    return [{ loading, data, error }];
+    return [{ isLoading, data, error }];
 }

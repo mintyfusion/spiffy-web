@@ -1,8 +1,6 @@
-import { ImageField } from "@agility/nextjs";
-
 import IContentInfo from "types/IContentnfo";
+import IImageField from "types/IImageFIeld";
 
-export default interface IHeroModuleVariant1Props extends IContentInfo {
+export default interface IHeroModuleVariant1Props extends IContentInfo, IImageField {
     showSearchBar?: boolean;
-    image: { media: [ImageField] };
 }

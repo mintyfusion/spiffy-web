@@ -1,7 +1,4 @@
-import { ImageField } from "@agility/nextjs";
-
 import IContentInfo from "types/IContentnfo";
+import IImageField from "types/IImageFIeld";
 
-export default interface IHeroModuleVariant2Props extends IContentInfo{
-    image: { media: [ImageField] };
-}
+export default interface IHeroModuleVariant2Props extends IContentInfo, IImageField {}

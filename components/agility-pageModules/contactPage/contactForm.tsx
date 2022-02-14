@@ -20,7 +20,8 @@ const PHONE_NUMBER_LENGTH = 11;
 const NUMBER_PATTERN = /^[0-9]*$/;
 const EMAIL_PATTERN = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-const centerAlign = flexbox({ hAlign: "center", vAlign: "center" });
+const rowAlignCenter = flexbox({ hAlign: "center", vAlign: "center" });
+const colAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 
 const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
     const { fields } = props.module;
@@ -57,7 +58,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 ? <textarea {...fieldProps} rows={8} />
                 : fieldName === ContactFormFieldNames.phoneNumber
                     ? (
-                        <div className="d-flex align-items-center justify-content-center">
+                        <div className={rowAlignCenter}>
                             <div className={`${styles.countryflagContainer} text-end`}>+1</div>
                             <input {...fieldProps} />
                         </div>
@@ -133,7 +134,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
 
     return (
         <Row className={`${styles.container} w-100 m-0 flex-column-reverse flex-md-row`}>
-            <Col className={`${styles.contextContainer} d-flex flex-column justify-content-center`}>
+            <Col className={`${styles.contextContainer} ${colAlignCenter}`}>
                 <Row className={styles.topContextContainer}>
                     <div>
                         <h2>{fields.title}</h2>
@@ -161,7 +162,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                         ? <form onSubmit={handleSubmit}>
                             <h6>{fields.formTitle}</h6>
                             <h5 className="mb-3">{fields.formDescription}</h5>
-                            <div className="d-flex flex-row gap-3">
+                            <div className={`gap-3 ${rowAlignCenter}`}>
                                 <PrimaryButton
                                     className={`
                                         w-100 ${styles.userTypeButton} 
@@ -198,7 +199,9 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                         </Col>
                     }
                     {loading &&
-                        <Spinner className={`${styles.overlay} ${centerAlign} position-absolute top-0 w-100 h-100`} />}
+                        <Spinner
+                            className={`${styles.overlay} ${rowAlignCenter} position-absolute top-0 w-100 h-100`}
+                        />}
                 </div>
             </Col>
         </Row >
