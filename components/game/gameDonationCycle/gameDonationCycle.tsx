@@ -10,7 +10,6 @@ import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "../gameAvatarList/gameAvatarList";
-import getUniqueId from "utils/getUniqueId";
 import IGameDonationCycle from "./interfaces/IGameDonationCycleProps";
 import Logo from "components/common/logo/logo";
 import LogoVariants from "components/common/logo/enums/logoVariants";
@@ -19,6 +18,7 @@ import StepTypes from "../gameSection/enums/stepTypes";
 import styles from "components/game/gameDonationCycle/gameDonationCycle.module.scss";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
+import useStyles from "hooks/useStyles";
 
 const rowVCenter = flexbox({ vAlign: "center", vertical: true, });
 const rowCenter = flexbox({ hAlign: "center" });
@@ -58,13 +58,14 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
     const [expanded, { toggle: navToggle }] = useBoolean(false);
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = useBoolean(false);
+    const [coinStyles, , updateCoinStyle] = useStyles<CSSProperties>();
     const isLG = useBreakpoint(Breakpoints.LG);
 
     const coinAnimationWrapperRef = React.useRef<HTMLDivElement>();
     const coinRef = React.useRef<HTMLDivElement>();
-    const coinStyles = React.useRef<CSSProperties>();
+    // const coinStyles = React.useRef<CSSProperties>();
 
-    const { setAvatarStyleGUID } = props;
+    // const { setAvatarStyleGUID } = props;
 
     /**
     * Reset the donation cycle animation.
@@ -94,10 +95,11 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         top: 230,
                         behavior: "smooth"
                     });
-                    coinStyles.current = {
+                    updateCoinStyle({
                         left: null,
-                        top: null
-                    };
+                        top: null,
+                        transition: "none"
+                    });
                 }}
                 className={`
               ${horizontalAlign} 
@@ -155,30 +157,31 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
 
             switch (stepIndex) {
                 case 0:
-                    coinStyles.current = {
+                    updateCoinStyle({
                         left: leftStyle,
                         top: topStyle,
-                        transition: "2s"
-                    };
+                        transition: "2s",
+                        opacity: "1"
+                    });
                     break;
                 case eleven:
-                    coinStyles.current = {
+                    updateCoinStyle({
                         left: leftStyle,
                         top: topStyle,
                         transition: "2s",
                         opacity: "0"
-                    };
+                    });
                     break;
                 default:
-                    coinStyles.current = {
+                    updateCoinStyle({
                         left: bounds.x + coin.scrollLeft - left,
                         top: bounds.y + coin.scrollTop - twenty,
                         transition: "2s",
-                    };
+                        opacity: "1"
+                    });
             }
-            setAvatarStyleGUID(getUniqueId());
         }
-    }, [setAvatarStyleGUID]);
+    }, [updateCoinStyle]);
 
     /**
      * Function to start or reset the donation cycle animation.
@@ -282,7 +285,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         <div
                             className={`${styles.coin} position-absolute`}
                             ref={coinRef}
-                            style={coinStyles.current}>
+                            style={coinStyles}>
                             <Image src="/images/game/coin.png" alt="Coin" width={76} height={76} />
                         </div>
                         <div className={`${styles.userDonation} position-relative`} data-index="0">
