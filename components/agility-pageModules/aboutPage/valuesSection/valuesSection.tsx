@@ -43,13 +43,12 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
                                 ${cardVisibility(index)}
                                 w-100 
                                 position-relative
+                                ${styles.imageContainer}
                             `}
                         >
                             <Image
                                 src={data.fields.image.url}
-                                layout="intrinsic"
-                                width="450px"
-                                height={breakpoint ? "300px" : "450px"}
+                                layout="fill"
                                 objectFit="cover"
                             />
                             <div

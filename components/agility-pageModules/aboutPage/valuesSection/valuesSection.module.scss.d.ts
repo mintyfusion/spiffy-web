@@ -23,6 +23,7 @@ export type Styles = {
   "fullBold67": string;
   "headingText": string;
   "hide": string;
+  "imageContainer": string;
   "overlay": string;
   "regular14": string;
   "regular16": string;

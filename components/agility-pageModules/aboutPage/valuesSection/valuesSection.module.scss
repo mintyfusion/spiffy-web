@@ -1,5 +1,6 @@
 @import "styles/theme.scss";
 @import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
 
 @include opacityKeyFrames();
 
@@ -31,12 +32,6 @@
             transition: flex 200ms ease-in;
         }
 
-        // Accessing Next JS Image parent div tag as parent is not accessible directly.
-        div {
-            width: 100%;
-            background-color: $transparent;
-        }
-
         .cardInfo {
             color: $white;
             width: fit-content;
@@ -54,5 +49,17 @@
     .overlay {
         background-color: $yellow-dark;
         z-index: 2;
+    }
+}
+
+@include media(">=desktop") {
+    .imageContainer {
+        height: 450px;
+    }
+}
+
+@include media("<desktop") {
+    .imageContainer {
+        height: 300px;
     }
 }
