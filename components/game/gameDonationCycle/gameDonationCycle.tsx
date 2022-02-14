@@ -98,7 +98,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     updateCoinStyle({
                         left: null,
                         top: null,
-                        transition: "none"
+                        transition: "none",
                     });
                 }}
                 className={`
