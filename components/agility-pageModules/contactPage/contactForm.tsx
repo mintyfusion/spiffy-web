@@ -84,7 +84,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
             return;
         }
 
-        const newFormFields: Record<string, IField> = { ...contactFormFields };
+        const newFormFields: Record<string, IField> = { ...formFields };
         let hasError = false;
 
         for (const fieldKey in newFormFields) {
