@@ -1,11 +1,10 @@
 import { Accordion, Nav, Navbar, Row, Stack } from "react-bootstrap";
-import { ContentItem, ModuleProps, renderHTML } from "@agility/nextjs";
 import { faCaretSquareLeft, faCaretSquareRight, faChevronLeft, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ModuleProps, renderHTML } from "@agility/nextjs";
 import React from "react";
 
 import { SearchContext } from "pages/[...slug]";
-import api from "utils/api/api";
 import Breakpoints from "common/style/breakpoints";
 import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import flexbox from "utils/flexbox";
@@ -15,6 +14,7 @@ import PrimaryButton from "components/agility-pageModules/common/primaryButton/p
 import Spinner from "components/agility-pageModules/common/spinner/Spinner";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
+import useGetContentList from "hooks/useGetContentList";
 
 import styles from "components/agility-pageModules/faqPage/contentModule/faqContentModule.module.scss";
 
@@ -33,13 +33,11 @@ const contentListParams = {
 
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.allTopics);
-    const [contentData, setContentData] = React.useState<{ items: ContentItem<IFaqContentModuleData>[] }>();
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const contentRef = React.useRef<HTMLDivElement>();
     const tabsRef = React.useRef<HTMLDivElement>();
     const data = React.useContext(SearchContext);
     const [expanded, { toggle: toggleExpanding }] = useBoolean(false);
-    const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] = useBoolean(false);
 
     const handleArrowScrollLeft = React.useCallback(() => {
         tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft - scrollAmount, ...scrollParams });
@@ -62,22 +60,13 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             </div>
         </div>;
 
-    const getFAQList = React.useCallback(async () => {
-        setLoadingTrue();
-        const result = await api.getContentList<IFaqContentModuleData>({
-            referenceName: "FAQContentList",
-            languageCode: "en-us",
-            ...contentListParams
-        }).finally(() => setLoadingFalse());
+    const finalParams = React.useMemo(() => ({
+        referenceName: "FAQContentList",
+        languageCode: "en-us",
+        ...contentListParams
+    }), []);
 
-        return result;
-    }, [setLoadingFalse, setLoadingTrue]);
-
-    React.useEffect(() => {
-        getFAQList()
-            .then(result => setContentData(result))
-            .catch((err: unknown) => err);
-    }, [getFAQList]);
+    const [{ loading, data: resultData }] = useGetContentList<IFaqContentModuleData>(finalParams);
 
     const tags = React.useMemo(() => props.module.fields.tags.map(tag => tag.fields.name), [props.module.fields.tags]);
 
@@ -85,14 +74,14 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         tags.map((tag, index) => {
             if (tag.toLowerCase().includes(ContentCategory.all.toLowerCase())) {
                 return;
-            } if (contentData?.items.filter(data => data.fields.tag.fields.name === tag).length === 0) {
+            } if (resultData?.items.filter(data => data.fields.tag.fields.name === tag).length === 0) {
                 return <h1 className="text-center">No FAQ Found</h1>;
             }
 
             return (
                 <React.Fragment key={index}>
-                    {contentData
-                        && contentData.items.filter(data => data.fields.tag.fields.name === tag).map((post, index) =>
+                    {resultData
+                        && resultData.items.filter(data => data.fields.tag.fields.name === tag).map((post, index) =>
                             <Accordion key={`${tag} ${index}`} className={`${styles.accordion} ${tag !== activeTab && "d-none"}`}>
                                 <Accordion.Item eventKey={`${tag} ${index}`} className="position-relative border-0">
                                     <Accordion.Header className={styles.accordianHeader}>
@@ -112,7 +101,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                         )}
                 </React.Fragment>
             );
-        }), [tags, contentData, activeTab]);
+        }), [tags, resultData, activeTab]);
 
     React.useEffect(() => {
         data.searchValue && contentRef.current.scrollIntoView();
@@ -185,12 +174,12 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                 </div>
             }
             <Stack className="gap-4" ref={contentRef}>
-                {!loading && !contentData?.items.length
+                {!loading && !resultData?.items.length
                     && <h1 className="text-center">No FAQ Found</h1>
                 }
                 {!loading
-                    && contentData
-                    && contentData.items
+                    && resultData
+                    && resultData.items
                         .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
                         .map((post, index) =>
                             <Accordion

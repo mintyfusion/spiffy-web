@@ -1,11 +1,10 @@
-import { ContentItem, ModuleProps } from "@agility/nextjs";
 import { faCaretSquareLeft, faCaretSquareRight, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ModuleProps } from "@agility/nextjs";
 import { Nav, Navbar, Row, Stack } from "react-bootstrap";
 import React from "react";
 
 import { SearchContext } from "pages/[...slug]";
-import api from "utils/api/api";
 import Breakpoints from "common/style/breakpoints";
 import CardContainer from "components/agility-pageModules/common/cardContainer/cardContainer";
 import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
@@ -18,6 +17,7 @@ import PrimaryButton from "components/agility-pageModules/common/primaryButton/p
 import Spinner from "components/agility-pageModules/common/spinner/Spinner";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
+import useGetContentList from "hooks/useGetContentList";
 
 import styles from "components/agility-pageModules/educationPage/contentListModule/educationPageContentListModule.module.scss";
 
@@ -27,27 +27,18 @@ const scrollParams = {
     top: 0,
     behavior: "smooth" as ScrollBehavior
 };
-const educationContentListParams = {
-    referenceName: "EducationContent",
-    languageCode: "en-us",
-    contentLinkDepth: 2,
-    depth: 2,
-    take: 50
-};
 
 const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
     const [showMore, setShowMore] = React.useState({});
-    const [contentData, setContentData] = React.useState<{ items: ContentItem<ICardProps>[]; totalCount: number }>();
     const breakpoint = useBreakpoint(Breakpoints.LG);
-    const data = React.useContext(SearchContext);
+    const searchData = React.useContext(SearchContext);
     const tabsRef = React.useRef<HTMLDivElement>();
     const [expanded, { toggle: toggleExpanding }] = useBoolean(false);
-    const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] = useBoolean(false);
     const searchFilterParams = React.useMemo(() => ({
         operator: FilterTypes.LIKE,
-        value: data.searchValue
-    }), [data.searchValue]);
+        value: searchData.searchValue
+    }), [searchData.searchValue]);
 
     const handleArrowScrollLeft = React.useCallback(() => {
         tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft - scrollAmount, ...scrollParams });
@@ -61,51 +52,37 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
         breakpoint && toggleExpanding();
     }, [breakpoint, toggleExpanding]);
 
-    const getContent = React.useCallback(async () => {
-        setLoadingTrue();
-        const result = !data.searchValue
-            ? await api.getContentList<ICardProps>({
-                ...educationContentListParams,
-                filters: activeTab !== ContentCategory.all && [
-                    {
-                        property: "fields.tag_TextField",
-                        operator: FilterTypes.EQUAL_TO,
-                        value: activeTab
-                    }
-                ]
-            }).finally(() => setLoadingFalse())
-            : await api.getContentList<ICardProps>({
-                ...educationContentListParams,
-                filters: [
-                    {
-                        property: "fields.title",
-                        ...searchFilterParams
-                    },
-                    {
-                        property: "fields.tag_TextField",
-                        ...searchFilterParams
-                    }
-                ],
-                filtersLogicOperator: FilterLogicTypes.OR
-            }).finally(() => setLoadingFalse());
+    const finalParams = React.useMemo(() => ({
+        referenceName: "EducationContent",
+        languageCode: "en-us",
+        contentLinkDepth: 2,
+        depth: 2,
+        take: 50,
+        filters: !searchData.searchValue
+            ? activeTab !== ContentCategory.all && [
+                {
+                    property: "fields.tag_TextField",
+                    operator: FilterTypes.EQUAL_TO,
+                    value: activeTab
+                }]
+            : [
+                {
+                    property: "fields.title",
+                    ...searchFilterParams
+                },
+                {
+                    property: "fields.tag_TextField",
+                    ...searchFilterParams
+                }
+            ],
+        filtersLogicOperator: FilterLogicTypes.OR
+    }), [activeTab, searchData.searchValue, searchFilterParams]);
 
-        return result;
-    }, [activeTab, data.searchValue, searchFilterParams, setLoadingFalse, setLoadingTrue]);
-
-    React.useEffect(() => {
-        getContent()
-            .then(result => {
-                setLoadingTrue();
-                setContentData({ items: [], totalCount: 0 });
-                setContentData(result);
-                setLoadingFalse();
-            })
-            .catch((err: unknown) => err);
-    }, [getContent, setLoadingFalse, setLoadingTrue]);
+    const [{ loading, data: resultData }] = useGetContentList<ICardProps>(finalParams);
 
     return (
         <div className={styles.contentContainer}>
-            {!data.searchValue &&
+            {!searchData.searchValue &&
                 <div className={`${horizontalAlign} gap-2 mb-1 mb-md-4`}>
                     <FontAwesomeIcon
                         icon={faCaretSquareLeft}
@@ -175,22 +152,22 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                     key={content.fields.name}
                 >
                     <Row className={`${styles.contentHeading} w-100 text-center`}>
-                        <h2>{!data.searchValue ? content.fields.name.replace("_", " ") : "Search Results"}</h2>
+                        <h2>{!searchData.searchValue ? content.fields.name.replace("_", " ") : "Search Results"}</h2>
                         <h5>
-                            {!data.searchValue
+                            {!searchData.searchValue
                                 ? props.module.fields.title
-                                : `Showing search results for ${data.searchValue}`}
+                                : `Showing search results for ${searchData.searchValue}`}
                         </h5>
                     </Row>
                     {loading && <Spinner className={horizontalAlign} />}
                     {!loading
-                        ? !contentData?.items?.length
+                        ? !resultData?.items?.length
                             ? <h1 className="text-center">No Blogs Found</h1>
-                            : contentData &&
+                            : resultData &&
                             <>
-                                <CardContainer content={contentData} />
+                                <CardContainer content={resultData} />
                                 <Row>
-                                    {!showMore[content.fields.name] && !!contentData?.items?.length &&
+                                    {!showMore[content.fields.name] && !!resultData?.items?.length &&
                                         <PrimaryButton
                                             onClick={() => setShowMore({ [content.fields.name]: true })}
                                         >
