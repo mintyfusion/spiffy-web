@@ -19,7 +19,7 @@ export default function useGetContentList<T>(params: IGetContentList): IUseGetCo
         setIsLoading(true);
         fetchContentListApi()
             .then(result => setData(result))
-            .catch(err => setError(err))
+            .catch((err: Error) => setError(err.message))
             .finally(() => setIsLoading(false));
 
     }, [fetchContentListApi]);
