@@ -42,7 +42,6 @@ const eleven = 11;
 const fiveHundred = 500;
 const fifty = 50;
 const eightHundred = 800;
-const sixtyFive = 65;
 const elevenHundred = 1100;
 const thiryFive = 35;
 const seventy = 70;
@@ -50,9 +49,7 @@ const thirty = 30;
 const seventeenHundred = 1700;
 const sixteenHundred = 1600;
 const thousand = 1000;
-const sevenHundred = 700;
 const threeHundred = 300;
-const fourty = 40;
 const fourtyFive = 45;
 const twelveHundred = 1300;
 const twenty = 20;
@@ -132,7 +129,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
             } else if (width > fourHundred && width < fiveHundred) {
                 left = fifty;
             } else if (width > fiveHundred && width < eightHundred) {
-                left = sixtyFive;
+                left = twenty;
             } else if (width > eightHundred && width < elevenHundred) {
                 left = thiryFive;
             } else if (width > thousand && width < twelveHundred) {
@@ -145,8 +142,8 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                 startingLeft = thiryFive;
             } else if (width > thousand && width < sixteenHundred) {
                 startingLeft = thirty;
-            } else if (width > fourHundred && width < sevenHundred) {
-                startingLeft = fourty;
+            } else if (width > fourHundred && width < eightHundred) {
+                startingLeft = ten;
             } else if (width > threeHundred && width < fourHundred) {
                 startingLeft = 0;
             } else {
@@ -259,7 +256,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     expand="lg"
                     className="d-block text-center"
                     expanded={expanded}
-                    onClick={() => isLG && navToggle}>
+                    onClick={() => isLG && navToggle()}>
                     <Navbar.Brand className="d-lg-none">
                         {!donationAmount
                             ? "Select Amount"
@@ -326,7 +323,9 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                             </div>
                             <div className={`${styles.cycle11} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="11">
                                 <Logo variant={LogoVariants.footer} />
-                                {getDonationAmout(spiffyFormula)}
+                                <span className={`${styles.donationAmount11} ${styles.donationAmount}`}>
+                                    {getDonationAmout(spiffyFormula)}
+                                </span>
                             </div>
                         </div>
 

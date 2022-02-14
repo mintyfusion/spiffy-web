@@ -55,7 +55,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
     const [step, setStep] = React.useState<StepTypes>(StepTypes.First);
     const [avatarName, setAvatarName] = React.useState<string>("");
-    const isLG = useBreakpoint(Breakpoints.LG + breakpointPlus);
+    const isBreakpoint998 = useBreakpoint(Breakpoints.LG + breakpointPlus);
     const isMD = useBreakpoint(Breakpoints.MD);
 
     const avatarStyles = React.useRef<Record<AvatarType, CSSProperties>>();
@@ -94,12 +94,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         };
     }, [addedFriends, friendsAvatars, seletedAvatar]);
 
-    const avatarStyleHandler = React.useCallback((refrence: React.MutableRefObject<HTMLDivElement>) => {
+    const getAvatarPositions = React.useCallback((refrence: React.MutableRefObject<HTMLDivElement>) => {
         if (refrence.current) {
             const mobileAvatar = 90;
             const desktopAvatar = 160;
             const bounds = refrence.current.getBoundingClientRect();
-            const avatarSize = isLG ? mobileAvatar : desktopAvatar;
+            const avatarSize = isBreakpoint998 ? mobileAvatar : desktopAvatar;
             const cardMidPointX = (bounds.x + bounds.right) / boundDivide;
             const cardMidPointY = (bounds.y + bounds.bottom) / boundDivide;
             const space = 10;
@@ -110,7 +110,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
             return { left1, left2, top1, top2 };
         }
-    }, [isLG]);
+    }, [isBreakpoint998]);
 
     /**
      * Get styles of avatars in first section.
@@ -119,33 +119,38 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         const styles = {} as Record<AvatarType, CSSProperties>;
 
         avatars.forEach((avatar) => {
+            const left1 = getAvatarPositions(step1Ref).left1;
+            const top1 = getAvatarPositions(step1Ref).top1;
+            const left2 = getAvatarPositions(step1Ref).left2;
+            const top2 = getAvatarPositions(step1Ref).top2;
+
             switch (avatar) {
                 case AvatarType.Green:
                     styles[avatar] = {
-                        left: avatarStyleHandler(step1Ref).left1,
-                        top: avatarStyleHandler(step1Ref).top1,
+                        left: left1,
+                        top: top1,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Red:
                     styles[avatar] = {
-                        left: avatarStyleHandler(step1Ref).left2,
-                        top: avatarStyleHandler(step1Ref).top1,
+                        left: left2,
+                        top: top1,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Yellow:
                     styles[avatar] = {
-                        left: avatarStyleHandler(step1Ref).left1,
-                        top: avatarStyleHandler(step1Ref).top2,
+                        left: left1,
+                        top: top2,
                         opacity: "1",
                     };
                     break;
                 case AvatarType.Purple:
                 default:
                     styles[avatar] = {
-                        left: avatarStyleHandler(step1Ref).left2,
-                        top: avatarStyleHandler(step1Ref).top2,
+                        left: left2,
+                        top: top2,
                         opacity: "1",
                     };
                     break;
@@ -153,48 +158,48 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         });
 
         return styles;
-    }, [avatarStyleHandler]);
+    }, [getAvatarPositions]);
 
     /**
      * Get styles of fiends avatars in third section.
      */
-    const getFriendsStyle = React.useCallback(() => {
+    const getFriendsStyles = React.useCallback(() => {
         const styles = {} as Record<AvatarType, CSSProperties>;
-        const keyTwo = 2;
-        const keyThree = 3;
+        const thirdAvatarIndex = 2;
+        const fourthAvatarIndex = 3;
 
         friendsAvatars.forEach((avatar, index) => {
             switch (index) {
                 case 0:
                     styles[avatar] = {
-                        left: avatarStyleHandler(friendsSectionRef).left1,
-                        top: avatarStyleHandler(friendsSectionRef).top1,
+                        left: getAvatarPositions(friendsSectionRef).left1,
+                        top: getAvatarPositions(friendsSectionRef).top1,
                     };
                     break;
                 case 1:
                     styles[avatar] = {
-                        left: avatarStyleHandler(friendsSectionRef).left2,
-                        top: avatarStyleHandler(friendsSectionRef).top1,
+                        left: getAvatarPositions(friendsSectionRef).left2,
+                        top: getAvatarPositions(friendsSectionRef).top1,
                     };
                     break;
-                case keyTwo:
+                case thirdAvatarIndex:
                     styles[avatar] = {
-                        left: avatarStyleHandler(friendsSectionRef).left1,
-                        top: avatarStyleHandler(friendsSectionRef).top2,
+                        left: getAvatarPositions(friendsSectionRef).left1,
+                        top: getAvatarPositions(friendsSectionRef).top2,
                     };
                     break;
-                case keyThree:
+                case fourthAvatarIndex:
                 default:
                     styles[avatar] = {
-                        left: avatarStyleHandler(friendsSectionRef).left2,
-                        top: avatarStyleHandler(friendsSectionRef).top2,
+                        left: getAvatarPositions(friendsSectionRef).left2,
+                        top: getAvatarPositions(friendsSectionRef).top2,
                     };
                     break;
             }
         });
 
         return styles;
-    }, [friendsAvatars, avatarStyleHandler]);
+    }, [friendsAvatars, getAvatarPositions]);
 
     /**
      * Section one animation and scroll on selecting avatar.
@@ -243,12 +248,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * Setting styles of friends in third section.
      */
     const setFriendsPositions = React.useCallback(() => {
-        const styles = getFriendsStyle();
+        const styles = getFriendsStyles();
         if (styles) {
             friendsStyle.current = { ...friendsStyle.current, ...styles };
             setFriendsStyleGUID(getUniqueId());
         }
-    }, [getFriendsStyle]);
+    }, [getFriendsStyles]);
 
     /**
      * Section two animation and scroll on continue.
@@ -266,7 +271,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     [seletedAvatar]: {
                         top: bounds.y + modalBodyRef.current.scrollTop,
                         left: bounds.x + modalBodyRef.current.scrollLeft,
-                        opacity: "1"
+                        opacity: "1",
+                        cursor: "initial"
                     }
                 };
                 setAvatarStyleGUID(getUniqueId());

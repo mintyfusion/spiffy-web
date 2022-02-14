@@ -242,8 +242,8 @@
             }
 
             .cycle {
-                width: 35px;
-                height: 42px;
+                width: 40px;
+                height: 50px;
                 padding: 5px;
             }
 
@@ -275,13 +275,13 @@
             }
         }
 
-        .donationInner & p {
+        .donationInner {
             margin-top: 0px;
             margin-bottom: 0px;
 
             .userDonation {
-                @include imgProperties(67px);
                 margin-top: 25px;
+                @include imgProperties(70px);
             }
         }
 

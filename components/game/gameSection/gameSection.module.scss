@@ -502,15 +502,20 @@
             .gameStepThreeUserColumn {
                 width: 100%;
                 height: 50%;
-                max-width: 400px;
+
                 h2 {
                     position: relative;
                     top: -20px;
                     display: block;
                 }
+
                 h3 {
                     margin-bottom: 40px;
                     margin-top: 40px;
+                }
+
+                .gameStepTwo {
+                    max-width: 410px;
                 }
             }
         }
