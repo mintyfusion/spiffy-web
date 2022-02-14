@@ -346,11 +346,13 @@
 }
 
 @include media(">=1000px", "<1400px") {
-    .donationSections .coin {
-        top: 310px;
+    .donationSections {
+        .coin {
+            top: 310px;
+        }
 
         .contentAnimation .donationLogo > div:nth-child(1) {
-            width: 60%;
+            width: 50%;
             top: -29px;
         }
     }
