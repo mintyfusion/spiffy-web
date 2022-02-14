@@ -62,7 +62,9 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
 };
 
 CommonSection.defaultProps = {
-    arrows: 0
+    arrows: 0,
+    reversed: false,
+    containerClass:""
 };
 
 export default CommonSection;
