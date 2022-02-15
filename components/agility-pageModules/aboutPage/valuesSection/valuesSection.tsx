@@ -15,14 +15,14 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
     const [cardFocused, setIsCardFocused] = React.useState<number>(0);
 
     const cardVisibility = React.useCallback((index: number) => cardFocused && cardFocused !== index + 1 && !breakpoint
-        ? styles.hide
-        : styles.show, [breakpoint, cardFocused]);
+        ? "fade"
+        : "fade show", [breakpoint, cardFocused]);
 
     const ImageVisibility = React.useCallback((index: number) => cardFocused === index + 1
-        ? `d-block ${styles.show}`
+        ? "fade show"
         : breakpoint
-            ? `d-block ${styles.show}`
-            : "d-none", [breakpoint, cardFocused]);
+            ? " fade show"
+            : " fade", [breakpoint, cardFocused]);
 
     return (
         <div>
