@@ -1,9 +1,9 @@
-import { renderHTML } from "@agility/nextjs";
 import NextHead from "next/head";
 import React from "react";
 
 import IFavicon from "components/agility-pageModules/common/head/interfaces/IFavicon";
 import IHeadProps from "components/agility-pageModules/common/head/interfaces/IHeadProps";
+import renderHtml from "utils/renderHtml";
 
 const favicons: IFavicon[] = [
     {
@@ -108,7 +108,7 @@ const Head = (props: IHeadProps): JSX.Element =>
         <meta name="description" content={props.description} />
         <meta name="keywords" content={props.keywords} />
         {props.metaHTML &&
-            <span dangerouslySetInnerHTML={renderHTML(props.metaHTML)} />
+            <span dangerouslySetInnerHTML={renderHtml(props.metaHTML)} />
         }
     </NextHead>;
 

@@ -1,9 +1,9 @@
-import { renderHTML } from "@agility/nextjs";
 import Image from "next/image";
 import React from "react";
 
 import DetailsType from "components/agility-pageModules/educationDetailsModule/detailsSection/enums/detailsType";
 import IDetailsSectionProps from "components/agility-pageModules/educationDetailsModule/detailsSection/interfaces/IDetailsSectionProps";
+import renderHtml from "utils/renderHtml";
 import VideoPlayer from "components/agility-pageModules/common/videoPlayer/videoPlayer";
 
 import styles from "components/agility-pageModules/educationDetailsModule/detailsSection/detailsSection.module.scss";
@@ -24,7 +24,7 @@ const DetailsSection = (props: IDetailsSectionProps): JSX.Element =>
                     : <VideoPlayer width="100%" height="100%" url={props.mediaSrc} />
                 }
             </div>
-            <div dangerouslySetInnerHTML={renderHTML(props.htmlContent)} />
+            <div dangerouslySetInnerHTML={renderHtml(props.htmlContent)} />
         </div>;
 
 export default DetailsSection;
