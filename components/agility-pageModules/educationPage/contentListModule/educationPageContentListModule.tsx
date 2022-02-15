@@ -4,6 +4,7 @@ import React from "react";
 
 import { SearchContext } from "pages/[...slug]";
 import CardContainer from "components/agility-pageModules/common/cardContainer/cardContainer";
+import CardPlaceHolder from "components/agility-pageModules/common/cardPlaceholder/cardPlaceholder";
 import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import FilterLogicTypes from "utils/api/enums/filterLogicTypes";
 import FilterTypes from "utils/api/enums/filterTypes";
@@ -11,7 +12,6 @@ import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
 import IContentSectionProps from "components/agility-pageModules/educationPage/contentListModule/interfaces/IContentListProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
-import Spinner from "components/agility-pageModules/common/spinner/Spinner";
 import TabsStack from "components/agility-pageModules/common/tabsStack/tabsStack";
 import useGetContentList from "hooks/useGetContentList";
 
@@ -79,7 +79,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                                 : `Showing search results for ${searchData.searchValue}`}
                         </h5>
                     </Row>
-                    {isLoading && <Spinner className={horizontalAlign} />}
+                    {isLoading && <CardPlaceHolder className={horizontalAlign} />}
                     {!isLoading
                         ? !resultData?.items?.length
                             ? <h1 className="text-center">No Blogs Found</h1>
