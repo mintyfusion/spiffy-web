@@ -10,9 +10,10 @@ const BaseField = (props: React.PropsWithChildren<IBaseField>): JSX.Element => (
             <h6>{props.label}</h6>
             {props.children}
             <div className={`
-               ${styles.error} 
+               ${styles.error}
+               fade 
                ${props.shouldShowError
-                    ? styles.show
+                    ? `${styles.show} show`
                     : styles.hide} 
             `}>
                 {props.error}
