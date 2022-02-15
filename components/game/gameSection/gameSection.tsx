@@ -2,21 +2,20 @@ import { Element, Link, scroller } from "react-scroll";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row } from "react-bootstrap";
-import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
-import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import GameDonationCycle from "components/game/gameDonationCycle/gameDonationCycle";
+import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
+import GamePageStepTypes from "components/game/gameSection/enums/gamePageStepTypes";
 import GameSignup from "../gameSignup/gameSignup";
 import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
 import KeyCSS from "hooks/types/keyCss";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
-import StepTypes from "components/game/gameSection/enums/stepTypes";
 import useBreakpoint from "hooks/useBreakpoint";
 import useStyles from "hooks/useStyles";
 
@@ -36,13 +35,13 @@ const friendsSliceStartIndex = 2;
 const friendsSliceEndIndex = 4;
 const breakpointPlus = 8;
 
-const avatars = Object.values(AvatarType);
+const avatars = Object.values(GamePageAvatarType);
 /**
  * First section remove orange avatar.
  */
-const step1Avatars = avatars.filter((avatar) => avatar !== AvatarType.Orange);
+const step1Avatars = avatars.filter((avatar) => avatar !== GamePageAvatarType.Orange);
 
-const scrollTo = (step: StepTypes) => {
+const scrollTo = (step: GamePageStepTypes) => {
     scroller.scrollTo(step, {
         duration: 700,
         smooth: true,
@@ -53,9 +52,9 @@ const scrollTo = (step: StepTypes) => {
 };
 
 const GameSection = (props: IGameSectionProps): JSX.Element => {
-    const [addedFriends, setAddedFriends] = React.useState<AvatarType[]>([]);
-    const [seletedAvatar, setSeletedAvatar] = React.useState<AvatarType>();
-    const [step, setStep] = React.useState<StepTypes>(StepTypes.ChooseAvatarSection);
+    const [addedFriends, setAddedFriends] = React.useState<GamePageAvatarType[]>([]);
+    const [seletedAvatar, setSeletedAvatar] = React.useState<GamePageAvatarType>();
+    const [step, setStep] = React.useState<GamePageStepTypes>(GamePageStepTypes.ChooseAvatarSection);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const isBreakpoint998 = useBreakpoint(Breakpoints.LG + breakpointPlus);
     const isMD = useBreakpoint(Breakpoints.MD);
@@ -82,9 +81,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     React.useEffect(() => {
         let timer: NodeJS.Timeout;
         if (seletedAvatar && addedFriends.length === friendsAvatars.length) {
-            scrollTo(StepTypes.DonationCycleSection);
+            scrollTo(GamePageStepTypes.DonationCycleSection);
             timer = setTimeout(() => {
-                setStep(StepTypes.DonationCycleSection);
+                setStep(GamePageStepTypes.DonationCycleSection);
                 clearTimeout(timer);
             }, friendsTimeout);
         }
@@ -116,33 +115,33 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * Get styles of avatars in first section.
      */
     const getAvatarStyles = React.useCallback(() => {
-        const styles = {} as Record<AvatarType, CSSProperties>;
+        const styles = {} as Record<GamePageAvatarType, CSSProperties>;
         const { left1, left2, top1, top2 } = getAvatarPositions(step1Ref);
 
         avatars.forEach((avatar) => {
             switch (avatar) {
-                case AvatarType.Green:
+                case GamePageAvatarType.Green:
                     styles[avatar] = {
                         left: left1,
                         top: top1,
                         opacity: "1",
                     };
                     break;
-                case AvatarType.Red:
+                case GamePageAvatarType.Red:
                     styles[avatar] = {
                         left: left2,
                         top: top1,
                         opacity: "1",
                     };
                     break;
-                case AvatarType.Yellow:
+                case GamePageAvatarType.Yellow:
                     styles[avatar] = {
                         left: left1,
                         top: top2,
                         opacity: "1",
                     };
                     break;
-                case AvatarType.Purple:
+                case GamePageAvatarType.Purple:
                 default:
                     styles[avatar] = {
                         left: left2,
@@ -160,7 +159,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * Get styles of fiends avatars in third section.
      */
     const getFriendsStyles = React.useCallback(() => {
-        const styles = {} as Record<AvatarType, CSSProperties>;
+        const styles = {} as Record<GamePageAvatarType, CSSProperties>;
         const thirdAvatarIndex = 2;
         const fourthAvatarIndex = 3;
         const { left1, left2, top1, top2 } = getAvatarPositions(friendsSectionRef);
@@ -202,7 +201,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      * Section one animation and scroll on selecting avatar.
      * @param avatar user selected avatar in first section.
      */
-    const handleAvatarClick = React.useCallback((avatar: AvatarType) => {
+    const handleAvatarClick = React.useCallback((avatar: GamePageAvatarType) => {
         if (step2TargetRef.current) {
             const bounds = step2TargetRef.current.getBoundingClientRect();
             updateAvatarStyle({
@@ -214,17 +213,17 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             });
         }
         setSeletedAvatar(avatar);
-        setStep(StepTypes.NameAvatarSection);
+        setStep(GamePageStepTypes.NameAvatarSection);
     }, [updateAvatarStyle]);
 
     /**
      * Filter selected friends from avatars.
      * @param friendAvatar user selected friends.
      */
-    const addFriends = React.useCallback((friendAvatar: AvatarType) => {
+    const addFriends = React.useCallback((friendAvatar: GamePageAvatarType) => {
         if (step3Ref.current) {
-            const selectedFriends: AvatarType[] = friendsAvatars.filter((avatar) => avatar == friendAvatar);
-            setAddedFriends((currentFriends: AvatarType[]) => [...currentFriends, ...selectedFriends]);
+            const selectedFriends: GamePageAvatarType[] = friendsAvatars.filter((avatar) => avatar == friendAvatar);
+            setAddedFriends((currentFriends: GamePageAvatarType[]) => [...currentFriends, ...selectedFriends]);
         }
     }, [friendsAvatars]);
 
@@ -257,7 +256,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
 
         const t = setTimeout(() => {
-            if (step3Ref.current && step === StepTypes.NameAvatarSection) {
+            if (step3Ref.current && step === GamePageStepTypes.NameAvatarSection) {
                 const bounds = step3Ref.current.getBoundingClientRect();
                 updateAvatarStyle({
                     [seletedAvatar]: {
@@ -268,9 +267,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     }
                 });
                 /** SetStep to animate scroll to next section */
-                setStep(StepTypes.AddFriendsSection);
+                setStep(GamePageStepTypes.AddFriendsSection);
                 setFriendsPositions();
-                scrollTo(StepTypes.AddFriendsSection);
+                scrollTo(GamePageStepTypes.AddFriendsSection);
             }
 
             clearTimeout(t);
@@ -285,7 +284,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         /** 
          * checking if step is one and style is already applied for section one avatars
          */
-        if (step === StepTypes.ChooseAvatarSection && avatarStyleUpdateId === "0") {
+        if (step === GamePageStepTypes.ChooseAvatarSection && avatarStyleUpdateId === "0") {
             avatarTimeout = setTimeout(() => {
                 setAvatarPositions();
             }, stepOneTimeout);
@@ -301,11 +300,11 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      */
     const handleResize = React.useCallback(() => {
         switch (step) {
-            case StepTypes.ChooseAvatarSection:
+            case GamePageStepTypes.ChooseAvatarSection:
                 setAvatarPositions();
                 break;
 
-            case StepTypes.NameAvatarSection: {
+            case GamePageStepTypes.NameAvatarSection: {
                 isMD && setViewportHeight();
                 const boundsFirst = step2TargetRef.current?.getBoundingClientRect();
                 if (boundsFirst) {
@@ -320,8 +319,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
             }
 
-            case StepTypes.AddFriendsSection: {
-                scrollTo(StepTypes.AddFriendsSection);
+            case GamePageStepTypes.AddFriendsSection: {
+                scrollTo(GamePageStepTypes.AddFriendsSection);
                 setFriendsPositions();
                 const boundsSecond = step3Ref.current?.getBoundingClientRect();
                 if (boundsSecond) {
@@ -369,10 +368,10 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         const className = `${styles.avatar} position-absolute text-center`;
 
         switch (step) {
-            case StepTypes.NameAvatarSection:
+            case GamePageStepTypes.NameAvatarSection:
                 return `${className} ${styles.avatarSelected}`;
 
-            case StepTypes.AddFriendsSection:
+            case GamePageStepTypes.AddFriendsSection:
                 return `${className} ${styles.avatarFriends}`;
 
             default:
@@ -401,7 +400,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     key={index}
                                     style={avatarStyles && avatarStyles[avatar]}
                                     onClick={() => handleAvatarClick(avatar)}
-                                    to={StepTypes.NameAvatarSection}
+                                    to={GamePageStepTypes.NameAvatarSection}
                                     smooth={true}
                                     duration={500}
                                     containerId={containerId}
@@ -414,7 +413,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             )}
                         </div>
 
-                        <Element name={StepTypes.NameAvatarSection} className={`${styles.card} ${rowCenter}`}>
+                        <Element name={GamePageStepTypes.NameAvatarSection} className={`${styles.card} ${rowCenter}`}>
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
@@ -435,7 +434,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         </Element>
 
                         <Element
-                            name={StepTypes.AddFriendsSection}
+                            name={GamePageStepTypes.AddFriendsSection}
                             className={`${styles.card} ${styles.transparent} ${rowCenter}`}>
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.userColumn} ${colCenter}`}>
@@ -459,9 +458,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     ref={friendsSectionRef}
                                 >
                                     <h2 className={`${styles.avatarHeading}`}>Add four friends</h2>
-                                    {step === StepTypes.AddFriendsSection
+                                    {step === GamePageStepTypes.AddFriendsSection
                                         ? <div className={`${styles.percentageWrapper} ${rowVCenter} flex-wrap`}>
-                                            {friendsAvatars.map((avatar: AvatarType) => {
+                                            {friendsAvatars.map((avatar: GamePageAvatarType) => {
                                                 if (addedFriends.find((addedAvatar) => addedAvatar === avatar)) {
                                                     return null;
                                                 }
@@ -483,14 +482,14 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             </div>
                         </Element>
 
-                        <Element name={StepTypes.DonationCycleSection} className="w-100">
+                        <Element name={GamePageStepTypes.DonationCycleSection} className="w-100">
                             <GameDonationCycle
                                 friends={addedFriends}
                                 seletedAvatar={seletedAvatar}
                                 name={avatarName} />
                         </Element>
 
-                        <Element name={StepTypes.SignupSection} className={`${styles.card} ${rowCenter}`}>
+                        <Element name={GamePageStepTypes.SignupSection} className={`${styles.card} ${rowCenter}`}>
                             <GameSignup />
                         </Element>
                     </div>

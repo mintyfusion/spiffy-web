@@ -1,6 +1,6 @@
 import React from "react";
 
-import AvatarType from "components/game/gameSection/enums/avatarTypes";
+import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
 import IAvatarProps from "components/game/avatar/interfaces/IAvatarProps";
 
 import styles from "components/game/avatar/avatar.module.scss";
@@ -8,15 +8,15 @@ import styles from "components/game/avatar/avatar.module.scss";
 const Avatar = ({ color, size }: IAvatarProps) => {
     const avatarColor = React.useMemo(() => {
         switch (color) {
-            case AvatarType.Green:
+            case GamePageAvatarType.Green:
                 return styles.green;
-            case AvatarType.Purple:
+            case GamePageAvatarType.Purple:
                 return styles.purple;
-            case AvatarType.Yellow:
+            case GamePageAvatarType.Yellow:
                 return styles.yellow;
-            case AvatarType.Red:
+            case GamePageAvatarType.Red:
                 return styles.red;
-            case AvatarType.Orange:
+            case GamePageAvatarType.Orange:
                 return styles.orange;
             default:
                 return null;

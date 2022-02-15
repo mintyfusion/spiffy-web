@@ -1,4 +1,4 @@
-import AvatarType from "components/game/gameSection/enums/avatarTypes";
+import AvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
 
 interface IGameAvatarList {
     seletedAvatar: AvatarType;

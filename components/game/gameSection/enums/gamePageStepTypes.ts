@@ -1,4 +1,4 @@
-enum StepTypes {
+enum GamePageStepTypes {
     ChooseAvatarSection = "chooseAvatarSection",
     NameAvatarSection = "nameAvatarSection",
     AddFriendsSection = "addFriendsSection",
@@ -7,4 +7,4 @@ enum StepTypes {
     SignupSection = "signupSection",
 }
 
-export default StepTypes;
+export default GamePageStepTypes;

@@ -1,4 +1,4 @@
-enum AvatarType {
+enum GamePageAvatarType {
     Green = "Green",
     Purple = "Purple",
     Red = "Red",
@@ -6,4 +6,4 @@ enum AvatarType {
     Orange = "Orange",
 }
 
-export default AvatarType;
+export default GamePageAvatarType;

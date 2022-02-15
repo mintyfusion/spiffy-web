@@ -1,19 +1,19 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar, Row } from "react-bootstrap";
-import React, { CSSProperties } from "react";
 import { scroller } from "react-scroll";
+import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
-import AvatarType from "components/game/gameSection/enums/avatarTypes";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
+import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
+import GamePageStepTypes from "../gameSection/enums/gamePageStepTypes";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 import percentages from "components/game/gameAvatarList/gameAvatarListContent";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
-import StepTypes from "../gameSection/enums/stepTypes";
 
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
@@ -31,7 +31,7 @@ const friendsSliceStartIndex = 2;
 const friendsSliceEndIndex = 4;
 const containerId = "containerElement";
 
-const avatars = Object.values(AvatarType);
+const avatars = Object.values(GamePageAvatarType);
 
 /**
  * Random margin for avatars.
@@ -164,7 +164,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     * Section five animation and scroll on 100% to signup section.
     */
     const moveToSignupSection = React.useCallback(() => {
-        scroller.scrollTo(StepTypes.SignupSection, {
+        scroller.scrollTo(GamePageStepTypes.SignupSection, {
             duration: 700,
             smooth: true,
             containerId,
