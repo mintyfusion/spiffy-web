@@ -60,12 +60,8 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
     const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = useBoolean(false);
     const [coinStyles, , updateCoinStyle] = useStyles<CSSProperties>();
     const isLG = useBreakpoint(Breakpoints.LG);
-
     const coinAnimationWrapperRef = React.useRef<HTMLDivElement>();
     const coinRef = React.useRef<HTMLDivElement>();
-    // const coinStyles = React.useRef<CSSProperties>();
-
-    // const { setAvatarStyleGUID } = props;
 
     /**
     * Reset the donation cycle animation.
