@@ -439,7 +439,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.userColumn} ${colCenter}`}>
                                     <div className={`${styles.userColumnInner} w-100`}>
-                                        <h2 className={`${styles.avatarHeading} text-center d-lg-none d-sm-block`}>Add four friends</h2>
+                                        <h2 className={`${styles.avatarHeading} text-center d-lg-none d-sm-block`}>
+                                            Add four friends
+                                        </h2>
                                         <Row className={`${horizontalAlign} w-100 m-0`}>
                                             {renderAddedFriends(true)}
                                         </Row>
