@@ -264,29 +264,15 @@
         @include imgProperties(165px);
     }
 }
-
-@include media(">=1300px", "<1400px") {
-    .modalBody {
-        .gameStepThree {
-            max-width: 1170px;
+@mixin responsive($start, $end, $maxWidth) {
+    @include media($start, $end) {
+        .modalBody .gameStepThree {
+            max-width: $maxWidth;
         }
     }
 }
 
-@include media(">=1400px", "<1500px") {
-    .modalBody .gameStepThree {
-        max-width: 1260px;
-    }
-}
-
-@include media(">=1500px", "<1600px") {
-    .modalBody .gameStepThree {
-        max-width: 1350px;
-    }
-}
-
-@include media(">=1600px", "<1700px") {
-    .modalBody .gameStepThree {
-        max-width: 1400px;
-    }
-}
+@include responsive(">=1300px", "<1400px", 1170px);
+@include responsive(">=1400px", "<1500px", 1260px);
+@include responsive(">=1500px", "<1600px", 1350px);
+@include responsive(">=1600px", "<1700px", 1400px);

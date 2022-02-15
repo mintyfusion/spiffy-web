@@ -239,7 +239,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     expand="lg"
                     className="d-block text-center"
                     expanded={expanded}
-                    onClick={() => isLG && navToggle()}>
+                    onClick={isLG ? navToggle : undefined}>
                     <Navbar.Brand className="d-lg-none">
                         {!donationAmount ? "Select Amount" : `$${donationAmount}`}
                     </Navbar.Brand>
@@ -254,17 +254,10 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     </Navbar.Collapse>
                 </Navbar>
 
-                <div
-                    className={`w-100 ${animation
-                        ? styles.contentAnimation
-                        : styles.donationCycle}`}
-                >
+                <div className={`w-100 ${animation ? styles.contentAnimation : styles.donationCycle}`}>
                     <div className={`${styles.donationInner} ${colCenter}`}>
                         <h2>Donation Cycle</h2>
-                        <div
-                            className={`${styles.coin} position-absolute`}
-                            ref={coinRef}
-                            style={coinStyles}>
+                        <div className={`${styles.coin} position-absolute`} ref={coinRef} style={coinStyles}>
                             <Image src="/images/game/coin.png" alt="Coin" width={76} height={76} />
                         </div>
                         <div className={`${styles.userDonation} position-relative`} data-index="0">
@@ -358,8 +351,9 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         name={props.name}
                     />
                 </div>
-                : null}
-    </div>;
+                : null
+        }
+    </div >;
 };
 
 export default GameDonationCycle;
