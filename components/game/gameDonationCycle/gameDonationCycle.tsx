@@ -14,7 +14,6 @@ import IGameDonationCycle from "./interfaces/IGameDonationCycleProps";
 import Logo from "components/common/logo/logo";
 import LogoVariants from "components/common/logo/enums/logoVariants";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
-import StepTypes from "../gameSection/enums/stepTypes";
 import styles from "components/game/gameDonationCycle/gameDonationCycle.module.scss";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
@@ -29,12 +28,11 @@ const rowHEnd = flexbox({ hAlign: "end" });
 const donationValues: string[] = ["5", "10", "15", "25", "50"];
 
 const avatarTimeout = 1000;
-const contentCreatorFormula = 50;
-const friendsFormula = 4;
-const spiffyFormula = 10;
+const contentCreatorDonation = 50;
+const friendsDonation = 4;
+const spiffyDonation = 10;
 const donationTotalAvatars = 11;
 const stepTwoTimeout = 1500;
-const containerId = "containerElement";
 /** Donation Cycle Animation Style */
 const fourHundred = 420;
 const ten = 10;
@@ -227,24 +225,11 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
             return <>
                 <Avatar color={color} size={56} />
                 <span className={`${style} ${styles.donationAmount}`}>
-                    {getDonationAmout(friendsFormula)}
+                    {getDonationAmout(friendsDonation)}
                 </span>
             </>;
         }
     }, [donationAmount, getDonationAmout]);
-
-    /**
-    * Section five animation and scroll on 100% to signup section.
-    */
-    const signupAnimation = React.useCallback(() => {
-        scroller.scrollTo(StepTypes.signupSection, {
-            duration: 700,
-            smooth: true,
-            containerId,
-            ignoreCancelEvents: true,
-            delay: 3000
-        });
-    }, []);
 
     return <div ref={coinAnimationWrapperRef} className={`${styles.donationSections} w-100 overflow-auto`}>
         <div className={`${styles.card} ${rowCenter}`}>
@@ -261,9 +246,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     expanded={expanded}
                     onClick={() => isLG && navToggle()}>
                     <Navbar.Brand className="d-lg-none">
-                        {!donationAmount
-                            ? "Select Amount"
-                            : `$${donationAmount}`}
+                        {!donationAmount ? "Select Amount" : `$${donationAmount}`}
                     </Navbar.Brand>
                     <Navbar.Toggle className={styles.navToggle}>
                         <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
@@ -279,7 +262,8 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                 <div
                     className={`w-100 ${animation
                         ? styles.contentAnimation
-                        : styles.donationCycle}`}>
+                        : styles.donationCycle}`}
+                >
                     <div className={`${styles.donationInner} ${colCenter}`}>
                         <h2>Donation Cycle</h2>
                         <div
@@ -292,7 +276,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                             <Image src="/images/game/user.png" alt="User" width={149} height={129} />
                         </div>
                         <p>
-                            {donationAmount && getDonationAmout(contentCreatorFormula)}
+                            {donationAmount && getDonationAmout(contentCreatorDonation)}
                         </p>
                     </div>
                     <Row className={rowHBetween}>
@@ -303,23 +287,23 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                                     className={
                                         `${styles.donationAmount} ${styles.donationAmount1} `
                                     }>
-                                    {getDonationAmout(friendsFormula)}
+                                    {getDonationAmout(friendsDonation)}
                                 </span>
                             </div>
                         </Col>
                     </Row>
                     <Row
-                        className={`
-                    ${styles.donationRow1}
-                    ${styles.marginTopMinusFifty}
-                    ${rowHEnd}`}>
+                        className={`${styles.donationRow1}
+                        ${styles.friendsMarginTop}
+                        ${rowHEnd}`}
+                    >
                         <div className={`${styles.cycle2} ${colCenter} ${styles.donationImage} ${styles.cycle} position-relative`} data-index="2">
                             {donation(styles.donationAmount2, AvatarType.Red)}
                         </div>
                     </Row>
                     <Row className={`${styles.donationRow2} ${rowHBetween}`}>
                         <div className={`${styles.donationLogo} ${colCenter} position-relative`}>
-                            <div className="text-lg-right">
+                            <div className="text-lg-right position-absolute">
                                 <span className="d-block">
                                     We’re totally reliant on these cents to keep us going.
                                 </span>
@@ -327,7 +311,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                             <div className={`${styles.cycle11} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="11">
                                 <Logo variant={LogoVariants.footer} />
                                 <span className={`${styles.donationAmount11} ${styles.donationAmount}`}>
-                                    {getDonationAmout(spiffyFormula)}
+                                    {getDonationAmout(spiffyDonation)}
                                 </span>
                             </div>
                         </div>
@@ -353,7 +337,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         </div>
                     </Row>
                     <Row className={`${styles.donationRow1}
-                        ${styles.marginBottomMinusFifty} 
+                        ${styles.friendsMarginBottom} 
                         ${rowHBetween}`}>
                         <div className={`${styles.cycle8} ${styles.donationImage} ${colCenter} ${styles.cycle} position-relative`} data-index="8">
                             {donation(styles.donationAmount8, AvatarType.Red)}
@@ -377,10 +361,10 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         friends={props.friends}
                         seletedAvatar={props.seletedAvatar}
                         name={props.name}
-                        signupAnimation={signupAnimation} />
+                    />
                 </div >
                 : null}
-    </div >;
+    </div>;
 };
 
 export default GameDonationCycle;

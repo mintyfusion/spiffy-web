@@ -17,7 +17,6 @@ export type Styles = {
   "boldDesktop41Mobile25": string;
   "boldGame41": string;
   "boldGame67": string;
-  "donationActive": string;
   "donationButton": string;
   "donationInner": string;
   "extraBold67": string;

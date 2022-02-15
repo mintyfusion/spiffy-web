@@ -53,7 +53,6 @@
         max-width: 1000px;
         p {
             @include animation(contetHide, 5s);
-            animation-fill-mode: forwards;
             color: $yellow-dark;
         }
 
@@ -96,7 +95,7 @@
             padding: 10px;
             border-radius: 50px;
             background-color: $dirty-white;
-            @include animation(opacityAnimation, 0.5s);
+            @include animation(visibilityAnimation, 0.5s);
             visibility: hidden;
             width: 75px;
             z-index: 2;
@@ -120,7 +119,7 @@
                 @include imgProperties(100%);
                 g:nth-child(1) {
                     path {
-                        fill: #000;
+                        fill: $black;
                     }
                 }
             }
@@ -137,13 +136,10 @@
             > div:nth-child(1) {
                 @include animation(iconAnimation, 1s);
                 animation-delay: 16s;
-                animation-fill-mode: forwards;
                 opacity: 0;
-                position: absolute;
                 width: 100%;
                 top: -40px;
                 right: 280px;
-                text-align: right;
                 span {
                     @extend .regular-desktop20-mobile7;
                 }
@@ -166,7 +162,6 @@
     }
 
     .coin {
-        position: absolute;
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -178,10 +173,8 @@
         max-height: 70px;
     }
 
-    .donationImage {
-        img {
-            @include imgProperties(25px);
-        }
+    .donationImage svg {
+        @include imgProperties(25px);
     }
 
     .donationRow1 {
@@ -189,22 +182,25 @@
         margin: 0 auto;
     }
 
-    .marginBottomMinusFifty {
+    .friendsMarginBottom {
         margin-bottom: -50px;
     }
 
-    .marginTopMinusFifty {
+    .friendsMarginTop {
         margin-top: -30px;
+    }
+
+    .donationRow2,
+    .donationRow3 {
+        margin: 15px auto;
     }
 
     .donationRow2 {
         width: 45%;
-        margin: 15px auto;
     }
 
     .donationRow3 {
         width: 52%;
-        margin: 15px auto;
     }
 
     .donationButton {
@@ -237,9 +233,6 @@
 
         .contentAnimation {
             max-width: 350px;
-            h3 {
-                font-size: 9px;
-            }
 
             .cycle {
                 width: 40px;
@@ -261,7 +254,6 @@
                     width: 50%;
                     top: -20px;
                     right: -15px;
-                    text-align: left;
                 }
             }
         }
@@ -285,30 +277,29 @@
             }
         }
 
-        .marginBottomMinusFifty {
+        .friendsMarginBottom {
             margin-bottom: -20px;
         }
 
-        .marginTopMinusFifty {
+        .friendsMarginTop {
             margin-top: -20px;
-        }
-
-        .heigth120 {
-            height: 50px;
         }
 
         .donationRow1 {
             width: 40%;
         }
 
+        .donationRow2,
+        .donationRow3 {
+            margin: 5px auto;
+        }
+
         .donationRow2 {
             width: 65%;
-            margin: 5px auto;
         }
 
         .donationRow3 {
             width: 75%;
-            margin: 5px auto;
         }
 
         .donationButton {
@@ -326,10 +317,8 @@
 }
 
 @include media(">=420px", "<500px") {
-    .donationSections {
-        .coin {
-            top: 305px;
-        }
+    .donationSections .coin {
+        top: 305px;
     }
 }
 
@@ -358,7 +347,7 @@
     }
 }
 
-@keyframes opacityAnimation {
+@keyframes visibilityAnimation {
     99% {
         visibility: hidden;
     }

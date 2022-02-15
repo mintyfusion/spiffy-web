@@ -62,16 +62,14 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
+  "friendsMarginBottom": string;
+  "friendsMarginTop": string;
   "fullbold109": string;
   "fullBold67": string;
-  "heigth120": string;
   "iconAnimation": string;
   "inactive": string;
-  "marginBottomMinusFifty": string;
-  "marginTopMinusFifty": string;
   "medium25": string;
   "navToggle": string;
-  "opacityAnimation": string;
   "regular14": string;
   "regular16": string;
   "regular20": string;
@@ -87,6 +85,7 @@ export type Styles = {
   "semiBold90": string;
   "stepFour": string;
   "userDonation": string;
+  "visibilityAnimation": string;
 };
 
 export type ClassNames = keyof Styles;

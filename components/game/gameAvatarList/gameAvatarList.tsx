@@ -2,6 +2,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar, Row } from "react-bootstrap";
 import React, { CSSProperties } from "react";
+import { scroller } from "react-scroll";
 
 import Avatar from "components/game/avatar/gameAvatar";
 import AvatarType from "components/game/gameSection/enums/avatarTypes";
@@ -12,11 +13,12 @@ import percentages from "components/game/gameAvatarList/gameAvatarListContent";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
+import StepTypes from "../gameSection/enums/stepTypes";
 
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
-const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
+const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const marginFifteen = 15;
 const marginFive = 5;
@@ -25,8 +27,9 @@ const marginFive = 5;
 const sizes = [20, 22, 25, 27, 30, 33, 35, 37, 40]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const sizesMobile = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // eslint-disable-line @typescript-eslint/no-magic-numbers
 const mobile = 770;
-const friendsSliceindex1 = 2;
-const friendsSliceindex2 = 4;
+const friendsSliceStartIndex = 2;
+const friendsSliceEndIndex = 4;
+const containerId = "containerElement";
 
 const avatars = Object.values(AvatarType);
 
@@ -39,7 +42,9 @@ function getRandomMargin() {
         return Math.floor(Math.random() * marginFive + marginFive);
     }
 
-    /** Plus marginFive is for random margin will not be generated below 5 */
+    /** 
+     * Plus marginFive is for random margin will not be generated below 5 
+     */
     return Math.floor(Math.random() * marginFifteen + marginFive);
 }
 
@@ -84,7 +89,6 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [selectedKey, setSelectedKey] = React.useState("1");
     const [expanded, { toggle: navToggle }] = useBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
-    const { signupAnimation } = props;
 
     const handleBtnClick = React.useCallback((key: string) => {
         setSelectedKey(key);
@@ -124,15 +128,6 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     }, [selectedKey]);
 
     /**
-     * Section five animation and scroll on 100% to signup section.
-     */
-    React.useEffect(() => {
-        if (selectedKey === "100") {
-            signupAnimation();
-        }
-    }, [selectedKey, signupAnimation]);
-
-    /**
      * Donation percentage rendering.
      */
     const donationPercentage = React.useMemo(() => percentage.map(([key], index) => (
@@ -140,7 +135,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
             key={index}
             onClick={() => handleBtnClick(key)}
             className={`
-            ${horizontalAlign} 
+            ${rowCenter} 
             ${styles.donationButton} 
             ${selectedKey === key ? styles.active : styles.inactive}
             w-100 px-1 py-3`}
@@ -152,12 +147,10 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
 
     const renderAddedFriends = React.useCallback((isTop: boolean) => {
         const arrFriends = isTop
-            ? props.friends.slice(0, friendsSliceindex1)
-            : props.friends.slice(friendsSliceindex1, friendsSliceindex2);
+            ? props.friends.slice(0, friendsSliceStartIndex)
+            : props.friends.slice(friendsSliceStartIndex, friendsSliceEndIndex);
 
-        const style = isTop
-            ? styles.friendsTop
-            : styles.friendsBottom;
+        const style = isTop ? styles.friendsTop : styles.friendsBottom;
 
         return <Row className={`${style} w-100`}>
             <div className={`${rowHBetween} w-100`}>
@@ -166,6 +159,28 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
             </div>
         </Row>;
     }, [props.friends]);
+
+    /**
+    * Section five animation and scroll on 100% to signup section.
+    */
+    const moveToSignupSection = React.useCallback(() => {
+        scroller.scrollTo(StepTypes.SignupSection, {
+            duration: 700,
+            smooth: true,
+            containerId,
+            ignoreCancelEvents: true,
+            delay: 3000
+        });
+    }, []);
+
+    /**
+     * Section five animation and scroll on 100% to signup section.
+     */
+    React.useEffect(() => {
+        if (selectedKey === "100") {
+            moveToSignupSection();
+        }
+    }, [selectedKey]);
 
     return (
         <div className={styles.gameStepFive}>
@@ -200,7 +215,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     <div className={`${styles.flex1} ${styles.friendsMain} text-center`}>
                         <div className={`${styles.avatarInner} ${colCenter} position-relative`}>
                             <h2 className={`${styles.avatarHeading}`}>
-                                <span key={percentages[selectedKey].amount}>
+                                <span key={percentages[selectedKey].amount} className="d-block">
                                     ${percentages[selectedKey].amount}
                                 </span>
                             </h2>

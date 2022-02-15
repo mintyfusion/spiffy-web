@@ -3,8 +3,9 @@ import React from "react";
 import flexbox from "utils/flexbox";
 import GameSection from "components/game/gameSection/gameSection";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
-import styles from "components/game/gameMain/gameMain.module.scss";
 import useBoolean from "hooks/useBoolean";
+
+import styles from "components/game/gameMain/gameMain.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 

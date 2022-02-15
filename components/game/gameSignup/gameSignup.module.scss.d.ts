@@ -1,8 +1,5 @@
 export type Styles = {
-  "avatar": string;
-  "avatarFriends": string;
   "avatarHeading": string;
-  "avatarSelected": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold150": string;
@@ -17,22 +14,13 @@ export type Styles = {
   "boldDesktop41Mobile25": string;
   "boldGame41": string;
   "boldGame67": string;
-  "card": string;
-  "close": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
-  "friendsBottom": string;
-  "friendsColumn": string;
-  "friendsTop": string;
   "fullbold109": string;
   "fullBold67": string;
-  "gameStepThree": string;
-  "gameStepTwo": string;
-  "gameStepTwoWrapper": string;
+  "gameStepSix": string;
   "medium25": string;
-  "modalBody": string;
-  "percentageWrapper": string;
   "regular14": string;
   "regular16": string;
   "regular20": string;
@@ -46,12 +34,7 @@ export type Styles = {
   "regularDesktop25Mobile9": string;
   "regularDesktop30Mobile20": string;
   "semiBold90": string;
-  "targetOne": string;
-  "targetTwo": string;
-  "transparent": string;
-  "user": string;
-  "userColumn": string;
-  "userColumnInner": string;
+  "signUpsection": string;
 };
 
 export type ClassNames = keyof Styles;

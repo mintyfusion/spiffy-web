@@ -5,14 +5,14 @@
     width: 90%;
     margin: 0 auto;
     padding-top: 50px;
-}
 
-.gameHeading {
-    @extend .boldGame41;
-}
+    .gameHeading {
+        @extend .boldGame41;
+    }
 
-.gameDesc {
-    @extend .medium25;
-    color: $yellow;
-    margin: 0;
+    .gameDesc {
+        @extend .medium25;
+        color: $yellow;
+        margin: 0;
+    }
 }
