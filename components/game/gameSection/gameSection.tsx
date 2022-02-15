@@ -390,7 +390,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 <Modal.Body
                     className={`w-100 overflow-hidden inline-block p-0 ${styles.modalBody}`}
                     id={containerId}
-                    ref={modalBodyRef}>
+                    ref={modalBodyRef}
+                >
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={props.closeModal} className={`${styles.close} position-fixed`} />
                     <div className={`w-100 ${rowVCenter}`}>
                         <div className={`${styles.card} ${styles.gameStepTwoWrapper} ${rowCenter}`} ref={step1Ref}>
