@@ -13,8 +13,8 @@ const BaseField = (props: React.PropsWithChildren<IBaseField>): JSX.Element => (
                ${styles.error}
                fade 
                ${props.shouldShowError
-                    ? `${styles.show} show`
-                    : styles.hide} 
+                    ? `${styles.grow} show`
+                    : styles.shrink} 
             `}>
                 {props.error}
             </div>

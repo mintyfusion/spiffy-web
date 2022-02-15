@@ -20,7 +20,7 @@ export type Styles = {
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
-  "hide": string;
+  "grow": string;
   "regular14": string;
   "regular16": string;
   "regular24": string;
@@ -32,7 +32,7 @@ export type Styles = {
   "semiBold20": string;
   "semiBold32": string;
   "semiBold90": string;
-  "show": string;
+  "shrink": string;
 };
 
 export type ClassNames = keyof Styles;

@@ -12,6 +12,7 @@ const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
     const { notFound, pageTemplateName } = props;
     const AgilityPageTemplate = React.useMemo(() => getPageTemplate(pageTemplateName), [pageTemplateName]);
 
+    // TODO: We remove this once we start creating modules for the header and footer.
     const showStickyHeader: boolean = React.useMemo(() => {
         if (props.page?.pageID === PageIds.EDUCATION_DETAILS || props.page?.pageID === PageIds.ABOUT) {
             return true;
