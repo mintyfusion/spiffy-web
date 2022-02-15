@@ -1,0 +1,82 @@
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
+
+.tabsStackContainer {
+    .navbar {
+        &::-webkit-scrollbar {
+            height: 4px;
+            width: 10px;
+            border: 1px solid $transparent;
+            border-radius: 5px;
+        }
+        &::-webkit-scrollbar-thumb:horizontal {
+            background: $light-grey;
+            border-radius: 10px;
+        }
+    }
+
+    nav {
+        :global(.navbar-toggler) {
+            border: none;
+            box-shadow: none;
+        }
+
+        :global(.collapsed) {
+            transform: rotate(180deg);
+        }
+
+        :global(.navbar-toggler),
+        :global(.collapsed) {
+            transition: transform 0.3s;
+        }
+    }
+
+    .tabArrow {
+        cursor: pointer;
+        transition: color 100ms;
+
+        &:hover {
+            color: $yellow;
+            transition: color 100ms;
+        }
+    }
+
+    .tab {
+        min-width: 300px;
+        border: none;
+        text-transform: initial;
+
+        &.active {
+            background-color: $yellow;
+        }
+    }
+
+    .activeTab {
+        border: 2px solid $yellow;
+        color: $yellow;
+    }
+}
+
+@include media(">991px") {
+    .tab {
+        &.inactive {
+            background-color: $faded-yellow;
+        }
+
+        &:hover {
+            background-color: $light-yellow;
+        }
+    }
+}
+
+@include media("<=991px") {
+    .tab {
+        background-color: $white;
+        border: none;
+    }
+}
+
+:export {
+    dirty-white: $dirty-white;
+}

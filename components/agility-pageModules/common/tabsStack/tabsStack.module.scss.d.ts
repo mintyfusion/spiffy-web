@@ -1,7 +1,6 @@
 export type Styles = {
-  "accordianBody": string;
-  "accordianHeader": string;
-  "accordion": string;
+  "active": string;
+  "activeTab": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold150": string;
@@ -15,18 +14,15 @@ export type Styles = {
   "bold67": string;
   "bold90": string;
   "boldDesktop41Mobile25": string;
-  "card": string;
-  "content": string;
-  "contentContainer": string;
-  "contentHeading": string;
-  "customAccordianButton": string;
+  "dirtyWhite": string;
   "extraBold41": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
-  "faqIndex": string;
   "fullbold109": string;
   "fullBold67": string;
+  "inactive": string;
+  "navbar": string;
   "regular14": string;
   "regular16": string;
   "regular24": string;
@@ -38,6 +34,9 @@ export type Styles = {
   "semiBold20": string;
   "semiBold32": string;
   "semiBold90": string;
+  "tab": string;
+  "tabArrow": string;
+  "tabsStackContainer": string;
 };
 
 export type ClassNames = keyof Styles;

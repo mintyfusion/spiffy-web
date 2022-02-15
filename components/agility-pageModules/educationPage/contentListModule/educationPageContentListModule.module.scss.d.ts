@@ -1,6 +1,4 @@
 export type Styles = {
-  "active": string;
-  "activeTab": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold150": string;
@@ -18,15 +16,12 @@ export type Styles = {
   "content": string;
   "contentContainer": string;
   "contentHeading": string;
-  "dirtyWhite": string;
   "extraBold41": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
-  "inactive": string;
-  "navbar": string;
   "regular14": string;
   "regular16": string;
   "regular24": string;
@@ -38,8 +33,6 @@ export type Styles = {
   "semiBold20": string;
   "semiBold32": string;
   "semiBold90": string;
-  "tab": string;
-  "tabArrow": string;
 };
 
 export type ClassNames = keyof Styles;

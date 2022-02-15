@@ -1,11 +1,8 @@
-import { faCaretSquareLeft, faCaretSquareRight, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ModuleProps } from "@agility/nextjs";
-import { Nav, Navbar, Row, Stack } from "react-bootstrap";
+import { Row, Stack } from "react-bootstrap";
 import React from "react";
 
 import { SearchContext } from "pages/[...slug]";
-import Breakpoints from "common/style/breakpoints";
 import CardContainer from "components/agility-pageModules/common/cardContainer/cardContainer";
 import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import FilterLogicTypes from "utils/api/enums/filterLogicTypes";
@@ -15,42 +12,21 @@ import ICardProps from "components/agility-pageModules/common/card/interfaces/IC
 import IContentSectionProps from "components/agility-pageModules/educationPage/contentListModule/interfaces/IContentListProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import Spinner from "components/agility-pageModules/common/spinner/Spinner";
-import useBoolean from "hooks/useBoolean";
-import useBreakpoint from "hooks/useBreakpoint";
+import TabsStack from "components/agility-pageModules/common/tabsStack/tabsStack";
 import useGetContentList from "hooks/useGetContentList";
 
 import styles from "components/agility-pageModules/educationPage/contentListModule/educationPageContentListModule.module.scss";
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
-const scrollAmount = 200;
-const scrollParams = {
-    top: 0,
-    behavior: "smooth" as ScrollBehavior
-};
 
 const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
     const [showMore, setShowMore] = React.useState({});
-    const breakpoint = useBreakpoint(Breakpoints.LG);
     const searchData = React.useContext(SearchContext);
-    const tabsRef = React.useRef<HTMLDivElement>();
-    const [expanded, { toggle: toggleExpanding }] = useBoolean(false);
     const searchFilterParams = React.useMemo(() => ({
         operator: FilterTypes.LIKE,
         value: searchData.searchValue
     }), [searchData.searchValue]);
-
-    const handleArrowScrollLeft = React.useCallback(() => {
-        tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft - scrollAmount, ...scrollParams });
-    }, []);
-
-    const handleArrowScrollRight = React.useCallback(() => {
-        tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft + scrollAmount, ...scrollParams });
-    }, []);
-
-    const handleNavigation = React.useCallback(() => {
-        breakpoint && toggleExpanding();
-    }, [breakpoint, toggleExpanding]);
 
     const finalParams = React.useMemo(() => ({
         referenceName: "EducationContent",
@@ -83,63 +59,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
     return (
         <div className={styles.contentContainer}>
             {!searchData.searchValue &&
-                <div className={`${horizontalAlign} gap-2 mb-1 mb-md-4`}>
-                    <FontAwesomeIcon
-                        icon={faCaretSquareLeft}
-                        width="50"
-                        height="50"
-                        onClick={handleArrowScrollLeft}
-                        id="arrowScrollLeft"
-                        className={`${styles.tabArrow} ${breakpoint && "d-none"}`}
-                    />
-                    <Navbar
-                        bg={styles.dirtyWhite}
-                        expand="lg"
-                        expanded={expanded}
-                        onClick={handleNavigation}
-                        className={`overflow-hidden flex-grow-1 ${styles.navbar}`}
-                        ref={tabsRef}
-                    >
-                        <Navbar.Brand className="d-block d-lg-none">
-                            <label className="w-100">
-                                {activeTab.replace("_", " ")}
-                            </label>
-                        </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav">
-                            <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
-                        </Navbar.Toggle>
-                        <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
-                        <Navbar.Collapse>
-                            <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
-                                {props.module.fields.educationTags.map(content =>
-                                    <PrimaryButton
-                                        key={content.fields.name}
-                                        onClick={() => setActiveTab(content.fields.name)}
-                                        className={`
-                                            w-100
-                                            px-1
-                                            py-3 
-                                            ${styles.tab} 
-                                            ${activeTab === content.fields.name
-                                                ? styles.active
-                                                : styles.inactive}
-                                            ${horizontalAlign}
-                                         `}
-                                    >
-                                        {content.fields.name.replace("_", " ")}
-                                    </PrimaryButton>
-                                )}
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Navbar>
-                    <FontAwesomeIcon
-                        icon={faCaretSquareRight}
-                        width="50"
-                        height="50"
-                        onClick={handleArrowScrollRight}
-                        className={`${styles.tabArrow} ${breakpoint && "d-none"}`}
-                    />
-                </div>
+                <TabsStack activeTab={activeTab} setActiveTab={setActiveTab} tags={props.module.fields.educationTags} />
             }
             {props.module.fields.educationTags.map(content =>
                 <Stack

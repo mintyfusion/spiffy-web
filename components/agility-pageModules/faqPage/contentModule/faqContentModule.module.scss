@@ -6,50 +6,6 @@
 .contentContainer {
     padding: 3rem 1rem;
     background: $dirty-white;
-
-    .navbar {
-        &::-webkit-scrollbar {
-            height: 4px;
-            width: 10px;
-            border: 1px solid $transparent;
-            border-radius: 5px;
-        }
-        &::-webkit-scrollbar-thumb:horizontal {
-            background: $light-grey;
-            border-radius: 10px;
-        }
-    }
-
-    nav {
-        :global(.navbar-toggler) {
-            border: none;
-            box-shadow: none;
-        }
-
-        :global(.collapsed) {
-            transform: rotate(180deg);
-        }
-
-        :global(.navbar-toggler),
-        :global(.collapsed) {
-            transition: transform 0.3s;
-        }
-    }
-}
-
-.activeTab {
-    border: 2px solid $yellow;
-    color: $yellow;
-}
-
-.tabArrow {
-    cursor: pointer;
-    transition: color 100ms;
-
-    &:hover {
-        color: $yellow;
-        transition: color 100ms;
-    }
 }
 
 .content {
@@ -61,16 +17,6 @@
 
     .card {
         min-width: 350px;
-    }
-}
-
-.tab {
-    min-width: 300px;
-    border: none;
-    text-transform: initial;
-
-    &.active {
-        background-color: $yellow;
     }
 }
 
@@ -128,25 +74,6 @@
     background-color: $dirty-white;
 }
 
-@include media(">991px") {
-    .tab {
-        &.inactive {
-            background-color: $faded-yellow;
-        }
-
-        &:hover {
-            background-color: $light-yellow;
-        }
-    }
-}
-
-@include media("<=991px") {
-    .tab {
-        background-color: $white;
-        border: none;
-    }
-}
-
 @include media(">=tablet", "<=desktop") {
     .content {
         padding: 4rem 1.5rem;
@@ -170,8 +97,4 @@
             }
         }
     }
-}
-
-:export {
-    dirty-white: $dirty-white;
 }
