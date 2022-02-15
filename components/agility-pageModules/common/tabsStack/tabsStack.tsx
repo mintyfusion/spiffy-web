@@ -1,7 +1,13 @@
-import { faCaretSquareLeft, faCaretSquareRight, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav, Navbar } from "react-bootstrap";
+import { Swiper, SwiperSlide } from "swiper/react";
 import React from "react";
+import SwiperCore, { Navigation, Pagination, Virtual } from "swiper";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
@@ -13,11 +19,9 @@ import useBreakpoint from "hooks/useBreakpoint";
 import styles from "components/agility-pageModules/common/tabsStack/tabsStack.module.scss";
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
-const scrollAmount = 200;
-const scrollParams = {
-    top: 0,
-    behavior: "smooth" as ScrollBehavior
-};
+const menuTabsPerView = 5;
+
+SwiperCore.use([Virtual, Navigation, Pagination]);
 
 const TabsStack = (props: ITabsStackProps): JSX.Element => {
     const { activeTab, setActiveTab, tags } = props;
@@ -25,76 +29,76 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
     const tabsRef = React.useRef<HTMLDivElement>();
     const [expanded, { toggle: toggleExpanding }] = useBoolean(false);
 
-    const handleArrowScrollLeft = React.useCallback(() => {
-        tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft - scrollAmount, ...scrollParams });
-    }, []);
-
-    const handleArrowScrollRight = React.useCallback(() => {
-        tabsRef.current.scrollTo({ left: tabsRef.current.scrollLeft + scrollAmount, ...scrollParams });
-    }, []);
-
     const handleNavigation = React.useCallback(() => {
         breakpoint && toggleExpanding();
     }, [breakpoint, toggleExpanding]);
 
-    return (
-        <div className={`${horizontalAlign} gap-2 mb-1 mb-md-4 ${styles.tabsStackContainer}`}>
-            <FontAwesomeIcon
-                icon={faCaretSquareLeft}
-                width="50"
-                height="50"
-                onClick={handleArrowScrollLeft}
-                id="arrowScrollLeft"
-                className={`${styles.tabArrow} ${breakpoint && "d-none"}`}
-            />
-            <Navbar
-                bg={styles.dirtyWhite}
-                expand="lg"
-                expanded={expanded}
-                onClick={handleNavigation}
-                className={`overflow-hidden ${styles.navbar} flex-grow-1`}
-                ref={tabsRef}
-            >
-                <Navbar.Brand className="d-block d-lg-none">
-                    <label className="w-100">
-                        {activeTab.replace("_", " ")}
-                    </label>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav">
-                    <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
-                </Navbar.Toggle>
-                <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
-                <Navbar.Collapse>
-                    <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
-                        {tags.map(content =>
-                            <PrimaryButton
-                                key={content.fields.name}
-                                onClick={() => setActiveTab(content.fields.name)}
-                                className={`
+    const tabData = React.useMemo(() =>
+        tags.map(content =>
+            <SwiperSlide key={content.fields.name}>
+                <PrimaryButton
+                    key={content.fields.name}
+                    onClick={() => setActiveTab(content.fields.name)}
+                    className={`
                                 w-100
                                 px-1
                                 py-3 
                                 ${styles.tab} 
-                                ${props.activeTab === content.fields.name
-                                        ? styles.active
-                                        : styles.inactive}
+                                ${activeTab === content.fields.name
+                            ? styles.active
+                            : styles.inactive}
                                 ${horizontalAlign}
                              `}
-                            >
-                                {content.fields.name.replace("_", " ")}
-                            </PrimaryButton>
-                        )}
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-            <FontAwesomeIcon
-                icon={faCaretSquareRight}
-                width="50"
-                height="50"
-                onClick={handleArrowScrollRight}
-                className={`${styles.tabArrow} ${breakpoint && "d-none"}`}
-            />
-        </div>
+                >
+                    {content.fields.name.replace("_", " ")}
+                </PrimaryButton>
+            </SwiperSlide>
+        ), [activeTab, setActiveTab, tags]);
+
+    const tabsContainer = React.useMemo(() =>
+        breakpoint
+            ? <div className={`${horizontalAlign} gap-2 mb-1 mb-md-4 ${styles.tabsStackContainer}`}>
+                <Navbar
+                    bg={styles.dirtyWhite}
+                    expand="lg"
+                    expanded={expanded}
+                    onClick={handleNavigation}
+                    className={`overflow-hidden ${styles.navbar} flex-grow-1`}
+                    ref={tabsRef}
+                >
+                    <Navbar.Brand className="d-block d-lg-none">
+                        <label className="w-100">
+                            {activeTab.replace("_", " ")}
+                        </label>
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav">
+                        <FontAwesomeIcon icon={faChevronUp} width="30" height="35" />
+                    </Navbar.Toggle>
+                    <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
+                    <Navbar.Collapse>
+                        <Nav className={`me-auto ${!breakpoint && "gap-4"} w-100`}>
+                            {tabData}
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+            </div>
+            : <div className={`position-relative ${tags.length > menuTabsPerView && "px-5"} mb-1 mb-md-4`} >
+                <Swiper
+                    slidesPerView={menuTabsPerView}
+                    centeredSlides={false}
+                    spaceBetween={30}
+                    navigation={true}
+                    virtual
+                    className="position-static"
+                >
+                    {tabData}
+                </Swiper>
+            </div>, [activeTab, breakpoint, expanded, handleNavigation, tabData, tags?.length]);
+
+    return (
+        <>
+            {tabsContainer}
+        </>
     );
 };
 
