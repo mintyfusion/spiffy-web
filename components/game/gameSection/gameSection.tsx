@@ -282,7 +282,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      */
     React.useEffect(() => {
         let avatarTimeout: NodeJS.Timeout;
-        /** checking if step is one and style is already applied for section one avatars*/
+        /** 
+         * checking if step is one and style is already applied for section one avatars
+         */
         if (step === StepTypes.ChooseAvatarSection && avatarStyleUpdateId === "0") {
             avatarTimeout = setTimeout(() => {
                 setAvatarPositions();
@@ -354,9 +356,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
             ? addedFriends.slice(0, friendsSliceStartIndex)
             : addedFriends.slice(friendsSliceStartIndex, friendsSliceEndIndex);
 
-        const style = isTop
-            ? styles.friendsTop
-            : styles.friendsBottom;
+        const style = isTop ? styles.friendsTop : styles.friendsBottom;
 
         return <div className={`${style} ${rowHBetween}`}>
             {arrFriends.map((friend, friendKey) =>

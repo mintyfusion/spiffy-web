@@ -173,10 +173,6 @@
         max-height: 70px;
     }
 
-    .donationImage svg {
-        @include imgProperties(25px);
-    }
-
     .donationRow1 {
         width: 30%;
         margin: 0 auto;

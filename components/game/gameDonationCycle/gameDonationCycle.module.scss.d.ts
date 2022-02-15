@@ -52,7 +52,6 @@ export type Styles = {
   "donationButton": string;
   "donationCycle": string;
   "donationCycleItems": string;
-  "donationImage": string;
   "donationInner": string;
   "donationLogo": string;
   "donationRow1": string;
