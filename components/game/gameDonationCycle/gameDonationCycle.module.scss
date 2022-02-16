@@ -15,7 +15,7 @@
     }
 
     .stepFour {
-        width: 100%;
+        width: 90%;
         padding: 50px 0px;
         h4 {
             @extend .regular-desktop25-mobile16;
@@ -231,9 +231,13 @@
             max-width: 350px;
 
             .cycle {
-                width: 40px;
-                height: 50px;
+                width: 35px;
+                height: 42px;
                 padding: 5px;
+
+                svg {
+                    @include imgProperties(25px);
+                }
             }
 
             .cycle11 {
@@ -242,6 +246,10 @@
                 border-radius: 12px;
                 padding: 5px;
                 margin-left: -75px;
+
+                svg {
+                    @include imgProperties(50px);
+                }
             }
 
             .donationLogo {
@@ -274,11 +282,11 @@
         }
 
         .friendsMarginBottom {
-            margin-bottom: -20px;
+            margin-bottom: -15px;
         }
 
         .friendsMarginTop {
-            margin-top: -20px;
+            margin-top: -15px;
         }
 
         .donationRow1 {

@@ -1,13 +1,11 @@
-import { Col, Nav, Navbar, Row } from "react-bootstrap";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
-import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import GameAvatarList from "../gameAvatarList/gameAvatarList";
+import GameDonationButton from "../gameDonationButton/gameDonationButton";
 import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
 import IGameDonationCycle from "./interfaces/IGameDonationCycleProps";
 import Logo from "components/common/logo/logo";
@@ -15,7 +13,6 @@ import LogoVariants from "components/common/logo/enums/logoVariants";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import styles from "components/game/gameDonationCycle/gameDonationCycle.module.scss";
 import useBoolean from "hooks/useBoolean";
-import useBreakpoint from "hooks/useBreakpoint";
 import useStyles from "hooks/useStyles";
 
 const rowVCenter = flexbox({ vAlign: "center", vertical: true, });
@@ -33,30 +30,38 @@ const spiffyDonation = 10;
 const donationTotalAvatars = 11;
 const stepTwoTimeout = 1500;
 /** Donation Cycle Animation Style */
-const fourHundred = 420;
-const ten = 10;
+const fourHundred = 400;
 const eleven = 11;
 const fiveHundred = 500;
-const fifty = 50;
 const eightHundred = 800;
-const elevenHundred = 1100;
 const thiryFive = 35;
-const seventy = 70;
-const thirty = 30;
+const oneFourty = 140;
 const seventeenHundred = 1700;
 const sixteenHundred = 1600;
 const thousand = 1000;
-const threeHundred = 300;
-const fourtyFive = 45;
+const oneSixty = 160;
 const twelveHundred = 1300;
+const thirty = 30;
+const fourty = 40;
+const fifty = 50;
+const eigthy = 80;
+const hundred = 100;
+const fourteenHundred = 1400;
+const fifteenHundred = 1500;
+const oneFifty = 150;
+const ninety = 90;
+const seventy = 70;
+const sixHundred = 600;
 const twenty = 20;
+const threeHundred = 300;
+const ten = 10;
+const oneTwenty = 120;
 
 const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
     const [expanded, { toggle: navToggle }] = useBoolean(false);
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = useBoolean(false);
     const [coinStyles, , updateCoinStyle] = useStyles<CSSProperties>();
-    const isLG = useBreakpoint(Breakpoints.LG);
     const coinAnimationWrapperRef = React.useRef<HTMLDivElement>();
     const coinRef = React.useRef<HTMLDivElement>();
 
@@ -120,29 +125,39 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
             let startingLeft: number;
 
             if (width < fourHundred) {
-                left = ten;
-            } else if (width > fourHundred && width < fiveHundred) {
-                left = fifty;
-            } else if (width > fiveHundred && width < eightHundred) {
-                left = twenty;
-            } else if (width > eightHundred && width < elevenHundred) {
-                left = thiryFive;
-            } else if (width > thousand && width < twelveHundred) {
                 left = thirty;
+            } else if (width > fourHundred && width < fiveHundred) {
+                left = fourty;
+            } else if (width > fiveHundred && width < eightHundred) {
+                left = fifty;
+            } else if (width > eightHundred && width < thousand) {
+                left = eigthy;
+            } else if (width > thousand && width < twelveHundred) {
+                left = hundred;
+            } else if (width > fourteenHundred && width < fifteenHundred) {
+                left = oneTwenty;
+            } else if (width > fifteenHundred && width < seventeenHundred) {
+                left = oneFifty;
             } else {
-                left = seventy;
+                left = oneSixty;
             }
 
             if (width < seventeenHundred && width > sixteenHundred) {
                 startingLeft = thiryFive;
             } else if (width > thousand && width < sixteenHundred) {
-                startingLeft = thirty;
-            } else if (width > fourHundred && width < eightHundred) {
-                startingLeft = ten;
+                startingLeft = ninety;
+            } else if (width > eightHundred && width < thousand) {
+                startingLeft = seventy;
+            } else if (width > sixHundred && width < eightHundred) {
+                startingLeft = fourty;
+            } else if (width > fiveHundred && width < sixHundred) {
+                startingLeft = twenty;
+            } else if (width > fourHundred && width < fiveHundred) {
+                startingLeft = twenty;
             } else if (width > threeHundred && width < fourHundred) {
-                startingLeft = 0;
+                startingLeft = ten;
             } else {
-                startingLeft = fourtyFive;
+                startingLeft = oneFourty;
             }
 
             const leftStyle = bounds.x + coin.scrollLeft - startingLeft;
@@ -168,7 +183,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                 default:
                     updateCoinStyle({
                         left: bounds.x + coin.scrollLeft - left,
-                        top: bounds.y + coin.scrollTop - twenty,
+                        top: bounds.y + coin.scrollTop - thirty,
                         transition: "2s",
                         opacity: "1"
                     });
@@ -235,24 +250,13 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                 <h4 className="text-center">
                     Add donation in increments of $5, and discover where your donation is going.
                 </h4>
-                <Navbar
-                    expand="lg"
-                    className="d-block text-center"
+
+                <GameDonationButton
                     expanded={expanded}
-                    onClick={isLG ? navToggle : undefined}>
-                    <Navbar.Brand className="d-lg-none">
-                        {!donationAmount ? "Select Amount" : `$${donationAmount}`}
-                    </Navbar.Brand>
-                    <Navbar.Toggle className={styles.navToggle}>
-                        <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
-                    </Navbar.Toggle>
-                    <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-1`} />
-                    <Navbar.Collapse className={styles.customNavbar}>
-                        <Nav className={"me-auto w-100"}>
-                            {donationCycle}
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
+                    navToggle={navToggle}
+                    selected={`$${donationAmount}`}
+                    Amount={donationCycle}
+                />
 
                 <div className={`w-100 ${animation ? styles.contentAnimation : styles.donationCycle}`}>
                     <div className={`${styles.donationInner} ${colCenter}`}>
@@ -341,7 +345,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                     </Row>
                 </div>
             </div>
-        </div >
+        </div>
         {
             donationAmount
                 ? <div className={`${styles.card} ${rowCenter}`}>
@@ -353,7 +357,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                 </div>
                 : null
         }
-    </div >;
+    </div>;
 };
 
 export default GameDonationCycle;

@@ -1,0 +1,10 @@
+@import "styles/theme.scss";
+
+.navToggle {
+    border: none;
+}
+
+.activeTab {
+    border: 2px solid $yellow;
+    color: $yellow;
+}

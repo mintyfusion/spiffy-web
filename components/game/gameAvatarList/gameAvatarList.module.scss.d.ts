@@ -1,6 +1,5 @@
 export type Styles = {
   "active": string;
-  "activeTab": string;
   "avatarHeading": string;
   "avatarInner": string;
   "backgroundPattern": string;
@@ -31,7 +30,6 @@ export type Styles = {
   "gameStepFive": string;
   "inactive": string;
   "medium25": string;
-  "navToggle": string;
   "percentageSelected": string;
   "regular14": string;
   "regular16": string;

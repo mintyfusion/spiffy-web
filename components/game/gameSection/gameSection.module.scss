@@ -198,6 +198,10 @@
             .userColumn {
                 width: 100%;
                 height: 50%;
+
+                .userColumnInner{
+                    max-width: 340px;
+                }
                 h2 {
                     position: relative;
                     top: -10px;

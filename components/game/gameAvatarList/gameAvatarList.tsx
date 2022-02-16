@@ -1,11 +1,8 @@
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav, Navbar, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { scroller } from "react-scroll";
 import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
-import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
 import GamePageStepTypes from "../gameSection/enums/gamePageStepTypes";
@@ -13,8 +10,8 @@ import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarLi
 import percentages from "components/game/gameAvatarList/gameAvatarListContent";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import useBoolean from "hooks/useBoolean";
-import useBreakpoint from "hooks/useBreakpoint";
 
+import GameDonationButton from "../gameDonationButton/gameDonationButton";
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -88,7 +85,6 @@ const percentage = Object.entries(percentages);
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [selectedKey, setSelectedKey] = React.useState("1");
     const [expanded, { toggle: navToggle }] = useBoolean(false);
-    const isLG = useBreakpoint(Breakpoints.LG);
 
     const handleBtnClick = React.useCallback((key: string) => {
         setSelectedKey(key);
@@ -191,22 +187,12 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     the more money you make.
                 </h4>
 
-                <Navbar
-                    expand="lg"
-                    className="w-100 d-block text-center"
+                <GameDonationButton
                     expanded={expanded}
-                    onClick={() => isLG && navToggle()}>
-                    <Navbar.Brand className="d-lg-none">{selectedKey}%</Navbar.Brand>
-                    <Navbar.Toggle className={styles.navToggle}>
-                        <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
-                    </Navbar.Toggle>
-                    <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
-                    <Navbar.Collapse>
-                        <Nav className={`me-auto ${!isLG && "gap-4"} w-100`}>
-                            {donationPercentage}
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
+                    navToggle={navToggle}
+                    selected={`${selectedKey}%`}
+                    Amount={donationPercentage}
+                />
 
                 <div className={`${styles.donationInner} d-flex w-100 position-relative h-100`}>
                     <div className={`${styles.flex1} d-flex flex-wrap h-100`}>

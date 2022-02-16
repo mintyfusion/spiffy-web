@@ -35,15 +35,6 @@
         @extend .regular-desktop25-mobile16;
     }
 
-    .navToggle {
-        border: none;
-    }
-
-    .activeTab {
-        border: 2px solid $yellow;
-        color: $yellow;
-    }
-
     .donationInner {
         margin-top: 40px;
         h2 {
