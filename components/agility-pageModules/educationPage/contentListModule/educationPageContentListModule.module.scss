@@ -14,10 +14,6 @@
     .contentHeading h2 {
         @extend .fullBold67;
     }
-
-    .card {
-        min-width: 350px;
-    }
 }
 
 @include media(">=tablet", "<=desktop") {

@@ -15,7 +15,6 @@ export type Styles = {
   "bold67": string;
   "bold90": string;
   "boldDesktop41Mobile25": string;
-  "card": string;
   "content": string;
   "contentContainer": string;
   "contentHeading": string;

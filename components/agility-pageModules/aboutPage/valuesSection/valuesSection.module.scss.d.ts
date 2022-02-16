@@ -24,7 +24,6 @@ export type Styles = {
   "headingText": string;
   "hide": string;
   "imageContainer": string;
-  "overlay": string;
   "regular14": string;
   "regular16": string;
   "regular24": string;

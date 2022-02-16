@@ -1,5 +1,4 @@
 export type Styles = {
-  "active": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold150": string;
@@ -35,8 +34,6 @@ export type Styles = {
   "regular90": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
-  "selector": string;
-  "selectors": string;
   "semiBold20": string;
   "semiBold32": string;
   "semiBold90": string;
