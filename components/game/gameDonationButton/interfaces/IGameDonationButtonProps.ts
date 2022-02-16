@@ -1,8 +1,8 @@
 interface IGameDonationButtonProps {
-    expanded: boolean;
-    navToggle: () => void;
     selected: string;
-    Amount: JSX.Element[];
+    lisItems: string[];
+    onClickHandler: (key: string) => void;
+    amount: boolean;
 }
 
 export default IGameDonationButtonProps;

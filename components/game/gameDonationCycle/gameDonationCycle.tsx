@@ -10,7 +10,6 @@ import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatar
 import IGameDonationCycle from "components/game/gameDonationCycle/interfaces/IGameDonationCycleProps";
 import Logo from "components/common/logo/logo";
 import LogoVariants from "components/common/logo/enums/logoVariants";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
 import styles from "components/game/gameDonationCycle/gameDonationCycle.module.scss";
 import useBoolean from "hooks/useBoolean";
 import useStyles from "hooks/useStyles";
@@ -58,7 +57,6 @@ const ten = 10;
 const oneTwenty = 120;
 
 const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
-    const [expanded, { toggle: navToggle }] = useBoolean(false);
     const [donationAmount, setDonationAmount] = React.useState<string>("");
     const [animation, { setTrue: animationTrue, setFalse: animationFalse }] = useBoolean(false);
     const [coinStyles, , updateCoinStyle] = useStyles<CSSProperties>();
@@ -78,37 +76,6 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
             }, avatarTimeout);
         }
     }, [donationAmount, animationFalse, animationTrue]);
-
-    /**
-    * Donation amount rendering.
-    */
-    const donationCycle = React.useMemo(() =>
-        donationValues.map((donation) =>
-            <PrimaryButton
-                key={donation}
-                onClick={() => {
-                    setDonationAmount(donation);
-                    animationHandler(donation);
-                    coinAnimationWrapperRef.current.scroll({
-                        top: 230,
-                        behavior: "smooth"
-                    });
-                    updateCoinStyle({
-                        left: null,
-                        top: null,
-                        transition: "none",
-                    });
-                }}
-                className={`
-              ${horizontalAlign} 
-              ${styles.donationButton}
-              ${donation === donationAmount ? styles.active : styles.inactive}
-              w-100 px-1 py-3`}
-            >
-                ${donation}
-            </PrimaryButton>
-        ), [animationHandler, donationAmount, updateCoinStyle]);
-
 
     /**
      * Donation cycle style and animation.
@@ -241,6 +208,20 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
         }
     }, [donationAmount, getDonationAmout]);
 
+    const donationAmountHandler = React.useCallback((key: string) => {
+        setDonationAmount(key);
+        animationHandler(key);
+        coinAnimationWrapperRef.current.scroll({
+            top: 230,
+            behavior: "smooth"
+        });
+        updateCoinStyle({
+            left: null,
+            top: null,
+            transition: "none",
+        });
+    }, [setDonationAmount, animationHandler, updateCoinStyle]);
+
     return <div ref={coinAnimationWrapperRef} className={`${styles.donationSections} w-100 overflow-auto`}>
         <div className={`${styles.card} ${rowCenter}`}>
             <div className={`${rowVCenter} ${styles.stepFour} position-relative`}>
@@ -252,10 +233,10 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                 </h4>
 
                 <GameDonationButton
-                    expanded={expanded}
-                    navToggle={navToggle}
-                    selected={`$${donationAmount}`}
-                    Amount={donationCycle}
+                    selected={donationAmount}
+                    lisItems={donationValues}
+                    onClickHandler={donationAmountHandler}
+                    amount={true}
                 />
 
                 <div className={`w-100 ${animation ? styles.contentAnimation : styles.donationCycle}`}>

@@ -9,13 +9,10 @@ import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatar
 import GamePageStepTypes from "components/game/gameSection/enums/gamePageStepTypes";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 import percentages from "components/game/gameAvatarList/gameAvatarListContent";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
-import useBoolean from "hooks/useBoolean";
 
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
-const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const marginFifteen = 15;
 const marginFive = 5;
@@ -81,10 +78,9 @@ function getRandomAvatars() {
     return avatars[randomIndex];
 }
 
-const percentage = Object.entries(percentages);
+const percentage = Object.keys(percentages);
 const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
     const [selectedKey, setSelectedKey] = React.useState("1");
-    const [expanded, { toggle: navToggle }] = useBoolean(false);
 
     const handleBtnClick = React.useCallback((key: string) => {
         setSelectedKey(key);
@@ -122,24 +118,6 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
 
         return arr;
     }, [selectedKey]);
-
-    /**
-     * Donation percentage rendering.
-     */
-    const donationPercentage = React.useMemo(() => percentage.map(([key], index) => (
-        <PrimaryButton
-            key={index}
-            onClick={() => handleBtnClick(key)}
-            className={`
-            ${rowCenter} 
-            ${styles.donationButton} 
-            ${selectedKey === key ? styles.active : styles.inactive}
-            w-100 px-1 py-3`}
-        >
-            {key}%
-        </PrimaryButton>
-    )
-    ), [handleBtnClick, selectedKey]);
 
     const renderAddedFriends = React.useCallback((isTop: boolean) => {
         const arrFriends = isTop
@@ -188,10 +166,10 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                 </h4>
 
                 <GameDonationButton
-                    expanded={expanded}
-                    navToggle={navToggle}
-                    selected={`${selectedKey}%`}
-                    Amount={donationPercentage}
+                    selected={selectedKey}
+                    lisItems={percentage}
+                    onClickHandler={handleBtnClick}
+                    amount={false}
                 />
 
                 <div className={`${styles.donationInner} d-flex w-100 position-relative h-100`}>

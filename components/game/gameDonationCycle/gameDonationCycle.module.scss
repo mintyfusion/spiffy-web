@@ -20,15 +20,6 @@
         h4 {
             @extend .regular-desktop25-mobile16;
         }
-        nav {
-            width: 90%;
-        }
-        .navToggle {
-            border: none;
-        }
-        .donationBtn {
-            margin-right: 20px;
-        }
     }
 
     .avatarHeading {
@@ -320,21 +311,15 @@
     }
 }
 
-@include media(">=420px", "<500px") {
-    .donationSections .coin {
-        top: 305px;
-    }
-}
-
 @include media(">=500px", "<900px") {
     .donationSections .coin {
-        top: 290px;
+        top: 295px;
     }
 }
 
 @include media(">=900px", "<1000px") {
     .donationSections .coin {
-        top: 270px;
+        top: 300px;
     }
 }
 

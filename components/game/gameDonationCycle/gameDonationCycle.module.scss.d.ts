@@ -48,7 +48,6 @@ export type Styles = {
   "donationAmount7": string;
   "donationAmount8": string;
   "donationAmount9": string;
-  "donationBtn": string;
   "donationButton": string;
   "donationCycle": string;
   "donationCycleItems": string;
@@ -68,7 +67,6 @@ export type Styles = {
   "iconAnimation": string;
   "inactive": string;
   "medium25": string;
-  "navToggle": string;
   "regular14": string;
   "regular16": string;
   "regular20": string;
