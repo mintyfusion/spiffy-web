@@ -8,7 +8,7 @@ import styles from "components/agility-pageModules/aboutPage/heroSection/heroSec
 
 const columnAlignCenter = flexbox({ vertical: true });
 
-const BannerSection = (props: ModuleProps<IHeroSectionProps>): JSX.Element => {
+const HeroSection = (props: ModuleProps<IHeroSectionProps>): JSX.Element => {
     const { title, description, quoteText } = props.module.fields;
 
     return (
@@ -26,4 +26,4 @@ const BannerSection = (props: ModuleProps<IHeroSectionProps>): JSX.Element => {
     );
 };
 
-export default BannerSection;
+export default HeroSection;
