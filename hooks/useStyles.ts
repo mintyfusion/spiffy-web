@@ -1,7 +1,7 @@
 import React from "react";
 
 import getUniqueId from "utils/getUniqueId";
-import KeyCSS from "hooks/types/keyCss";
+import KeyCSS from "hooks/types/keyCSS";
 
 type KeyCSSOrCSS = KeyCSS | React.CSSProperties;
 type UpdateFunction<T> = (styles?: T) => void;

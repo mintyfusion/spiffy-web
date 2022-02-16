@@ -11,9 +11,9 @@ import flexbox from "utils/flexbox";
 import GameDonationCycle from "components/game/gameDonationCycle/gameDonationCycle";
 import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
 import GamePageStepTypes from "components/game/gameSection/enums/gamePageStepTypes";
-import GameSignup from "../gameSignup/gameSignup";
+import GameSignup from "components/game/gameSignup/gameSignup";
 import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
-import KeyCSS from "hooks/types/keyCss";
+import KeyCSS from "hooks/types/keyCSS";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import useBreakpoint from "hooks/useBreakpoint";
@@ -60,7 +60,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const isMD = useBreakpoint(Breakpoints.MD);
 
     const [avatarStyles, avatarStyleUpdateId, updateAvatarStyle] = useStyles<KeyCSS>();
-    const [friendsStyle, friendsStyleUpdateId, updateFriendsStyle] = useStyles<KeyCSS>();
+    const [friendsStyle, , updateFriendsStyle] = useStyles<KeyCSS>();
 
     const step1Ref = React.useRef<HTMLDivElement>();
     const step2TargetRef = React.useRef<HTMLDivElement>();
@@ -245,7 +245,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         if (styles) {
             updateFriendsStyle(styles);
         }
-    }, [getFriendsStyles, updateFriendsStyle, friendsStyleUpdateId]);
+    }, [getFriendsStyles, updateFriendsStyle]);
 
     /**
      * Section two animation and scroll on continue.

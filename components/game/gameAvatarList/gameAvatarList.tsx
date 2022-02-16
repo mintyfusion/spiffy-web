@@ -4,14 +4,14 @@ import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
 import flexbox from "utils/flexbox";
+import GameDonationButton from "components/game/gameDonationButton/gameDonationButton";
 import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
-import GamePageStepTypes from "../gameSection/enums/gamePageStepTypes";
+import GamePageStepTypes from "components/game/gameSection/enums/gamePageStepTypes";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
 import percentages from "components/game/gameAvatarList/gameAvatarListContent";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
 import useBoolean from "hooks/useBoolean";
 
-import GameDonationButton from "../gameDonationButton/gameDonationButton";
 import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
@@ -176,7 +176,7 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
         if (selectedKey === "100") {
             moveToSignupSection();
         }
-    }, [selectedKey]);
+    }, [selectedKey, moveToSignupSection]);
 
     return (
         <div className={styles.gameStepFive}>

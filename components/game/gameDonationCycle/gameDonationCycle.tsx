@@ -4,10 +4,10 @@ import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
 import flexbox from "utils/flexbox";
-import GameAvatarList from "../gameAvatarList/gameAvatarList";
-import GameDonationButton from "../gameDonationButton/gameDonationButton";
+import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
+import GameDonationButton from "components/game/gameDonationButton/gameDonationButton";
 import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
-import IGameDonationCycle from "./interfaces/IGameDonationCycleProps";
+import IGameDonationCycle from "components/game/gameDonationCycle/interfaces/IGameDonationCycleProps";
 import Logo from "components/common/logo/logo";
 import LogoVariants from "components/common/logo/enums/logoVariants";
 import PrimaryButton from "components/common/primaryButton/primaryButton";
@@ -107,7 +107,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
             >
                 ${donation}
             </PrimaryButton>
-        ), [animationHandler, donationAmount]);
+        ), [animationHandler, donationAmount, updateCoinStyle]);
 
 
     /**
