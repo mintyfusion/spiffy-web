@@ -1,5 +1,6 @@
 import { Col, Row, Stack } from "react-bootstrap";
 import { ModuleProps } from "@agility/nextjs";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React from "react";
 
@@ -11,10 +12,11 @@ import IContactFormProps from "components/agility-pageModules/contactPage/interf
 import IField from "types/IField";
 import postData from "utils/postData";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
-import Spinner from "components/agility-pageModules/common/spinner/Spinner";
 import UserTypes from "components/agility-pageModules/contactPage/enums/userTypes";
 
 import styles from "components/agility-pageModules/contactPage/contactForm.module.scss";
+
+const Spinner = dynamic(() => import("components/agility-pageModules/common/spinner/Spinner"));
 
 const PHONE_NUMBER_LENGTH = 11;
 const NUMBER_PATTERN = /^[0-9]*$/;

@@ -2,6 +2,7 @@ import { Accordion, Row, Stack } from "react-bootstrap";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ModuleProps, renderHTML } from "@agility/nextjs";
+import dynamic from "next/dynamic";
 import React from "react";
 
 import { SearchContext } from "pages/[...slug]";
@@ -9,11 +10,12 @@ import ContentCategory from "components/agility-pageModules/educationPage/conten
 import flexbox from "utils/flexbox";
 import IFaqContentModuleData from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleData";
 import IFaqContentModuleProps from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleProps";
-import Spinner from "components/agility-pageModules/common/spinner/Spinner";
-import TabsStack from "components/agility-pageModules/common/tabsStack/tabsStack";
 import useGetContentList from "hooks/useGetContentList";
 
 import styles from "components/agility-pageModules/faqPage/contentModule/faqContentModule.module.scss";
+
+const Spinner = dynamic(() => import("components/agility-pageModules/common/spinner/Spinner"));
+const TabsStack = dynamic(() => import("components/agility-pageModules/common/tabsStack/tabsStack"));
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;

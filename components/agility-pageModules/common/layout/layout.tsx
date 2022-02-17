@@ -1,12 +1,14 @@
 import { getPageTemplate } from "components/agility-pageTemplates";
+import dynamic from "next/dynamic";
 import Error from "next/error";
 import React from "react";
 
-import Footer from "components/agility-pageModules/common/footer/footer";
-import Head from "components/agility-pageModules/common/head/head";
 import ILayoutProps from "components/agility-pageModules/common/layout/interfaces/ILayoutProps";
-import Navbar from "components/agility-pageModules/common/navbar/navbar";
 import PageIds from "common/pageIds";
+
+const Footer = dynamic(() => import("components/agility-pageModules/common/footer/footer"));
+const Head = dynamic(() => import("components/agility-pageModules/common/head/head"));
+const Navbar = dynamic(() => import("components/agility-pageModules/common/navbar/navbar"));
 
 const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
     const { notFound, pageTemplateName } = props;

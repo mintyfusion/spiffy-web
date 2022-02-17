@@ -1,13 +1,15 @@
 import { ImageProps } from "next/image";
 import { ModuleProps } from "@agility/nextjs";
+import dynamic from "next/dynamic";
 import React from "react";
 
-import Banner from "components/agility-pageModules/common/banner/banner";
-import Caption from "components/agility-pageModules/common/caption/caption";
 import IContentInfo from "types/IContentnfo";
 import IImageField from "types/IImageFIeld";
 
 import styles from "components/agility-pageModules/common/heroModuleVariant2/heroModuleVariant2.module.scss";
+
+const Banner = dynamic(() => import("components/agility-pageModules/common/banner/banner"));
+const Caption = dynamic(() => import("components/agility-pageModules/common/caption/caption"));
 
 type HeroModuleVariant2PropType = IContentInfo & IImageField;
 

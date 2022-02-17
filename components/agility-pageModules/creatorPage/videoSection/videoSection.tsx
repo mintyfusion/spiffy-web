@@ -1,14 +1,16 @@
 import { ModuleProps } from "@agility/nextjs";
 import { Row } from "react-bootstrap";
+import dynamic from "next/dynamic";
 import React from "react";
 
 import BreakpointChecks from "hooks/enums/breakpointChecks";
 import Breakpoints from "common/style/breakpoints";
 import IVideoSectionProps from "components/agility-pageModules/creatorPage/videoSection/interfaces/IVideoSectionProps";
 import useBreakpoint from "hooks/useBreakpoint";
-import VideoPlayer from "components/agility-pageModules/common/videoPlayer/videoPlayer";
 
 import styles from "components/agility-pageModules/creatorPage/videoSection/videoSection.module.scss";
+
+const VideoPlayer = dynamic(() => import("components/agility-pageModules/common/videoPlayer/videoPlayer"));
 
 const VideoSection = (props: ModuleProps<IVideoSectionProps>): JSX.Element => {
     const breakpoint = useBreakpoint(Breakpoints.XXL, BreakpointChecks.Greater);

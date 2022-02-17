@@ -1,4 +1,5 @@
 import { getAgilityPageProps, getAgilityPaths } from "@agility/nextjs/node";
+import dynamic from "next/dynamic";
 import React from "react";
 import type {
     GetStaticPropsContext,
@@ -8,7 +9,8 @@ import type {
 import { getModule } from "components/agility-pageModules";
 import ICustomAgilityPageProps from "components/agility-pageModules/common/layout/interfaces/ICustomAgilityPageProps";
 import ISearchContextProps from "types/ISearchContextProps";
-import Layout from "components/agility-pageModules/common/layout/layout";
+
+const Layout = dynamic(() => import("components/agility-pageModules/common/layout/layout"));
 
 // getStaticProps function fetches data for all Agility Pages 
 // and Next.js will pre-render these pages at build time
