@@ -1,19 +1,23 @@
-import { faFacebookF, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 import IShareSectionProps from "components/agility-pageModules/educationDetailsModule/shareSection/interfaces/IShareSectionData";
 
 const detailsSocialData: IShareSectionProps[] = [
     {
         href: "https://twitter.com/intent/tweet?url=",
-        icon: faTwitter
+        icon: faTwitter,
+        title: "Twitter"
     },
     {
         href: "http://www.facebook.com/sharer.php?u=",
-        icon: faFacebookF
+        icon: faFacebookF,
+        title: "Facebook"
     },
     {
-        href: "https://www.instagram.com/?url=",
-        icon: faInstagram
+        href: "",
+        icon: faLink,
+        title: "link"
     }
 ];
 

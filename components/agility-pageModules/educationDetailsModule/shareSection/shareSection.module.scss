@@ -46,6 +46,10 @@
     }
 }
 
+.link {
+    cursor: pointer;
+}
+
 @include media(">=1370px") {
     .socials {
         @include detailsSocialContent(58px, 15px);
