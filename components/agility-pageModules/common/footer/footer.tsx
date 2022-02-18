@@ -33,7 +33,12 @@ const Footer = (): JSX.Element =>
                             <Stack direction="horizontal" gap={3} className={styles.footerSocials}>
                                 {footerSocialsData.map((data: IFooterSocials, key) =>
                                     <div key={key}>
-                                        <a className={`${styles.footerSocial}`} href={data.href}>
+                                        <a
+                                            className={`${styles.footerSocial}`}
+                                            href={data.href}
+                                            target="_blank" 
+                                            rel="noreferrer"
+                                        >
                                             <FontAwesomeIcon icon={data.icon} />
                                         </a>
                                     </div>
@@ -60,7 +65,7 @@ const Footer = (): JSX.Element =>
                 <Row className={`${styles.footerBottom} p-3`}>
                     <Stack className="pe-1 justify-content-start justify-content-md-center" direction="horizontal" gap={1}>
                         <p className="text-white m-0">Powered by</p>
-                        <a href="https://mintyfusion.com/" className="d-flex">
+                        <a href="https://mintyfusion.com/" className="d-flex" target="_blank" rel="noreferrer" >
                             <Image
                                 src="/images/homepage/footer/mintyfusionstudios.svg"
                                 width="150"
