@@ -17,9 +17,9 @@ const VideoSection = (props: ModuleProps<IVideoSectionProps>): JSX.Element => {
     const { fields } = props.module;
 
     const preparedData = React.useMemo(() => ({
-        light: fields.thumbnail.url,
+        light: fields.thumbnail?.url,
         url: fields.url.href
-    }), [fields.thumbnail, fields.url]);
+    }), [fields?.thumbnail, fields.url]);
 
     return (
         <Row className={`${styles.videoSectionContainer} m-0`}>
