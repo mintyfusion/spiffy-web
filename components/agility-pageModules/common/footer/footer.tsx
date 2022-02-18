@@ -36,7 +36,7 @@ const Footer = (): JSX.Element =>
                                         <a
                                             className={`${styles.footerSocial}`}
                                             href={data.href}
-                                            target="_blank" 
+                                            target="_blank"
                                             rel="noreferrer"
                                         >
                                             <FontAwesomeIcon icon={data.icon} />
@@ -63,19 +63,21 @@ const Footer = (): JSX.Element =>
                 </Row>
                 <hr className="d-none d-md-block" />
                 <Row className={`${styles.footerBottom} p-3`}>
-                    <Stack className="pe-1 justify-content-start justify-content-md-center" direction="horizontal" gap={1}>
-                        <p className="text-white m-0">Powered by</p>
-                        <a href="https://mintyfusion.com/" className="d-flex" target="_blank" rel="noreferrer" >
-                            <Image
-                                src="/images/homepage/footer/mintyfusionstudios.svg"
-                                width="150"
-                                height="25"
-                                alt="mintyfusion Studios"
-                                layout="intrinsic"
-                                priority={true}
-                            />
-                        </a>
-                    </Stack>
+                    <div>
+                        <Stack className="pe-1 justify-content-start justify-content-md-center gap-1" direction="horizontal">
+                            <p className="text-white m-0">Powered by</p>
+                            <a href="https://mintyfusion.com/" className="d-flex" target="_blank" rel="noreferrer">
+                                <Image
+                                    src="/images/homepage/footer/mintyfusionstudios.svg"
+                                    width="150"
+                                    height="25"
+                                    alt="mintyfusion Studios"
+                                    layout="intrinsic"
+                                    priority={true}
+                                />
+                            </a>
+                        </Stack>
+                    </div>
                 </Row>
             </Col>
         </Container>
