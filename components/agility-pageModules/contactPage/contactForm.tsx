@@ -24,6 +24,7 @@ const NUMBER_PATTERN = /^[0-9]*$/;
 const EMAIL_PATTERN = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const rowAlignCenter = flexbox({ hAlign: "center", vAlign: "center" });
+const rowALignEnd=flexbox({ hAlign: "end", vAlign: "center" });
 const colAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 
 const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
@@ -61,8 +62,8 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 ? <textarea {...fieldProps} rows={8} />
                 : fieldName === ContactFormFieldNames.phoneNumber
                     ? (
-                        <div className={rowAlignCenter}>
-                            <div className={`${styles.countryflagContainer} text-end`}>+1</div>
+                        <div className={`${rowAlignCenter} ${styles.phoneNumberContainer}`}>
+                            <label className={`${styles.countryflagContainer} ${rowALignEnd}`}>+1</label>
                             <input {...fieldProps} />
                         </div>
                     )
@@ -202,7 +203,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                                 </PrimaryButton>
                             </Stack>
                             <div className={`text-center p-2 ${styles.formBottomContent} m-auto`} >
-                                <label dangerouslySetInnerHTML={renderHtml( fields.formBottomText)}/>
+                                <label dangerouslySetInnerHTML={renderHtml(fields.formBottomText)} />
                             </div>
                         </form>
                         : <Col className={`${styles.thankYou} text-center`}>

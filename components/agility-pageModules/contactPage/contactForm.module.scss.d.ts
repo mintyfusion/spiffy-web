@@ -29,6 +29,7 @@ export type Styles = {
   "inputPhoneNumber": string;
   "note": string;
   "overlay": string;
+  "phoneNumberContainer": string;
   "regular14": string;
   "regular16": string;
   "regular24": string;
