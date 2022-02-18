@@ -12,6 +12,7 @@ import IContactFormProps from "components/agility-pageModules/contactPage/interf
 import IField from "types/IField";
 import postData from "utils/postData";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
+import renderHtml from "utils/renderHtml";
 import UserTypes from "components/agility-pageModules/contactPage/enums/userTypes";
 
 import styles from "components/agility-pageModules/contactPage/contactForm.module.scss";
@@ -155,7 +156,12 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 <Row>
                     <div>
                         <h3>{fields.subTitle}</h3>
-                        <h4 className="mb-3">{fields.subDescription}</h4>
+                        <h4
+                            className="mb-3"
+                            dangerouslySetInnerHTML={
+                                renderHtml(fields.subDescription)
+                            }
+                        />
                     </div>
                 </Row>
             </Col>
@@ -196,7 +202,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                                 </PrimaryButton>
                             </Stack>
                             <div className={`text-center p-2 ${styles.formBottomContent} m-auto`} >
-                                <label>{fields.formBottomText}</label>
+                                <label dangerouslySetInnerHTML={renderHtml( fields.formBottomText)}/>
                             </div>
                         </form>
                         : <Col className={`${styles.thankYou} text-center`}>
