@@ -167,7 +167,9 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                             <div className={`gap-3 ${rowAlignCenter}`}>
                                 <PrimaryButton
                                     className={`
-                                        w-100 ${styles.userTypeButton} 
+                                        w-100 
+                                        border-0 
+                                        ${styles.userTypeButton}
                                         ${userType !== UserTypes.Creator && styles.inactive}
                                      `}
                                     onClick={() => setUserType(UserTypes.Creator)}
@@ -176,7 +178,9 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                                 </PrimaryButton>
                                 <PrimaryButton
                                     className={`
-                                        w-100 ${styles.userTypeButton} 
+                                        w-100
+                                        border-0 
+                                        ${styles.userTypeButton} 
                                         ${userType !== UserTypes.Subscriber && styles.inactive}
                                       `}
                                     onClick={() => setUserType(UserTypes.Subscriber)}
