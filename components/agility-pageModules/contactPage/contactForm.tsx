@@ -24,6 +24,7 @@ const NUMBER_PATTERN = /^[0-9]*$/;
 const EMAIL_PATTERN = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const rowAlignCenter = flexbox({ hAlign: "center", vAlign: "center" });
+const rowAlignStretch = flexbox({ hAlign: "center", vAlign: "stretch" });
 const rowALignEnd=flexbox({ hAlign: "end", vAlign: "center" });
 const colAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 
@@ -172,7 +173,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                         ? <form onSubmit={handleSubmit}>
                             <h6>{fields.formTitle}</h6>
                             <h5 className="mb-3">{fields.formDescription}</h5>
-                            <div className={`gap-3 ${rowAlignCenter}`}>
+                            <div className={`gap-3 ${rowAlignStretch}`}>
                                 <PrimaryButton
                                     className={`
                                         w-100 

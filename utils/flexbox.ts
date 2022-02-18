@@ -1,4 +1,4 @@
-type Alignment = "start" | "center" | "between" | "end";
+type Alignment = "start" | "center" | "between" | "end" | "stretch";
 
 interface IFlexboxParams {
     vertical?: boolean;
