@@ -145,6 +145,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                             <PrimaryButton
                                 className={styles.buttonFaq}
                                 linkProps={{ href: fields.redirectPageButton.href }}
+                                showArrow
                             >
                                 {fields.redirectPageButton.text}
                             </PrimaryButton>
