@@ -86,14 +86,6 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                             : resultData &&
                             <>
                                 <CardContainer content={resultData} />
-                                <Row>
-                                    {!showMore[content.fields.name] && !!resultData?.items?.length &&
-                                        <PrimaryButton
-                                            onClick={() => setShowMore({ [content.fields.name]: true })}
-                                        >
-                                            Show More
-                                        </PrimaryButton>}
-                                </Row>
                             </>
                         : ""
                     }

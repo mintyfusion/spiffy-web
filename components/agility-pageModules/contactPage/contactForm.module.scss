@@ -32,10 +32,6 @@
     }
 
     .contextContainer {
-        & > div {
-            padding: 2rem 7rem;
-        }
-
         .topContextContainer {
             background-color: $neutral-light-black;
 
@@ -135,6 +131,12 @@
     .countryflagContainer {
         min-width: 120px;
     }
+
+    .contextContainer {
+        & > div {
+            padding: 2rem 7rem;
+        }
+    }
 }
 
 @include media("<desktop") {
@@ -144,5 +146,11 @@
 
     .countryflagContainer {
         min-width: 90px;
+    }
+
+    .contextContainer {
+        & > div {
+            padding: 2rem 3rem;
+        }
     }
 }
