@@ -189,24 +189,6 @@
     .donationRow3 {
         width: 52%;
     }
-
-    .donationButton {
-        background-color: $faded-yellow;
-        margin-right: 20px;
-        border: none;
-        :focus {
-            outline: none;
-        }
-    }
-
-    .active {
-        background-color: $yellow;
-    }
-
-    .inactive {
-        background-color: $faded-yellow;
-        color: $darkGrey;
-    }
 }
 
 @include media(">=phone", "<990px") {
@@ -295,10 +277,6 @@
 
         .donationRow3 {
             width: 75%;
-        }
-
-        .donationButton {
-            margin-bottom: 5px;
         }
 
         .customNavbar {

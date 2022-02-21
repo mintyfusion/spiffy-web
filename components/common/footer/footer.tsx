@@ -15,7 +15,7 @@ import LogoVariants from "components/common/logo/enums/logoVariants";
 import styles from "components/common/footer/footer.module.scss";
 
 const Footer = (): JSX.Element =>
-    <Stack className={`${styles.footerContainer}`}>
+    <Stack className={styles.footerContainer}>
         <Container className={`${styles.footerContentContainer}`}>
             <Col className={styles.column} >
                 <Row className={`${styles.footerTop} p-md-1 p-lg-5 `}>

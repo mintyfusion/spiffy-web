@@ -41,8 +41,9 @@ export type Styles = {
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "regularDesktop30Mobile20": string;
-  "scaleOut": string;
   "semiBold90": string;
+  "zoomIn": string;
+  "zoomInease": string;
 };
 
 export type ClassNames = keyof Styles;

@@ -251,7 +251,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     /**
      * Section two animation and scroll on continue.
      */
-    const handleContinueBtnClick = React.useCallback(() => {
+    const handleContinueBtnClick = React.useCallback((event: React.FormEvent<EventTarget>) => {
+        event.preventDefault();
         if (!avatarName) {
             return;
         }
@@ -267,7 +268,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                         cursor: "initial"
                     }
                 });
-                /** SetStep to animate scroll to next section */
+                //  SetStep to animate scroll to next section
                 setStep(GamePageStepTypes.AddFriendsSection);
                 setFriendsPositions();
                 scrollTo(GamePageStepTypes.AddFriendsSection);
@@ -380,7 +381,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
         }
     }, [step]);
 
-    const avatarNameHandler = React.useCallback((e: React.FormEvent<HTMLInputElement>) => {
+    const handleAvatarNameChange = React.useCallback((e: React.FormEvent<HTMLInputElement>) => {
         setAvatarName(e.currentTarget.value);
     }, [setAvatarName]);
 
@@ -419,14 +420,14 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
                                     <div className={styles.targetOne} ref={step2TargetRef}></div>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter name"
-                                        className="w-100 text-center"
-                                        onChange={(e: React.FormEvent<HTMLInputElement>) => {
-                                            avatarNameHandler(e);
-                                        }}
-                                    />
+                                    <form onSubmit={handleContinueBtnClick} className="w-100">
+                                        <input
+                                            type="text"
+                                            placeholder="Enter name"
+                                            className="w-100 text-center"
+                                            onChange={handleAvatarNameChange}
+                                        />
+                                    </form>
                                     <PrimaryButton onClick={handleContinueBtnClick} className="w-100">
                                         Continue
                                     </PrimaryButton>
@@ -436,7 +437,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
                         <Element
                             name={GamePageStepTypes.AddFriendsSection}
-                            className={`${styles.card} ${styles.transparent} ${rowHCenter}`}>
+                            className={`${styles.card} ${styles.transparent} ${rowHCenter}`}
+                        >
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.userColumn} ${colCenter}`}>
                                     <div className={`${styles.userColumnInner} w-100`}>
@@ -473,7 +475,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                         <div
                                                             className="position-absolute"
                                                             style={friendsStyle && friendsStyle[avatar]}
-                                                            onClick={() => addFriends(avatar)}>
+                                                            onClick={() => addFriends(avatar)}
+                                                        >
                                                             <Avatar color={avatar} />
                                                         </div>
                                                     </React.Fragment>
@@ -489,7 +492,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             <GameDonationCycle
                                 friends={addedFriends}
                                 seletedAvatar={seletedAvatar}
-                                name={avatarName} />
+                                name={avatarName}
+                            />
                         </Element>
 
                         <Element name={GamePageStepTypes.SignupSection} className={`${styles.card} ${rowHCenter}`}>

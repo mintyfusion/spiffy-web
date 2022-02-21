@@ -1,5 +1,4 @@
 export type Styles = {
-  "active": string;
   "activeTab": string;
   "avatarHeading": string;
   "backgroundPattern": string;
@@ -46,7 +45,6 @@ export type Styles = {
   "donationAmount7": string;
   "donationAmount8": string;
   "donationAmount9": string;
-  "donationButton": string;
   "donationCycle": string;
   "donationCycleItems": string;
   "donationInner": string;
@@ -63,7 +61,6 @@ export type Styles = {
   "fullbold109": string;
   "fullBold67": string;
   "iconAnimation": string;
-  "inactive": string;
   "medium25": string;
   "regular14": string;
   "regular16": string;

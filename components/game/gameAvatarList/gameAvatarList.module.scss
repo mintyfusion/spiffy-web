@@ -27,7 +27,7 @@
         @extend .regular-desktop30-mobile20;
         color: $yellow;
         span {
-            animation: scaleOut ease 0.3s;
+            animation: zoomInease 0.3s;
         }
     }
 
@@ -148,7 +148,7 @@
     }
 }
 
-@keyframes scaleOut {
+@keyframes zoomIn{
     0% {
         transform: scale(0);
     }

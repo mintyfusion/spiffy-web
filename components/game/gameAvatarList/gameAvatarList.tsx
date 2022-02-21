@@ -3,8 +3,8 @@ import { scroller } from "react-scroll";
 import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
+import ButtonList from "components/common/buttonList/buttonList";
 import flexbox from "utils/flexbox";
-import GameDonationButton from "components/game/gameDonationButton/gameDonationButton";
 import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
 import GamePageStepTypes from "components/game/gameSection/enums/gamePageStepTypes";
 import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
@@ -165,11 +165,11 @@ const GameAvatarList = (props: IGameAvatarList): JSX.Element => {
                     the more money you make.
                 </h4>
 
-                <GameDonationButton
+                <ButtonList
                     selected={selectedKey}
                     lisItems={percentage}
-                    onClickHandler={handleBtnClick}
-                    amount={false}
+                    onButtonClick={handleBtnClick}
+                    valueSuffix="%"
                 />
 
                 <div className={`${styles.donationInner} d-flex w-100 position-relative h-100`}>
