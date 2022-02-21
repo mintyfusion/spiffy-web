@@ -25,7 +25,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
     const searchData = React.useContext(SearchContext);
     const searchFilterParams = React.useMemo(() => ({
         operator: FilterTypes.LIKE,
-        value: searchData.searchValue
+        value: `"${searchData.searchValue}"`
     }), [searchData.searchValue]);
 
     const finalParams = React.useMemo(() => ({
