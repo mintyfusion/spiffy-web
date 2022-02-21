@@ -61,6 +61,7 @@ const Section = (props: ISectionProps): JSX.Element => {
                         ${!props.showButtonArrow && "p-3"}
                     `}
                 showArrow={props.showButtonArrow}
+                linkProps={{ href: props.href }}
             >
                 {props.buttonText}
             </PrimaryButton>

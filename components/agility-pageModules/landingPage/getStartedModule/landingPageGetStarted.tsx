@@ -87,7 +87,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                             ${!isBreakpointMatched && side !== SectionSide.left && "opacity-0"}
                         `}
                         contentClassName={styles.leftSectionRight}
-                        href="/"
+                        href={fields.leftSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
                     />
@@ -105,7 +105,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                             ${!isBreakpointMatched && side !== SectionSide.right && "opacity-0"}
                         `}
                         contentClassName={styles.rightSectionLeft}
-                        href="/"
+                        href={fields.rightSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
                     />
