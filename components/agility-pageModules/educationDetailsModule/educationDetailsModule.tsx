@@ -12,14 +12,14 @@ import styles from "components/agility-pageModules/educationDetailsModule/educat
 const EducationDetailsModule =
     (props: DynamicModuleProps<IEducationDetailsModuleProps, IEducationDetailsModuleProps>): JSX.Element => {
         const { fields } = props.dynamicPageItem;
-        const preparedData = {
+        const preparedData = React.useMemo(() => ({
             detailsType: fields.contentType.fields.name,
             title: fields.title,
             description: fields.description,
             mediaSrc: fields.mediaSrc.href,
             key: fields.name,
             htmlContent: fields.htmlContent
-        };
+        }), [fields]);
 
         return (
             <div>
