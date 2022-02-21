@@ -69,6 +69,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const step3Ref = React.useRef<HTMLDivElement>();
     const modalBodyRef = React.useRef<HTMLDivElement>();
     const friendsSectionRef = React.useRef<HTMLDivElement>();
+    const nameInputRef = React.useRef<HTMLInputElement>();
 
     /**
      * Filter avatars array with user selected avatar for friends.
@@ -251,7 +252,9 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     /**
      * Section two animation and scroll on continue.
      */
-    const handleContinueBtnClick = React.useCallback(() => {
+    const handleContinueBtnClick = React.useCallback((event: React.FormEvent<EventTarget>) => {
+        event.preventDefault();
+        nameInputRef.current.blur();
         if (!avatarName) {
             return;
         }
@@ -419,12 +422,15 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
                                     <div className={styles.targetOne} ref={step2TargetRef}></div>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter name"
-                                        className="w-100 text-center"
-                                        onChange={handleAvatarNameChange}
-                                    />
+                                    <form onSubmit={handleContinueBtnClick} className="w-100">
+                                        <input
+                                            type="text"
+                                            placeholder="Enter name"
+                                            className="w-100 text-center"
+                                            onChange={handleAvatarNameChange}
+                                            ref={nameInputRef}
+                                        />
+                                    </form>
                                     <PrimaryButton onClick={handleContinueBtnClick} className="w-100">
                                         Continue
                                     </PrimaryButton>

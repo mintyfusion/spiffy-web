@@ -36,7 +36,7 @@ const ButtonList = (props: IButtonListProps): JSX.Element => {
                 {`${valuePrefix ? valuePrefix : ""}${donation}${valueSuffix ? valueSuffix : ""}`}
 
             </PrimaryButton>
-        ), [selected, valuePrefix, valueSuffix]);
+        ), [selected, valuePrefix, valueSuffix, props.onButtonClick]);
 
     return <Navbar
         expand="lg"

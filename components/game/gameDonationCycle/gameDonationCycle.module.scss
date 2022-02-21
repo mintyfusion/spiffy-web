@@ -298,7 +298,7 @@
 }
 
 @include responsive(">=400px", "<480px", 320px);
-@include responsive(">=350px", "<400px", 315px);
+@include responsive(">=350px", "<400px", 330px);
 @include responsive(">=480px", "<546px", 300px);
 @include responsive(">=546px", "<700px", 270px);
 @include responsive(">=700px", "<900px", 290px);
