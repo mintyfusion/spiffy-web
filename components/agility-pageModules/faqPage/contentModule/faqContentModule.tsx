@@ -95,7 +95,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                     <h2>{props.module.fields.title}</h2>
                 </Row>
             </Stack>
-            {!data.searchValue
+            {data.searchValue
                 && <TabsStack activeTab={activeTab} setActiveTab={setActiveTab} tags={props.module.fields.tags} />
             }
             <Stack className="gap-4" ref={contentRef}>
