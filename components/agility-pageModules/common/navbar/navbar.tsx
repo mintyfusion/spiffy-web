@@ -41,10 +41,6 @@ const Navbar = (props: INavbarProps): JSX.Element => {
         breakpoint && toggle();
     }, [breakpoint, toggle]);
 
-    // const closeNavbar = React.useCallback(() => {
-    //     setToggle(false);
-    // }, []);
-
     return <>
         <BTNavbar
             collapseOnSelect
