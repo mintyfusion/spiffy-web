@@ -1,0 +1,53 @@
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+$spacing: 20px;
+$btn-margin: calc($spacing / 2);
+
+.cookieConsent {
+    left: 0;
+    z-index: 999;
+    max-width: 575px;
+    background-color: $white;
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.15);
+    padding: $spacing;
+    transform: translateY(200px);
+    animation: slideUp 1s 1.5s linear forwards;
+
+    .buttonCookie {
+        @extend .semiBold20;
+    }
+
+    .contentClass {
+        margin-bottom: $spacing;
+
+        h5 {
+            @extend .semiBold20;
+        }
+
+        span {
+            @extend .regular14;
+
+            a {
+                text-decoration: none;
+                span {
+                    color: $yellow-dark;
+                    
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(200px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
