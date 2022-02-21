@@ -1,3 +1,4 @@
+@use "styles/mixins.scss";
 @import "styles/font/fontGroups.scss";
 @import "styles/includeMedia.scss";
 @import "styles/theme.scss";
@@ -21,7 +22,7 @@
     blockquote {
         &::before {
             content: "";
-            background-image: url("/images/educationDetailsPage/spiffy.svg");
+            background-image: $blockquote-prefix-image;
         }
 
         p:nth-child(odd) {
@@ -44,28 +45,7 @@
             margin: 5rem 0;
         }
 
-        blockquote {
-            width: 68%;
-            margin-left: auto;
-
-            &::before {
-                position: absolute;
-                left: 0%;
-                margin-top: 1rem;
-                width: 150px;
-                height: 95px;
-            }
-
-            p:first-child::before {
-                content: "";
-                position: absolute;
-                margin-left: -10%;
-                height: 115px;
-                border: none;
-                border-right: 3px solid grey;
-                margin-top: 1rem;
-            }
-        }
+        @include blockquoteDesktopCSS();
     }
 
     @include media("<desktop") {
@@ -76,13 +56,8 @@
         blockquote {
             display: flex;
             flex-direction: column;
-
-            &::before {
-                width: 160px;
-                height: 100px;
-                border-bottom: 3px solid $light-grey;
-                background-position-y: -5px;
-            }
         }
+
+        @include blockquoteTabletCSS();
     }
 }
