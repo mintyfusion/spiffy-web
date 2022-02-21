@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 
 import Avatar from "components/game/avatar/gameAvatar";
+import BreakpointChecks from "hooks/enums/breakpointChecks";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import GameDonationCycle from "components/game/gameDonationCycle/gameDonationCycle";
@@ -58,7 +59,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     const [step, setStep] = React.useState<GamePageStepTypes>(GamePageStepTypes.ChooseAvatarSection);
     const [avatarName, setAvatarName] = React.useState<string>("");
     const isBreakpoint998 = useBreakpoint(Breakpoints.LG + breakpointPlus);
-    const isMD = useBreakpoint(Breakpoints.MD);
+    const isMDPlus = useBreakpoint(Breakpoints.MD, BreakpointChecks.Greater);
 
     const [avatarStyles, avatarStyleUpdateId, updateAvatarStyle] = useStyles<KeyCSS>();
     const [friendsStyle, , updateFriendsStyle] = useStyles<KeyCSS>();
@@ -218,15 +219,14 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     }, [updateAvatarStyle]);
 
     /**
-     * Filter selected friends from avatars.
+     * Adds friends on click of the non-selected avatars.
      * @param friendAvatar user selected friends.
      */
-    const addFriends = React.useCallback((friendAvatar: GamePageAvatarType) => {
+    const addFriend = React.useCallback((friendAvatar: GamePageAvatarType) => {
         if (step3Ref.current) {
-            const selectedFriends: GamePageAvatarType[] = friendsAvatars.filter((avatar) => avatar == friendAvatar);
-            setAddedFriends((currentFriends: GamePageAvatarType[]) => [...currentFriends, ...selectedFriends]);
+            setAddedFriends((currentFriends: GamePageAvatarType[]) => [...currentFriends, friendAvatar]);
         }
-    }, [friendsAvatars]);
+    }, []);
 
     /**
      * Setting styles of avatars in first section.
@@ -307,7 +307,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
 
             case GamePageStepTypes.NameAvatarSection: {
-                isMD && setViewportHeight();
+                isMDPlus && setViewportHeight();
                 const boundsFirst = step2TargetRef.current?.getBoundingClientRect();
                 if (boundsFirst) {
                     updateAvatarStyle({
@@ -337,7 +337,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                 break;
             }
         }
-    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, isMD, updateAvatarStyle]);
+    }, [setAvatarPositions, step, seletedAvatar, setFriendsPositions, isMDPlus, updateAvatarStyle]);
 
     /**
      * Resize function
@@ -475,8 +475,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                         <div
                                                             className="position-absolute"
                                                             style={friendsStyle && friendsStyle[avatar]}
-                                                            onClick={() => addFriends(avatar)}
-                                                        >
+                                                            onClick={() => addFriend(avatar)}>
                                                             <Avatar color={avatar} />
                                                         </div>
                                                     </React.Fragment>
