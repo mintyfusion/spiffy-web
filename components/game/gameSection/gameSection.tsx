@@ -251,8 +251,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     /**
      * Section two animation and scroll on continue.
      */
-    const handleContinueBtnClick = React.useCallback((event: React.FormEvent<EventTarget>) => {
-        event.preventDefault();
+    const handleContinueBtnClick = React.useCallback(() => {
         if (!avatarName) {
             return;
         }
@@ -420,14 +419,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
                                     <div className={styles.targetOne} ref={step2TargetRef}></div>
-                                    <form onSubmit={handleContinueBtnClick} className="w-100">
-                                        <input
-                                            type="text"
-                                            placeholder="Enter name"
-                                            className="w-100 text-center"
-                                            onChange={handleAvatarNameChange}
-                                        />
-                                    </form>
+                                    <input
+                                        type="text"
+                                        placeholder="Enter name"
+                                        className="w-100 text-center"
+                                        onChange={handleAvatarNameChange}
+                                    />
                                     <PrimaryButton onClick={handleContinueBtnClick} className="w-100">
                                         Continue
                                     </PrimaryButton>
