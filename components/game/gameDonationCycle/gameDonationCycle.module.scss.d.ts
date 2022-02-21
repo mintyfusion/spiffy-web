@@ -14,8 +14,6 @@ export type Styles = {
   "bold90": string;
   "boldDesktop25Mobile9": string;
   "boldDesktop41Mobile25": string;
-  "boldGame41": string;
-  "boldGame67": string;
   "card": string;
   "coin": string;
   "contentAnimation": string;

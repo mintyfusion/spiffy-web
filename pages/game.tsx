@@ -12,4 +12,5 @@ const Game = (): JSX.Element =>
             <GameMain />
         </GameContentWrapper>
     </Layout>;
+    
 export default Game;

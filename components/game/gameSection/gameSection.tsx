@@ -22,10 +22,10 @@ import useStyles from "hooks/useStyles";
 import styles from "components/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
-const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
-const rowCenter = flexbox({ hAlign: "center" });
+const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
+const rowHCenter = flexbox({ hAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
-const rowVCenter = flexbox({ vAlign: "center", vertical: true, });
+const colVCenter = flexbox({ vAlign: "center", vertical: true, });
 const friendsTimeout = 2000;
 const boundDivide = 2;
 const containerId = "containerElement";
@@ -36,8 +36,9 @@ const friendsSliceEndIndex = 4;
 const breakpointPlus = 8;
 
 const avatars = Object.values(GamePageAvatarType);
+
 /**
- * First section remove orange avatar.
+ * Removing orange avatar from the avatars to display on first step.
  */
 const step1Avatars = avatars.filter((avatar) => avatar !== GamePageAvatarType.Orange);
 
@@ -392,8 +393,8 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                     ref={modalBodyRef}
                 >
                     <FontAwesomeIcon icon={faTimes} width="30" height="35" onClick={props.closeModal} className={`${styles.close} position-fixed`} />
-                    <div className={`w-100 ${rowVCenter}`}>
-                        <div className={`${styles.card} ${styles.gameStepTwoWrapper} ${rowCenter}`} ref={step1Ref}>
+                    <div className={`w-100 ${colVCenter}`}>
+                        <div className={`${styles.card} ${styles.gameStepTwoWrapper} ${rowHCenter}`} ref={step1Ref}>
                             <h2 className={`${styles.avatarHeading}`}>Choose your avatar</h2>
                             {step1Avatars.map((avatar, index) =>
                                 <Link
@@ -413,7 +414,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                             )}
                         </div>
 
-                        <Element name={GamePageStepTypes.NameAvatarSection} className={`${styles.card} ${rowCenter}`}>
+                        <Element name={GamePageStepTypes.NameAvatarSection} className={`${styles.card} ${rowHCenter}`}>
                             <div className={`${colCenter} ${styles.gameStepTwoWrapper}`}>
                                 <h2 className={`${styles.avatarHeading}`}>Name your avatar</h2>
                                 <div className={`${colCenter} ${styles.gameStepTwo}`}>
@@ -435,20 +436,20 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
 
                         <Element
                             name={GamePageStepTypes.AddFriendsSection}
-                            className={`${styles.card} ${styles.transparent} ${rowCenter}`}>
+                            className={`${styles.card} ${styles.transparent} ${rowHCenter}`}>
                             <div className={`${styles.gameStepThree} ${rowHBetween}`}>
                                 <div className={`${styles.userColumn} ${colCenter}`}>
                                     <div className={`${styles.userColumnInner} w-100`}>
                                         <h2 className={`${styles.avatarHeading} text-center d-lg-none d-sm-block`}>
                                             Add four friends
                                         </h2>
-                                        <Row className={`${horizontalAlign} w-100 m-0`}>
+                                        <Row className={`${rowCenter} w-100 m-0`}>
                                             {renderAddedFriends(true)}
                                         </Row>
-                                        <Row className={`${horizontalAlign} w-100 m-0`}>
+                                        <Row className={`${rowCenter} w-100 m-0`}>
                                             <div className={styles.targetTwo} ref={step3Ref}></div>
                                         </Row>
-                                        <Row className={`${horizontalAlign} w-100 m-0`}>
+                                        <Row className={`${rowCenter} w-100 m-0`}>
                                             {renderAddedFriends(false)}
                                         </Row>
 
@@ -456,12 +457,12 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                     </div>
                                 </div>
                                 <div
-                                    className={`${styles.friendsColumn} ${rowVCenter}`}
+                                    className={`${styles.friendsColumn} ${colVCenter}`}
                                     ref={friendsSectionRef}
                                 >
                                     <h2 className={`${styles.avatarHeading}`}>Add four friends</h2>
                                     {step === GamePageStepTypes.AddFriendsSection
-                                        ? <div className={`${styles.percentageWrapper} ${rowVCenter} flex-wrap`}>
+                                        ? <div className={`${styles.percentageWrapper} ${colVCenter} flex-wrap`}>
                                             {friendsAvatars.map((avatar: GamePageAvatarType) => {
                                                 if (addedFriends.find((addedAvatar) => addedAvatar === avatar)) {
                                                     return null;
@@ -491,7 +492,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                 name={avatarName} />
                         </Element>
 
-                        <Element name={GamePageStepTypes.SignupSection} className={`${styles.card} ${rowCenter}`}>
+                        <Element name={GamePageStepTypes.SignupSection} className={`${styles.card} ${rowHCenter}`}>
                             <GameSignup />
                         </Element>
                     </div>

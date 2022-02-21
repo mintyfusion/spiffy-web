@@ -4,6 +4,14 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
 
+@mixin responsive($start, $end, $maxWidth) {
+    @include media($start, $end) {
+        .modalBody .gameStepThree {
+            max-width: $maxWidth;
+        }
+    }
+}
+
 .modalBody {
     background-color: $dirty-white;
 
@@ -199,7 +207,7 @@
                 width: 100%;
                 height: 50%;
 
-                .userColumnInner{
+                .userColumnInner {
                     max-width: 340px;
                 }
                 h2 {
@@ -266,13 +274,6 @@
 @include media(">=1100px", "<1200px") {
     .modalBody .gameStepThree .friendsColumn .percentageWrapper svg {
         @include imgProperties(165px);
-    }
-}
-@mixin responsive($start, $end, $maxWidth) {
-    @include media($start, $end) {
-        .modalBody .gameStepThree {
-            max-width: $maxWidth;
-        }
     }
 }
 

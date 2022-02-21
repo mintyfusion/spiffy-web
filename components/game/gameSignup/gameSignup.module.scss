@@ -2,11 +2,17 @@
 @import "styles/theme.scss";
 @import "styles/font/fontGroups.scss";
 @import "styles/mixins.scss";
-@import "styles/variables.scss";
+
+@mixin responsive($start, $end, $maxWidth) {
+    @include media($start, $end) {
+        .gameStepSix .signUpsection button {
+            max-width: $maxWidth;
+        }
+    }
+}
 
 .gameStepSix {
     padding: 100px 0;
-    width: 100%;
 
     .signUpsection {
         .avatarHeading,
@@ -20,25 +26,9 @@
 
         button {
             max-width: 25%;
-            width: 100%;
         }
     }
 }
-
-@include media(">=phone", "<800px") {
-    .gameStepSix .signUpsection button {
-        max-width: 80%;
-    }
-}
-
-@include media(">=800px", "<900px") {
-    .gameStepSix .signUpsection button {
-        max-width: 50%;
-    }
-}
-
-@include media(">=900px", "<1300px") {
-    .gameStepSix .signUpsection button {
-        max-width: 40%;
-    }
-}
+@include responsive(">=phone", "<800px", 80%);
+@include responsive(">=800px", "<900px", 50%);
+@include responsive(">=900px", "<1300px", 40%);

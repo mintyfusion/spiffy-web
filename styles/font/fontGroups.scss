@@ -52,7 +52,7 @@
     @include typeFace($fourteen, $fortyOne, $bold);
 }
 
-.boldGame41 {
+.bold41 {
     @include typeFace($twentyFive, $fortyOne, $bold);
 }
 
@@ -64,7 +64,7 @@
     @include typeFace($twentyFive, $sixtySeven, $bold);
 }
 
-.boldGame67 {
+.bold67 {
     @include typeFace($thirty, $sixtySeven, $bold);
 }
 
@@ -128,6 +128,7 @@
 .regular-desktop30-mobile20 {
     @include typeFace($twenty, $thirty, $bold);
 }
+
 .regular-desktop16-mobile7 {
     @include typeFace($seven, $sixteen, $regular);
 }
