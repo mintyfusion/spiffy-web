@@ -23,7 +23,7 @@ const VideoSection = (props: ModuleProps<IVideoSectionProps>): JSX.Element => {
 
     return (
         <Row className={`${styles.videoSectionContainer} m-0`}>
-            <VideoPlayer width="100%" height={breakpoint ? "75vh" : "100%"} playing controls {...preparedData} />
+            <VideoPlayer width="100%" height={breakpoint ? "75vh" : "100%"} controls {...preparedData} />
         </Row>
     );
 };
