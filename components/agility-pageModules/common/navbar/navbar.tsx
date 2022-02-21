@@ -19,7 +19,6 @@ const colCenter = flexbox({ vertical: true, vAlign: "center", hAlign: "center" }
 
 const Navbar = (props: INavbarProps): JSX.Element => {
     const [backgroundClass, setBackgroundClass] = React.useState<string>("");
-    // const [toggle, setToggle] = React.useState<boolean>(false);
     const [toggled, { toggle, setFalse }] = useBoolean(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
