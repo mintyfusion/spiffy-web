@@ -22,7 +22,6 @@ const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
 
 const contentListParams = {
-    referenceName: "FAQContentList",
     languageCode: "en-us",
     contentLinkDepth: 2,
     depth: 2,
@@ -44,6 +43,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         </div>;
 
     const finalParams = React.useMemo(() => ({
+        referenceName: "FAQContentList",
         ...contentListParams
     }), []);
 
