@@ -27,7 +27,7 @@
         @extend .regular-desktop30-mobile20;
         color: $yellow;
         span {
-            animation: zoomInease 0.3s;
+            animation: zoomIn ease 0.3s;
         }
     }
 

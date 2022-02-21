@@ -16,7 +16,7 @@ import useStyles from "hooks/useStyles";
 
 const colVCenter = flexbox({ vAlign: "center", vertical: true, });
 const rowHCenter = flexbox({ hAlign: "center" });
-const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
+const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
 const rowHEnd = flexbox({ hAlign: "end" });
@@ -263,7 +263,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         </p>
                     </div>
                     <Row className={rowHBetween}>
-                        <Col className={`${horizontalAlign} ${styles.cycleheigth}`}>
+                        <Col className={`${rowCenter} ${styles.cycleheigth}`}>
                             {donation(styles.donationAmount1, GamePageAvatarType.Green, "1", `${styles.cycle1} text-center`)}
                         </Col>
                     </Row>
@@ -306,7 +306,7 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                         {donation(styles.donationAmount8, GamePageAvatarType.Red, "8", styles.cycle8)}
                         {donation(styles.donationAmount6, GamePageAvatarType.Red, "6", styles.cycle6)}
                     </Row>
-                    <Row className={horizontalAlign}>
+                    <Row className={rowCenter}>
                         {donation(styles.donationAmount7, GamePageAvatarType.Green, "7", styles.cycle7)}
                     </Row>
                 </div>

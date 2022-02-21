@@ -43,7 +43,6 @@ export type Styles = {
   "regularDesktop30Mobile20": string;
   "semiBold90": string;
   "zoomIn": string;
-  "zoomInease": string;
 };
 
 export type ClassNames = keyof Styles;

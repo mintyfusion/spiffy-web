@@ -43,12 +43,12 @@ const ButtonList = (props: IButtonListProps): JSX.Element => {
         className={`${styles.nav} w-100 d-block text-center position-relative`}
         expanded={expanded}
         onClick={isLG ? navToggle : undefined}>
-        <Navbar.Brand className="d-lg-none">{`${valuePrefix ? valuePrefix : ""}${selected}${valueSuffix ? valueSuffix : ""}`}</Navbar.Brand>
+        <Navbar.Brand className="d-lg-none">{`${selected !== "" ? `${valuePrefix ? valuePrefix : ""}${selected}${valueSuffix ? valueSuffix : ""}` : "Select amount"}`}</Navbar.Brand>
         <Navbar.Toggle className={styles.navToggle}>
             <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
         </Navbar.Toggle>
         <hr className={`d-block d-lg-none w-100 ${styles.activeTab} opacity-100`} />
-        <Navbar.Collapse>
+        <Navbar.Collapse className={`${styles.show} w-100`}>
             <Nav className={`me-auto ${!isLG && "gap-4"} w-100`}>
                 {donationCycle}
             </Nav>

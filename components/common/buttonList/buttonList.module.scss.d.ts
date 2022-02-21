@@ -6,6 +6,7 @@ export type Styles = {
   "inactive": string;
   "nav": string;
   "navToggle": string;
+  "show": string;
 };
 
 export type ClassNames = keyof Styles;

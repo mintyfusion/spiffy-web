@@ -4,6 +4,14 @@
 @import "styles/mixins.scss";
 @import "styles/variables.scss";
 
+@mixin responsive($start, $end, $top) {
+    @include media($start, $end) {
+        .donationSections .coin {
+            top: $top;
+        }
+    }
+}
+
 .donationSections {
     height: $vh;
 
@@ -103,7 +111,7 @@
             padding: 20px;
             span {
                 @include animation(displayAnimation, 0.5s);
-                height: 20px;
+                height: 25px;
                 @extend .regular-desktop16-mobile7;
             }
             svg {
@@ -289,17 +297,12 @@
     }
 }
 
-@include media(">=500px", "<900px") {
-    .donationSections .coin {
-        top: 295px;
-    }
-}
-
-@include media(">=900px", "<1000px") {
-    .donationSections .coin {
-        top: 300px;
-    }
-}
+@include responsive(">=400px", "<480px", 320px);
+@include responsive(">=350px", "<400px", 315px);
+@include responsive(">=480px", "<546px", 300px);
+@include responsive(">=546px", "<700px", 270px);
+@include responsive(">=700px", "<900px", 290px);
+@include responsive(">=900px", "<1000px", 300px);
 
 @include media(">=1000px", "<1400px") {
     .donationSections {
