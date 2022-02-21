@@ -20,7 +20,7 @@ const CardPlaceHolder = (props: HTMLAttributes<HTMLDivElement>): JSX.Element =>
                     <span className="placeholder col-6"/>
                     <span className="placeholder col-8"/>
                 </p>
-                <a href="#" tabIndex={-1} className="btn btn-warning disabled placeholder col-6"></a>
+                <a tabIndex={-1} className="btn btn-warning disabled placeholder col-6"></a>
             </div>
         </Col>
     </Row>;
