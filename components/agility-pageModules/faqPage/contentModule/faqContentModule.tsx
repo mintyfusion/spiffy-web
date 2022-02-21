@@ -90,18 +90,15 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
 
     return (
         <div className={`${styles.contentContainer} px-2 px-md-5`}>
-            <Stack className={`${styles.content} align-items-center`} gap={4}>
-                <Row className={`${styles.contentHeading} w-100 text-start`}>
+            <Stack className={`${styles.content} align-items-center`} gap={4} ref={contentRef}>
+                <Row className={`${styles.contentHeading} w-100 text-start`} >
                     <h2>{props.module.fields.title}</h2>
                 </Row>
             </Stack>
             {!data.searchValue
                 && <TabsStack activeTab={activeTab} setActiveTab={setActiveTab} tags={props.module.fields.tags} />
             }
-            <Stack className="gap-4" ref={contentRef}>
-                {!isLoading && !resultData?.items.length
-                    && <h1 className="text-center">No FAQ Found</h1>
-                }
+            <Stack className="gap-4" >
                 {!isLoading
                     && resultData
                     && resultData.items
@@ -129,6 +126,13 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                         )}
 
                 {isLoading && <Spinner className={rowCenter} />}
+                {!isLoading
+                    && (!resultData?.items.length
+                        || resultData?.items
+                            .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
+                        && <h1 className="text-center">No FAQ Found</h1>
+                    )
+                }
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>
         </div>

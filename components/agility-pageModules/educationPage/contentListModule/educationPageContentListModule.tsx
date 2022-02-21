@@ -11,7 +11,6 @@ import FilterTypes from "utils/api/enums/filterTypes";
 import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
 import IContentSectionProps from "components/agility-pageModules/educationPage/contentListModule/interfaces/IContentListProps";
-import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import TabsStack from "components/agility-pageModules/common/tabsStack/tabsStack";
 import useGetContentList from "hooks/useGetContentList";
 
@@ -21,7 +20,6 @@ const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
 const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
-    const [showMore, setShowMore] = React.useState({});
     const searchData = React.useContext(SearchContext);
     const searchFilterParams = React.useMemo(() => ({
         operator: FilterTypes.LIKE,
@@ -86,14 +84,6 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                             : resultData &&
                             <>
                                 <CardContainer content={resultData} />
-                                <Row>
-                                    {!showMore[content.fields.name] && !!resultData?.items?.length &&
-                                        <PrimaryButton
-                                            onClick={() => setShowMore({ [content.fields.name]: true })}
-                                        >
-                                            Show More
-                                        </PrimaryButton>}
-                                </Row>
                             </>
                         : ""
                     }
