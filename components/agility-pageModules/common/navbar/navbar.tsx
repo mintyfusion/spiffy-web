@@ -8,6 +8,7 @@ import Link from "components/agility-pageModules/common/link/link";
 import Logo from "components/agility-pageModules/common/logo/logo";
 import LogoVariants from "components/agility-pageModules/common/logo/enums/logoVariants";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
+import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/common/navbar/navbar.module.scss";
@@ -18,7 +19,8 @@ const colCenter = flexbox({ vertical: true, vAlign: "center", hAlign: "center" }
 
 const Navbar = (props: INavbarProps): JSX.Element => {
     const [backgroundClass, setBackgroundClass] = React.useState<string>("");
-    const [toggle, setToggle] = React.useState<boolean>(false);
+    // const [toggle, setToggle] = React.useState<boolean>(false);
+    const [toggled, { toggle, setFalse }] = useBoolean(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
 
     // Adding dark background when page is scrolled
@@ -37,12 +39,12 @@ const Navbar = (props: INavbarProps): JSX.Element => {
     }, [props.sticky]);
 
     const handleNavbarToggle = React.useCallback(() => {
-        breakpoint && setToggle(!toggle);
+        breakpoint && toggle();
     }, [breakpoint, toggle]);
 
-    const closeNavbar = React.useCallback(() => {
-        setToggle(false);
-    }, []);
+    // const closeNavbar = React.useCallback(() => {
+    //     setToggle(false);
+    // }, []);
 
     return <>
         <BTNavbar
@@ -63,7 +65,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
             variant="dark"
         >
             <Link href="/" className={`${styles.headerLogo} me-lg-3 me-xl-5`} >
-                <span onClick={closeNavbar}><Logo variant={LogoVariants.header} /></span>
+                <span onClick={setFalse}><Logo variant={LogoVariants.header} /></span>
             </Link>
             <div
                 className={`
@@ -72,7 +74,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                     d-inline-flex 
                     d-lg-none 
                     ${styles.menuButton} 
-                    ${toggle && styles.open} 
+                    ${toggled && styles.open} 
                     position-relative 
                     ${rowCenter}
                     `}
@@ -96,7 +98,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                                  pb-3
                                 `}
                 ${breakpoint
-                        ? toggle
+                        ? toggled
                             ? styles.expandNavbar
                             : styles.collapseNavbar
                         : "d-lg-block"

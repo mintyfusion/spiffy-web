@@ -13,6 +13,7 @@ import IField from "types/IField";
 import postData from "utils/postData";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import renderHtml from "utils/renderHtml";
+import useBoolean from "hooks/useBoolean";
 import UserTypes from "components/agility-pageModules/contactPage/enums/userTypes";
 
 import styles from "components/agility-pageModules/contactPage/contactForm.module.scss";
@@ -25,13 +26,13 @@ const EMAIL_PATTERN = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 
 const rowAlignCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const rowAlignStretch = flexbox({ hAlign: "center", vAlign: "stretch" });
-const rowALignEnd=flexbox({ hAlign: "end", vAlign: "center" });
+const rowALignEnd = flexbox({ hAlign: "end", vAlign: "center" });
 const colAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 
 const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
     const { fields } = props.module;
-    const [submitted, setSubmitted] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
+    const [submitted, { setTrue: setSubmittedTrue, setFalse: setSubmittedFalse }] = useBoolean(false);
+    const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] = useBoolean(false);
     const [userType, setUserType] = React.useState<UserTypes>(UserTypes.Creator);
     const [formFields, setFields] = React.useState<Record<string, IField>>(contactFormFields);
 
@@ -115,9 +116,9 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
 
         if (hasError) {
             setFields(newFormFields);
-            setSubmitted(false);
+            setSubmittedFalse();
         } else {
-            setLoading(true);
+            setLoadingTrue();
             const postObj: Record<string, string> = {};
             for (const key in formFields) {
                 postObj[key] = formFields[key].value;
@@ -128,14 +129,16 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
             setFields(formFields);
 
             if (response) {
-                setSubmitted(true);
+                setSubmittedTrue();
+
             } else {
-                setSubmitted(false);
+                setSubmittedFalse();
+
             }
 
-            setLoading(false);
+            setLoadingFalse();
         }
-    }, [formFields, loading, userType]);
+    }, [formFields, loading, userType, setSubmittedTrue, setSubmittedFalse, setLoadingTrue, setLoadingFalse]);
 
     return (
         <Row className={`${styles.container} w-100 m-0 flex-column-reverse flex-md-row`}>

@@ -1,7 +1,7 @@
 import { Accordion, Row, Stack } from "react-bootstrap";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ModuleProps, renderHTML } from "@agility/nextjs";
+import { ModuleProps } from "@agility/nextjs";
 import dynamic from "next/dynamic";
 import React from "react";
 
@@ -10,6 +10,7 @@ import ContentCategory from "components/agility-pageModules/educationPage/conten
 import flexbox from "utils/flexbox";
 import IFaqContentModuleData from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleData";
 import IFaqContentModuleProps from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleProps";
+import renderHtml from "utils/renderHtml";
 import useGetContentList from "hooks/useGetContentList";
 
 import styles from "components/agility-pageModules/faqPage/contentModule/faqContentModule.module.scss";
@@ -74,7 +75,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                                         </Stack>
                                     </Accordion.Header>
                                     <Accordion.Body className={styles.accordianBody}>
-                                        <div dangerouslySetInnerHTML={renderHTML(post.fields.description)} />
+                                        <div dangerouslySetInnerHTML={renderHtml(post.fields.description)} />
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>
@@ -121,7 +122,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                                         </Stack>
                                     </Accordion.Header>
                                     <Accordion.Body className={styles.accordianBody}>
-                                        <div dangerouslySetInnerHTML={renderHTML(post.fields.description)} />
+                                        <div dangerouslySetInnerHTML={renderHtml(post.fields.description)} />
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>

@@ -18,7 +18,7 @@ import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/common/tabsStack/tabsStack.module.scss";
 
-const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
+const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const menuTabsPerView = 5;
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
@@ -40,14 +40,14 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
                     key={content.fields.name}
                     onClick={() => setActiveTab(content.fields.name)}
                     className={`
-                                w-100
-                                px-1
-                                py-3 
-                                ${styles.tab} 
-                                ${activeTab === content.fields.name
+                          w-100
+                          px-1
+                          py-3 
+                          ${styles.tab} 
+                          ${activeTab === content.fields.name
                             ? styles.active
                             : styles.inactive}
-                                ${horizontalAlign}
+                          ${rowCenter}
                              `}
                 >
                     {content.fields.name.replace("_", " ")}
@@ -57,7 +57,7 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
 
     const tabsContainer = React.useMemo(() =>
         breakpoint
-            ? <div className={`${horizontalAlign} gap-2 mb-1 mb-md-4 ${styles.tabsStackContainer}`}>
+            ? <div className={`${rowCenter} gap-2 mb-1 mb-md-4 ${styles.tabsStackContainer}`}>
                 <Navbar
                     bg={styles.dirtyWhite}
                     expand="lg"
