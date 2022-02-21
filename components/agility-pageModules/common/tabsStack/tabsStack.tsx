@@ -20,12 +20,14 @@ import styles from "components/agility-pageModules/common/tabsStack/tabsStack.mo
 
 const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const menuTabsPerView = 5;
+const smallScreenTabsPerView = 3;
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
 const TabsStack = (props: ITabsStackProps): JSX.Element => {
     const { activeTab, setActiveTab, tags } = props;
     const breakpoint = useBreakpoint(Breakpoints.LG);
+    const tabletBreakpoint = useBreakpoint(Breakpoints.XXL);
     const tabsRef = React.useRef<HTMLDivElement>();
     const [expanded, { toggle: toggleExpanding }] = useBoolean(false);
 
@@ -84,7 +86,7 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
             </div>
             : <div className={`position-relative ${tags.length > menuTabsPerView && "px-5"} mb-1 mb-md-4`} >
                 <Swiper
-                    slidesPerView={menuTabsPerView}
+                    slidesPerView={tabletBreakpoint ? smallScreenTabsPerView : menuTabsPerView}
                     centeredSlides={false}
                     spaceBetween={30}
                     navigation={true}
@@ -93,7 +95,7 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
                 >
                     {tabData}
                 </Swiper>
-            </div>, [activeTab, breakpoint, expanded, handleNavigation, tabData, tags?.length]);
+            </div>, [activeTab, breakpoint, tabletBreakpoint, expanded, handleNavigation, tabData, tags?.length]);
 
     return (
         <>
