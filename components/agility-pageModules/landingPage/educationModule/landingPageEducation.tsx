@@ -9,7 +9,7 @@ import PrimaryButton from "components/agility-pageModules/common/primaryButton/p
 
 import styles from "components/agility-pageModules/landingPage/educationModule/landingPageEducation.module.scss";
 
-const horizontalAlign = flexbox({ hAlign: "center" });
+const rowHCenter = flexbox({ hAlign: "center" });
 
 const LandingPageEducation = (props: ModuleProps<ILandingPageEducationProps>): JSX.Element => {
     const { fields } = props.module;
@@ -18,7 +18,7 @@ const LandingPageEducation = (props: ModuleProps<ILandingPageEducationProps>): J
         <Row className={styles.contentHeading}>
             <h2>{fields.title}</h2>
         </Row>
-        <Row className={`gap-1 gap-md-4 ${horizontalAlign}`}>
+        <Row className={`gap-1 gap-md-4 ${rowHCenter}`}>
             <CardContainer content={{ items: fields.educationTiles }} />
         </Row>
         <Row>

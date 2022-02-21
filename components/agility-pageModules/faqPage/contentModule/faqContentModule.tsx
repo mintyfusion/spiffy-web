@@ -18,10 +18,12 @@ import styles from "components/agility-pageModules/faqPage/contentModule/faqCont
 const Spinner = dynamic(() => import("components/agility-pageModules/common/spinner/Spinner"));
 const TabsStack = dynamic(() => import("components/agility-pageModules/common/tabsStack/tabsStack"));
 
-const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
+const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
 
 const contentListParams = {
+    referenceName: "FAQContentList",
+    languageCode: "en-us",
     contentLinkDepth: 2,
     depth: 2,
     take: 50
@@ -33,7 +35,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     const data = React.useContext(SearchContext);
 
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
-        <div className={` h-100 ${horizontalAlign} ${styles.customAccordianButton}`}>
+        <div className={` h-100 ${rowCenter} ${styles.customAccordianButton}`}>
             <div>
                 <FontAwesomeIcon icon={faChevronLeft} width="20" height="35" />
                 <FontAwesomeIcon icon={faChevronLeft} width="20" height="35" />
@@ -42,8 +44,6 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         </div>;
 
     const finalParams = React.useMemo(() => ({
-        referenceName: "FAQContentList",
-        languageCode: "en-us",
         ...contentListParams
     }), []);
 
@@ -128,7 +128,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             </Accordion>
                         )}
 
-                {isLoading && <Spinner className={horizontalAlign} />}
+                {isLoading && <Spinner className={rowCenter} />}
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>
         </div>
