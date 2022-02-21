@@ -218,15 +218,14 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
     }, [updateAvatarStyle]);
 
     /**
-     * Filter selected friends from avatars.
+     * Adds friends on click of the non-selected avatars.
      * @param friendAvatar user selected friends.
      */
-    const addFriends = React.useCallback((friendAvatar: GamePageAvatarType) => {
+    const addFriend = React.useCallback((friendAvatar: GamePageAvatarType) => {
         if (step3Ref.current) {
-            const selectedFriends: GamePageAvatarType[] = friendsAvatars.filter((avatar) => avatar == friendAvatar);
-            setAddedFriends((currentFriends: GamePageAvatarType[]) => [...currentFriends, ...selectedFriends]);
+            setAddedFriends((currentFriends: GamePageAvatarType[]) => [...currentFriends, ...[friendAvatar]]);
         }
-    }, [friendsAvatars]);
+    }, []);
 
     /**
      * Setting styles of avatars in first section.
@@ -473,7 +472,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
                                                         <div
                                                             className="position-absolute"
                                                             style={friendsStyle && friendsStyle[avatar]}
-                                                            onClick={() => addFriends(avatar)}>
+                                                            onClick={() => addFriend(avatar)}>
                                                             <Avatar color={avatar} />
                                                         </div>
                                                     </React.Fragment>
