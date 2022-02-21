@@ -223,7 +223,7 @@ const GameSection = (props: IGameSectionProps): JSX.Element => {
      */
     const addFriend = React.useCallback((friendAvatar: GamePageAvatarType) => {
         if (step3Ref.current) {
-            setAddedFriends((currentFriends: GamePageAvatarType[]) => [...currentFriends, ...[friendAvatar]]);
+            setAddedFriends((currentFriends: GamePageAvatarType[]) => [...currentFriends, friendAvatar]);
         }
     }, []);
 
