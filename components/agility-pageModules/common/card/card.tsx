@@ -18,7 +18,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
     return (
         <BaseCard className={`${styles.card} ${columnAlign} p-3 flex-grow-1 w-100`}>
             <div className="cardImageContainer">
-                <Image src={fields.image.url} width="10px" height="5px" layout="responsive" />
+                <Image src={fields.image.url} width="10px" height="5px" layout="responsive" objectFit="cover" />
             </div>
             <BaseCard.Body className={columnAlignCenter}>
                 <BaseCard.Title className={`${styles.cardTag} mb-3`}>
