@@ -30,7 +30,7 @@ export default function CookieConsent(): JSX.Element | null {
                 <h5>Notice</h5>
                 <span>
                     We and selected partners use cookies or similar technologies as specified in the
-                    <Link href="/privacy-policy"> <span>privacy policy.</span></Link>
+                    <Link href="/privacy"> <span>privacy policy.</span></Link>
                 </span>
             </div>
             <PrimaryButton className={`${styles.buttonCookie} py-2`} onClick={handleGotIt}>Got it!</PrimaryButton>

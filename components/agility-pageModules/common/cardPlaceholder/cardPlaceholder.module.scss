@@ -1,0 +1,5 @@
+@use "styles/theme.scss";
+
+:export {
+    placeholderColor:  theme.$light-grey;
+}

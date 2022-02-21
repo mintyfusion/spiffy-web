@@ -7,7 +7,7 @@ import styleWords from "utils/styleWords";
 
 import styles from "components/agility-pageModules/common/caption/caption.module.scss";
 
-const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });
+const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowHAlignCenter = flexbox({ hAlign: "center" });
 
 const Caption = (props: ICaptionProps): JSX.Element => {
@@ -19,7 +19,7 @@ const Caption = (props: ICaptionProps): JSX.Element => {
         <div className={`carousel-caption ${styles.caption} ${props.captionContainerClass}`}>
             <Stack className={`${styles.banner}`}>
                 <Row className={`${rowHAlignCenter} ${styles.captionContent} `}>
-                    <Col className={`${columnAlignCenter} align-items-center no-gutters`}>
+                    <Col className={`${columnAlignCenter} no-gutters`}>
                         {preparedData.length > 1
                             ? <>
                                 <h3

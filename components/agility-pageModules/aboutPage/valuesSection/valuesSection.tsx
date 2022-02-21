@@ -18,7 +18,7 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
         ? "fade"
         : "fade show", [breakpoint, cardFocused]);
 
-    const ImageVisibility = React.useCallback((index: number) => cardFocused === index + 1
+    const imageVisibility = React.useCallback((index: number) => cardFocused === index + 1
         ? "fade show"
         : breakpoint
             ? " fade show"
@@ -53,7 +53,7 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
                             />
                             <div
                                 className={`
-                                    ${ImageVisibility(index)} 
+                                    ${imageVisibility(index)} 
                                     ${styles.cardInfo} 
                                     position-absolute
                                     bottom-0 
