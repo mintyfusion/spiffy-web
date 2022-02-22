@@ -9,8 +9,7 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
-  "boldGame41": string;
-  "boldGame67": string;
+  "boldDesktop41Mobile25": string;
   "btnGetStarted": string;
   "content2": string;
   "content2Container": string;
@@ -23,6 +22,7 @@ export type Styles = {
   "leftSection": string;
   "leftSectionRight": string;
   "medium25": string;
+  "regular14": string;
   "regular16": string;
   "regular20": string;
   "regular24": string;
