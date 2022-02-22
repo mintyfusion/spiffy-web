@@ -14,7 +14,7 @@ import styles from "components/common/buttonList/buttonList.module.scss";
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
-const ButtonList = (props: IButtonListProps): JSX.Element => {
+const ButtonList = ({ onButtonClick, lisItems, ...props }: IButtonListProps): JSX.Element => {
     const [expanded, { toggle: navToggle }] = useBoolean(false);
     const isLG = useBreakpoint(Breakpoints.LG);
 
@@ -23,10 +23,10 @@ const ButtonList = (props: IButtonListProps): JSX.Element => {
     const valueSuffix: string = props.valueSuffix;
 
     const donationCycle = React.useMemo(() =>
-        props.lisItems.map((donation) =>
+        lisItems.map((donation) =>
             <PrimaryButton
                 key={donation}
-                onClick={() => props.onButtonClick(donation)}
+                onClick={() => onButtonClick(donation)}
                 className={`
               ${horizontalAlign} 
               ${styles.donationButton}
@@ -36,14 +36,18 @@ const ButtonList = (props: IButtonListProps): JSX.Element => {
                 {`${valuePrefix ? valuePrefix : ""}${donation}${valueSuffix ? valueSuffix : ""}`}
 
             </PrimaryButton>
-        ), [selected, valuePrefix, valueSuffix, props.onButtonClick]);
+        ), [selected, valuePrefix, valueSuffix, onButtonClick, lisItems]);
 
     return <Navbar
         expand="lg"
         className={`${styles.nav} w-100 d-block text-center position-relative`}
         expanded={expanded}
         onClick={isLG ? navToggle : undefined}>
-        <Navbar.Brand className="d-lg-none">{`${selected !== "" ? `${valuePrefix ? valuePrefix : ""}${selected}${valueSuffix ? valueSuffix : ""}` : "Select amount"}`}</Navbar.Brand>
+        <Navbar.Brand className="d-lg-none">
+            {`${!selected
+                ? `${valuePrefix ? valuePrefix : ""}${selected}${valueSuffix ? valueSuffix : ""}`
+                : "Select amount"}`}
+        </Navbar.Brand>
         <Navbar.Toggle className={styles.navToggle}>
             <FontAwesomeIcon icon={faChevronDown} width="30" height="35" />
         </Navbar.Toggle>
