@@ -128,8 +128,8 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                 {isLoading && <Spinner className={rowCenter} />}
                 {!isLoading
                     && (!resultData?.items.length
-                        || resultData?.items
-                            .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
+                        || data.searchValue && resultData?.items
+                            .filter(content => content.fields.title.indexOf(data.searchValue) === -1)
                         && <h1 className="text-center">No FAQ Found</h1>
                     )
                 }
