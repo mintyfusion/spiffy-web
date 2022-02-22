@@ -1,0 +1,37 @@
+@import "styles/theme.scss";
+@import "styles/includeMedia.scss";
+
+.navToggle {
+    border: none;
+}
+
+.activeTab {
+    border: 2px solid $yellow;
+    color: $yellow;
+}
+
+.donationButton {
+    background-color: $faded-yellow;
+    margin-right: 20px;
+}
+
+.active {
+    background-color: $yellow;
+}
+
+.inactive {
+    background-color: $faded-yellow;
+    border: none;
+    color: $darkGrey;
+}
+
+@include media(">=phone", "<1000px") {
+    .nav {
+        z-index: 4;
+    }
+
+    .show {
+        position: absolute;
+        left: 0;
+    }
+}

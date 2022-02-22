@@ -1,0 +1,18 @@
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.gameHead {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 50px;
+
+    .gameHeading {
+        @extend .bold41;
+    }
+
+    .gameDesc {
+        @extend .medium25;
+        color: $yellow;
+        margin: 0;
+    }
+}

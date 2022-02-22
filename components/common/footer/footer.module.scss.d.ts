@@ -9,8 +9,14 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "boldDesktop25Mobile9": string;
+  "boldDesktop41Mobile25": string;
+  "boldGame41": string;
+  "boldGame67": string;
   "column": string;
+  "extraBold67": string;
   "extraBold90": string;
+  "extraBoldDesktop65Mobile28": string;
   "footerBottom": string;
   "footerContainer": string;
   "footerContentContainer": string;
@@ -21,13 +27,22 @@ export type Styles = {
   "footerSocials": string;
   "footerText": string;
   "footerTop": string;
+  "fullbold109": string;
   "fullBold67": string;
   "linkHeaderText": string;
+  "medium25": string;
+  "regular14": string;
   "regular16": string;
+  "regular20": string;
   "regular24": string;
   "regular25": string;
+  "regular32": string;
   "regular90": string;
+  "regularDesktop16Mobile7": string;
+  "regularDesktop20Mobile7": string;
+  "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
   "semiBold90": string;
 };
 

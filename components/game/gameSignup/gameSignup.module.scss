@@ -1,0 +1,34 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/mixins.scss";
+
+@mixin responsive($start, $end, $maxWidth) {
+    @include media($start, $end) {
+        .gameStepSix .signUpsection button {
+            max-width: $maxWidth;
+        }
+    }
+}
+
+.gameStepSix {
+    padding: 100px 0;
+
+    .signUpsection {
+        .avatarHeading,
+        button {
+            margin-top: 40px;
+        }
+
+        .avatarHeading {
+            @extend .regular-desktop30-mobile20;
+        }
+
+        button {
+            max-width: 25%;
+        }
+    }
+}
+@include responsive(">=phone", "<800px", 100%);
+@include responsive(">=800px", "<900px", 50%);
+@include responsive(">=900px", "<1300px", 40%);

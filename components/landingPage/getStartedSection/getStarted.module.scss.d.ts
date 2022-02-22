@@ -21,14 +21,17 @@ export type Styles = {
   "hide": string;
   "leftSection": string;
   "leftSectionRight": string;
+  "medium25": string;
   "regular14": string;
   "regular16": string;
+  "regular20": string;
   "regular24": string;
   "regular25": string;
   "regular32": string;
   "regular90": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
   "resetLeft": string;
   "resetRight": string;
   "rightSection": string;

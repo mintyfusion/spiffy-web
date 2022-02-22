@@ -12,6 +12,10 @@
     @include typeFace($nine, $sixteen, $regular);
 }
 
+.regular20 {
+    @include typeFace($seven, $twenty, $regular);
+}
+
 .regular24 {
     @include typeFace($fourteen, $twentyFour, $regular);
 }
@@ -26,6 +30,10 @@
 
 .regular90 {
     @include typeFace($thirtyFive, $ninety, $regular);
+}
+
+.medium25 {
+    @include typeFace($sixteen, $twentyFive, $medium);
 }
 
 .semiBold90 {
@@ -44,12 +52,20 @@
     @include typeFace($fourteen, $fortyOne, $bold);
 }
 
+.bold41 {
+    @include typeFace($twentyFive, $fortyOne, $bold);
+}
+
 .bold60 {
     @include typeFace($twentyEight, $sixty, $bold);
 }
 
 .bold67 {
     @include typeFace($twentyFive, $sixtySeven, $bold);
+}
+
+.bold67 {
+    @include typeFace($thirty, $sixtySeven, $bold);
 }
 
 .bold90 {
@@ -89,6 +105,14 @@
     @include typeFace($nine, $twentyFive, $regular);
 }
 
+.regular-desktop20-mobile7 {
+    @include typeFace($seven, $twenty, $regular);
+}
+
+.bold-desktop25-mobile9 {
+    @include typeFace($nine, $twentyFive, $bold);
+}
+
 .regular-desktop25-mobile16 {
     @include typeFace($sixteen, $twentyFive, $regular);
 }
@@ -99,4 +123,12 @@
 
 .extraBold-desktop65-mobile28 {
     @include typeFace($twentyEight, $sixtySeven, $extra-bold);
+}
+
+.regular-desktop30-mobile20 {
+    @include typeFace($twenty, $thirty, $bold);
+}
+
+.regular-desktop16-mobile7 {
+    @include typeFace($seven, $sixteen, $regular);
 }

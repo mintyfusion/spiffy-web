@@ -18,14 +18,17 @@ export type Styles = {
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
+  "medium25": string;
   "regular14": string;
   "regular16": string;
+  "regular20": string;
   "regular24": string;
   "regular25": string;
   "regular32": string;
   "regular90": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
   "semiBold90": string;
 };
 

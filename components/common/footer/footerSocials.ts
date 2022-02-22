@@ -4,19 +4,19 @@ import IFooterSocials from "components/common/footer/interfaces/IFooterSocials";
 
 const footerSocialsData: IFooterSocials[] = [
     {
-        href: "#",
+        href: "https://twitter.com/Spiffy_Biz",
         icon: faTwitter
     },
     {
-        href: "#",
+        href: "https://www.facebook.com/Spiffy.Biz",
         icon: faFacebookF
     },
     {
-        href: "#",
+        href: "https://www.instagram.com/spiffy.biz",
         icon: faInstagram
     },
     {
-        href: "#",
+        href: "https://www.youtube.com/channel/UCY8myL9tZ-YND4RHm7ccQVw/about",
         icon: faYoutube
     },
 ];

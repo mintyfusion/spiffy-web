@@ -10,19 +10,25 @@ export type Styles = {
   "bold67": string;
   "bold90": string;
   "boldDesktop41Mobile25": string;
+  "boldGame41": string;
+  "boldGame67": string;
   "breadcrumbMain": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
+  "medium25": string;
+  "regular14": string;
   "regular16": string;
+  "regular20": string;
   "regular24": string;
   "regular25": string;
   "regular32": string;
   "regular90": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
   "semiBold90": string;
 };
 
