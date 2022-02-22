@@ -7,23 +7,23 @@ const percentages: Record<string, IGameAvatarDonation> = {
     },
     "5": {
         totalAvatarsToShow: 8,
-        amount: "27,980",
+        amount: "13,990",
     },
     "10": {
         totalAvatarsToShow: 12,
-        amount: "69,950",
+        amount: "27,980",
     },
     "25": {
         totalAvatarsToShow: 16,
-        amount: "139,900",
+        amount: "69,950",
     },
     "50": {
         totalAvatarsToShow: 24,
-        amount: "279,800",
+        amount: "139,900",
     },
     "100": {
         totalAvatarsToShow: 60,
-        amount: "13,990",
+        amount: "279,800",
     },
 };
 

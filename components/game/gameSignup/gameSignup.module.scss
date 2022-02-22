@@ -29,6 +29,6 @@
         }
     }
 }
-@include responsive(">=phone", "<800px", 80%);
+@include responsive(">=phone", "<800px", 100%);
 @include responsive(">=800px", "<900px", 50%);
 @include responsive(">=900px", "<1300px", 40%);
