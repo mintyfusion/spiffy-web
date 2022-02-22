@@ -122,7 +122,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                         <a href="/login">
                             <Button variant="dark" className={`${styles.buttonLogin}`}>Log In</Button>
                         </a>
-                        <PrimaryButton linkProps={{ href: "/getStarted" }}>
+                        <PrimaryButton linkProps={{ href: "https://creator.dashboard.spiffy.biz/" }}>
                             Get Started
                         </PrimaryButton>
                     </Stack>
