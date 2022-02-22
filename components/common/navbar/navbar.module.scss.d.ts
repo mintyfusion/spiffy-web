@@ -10,6 +10,7 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "boldDesktop25Mobile9": string;
   "boldDesktop41Mobile25": string;
   "buttonLogin": string;
   "buttons": string;
@@ -24,6 +25,7 @@ export type Styles = {
   "headerLogo": string;
   "link": string;
   "links": string;
+  "medium25": string;
   "menuButton": string;
   "menuButtonBurger": string;
   "navbar": string;
@@ -31,12 +33,16 @@ export type Styles = {
   "open": string;
   "regular14": string;
   "regular16": string;
+  "regular20": string;
   "regular24": string;
   "regular25": string;
   "regular32": string;
   "regular90": string;
+  "regularDesktop16Mobile7": string;
+  "regularDesktop20Mobile7": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
   "semiBold90": string;
 };
 
