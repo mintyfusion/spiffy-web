@@ -15,13 +15,11 @@ export type Styles = {
   "boldDesktop41Mobile25": string;
   "caption": string;
   "captionContent": string;
-  "extraBold41": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
-  "highlightWord": string;
   "regular14": string;
   "regular16": string;
   "regular24": string;
