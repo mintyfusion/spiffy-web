@@ -45,6 +45,14 @@ const twelveHundred = 1300;
 const thousand = 1000;
 const seventeenHundred = 1700;
 const sixteenHundred = 1600;
+const ninteenTwenty = 1920;
+const twoThousand = 2000;
+const twentyOneHundred = 2100;
+const twentyTwoHundred = 2200;
+const twentyThreeHundred = 2300;
+const twentyFourHundred = 2400;
+const twentyFiveHundred = 2500;
+const twentySixHundred = 2600;
 
 // positions for breakpoint ranges
 const eleven = 11;
@@ -62,6 +70,17 @@ const seventy = 70;
 const twenty = 20;
 const ten = 10;
 const oneTwenty = 120;
+const oneSeventy = 170;
+const oneEigthy = 180;
+const oneNinety = 190;
+const twoHundred = 200;
+const twoHundredTen = 210;
+const twoHundredTwenty = 220;
+const twoHundredThirty = 230;
+const oneFourtyFive = 145;
+const oneSixtyFive = 165;
+const oneFiftyFive = 155;
+const oneSeventyFive = 175;
 
 const donationCycleClasses = `${colCenter} ${styles.cycle} position-relative`;
 
@@ -114,6 +133,20 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                 left = oneTwenty;
             } else if (width > fifteenHundred && width < seventeenHundred) {
                 left = oneFifty;
+            } else if (width > ninteenTwenty && width < twoThousand) {
+                left = oneSeventy;
+            } else if (width > twoThousand && width < twentyOneHundred) {
+                left = oneEigthy;
+            } else if (width > twentyOneHundred && width < twentyTwoHundred) {
+                left = oneNinety;
+            } else if (width > twentyTwoHundred && width < twentyThreeHundred) {
+                left = twoHundred;
+            } else if (width > twentyThreeHundred && width < twentyFourHundred) {
+                left = twoHundredTen;
+            } else if (width > twentyFourHundred && width < twentyFiveHundred) {
+                left = twoHundredTwenty;
+            } else if (width > twentyFiveHundred && width < twentySixHundred) {
+                left = twoHundredThirty;
             } else {
                 left = oneSixty;
             }
@@ -130,6 +163,20 @@ const GameDonationCycle = (props: IGameDonationCycle): JSX.Element => {
                 startingLeft = twenty;
             } else if (width > threeHundred && width < fourHundred) {
                 startingLeft = ten;
+            } else if (width > ninteenTwenty && width < twoThousand) {
+                startingLeft = oneFourtyFive;
+            } else if (width > twoThousand && width < twentyOneHundred) {
+                startingLeft = oneFifty;
+            } else if (width > twentyOneHundred && width < twentyTwoHundred) {
+                startingLeft = oneFiftyFive;
+            } else if (width > twentyTwoHundred && width < twentyThreeHundred) {
+                startingLeft = oneSixtyFive;
+            } else if (width > twentyThreeHundred && width < twentyFourHundred) {
+                startingLeft = oneSeventy;
+            } else if (width > twentyFourHundred && width < twentyFiveHundred) {
+                startingLeft = oneSeventyFive;
+            } else if (width > twentyFiveHundred && width < twentySixHundred) {
+                startingLeft = oneEigthy;
             } else {
                 startingLeft = oneFourty;
             }
