@@ -21,6 +21,9 @@ export default function VerticalSwiper(props: PropsWithChildren<IVerticalSwiperP
                 direction="vertical"
                 mousewheel={{ releaseOnEdges: true }}
                 onActiveIndexChange={props.onActiveIndexChange}
+                autoHeight
+                watchOverflow
+                observer
             >
                 {props.children}
             </Swiper>

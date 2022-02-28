@@ -1,6 +1,4 @@
-import { Col, Row, Stack, } from "react-bootstrap";
-import { Swiper } from "swiper";
-import { SwiperSlide } from "swiper/react";
+import { Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import React from "react";
 
@@ -11,7 +9,6 @@ import IVerticalContentData from "components/landingPage/verticalContentSection/
 import IVerticalSectionProps from "components/landingPage/verticalContentSection/interfaces/IVerticalSectionProps";
 import styleWords from "utils/styleWords";
 import useBreakpoint from "hooks/useBreakpoint";
-import VerticalSwiper from "components/common/verticalSwiper/verticalSwiper";
 
 import styles from "components/landingPage/verticalContentSection/verticalContentSection.module.scss";
 
@@ -19,71 +16,52 @@ const columnAlignCenter = flexbox({ vertical: true, hAlign: "center" });
 const rowHAlignCenter = flexbox({ hAlign: "center" });
 
 const VerticalContentSection = (props: IVerticalSectionProps): JSX.Element => {
-    const [currentIndex, setCurrentIndex] = React.useState<number>(0);
     const isViewportDesktop = useBreakpoint(Breakpoints.MD, BreakpointChecks.Greater);
 
-    const onActiveIndexChange = React.useCallback((swiper: Swiper) => {
-        setCurrentIndex(swiper.activeIndex);
-    }, []);
-
-    return <Stack className={`${styles.content3} position-relative`} >
-        <Row className={`m-0 ${styles.container}`}>
-            <h1 className={`${styles.headerEmphasisText} position-absolute`}>
-                {props.content[currentIndex].highlightedWord}
-            </h1>
-            <Col
-                className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0`}
-            >
-                <VerticalSwiper onActiveIndexChange={onActiveIndexChange}>
-                    {props.content.map((content: IVerticalContentData, index) =>
-                        <SwiperSlide key={index}>
-                            <Row className={`${rowHAlignCenter} w-100 m-0`}>
-                                <Col>
-                                    <Stack
-                                        direction="horizontal"
-                                        className="flex-sm-column-reverse flex-column-reverse flex-md-row gap-sm-4 gap-1"
-                                    >
-                                        <div>
-                                            <aside className={`${styles.panel} ${columnAlignCenter} pt-3 p-1`} >
-                                                <h2
-                                                    className={`${styles.panelHeader} text-center text-md-end m-0`}
-                                                    dangerouslySetInnerHTML={{
-                                                        __html: styleWords(content.header, [{
-                                                            text: content.highlightedWord,
-                                                            className: styles.highlightText,
-                                                        }])
-                                                    }}
-                                                />
-                                            </aside>
-                                        </div>
-                                    </Stack>
-                                </Col>
-                                {isViewportDesktop &&
-                                    <Col className="p-0">
-                                        <Image
-                                            src={content.image.src}
-                                            width="1045"
-                                            height="1099"
-                                            layout="responsive"
-                                            priority={true}
-                                        />
-                                        <div className="position-absolute bottom-0 end-0">
-                                            <Image
-                                                src="/images/homepage/common/watermark.svg"
-                                                width="80px"
-                                                height="80px"
-                                                layout="intrinsic"
-                                                priority={true}
-                                            />
-                                        </div>
-                                    </Col>}
-                            </Row>
-                        </SwiperSlide>
-                    )}
-                </VerticalSwiper>
-            </Col>
-        </Row>
-    </Stack>;
+    return (
+        <div className={`position-relative ${styles.content3}`}>
+            {props.content.map((content: IVerticalContentData, index) => <Row key={index} className={`${rowHAlignCenter} ${styles.container} w-100 m-0 position-sticky`} id="parallax">
+                <Col className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0`}>
+                    <div>
+                        <h1 className={`${styles.headerEmphasisText} position-absolute`}>
+                            {props.content[index].highlightedWord}
+                        </h1>
+                        <aside className={`${styles.panel} ${columnAlignCenter} p-3`} >
+                            <h2
+                                className={`${styles.panelHeader} text-center text-md-end m-0`}
+                                dangerouslySetInnerHTML={{
+                                    __html: styleWords(content.header, [{
+                                        text: content.highlightedWord,
+                                        className: styles.highlightText,
+                                    }])
+                                }}
+                            />
+                        </aside>
+                    </div>
+                </Col>
+                {isViewportDesktop &&
+                    <Col className={`${styles.parallaxColumnRigth} p-0`}>
+                        <Image
+                            src={content.image.src}
+                            width="1045"
+                            height="1099"
+                            layout="responsive"
+                            priority={true}
+                            objectFit="cover"
+                        />
+                        <div className="position-absolute bottom-0 end-0 h-100">
+                            <Image
+                                src="/images/homepage/common/watermark.svg"
+                                width="80px"
+                                height="80px"
+                                layout="intrinsic"
+                                priority={true}
+                            />
+                        </div>
+                    </Col>}
+            </Row>)}
+        </div>
+    );
 };
 
 export default VerticalContentSection;

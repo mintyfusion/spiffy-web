@@ -1,8 +1,8 @@
 @import "styles/includeMedia.scss";
-@import "styles/mixins.scss";
 @import "styles/theme.scss";
 @import "styles/font/fontGroups.scss";
-@import "styles/functions.scss";
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
 
 @include opacityKeyFrames();
 
@@ -23,6 +23,9 @@
 
     .container {
         margin: 0;
+        top: $top;
+        box-shadow: 0px -2px 20px 0px $light-grey;
+        height: 100vh;
         .contentContainer {
             background: $yellow;
             background-image: url("/images/homepage/verticalContentSection/bg-spiffy-watermark.svg");
@@ -39,6 +42,12 @@
 
             :global(.swiper-slide-next) {
                 @include panelContentOpacity(".panelHeader", 0, hide 0.5s);
+            }
+        }
+
+        .parallaxColumnRigth {
+            div:nth-child(1) {
+                height: 100vh;
             }
         }
     }
@@ -101,9 +110,6 @@
             left: 5%;
         }
 
-        .container {
-            @include fluidDimension("height", 230, 768);
-        }
         aside.panel {
             @include fluidDimension("height", 230, 768);
         }
