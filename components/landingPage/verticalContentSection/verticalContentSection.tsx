@@ -40,7 +40,7 @@ const VerticalContentSection = (props: IVerticalSectionProps): JSX.Element => {
                     </div>
                 </Col>
                 {isViewportDesktop &&
-                    <Col className={`${styles.parallaxColumnRigth} p-0`}>
+                    <Col className={`${styles.parallaxColumnRigth} p-0 h-100`}>
                         <Image
                             src={content.image.src}
                             width="1045"

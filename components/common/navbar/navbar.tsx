@@ -31,7 +31,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
     const handleResize = React.useCallback(() => {
         if (navbarRef.current) {
             const root = document.querySelector<HTMLDivElement>(":root");
-            root?.style.setProperty("--top", `${navbarRef.current.offsetHeight}px`);
+            root?.style.setProperty("--headerHeigth", `${navbarRef.current.offsetHeight}px`);
         }
     }, []);
 

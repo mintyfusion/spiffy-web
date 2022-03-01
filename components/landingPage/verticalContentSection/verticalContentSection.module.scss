@@ -23,7 +23,7 @@
 
     .container {
         margin: 0;
-        top: $top;
+        top: $headerHeigth;
         box-shadow: 0px -2px 20px 0px $light-grey;
         height: 100vh;
         .contentContainer {
@@ -47,7 +47,7 @@
 
         .parallaxColumnRigth {
             div:nth-child(1) {
-                height: 100vh;
+                height: 100%;
             }
         }
     }
@@ -106,6 +106,9 @@
 
 @include media(">tablet") {
     .content3 {
+        .container {
+            height: 50%;
+        }
         .headerEmphasisText {
             left: 5%;
         }
@@ -117,19 +120,20 @@
 }
 
 @include media("<tablet") {
-    .container {
-        .headerEmphasisText {
-            top: 5%;
-            left: 5%;
-        }
+    .content3 {
+        .container {
+            height: 50%;
+            .headerEmphasisText {
+                top: 5%;
+                left: 5%;
+            }
+            aside.panel {
+                min-height: 480px;
 
-        height: 480px;
-        aside.panel {
-            min-height: 480px;
-
-            h2.panelHeader {
-                padding-top: 1rem;
-                padding-left: 1rem;
+                h2.panelHeader {
+                    padding-top: 1rem;
+                    padding-left: 1rem;
+                }
             }
         }
     }
