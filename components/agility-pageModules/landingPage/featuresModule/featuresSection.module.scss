@@ -56,12 +56,12 @@
           background: $white;
 
           h4 {
-            @extend .bold41;
+            @extend .bold25;
             color: $black;
           }
 
           h6 {
-            @extend .regular-desktop25-mobile9;
+            @extend .regular16;
             color: $neutral-black;
           }
         }
@@ -75,11 +75,11 @@
     height: inherit;
 
     .arrowContainer h2 {
-      @extend .semiBold90;
+      @extend .bold36;
     }
 
     h2 {
-      @extend .extraBold90;
+      @extend .bold36;
     }
   }
 }

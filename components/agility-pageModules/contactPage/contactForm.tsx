@@ -147,13 +147,12 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                     <div>
                         <h2>{fields.title}</h2>
                         <h4 className="mb-3">{fields.description}</h4>
-                            <PrimaryButton
-                                className={styles.buttonFaq}
-                                linkProps={{ href: fields.redirectPageButton.href }}
-                                showArrow
-                            >
-                                {fields.redirectPageButton.text}
-                            </PrimaryButton>
+                        <PrimaryButton
+                            className={styles.buttonFaq}
+                            linkProps={{ href: fields.redirectPageButton.href }}
+                        >
+                            {fields.redirectPageButton.text}
+                        </PrimaryButton>
                     </div>
                 </Row>
                 <Row>
@@ -172,9 +171,9 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                 <div className={`${styles.formContent} position-relative`}>
                     {!submitted
                         ? <form onSubmit={handleSubmit}>
-                            <h6>{fields.formTitle}</h6>
-                            <h5 className="mb-3">{fields.formDescription}</h5>
-                            <div className={`gap-3 ${rowAlignStretch}`}>
+                            <h6 className={styles.formTitle}>{fields.formTitle}</h6>
+                            <h5 className={`${styles.formDesc} mb-3`}>{fields.formDescription}</h5>
+                            <div className={`gap-3 ${rowAlignStretch} ${styles.formButtons}`}>
                                 <PrimaryButton
                                     className={`
                                         w-100 

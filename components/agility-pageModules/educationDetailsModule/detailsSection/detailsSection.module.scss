@@ -6,13 +6,13 @@
 .detailsContainer {
     h5,
     h5 span {
-        @extend .regular-desktop25-mobile16;
+        @extend .medium16;
         color: $light-grey;
-        margin: 1rem 0;
+        margin: 0.5rem 0;
     }
 
     h1 {
-        @extend .extraBold67;
+        @extend .bold36;
     }
 
     h2 {
@@ -40,9 +40,13 @@
         object-fit: cover;
     }
 
+    strong {
+        @extend .bold25;
+    }
+
     @include media(">=desktop") {
         .mediaContainer {
-            margin: 5rem 0;
+            margin: 1.8rem 0;
         }
 
         @include blockquoteDesktopCSS();

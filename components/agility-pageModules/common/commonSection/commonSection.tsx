@@ -43,7 +43,7 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
                                             me-5
                                          `}
                                         >
-                                            <ArrowIcon quantity={props.arrows} width={32} height={60} layout="fixed" />
+                                            <ArrowIcon quantity={props.arrows} width={20} height={30} layout="fixed" />
                                         </Row>
                                     }
                                 </h2>

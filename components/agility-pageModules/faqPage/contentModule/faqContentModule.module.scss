@@ -6,13 +6,18 @@
 .contentContainer {
     padding: 3rem 1rem;
     background: $dirty-white;
+
+    .faqNotFound {
+        @extend .regular25;
+        padding: 0 12px;
+    }
 }
 
 .content {
     background: $dirty-white;
 
     .contentHeading h2 {
-        @extend .fullBold67;
+        @extend .bold31;
     }
 }
 
@@ -57,17 +62,17 @@
 .accordianHeader {
     .faqIndex {
         color: $yellow;
-        width: fluid(56px, 70px);
+        @extend .bold36;
     }
-    
+
     button {
-        @extend .semiBold32;
+        @extend .semiBold25;
         background-color: $neutral-light-black;
     }
 }
 
 .accordianBody {
-    @extend .regular25;
+    @extend .regular16;
     background-color: $dirty-white;
 }
 

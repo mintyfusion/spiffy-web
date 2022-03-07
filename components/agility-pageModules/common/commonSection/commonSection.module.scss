@@ -17,7 +17,7 @@
         min-height: 350px;
 
         .title {
-            @extend .extraBold-desktop65-mobile28;
+            @extend .bold36;
 
             .arrowContainer {
                 @include fluidDimension("width", 10, 45);
@@ -25,7 +25,7 @@
         }
 
         .description {
-            @extend .regular-desktop25-mobile9;
+            @extend .regular16;
         }
     }
 }

@@ -7,12 +7,11 @@
 
     .cardTag {
         color: $light-grey;
-        @extend .regular16;
+        @extend .regular14;
     }
 
     .cardTitle {
-        @extend .regular25;
-        min-height: 88px;
+        @extend .regular18;
     }
 
     .cardDescription {
@@ -20,7 +19,7 @@
     }
 
     .link {
-        @extend .bold24;
+        @extend .bold14;
         cursor: pointer;
         color: $yellow;
     }

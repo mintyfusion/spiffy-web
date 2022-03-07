@@ -21,7 +21,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
                 <Image src={fields.image.url} width="10px" height="5px" layout="responsive" objectFit="cover" />
             </div>
             <BaseCard.Body className={columnAlignCenter}>
-                <BaseCard.Title className={`${styles.cardTag} mb-3`}>
+                <BaseCard.Title className={`${styles.cardTag} mb-0`}>
                     {fields.tag.fields.name.replace("_"," ")}
                 </BaseCard.Title>
                 <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 `} >

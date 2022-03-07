@@ -13,16 +13,16 @@
 
         .captionContent {
             h2 {
-                @extend .bold109;
+                @extend .bold51;
 
                 span {
-                    @extend .bold178;
+                    @extend .bold51;
                     line-height: unset;
                 }
             }
 
             h3 {
-                @extend .bold67;
+                @extend .bold51;
             }
 
             h4 {
@@ -40,13 +40,13 @@
 
 @include media(">tablet") {
     .caption {
-        top: 55%;
+        top: 70%;
     }
 }
 
 @include media("<=tablet") {
     .caption {
-        top: 50%;
+        top: 60%;
         min-height: unset;
         line-height: unset;
     }

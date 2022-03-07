@@ -26,7 +26,7 @@ const DetailsSection = (props: IDetailsSectionProps): JSX.Element => {
                         src={props.mediaSrc}
                         layout="responsive"
                         width="1670px"
-                        height="700px"
+                        height="450px"
                         priority={true}
                     />
                     : <VideoPlayer width="100%" height="100%" url={props.mediaSrc} />

@@ -6,10 +6,12 @@
 .heroContainer {
     @extend .backgroundPattern;
     color: $white;
-    min-height: 35rem;
+    min-height: 31rem;
 
     h1 {
-        @extend .bold109;
+        @extend .bold36;
+        max-width: 40%;
+        margin-bottom: 40px
     }
 
     h5 {
@@ -17,11 +19,12 @@
     }
 
     blockquote {
-        @extend .bold41;
+        @extend .bold25;
 
         &::before {
             content: "";
             background-image: $blockquote-prefix-image;
+            background-size: 50px 62px;
         }
     }
 }

@@ -7,12 +7,12 @@
     width: 100%;
 
     .title {
-        @extend .fullbold109;
+        @extend .bold36;
         color: $yellow;
     }
 
     .date {
-        @extend .regular25;
+        @extend .regular16;
         color: $neutral-white;
     }
 }

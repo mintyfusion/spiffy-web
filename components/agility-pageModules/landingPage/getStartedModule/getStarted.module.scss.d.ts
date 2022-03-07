@@ -1,10 +1,13 @@
 export type Styles = {
   "backgroundPattern": string;
   "bold109": string;
+  "bold14": string;
   "bold150": string;
+  "bold16": string;
   "bold178": string;
   "bold24": string;
   "bold25": string;
+  "bold31": string;
   "bold32": string;
   "bold36": string;
   "bold41": string;
@@ -24,8 +27,12 @@ export type Styles = {
   "hide": string;
   "leftSection": string;
   "leftSectionRight": string;
+  "medium14": string;
+  "medium16": string;
+  "regular12": string;
   "regular14": string;
   "regular16": string;
+  "regular18": string;
   "regular24": string;
   "regular25": string;
   "regular32": string;
@@ -36,7 +43,9 @@ export type Styles = {
   "resetRight": string;
   "rightSection": string;
   "rightSectionLeft": string;
+  "semiBold14": string;
   "semiBold20": string;
+  "semiBold25": string;
   "semiBold32": string;
   "semiBold90": string;
   "show": string;

@@ -130,7 +130,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                     && (!resultData?.items.length
                         || data.searchValue && resultData?.items
                             .filter(content => content.fields.title.indexOf(data.searchValue) === -1)
-                        && <h1 className="text-center">No FAQ Found</h1>
+                        && <h1 className={styles.faqNotFound}>No FAQ Found</h1>
                     )
                 }
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}

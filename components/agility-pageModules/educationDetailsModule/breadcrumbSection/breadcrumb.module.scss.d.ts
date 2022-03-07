@@ -1,10 +1,12 @@
 export type Styles = {
   "backgroundPattern": string;
   "bold109": string;
+  "bold14": string;
   "bold150": string;
   "bold178": string;
   "bold24": string;
   "bold25": string;
+  "bold31": string;
   "bold32": string;
   "bold36": string;
   "bold41": string;
@@ -19,8 +21,11 @@ export type Styles = {
   "extraBoldDesktop65Mobile28": string;
   "fullbold109": string;
   "fullBold67": string;
+  "medium14": string;
+  "medium16": string;
   "regular14": string;
   "regular16": string;
+  "regular18": string;
   "regular24": string;
   "regular25": string;
   "regular32": string;

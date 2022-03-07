@@ -26,7 +26,7 @@ $backroundTransition: background-color 0.2s;
   }
 
   .navbarItems {
-    @extend .regular24;
+    @extend .semiBold14;
 
     .link {
       color: $white;
@@ -41,7 +41,7 @@ $backroundTransition: background-color 0.2s;
 
     .buttons {
       .buttonLogin {
-        @extend .bold24;
+        @extend .semiBold14;
         color: $yellow;
         background: $transparent;
         border: none;

@@ -4,12 +4,20 @@
 @import "styles/font/fontSizes.scss";
 
 // Different font weights and sizes
+.regular12 {
+    @include typeFace($nine, $twelve, $regular);
+}
+
 .regular14 {
     @include typeFace($nine, $fourteen, $regular);
 }
 
 .regular16 {
     @include typeFace($nine, $sixteen, $regular);
+}
+
+.regular18 {
+    @include typeFace($nine, $eighteen, $regular);
 }
 
 .regular24 {
@@ -28,8 +36,16 @@
     @include typeFace($thirtyFive, $ninety, $regular);
 }
 
+.semiBold14 {
+    @include typeFace($nine, $fourteen, $semi-bold);
+}
+
 .semiBold20 {
     @include typeFace($twelve, $twenty, $semi-bold);
+}
+
+.semiBold25 {
+    @include typeFace($fourteen, $twentyFive, $semi-bold);
 }
 
 .semiBold32 {
@@ -40,12 +56,32 @@
     @include typeFace($thirtyFive, $ninety, $semi-bold);
 }
 
+.medium14 {
+    @include typeFace($nine, $fourteen, $medium);
+}
+
+.medium16 {
+    @include typeFace($nine, $sixteen, $medium);
+}
+
+.bold14 {
+    @include typeFace($fourteen, $fourteen, $bold);
+}
+
+.bold16 {
+    @include typeFace($nine, $sixteen, $bold);
+}
+
 .bold24 {
     @include typeFace($fourteen, $twentyFour, $bold);
 }
 
 .bold25 {
     @include typeFace($sixteen, $twentyFive, $bold);
+}
+
+.bold31 {
+    @include typeFace($nine, $thirtyOne, $bold);
 }
 
 .bold32 {
@@ -58,6 +94,10 @@
 
 .bold41 {
     @include typeFace($fourteen, $fortyOne, $bold);
+}
+
+.bold51 {
+    @include typeFace($twenty, $fiftyOne, $bold);
 }
 
 .bold60 {

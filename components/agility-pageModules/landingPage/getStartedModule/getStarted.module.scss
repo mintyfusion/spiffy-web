@@ -25,14 +25,14 @@
         from {
             left: #{$start};
         }
-        
+
         to {
             left: #{$end};
         }
     }
 }
 
-$minHeight: calc(100vh - 25rem);
+$minHeight: calc(100vh - 39rem);
 $minWidth: calc(100vw - 62rem);
 
 .wrapperDiv {
@@ -49,10 +49,10 @@ $minWidth: calc(100vw - 62rem);
                 .leftSectionRight {
                     transition: padding 0.5s;
                     h2 {
-                        @extend .bold67;
+                        @extend .bold31;
                     }
                     h5 {
-                        @extend .regular25;
+                        @extend .regular18;
                     }
                 }
             }
@@ -65,10 +65,10 @@ $minWidth: calc(100vw - 62rem);
                 .rightSectionLeft {
                     transition: padding 0.5s;
                     h2 {
-                        @extend .bold67;
+                        @extend .bold31;
                     }
                     h5 {
-                        @extend .regular25;
+                        @extend .regular18;
                     }
                 }
             }

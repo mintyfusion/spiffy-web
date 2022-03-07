@@ -4,6 +4,10 @@
 .breadcrumbMain {
     @extend .regular-desktop25-mobile16;
 
+    li {
+        @extend .medium14;
+    }
+
     :global(.breadcrumb-item) {
         color: $yellow;
     }

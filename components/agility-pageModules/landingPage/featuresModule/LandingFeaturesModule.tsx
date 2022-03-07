@@ -100,7 +100,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                          `}
                                     >
                                         <div className="d-none d-lg-block">
-                                            <ArrowIcon width={45} height={60} layout="intrinsic" quantity={5} />
+                                            <ArrowIcon width={15} height={20} layout="intrinsic" quantity={5} />
                                         </div>
                                         <h2 className="ms-1">Our</h2>
                                     </Stack>

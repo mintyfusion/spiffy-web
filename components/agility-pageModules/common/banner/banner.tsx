@@ -15,7 +15,7 @@ const Banner = (props: PropsWithChildren<IBannerProps>): JSX.Element =>
                     className={`${styles.carouselItem} ${props.fullHeight && styles.full} position-relative`}
                     key={index}
                 >
-                    <Image objectFit="cover" {...banner} width="1920" height="745"/>
+                    <Image objectFit="cover" {...banner} width="1920" height="500"/>
                 </Carousel.Item>
             )}
         </Carousel>
