@@ -20,7 +20,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
             <div className="cardImageContainer">
                 <Image src={fields.image.url} width="10px" height="5px" layout="responsive" objectFit="cover" />
             </div>
-            <BaseCard.Body className={columnAlignCenter}>
+            <BaseCard.Body className={`${columnAlignCenter} pb-0`}>
                 <BaseCard.Title className={`${styles.cardTag} mb-0`}>
                     {fields.tag.fields.name.replace("_"," ")}
                 </BaseCard.Title>

@@ -98,7 +98,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             {!data.searchValue
                 && <TabsStack activeTab={activeTab} setActiveTab={setActiveTab} tags={props.module.fields.tags} />
             }
-            <Stack className="gap-4" >
+            <Stack className={`${styles.accordionWrapper} gap-4`}>
                 {!isLoading
                     && resultData
                     && resultData.items

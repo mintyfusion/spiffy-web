@@ -2,6 +2,7 @@ export type Styles = {
   "accordianBody": string;
   "accordianHeader": string;
   "accordion": string;
+  "accordionWrapper": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold14": string;
