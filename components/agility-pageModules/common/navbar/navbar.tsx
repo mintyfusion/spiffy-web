@@ -78,8 +78,6 @@ const Navbar = (props: INavbarProps): JSX.Element => {
             </div>
             <BTNavbar.Collapse
                 className={`
-                ps-lg-2
-                ps-xl-5 
                 ${styles.navbarItems} 
                 ${breakpoint && `${styles.collapsible} 
                                  ${colBetween}
