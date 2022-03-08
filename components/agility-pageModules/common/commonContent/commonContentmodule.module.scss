@@ -1,13 +1,16 @@
 @import "styles/font/fontGroups.scss";
 @import "styles/theme.scss";
 
-.contentContainer {
-    h2 {
-        @extend .bold31;
-    }
+.commonWrapper {
+    padding: 5rem;
+    .contentContainer {
+        h2 {
+            @extend .bold31;
+        }
 
-    h5 {
-        @extend .regular16;
+        h5 {
+            @extend .regular16;
+        }
     }
 }
 

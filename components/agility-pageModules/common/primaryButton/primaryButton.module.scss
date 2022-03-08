@@ -14,7 +14,7 @@
     background-color: $yellow;
     border-radius: unset;
     text-transform: uppercase;
-    padding: 15px 25px 15px 25px;
+    padding: 10px 25px 10px 25px;
 }
 
 .sectionButton {
@@ -23,7 +23,7 @@
     border-radius: initial;
 
     label {
-        border: 4px solid $dirty-white;
+        border: 4px solid currentColor;
         cursor: pointer;
     }
 }

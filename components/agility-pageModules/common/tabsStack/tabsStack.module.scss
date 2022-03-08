@@ -62,6 +62,7 @@
     .tab {
         &.inactive {
             background-color: $faded-yellow;
+            color: $darkGrey;
         }
 
         &:hover {

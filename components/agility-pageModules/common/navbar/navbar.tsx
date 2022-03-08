@@ -51,7 +51,6 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                 ${props.sticky
                     ? "position-sticky"
                     : "position-fixed"} 
-                py-4 
                 px-md-5
                 px-4 
                 w-100 

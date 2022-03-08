@@ -71,7 +71,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                 >
                     <Row className={`${styles.contentHeading} w-100 text-center`}>
                         <h2>{!searchData.searchValue ? content.fields.name.replace("_", " ") : "Search Results"}</h2>
-                        <h5>
+                        <h5 className="mb-0">
                             {!searchData.searchValue
                                 ? props.module.fields.title
                                 : `Showing search results for "${searchData.searchValue}"`}

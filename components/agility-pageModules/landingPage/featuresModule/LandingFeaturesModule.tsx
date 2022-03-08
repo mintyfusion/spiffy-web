@@ -46,6 +46,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                                     ${styles.cardContainer}
                                                     justify-content-md-center
                                                     justify-content-lg-start
+                                                    w-75
                                                   `}
                                         >
                                             <div className={`${styles.imageContainer} position-relative`}>

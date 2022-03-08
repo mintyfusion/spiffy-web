@@ -4,7 +4,7 @@
     ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); 
 */
 @function fluid($minValue, $maxValue) {
-    @return calc((#{$minValue}px) + ($maxValue - $minValue) * ((100vw - 320px) / (1920 - 320)));
+    @return calc((#{$minValue}px) + ($maxValue - $minValue) * ((100vw - 320px) / (1366 - 320)));
 }
 
 // The ratio between font-size and line-height

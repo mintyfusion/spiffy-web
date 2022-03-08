@@ -20,7 +20,6 @@ const CardContainer = (props: ICardContainerProps): JSX.Element =>
                 className={`
                     ${columnAlignCenter} 
                     ${styles.card} 
-                        my-3 
                         col-12 
                         col-sm-5 
                         col-md-3 

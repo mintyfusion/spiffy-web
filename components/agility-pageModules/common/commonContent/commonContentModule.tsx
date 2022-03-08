@@ -11,7 +11,7 @@ const CommonContentModule = (props: ModuleProps<ICommonContent>): JSX.Element =>
     const { title, description, invertedColors, href } = props.module.fields;
 
     return (
-        <div className={`${invertedColors === "true" && styles.inverted} p-3 p-sm-5 gap-3 gap-sm-5 `}>
+        <div className={`${invertedColors === "true" && styles.inverted} gap-3 gap-sm-5 ${styles.commonWrapper}`}>
             <Section
                 direction={SectionSide.center}
                 href={href.href}
