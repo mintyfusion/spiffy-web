@@ -1,4 +1,5 @@
 @import "styles/functions.scss";
+@import "styles/includeMedia.scss";
 
 $prefixes: -webkit-, -moz-, -ms-, -o-;
 
@@ -16,6 +17,13 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
     line-height: calculate-line-height($font-size);
     letter-spacing: countLetterSpacing($font-size);
     font-weight: $fontWeight;
+
+    @include media(">1366px") {
+        $font-size: #{$maxValue}px;
+        font-size: $font-size;
+        line-height: calculate-line-height($font-size);
+        letter-spacing: countLetterSpacing($font-size);
+    }
 }
 
 // Common keyframes for opacity
