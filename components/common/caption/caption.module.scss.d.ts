@@ -10,6 +10,7 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "boldDesktop25Mobile9": string;
   "boldDesktop41Mobile25": string;
   "caption": string;
   "captionContent": string;
@@ -26,6 +27,8 @@ export type Styles = {
   "regular25": string;
   "regular32": string;
   "regular90": string;
+  "regularDesktop16Mobile7": string;
+  "regularDesktop20Mobile7": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "regularDesktop30Mobile20": string;

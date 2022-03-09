@@ -25,7 +25,6 @@ const Navbar = (props: INavbarProps): JSX.Element => {
     // Adding dark background when page is scrolled
     const handleScroll = React.useCallback(() => {
         setBackgroundClass(window.pageYOffset > 1 || props.sticky ? styles.backgroundDark : "");
-
     }, [props.sticky]);
 
     const handleResize = React.useCallback(() => {

@@ -24,7 +24,7 @@
     .container {
         margin: 0;
         top: $headerHeigth;
-        box-shadow: 0px -2px 20px 0px $light-grey;
+        box-shadow: 0px -23px 40px 0px $light-grey;
         height: 100vh;
         .contentContainer {
             background: $yellow;
@@ -104,10 +104,10 @@
     }
 }
 
-@include media(">tablet") {
+@include media(">=tablet") {
     .content3 {
         .container {
-            height: 50%;
+            height: 100vh;
         }
         .headerEmphasisText {
             left: 5%;
