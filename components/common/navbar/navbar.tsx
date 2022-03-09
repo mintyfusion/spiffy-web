@@ -20,17 +20,32 @@ const Navbar = (props: INavbarProps): JSX.Element => {
     const [backgroundClass, setBackgroundClass] = React.useState<string>("");
     const [toggle, setToggle] = React.useState<boolean>(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
+    const navbarRef = React.useRef<HTMLDivElement>();
 
     // Adding dark background when page is scrolled
     const handleScroll = React.useCallback(() => {
         setBackgroundClass(window.pageYOffset > 1 || props.sticky ? styles.backgroundDark : "");
     }, [props.sticky]);
 
+    const handleResize = React.useCallback(() => {
+        if (navbarRef.current) {
+            const root = document.querySelector<HTMLDivElement>(":root");
+            root?.style.setProperty("--headerHeigth", `${navbarRef.current.offsetHeight}px`);
+        }
+    }, []);
+
     React.useEffect(() => {
         window.addEventListener("scroll", handleScroll);
 
         return () => window.removeEventListener("scroll", handleScroll);
     }, [handleScroll]);
+
+    React.useEffect(() => {
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [handleResize]);
 
     React.useEffect(() => {
         setBackgroundClass(props.sticky ? styles.backgroundDark : "");
@@ -52,6 +67,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                 w-100 
                 top-0
             `}
+            ref={navbarRef}
             variant="dark"
         >
             <Link href="/" className={`${styles.headerLogo} me-lg-3 me-xl-5`}>
