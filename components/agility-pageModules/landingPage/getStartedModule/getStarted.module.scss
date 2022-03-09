@@ -47,10 +47,10 @@ $minWidth: calc(100vw - 62rem);
                 .leftSectionRight {
                     transition: padding 0.5s;
                     h2 {
-                        @extend .bold31;
+                        @extend .bold-desktop-31-mobile-20;
                     }
                     h5 {
-                        @extend .regular18;
+                        @extend .regular-desktop-16-mobile-14;
                     }
                 }
             }
@@ -63,10 +63,10 @@ $minWidth: calc(100vw - 62rem);
                 .rightSectionLeft {
                     transition: padding 0.5s;
                     h2 {
-                        @extend .bold31;
+                        @extend .bold-desktop-31-mobile-20;
                     }
                     h5 {
-                        @extend .regular18;
+                        @extend .regular-desktop-16-mobile-14;
                     }
                 }
             }
@@ -124,7 +124,7 @@ $minWidth: calc(100vw - 62rem);
 @include media("<1200px") {
     .content2 {
         .leftSection {
-            padding: 3rem;
+            padding: 45px 30px;
 
             .leftSectionRight {
                 min-width: inherit;
@@ -132,7 +132,7 @@ $minWidth: calc(100vw - 62rem);
             }
         }
         .rightSection {
-            padding: 3rem;
+            padding: 45px 30px;
 
             .rightSectionLeft {
                 min-width: inherit;

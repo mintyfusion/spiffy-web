@@ -19,7 +19,7 @@
 .socials {
     .shareText {
         text-transform: uppercase;
-        @extend .bold16;
+        @extend .bold-desktop-16-mobile-25;
         color: $neutral-black-900;
     }
 
@@ -58,6 +58,6 @@
 
 @include media("<1370px") {
     .socials {
-        @include detailsSocialContent(30px, 7px);
+        @include detailsSocialContent(38px, 10px);
     }
 }

@@ -7,15 +7,15 @@
 
     .cardTag {
         color: $light-grey;
-        @extend .regular14;
+        @extend .regular-desktop-14-mobile-12;
     }
 
     .cardTitle {
-        @extend .regular18;
+        @extend .regular-desktop-18-mobile-16;
     }
 
     .cardDescription {
-        @extend .regular14;
+        @extend .regular-desktop-14-mobile-12;
     }
 
     .link {

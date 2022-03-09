@@ -45,7 +45,10 @@
 }
 
 @include media("<=tablet") {
-    .carouselItem div {
-        min-height: 40rem;
+    .carouselItem {
+        min-height: 22rem;
+        div {
+            min-height: 22rem;
+        }
     }
 }

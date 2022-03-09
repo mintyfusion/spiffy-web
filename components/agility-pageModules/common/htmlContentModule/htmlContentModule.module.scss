@@ -10,7 +10,7 @@
     p,
     li,
     h5 span {
-        @extend .regular16;
+        @extend .regular-desktop-16-mobile-16;
         margin: 1rem 0;
     }
 
@@ -31,6 +31,6 @@
 
 @include media("<tablet") {
     .contentContainer {
-        margin: 2rem;
+        margin: 45px 20px;
     }
 }

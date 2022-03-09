@@ -2,10 +2,10 @@
 @import "styles/font/fontGroups.scss";
 
 .breadcrumbMain {
-    @extend .regular14;
+    @extend .regular-desktop-14-mobile-12;
 
     li {
-        @extend .medium14;
+        @extend .regular-desktop-14-mobile-12;
     }
 
     :global(.breadcrumb-item) {

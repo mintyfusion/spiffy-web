@@ -6,11 +6,3 @@
         color: $yellow;
     }
 }
-
-@include media("<=tablet") {
-    .bannerCaption {
-        [role="text-list"] {
-            display: none;
-        }
-    }
-}

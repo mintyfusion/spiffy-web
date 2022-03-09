@@ -19,7 +19,7 @@ const Caption = (props: ICaptionProps): JSX.Element => {
         <div className={`carousel-caption ${styles.caption} ${props.captionContainerClass}`}>
             <Stack className={`${styles.banner}`}>
                 <Row className={`${rowHAlignCenter} ${styles.captionContent} `}>
-                    <Col className={`${columnAlignCenter} no-gutters`}>
+                    <Col className={`${columnAlignCenter} no-gutters`} lg="7" md="12" sm="12">
                         {preparedData.length > 1
                             ? <>
                                 <h3

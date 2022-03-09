@@ -30,7 +30,7 @@
         }
 
         p:nth-child(even) {
-            @extend .bold25;
+            @extend .bold-desktop-25-mobile-25;
             text-align: right;
         }
     }
@@ -41,7 +41,7 @@
     }
 
     strong {
-        @extend .bold25;
+        @extend .bold-desktop-25-mobile-25;
     }
 
     @include media(">=desktop") {
@@ -54,7 +54,7 @@
 
     @include media("<desktop") {
         .mediaContainer {
-            margin: 3rem 0;
+            margin: 30px 0px;
         }
 
         blockquote {

@@ -81,7 +81,7 @@
 }
 
 .bold31 {
-    @include typeFace($nine, $thirtyOne, $bold);
+    @include typeFace($twentyFour, $thirtyOne, $bold);
 }
 
 .bold32 {
@@ -89,7 +89,7 @@
 }
 
 .bold36 {
-    @include typeFace($fourteen, $thirtySix, $bold);
+    @include typeFace($thirty, $thirtySix, $bold);
 }
 
 .bold41 {
@@ -97,7 +97,7 @@
 }
 
 .bold51 {
-    @include typeFace($twenty, $fiftyOne, $bold);
+    @include typeFace($thirty, $fiftyOne, $bold);
 }
 
 .bold60 {
@@ -159,4 +159,48 @@
 
 .extraBold-desktop65-mobile28 {
     @include typeFace($twentyEight, $sixtySeven, $extra-bold);
+}
+
+.regular-desktop-16-mobile-16 {
+    @include typeFace($sixteen, $sixteen, $regular);
+}
+
+.semi-bold-desktop-16-mobile-14 {
+    @include typeFace($fourteen, $sixteen, $regular);
+}
+
+.bold-desktop-25-mobile-24 {
+    @include typeFace($twentyFour, $twentyFive, $bold);
+}
+
+.bold-desktop-36-mobile-24 {
+    @include typeFace($twentyFour, $thirtySix, $bold);
+}
+
+.regular-desktop-16-mobile-14 {
+    @include typeFace($fourteen, $sixteen, $regular);
+}
+
+.regular-desktop-16-mobile-12 {
+    @include typeFace($twelve, $sixteen, $regular);
+}
+
+.regular-desktop-14-mobile-12 {
+    @include typeFace($twelve, $fourteen, $regular);
+}
+
+.regular-desktop-18-mobile-16 {
+    @include typeFace($sixteen, $eighteen, $regular);
+}
+
+.bold-desktop-31-mobile-20 {
+    @include typeFace($twenty, $thirtyOne, $bold);
+}
+
+.bold-desktop-25-mobile-25 {
+    @include typeFace($twentyFive, $twentyFive, $bold);
+}
+
+.bold-desktop-16-mobile-25 {
+    @include typeFace($twentyFive, $sixteen, $bold);
 }

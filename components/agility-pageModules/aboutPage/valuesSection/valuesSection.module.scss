@@ -19,7 +19,7 @@
 
 .headingText {
     background-color: $yellow;
-    @extend .bold36;
+    @extend .bold-desktop-36-mobile-24;
 }
 
 .cardContainer {
@@ -51,11 +51,11 @@
             z-index: 2;
 
             h2 {
-                @extend .bold25;
+                @extend .bold-desktop-25-mobile-24;
             }
 
             h5 {
-                @extend .regular16;
+                @extend .regular-desktop-16-mobile-14;
             }
         }
     }

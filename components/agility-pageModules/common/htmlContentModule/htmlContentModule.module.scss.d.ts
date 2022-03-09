@@ -15,6 +15,11 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "boldDesktop16Mobile25": string;
+  "boldDesktop25Mobile24": string;
+  "boldDesktop25Mobile25": string;
+  "boldDesktop31Mobile20": string;
+  "boldDesktop36Mobile24": string;
   "boldDesktop41Mobile25": string;
   "contentContainer": string;
   "extraBold41": string;
@@ -33,6 +38,11 @@ export type Styles = {
   "regular25": string;
   "regular32": string;
   "regular90": string;
+  "regularDesktop14Mobile12": string;
+  "regularDesktop16Mobile12": string;
+  "regularDesktop16Mobile14": string;
+  "regularDesktop16Mobile16": string;
+  "regularDesktop18Mobile16": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "semiBold14": string;
@@ -40,6 +50,7 @@ export type Styles = {
   "semiBold25": string;
   "semiBold32": string;
   "semiBold90": string;
+  "semiBoldDesktop16Mobile14": string;
 };
 
 export type ClassNames = keyof Styles;

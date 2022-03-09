@@ -17,7 +17,7 @@
         min-height: 350px;
 
         .title {
-            @extend .bold36;
+            @extend .bold-desktop-36-mobile-24;
 
             .arrowContainer {
                 @include fluidDimension("width", 10, 45);
@@ -25,7 +25,7 @@
         }
 
         .description {
-            @extend .regular16;
+            @extend .regular-desktop-16-mobile-14;
         }
     }
 }
@@ -43,9 +43,19 @@
 }
 
 @include media("<tablet") {
-    @include contentProperties(0, 3rem 2rem);
+    @include contentProperties(0, 45px 30px);
 
-    .arrowContainer {
-        transform: scale(0.8);
+    .container {
+        .contentContainer {
+            min-height: 180px;
+
+            .center {
+                text-align: center;
+            }
+
+            .title .arrowContainer {
+                transform: scale(0.8);
+            }
+        }
     }
 }

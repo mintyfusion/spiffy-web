@@ -11,16 +11,16 @@
     h1 {
         @extend .bold36;
         max-width: 40%;
-        margin-bottom: 30px
+        margin-bottom: 30px;
     }
 
     h5 {
-        @extend .regular16;
-        margin-bottom: 50px
+        @extend .regular-desktop-16-mobile-16;
+        margin-bottom: 50px;
     }
 
     blockquote {
-        @extend .bold25;
+        @extend .bold-desktop-25-mobile-24;
 
         &::before {
             content: "";
@@ -39,5 +39,25 @@
 @include media("<desktop") {
     .heroContainer {
         @include blockquoteTabletCSS();
+
+        h1 {
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        h5 {
+            margin-bottom: 40px;
+        }
+
+        blockquote {
+            &::before {
+                padding-bottom: 100px;
+                background-repeat: no-repeat;
+            }
+
+            p {
+                margin-top: 40px;
+            }
+        }
     }
 }

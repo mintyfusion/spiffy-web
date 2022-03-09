@@ -34,10 +34,9 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                 pt-0 
                                 flex-lg-row
                                 overflow-auto
-                                position-sticky
                               `}
                         >
-                            <Col className={` ${styles.leftSection}`} lg={8}>
+                            <Col className={`${styles.leftSection}`} lg={8}>
                                 <Row className={`${styles.cardStack} flex-sm-column`}>
                                     <Col className={`${styles.card} sticky-lg-top w-100`} key={index}>
                                         <div
@@ -46,7 +45,6 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                                     ${styles.cardContainer}
                                                     justify-content-md-center
                                                     justify-content-lg-start
-                                                    w-75
                                                   `}
                                         >
                                             <div className={`${styles.imageContainer} position-relative`}>
@@ -72,7 +70,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                                     />
                                                 </div>
                                             </div>
-                                            <div className={`${colAlignStart} ${styles.cardContent} p-1 p-sm-4`}>
+                                            <div className={`${colAlignStart} ${styles.cardContent}`}>
                                                 <h4>{title}</h4>
                                                 <h6>{description} </h6>
                                             </div>

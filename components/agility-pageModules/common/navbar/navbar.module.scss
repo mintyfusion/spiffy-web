@@ -31,6 +31,7 @@ $backroundTransition: background-color 0.2s;
     .link {
       color: $white;
       text-transform: uppercase;
+      @extend .regular-desktop-16-mobile-16;
 
       &:hover {
         color: $yellow;
@@ -41,7 +42,7 @@ $backroundTransition: background-color 0.2s;
 
     .buttons {
       .buttonLogin {
-        @extend .semiBold14;
+        @extend .semi-bold-desktop-16-mobile-14;
         color: $yellow;
         background: $transparent;
         border: none;

@@ -16,7 +16,7 @@
         }
 
         h5 {
-            @extend .medium16;
+            @extend .regular-desktop-16-mobile-14 ;
         }
     }
 }
@@ -28,7 +28,11 @@
 }
 
 @include media("<tablet") {
+    .contentContainer {
+        padding: 20px;
+    }
+
     .content {
-        padding: 3rem 1rem;
+        padding: 15px 20px;
     }
 }

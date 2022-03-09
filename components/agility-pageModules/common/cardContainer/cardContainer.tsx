@@ -25,6 +25,7 @@ const CardContainer = (props: ICardContainerProps): JSX.Element =>
                         col-md-3 
                         flex-grow-1 
                         flex-md-grow-0
+                        mb-4
                     `}
             >
                 <Card {...card} />

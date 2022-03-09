@@ -6,4 +6,5 @@ export default interface ICommonSectionProps extends ContentItem<IContentData> {
     reversed: boolean;
     arrows: number;
     containerClass: string;
+    centered?: boolean;
 }

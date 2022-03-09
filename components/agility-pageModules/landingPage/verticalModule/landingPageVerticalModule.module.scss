@@ -45,12 +45,12 @@
 
     aside.panel {
         h2.panelHeader {
-            @extend .bold36;
+            @extend .bold-desktop-36-mobile-24;
             color: $black;
             text-transform: capitalize;
 
             .highlightText {
-                @extend .bold36;
+                @extend .bold-desktop-36-mobile-24;
                 color: $blue;
             }
         }

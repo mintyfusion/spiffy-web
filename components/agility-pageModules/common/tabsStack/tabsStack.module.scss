@@ -50,6 +50,11 @@
         &.active {
             background-color: $yellow;
         }
+
+        &.inactive {
+            background-color: $faded-yellow;
+            color: $darkGrey;
+        }
     }
 
     .activeTab {
@@ -60,11 +65,6 @@
 
 @include media(">991px") {
     .tab {
-        &.inactive {
-            background-color: $faded-yellow;
-            color: $darkGrey;
-        }
-
         &:hover {
             background-color: $light-yellow;
         }
@@ -72,9 +72,15 @@
 }
 
 @include media("<=991px") {
-    .tab {
-        background-color: $white;
-        border: none;
+    .tabsStackContainer {
+        .tab {
+            background-color: $white;
+            border: none;
+
+            &.inactive {
+                background-color: $transparent;
+            }
+        }
     }
 }
 
