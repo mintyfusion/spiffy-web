@@ -15,7 +15,7 @@ import GamePageStepTypes from "components/game/gameSection/enums/gamePageStepTyp
 import GameSignup from "components/game/gameSignup/gameSignup";
 import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
 import KeyCSS from "hooks/types/keyCSS";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common//primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import useBreakpoint from "hooks/useBreakpoint";
 import useStyles from "hooks/useStyles";

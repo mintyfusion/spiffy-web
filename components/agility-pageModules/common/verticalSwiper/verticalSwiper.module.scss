@@ -1,0 +1,19 @@
+@import "styles/includeMedia.scss";
+@import "styles/mixins.scss";
+
+@include media(">tablet") {
+    .swiperWrapper {
+        @include fluidDimension("height", 230, 768);
+    }
+}
+
+@include media("<tablet") {
+    .swiperWrapper {
+        max-height: 480px;
+    }
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}

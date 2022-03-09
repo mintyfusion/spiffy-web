@@ -7,7 +7,9 @@ export type Styles = {
   "bold150": string;
   "bold178": string;
   "bold24": string;
+  "bold25": string;
   "bold32": string;
+  "bold36": string;
   "bold41": string;
   "bold60": string;
   "bold67": string;
@@ -16,6 +18,7 @@ export type Styles = {
   "boldDesktop41Mobile25": string;
   "donationButton": string;
   "donationInner": string;
+  "extraBold41": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
@@ -41,6 +44,8 @@ export type Styles = {
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "regularDesktop30Mobile20": string;
+  "semiBold20": string;
+  "semiBold32": string;
   "semiBold90": string;
   "zoomIn": string;
 };

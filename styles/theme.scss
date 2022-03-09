@@ -3,8 +3,11 @@ $yellow: #f9b930;
 $yellow-dark: #cb8a00;
 $light-yellow: #ffdb8f;
 $faded-yellow: #f3e6ca;
+$dirty-yellow: #916e23;
 $black: #000;
+$transparent-black:#0000003b;
 $neutral-black: #777777;
+$neutral-light-black: #e8e8e8;
 $white: #fff;
 $neutral-white: #f8f8f8;
 $translucent-white: #ffffff38;
@@ -13,7 +16,9 @@ $dirty-white: #f2f2f2;
 $pattern-bg-color: #3a3838;
 $darkGrey: #494949;
 $grey: #808080;
+$dirty-grey: #e2e2e2;
 $light-grey: #98989e;
+$overlay-grey: #1b1a1a4d;
 $light-transparent-grey: #ffffff31;
 $transparent-grey: #1b1a1a;
 $red: #ff0c0c;
@@ -29,7 +34,9 @@ $brown: #674806;
 $light-grey-transparent: #98989e87;
 
 .backgroundPattern {
-    background: url("/images/homepage/common/pattern-bg.png");
+    background: url("/images/homepage/common/pattern-bg.webp");
     background-color: $pattern-bg-color;
     background-repeat: repeat;
 }
+
+$blockquote-prefix-image: url("/images/education-details-page/spiffy.svg");

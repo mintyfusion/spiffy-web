@@ -1,0 +1,27 @@
+@import "styles/includeMedia.scss";
+
+@include media(">=desktop") {
+    .cardContainer:after {
+        content: "";
+        flex: inherit;
+        height: 0;
+        width: 470px;
+    }
+
+    .card {
+        width: 470px;
+    }
+}
+
+@include media("<desktop") {
+    .cardContainer:after {
+        content: "";
+        flex: inherit;
+        height: 0;
+        width: 300px;
+    }
+
+    .card {
+        width: 300px;
+    }
+}

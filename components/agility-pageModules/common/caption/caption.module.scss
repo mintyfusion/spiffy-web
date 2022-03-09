@@ -1,0 +1,57 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.caption {
+    min-height: 40rem;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    .banner {
+        color: $white;
+        min-height: 32rem;
+
+        .captionContent {
+            h2 {
+                @extend .bold109;
+
+                span {
+                    @extend .bold178;
+                    line-height: unset;
+                }
+            }
+
+            h3 {
+                @extend .bold67;
+            }
+
+            h4 {
+                @extend .regular25;
+            }
+        }
+    }
+}
+
+@include media(">desktop") {
+    .caption {
+        padding: 20px 4.5rem;
+    }
+}
+
+@include media(">tablet") {
+    .caption {
+        top: 55%;
+    }
+}
+
+@include media("<=tablet") {
+    .caption {
+        top: 50%;
+        min-height: unset;
+        line-height: unset;
+    }
+}
+
+.highlightWord {
+    color: $yellow;
+}

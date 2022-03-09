@@ -1,0 +1,197 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/mixins.scss";
+@import "styles/font/fontGroups.scss";
+
+@mixin footerSocialContent($size, $svgPadding) {
+    div:before {
+        width: $size;
+        height: $size;
+    }
+
+    svg {
+        width: $size;
+        height: $size;
+        padding: $svgPadding;
+    }
+}
+
+.footerContainer {
+    @extend .backgroundPattern;
+
+    .footerContentContainer {
+        .column {
+            padding-top: 3rem;
+
+            .footerTop {
+                .footerLeftSection {
+                    div > * {
+                        margin-bottom: 1.5rem;
+                    }
+                    .footerSocials {
+                        & > * + * {
+                            margin-left: 1rem;
+                        }
+                        div:before {
+                            content: "";
+                            background: url("/images/homepage/footer/footer-social-polygon.svg");
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            position: absolute;
+                            z-index: 1;
+                        }
+
+                        div:nth-child(even)::before {
+                            @include crossBrowserPrefix(transform, rotate(90deg));
+                        }
+
+                        .footerSocial {
+                            position: relative;
+                            z-index: 2;
+
+                            &:hover {
+                                color: unset;
+                            }
+                        }
+                    }
+                }
+
+                .footerText {
+                    @extend .regular25;
+                    color: $white;
+                }
+
+                .footerLinks {
+                     & > * + * {
+                            margin-bottom: 0.5rem;
+                        }
+                    .linkHeaderText {
+                        @extend .regular16;
+                        color: $yellow;
+                    }
+
+                    div:not(.linkHeaderText) {
+                        color: $white;
+                        @extend .regular25;
+                        width: max-content;
+                    }
+
+                    a:hover {
+                        color: $yellow;
+                        transition: color 0.1s ease-in-out;
+                    }
+                }
+            }
+
+            hr {
+                background: $white;
+            }
+
+            .footerBottom {
+                & :first-child {
+                    p {
+                        @extend .regular16;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media(">=1760px") {
+    .footerContentContainer {
+        max-width: 1720px;
+
+        .footerLeftSection {
+            min-width: 414px;
+        }
+    }
+
+    .footerLinks {
+        padding-left: 6rem;
+    }
+}
+
+@include media(">=1370px") {
+    .footerSocials {
+        @include footerSocialContent(38px, 10px);
+    }
+}
+
+@include media("<1370px") {
+    .footerSocials {
+        @include footerSocialContent(30px, 7px);
+    }
+
+        .footerTop {
+            .footerLeftSection {
+                min-width: unset;
+                margin-bottom: 1rem;
+                flex-basis: 100%;
+            }
+
+            .footerLinksContainer {
+                margin: 1rem 0;
+
+                &:not(:nth-child(3)) {
+                    flex-basis: 50%;
+                }
+            }
+        }
+
+        .footerBottom {
+            width: 100%;
+
+            img {
+                @include fluidDimension("height", 15, 25);
+                width: 100%;
+            }
+
+            div:nth-child(1) {
+                padding-left: unset;
+        }
+    }
+}
+
+@include media(">=1370px", "<1760px") {
+    .footerContentContainer {
+        .footerLeftSection {
+            min-width: 300px;
+        }
+    }
+}
+
+@include media(">=phone", "<=1370px") {
+    .footerContainer {
+        .column {
+            padding: 1rem;
+
+            .footerTop {
+                .footerLinks {
+                    padding-left: unset;
+                }
+            }
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .footerBottom a {
+         margin-top: 2px;
+    }
+}
+
+@include media("<desktop") {
+    .footerBottom a {
+        margin-top: 1.5px;
+    }
+}
+
+@include media("<=phone") {
+    .footerBottom {
+        p {
+            margin-bottom: 0;
+            margin-top: 2px;
+        }
+    }
+}

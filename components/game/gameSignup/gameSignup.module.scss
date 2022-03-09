@@ -23,10 +23,6 @@
         .avatarHeading {
             @extend .regular-desktop30-mobile20;
         }
-
-        button {
-            max-width: 25%;
-        }
     }
 }
 @include responsive(">=phone", "<800px", 100%);

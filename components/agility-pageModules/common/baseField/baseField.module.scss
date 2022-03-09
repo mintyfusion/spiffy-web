@@ -1,0 +1,24 @@
+@import "styles/font/fontGroups.scss";
+@import "styles/theme.scss";
+@import "styles/mixins.scss";
+
+.baseFieldContainer {
+    h6 {
+        @extend .regular16;
+    }
+
+    .error {
+        color: $red;
+        margin-top: 5px;
+    }
+
+    .grow {
+        height: 8px;
+        transition: all 200ms ease-in;
+    }
+
+    .shrink {
+        height: 0;
+        transition: all 200ms ease-out;
+    }
+}

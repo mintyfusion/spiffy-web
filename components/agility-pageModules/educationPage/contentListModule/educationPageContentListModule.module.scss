@@ -1,0 +1,28 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+
+.contentContainer {
+    padding: 3rem 1rem;
+    background: $dirty-white;
+}
+
+.content {
+    background: $dirty-white;
+
+    .contentHeading h2 {
+        @extend .fullBold67;
+    }
+}
+
+@include media(">=tablet", "<=desktop") {
+    .content {
+        padding: 4rem 1.5rem;
+    }
+}
+
+@include media("<tablet") {
+    .content {
+        padding: 3rem 1rem;
+    }
+}

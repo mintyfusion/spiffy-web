@@ -32,6 +32,14 @@
     @include typeFace($thirtyFive, $ninety, $regular);
 }
 
+.semiBold20 {
+    @include typeFace($twelve, $twenty, $semi-bold);
+}
+
+.semiBold32 {
+    @include typeFace($eighteen, $thirtyTwo, $semi-bold);
+}
+
 .medium25 {
     @include typeFace($sixteen, $twentyFive, $medium);
 }
@@ -44,16 +52,20 @@
     @include typeFace($fourteen, $twentyFour, $bold);
 }
 
+.bold25 {
+    @include typeFace($sixteen, $twentyFive, $bold);
+}
+
 .bold32 {
     @include typeFace($nine, $thirtyTwo, $bold);
 }
 
-.bold41 {
-    @include typeFace($fourteen, $fortyOne, $bold);
+.bold36 {
+    @include typeFace($fourteen, $thirtySix, $bold);
 }
 
 .bold41 {
-    @include typeFace($twentyFive, $fortyOne, $bold);
+    @include typeFace($fourteen, $fortyOne, $bold);
 }
 
 .bold60 {
@@ -82,6 +94,10 @@
 
 .bold178 {
     @include typeFace($sixty, $oneSeventyEight, $bold);
+}
+
+.extraBold41 {
+    @include typeFace($twentyFive, $fortyOne, $extra-bold);
 }
 
 .extraBold67 {

@@ -1,0 +1,63 @@
+@use "styles/mixins.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+
+.detailsContainer {
+    h5,
+    h5 span {
+        @extend .regular-desktop25-mobile16;
+        color: $light-grey;
+        margin: 1rem 0;
+    }
+
+    h1 {
+        @extend .extraBold67;
+    }
+
+    h2 {
+        @extend .extraBold41;
+    }
+
+    blockquote {
+        &::before {
+            content: "";
+            background-image: $blockquote-prefix-image;
+        }
+
+        p:nth-child(odd) {
+            @extend .bold-desktop41-mobile25;
+        }
+
+        p:nth-child(even) {
+            @extend .bold25;
+            text-align: right;
+        }
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    @include media(">=desktop") {
+        .mediaContainer {
+            margin: 5rem 0;
+        }
+
+        @include blockquoteDesktopCSS();
+    }
+
+    @include media("<desktop") {
+        .mediaContainer {
+            margin: 3rem 0;
+        }
+
+        blockquote {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @include blockquoteTabletCSS();
+    }
+}

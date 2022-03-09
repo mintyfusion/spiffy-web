@@ -21,7 +21,7 @@ export default function useBreakpoint(breakpoint: Breakpoints, check = Breakpoin
     }, [breakpoint, check]);
 
     React.useEffect(() => {
-        window.addEventListener("resize", handleResize);
+        window.addEventListener("resize", handleResize, { passive: true });
 
         return () => window.removeEventListener("resize", handleResize);
     }, [handleResize]);

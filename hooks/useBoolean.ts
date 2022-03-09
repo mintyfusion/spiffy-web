@@ -1,7 +1,6 @@
 import React from "react";
 
 import IUseBooleanCallbacks from "hooks/interfaces/IUseBooleanCallbacks";
-
 /**
  * Hook to generate callbacks for setting the value to true or false.
  * The identity of the callbacks will always stay the same.

@@ -2,7 +2,7 @@ import React from "react";
 
 import flexbox from "utils/flexbox";
 import GameSection from "components/game/gameSection/gameSection";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBoolean from "hooks/useBoolean";
 
 import styles from "components/game/gameMain/gameMain.module.scss";

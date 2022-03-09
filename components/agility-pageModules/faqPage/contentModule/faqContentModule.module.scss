@@ -1,0 +1,117 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/functions.scss";
+@import "styles/font/fontGroups.scss";
+
+.contentContainer {
+    background: $dirty-white;
+
+    .faqAccordionContainer {
+        & > * {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.content {
+    background: $dirty-white;
+
+    .contentHeading h2 {
+        @extend .fullBold67;
+    }
+}
+
+.accordion {
+    :global(.accordion-button) {
+        padding: 0;
+
+        &:after {
+            display: none;
+        }
+
+        &:focus {
+            box-shadow: initial;
+        }
+
+        .customAccordianButton {
+            background-color: $faded-yellow;
+            min-width: 50px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            width: 70px;
+            transition: background-color 0.3s;
+
+            div {
+                display: inherit;
+                transform: rotate(0deg);
+                transition: transform 0.3s;
+            }
+        }
+    }
+
+    :global(.accordion-button:not(.collapsed)) {
+        color: initial;
+        background-color: $neutral-light-black;
+
+        .customAccordianButton {
+            background-color: $yellow;
+
+            div {
+                transform: rotate(-90deg);
+                transition: transform 0.3s;
+            }
+        }
+    }
+}
+
+.accordianHeader {
+    .faqIndex {
+        color: $yellow;
+        width: fluid(56px, 70px);
+    }
+
+    button {
+        @extend .semiBold32;
+        background-color: $neutral-light-black;
+    }
+}
+
+.accordianBody {
+    @extend .regular25;
+    background-color: $dirty-white;
+}
+
+@include media(">desktop") {
+    .contentContainer {
+        padding: 3rem 1rem;
+    }
+}
+
+@include media(">=tablet", "<=desktop") {
+    .content {
+        padding: 4rem 1.5rem;
+    }
+}
+
+@include media("<tablet") {
+    .contentContainer {
+        padding: 2rem 1rem;
+    }
+
+    .content {
+        padding: 1rem 1rem;
+    }
+
+    .customAccordianButton {
+        width: 63px;
+        padding: 0.5rem;
+    }
+
+    .accordion {
+        :global(.accordion-button) {
+            .customAccordianButton div {
+                width: 70px;
+            }
+        }
+    }
+}

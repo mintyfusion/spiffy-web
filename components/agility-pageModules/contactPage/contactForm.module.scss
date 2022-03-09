@@ -1,0 +1,157 @@
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
+
+.container {
+    padding: 3rem 0;
+    background-color: $dirty-white;
+
+    h2 {
+        @extend .bold67;
+    }
+
+    h3 {
+        @extend .bold41;
+    }
+
+    h4 {
+        @extend .regular25;
+    }
+
+    h5 {
+        @extend .bold24;
+    }
+
+    h6,
+    label {
+        @extend .regular16;
+    }
+
+    .overlay {
+        background-color: $overlay-grey;
+    }
+
+    .contextContainer {
+        .topContextContainer {
+            background-color: $neutral-light-black;
+
+            .buttonFaq {
+                @extend .bold24;
+                min-width: 200px;
+            }
+        }
+    }
+
+    .formContainer {
+        .formContent {
+            background-color: $white;
+            border-radius: 5px;
+            border: 1px solid $light-transparent-grey;
+            box-shadow: 29px 26px 2px 6px $dirty-grey;
+
+            form {
+                padding: 2rem;
+            }
+            .phoneNumberContainer {
+                label,
+                input {
+                    @extend .regular24;
+                    @include fluidDimension("min-height", 51, 59);
+                    padding: 10px;
+                }
+
+                .countryflagContainer {
+                    background: url("/images/contact-page/flags/icon-usa.svg") no-repeat;
+                    background-position: 15%;
+                    border: 1px solid $neutral-black;
+                    border-right: 0;
+                    border-radius: 8px 0 0 8px;
+                }
+            }
+
+            input,
+            textarea {
+                @extend .regular24;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: $neutral-light-black;
+                border: 1px solid $light-transparent-grey;
+                outline-color: $light-transparent-grey;
+
+                &:focus-visible {
+                    transition: all 200ms;
+                    outline-color: $yellow;
+                    border-color: $yellow;
+                }
+            }
+
+            .inputPhoneNumber {
+                background-color: initial;
+                border: 1px solid $neutral-black;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+
+            .formBottomContent {
+                max-width: 400px;
+            }
+        }
+
+        .userTypeButton {
+            @extend .semiBold20;
+        }
+
+        .inactive {
+            background-color: $faded-yellow;
+        }
+    }
+
+    .thankYou {
+        padding: 152px 0;
+        border-radius: 12px;
+        margin-top: 30px;
+
+        img,
+        .title {
+            margin-bottom: 22px;
+        }
+
+        .note {
+            margin-bottom: 10px;
+            padding: 0 60px;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .formContent {
+        max-width: calc(100% - 50px);
+        min-width: 400px;
+    }
+
+    .countryflagContainer {
+        min-width: 120px;
+    }
+
+    .contextContainer {
+        & > div {
+            padding: 2rem 4rem 2rem 7rem;
+        }
+    }
+}
+
+@include media("<desktop") {
+    .formContent {
+        width: 100%;
+    }
+
+    .countryflagContainer {
+        min-width: 90px;
+    }
+
+    .contextContainer {
+        & > div {
+            padding: 2rem 3rem;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/includeMedia.scss";
+
+.card {
+    border-radius: 12px;
+
+    .cardTag {
+        color: $light-grey;
+        @extend .regular16;
+    }
+
+    .cardTitle {
+        @extend .regular25;
+        min-height: 88px;
+    }
+
+    .cardDescription {
+        @extend .regular14;
+    }
+
+    .link {
+        @extend .bold24;
+        cursor: pointer;
+        color: $yellow;
+    }
+}

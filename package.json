@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "agility-next sync",
     "dev": "concurrently \"yarn clean\" \"next dev\" \"yarn css-types\"",
     "css-types": "tsm \"**/*.module.scss\" -w -u -e default -q double --ignore \"node_modules\"",
     "build": "next build",
@@ -11,22 +12,28 @@
     "clean": "rimraf .next"
   },
   "dependencies": {
+    "@agility/content-fetch": "^1.1.1",
+    "@agility/content-sync": "^1.0.3",
+    "@agility/nextjs": "^0.4.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
     "bootstrap": "^5.1.3",
+    "fs-extra": "^10.0.0",
     "isomorphic-dompurify": "^0.16.0",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-bootstrap": "^2.0.0",
     "react-dom": "17.0.2",
+    "react-gtm-module": "^2.0.11",
     "react-player": "^2.9.0",
     "react-scroll": "^1.8.4",
-    "swiper": "^7.3.0"
+    "swiper": "^8.0.6"
   },
   "devDependencies": {
     "@types/react": "17.0.33",
+    "@types/react-gtm-module": "^2.0.1",
     "@types/react-scroll": "^1.8.3",
     "@typescript-eslint/eslint-plugin": "^4.8.0",
     "@typescript-eslint/parser": "^4.8.0",

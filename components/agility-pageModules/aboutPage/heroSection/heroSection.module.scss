@@ -1,0 +1,45 @@
+@use "styles/mixins.scss";
+@import "styles/theme.scss";
+@import "styles/includeMedia.scss";
+@import "styles/font/fontGroups.scss";
+
+.heroContainer {
+    @extend .backgroundPattern;
+    color: $white;
+    min-height: 35rem;
+
+    h1 {
+        @extend .bold109;
+    }
+
+    h5 {
+        @extend .regular25;
+    }
+
+    blockquote {
+        @extend .bold41;
+
+        &::before {
+            content: "";
+            background-image: $blockquote-prefix-image;
+        }
+    }
+}
+
+@include media(">=desktop") {
+    .heroContainer {
+        @include blockquoteDesktopCSS();
+    }
+}
+
+@include media("<desktop") {
+    .heroContainer {
+        @include blockquoteTabletCSS();
+
+        blockquote::before {
+            padding: 4rem 0 4rem 4rem;
+            background-repeat: repeat no-repeat;
+            margin-bottom: 1rem;
+        }
+    }
+}

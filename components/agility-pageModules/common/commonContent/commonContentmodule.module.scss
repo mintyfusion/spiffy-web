@@ -1,0 +1,17 @@
+@import "styles/font/fontGroups.scss";
+@import "styles/theme.scss";
+
+.contentContainer {
+    h2 {
+        @extend .bold67;
+    }
+
+    h5 {
+        @extend .regular25;
+    }
+}
+
+.inverted {
+    @extend .backgroundPattern;
+    color: $white;
+}

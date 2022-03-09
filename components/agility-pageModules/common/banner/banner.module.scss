@@ -1,0 +1,51 @@
+@import "styles/theme.scss";
+@import "styles/mixins.scss";
+@import "styles/includeMedia.scss";
+
+.bannerContainer {
+    @extend .backgroundPattern;
+}
+
+.carouselItem div,
+.carouselItem {
+    min-height: 25rem;
+}
+
+.full {
+    min-height: 40rem;
+}
+
+.carouselItem {
+    min-height: 20rem;
+}
+
+.full {
+    & > div:first-child {
+        height: 100vh;
+    }
+}
+
+@include media(">=1340px") {
+    .carouselItem div {
+        min-height: 40rem;
+        width: 100vw;
+    }
+}
+
+@include media("<1340px") {
+    .carouselItem div {
+        min-height: 24rem;
+    }
+}
+
+@include media(">tablet", "<1340px") {
+    .carouselItem div {
+        min-height: 50rem;
+    }
+}
+
+@include media("<=tablet") {
+    .carouselItem div {
+        min-height: 20rem;
+    }
+}

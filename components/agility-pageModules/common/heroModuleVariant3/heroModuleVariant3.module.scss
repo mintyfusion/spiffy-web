@@ -1,0 +1,16 @@
+@import "styles/theme.scss";
+@import "styles/includeMedia.scss";
+
+.bannerCaption {
+    h2 > span {
+        color: $yellow;
+    }
+}
+
+@include media("<=tablet") {
+    .bannerCaption {
+        [role="text-list"] {
+            display: none;
+        }
+    }
+}

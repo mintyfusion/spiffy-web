@@ -1,0 +1,30 @@
+@import "styles/font/fontGroups.scss";
+@import "styles/theme.scss";
+@import "styles/includeMedia.scss";
+
+.bannerContentContainer {
+    z-index: 1;
+    width: 100%;
+
+    .title {
+        @extend .fullbold109;
+        color: $yellow;
+    }
+
+    .date {
+        @extend .regular25;
+        color: $neutral-white;
+    }
+}
+
+@include media(">=tablet") {
+    .bannerContentContainer {
+        padding: 6rem 7rem;
+    }
+}
+
+@include media("<tablet") {
+    .bannerContentContainer {
+        padding: 2rem;
+    }
+}

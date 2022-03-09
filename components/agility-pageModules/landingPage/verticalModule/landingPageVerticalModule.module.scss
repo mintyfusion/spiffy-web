@@ -1,0 +1,110 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+@include opacityKeyFrames();
+
+@mixin panelContentOpacity($classname, $opacity, $animation) {
+    #{$classname} {
+        opacity: $opacity;
+        animation: $animation;
+    }
+}
+
+.content3 {
+    .headerEmphasisText {
+        @extend .bold150;
+        color: $translucent-white;
+        width: fit-content;
+        text-transform: capitalize;
+    }
+
+    .container {
+        margin: 0;
+        top: $headerHeigth;
+        box-shadow: 0px -13px 20px 0px $light-grey-transparent;
+        height: 100vh;
+        .contentContainer {
+            background: $yellow;
+            background-image: url("/images/homepage/verticalContentSection/bg-spiffy-watermark.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            :global(.swiper-slide-prev) {
+                @include panelContentOpacity(".panelHeader", 0, hide 0.5s);
+            }
+
+            :global(.swiper-slide-active) {
+                @include panelContentOpacity(".panelHeader", 1, show 2s);
+            }
+
+            :global(.swiper-slide-next) {
+                @include panelContentOpacity(".panelHeader", 0, hide 0.5s);
+            }
+        }
+
+        .parallaxColumnRigth {
+            div:nth-child(1) {
+                height: 100%;
+            }
+        }
+    }
+
+    aside.panel {
+        h2.panelHeader {
+            @extend .bold60;
+            color: $black;
+            text-transform: capitalize;
+
+            .highlightText {
+                @extend .bold60;
+                color: $blue;
+            }
+        }
+    }
+}
+
+@include media(">=tablet", "<desktop") {
+    .panelHeader {
+        padding-left: 1rem;
+        padding-top: 3rem;
+    }
+}
+
+@include media(">=tablet") {
+    .content3 {
+        .container {
+            height: 100vh;
+        }
+        .headerEmphasisText {
+            left: 4%;
+            top: -1%;
+        }
+
+        aside.panel {
+            @include fluidDimension("height", 230, 768);
+        }
+    }
+}
+
+@include media("<tablet") {
+    .content3 {
+        .container {
+            height: 50%;
+            .headerEmphasisText {
+                top: 5%;
+                left: 5%;
+            }
+            aside.panel {
+                min-height: 480px;
+
+                h2.panelHeader {
+                    padding-top: 1rem;
+                    padding-left: 1rem;
+                }
+            }
+        }
+    }
+}

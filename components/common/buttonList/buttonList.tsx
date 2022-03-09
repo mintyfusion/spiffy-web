@@ -6,7 +6,7 @@ import React from "react";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
 import IButtonListProps from "components/common/buttonList/interfaces/IButtonListProps";
-import PrimaryButton from "components/common/primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
@@ -44,7 +44,7 @@ const ButtonList = ({ onButtonClick, lisItems, ...props }: IButtonListProps): JS
         expanded={expanded}
         onClick={isLG ? navToggle : undefined}>
         <Navbar.Brand className="d-lg-none">
-            {`${!selected
+            {`${selected!==""
                 ? `${valuePrefix ? valuePrefix : ""}${selected}${valueSuffix ? valueSuffix : ""}`
                 : "Select amount"}`}
         </Navbar.Brand>
