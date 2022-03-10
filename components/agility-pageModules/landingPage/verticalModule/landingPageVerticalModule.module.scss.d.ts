@@ -1,4 +1,5 @@
 export type Styles = {
+  "active": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold14": string;
@@ -38,6 +39,7 @@ export type Styles = {
   "medium25": string;
   "panel": string;
   "panelHeader": string;
+  "parallaxColumnRigth": string;
   "regular12": string;
   "regular14": string;
   "regular16": string;
@@ -50,9 +52,14 @@ export type Styles = {
   "regularDesktop16Mobile12": string;
   "regularDesktop16Mobile14": string;
   "regularDesktop16Mobile16": string;
+  "regularDesktop16Mobile7": string;
   "regularDesktop18Mobile16": string;
+  "regularDesktop20Mobile7": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
+  "selector": string;
+  "selectors": string;
   "semiBold14": string;
   "semiBold20": string;
   "semiBold25": string;
