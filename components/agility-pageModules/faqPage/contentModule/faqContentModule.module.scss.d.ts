@@ -1,8 +1,8 @@
 export type Styles = {
   "accordianBody": string;
+  "accordianBodyInner": string;
   "accordianHeader": string;
   "accordion": string;
-  "accordionWrapper": string;
   "backgroundPattern": string;
   "bold109": string;
   "bold14": string;
@@ -33,8 +33,8 @@ export type Styles = {
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
+  "faqAccordionContainer": string;
   "faqIndex": string;
-  "faqNotFound": string;
   "fullbold109": string;
   "fullBold67": string;
   "medium14": string;
@@ -52,9 +52,12 @@ export type Styles = {
   "regularDesktop16Mobile12": string;
   "regularDesktop16Mobile14": string;
   "regularDesktop16Mobile16": string;
+  "regularDesktop16Mobile7": string;
   "regularDesktop18Mobile16": string;
+  "regularDesktop20Mobile7": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
   "semiBold14": string;
   "semiBold20": string;
   "semiBold25": string;

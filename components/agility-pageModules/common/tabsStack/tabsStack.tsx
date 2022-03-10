@@ -19,7 +19,7 @@ import useBreakpoint from "hooks/useBreakpoint";
 import styles from "components/agility-pageModules/common/tabsStack/tabsStack.module.scss";
 
 const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
-const menuTabsPerView = 4;
+const menuTabsPerView = 5;
 const smallScreenTabsPerView = 3;
 
 SwiperCore.use([Virtual, Navigation, Pagination]);

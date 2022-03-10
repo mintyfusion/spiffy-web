@@ -184,8 +184,12 @@
     @include typeFace($sixteen, $sixteen, $regular);
 }
 
-.semi-bold-desktop-16-mobile-14 {
+.regular-desktop-16-mobile-14 {
     @include typeFace($fourteen, $sixteen, $regular);
+}
+
+.semi-bold-desktop-16-mobile-14 {
+    @include typeFace($fourteen, $sixteen, $semi-bold);
 }
 
 .bold-desktop-25-mobile-24 {

@@ -91,7 +91,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                     tabs={tabs}
                 />
             }
-            <Stack className={styles.faqAccordionContainer} >
+            <Stack className={styles.faqAccordionContainer}>
                 {resultData
                     && resultData
                         .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
@@ -102,7 +102,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             >
                                 <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
                                     <Accordion.Header className={styles.accordianHeader}>
-                                        <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
+                                        <Stack className="w-100" direction="horizontal">
                                             <div className={`${styles.faqIndex} p-3`}>
                                                 {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
                                             </div>
@@ -111,7 +111,9 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                                         </Stack>
                                     </Accordion.Header>
                                     <Accordion.Body className={styles.accordianBody}>
-                                        <div dangerouslySetInnerHTML={renderHtml(post.fields.description)} />
+                                        <div
+                                            dangerouslySetInnerHTML={renderHtml(post.fields.description)}
+                                            className={styles.accordianBodyInner} />
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>

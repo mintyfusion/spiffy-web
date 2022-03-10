@@ -54,7 +54,7 @@ const Section = (props: ISectionProps): JSX.Element => {
         href: props.href
     }), [props.href]);
 
-    return <Row className={`flex-nowrap ${rowDirection} w-100`}>
+    return <Row className={`flex-nowrap ${rowDirection}`}>
         <Col className={`${rowAlign}`}>
             <PrimaryButton
                 className={`

@@ -36,6 +36,10 @@
         cursor: pointer;
         transition: color 100ms;
 
+        &.inactive {
+            color: $darkGrey;
+        }
+
         &:hover {
             color: $yellow;
             transition: color 100ms;
@@ -50,11 +54,6 @@
         &.active {
             background-color: $yellow;
         }
-
-        &.inactive {
-            background-color: $faded-yellow;
-            color: $darkGrey;
-        }
     }
 
     .activeTab {
@@ -63,8 +62,33 @@
     }
 }
 
+.swiperContainer {
+    :global(.swiper-button-prev),
+    :global(.swiper-button-next) {
+        color: $black;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    :global(.swiper-button-prev),
+    :global(.swiper-button-next) {
+        background-image: url("/images/common/chevron-left-solid.svg");
+    }
+
+    :global(.swiper-button-next) {
+        transform: rotate(180deg);
+    }
+}
+
 @include media(">991px") {
     .tab {
+        &.inactive {
+            background-color: $faded-yellow;
+            border: none;
+        }
+
         &:hover {
             background-color: $light-yellow;
         }
@@ -72,14 +96,13 @@
 }
 
 @include media("<=991px") {
-    .tabsStackContainer {
-        .tab {
-            background-color: $white;
-            border: none;
+    .tab {
+        background-color: $white;
+        border: none;
 
-            &.inactive {
-                background-color: $transparent;
-            }
+        &.inactive {
+            border: none;
+            color: $darkGrey;
         }
     }
 }
