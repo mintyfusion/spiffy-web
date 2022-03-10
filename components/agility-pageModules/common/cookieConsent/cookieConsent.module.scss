@@ -9,7 +9,7 @@ $btn-margin: calc($spacing / 2);
     z-index: 999;
     max-width: 575px;
     background-color: $white;
-    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 48px $transparent-black;
     padding: $spacing;
     transform: translateY(200px);
     animation: slideUp 1s 1.5s linear forwards;
@@ -32,7 +32,6 @@ $btn-margin: calc($spacing / 2);
                 text-decoration: none;
                 span {
                     color: $yellow-dark;
-                    
                     &:hover {
                         text-decoration: underline;
                     }

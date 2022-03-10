@@ -42,12 +42,6 @@ const allModules: Record<string, ComponentWithInit> = {
   HeroModuleVariant2
 };
 
-export const getModule = (moduleName: string): ComponentWithInit => {
-  if (!moduleName) { return null; }
+export const getModule = (moduleName: string): ComponentWithInit =>
+  moduleName && allModules[moduleName] ? allModules[moduleName] : null;
 
-  const obj = allModules[moduleName];
-
-  if (!obj) return null;
-
-  return obj;
-};

@@ -107,7 +107,7 @@ const Head = (props: IHeadProps): JSX.Element =>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={props.description} />
         <meta name="keywords" content={props.keywords} />
-        {props.metaHTML &&
+        {/<[a-z][\s\S]*>/i.test(props.metaHTML) &&
             <span dangerouslySetInnerHTML={renderHtml(props.metaHTML)} />
         }
     </NextHead>;

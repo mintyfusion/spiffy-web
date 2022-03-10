@@ -50,6 +50,10 @@ const Section = (props: ISectionProps): JSX.Element => {
 
     }, [isBreakpointMatched, props.direction]);
 
+    const linkHref = React.useMemo(() => ({
+        href: props.href
+    }), [props.href]);
+
     return <Row className={`flex-nowrap ${rowDirection}`}>
         <Col className={`${rowAlign}`}>
             <PrimaryButton
@@ -61,7 +65,7 @@ const Section = (props: ISectionProps): JSX.Element => {
                         ${!props.showButtonArrow && "p-3"}
                     `}
                 showArrow={props.showButtonArrow}
-                linkProps={{ href: props.href }}
+                linkProps={linkHref}
             >
                 {props.buttonText}
             </PrimaryButton>

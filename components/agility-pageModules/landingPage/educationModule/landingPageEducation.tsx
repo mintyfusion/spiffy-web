@@ -11,6 +11,8 @@ import styles from "components/agility-pageModules/landingPage/educationModule/l
 
 const rowHCenter = flexbox({ hAlign: "center" });
 
+const linkProps = { href: "/education" };
+
 const LandingPageEducation = (props: ModuleProps<ILandingPageEducationProps>): JSX.Element => {
     const { fields } = props.module;
 
@@ -22,7 +24,7 @@ const LandingPageEducation = (props: ModuleProps<ILandingPageEducationProps>): J
             <CardContainer content={{ items: fields.educationTiles }} />
         </Row>
         <Row>
-            <PrimaryButton linkProps={{ href: "/education" }}>Learn More</PrimaryButton>
+            <PrimaryButton linkProps={linkProps}>Learn More</PrimaryButton>
         </Row>
     </Stack>;
 };

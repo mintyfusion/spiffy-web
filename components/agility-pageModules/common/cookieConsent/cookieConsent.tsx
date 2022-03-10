@@ -18,7 +18,7 @@ export default function CookieConsent(): JSX.Element | null {
 
     React.useEffect(() => {
         setCookieConsent(localStorage.getItem(DISPLAYED_COOKIE_CONSENT) === "true");
-    }, [setCookieConsent]);
+    }, []);
 
     if (isDisplayedCookieConsent) {
         return null;

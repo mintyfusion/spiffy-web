@@ -63,7 +63,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                                         bottom-0
                                                  `}>
                                                     <Image
-                                                        src="/images/homepage/features-section/watermark.svg"
+                                                        src="/images/homepage/common/watermark.svg"
                                                         width={20}
                                                         height={20}
                                                         layout="responsive"

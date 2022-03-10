@@ -1,9 +1,10 @@
 import { ModuleProps } from "@agility/nextjs";
 import { Row, Stack } from "react-bootstrap";
+import dynamic from "next/dynamic";
 import React from "react";
 
 import { SearchContext } from "pages/[...slug]";
-import CardContainer from "components/agility-pageModules/common/cardContainer/cardContainer";
+import agilityTagGenerator from "utils/agilityTag";
 import CardPlaceHolder from "components/agility-pageModules/common/cardPlaceholder/cardPlaceholder";
 import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import FilterLogicTypes from "utils/api/enums/filterLogicTypes";
@@ -15,6 +16,9 @@ import TabsStack from "components/agility-pageModules/common/tabsStack/tabsStack
 import useGetContentList from "hooks/useGetContentList";
 
 import styles from "components/agility-pageModules/educationPage/contentListModule/educationPageContentListModule.module.scss";
+
+const Message = dynamic(() => import("components/agility-pageModules/common/message/message"));
+const CardContainer = dynamic(() => import("components/agility-pageModules/common/cardContainer/cardContainer"));
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
@@ -54,10 +58,17 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
 
     const [{ isLoading, data: resultData }] = useGetContentList<ICardProps>(finalParams);
 
+    const tabs = React.useMemo(() => agilityTagGenerator(props.module.fields.educationTags),
+        [props.module.fields.educationTags]);
+
     return (
         <div className={styles.contentContainer}>
             {!searchData.searchValue &&
-                <TabsStack activeTab={activeTab} setActiveTab={setActiveTab} tags={props.module.fields.educationTags} />
+                <TabsStack
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    tabs={tabs}
+                />
             }
             {props.module.fields.educationTags.map(content =>
                 <Stack
@@ -80,7 +91,7 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                     {isLoading && <CardPlaceHolder className={horizontalAlign} />}
                     {!isLoading
                         ? !resultData?.items?.length
-                            ? <h1 className="text-center">No Blogs Found</h1>
+                            ? <Message message="No Blogs Found" error />
                             : resultData &&
                             <>
                                 <CardContainer content={resultData} />

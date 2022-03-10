@@ -4,7 +4,7 @@ import React, { HTMLAttributes } from "react";
 import styles from "components/agility-pageModules/common/cardPlaceholder/cardPlaceholder.module.scss";
 
 const CardPlaceHolder = (props: HTMLAttributes<HTMLDivElement>): JSX.Element =>
-    <Row {...props}>
+    <Row {...props} className={styles.cardPlaceholderContainer}>
         <Col className="card p-3" aria-hidden="true">
             <svg className="">
                 <rect width="100%" height="100%" fill={styles.placeholderColor}></rect>

@@ -1,5 +1,22 @@
 @use "styles/theme.scss";
+@use "styles/includeMedia.scss";
+
+.cardPlaceholderContainer {
+    border-radius: 12px;
+}
+
+@include includeMedia.media(">=desktop") {
+    .cardPlaceholderContainer {
+        width: 390px;
+    }
+}
+
+@include includeMedia.media("<desktop") {
+    .cardPlaceholderContainer {
+        width: 300px;
+    }
+}
 
 :export {
-    placeholderColor:  theme.$light-grey;
+    placeholderColor: theme.$light-grey;
 }

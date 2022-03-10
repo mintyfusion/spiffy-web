@@ -1,0 +1,283 @@
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/mixins.scss";
+@import "styles/variables.scss";
+
+@mixin responsive($start, $end, $maxWidth) {
+    @include media($start, $end) {
+        .modalBody .gameStepThree {
+            max-width: $maxWidth;
+        }
+    }
+}
+
+.modalBody {
+    background-color: $dirty-white;
+
+    .card {
+        background-color: $white;
+        width: 90%;
+        min-height: calc(#{$vh} - 40px);
+        margin: 20px auto;
+    }
+
+    .close {
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .gameStepTwoWrapper {
+        padding: 50px 0;
+        width: 100%;
+
+        .avatarHeading {
+            @extend .regular-desktop30-mobile20;
+        }
+
+        .avatar {
+            color: $white;
+            cursor: pointer;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        .avatarSelected svg {
+            @include imgProperties(160px);
+        }
+
+        .avatarFriends svg {
+            @include imgProperties(222px);
+            transition: 2s;
+        }
+
+        .gameStepTwo {
+            width: 30%;
+            margin-top: 0px;
+
+            button {
+                margin-top: 40px;
+            }
+
+            .targetOne {
+                width: 160px;
+                height: 160px;
+                margin-top: 40px;
+            }
+
+            img {
+                visibility: hidden;
+            }
+
+            input {
+                border: 1px solid $silver;
+                padding: 20px 10px;
+                border-radius: 12px;
+                margin-top: 40px;
+
+                &:focus-visible {
+                    outline: 0px;
+                }
+            }
+        }
+    }
+
+    .transparent {
+        background-color: $transparent;
+    }
+
+    .gameStepThree {
+        display: flex;
+        background-color: $dirty-white;
+        width: 100%;
+
+        .avatarHeading {
+            @extend .regular-desktop30-mobile20;
+        }
+
+        .user img {
+            visibility: hidden;
+        }
+
+        .userColumn {
+            width: 48%;
+            background-color: $white;
+
+            .userColumnInner {
+                max-width: 500px;
+            }
+
+            h2 {
+                display: none;
+                position: absolute;
+                top: 60px;
+            }
+        }
+
+        .friendsColumn {
+            width: 48%;
+            background-color: $white;
+            padding: 50px 80px;
+
+            h2 {
+                margin-top: 50px;
+            }
+
+            .percentageWrapper svg {
+                cursor: pointer;
+            }
+        }
+
+        h3 {
+            @extend .regular24;
+            margin-top: 90px;
+        }
+
+        .targetTwo {
+            width: 222px;
+            height: 222px;
+        }
+
+        .friendsTop,
+        .friendsBottom {
+            min-height: 148px;
+        }
+
+        .friendsTop {
+            margin-bottom: -111px;
+        }
+
+        .friendsBottom {
+            margin-top: -100px;
+        }
+    }
+}
+@include media(">=phone", "<1000px") {
+    .modalBody {
+        .card {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .close {
+            top: 20px;
+        }
+
+        .gameStepTwoWrapper {
+            padding: 50px 0;
+            .avatarSelected,
+            .avatarFriends,
+            .avatar {
+                svg {
+                    @include imgProperties(90px);
+                }
+            }
+
+            .gameStepTwo {
+                width: 75%;
+
+                img {
+                    @include imgProperties(84px);
+                }
+
+                input {
+                    padding: 8px 10px;
+                    margin-top: 40px;
+                }
+
+                .targetOne {
+                    width: 90px;
+                    height: 90px;
+                }
+            }
+        }
+
+        .gameStepThree {
+            flex-direction: column !important;
+            height: auto;
+
+            .targetTwo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .userColumn {
+                width: 100%;
+                height: 50%;
+
+                .userColumnInner {
+                    max-width: 340px;
+                }
+                h2 {
+                    position: relative;
+                    top: -10px;
+                }
+
+                h3 {
+                    margin-top: 60px;
+                }
+
+                .friendsTop,
+                .friendsBottom {
+                    width: 55%;
+                    min-height: 60px;
+                    svg {
+                        @include imgProperties(50px);
+                    }
+                }
+
+                .friendsTop {
+                    margin-bottom: -50px;
+                }
+
+                .friendsBottom {
+                    margin-top: -34px;
+                }
+            }
+
+            .friendsColumn {
+                width: 100%;
+                padding: 0px;
+                height: 50%;
+
+                h2 {
+                    display: none;
+                }
+
+                .percentageWrapper {
+                    width: 100%;
+                    height: 100%;
+                    svg {
+                        @include imgProperties(65px);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media(">=425px", "<800px") {
+    .modalBody .gameStepThree .userColumn .userColumnInner {
+        max-width: 410px;
+    }
+}
+
+@include media(">=1000px", "<1100px") {
+    .modalBody .gameStepThree .friendsColumn .percentageWrapper svg {
+        @include imgProperties(125px);
+    }
+}
+
+@include media(">=1100px", "<1200px") {
+    .modalBody .gameStepThree .friendsColumn .percentageWrapper svg {
+        @include imgProperties(165px);
+    }
+}
+
+@include responsive(">=1300px", "<1400px", 1170px);
+@include responsive(">=1400px", "<1500px", 1260px);
+@include responsive(">=1500px", "<1600px", 1350px);
+@include responsive(">=1600px", "<1700px", 1400px);

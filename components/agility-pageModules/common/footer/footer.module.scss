@@ -25,7 +25,13 @@
 
             .footerTop {
                 .footerLeftSection {
+                    div > * {
+                        margin-bottom: 1.5rem;
+                    }
                     .footerSocials {
+                        & > * + * {
+                            margin-left: 1rem;
+                        }
                         div:before {
                             content: "";
                             background: url("/images/homepage/footer/footer-social-polygon.svg");
@@ -56,6 +62,9 @@
                 }
 
                 .footerLinks {
+                     & > * + * {
+                            margin-bottom: 0.5rem;
+                        }
                     .linkHeaderText {
                         @extend .regular14;
                         color: $yellow;

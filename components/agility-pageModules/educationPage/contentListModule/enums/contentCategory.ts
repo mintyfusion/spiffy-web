@@ -1,6 +1,5 @@
 enum ContentCategory {
-    all = "All",
-    allTopics = "All Topics"
+    all = "All"
 }
 
 export default ContentCategory;

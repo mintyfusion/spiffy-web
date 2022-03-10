@@ -16,12 +16,14 @@ const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
 
     // TODO: We remove this once we start creating modules for the header and footer.
     const showStickyHeader: boolean = React.useMemo(() => {
-        if (props.page?.pageID === PageIds.EDUCATION_DETAILS || props.page?.pageID === PageIds.ABOUT) {
+        if (props.page?.pageID === PageIds.EDUCATION_DETAILS
+            || props.page?.pageID === PageIds.ABOUT
+            || props.navbarProps?.sticky) {
             return true;
         }
 
         return false;
-    }, [props.page?.pageID]);
+    }, [props.page?.pageID, props.navbarProps?.sticky]);
 
     // if page not found, throw 404
     if (notFound === true) {
@@ -32,9 +34,9 @@ const Layout = (props: React.PropsWithChildren<ILayoutProps>): JSX.Element => {
         <div>
             <Head
                 title={props.sitemapNode?.title}
-                description={props.page?.seo.metaDescription}
-                keywords={props.page?.seo.metaKeywords}
-                metaHTML={props.page?.seo.metaHTML}
+                description={props.page?.seo.metaDescription || props.dynamicPageItem?.seo.metaDescription}
+                keywords={props.page?.seo.metaKeywords || props.dynamicPageItem?.seo.metaKeywords}
+                metaHTML={props.page?.seo.metaHTML || props.dynamicPageItem?.seo.metaHTML}
             />
             <Navbar sticky={showStickyHeader} />
             {AgilityPageTemplate

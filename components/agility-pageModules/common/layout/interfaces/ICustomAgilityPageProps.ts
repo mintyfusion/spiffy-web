@@ -1,9 +1,11 @@
 import { AgilityPageProps } from "@agility/nextjs";
 
-export default interface ICustomAgilityPageProps extends Omit<AgilityPageProps, "sitemapNode" | "page"> {
+import IPage from "components/agility-pageModules/common/layout/interfaces/IPage";
+
+export default interface ICustomAgilityPageProps extends Omit<AgilityPageProps, "sitemapNode" | "page" | "dynamicPageItem"> {
     sitemapNode?: { title: string };
-    page?: {
-        pageID: number;
+    page?: IPage;
+    dynamicPageItem?: {
         seo: {
             metaDescription: string;
             metaHTML: string;

@@ -17,6 +17,10 @@
 }
 
 .socials {
+    & > * + * {
+        margin-left: 1rem;
+    }
+
     .shareText {
         text-transform: uppercase;
         @extend .bold-desktop-16-mobile-25;

@@ -1,0 +1,4 @@
+// This variable will have the value only if the Javascript function setViewportHeight is called
+// somewhere in the component or outside the component.
+$vh: var(--vh);
+$headerHeigth : var(--headerHeigth)

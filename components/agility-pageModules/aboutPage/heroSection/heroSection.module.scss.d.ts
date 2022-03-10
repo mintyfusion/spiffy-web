@@ -38,6 +38,11 @@ export type Styles = {
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
   "semiBold14": string;
+  "regularDesktop16Mobile7": string;
+  "regularDesktop20Mobile7": string;
+  "regularDesktop25Mobile16": string;
+  "regularDesktop25Mobile9": string;
+  "semiBold14": string;
   "semiBold20": string;
   "semiBold25": string;
   "semiBold32": string;

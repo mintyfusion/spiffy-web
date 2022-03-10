@@ -15,7 +15,9 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
+  "boldDesktop16Mobile25": string;
   "boldDesktop25Mobile24": string;
+  "boldDesktop25Mobile25": string;
   "boldDesktop31Mobile20": string;
   "boldDesktop36Mobile24": string;
   "boldDesktop41Mobile25": string;
@@ -32,6 +34,7 @@ export type Styles = {
   "link": string;
   "medium14": string;
   "medium16": string;
+  "medium25": string;
   "regular12": string;
   "regular14": string;
   "regular16": string;

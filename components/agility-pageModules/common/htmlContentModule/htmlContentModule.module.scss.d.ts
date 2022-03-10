@@ -30,6 +30,7 @@ export type Styles = {
   "fullBold67": string;
   "medium14": string;
   "medium16": string;
+  "medium25": string;
   "regular12": string;
   "regular14": string;
   "regular16": string;

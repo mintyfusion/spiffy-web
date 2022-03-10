@@ -6,33 +6,24 @@ import dynamic from "next/dynamic";
 import React from "react";
 
 import { SearchContext } from "pages/[...slug]";
+import agilityTagGenerator from "utils/agilityTag";
 import ContentCategory from "components/agility-pageModules/educationPage/contentListModule/enums/contentCategory";
 import flexbox from "utils/flexbox";
-import IFaqContentModuleData from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleData";
 import IFaqContentModuleProps from "components/agility-pageModules/faqPage/contentModule/interfaces/IFaqContentModuleProps";
 import renderHtml from "utils/renderHtml";
-import useGetContentList from "hooks/useGetContentList";
 
 import styles from "components/agility-pageModules/faqPage/contentModule/faqContentModule.module.scss";
 
-const Spinner = dynamic(() => import("components/agility-pageModules/common/spinner/Spinner"));
+const Message = dynamic(() => import("components/agility-pageModules/common/message/message"));
 const TabsStack = dynamic(() => import("components/agility-pageModules/common/tabsStack/tabsStack"));
 
 const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const zeroPrefixLimit = 9;
 
-const contentListParams = {
-    languageCode: "en-us",
-    contentLinkDepth: 2,
-    depth: 2,
-    take: 50
-};
-
 const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Element => {
-    const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.allTopics);
+    const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
     const contentRef = React.useRef<HTMLDivElement>();
     const data = React.useContext(SearchContext);
-
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${rowCenter} ${styles.customAccordianButton}`}>
             <div>
@@ -42,12 +33,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             </div>
         </div>;
 
-    const finalParams = React.useMemo(() => ({
-        referenceName: "FAQContentList",
-        ...contentListParams
-    }), []);
-
-    const [{ isLoading, data: resultData }] = useGetContentList<IFaqContentModuleData>(finalParams);
+    const resultData = React.useMemo(() => props.module.fields.faqList, [props.module.fields.faqList]);
 
     const tags = React.useMemo(() => props.module.fields.tags.map(tag => tag.fields.name), [props.module.fields.tags]);
 
@@ -55,14 +41,14 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         tags.map((tag, index) => {
             if (tag.toLowerCase().includes(ContentCategory.all.toLowerCase())) {
                 return;
-            } if (resultData?.items.filter(data => data.fields.tag.fields.name === tag).length === 0) {
-                return <h1 className="text-center">No FAQ Found</h1>;
+            } if (resultData?.filter(data => data.fields.tag.fields.name === tag).length === 0) {
+                return <Message message="No FAQ Found" error />;
             }
 
             return (
                 <React.Fragment key={index}>
                     {resultData
-                        && resultData.items.filter(data => data.fields.tag.fields.name === tag).map((post, index) =>
+                        && resultData.filter(data => data.fields.tag.fields.name === tag).map((post, index) =>
                             <Accordion key={`${tag} ${index}`} className={`${styles.accordion} ${tag !== activeTab && "d-none"}`}>
                                 <Accordion.Item eventKey={`${tag} ${index}`} className="position-relative border-0">
                                     <Accordion.Header className={styles.accordianHeader}>
@@ -88,25 +74,31 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
         data.searchValue && contentRef.current.scrollIntoView();
     }, [data.searchValue]);
 
+    const tabs = React.useMemo(() => agilityTagGenerator(props.module.fields.tags),
+        [props.module.fields.tags]);
+
     return (
-        <div className={`${styles.contentContainer} px-2 px-md-5`}>
-            <Stack className={`${styles.content} align-items-center`} gap={4} ref={contentRef}>
+        <div className={`${styles.contentContainer} px-2 px-md-5`} ref={contentRef}>
+            <Stack className={`${styles.content} align-items-center`}>
                 <Row className={`${styles.contentHeading} w-100 text-start`} >
                     <h2>{props.module.fields.title}</h2>
                 </Row>
             </Stack>
             {!data.searchValue
-                && <TabsStack activeTab={activeTab} setActiveTab={setActiveTab} tags={props.module.fields.tags} />
+                && <TabsStack
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
+                    tabs={tabs}
+                />
             }
-            <Stack className={`${styles.accordionWrapper} gap-4`}>
-                {!isLoading
+            <Stack className={styles.faqAccordionContainer} >
+                {resultData
                     && resultData
-                    && resultData.items
                         .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
                         .map((post, index) =>
                             <Accordion
                                 key={index}
-                                className={`${styles.accordion} ${activeTab !== ContentCategory.allTopics && "d-none"}`}
+                                className={`${styles.accordion} ${activeTab !== ContentCategory.all && "d-none"}`}
                             >
                                 <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
                                     <Accordion.Header className={styles.accordianHeader}>
@@ -125,13 +117,10 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             </Accordion>
                         )}
 
-                {isLoading && <Spinner className={rowCenter} />}
-                {!isLoading
-                    && (!resultData?.items.length
-                        || data.searchValue && resultData?.items
-                            .filter(content => content.fields.title.indexOf(data.searchValue) === -1)
-                        && <h1 className={styles.faqNotFound}>No FAQ Found</h1>
-                    )
+                {!resultData?.length
+                    || data.searchValue
+                    && resultData?.filter(content => content.fields.title.indexOf(data.searchValue) !== -1).length === 0
+                    && <Message message="No FAQ Found" error />
                 }
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>

@@ -61,6 +61,20 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
     #{$property}: fluid($minValue, $maxValue);
 }
 
+// Returns image properties for the given size.
+@mixin imgProperties($size) {
+    width: $size;
+    height: $size;
+    object-fit: contain;
+}
+
+// Returns animation properties for the given name and time.
+@mixin animation($name, $time) {
+    animation-name: $name;
+    animation-duration: $time;
+    animation-fill-mode: forwards;
+}
+
 @mixin blockquoteDesktopCSS() {
     blockquote {
         width: 68%;

@@ -25,7 +25,7 @@ const smallScreenTabsPerView = 3;
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
 const TabsStack = (props: ITabsStackProps): JSX.Element => {
-    const { activeTab, setActiveTab, tags } = props;
+    const { activeTab, setActiveTab, tabs: tags } = props;
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const tabletBreakpoint = useBreakpoint(Breakpoints.XXL);
     const tabsRef = React.useRef<HTMLDivElement>();
@@ -36,23 +36,23 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
     }, [breakpoint, toggleExpanding]);
 
     const tabData = React.useMemo(() =>
-        tags.map(content =>
-            <SwiperSlide key={content.fields.name}>
+        tags.map(tag =>
+            <SwiperSlide key={tag}>
                 <PrimaryButton
-                    key={content.fields.name}
-                    onClick={() => setActiveTab(content.fields.name)}
+                    key={tag}
+                    onClick={() => setActiveTab(tag)}
                     className={`
-                          w-100
-                          px-1
-                          py-3 
-                          ${styles.tab} 
-                          ${activeTab === content.fields.name
+                            w-100
+                            px-1
+                            py-3 
+                            ${styles.tab} 
+                            ${activeTab === tag
                             ? styles.active
                             : styles.inactive}
-                          ${rowCenter}
-                             `}
+                            ${rowCenter}
+                      `}
                 >
-                    {content.fields.name.replace("_", " ")}
+                    {tag.replace("_", " ")}
                 </PrimaryButton>
             </SwiperSlide>
         ), [activeTab, setActiveTab, tags]);
@@ -84,14 +84,22 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
                     </Navbar.Collapse>
                 </Navbar>
             </div>
-            : <div className={`position-relative ${tags.length > menuTabsPerView && "px-5"} mb-1 mb-md-4`} >
+            : <div
+                className={`
+                    position-relative 
+                    ${tags.length > menuTabsPerView && "px-5"} 
+                    mb-1 
+                    mb-md-4 
+                `}
+            >
                 <Swiper
                     slidesPerView={tabletBreakpoint ? smallScreenTabsPerView : menuTabsPerView}
                     centeredSlides={false}
                     spaceBetween={30}
                     navigation={true}
                     virtual
-                    className="position-static"
+                    className={`position-static ${styles.swiperContainer} p-2`}
+                    passiveListeners
                 >
                     {tabData}
                 </Swiper>

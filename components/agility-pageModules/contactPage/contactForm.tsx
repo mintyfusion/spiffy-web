@@ -5,6 +5,7 @@ import Image from "next/image";
 import React from "react";
 
 import BaseField from "components/agility-pageModules/common/baseField/baseField";
+import Breakpoints from "common/style/breakpoints";
 import ContactFormFieldNames from "components/agility-pageModules/contactPage/enums/contactFormFieldNames";
 import contactFormFields from "components/agility-pageModules/contactPage/contentFormFieldData";
 import flexbox from "utils/flexbox";
@@ -14,6 +15,7 @@ import postData from "utils/postData";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import renderHtml from "utils/renderHtml";
 import useBoolean from "hooks/useBoolean";
+import useBreakpoint from "hooks/useBreakpoint";
 import UserTypes from "components/agility-pageModules/contactPage/enums/userTypes";
 
 import styles from "components/agility-pageModules/contactPage/contactForm.module.scss";
@@ -31,6 +33,7 @@ const colAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "cent
 
 const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
     const { fields } = props.module;
+    const breakpoint = useBreakpoint(Breakpoints.MD);
     const [submitted, { setTrue: setSubmittedTrue, setFalse: setSubmittedFalse }] = useBoolean(false);
     const [loading, { setTrue: setLoadingTrue, setFalse: setLoadingFalse }] = useBoolean(false);
     const [userType, setUserType] = React.useState<UserTypes>(UserTypes.Creator);
@@ -144,12 +147,13 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
         <Row className={`${styles.container} w-100 m-0 flex-column-reverse flex-md-row`}>
             <Col className={`${styles.contextContainer} ${colAlignCenter}`}>
                 <Row className={styles.topContextContainer}>
-                    <div>
+                    <div className={breakpoint && colAlignCenter}>
                         <h2>{fields.title}</h2>
-                        <h4 className="mb-3">{fields.description}</h4>
+                        <h4 className="mb-3 mb-md-4">{fields.description}</h4>
                         <PrimaryButton
                             className={styles.buttonFaq}
                             linkProps={{ href: fields.redirectPageButton.href }}
+                            showArrow
                         >
                             {fields.redirectPageButton.text}
                         </PrimaryButton>
@@ -208,7 +212,13 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                             </div>
                         </form>
                         : <Col className={`${styles.thankYou} text-center`}>
-                            <Image layout="fixed" width={100} height={100} src={fields.confirmationImage.url} />
+                            <Image
+                                layout="fixed"
+                                alt="Contact confirmation check"
+                                width={100}
+                                height={100}
+                                src={fields.confirmationImage.url}
+                            />
                             <h1 className={styles.title}>{fields.confirmationTitle}</h1>
                             <p className={styles.note}>{fields.confirmationDescription}</p>
                         </Col>

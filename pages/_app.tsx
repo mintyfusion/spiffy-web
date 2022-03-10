@@ -10,7 +10,7 @@ import "styles/globals.scss";
 import CookieConsent from "components/agility-pageModules/common/cookieConsent/cookieConsent";
 
 const tagManagerArgs: TagManagerArgs = {
-  gtmId: "GTM-PB6SX7C",
+  gtmId: process.env.NEXT_PUBLIC_GTMID,
 };
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {

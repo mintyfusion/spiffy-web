@@ -51,6 +51,13 @@
 .semiBold32 {
     @include typeFace($eighteen, $thirtyTwo, $semi-bold);
 }
+.semiBold32 {
+    @include typeFace($eighteen, $thirtyTwo, $semi-bold);
+}
+
+.medium25 {
+    @include typeFace($sixteen, $twentyFive, $medium);
+}
 
 .semiBold90 {
     @include typeFace($thirtyFive, $ninety, $semi-bold);
@@ -147,6 +154,18 @@
 // Special Cases
 .regular-desktop25-mobile9 {
     @include typeFace($nine, $twentyFive, $regular);
+}
+
+.regular-desktop30-mobile20 {
+    @include typeFace($twenty, $thirty, $regular);
+}
+
+.regular-desktop16-mobile7 {
+    @include typeFace($seven, $sixteen, $regular);
+}
+
+.regular-desktop20-mobile7 {
+    @include typeFace($seven, $twenty, $regular);
 }
 
 .regular-desktop25-mobile16 {

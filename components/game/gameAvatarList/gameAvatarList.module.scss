@@ -1,0 +1,159 @@
+@use "sass:math";
+@import "styles/includeMedia.scss";
+@import "styles/theme.scss";
+@import "styles/font/fontGroups.scss";
+@import "styles/mixins.scss";
+
+.gameStepFive {
+    padding: 50px 0;
+    width: 90%;
+
+    .donationButton {
+        background-color: $faded-yellow;
+        margin-right: 20px;
+    }
+
+    .active {
+        background-color: $yellow;
+    }
+
+    .inactive {
+        background-color: $faded-yellow;
+        border: none;
+        color: $darkGrey;
+    }
+
+    .avatarHeading {
+        @extend .regular-desktop30-mobile20;
+        color: $yellow;
+        span {
+            animation: zoomIn ease 0.3s;
+        }
+    }
+
+    h4 {
+        @extend .regular-desktop25-mobile16;
+    }
+
+    .donationInner {
+        margin-top: 40px;
+        h2 {
+            @extend .bold41;
+            margin-bottom: 40px;
+        }
+
+        h6 {
+            margin-top: 20px;
+        }
+
+        .flex1 {
+            flex: 1;
+        }
+
+        .avatarInner {
+            margin-top: 35px;
+        }
+
+        .friendsTop {
+            margin-bottom: -62px;
+        }
+
+        .friendsBottom {
+            margin-top: -58px;
+        }
+
+        .friendsTop,
+        .friendsBottom div {
+            margin: 0 auto;
+        }
+
+        .friendsMain {
+            max-width: 255px;
+
+            .percentageSelected svg {
+                @include imgProperties(119px);
+            }
+        }
+    }
+}
+
+@include media(">=phone", "<1000px") {
+    .gameStepFive {
+        padding: 50px 0;
+        width: 100%;
+
+        h4 {
+            padding: 0 25px;
+        }
+
+        nav {
+            padding: 0 20px;
+        }
+
+        .donationInner {
+            h6 {
+                margin-top: 30px;
+            }
+
+            .friendsMain {
+                max-width: 120px;
+
+                .percentageSelected svg {
+                    @include imgProperties(40px);
+                }
+            }
+
+            .friendsBottom {
+                margin-top: -21px;
+            }
+
+            .friendsTop {
+                margin-bottom: -18px;
+            }
+
+            .friendsTop,
+            .friendsBottom {
+                div svg {
+                    @include imgProperties(35px);
+                }
+            }
+        }
+    }
+}
+
+@include media(">=tablet", "<990px") {
+    .gameStepFive .donationInner {
+        .friendsMain {
+            max-width: 195px;
+
+            .percentageSelected svg {
+                @include imgProperties(90px);
+            }
+        }
+
+        .friendsBottom {
+            margin-top: -45px;
+        }
+
+        .friendsTop {
+            margin-bottom: -45px;
+        }
+
+        .friendsTop,
+        .friendsBottom {
+            div svg {
+                @include imgProperties(60px);
+            }
+        }
+    }
+}
+
+@keyframes zoomIn{
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

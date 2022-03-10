@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React from "react";
 
+import Breakpoints from "common/style/breakpoints";
 import footerLinks from "components/agility-pageModules/common/footer/footerLinks";
 import footerSocialsData from "components/agility-pageModules/common/footer/footerSocials";
 import IFooterLink from "components/agility-pageModules/common/footer/interfaces/IFooterLink";
@@ -11,16 +12,19 @@ import IFooterSocials from "components/agility-pageModules/common/footer/interfa
 import Link from "components/agility-pageModules/common/link/link";
 import Logo from "components/agility-pageModules/common/logo/logo";
 import LogoVariants from "components/agility-pageModules/common/logo/enums/logoVariants";
+import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/common/footer/footer.module.scss";
 
-const Footer = (): JSX.Element =>
-    <Stack className={styles.footerContainer}>
+const Footer = (): JSX.Element => {
+    const breakpoint = useBreakpoint(Breakpoints.MD);
+
+    return <Stack className={styles.footerContainer}>
         <Container className={`${styles.footerContentContainer}`}>
             <Col className={styles.column} >
                 <Row className={`${styles.footerTop} p-md-1 p-lg-5 `}>
                     <Col className={styles.footerLeftSection}>
-                        <Stack gap={4}>
+                        <Stack>
                             <div>
                                 <Link href="/">
                                     <Logo variant={LogoVariants.footer} />
@@ -30,7 +34,7 @@ const Footer = (): JSX.Element =>
                                 Special incentives for funding
                                 YouTubers.
                             </div>
-                            <Stack direction="horizontal" gap={3} className={styles.footerSocials}>
+                            <Stack direction="horizontal" className={styles.footerSocials}>
                                 {footerSocialsData.map((data: IFooterSocials, key) =>
                                     <div key={key}>
                                         <a
@@ -48,7 +52,7 @@ const Footer = (): JSX.Element =>
                     </Col>
                     {footerLinks.map((data: IFooterLinks) =>
                         <Col key={data.linkHeaderText} className={`${styles.footerLinksContainer}`}>
-                            <Stack className={`${styles.footerLinks}`} gap={2}>
+                            <Stack className={`${styles.footerLinks}`}>
                                 <div className={`${styles.linkHeaderText} mb-3`}>{data.linkHeaderText}</div>
                                 {data.links.map((link: React.PropsWithChildren<IFooterLink>, key) =>
                                     <div key={key}>
@@ -64,12 +68,12 @@ const Footer = (): JSX.Element =>
                 <hr className="d-none d-md-block" />
                 <Row className={`${styles.footerBottom} p-3`}>
                     <div>
-                        <Stack className="pe-1 justify-content-start justify-content-md-center gap-1" direction="horizontal">
-                            <p className="text-white m-0">Powered by</p>
+                        <Stack className="pe-1 justify-content-start justify-content-md-center" direction="horizontal">
+                            <p className="text-white m-0 me-1">Powered by</p>
                             <a href="https://mintyfusion.com/" className="d-flex" target="_blank" rel="noreferrer">
                                 <Image
                                     src="/images/homepage/footer/mintyfusionstudios.svg"
-                                    width="150"
+                                    width={breakpoint ? "100" : "150"}
                                     height="25"
                                     alt="mintyfusion Studios"
                                     layout="intrinsic"
@@ -82,5 +86,6 @@ const Footer = (): JSX.Element =>
             </Col>
         </Container>
     </Stack>;
+};
 
 export default Footer;

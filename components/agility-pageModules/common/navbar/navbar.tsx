@@ -2,6 +2,7 @@ import { Navbar as BTNavbar, Button, Nav, Stack } from "react-bootstrap";
 import React from "react";
 
 import Breakpoints from "common/style/breakpoints";
+import ConstantUtils from "utils/constantUtils";
 import flexbox from "utils/flexbox";
 import INavbarProps from "components/agility-pageModules/common/navbar/interfaces/INavbarProps";
 import Link from "components/agility-pageModules/common/link/link";
@@ -17,21 +18,40 @@ const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const colBetween = flexbox({ vertical: true, vAlign: "center", hAlign: "between" });
 const colCenter = flexbox({ vertical: true, vAlign: "center", hAlign: "center" });
 
+const linkProps = {
+    href: ConstantUtils.dashboardPath
+};
+
 const Navbar = (props: INavbarProps): JSX.Element => {
     const [backgroundClass, setBackgroundClass] = React.useState<string>("");
     const [toggled, { toggle, setFalse }] = useBoolean(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
+    const navbarRef = React.useRef<HTMLDivElement>();
 
     // Adding dark background when page is scrolled
     const handleScroll = React.useCallback(() => {
         setBackgroundClass(window.pageYOffset > 1 || props.sticky ? styles.backgroundDark : "");
     }, [props.sticky]);
 
+    const handleResize = React.useCallback(() => {
+        if (navbarRef.current) {
+            const root = document.querySelector<HTMLDivElement>(":root");
+            root?.style.setProperty("--headerHeigth", `${navbarRef.current.offsetHeight}px`);
+        }
+    }, []);
+
     React.useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => window.removeEventListener("scroll", handleScroll);
     }, [handleScroll]);
+
+    React.useEffect(() => {
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [handleResize]);
 
     React.useEffect(() => {
         setBackgroundClass(props.sticky ? styles.backgroundDark : "");
@@ -56,6 +76,7 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                 w-100 
                 top-0
             `}
+            ref={navbarRef}
             variant="dark"
         >
             <Link href="/" className={`${styles.headerLogo} me-lg-3 me-xl-5`} >
@@ -116,10 +137,10 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                         gap={2}
                         className={`${styles.buttons} ${breakpoint ? colCenter : rowCenter}`}
                     >
-                        <a href="/login">
+                        <a href={ConstantUtils.dashboardPath}>
                             <Button variant="dark" className={`${styles.buttonLogin}`}>Log In</Button>
                         </a>
-                        <PrimaryButton linkProps={{ href: "https://creator.dashboard.spiffy.biz/" }}>
+                        <PrimaryButton linkProps={linkProps}>
                             Get Started
                         </PrimaryButton>
                     </Stack>
