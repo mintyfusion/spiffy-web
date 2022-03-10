@@ -2,18 +2,28 @@
 @use "styles/includeMedia.scss";
 
 .cardPlaceholderContainer {
-    border-radius: 12px;
+    & > div {
+        border-radius: 12px;
+    }
+
+    & > * + * {
+        margin-left: 2rem;
+    }
 }
 
 @include includeMedia.media(">=desktop") {
     .cardPlaceholderContainer {
-        width: 390px;
+        & > div {
+            width: 390px;
+        }
     }
 }
 
 @include includeMedia.media("<desktop") {
     .cardPlaceholderContainer {
-        width: 300px;
+        & > div {
+            width: 300px;
+        }
     }
 }
 
