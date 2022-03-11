@@ -6,5 +6,5 @@ import primaryButtonArrows from "components/agility-pageModules/common/primaryBu
 export default interface IPrimaryButtonProps extends Omit<ButtonProps, "href"> {
     showArrow?: boolean;
     linkProps?: ILinkProps;
-    arrowColor?: primaryButtonArrows
+    arrowColor?: primaryButtonArrows;
 }

@@ -8,8 +8,8 @@ import Section from "components/agility-pageModules/common/section/section";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
 
-import styles from "components/agility-pageModules/landingPage/getStartedModule/getStarted.module.scss";
 import primaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
+import styles from "components/agility-pageModules/landingPage/getStartedModule/getStarted.module.scss";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });
 const columnAlignEnd = flexbox({ vertical: true, hAlign: "center", vAlign: "end" });
