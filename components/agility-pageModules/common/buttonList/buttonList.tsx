@@ -44,7 +44,7 @@ const ButtonList = ({ onButtonClick, lisItems, ...props }: IButtonListProps): JS
         expanded={expanded}
         onClick={isLG ? navToggle : undefined}>
         <Navbar.Brand className="d-lg-none">
-            {`${selected !== ""
+            {`${selected
                 ? `${valuePrefix ? valuePrefix : ""}${selected}${valueSuffix ? valueSuffix : ""}`
                 : "Select amount"}`}
         </Navbar.Brand>
