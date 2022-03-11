@@ -153,7 +153,6 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                         <PrimaryButton
                             className={styles.buttonFaq}
                             linkProps={{ href: fields.redirectPageButton.href }}
-                            showArrow
                         >
                             {fields.redirectPageButton.text}
                         </PrimaryButton>
@@ -171,7 +170,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                     </div>
                 </Row>
             </Col>
-            <Col className={`${styles.formContainer} p-0`}>
+            <Col className={`${styles.formContainer} p-0`} lg="5" sm="12">
                 <div className={`${styles.formContent} position-relative`}>
                     {!submitted
                         ? <form onSubmit={handleSubmit}>

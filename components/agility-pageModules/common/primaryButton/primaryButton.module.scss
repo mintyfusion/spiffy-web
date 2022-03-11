@@ -21,11 +21,6 @@
     @extend .bold14;
     width: max-content;
     border-radius: initial;
-
-    label {
-        border: 4px solid currentColor;
-        cursor: pointer;
-    }
 }
 
 @include media(">1200px") {
@@ -33,7 +28,7 @@
         width: max-content;
 
         label {
-            @include iconProperties(50px, 50px, -20px, -20px);
+            @include iconProperties(38px, 38px, -20px, -20px);
         }
     }
 }
@@ -52,6 +47,7 @@
     .sectionButton {
         width: max-content;
         min-width: unset;
+        padding: 10px 50px;
     }
 }
 

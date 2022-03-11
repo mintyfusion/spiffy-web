@@ -34,9 +34,10 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                 pt-0 
                                 flex-lg-row
                                 overflow-auto
+                                position-sticky
                               `}
                         >
-                            <Col className={`${styles.leftSection}`} lg={8}>
+                            <Col className={` ${styles.leftSection}`} lg={8}>
                                 <Row className={`${styles.cardStack} flex-sm-column`}>
                                     <Col className={`${styles.card} sticky-lg-top w-100`} key={index}>
                                         <div
@@ -70,7 +71,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                                     />
                                                 </div>
                                             </div>
-                                            <div className={`${colAlignStart} ${styles.cardContent}`}>
+                                            <div className={`${colAlignStart} ${styles.cardContent} p-2 p-sm-4`}>
                                                 <h4>{title}</h4>
                                                 <h6>{description} </h6>
                                             </div>
@@ -99,7 +100,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                          `}
                                     >
                                         <div className="d-none d-lg-block">
-                                            <ArrowIcon width={15} height={20} layout="intrinsic" quantity={5} />
+                                            <ArrowIcon width={45} height={60} layout="intrinsic" quantity={5} />
                                         </div>
                                         <h2 className="ms-1">Our</h2>
                                     </Stack>

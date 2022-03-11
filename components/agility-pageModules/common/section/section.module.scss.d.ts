@@ -42,9 +42,12 @@ export type Styles = {
   "regularDesktop16Mobile12": string;
   "regularDesktop16Mobile14": string;
   "regularDesktop16Mobile16": string;
+  "regularDesktop16Mobile7": string;
   "regularDesktop18Mobile16": string;
+  "regularDesktop20Mobile7": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
+  "regularDesktop30Mobile20": string;
   "sectionButton": string;
   "semiBold14": string;
   "semiBold20": string;

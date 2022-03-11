@@ -9,6 +9,7 @@ import SectionSide from "components/agility-pageModules/common/section/enums/Sec
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/landingPage/getStartedModule/getStarted.module.scss";
+import primaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });
 const columnAlignEnd = flexbox({ vertical: true, hAlign: "center", vAlign: "end" });
@@ -75,7 +76,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
         >
             <Row className={`${styles.content2Container} ${rowReverse} flex-xl-row m-0 h-100`} >
                 <Col
-                    className={`${columnAlignEnd} no-gutters ${styles.leftSection} ${itemAlignment}`}
+                    className={`${columnAlignEnd} p-0 ${styles.leftSection} ${itemAlignment}`}
                     onMouseEnter={() => handleGetStartedButtonLeft(true)}
                     onMouseLeave={() => handleGetStartedButtonLeft(false)}
                 >
@@ -90,6 +91,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                         href={fields.leftSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
+                        showButtonArrowColor={primaryButtonArrows.white}
                     />
                 </Col>
                 <Col
@@ -108,6 +110,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                         href={fields.rightSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
+                        showButtonArrowColor={primaryButtonArrows.red}
                     />
                 </Col>
             </Row>

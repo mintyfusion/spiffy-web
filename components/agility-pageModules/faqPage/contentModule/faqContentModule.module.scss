@@ -17,7 +17,8 @@
     background: $dirty-white;
 
     .contentHeading h2 {
-        @extend .fullBold67;
+        @extend .bold31;
+        margin-bottom: 30px;
     }
 }
 
@@ -38,8 +39,9 @@
             min-width: 50px;
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
-            width: 70px;
+            width: 132px;
             transition: background-color 0.3s;
+            border-radius: 0px 10px 10px 0px;
 
             div {
                 display: inherit;
@@ -65,6 +67,14 @@
 }
 
 .accordianHeader {
+    :global(.accordion-button:not(.collapsed)) {
+        box-shadow: none;
+    }
+    
+    .headerInner {
+        border-radius: 10px 0px 0px 10px;
+    }
+
     .faqIndex {
         color: $yellow;
         width: fluid(56, 70);
@@ -79,6 +89,7 @@
 .accordianBody {
     @extend .regular-desktop-16-mobile-14;
     background-color: $dirty-white;
+    padding-bottom: 0px;
 
     .accordianBodyInner {
         margin-left: fluid(56, 60);

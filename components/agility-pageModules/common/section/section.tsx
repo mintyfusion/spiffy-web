@@ -66,6 +66,7 @@ const Section = (props: ISectionProps): JSX.Element => {
                     `}
                 showArrow={props.showButtonArrow}
                 linkProps={linkHref}
+                arrowColor={props.showButtonArrowColor}
             >
                 {props.buttonText}
             </PrimaryButton>

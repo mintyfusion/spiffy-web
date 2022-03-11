@@ -1,5 +1,4 @@
 export type Styles = {
-  "backgroundPattern": string;
   "bold109": string;
   "bold14": string;
   "bold150": string;
@@ -21,30 +20,16 @@ export type Styles = {
   "boldDesktop31Mobile20": string;
   "boldDesktop36Mobile24": string;
   "boldDesktop41Mobile25": string;
-  "buttonFaq": string;
-  "container": string;
-  "contextContainer": string;
-  "countryflagContainer": string;
   "extraBold41": string;
   "extraBold67": string;
   "extraBold90": string;
   "extraBoldDesktop65Mobile28": string;
-  "formBottomContent": string;
-  "formButtons": string;
-  "formContainer": string;
-  "formContent": string;
-  "formDesc": string;
-  "formTitle": string;
   "fullbold109": string;
   "fullBold67": string;
-  "inactive": string;
-  "inputPhoneNumber": string;
   "medium14": string;
   "medium16": string;
   "medium25": string;
-  "note": string;
-  "overlay": string;
-  "phoneNumberContainer": string;
+  "message": string;
   "regular12": string;
   "regular14": string;
   "regular16": string;
@@ -69,10 +54,6 @@ export type Styles = {
   "semiBold32": string;
   "semiBold90": string;
   "semiBoldDesktop16Mobile14": string;
-  "thankYou": string;
-  "title": string;
-  "topContextContainer": string;
-  "userTypeButton": string;
 };
 
 export type ClassNames = keyof Styles;

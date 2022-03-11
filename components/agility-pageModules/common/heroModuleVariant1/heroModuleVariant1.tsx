@@ -70,7 +70,7 @@ const HeroModuleVariant1 = (props: ModuleProps<IHeroModuleVariant1Props>): JSX.E
                             className="position-absolute h-100 top-0 end-0"
                             onClick={handleSearch}
                         >
-                            <FontAwesomeIcon icon={data.searchValue ? faTimes : faSearch} width="25" height="25" />
+                            <FontAwesomeIcon icon={data.searchValue ? faTimes : faSearch} width="19" height="19" />
                         </PrimaryButton>
                     </div>
                 }

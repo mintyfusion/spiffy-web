@@ -16,7 +16,11 @@ export type Styles = {
   "bold60": string;
   "bold67": string;
   "bold90": string;
-  "boldDesktop25Mobile9": string;
+  "boldDesktop16Mobile25": string;
+  "boldDesktop25Mobile24": string;
+  "boldDesktop25Mobile25": string;
+  "boldDesktop31Mobile20": string;
+  "boldDesktop36Mobile24": string;
   "boldDesktop41Mobile25": string;
   "description": string;
   "extraBold41": string;
@@ -27,19 +31,21 @@ export type Styles = {
   "fullBold67": string;
   "medium14": string;
   "medium16": string;
+  "medium25": string;
   "regular12": string;
   "regular14": string;
   "regular16": string;
   "regular18": string;
-  "medium25": string;
-  "regular14": string;
-  "regular16": string;
-  "regular20": string;
   "regular24": string;
   "regular25": string;
   "regular32": string;
   "regular90": string;
+  "regularDesktop14Mobile12": string;
+  "regularDesktop16Mobile12": string;
+  "regularDesktop16Mobile14": string;
+  "regularDesktop16Mobile16": string;
   "regularDesktop16Mobile7": string;
+  "regularDesktop18Mobile16": string;
   "regularDesktop20Mobile7": string;
   "regularDesktop25Mobile16": string;
   "regularDesktop25Mobile9": string;
@@ -50,6 +56,7 @@ export type Styles = {
   "semiBold25": string;
   "semiBold32": string;
   "semiBold90": string;
+  "semiBoldDesktop16Mobile14": string;
   "title": string;
 };
 

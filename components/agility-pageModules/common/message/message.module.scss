@@ -1,0 +1,5 @@
+@import "styles/font/fontGroups.scss";
+
+.message {
+    @extend .bold-desktop-25-mobile-24;
+}

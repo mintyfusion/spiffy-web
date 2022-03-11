@@ -27,8 +27,8 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${rowCenter} ${styles.customAccordianButton}`}>
             <div>
-                <FontAwesomeIcon icon={faChevronLeft} width="20" height="35" />
-                <FontAwesomeIcon icon={faChevronLeft} width="20" height="35" />
+                <FontAwesomeIcon icon={faChevronLeft} width="15" height="30" />
+                <FontAwesomeIcon icon={faChevronLeft} width="15" height="30" />
                 {props.children}
             </div>
         </div>;
@@ -52,7 +52,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             <Accordion key={`${tag} ${index}`} className={`${styles.accordion} ${tag !== activeTab && "d-none"}`}>
                                 <Accordion.Item eventKey={`${tag} ${index}`} className="position-relative border-0">
                                     <Accordion.Header className={styles.accordianHeader}>
-                                        <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
+                                        <Stack className={`${styles.headerInner} gap-1 gap-md-4 w-100`} direction="horizontal">
                                             <div className={`${styles.faqIndex} p-3`}>
                                                 {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
                                             </div>
@@ -113,7 +113,8 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                                     <Accordion.Body className={styles.accordianBody}>
                                         <div
                                             dangerouslySetInnerHTML={renderHtml(post.fields.description)}
-                                            className={styles.accordianBodyInner} />
+                                            className={styles.accordianBodyInner}
+                                        />
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>

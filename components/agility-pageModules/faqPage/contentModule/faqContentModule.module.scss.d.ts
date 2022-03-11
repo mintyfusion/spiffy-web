@@ -37,6 +37,7 @@ export type Styles = {
   "faqIndex": string;
   "fullbold109": string;
   "fullBold67": string;
+  "headerInner": string;
   "medium14": string;
   "medium16": string;
   "medium25": string;

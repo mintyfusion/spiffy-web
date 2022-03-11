@@ -24,7 +24,7 @@ const PrimaryButton = ({ showArrow, linkProps, ...props }: PropsWithChildren<IPr
         >
             {props.children}
             {showArrow &&
-                <label className={`${rowCenter} position-absolute bg-white`}>
+                <label className={`${rowCenter} position-absolute ${props.arrowColor}`}>
                     <Image src={getStartedArrow} layout="fill" />
                 </label>}
         </Button>

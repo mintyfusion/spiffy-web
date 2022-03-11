@@ -1,3 +1,13 @@
+@import "styles/includeMedia.scss";
+
 .card {
     min-width: 350px;
+    padding: 0;
+}
+
+@include media("<tablet") {
+    .card {
+        min-width: 285px;
+        padding: 0;
+    }
 }

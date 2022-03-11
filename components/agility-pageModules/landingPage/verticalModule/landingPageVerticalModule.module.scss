@@ -15,7 +15,7 @@
 
 .content3 {
     .headerEmphasisText {
-        @extend .bold150;
+        @extend .bold51;
         color: $translucent-white;
         width: fit-content;
         text-transform: capitalize;
@@ -25,7 +25,7 @@
         margin: 0;
         top: $headerHeigth;
         box-shadow: 0px -13px 20px 0px $light-grey-transparent;
-        height: 100vh;
+        min-height: 100vh;
         .contentContainer {
             background: $yellow;
             background-image: url("/images/homepage/verticalContentSection/bg-spiffy-watermark.svg");
@@ -76,7 +76,7 @@
 
     aside.panel {
         h2.panelHeader {
-            @extend .bold60;
+            @extend .bold-desktop-36-mobile-24;
             color: $black;
             text-transform: capitalize;
 
@@ -92,6 +92,7 @@
     .content3 {
         .panelHeader {
             padding-left: 6rem;
+            padding-right: 2rem;
             padding-top: 1rem;
         }
     }
@@ -110,11 +111,8 @@
             height: 100vh;
         }
         .headerEmphasisText {
-            left: 5%;
-        }
-
-        aside.panel {
-            @include fluidDimension("height", 230, 768);
+            left: 10%;
+            top: 10%;
         }
     }
 }
@@ -122,7 +120,7 @@
 @include media("<tablet") {
     .content3 {
         .container {
-            height: 50%;
+            min-height: 50%;
             .headerEmphasisText {
                 top: 5%;
                 left: 5%;
@@ -131,7 +129,8 @@
                 min-height: 480px;
 
                 h2.panelHeader {
-                    padding-top: 1rem;
+                    padding-top: 8rem;
+                    padding-bottom: 8rem;
                     padding-left: 1rem;
                 }
             }
