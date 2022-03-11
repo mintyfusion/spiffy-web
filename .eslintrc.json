@@ -9,7 +9,11 @@
       "jsx": true
     }
   },
-  "plugins": ["@typescript-eslint", "react-hooks", "sort-imports-es6-autofix"],
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks",
+    "sort-imports-es6-autofix"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -20,13 +24,16 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "next"
   ],
   "rules": {
     "@typescript-eslint/unbound-method": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
-    "@typescript-eslint/member-delimiter-style": ["error"],
+    "@typescript-eslint/member-delimiter-style": [
+      "error"
+    ],
     "@typescript-eslint/member-ordering": [
       "error",
       {
@@ -52,7 +59,9 @@
       "error",
       {
         "selector": "interface",
-        "format": ["PascalCase"],
+        "format": [
+          "PascalCase"
+        ],
         "custom": {
           "regex": "^I[A-Z]",
           "match": true
@@ -68,7 +77,11 @@
         "ignoreEnums": true,
         "ignoreNumericLiteralTypes": true,
         "ignoreReadonlyClassProperties": true,
-        "ignore": [-1, 0, 1],
+        "ignore": [
+          -1,
+          0,
+          1
+        ],
         "ignoreArrayIndexes": true
       }
     ],
@@ -88,25 +101,41 @@
         "readonly": "array"
       }
     ],
-    "@typescript-eslint/prefer-for-of": ["error"],
+    "@typescript-eslint/prefer-for-of": [
+      "error"
+    ],
     // we must disable the base rule as it can report incorrect errors
     "quotes": "off",
-    "@typescript-eslint/quotes": ["error"],
+    "@typescript-eslint/quotes": [
+      "error"
+    ],
     // we must disable the base rule as it can report incorrect errors
     "semi": "off",
-    "@typescript-eslint/semi": ["error"],
+    "@typescript-eslint/semi": [
+      "error"
+    ],
     // we must disable the base rule as it can report incorrect errors
     "keyword-spacing": "off",
-    "@typescript-eslint/keyword-spacing": ["error"],
+    "@typescript-eslint/keyword-spacing": [
+      "error"
+    ],
     // we must disable the base rule as it can report incorrect errors
     "no-return-await": "off",
-    "@typescript-eslint/return-await": ["error", "in-try-catch"],
+    "@typescript-eslint/return-await": [
+      "error",
+      "in-try-catch"
+    ],
     "sort-imports-es6-autofix/sort-imports-es6": [
       2,
       {
         "ignoreCase": true,
         "ignoreMemberSort": false,
-        "memberSyntaxSortOrder": ["all", "multiple", "single", "none"]
+        "memberSyntaxSortOrder": [
+          "all",
+          "multiple",
+          "single",
+          "none"
+        ]
       }
     ],
     "padding-line-between-statements": [
@@ -120,13 +149,22 @@
     "no-duplicate-imports": "error",
     "no-irregular-whitespace": "error",
     "prefer-spread": "error",
-    "arrow-body-style": ["error", "as-needed"],
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
     "no-bitwise": "off",
     "prefer-const": "error",
     "prefer-object-spread": "error",
-    "one-var": ["error", "never"],
+    "one-var": [
+      "error",
+      "never"
+    ],
     "comma-dangle": "off",
-    "no-return-assign": ["error", "always"],
+    "no-return-assign": [
+      "error",
+      "always"
+    ],
     "max-len": [
       "error",
       {
@@ -145,19 +183,27 @@
       }
     ],
     "no-else-return": "error",
-    "object-shorthand": ["error", "always"],
+    "object-shorthand": [
+      "error",
+      "always"
+    ],
     "no-console": "error",
-    "max-classes-per-file": ["error", 1],
+    "max-classes-per-file": [
+      "error",
+      1
+    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-undef": "warn",
     "no-case-declarations": "warn",
     "no-unused-vars": "off",
     "react/display-name": "off",
-    "@typescript-eslint/no-unused-vars": ["error"]
+    "@typescript-eslint/no-unused-vars": [
+      "error"
+    ]
   },
   "globals": {
     "JSX": true,
-    "window":true
-   }
+    "window": true
+  }
 }
