@@ -2,7 +2,7 @@
  * Sets a global variable to html element for viewport height.
  * This can fix the 100vh issues of mobile devices. 
  */
- export default function setViewportHeight(): void {
+export default function setViewportHeight(): void {
     if (!window) {
         return;
     }
