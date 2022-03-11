@@ -5,12 +5,12 @@ import React from "react";
 
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
-import IButtonListProps from "components/common/buttonList/interfaces/IButtonListProps";
+import IButtonListProps from "components/agility-pageModules/common/buttonList/interfaces/IButtonListProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
 
-import styles from "components/common/buttonList/buttonList.module.scss";
+import styles from "components/agility-pageModules/common/buttonList/buttonList.module.scss";
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 

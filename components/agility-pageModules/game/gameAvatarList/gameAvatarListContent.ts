@@ -1,4 +1,4 @@
-import IGameAvatarDonation from "components/game/gameAvatarList/interfaces/gameAvatarDonations";
+import IGameAvatarDonation from "components/agility-pageModules/game/gameAvatarList/interfaces/gameAvatarDonations";
 
 const percentages: Record<string, IGameAvatarDonation> = {
     "1": {

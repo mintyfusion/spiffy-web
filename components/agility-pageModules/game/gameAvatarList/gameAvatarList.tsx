@@ -2,15 +2,15 @@ import { Row } from "react-bootstrap";
 import { scroller } from "react-scroll";
 import React, { CSSProperties } from "react";
 
-import Avatar from "components/game/avatar/gameAvatar";
-import ButtonList from "components/common/buttonList/buttonList";
+import Avatar from "components/agility-pageModules/game/avatar/gameAvatar";
+import ButtonList from "components/agility-pageModules/common/buttonList/buttonList";
 import flexbox from "utils/flexbox";
-import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
-import GamePageStepTypes from "components/game/gameSection/enums/gamePageStepTypes";
-import IGameAvatarList from "components/game/gameAvatarList/interfaces/IAvatarList";
-import percentages from "components/game/gameAvatarList/gameAvatarListContent";
+import GamePageAvatarType from "components/agility-pageModules/game/gameSection/enums/GamePageAvatarTypes";
+import GamePageStepTypes from "components/agility-pageModules/game/gameSection/enums/gamePageStepTypes";
+import IGameAvatarList from "components/agility-pageModules/game/gameAvatarList/interfaces/IAvatarList";
+import percentages from "components/agility-pageModules/game/gameAvatarList/gameAvatarListContent";
 
-import styles from "components/game/gameAvatarList/gameAvatarList.module.scss";
+import styles from "components/agility-pageModules/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });

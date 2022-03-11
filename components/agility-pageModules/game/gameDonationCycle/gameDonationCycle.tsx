@@ -2,17 +2,18 @@ import { Col, Row } from "react-bootstrap";
 import Image from "next/image";
 import React, { CSSProperties } from "react";
 
-import Avatar from "components/game/avatar/gameAvatar";
-import ButtonList from "components/common/buttonList/buttonList";
+import Avatar from "components/agility-pageModules/game/avatar/gameAvatar";
+import ButtonList from "components/agility-pageModules/common/buttonList/buttonList";
 import flexbox from "utils/flexbox";
-import GameAvatarList from "components/game/gameAvatarList/gameAvatarList";
-import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
-import IGameDonationCycle from "components/game/gameDonationCycle/interfaces/IGameDonationCycleProps";
+import GameAvatarList from "components/agility-pageModules/game/gameAvatarList/gameAvatarList";
+import GamePageAvatarType from "components/agility-pageModules/game/gameSection/enums/GamePageAvatarTypes";
+import IGameDonationCycle from "components/agility-pageModules/game/gameDonationCycle/interfaces/IGameDonationCycleProps";
 import Logo from "components/agility-pageModules/common/logo/logo";
 import LogoVariants from "components/agility-pageModules/common/logo/enums/logoVariants";
-import styles from "components/game/gameDonationCycle/gameDonationCycle.module.scss";
 import useBoolean from "hooks/useBoolean";
 import useStyles from "hooks/useStyles";
+
+import styles from "components/agility-pageModules/gameDonationCycle/gameDonationCycle.module.scss";
 
 const colVCenter = flexbox({ vAlign: "center", vertical: true, });
 const rowHCenter = flexbox({ hAlign: "center" });

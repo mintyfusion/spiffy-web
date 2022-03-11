@@ -1,4 +1,4 @@
-import AvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
+import AvatarType from "components/agility-pageModules/game/gameSection/enums/GamePageAvatarTypes";
 
 interface IGameDonationCycle {
     seletedAvatar: AvatarType;

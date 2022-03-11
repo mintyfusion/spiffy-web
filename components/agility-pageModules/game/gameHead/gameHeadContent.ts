@@ -1,4 +1,4 @@
-import IGameHeadBannerContentData from "components/game/gameHead/interfaces/IGameHeadContentData";
+import IGameHeadBannerContentData from "components/agility-pageModules/game/gameHead/interfaces/IGameHeadContentData";
 
 const gameHeadContent: IGameHeadBannerContentData = {
     content: {

@@ -1,9 +1,9 @@
 import { Col } from "react-bootstrap";
 import React from "react";
 
-import gameheadContentData from "components/game/gameHead/gameHeadContent";
+import gameheadContentData from "components/agility-pageModules/game/gameHead/gameHeadContent";
 
-import styles from "components/game/gameHead/gameHead.module.scss";
+import styles from "components/agility-pageModules/gameHead/gameHead.module.scss";
 
 const GameHead = (): JSX.Element => {
     const { title, description } = gameheadContentData.content;
