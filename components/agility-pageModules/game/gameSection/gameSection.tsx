@@ -5,22 +5,22 @@ import { Row } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import React, { CSSProperties } from "react";
 
-import Avatar from "components/game/avatar/gameAvatar";
+import Avatar from "components/agility-pageModules/game/avatar/gameAvatar";
 import BreakpointChecks from "hooks/enums/breakpointChecks";
 import Breakpoints from "common/style/breakpoints";
 import flexbox from "utils/flexbox";
-import GameDonationCycle from "components/game/gameDonationCycle/gameDonationCycle";
-import GamePageAvatarType from "components/game/gameSection/enums/GamePageAvatarTypes";
-import GamePageStepTypes from "components/game/gameSection/enums/gamePageStepTypes";
-import GameSignup from "components/game/gameSignup/gameSignup";
-import IGameSectionProps from "components/game/gameSection/interfaces/IGameSectionProps";
+import GameDonationCycle from "components/agility-pageModules/game/gameDonationCycle/gameDonationCycle";
+import GamePageAvatarType from "components/agility-pageModules/game/gameSection/enums/GamePageAvatarTypes";
+import GamePageStepTypes from "components/agility-pageModules/game/gameSection/enums/gamePageStepTypes";
+import GameSignup from "components/agility-pageModules/game/gameSignup/gameSignup";
+import IGameSectionProps from "components/agility-pageModules/game/gameSection/interfaces/IGameSectionProps";
 import KeyCSS from "hooks/types/keyCSS";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import useBreakpoint from "hooks/useBreakpoint";
 import useStyles from "hooks/useStyles";
 
-import styles from "components/game/gameSection/gameSection.module.scss";
+import styles from "components/agility-pageModules/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });

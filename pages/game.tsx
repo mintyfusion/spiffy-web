@@ -1,8 +1,8 @@
 import React from "react";
 
-import GameContentWrapper from "components/game/gameContentWraper/gameConetentWrapper";
-import GameHead from "components/game/gameHead/gameHead";
-import GameMain from "components/game/gameMain/gameMain";
+import GameContentWrapper from "components/agility-pageModules/game/gameContentWraper/gameConetentWrapper";
+import GameHead from "components/agility-pageModules/game/gameHead/gameHead";
+import GameMain from "components/agility-pageModules/game/gameMain/gameMain";
 import Layout from "components/agility-pageModules/common/layout/layout";
 
 const Game = (): JSX.Element =>

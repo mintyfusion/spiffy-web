@@ -4,7 +4,7 @@ import React from "react";
 import flexbox from "utils/flexbox";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 
-import styles from "components/game/gameSignup/gameSignup.module.scss";
+import styles from "components/agility-pageModules/gameSignup/gameSignup.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 
