@@ -53,6 +53,10 @@
     @include media("<desktop") {
         .mediaContainer {
             margin: 30px 0px;
+
+            img {
+                height: 160px;
+            }
         }
 
         blockquote {

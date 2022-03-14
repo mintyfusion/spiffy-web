@@ -24,7 +24,7 @@ const DetailsSection = (props: IDetailsSectionProps): JSX.Element => {
                 {props.detailsType == DetailsType.guide
                     ? <Image
                         src={props.mediaSrc}
-                        layout="responsive"
+                        layout="intrinsic"
                         width="1670px"
                         height="450px"
                         priority={true}
