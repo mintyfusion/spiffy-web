@@ -52,17 +52,17 @@ const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModulePro
                                 priority={true}
                                 objectFit="cover"
                             />
+                            {isViewportDesktop && <div className="position-sticky bottom-100 text-end p-4">
+                                <Image
+                                    src="/images/homepage/common/watermark.svg"
+                                    width="80px"
+                                    height="80px"
+                                    layout="intrinsic"
+                                    priority={true}
+                                />
+                            </div>}
                         </Col>}
                 </Row>)}
-            {isViewportDesktop && <div className="position-sticky bottom-0 text-end p-4">
-                <Image
-                    src="/images/homepage/common/watermark.svg"
-                    width="80px"
-                    height="80px"
-                    layout="intrinsic"
-                    priority={true}
-                />
-            </div>}
         </div>
     );
 };

@@ -43,6 +43,7 @@ $minWidth: calc(100vw - 62rem);
             .leftSection {
                 background: $dirty-white;
                 transition: padding 0.5s;
+                padding: 0;
 
                 .leftSectionRight {
                     transition: padding 0.5s;
@@ -59,7 +60,7 @@ $minWidth: calc(100vw - 62rem);
                 background: $light-red;
                 color: $white;
                 transition: padding 0.5s;
-                padding: 17px;
+                padding: 18px;
 
                 .rightSectionLeft {
                     transition: padding 0.5s;
