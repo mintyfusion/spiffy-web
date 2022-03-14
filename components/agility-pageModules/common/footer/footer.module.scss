@@ -169,7 +169,12 @@
                 .footerTop {
                     .footerLeftSection {
                         margin-top: 30px;
-
+                        
+                        .footerSocials {
+                            & > * + * {
+                                margin-left: 5px;
+                            }
+                        }
                         div > * {
                             margin-bottom: 0.5rem;
                         }
@@ -193,14 +198,5 @@
 @include media("<desktop") {
     .footerBottom a {
         margin-top: 1.5px;
-    }
-}
-
-@include media("<=phone") {
-    .footerBottom {
-        p {
-            margin-bottom: 0;
-            margin-top: 2px;
-        }
     }
 }

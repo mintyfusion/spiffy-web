@@ -16,6 +16,7 @@ export type Styles = {
   "bold67": string;
   "bold90": string;
   "boldDesktop16Mobile25": string;
+  "boldDesktop25Mobile22": string;
   "boldDesktop25Mobile24": string;
   "boldDesktop25Mobile25": string;
   "boldDesktop31Mobile20": string;
