@@ -159,7 +159,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                     </div>
                 </Row>
                 <Row>
-                    <div>
+                    <div className={styles.bottomContextContainer}>
                         <h3>{fields.subTitle}</h3>
                         <h4
                             className="mb-3"

@@ -196,6 +196,10 @@
     @include typeFace($twentyFour, $twentyFive, $bold);
 }
 
+.bold-desktop-25-mobile-22 {
+    @include typeFace($twentyTwo, $twentyFive, $bold);
+}
+
 .bold-desktop-36-mobile-24 {
     @include typeFace($twentyFour, $thirtySix, $bold);
 }
