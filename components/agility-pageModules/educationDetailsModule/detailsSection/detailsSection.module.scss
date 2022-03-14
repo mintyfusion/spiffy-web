@@ -48,8 +48,6 @@
         .mediaContainer {
             margin: 1.8rem 0;
         }
-
-        @include blockquoteDesktopCSS();
     }
 
     @include media("<desktop") {
@@ -61,7 +59,5 @@
             display: flex;
             flex-direction: column;
         }
-
-        @include blockquoteTabletCSS();
     }
 }

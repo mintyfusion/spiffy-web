@@ -30,16 +30,8 @@
     }
 }
 
-@include media(">=desktop") {
-    .heroContainer {
-        @include blockquoteDesktopCSS();
-    }
-}
-
 @include media("<desktop") {
     .heroContainer {
-        @include blockquoteTabletCSS();
-
         h1 {
             max-width: 100%;
             margin-bottom: 10px;

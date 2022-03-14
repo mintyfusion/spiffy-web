@@ -1,4 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap";
+@import "styles/theme.scss";
+@import "styles/includeMedia.scss";
 
 html,
 body {
@@ -15,4 +17,36 @@ a {
 
 * {
 	box-sizing: border-box;
+}
+
+blockquote {
+	width: 68%;
+	margin-left: auto;
+
+	&::before {
+		position: absolute;
+		left: 5%;
+		margin-top: 1rem;
+		width: 100px;
+		height: 70px;
+	}
+
+	p:first-child::before {
+		content: "";
+		position: absolute;
+		margin-left: -10%;
+		height: 115px;
+		border: none;
+		border-right: 3px solid $grey;
+		margin-top: -20px;
+	}
+}
+
+@include media("<desktop") {
+	blockquote::before {
+		width: 100px;
+		height: 70px;
+		border-bottom: 3px solid $light-grey;
+		background-position-y: -5px;
+	}
 }
