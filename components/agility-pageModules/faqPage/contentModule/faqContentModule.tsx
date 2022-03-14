@@ -123,7 +123,8 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
 
                 {!resultData?.length
                     || data.searchValue
-                    && resultData?.filter(content => content.fields.title.toLowerCase().indexOf(data.searchValue.toLowerCase()) !== -1).length === 0
+                    && resultData?.filter(content =>
+                        content.fields.title.toLowerCase().indexOf(data.searchValue.toLowerCase()) !== -1).length === 0
                     && <Message message="No FAQ Found" error />
                 }
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}

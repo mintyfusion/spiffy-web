@@ -1,8 +1,8 @@
 import { Card as BaseCard } from "react-bootstrap";
 import { ContentItem } from "@agility/nextjs";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import React from "react";
-import { useRouter } from 'next/router'
 
 import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";

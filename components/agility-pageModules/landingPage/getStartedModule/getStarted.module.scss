@@ -89,28 +89,19 @@ $minWidth: calc(100vw - 62rem);
         position: absolute;
         left: -50%;
         z-index: 1;
-        .leftSection {
+        .leftSection,
+        .rightSection {
             width: 100vw;
-
-            .leftSectionRight {
+            .leftSectionRight,
+            .rightSectionLeft {
                 min-width: 510px;
                 max-width: $minWidth;
                 padding-right: 6rem;
-
-                > h2 {
-                    width: max-content;
-                }
             }
         }
 
         .rightSection {
-            width: 100vw;
-
             .rightSectionLeft {
-                min-width: 510px;
-                max-width: $minWidth;
-                padding-left: 6rem;
-
                 > h2 {
                     width: max-content;
                 }
