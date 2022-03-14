@@ -44,7 +44,7 @@
     .formContainer {
         .formContent {
             background-color: $white;
-            border-radius: 5px;
+            border-radius: 10px;
             border: 1px solid $light-transparent-grey;
             box-shadow: 29px 26px 2px 6px $dirty-grey;
 
@@ -155,8 +155,14 @@
 }
 
 @include media("<desktop") {
-    .formContent {
-        width: 100%;
+    .container {
+        .formContainer {
+            .formContent {
+                width: 90%;
+                box-shadow: none;
+                margin: 0 auto;
+            }
+        }
     }
 
     .countryflagContainer {

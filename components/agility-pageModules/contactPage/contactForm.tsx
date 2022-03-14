@@ -144,7 +144,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
     }, [formFields, loading, userType, setSubmittedTrue, setSubmittedFalse, setLoadingTrue, setLoadingFalse]);
 
     return (
-        <Row className={`${styles.container} w-100 m-0 flex-column-reverse flex-md-row`}>
+        <Row className={`${styles.container} w-100 m-0 flex-md-row`}>
             <Col className={`${styles.contextContainer} ${colAlignCenter}`}>
                 <Row className={styles.topContextContainer}>
                     <div className={breakpoint && colAlignCenter}>
