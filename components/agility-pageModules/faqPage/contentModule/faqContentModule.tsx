@@ -24,6 +24,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
     const contentRef = React.useRef<HTMLDivElement>();
     const data = React.useContext(SearchContext);
+
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${rowCenter} ${styles.customAccordianButton}`}>
             <div>
@@ -94,7 +95,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             <Stack className={styles.faqAccordionContainer}>
                 {resultData
                     && resultData
-                        .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
+                        .filter(content => content.fields.title.toLowerCase().indexOf(data.searchValue) >= 0)
                         .map((post, index) =>
                             <Accordion
                                 key={index}
@@ -122,7 +123,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
 
                 {!resultData?.length
                     || data.searchValue
-                    && resultData?.filter(content => content.fields.title.indexOf(data.searchValue) !== -1).length === 0
+                    && resultData?.filter(content => content.fields.title.toLowerCase().indexOf(data.searchValue.toLowerCase()) !== -1).length === 0
                     && <Message message="No FAQ Found" error />
                 }
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}

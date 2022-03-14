@@ -71,6 +71,10 @@
                     @extend .regular14;
                     @include fluidDimension("min-height", 30, 30);
                     padding: 10px;
+
+                    &:focus-visible {
+                        border-radius: 0 8px 8px 0;
+                    }
                 }
 
                 .countryflagContainer {
