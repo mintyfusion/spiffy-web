@@ -76,7 +76,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
         >
             <Row className={`${styles.content2Container} ${rowReverse} flex-xl-row m-0 h-100`} >
                 <Col
-                    className={`${columnAlignEnd} p-0 ${styles.leftSection} ${itemAlignment}`}
+                    className={`${columnAlignEnd} ${styles.leftSection} ${itemAlignment}`}
                     onMouseEnter={() => handleGetStartedButtonLeft(true)}
                     onMouseLeave={() => handleGetStartedButtonLeft(false)}
                 >

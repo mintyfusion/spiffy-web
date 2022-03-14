@@ -60,6 +60,6 @@
 
 @include media("<tablet") {
     .sectionButton label {
-        @include iconProperties(20px, 20px, -10px, -12px);
+        @include iconProperties(27px, 27px, -10px, -12px);
     }
 }

@@ -216,6 +216,10 @@
     @include typeFace($sixteen, $eighteen, $regular);
 }
 
+.regular-desktop-18-mobile-14 {
+    @include typeFace($fourteen, $eighteen, $regular);
+}
+
 .bold-desktop-31-mobile-20 {
     @include typeFace($twenty, $thirtyOne, $bold);
 }

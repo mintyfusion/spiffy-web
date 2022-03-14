@@ -2,6 +2,7 @@ import { Card as BaseCard } from "react-bootstrap";
 import { ContentItem } from "@agility/nextjs";
 import Image from "next/image";
 import React from "react";
+import { useRouter } from 'next/router'
 
 import flexbox from "utils/flexbox";
 import ICardProps from "components/agility-pageModules/common/card/interfaces/ICardProps";
@@ -14,15 +15,19 @@ const columnAlign = flexbox({ vertical: true });
 
 const Card = (props: ContentItem<ICardProps>): JSX.Element => {
     const { fields } = props;
+    const router = useRouter();
 
     return (
-        <BaseCard className={`${styles.card} ${columnAlign} p-3 flex-grow-1 w-100`}>
+        <BaseCard
+            className={`${styles.card} ${columnAlign} p-3 flex-grow-1 w-100`}
+            onClick={() => router.push(fields.educationDetailLink)}
+        >
             <div className="cardImageContainer">
                 <Image src={fields.image.url} width="10px" height="5px" layout="responsive" objectFit="cover" />
             </div>
             <BaseCard.Body className={`${columnAlignCenter} pb-0`}>
                 <BaseCard.Title className={`${styles.cardTag} mb-0`}>
-                    {fields.tag.fields.name.replace("_"," ")}
+                    {fields.tag.fields.name.replace("_", " ")}
                 </BaseCard.Title>
                 <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 `} >
                     {fields.title}

@@ -123,21 +123,25 @@ $minWidth: calc(100vw - 62rem);
 }
 
 @include media("<1200px") {
-    .content2 {
-        .leftSection {
-            padding: 3rem;
+    .wrapperDiv {
+        .content2 {
+            .content2Container {
+                .leftSection {
+                    padding: 45px;
 
-            .leftSectionRight {
-                min-width: inherit;
-                padding: inherit;
-            }
-        }
-        .rightSection {
-            padding: 3rem;
+                    .leftSectionRight {
+                        min-width: inherit;
+                        padding: inherit;
+                    }
+                }
+                .rightSection {
+                    padding: 45px;
 
-            .rightSectionLeft {
-                min-width: inherit;
-                padding: inherit;
+                    .rightSectionLeft {
+                        min-width: inherit;
+                        padding: inherit;
+                    }
+                }
             }
         }
     }
