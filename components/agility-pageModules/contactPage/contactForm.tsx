@@ -145,7 +145,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
 
     return (
         <Row className={`${styles.container} w-100 m-0 flex-md-row`}>
-            <Col className={`${styles.contextContainer} ${colAlignCenter}`}>
+            <Col className={`${styles.contextContainer} ${colAlignCenter} text-left`}>
                 <Row className={styles.topContextContainer}>
                     <div className={breakpoint && colAlignCenter}>
                         <h2>{fields.title}</h2>
@@ -176,7 +176,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                         ? <form onSubmit={handleSubmit}>
                             <h6 className={styles.formTitle}>{fields.formTitle}</h6>
                             <h5 className={`${styles.formDesc} mb-3`}>{fields.formDescription}</h5>
-                            <div className={`gap-3 ${rowAlignStretch} ${styles.formButtons}`}>
+                            <div className={`gap-3 ${rowAlignStretch} ${styles.formButtons} flex-column flex-md-row`}>
                                 <PrimaryButton
                                     className={`
                                         w-100 

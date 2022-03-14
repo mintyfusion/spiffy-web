@@ -28,7 +28,7 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
                 >
                     <Col>
                         <Row className={`${colCenter} ${styles.contentContainer} h-100`}>
-                            <Stack direction="horizontal" className={props.centered ? styles.center : "text-left"}>
+                            <Stack direction="horizontal" className={props.centered ? "text-center" : "text-left"}>
                                 <h2 className={`${styles.title} w-100`}>
                                     {title}
                                     {!!props.arrows &&

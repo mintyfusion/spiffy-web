@@ -14,7 +14,7 @@
     background-color: $yellow;
     border-radius: unset;
     text-transform: uppercase;
-    padding: 10px 25px 10px 25px;
+    padding: 10px 50px 10px 50px;
 }
 
 .sectionButton {
@@ -44,10 +44,10 @@
 }
 
 @include media(">=phone", "<tablet") {
-    .sectionButton {
+    .primaryButton {
         width: max-content;
         min-width: unset;
-        padding: 10px 50px;
+        padding: 10px 40px 10px 40px;
     }
 }
 
