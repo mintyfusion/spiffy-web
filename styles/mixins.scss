@@ -74,12 +74,3 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
     animation-duration: $time;
     animation-fill-mode: forwards;
 }
-
-// @mixin blockquoteTabletCSS() {
-//     blockquote::before {
-//         width: 100px;
-//         height: 70px;
-//         border-bottom: 3px solid $light-grey;
-//         background-position-y: -5px;
-//     }
-// }

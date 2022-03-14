@@ -42,11 +42,21 @@ blockquote {
 	}
 }
 
-@include media("<desktop") {
-	blockquote::before {
-		width: 100px;
-		height: 70px;
-		border-bottom: 3px solid $light-grey;
-		background-position-y: -5px;
+@include media("<tablet") {
+	blockquote {
+		width: 100%;
+
+		&::before {
+			position: absolute;
+			left: 5%;
+			width: 100px;
+			height: 70px;
+			top: 22%;
+			border-bottom: 3px solid;
+		}
+
+		p:first-child::before {
+			border-right: none;
+		}
 	}
 }
