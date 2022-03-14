@@ -18,6 +18,7 @@ const CommonContentModule = (props: ModuleProps<ICommonContent>): JSX.Element =>
                 buttonText={href.text}
                 content={{ title, description }}
                 contentClassName={styles.contentContainer}
+                inverted={invertedColors}
             />
         </div>
     );

@@ -22,6 +22,7 @@ export type Styles = {
   "boldDesktop31Mobile20": string;
   "boldDesktop36Mobile24": string;
   "boldDesktop41Mobile25": string;
+  "defaultButton": string;
   "extraBold41": string;
   "extraBold67": string;
   "extraBold90": string;

@@ -31,7 +31,7 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
                             <Stack direction="horizontal" className={props.centered ? "text-center" : "text-left"}>
                                 <h2 className={`${styles.title} w-100`}>
                                     {title}
-                                    {!!props.arrows &&
+                                    {!props.arrows &&
                                         <Row
                                             className={`
                                             ${styles.arrowContainer} 

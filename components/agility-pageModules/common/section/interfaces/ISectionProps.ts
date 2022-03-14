@@ -12,4 +12,5 @@ export default interface ISectionProps {
     buttonText: string;
     showButtonArrow?: boolean;
     showButtonArrowColor?: primaryButtonArrows;
+    inverted?: string;
 }

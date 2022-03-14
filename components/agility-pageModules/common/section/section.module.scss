@@ -27,6 +27,18 @@
         border: 4px solid $light-red;
         cursor: pointer;
     }
+
+    :global(.darkGrey) {
+        border: 4px solid $pattern-bg-color;
+        cursor: pointer;
+        background-color: $white;
+    }
+
+    :global(.grey) {
+        border: 4px solid $white;
+        cursor: pointer;
+        background-color: $dirty-white;
+    }
 }
 
 @include media(">1200px") {

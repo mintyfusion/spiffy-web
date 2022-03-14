@@ -9,18 +9,22 @@
     right: $bottom;
 }
 
-.primaryButton {
+.defaultButton {
     @extend .bold14;
     background-color: $yellow;
+    border-color: $yellow;
     border-radius: unset;
     text-transform: uppercase;
     padding: 10px 50px 10px 50px;
-}
+    color: $neutral-black-900;
 
-.sectionButton {
-    @extend .bold14;
-    width: max-content;
-    border-radius: initial;
+    &:hover, &:focus-visible, &:focus, &:active, &:active:focus {
+        background-color: $yellow;
+        border-color: $yellow;
+        outline: 0px;
+        box-shadow: none;
+        color: $neutral-black-900;
+    }
 }
 
 @include media(">1200px") {
