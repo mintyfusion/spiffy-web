@@ -55,6 +55,17 @@ const Section = (props: ISectionProps): JSX.Element => {
         href: props.href
     }), [props.href]);
 
+    const arrowColor = React.useMemo(() => {
+        switch (props.inverted) {
+            case "true":
+                return primaryButtonArrows.darkGrey;
+            case "false":
+                return primaryButtonArrows.grey;
+            default:
+                return props.showButtonArrowColor;
+        }
+    }, []);
+
     return <Row className={`flex-nowrap ${rowDirection}`}>
         <Col className={`${rowAlign}`}>
             <PrimaryButton
@@ -67,7 +78,7 @@ const Section = (props: ISectionProps): JSX.Element => {
                     `}
                 showArrow={props.showButtonArrow}
                 linkProps={linkHref}
-                arrowColor={props.inverted === "true" ? primaryButtonArrows.darkGrey : primaryButtonArrows.grey}
+                arrowColor={arrowColor}
             >
                 {props.buttonText}
             </PrimaryButton>
