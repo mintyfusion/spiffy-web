@@ -70,7 +70,7 @@
     :global(.accordion-button:not(.collapsed)) {
         box-shadow: none;
     }
-    
+
     .headerInner {
         border-radius: 10px 0px 0px 10px;
     }
@@ -121,15 +121,11 @@
         padding: 1rem 1rem;
     }
 
-    .customAccordianButton {
-        width: 63px;
-        padding: 0.5rem;
-    }
-
     .accordion {
         :global(.accordion-button) {
-            .customAccordianButton div {
-                width: 70px;
+            .customAccordianButton {
+                width: 100px;
+                padding: 0.5rem;
             }
         }
 
