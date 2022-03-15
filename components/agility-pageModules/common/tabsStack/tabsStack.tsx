@@ -106,8 +106,6 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
                 </Swiper>
             </div>, [activeTab, breakpoint, tabletBreakpoint, expanded, handleNavigation, tabData, tags?.length]);
 
-    console.log(activeTab);
-
     return (
         <>
             {tabsContainer}
