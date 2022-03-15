@@ -39,7 +39,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                         >
                             <Col className={` ${styles.leftSection}`} lg={8}>
                                 <Row className={`${styles.cardStack} flex-sm-column`}>
-                                    <Col className={`${styles.card} sticky-lg-top w-100`} key={index}>
+                                    <Col className={`${styles.card} sticky-lg-top`} key={index}>
                                         <div
                                             className={`
                                                     ${flex} 
@@ -71,7 +71,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                                     />
                                                 </div>
                                             </div>
-                                            <div className={`${colAlignStart} ${styles.cardContent} p-2 p-sm-4`}>
+                                            <div className={`${colAlignStart} ${styles.cardContent}`}>
                                                 <h4>{title}</h4>
                                                 <h6>{description} </h6>
                                             </div>
@@ -100,7 +100,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                          `}
                                     >
                                         <div className="d-none d-lg-block">
-                                            <ArrowIcon width={45} height={60} layout="intrinsic" quantity={5} />
+                                            <ArrowIcon width={15} height={25} layout="intrinsic" quantity={5} />
                                         </div>
                                         <h2 className="ms-1">Our</h2>
                                     </Stack>

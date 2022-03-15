@@ -14,7 +14,7 @@ const rowCenter = flexbox({ vAlign: "center", hAlign: "center" });
 const PrimaryButton = ({ showArrow, linkProps, ...props }: PropsWithChildren<IPrimaryButtonProps>): JSX.Element => {
     const btn = (
         <Button
-            {...props}
+            variant="warning"
             className={`
                 ${showArrow ? styles.sectionButton : styles.primaryButton} 
                 ${styles.defaultButton}

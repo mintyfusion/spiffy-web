@@ -3,7 +3,8 @@ enum primaryButtonArrows {
     yellow = "yellow",
     red = "red",
     darkGrey = "darkGrey",
-    grey = "grey"
+    grey = "grey",
+    ligthBlack = "ligthBlack"
 }
 
 export default primaryButtonArrows;

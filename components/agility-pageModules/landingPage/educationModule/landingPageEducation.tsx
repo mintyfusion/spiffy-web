@@ -20,7 +20,7 @@ const LandingPageEducation = (props: ModuleProps<ILandingPageEducationProps>): J
         <Row className={styles.contentHeading}>
             <h2 className="text-center">{fields.title}</h2>
         </Row>
-        <Row className={`gap-1 gap-md-4 ${rowHCenter}`}>
+        <Row className={`${rowHCenter}`}>
             <CardContainer content={{ items: fields.educationTiles }} />
         </Row>
         <Row>

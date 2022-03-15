@@ -1,6 +1,7 @@
 @import "styles/theme.scss";
 @import "styles/font/fontGroups.scss";
 @import "styles/includeMedia.scss";
+@import "styles/mixins.scss";
 
 .card {
     border-radius: 12px;
@@ -12,10 +13,13 @@
 
     .cardTitle {
         @extend .regular-desktop-18-mobile-16;
+        @include textEllipsis(2);
+        min-height: 59px;
     }
 
     .cardDescription {
         @extend .regular-desktop-14-mobile-12;
+        @include textEllipsis(4);
     }
 
     .link {

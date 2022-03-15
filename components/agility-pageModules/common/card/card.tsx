@@ -21,6 +21,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
         <BaseCard
             className={`${styles.card} ${columnAlign} p-3 flex-grow-1 w-100`}
             onClick={() => router.push(fields.educationDetailLink)}
+            role="button"
         >
             <div className="cardImageContainer">
                 <Image src={fields.image.url} width="10px" height="5px" layout="responsive" objectFit="cover" />
@@ -29,10 +30,10 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
                 <BaseCard.Title className={`${styles.cardTag} mb-0`}>
                     {fields.tag.fields.name.replace("_", " ")}
                 </BaseCard.Title>
-                <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 `} >
+                <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 `} title={fields.title}>
                     {fields.title}
                 </BaseCard.Text>
-                {!!fields.description &&
+                {!fields.description &&
                     <div className={`${styles.cardDescription} py-1 my-1 w-100 flex-grow-1`} >
                         {fields.description}
                     </div>

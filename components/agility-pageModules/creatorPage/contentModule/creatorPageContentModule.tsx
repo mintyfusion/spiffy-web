@@ -14,7 +14,7 @@ const CreatorPageContentModule = (props: ModuleProps<IContentModuleProps>): JSX.
     return (
         <CommonSection
             reversed={reversed}
-            arrows={!reversed && arrowsIcons}
+            arrows={arrowsIcons}
             containerClass={reversed ? styles.containerAlternate : styles.container}
             {...content}
         />

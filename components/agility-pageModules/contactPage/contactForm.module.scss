@@ -69,8 +69,8 @@
                 label,
                 input {
                     @extend .regular14;
-                    @include fluidDimension("min-height", 30, 30);
-                    padding: 10px;
+                    padding: 12px;
+                    height: 40px;
 
                     &:focus-visible {
                         border-radius: 0 8px 8px 0;
@@ -79,8 +79,8 @@
 
                 .countryflagContainer {
                     background: url("/images/contact-page/flags/icon-usa.svg") no-repeat;
-                    background-position: 40%;
-                    border: 1px solid $neutral-black;
+                    background-position: 35%;
+                    border: 1px solid $silver;
                     border-right: 0;
                     border-radius: 8px 0 0 8px;
                     background-size: 30px;
@@ -105,7 +105,7 @@
 
             .inputPhoneNumber {
                 background-color: initial;
-                border: 1px solid $neutral-black;
+                border: 1px solid $silver;
                 border-top-left-radius: 0px;
                 border-bottom-left-radius: 0px;
             }
@@ -148,7 +148,7 @@
     }
 
     .countryflagContainer {
-        min-width: 120px;
+        min-width: 80px;
     }
 
     .contextContainer {
@@ -171,7 +171,7 @@
     }
 
     .countryflagContainer {
-        min-width: 90px;
+        min-width: 75px;
     }
 
     .contextContainer {

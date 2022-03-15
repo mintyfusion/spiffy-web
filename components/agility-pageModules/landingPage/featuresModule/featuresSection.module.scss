@@ -48,6 +48,7 @@
 
     .cardStack {
       .card {
+        width: 40%;
         .imageContainer .imageLogoContainer {
           width: 60px;
         }
@@ -109,10 +110,9 @@
   .content1 .leftSection .cardStack {
     .card {
       height: 420px;
-      padding: 5rem;
       // For dynamic card box sizing based on viewport
       .imageContainer {
-        @include fluidDimension("width", 100, 353);
+        @include fluidDimension("width", 100, 400);
       }
 
       .cardContent {

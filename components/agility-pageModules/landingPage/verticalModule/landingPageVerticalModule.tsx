@@ -24,7 +24,7 @@ const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModulePro
         <div className={`position-relative ${styles.content3}`}>
             {verticalContentList.map((content, index) =>
                 <Row key={index} className={`${rowHAlignCenter} ${styles.container} w-100 m-0 position-sticky`}>
-                    <Col className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0`}>
+                    <Col className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0 h-100`}>
                         <div>
                             <h1 className={`${styles.headerEmphasisText} position-absolute`}>
                                 {verticalContentList[index].fields.highlightedWord}
@@ -43,7 +43,7 @@ const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModulePro
                         </div>
                     </Col>
                     {isViewportDesktop &&
-                        <Col className={`${styles.parallaxColumnRigth} p-0`}>
+                        <Col className={`${styles.parallaxColumnRigth} p-0 h-100`}>
                             <Image
                                 src={content.fields.image.url}
                                 width="1045"

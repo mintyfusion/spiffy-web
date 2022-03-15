@@ -13,7 +13,7 @@ const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "s
 const horizontalAlign = flexbox({ hAlign: "center" });
 
 const CardContainer = (props: ICardContainerProps): JSX.Element =>
-    <Row className={`gap-1 gap-md-4 ${horizontalAlign} w-100`}>
+    <Row className={`gap-4 ${horizontalAlign} w-100`}>
         {props.content?.items && props.content.items.map((card: ContentItem<ICardProps>, index: number) =>
             <Col
                 key={index}
@@ -22,7 +22,7 @@ const CardContainer = (props: ICardContainerProps): JSX.Element =>
                     ${styles.card} 
                         col-12 
                         col-sm-5 
-                        col-md-3 
+                        col-md-2 
                         flex-grow-1 
                         flex-md-grow-0
                         mb-4

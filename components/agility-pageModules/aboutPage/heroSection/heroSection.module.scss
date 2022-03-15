@@ -6,7 +6,7 @@
 .heroContainer {
     @extend .backgroundPattern;
     color: $white;
-    min-height: 31rem;
+    padding: 120px 100px 50px 100px;
 
     h1 {
         @extend .bold36;
