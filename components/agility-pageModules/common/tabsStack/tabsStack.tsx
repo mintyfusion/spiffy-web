@@ -40,6 +40,7 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
             <SwiperSlide key={tag}>
                 <PrimaryButton
                     key={tag}
+                    id={tag}
                     onClick={() => setActiveTab(tag)}
                     className={`
                             w-100
@@ -104,6 +105,8 @@ const TabsStack = (props: ITabsStackProps): JSX.Element => {
                     {tabData}
                 </Swiper>
             </div>, [activeTab, breakpoint, tabletBreakpoint, expanded, handleNavigation, tabData, tags?.length]);
+
+    console.log(activeTab);
 
     return (
         <>

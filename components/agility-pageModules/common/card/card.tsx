@@ -33,7 +33,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
                 <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 `} title={fields.title}>
                     {fields.title}
                 </BaseCard.Text>
-                {!fields.description &&
+                {!!fields.description &&
                     <div className={`${styles.cardDescription} py-1 my-1 w-100 flex-grow-1`} >
                         {fields.description}
                     </div>

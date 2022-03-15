@@ -48,14 +48,15 @@
 
     .cardStack {
       .card {
-        width: 40%;
+        width: 45%;
+        min-width: 570px;
         .imageContainer .imageLogoContainer {
           width: 60px;
         }
 
         .cardContent {
           background: $white;
-          padding: 0 25px;
+          padding: 30px 25px;
 
           h4 {
             @extend .bold25;
@@ -112,11 +113,11 @@
       height: 420px;
       // For dynamic card box sizing based on viewport
       .imageContainer {
-        @include fluidDimension("width", 100, 400);
+        width: 100%;
       }
 
       .cardContent {
-        @include fluidDimension("width", 100, 480);
+        width: 100%;
       }
 
       &:nth-child(2) {
@@ -167,7 +168,7 @@
         .card {
           margin: auto;
           margin-bottom: 2rem;
-          max-width: 40rem;
+          min-width: 75%;
 
           .imageContainer .imageLogoContainer {
             width: 60px;

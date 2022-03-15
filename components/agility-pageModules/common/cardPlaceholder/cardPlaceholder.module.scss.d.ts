@@ -1,5 +1,6 @@
 export type Styles = {
   "backgroundPattern": string;
+  "card": string;
   "cardPlaceholderContainer": string;
   "placeholderColor": string;
 };
