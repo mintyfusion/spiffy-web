@@ -5,6 +5,7 @@
 .bannerContentContainer {
     z-index: 1;
     width: 100%;
+    padding: 50px 100px;
 
     .title {
         @extend .bold36;
@@ -54,8 +55,6 @@
 
 @include media(">=tablet") {
     .bannerContentContainer {
-        padding: 6rem 7rem;
-
         .searchContainer {
             width: fit-content;
 
