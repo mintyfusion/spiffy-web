@@ -45,9 +45,6 @@
 
 @include media("<=tablet") {
     .carouselItem {
-        max-height: 350px;
-        div {
-            max-height: 350px;
-        }
+        max-height: 100vh;
     }
 }

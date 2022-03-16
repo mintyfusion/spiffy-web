@@ -99,7 +99,7 @@ const LandingFeaturesModule = (props: ModuleProps<ILandingFeaturesModuleProps>):
                                                 justify-content-xl-end
                                          `}
                                     >
-                                        <div className="d-none d-lg-block">
+                                        <div>
                                             <ArrowIcon width={15} height={25} layout="intrinsic" quantity={5} />
                                         </div>
                                         <h2 className="ms-1">Our</h2>
