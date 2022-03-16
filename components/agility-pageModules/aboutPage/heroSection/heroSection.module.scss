@@ -32,6 +32,7 @@
 
 @include media("<desktop") {
     .heroContainer {
+        padding: 120px 30px 50px 30px;
         h1 {
             max-width: 100%;
             margin-bottom: 10px;

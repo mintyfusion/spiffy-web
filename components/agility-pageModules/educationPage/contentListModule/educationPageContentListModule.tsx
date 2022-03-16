@@ -24,7 +24,7 @@ const CardContainer = dynamic(() => import("components/agility-pageModules/commo
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
-const defaultCards = 3;
+const defaultCards = 4;
 
 const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
