@@ -28,3 +28,11 @@
         color: $yellow;
     }
 }
+
+@include media("<tablet") {
+    .card {
+        .cardTitle {
+            min-height: auto;
+        }
+    }
+}
