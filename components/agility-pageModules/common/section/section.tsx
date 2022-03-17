@@ -4,7 +4,7 @@ import React from "react";
 import flexbox from "utils/flexbox";
 import ISectionProps from "components/agility-pageModules/common/section/interfaces/ISectionProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
-import primaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
+import PimaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
 
@@ -60,9 +60,9 @@ const Section = (props: ISectionProps): JSX.Element => {
     const arrowColor = React.useMemo(() => {
         switch (inverted) {
             case "true":
-                return primaryButtonArrows.darkGrey;
+                return PimaryButtonArrows.darkGrey;
             case "false":
-                return primaryButtonArrows.grey;
+                return PimaryButtonArrows.grey;
             default:
                 return showButtonArrowColor;
         }

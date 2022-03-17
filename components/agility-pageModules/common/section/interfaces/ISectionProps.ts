@@ -1,5 +1,5 @@
 import IContentInfo from "types/IContentnfo";
-import primaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
+import PimaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 
 export default interface ISectionProps {
@@ -11,6 +11,6 @@ export default interface ISectionProps {
     responsiveBreakpoint?: number;
     buttonText: string;
     showButtonArrow?: boolean;
-    showButtonArrowColor?: primaryButtonArrows;
+    showButtonArrowColor?: PimaryButtonArrows;
     inverted?: string;
 }

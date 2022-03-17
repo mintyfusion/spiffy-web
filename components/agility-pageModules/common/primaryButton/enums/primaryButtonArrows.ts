@@ -1,4 +1,4 @@
-enum primaryButtonArrows {
+enum PimaryButtonArrows {
     white = "white",
     yellow = "yellow",
     red = "red",
@@ -7,4 +7,4 @@ enum primaryButtonArrows {
     ligthBlack = "ligthBlack"
 }
 
-export default primaryButtonArrows;
+export default PimaryButtonArrows;
