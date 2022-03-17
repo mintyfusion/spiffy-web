@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
 
+import ConstantUtils from "utils/constantUtils";
 import flexbox from "utils/flexbox";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
-import ConstantUtils from "utils/constantUtils";
 
 import styles from "components/agility-pageModules/game/gameSignup/gameSignup.module.scss";
 

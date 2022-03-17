@@ -4,11 +4,11 @@ import React from "react";
 
 import flexbox from "utils/flexbox";
 import ILandingPageGetStarted from "components/agility-pageModules/landingPage/getStartedModule/interfaces/ILandingPageGetStartedProps";
+import PimaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import Section from "components/agility-pageModules/common/section/section";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
 
-import PimaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import styles from "components/agility-pageModules/landingPage/getStartedModule/getStarted.module.scss";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });

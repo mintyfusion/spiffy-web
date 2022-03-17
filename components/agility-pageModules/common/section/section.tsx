@@ -3,8 +3,8 @@ import React from "react";
 
 import flexbox from "utils/flexbox";
 import ISectionProps from "components/agility-pageModules/common/section/interfaces/ISectionProps";
-import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import PimaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
 
