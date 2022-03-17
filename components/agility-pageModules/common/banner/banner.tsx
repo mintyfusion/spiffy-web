@@ -14,9 +14,7 @@ const Banner = (props: PropsWithChildren<IBannerProps>): JSX.Element =>
                 <Carousel.Item
                     className={`
                     ${styles.carouselItem} 
-                    ${props.fullHeight
-                            ? styles.full
-                            : styles.half} 
+                    ${props.fullHeight ? styles.full : styles.half}
                     position-relative`}
                     key={index}
                 >
