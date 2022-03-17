@@ -18,6 +18,8 @@ const Section = (props: ISectionProps): JSX.Element => {
     const { title, description } = props.content;
     const isBreakpointMatched = useBreakpoint(props.responsiveBreakpoint);
 
+    const { inverted, showButtonArrowColor } = props;
+
     const rowDirection = React.useMemo(() => {
         if (isBreakpointMatched || props.direction === SectionSide.center) {
             return "flex-column-reverse gap-3 align-self-center";
@@ -56,15 +58,15 @@ const Section = (props: ISectionProps): JSX.Element => {
     }), [props.href]);
 
     const arrowColor = React.useMemo(() => {
-        switch (props.inverted) {
+        switch (inverted) {
             case "true":
                 return primaryButtonArrows.darkGrey;
             case "false":
                 return primaryButtonArrows.grey;
             default:
-                return props.showButtonArrowColor;
+                return showButtonArrowColor;
         }
-    }, []);
+    }, [inverted, showButtonArrowColor]);
 
     return <Row className={`flex-nowrap ${rowDirection}`}>
         <Col className={`${rowAlign}`}>
