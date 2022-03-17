@@ -27,7 +27,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
             onClick={() => routeHandler(fields.educationDetailLink)}
             role="button"
         >
-            <div className="cardImageContainer">
+            <div>
                 <Image src={fields.image.url} width="10px" height="5px" layout="responsive" objectFit="cover" />
             </div>
             <BaseCard.Body className={`${columnAlignCenter} pb-0`}>
