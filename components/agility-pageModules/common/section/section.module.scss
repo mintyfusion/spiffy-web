@@ -18,26 +18,32 @@
         background-color: $white;
     }
 
-    :global(.white) {
+    :global(.White) {
         border: 4px solid $dirty-white;
         cursor: pointer;
     }
 
-    :global(.red) {
+    :global(.Red) {
         border: 4px solid $light-red;
         cursor: pointer;
     }
 
-    :global(.darkGrey) {
+    :global(.DarkGrey) {
         border: 4px solid $pattern-bg-color;
         cursor: pointer;
         background-color: $white;
     }
 
-    :global(.grey) {
+    :global(.Grey) {
         border: 4px solid $white;
         cursor: pointer;
         background-color: $dirty-white;
+    }
+
+    :global(.LighBlack) {
+        border: 4px solid $dirty-white;
+        cursor: pointer;
+        background-color: $white;
     }
 }
 

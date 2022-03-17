@@ -91,7 +91,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                         href={fields.leftSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
-                        showButtonArrowColor={PimaryButtonArrows.white}
+                        showButtonArrowColor={PimaryButtonArrows.White}
                     />
                 </Col>
                 <Col
@@ -110,7 +110,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                         href={fields.rightSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
-                        showButtonArrowColor={PimaryButtonArrows.red}
+                        showButtonArrowColor={PimaryButtonArrows.Red}
                     />
                 </Col>
             </Row>

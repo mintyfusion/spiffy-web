@@ -60,9 +60,9 @@ const Section = (props: ISectionProps): JSX.Element => {
     const arrowColor = React.useMemo(() => {
         switch (inverted) {
             case "true":
-                return PimaryButtonArrows.darkGrey;
+                return PimaryButtonArrows.DarkGrey;
             case "false":
-                return PimaryButtonArrows.grey;
+                return PimaryButtonArrows.Grey;
             default:
                 return showButtonArrowColor;
         }

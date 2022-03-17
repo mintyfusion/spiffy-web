@@ -1,10 +1,10 @@
 enum PimaryButtonArrows {
-    white = "white",
-    yellow = "yellow",
-    red = "red",
-    darkGrey = "darkGrey",
-    grey = "grey",
-    ligthBlack = "ligthBlack"
+    White = "White",
+    Yellow = "Yellow",
+    Red = "Red",
+    DarkGrey = "DarkGrey",
+    Grey = "Grey",
+    LighBlack = "ligthBlack"
 }
 
 export default PimaryButtonArrows;
