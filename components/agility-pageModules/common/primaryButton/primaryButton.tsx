@@ -15,7 +15,7 @@ const PrimaryButton =
     ({ showArrow, linkProps, arrowColor, ...props }: PropsWithChildren<IPrimaryButtonProps>): JSX.Element => {
         const btn = (
             <Button
-                variant="danger"
+                variant="warning"
                 {...props}
                 className={`
                 ${showArrow ? styles.sectionButton : styles.primaryButton} 
