@@ -17,10 +17,14 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
     const { fields } = props;
     const router = useRouter();
 
+    const routeHandler = React.useCallback((link) => {
+        router.push(link);
+    }, []);
+
     return (
         <BaseCard
             className={`${styles.card} ${columnAlign} p-3 flex-grow-1 w-100`}
-            onClick={() => router.push(fields.educationDetailLink)}
+            onClick={() => routeHandler(fields.educationDetailLink)}
             role="button"
         >
             <div className="cardImageContainer">
