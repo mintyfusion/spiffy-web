@@ -8,7 +8,7 @@ import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/common/cardPlaceholder/cardPlaceholder.module.scss";
 
-const horizontalAlign = flexbox({ hAlign: "center" });
+const rowHCenter = flexbox({ hAlign: "center" });
 
 const cardsXL = 3;
 const cardsLG = 2;
@@ -48,7 +48,7 @@ const CardPlaceHolder = (props: HTMLAttributes<HTMLDivElement>): JSX.Element => 
     }, [breakpointLG, breakpointXXL]);
 
     return (
-        <Row {...props} className={`gap-4 ${horizontalAlign}`}>
+        <Row {...props} className={`gap-4 ${rowHCenter}`}>
             {placeholderCards.map(card => card)}
         </Row>
     );
