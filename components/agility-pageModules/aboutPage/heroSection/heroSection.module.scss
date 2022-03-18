@@ -32,7 +32,8 @@
 
 @include media("<desktop") {
     .heroContainer {
-        padding: 120px 30px 50px 30px;
+        padding: 120px 100px 50px 100px;
+        
         h1 {
             max-width: 100%;
             margin-bottom: 10px;
@@ -42,15 +43,5 @@
             margin-bottom: 40px;
         }
 
-        blockquote {
-            &::before {
-                padding-bottom: 130px;
-                background-size: 50px 105px;
-            }
-
-            p {
-                margin-top: 145px;
-            }
-        }
     }
 }
