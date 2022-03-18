@@ -41,6 +41,31 @@ blockquote {
 	}
 }
 
+@include media("<desktop") {
+	blockquote {
+		width: 68%;
+		margin-left: auto;
+
+		&::before {
+			position: absolute;
+			left: 0;
+			width: 100px;
+			height: 70px;
+			margin-top: 65px;
+		}
+
+		p:first-child::before {
+			content: "";
+			position: absolute;
+			margin-left: -10%;
+			height: 115px;
+			border: none;
+			border-right: 3px solid $grey;
+			margin-top: 50px;
+		}
+	}
+}
+
 @include media("<tablet") {
 	blockquote {
 		width: 100%;
@@ -50,8 +75,12 @@ blockquote {
 			left: 5%;
 			width: 100px;
 			height: 70px;
-			top: 22%;
+			top: 11%;
 			border-bottom: 3px solid;
+		}
+
+		p {
+			margin-top: 70px;
 		}
 
 		p:first-child::before {
