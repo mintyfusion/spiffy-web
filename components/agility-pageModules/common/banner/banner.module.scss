@@ -1,6 +1,7 @@
 @import "styles/theme.scss";
 @import "styles/mixins.scss";
 @import "styles/includeMedia.scss";
+@import "styles/variables.scss";
 
 .bannerContainer {
     @extend .backgroundPattern;
@@ -21,7 +22,7 @@
 
 .full {
     & > div:first-child {
-        height: 100vh;
+        height: $vh;
     }
 }
 
@@ -45,6 +46,6 @@
 
 @include media("<=tablet") {
     .carouselItem {
-        max-height: 100vh;
+        max-height: $vh;
     }
 }
