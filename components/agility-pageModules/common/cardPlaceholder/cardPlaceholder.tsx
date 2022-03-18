@@ -24,7 +24,7 @@ const CardPlaceHolder = (props: HTMLAttributes<HTMLDivElement>): JSX.Element => 
 
         for (let i = 0; i < numberOfCards; i++) {
 
-            card.push(<Col className="card p-3" aria-hidden="true">
+            card.push(<Col className="card p-3" aria-hidden="true" key={i}>
                 <svg className="">
                     <rect width="100%" height="100%" fill={styles.placeholderColor}></rect>
                 </svg>
