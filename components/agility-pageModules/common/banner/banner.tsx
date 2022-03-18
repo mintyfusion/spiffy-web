@@ -29,8 +29,8 @@ const Banner = (props: PropsWithChildren<IBannerProps>): JSX.Element => {
                 )
             }
         </Carousel >
-    </div>
-}
+    </div>;
+};
 
 Banner.defaultProps = {
     fullHeight: true
