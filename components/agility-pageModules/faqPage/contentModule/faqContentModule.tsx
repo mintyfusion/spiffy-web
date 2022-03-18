@@ -95,31 +95,31 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
             <Stack className={styles.faqAccordionContainer}>
                 {resultData
                     && resultData
-                        .filter(content => content.fields.title.toLowerCase().indexOf(data.searchValue) >= 0)
-                        .map((post, index) =>
-                            <Accordion
-                                key={index}
-                                className={`${styles.accordion} ${activeTab !== ContentCategory.all && "d-none"}`}
-                            >
-                                <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
-                                    <Accordion.Header className={styles.accordianHeader}>
-                                        <Stack className="w-100" direction="horizontal">
-                                            <div className={`${styles.faqIndex} p-3`}>
-                                                {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
-                                            </div>
-                                            <div className="w-100 p-2">{post.fields.title}</div>
-                                            <ContextAwareToggle eventKey={index.toString()} />
-                                        </Stack>
-                                    </Accordion.Header>
-                                    <Accordion.Body className={styles.accordianBody}>
-                                        <div
-                                            dangerouslySetInnerHTML={renderHtml(post.fields.description)}
-                                            className={styles.accordianBodyInner}
-                                        />
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            </Accordion>
-                        )}
+                        .filter(content => content.fields.title.toLowerCase()
+                            .indexOf(data.searchValue.toLowerCase()) >= 0).map((post, index) =>
+                                <Accordion
+                                    key={index}
+                                    className={`${styles.accordion} ${activeTab !== ContentCategory.all && "d-none"}`}
+                                >
+                                    <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
+                                        <Accordion.Header className={styles.accordianHeader}>
+                                            <Stack className="w-100" direction="horizontal">
+                                                <div className={`${styles.faqIndex} p-3`}>
+                                                    {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
+                                                </div>
+                                                <div className="w-100 p-2">{post.fields.title}</div>
+                                                <ContextAwareToggle eventKey={index.toString()} />
+                                            </Stack>
+                                        </Accordion.Header>
+                                        <Accordion.Body className={styles.accordianBody}>
+                                            <div
+                                                dangerouslySetInnerHTML={renderHtml(post.fields.description)}
+                                                className={styles.accordianBodyInner}
+                                            />
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            )}
 
                 {!resultData?.length
                     || data.searchValue
