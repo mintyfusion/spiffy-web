@@ -20,7 +20,6 @@ const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModulePro
 
     const isViewportDesktop = useBreakpoint(Breakpoints.MD, BreakpointChecks.Greater);
 
-    console.log(verticalContentList);
     return (
         <div className={`position-relative ${styles.content3}`}>
             {verticalContentList?.map((content, index) =>
