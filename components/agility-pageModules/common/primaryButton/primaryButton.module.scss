@@ -18,10 +18,10 @@
     padding: 10px 50px 10px 50px;
     color: $neutral-black-900;
 
-    :global(.ligthBlack) {
-        border: 4px solid $neutral-light-black;
-        cursor: pointer;
+    label {
         background-color: $white;
+        border: 4px solid $white;
+        cursor: pointer;
     }
 }
 

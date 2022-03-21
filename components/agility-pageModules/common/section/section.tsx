@@ -3,7 +3,6 @@ import React from "react";
 
 import flexbox from "utils/flexbox";
 import ISectionProps from "components/agility-pageModules/common/section/interfaces/ISectionProps";
-import PimaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
@@ -17,8 +16,6 @@ const rowAlign = flexbox({ vAlign: "center", hAlign: "center" });
 const Section = (props: ISectionProps): JSX.Element => {
     const { title, description } = props.content;
     const isBreakpointMatched = useBreakpoint(props.responsiveBreakpoint);
-
-    const { inverted, showButtonArrowColor } = props;
 
     const rowDirection = React.useMemo(() => {
         if (isBreakpointMatched || props.direction === SectionSide.center) {
@@ -57,17 +54,6 @@ const Section = (props: ISectionProps): JSX.Element => {
         href: props.href
     }), [props.href]);
 
-    const arrowColor = React.useMemo(() => {
-        switch (inverted) {
-            case "true":
-                return PimaryButtonArrows.DarkGrey;
-            case "false":
-                return PimaryButtonArrows.Grey;
-            default:
-                return showButtonArrowColor;
-        }
-    }, [inverted, showButtonArrowColor]);
-
     return <Row className={`flex-nowrap ${rowDirection}`}>
         <Col className={`${rowAlign}`}>
             <PrimaryButton
@@ -80,7 +66,6 @@ const Section = (props: ISectionProps): JSX.Element => {
                     `}
                 showArrow={props.showButtonArrow}
                 linkProps={linkHref}
-                arrowColor={arrowColor}
             >
                 {props.buttonText}
             </PrimaryButton>

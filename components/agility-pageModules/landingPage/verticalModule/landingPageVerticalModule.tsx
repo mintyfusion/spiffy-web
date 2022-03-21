@@ -20,9 +20,10 @@ const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModulePro
 
     const isViewportDesktop = useBreakpoint(Breakpoints.MD, BreakpointChecks.Greater);
 
+    console.log(verticalContentList);
     return (
         <div className={`position-relative ${styles.content3}`}>
-            {verticalContentList.map((content, index) =>
+            {verticalContentList?.map((content, index) =>
                 <Row key={index} className={`${rowHAlignCenter} ${styles.container} w-100 m-0 position-sticky`}>
                     <Col className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0 h-100`}>
                         <div>

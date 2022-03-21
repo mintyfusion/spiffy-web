@@ -4,7 +4,6 @@ import React from "react";
 
 import flexbox from "utils/flexbox";
 import ILandingPageGetStarted from "components/agility-pageModules/landingPage/getStartedModule/interfaces/ILandingPageGetStartedProps";
-import PimaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import Section from "components/agility-pageModules/common/section/section";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
@@ -91,7 +90,6 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                         href={fields.leftSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
-                        showButtonArrowColor={PimaryButtonArrows.White}
                     />
                 </Col>
                 <Col
@@ -110,7 +108,6 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                         href={fields.rightSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
-                        showButtonArrowColor={PimaryButtonArrows.Red}
                     />
                 </Col>
             </Row>

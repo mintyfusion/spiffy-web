@@ -12,7 +12,7 @@ import styles from "components/agility-pageModules/common/primaryButton/primaryB
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center" });
 
 const PrimaryButton =
-    ({ showArrow, linkProps, arrowColor, ...props }: PropsWithChildren<IPrimaryButtonProps>): JSX.Element => {
+    ({ showArrow, linkProps, ...props }: PropsWithChildren<IPrimaryButtonProps>): JSX.Element => {
         const btn = (
             <Button
                 variant="warning"
@@ -26,7 +26,7 @@ const PrimaryButton =
             >
                 {props.children}
                 {showArrow &&
-                    <label className={`${rowCenter} position-absolute ${arrowColor}`}>
+                    <label className={`${rowCenter} position-absolute`}>
                         <Image src={getStartedArrow} layout="fill" />
                     </label>}
             </Button>
