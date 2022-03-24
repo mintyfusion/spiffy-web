@@ -5,6 +5,11 @@
 
 .card {
     border-radius: 12px;
+    border-color: $brightGray;
+
+    img{
+        border-radius: 10px;
+    }
 
     .cardTag {
         color: $light-grey;

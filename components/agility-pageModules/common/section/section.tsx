@@ -4,7 +4,6 @@ import React from "react";
 import flexbox from "utils/flexbox";
 import ISectionProps from "components/agility-pageModules/common/section/interfaces/ISectionProps";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
-import primaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
 
@@ -55,17 +54,6 @@ const Section = (props: ISectionProps): JSX.Element => {
         href: props.href
     }), [props.href]);
 
-    const arrowColor = React.useMemo(() => {
-        switch (props.inverted) {
-            case "true":
-                return primaryButtonArrows.darkGrey;
-            case "false":
-                return primaryButtonArrows.grey;
-            default:
-                return props.showButtonArrowColor;
-        }
-    }, []);
-
     return <Row className={`flex-nowrap ${rowDirection}`}>
         <Col className={`${rowAlign}`}>
             <PrimaryButton
@@ -78,7 +66,6 @@ const Section = (props: ISectionProps): JSX.Element => {
                     `}
                 showArrow={props.showButtonArrow}
                 linkProps={linkHref}
-                arrowColor={arrowColor}
             >
                 {props.buttonText}
             </PrimaryButton>

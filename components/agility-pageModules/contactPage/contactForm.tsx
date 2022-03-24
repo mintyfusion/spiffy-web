@@ -13,7 +13,6 @@ import IContactFormProps from "components/agility-pageModules/contactPage/interf
 import IField from "types/IField";
 import postData from "utils/postData";
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
-import primaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import renderHtml from "utils/renderHtml";
 import useBoolean from "hooks/useBoolean";
 import useBreakpoint from "hooks/useBreakpoint";
@@ -155,7 +154,6 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                             className={styles.buttonFaq}
                             linkProps={{ href: fields.redirectPageButton.href }}
                             showArrow
-                            arrowColor={primaryButtonArrows.ligthBlack}
                         >
                             {fields.redirectPageButton.text}
                         </PrimaryButton>

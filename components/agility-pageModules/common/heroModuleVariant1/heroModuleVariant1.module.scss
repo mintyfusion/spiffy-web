@@ -41,6 +41,10 @@
             padding: 10px 20px;
             border-top-right-radius: 8px;
             border-bottom-right-radius: 8px;
+
+            svg {
+                margin-top: -3px;
+            }
         }
 
         a[role="button"] {

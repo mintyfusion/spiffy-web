@@ -8,7 +8,6 @@ import Section from "components/agility-pageModules/common/section/section";
 import SectionSide from "components/agility-pageModules/common/section/enums/SectionSide";
 import useBreakpoint from "hooks/useBreakpoint";
 
-import primaryButtonArrows from "components/agility-pageModules/common/primaryButton/enums/primaryButtonArrows";
 import styles from "components/agility-pageModules/landingPage/getStartedModule/getStarted.module.scss";
 
 const columnAlignCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "start" });
@@ -91,7 +90,6 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                         href={fields.leftSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
-                        showButtonArrowColor={primaryButtonArrows.white}
                     />
                 </Col>
                 <Col
@@ -110,7 +108,6 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                         href={fields.rightSectionHref.href}
                         buttonText="Get Started"
                         responsiveBreakpoint={layoutBreakpoint}
-                        showButtonArrowColor={primaryButtonArrows.red}
                     />
                 </Col>
             </Row>
