@@ -55,6 +55,10 @@
     @include typeFace($eighteen, $thirtyTwo, $semi-bold);
 }
 
+.medium16 {
+    @include typeFace($sixteen, $sixteen, $medium);
+}
+
 .medium25 {
     @include typeFace($sixteen, $twentyFive, $medium);
 }
@@ -65,10 +69,6 @@
 
 .medium14 {
     @include typeFace($nine, $fourteen, $medium);
-}
-
-.medium16 {
-    @include typeFace($nine, $sixteen, $medium);
 }
 
 .bold14 {
