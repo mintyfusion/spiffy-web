@@ -15,9 +15,9 @@ const columnAlign = flexbox({ vertical: true });
 
 const Card = (props: ContentItem<ICardProps>): JSX.Element => {
     const { fields } = props;
-    const router = useRouter();
+    const { push } = useRouter();
 
-    const handleBaseCardClick = React.useCallback(() => router.push(fields.educationDetailLink), [fields]);
+    const handleBaseCardClick = React.useCallback(() => push(fields.educationDetailLink), [fields]);
 
     return (
         <BaseCard
