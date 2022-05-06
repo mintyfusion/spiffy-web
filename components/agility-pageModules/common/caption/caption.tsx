@@ -45,7 +45,6 @@ const Caption = (props: ICaptionProps): JSX.Element => {
                                         }}
                                     />
                                 </div>
-
                             </>
                             : <h2
                                 role="primary-text"
