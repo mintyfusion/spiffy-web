@@ -109,7 +109,8 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                         <h5 className="mb-0">
                             {!searchData.searchValue
                                 ? props.module.fields.title
-                                : `Showing search results for "${searchData.searchValue}"`}
+                                : `Showing search results for "${searchData.searchValue}"`
+                            }
                         </h5>
                     </Row>
                     {
