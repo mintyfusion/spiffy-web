@@ -9,7 +9,6 @@ import useBreakpoint from "hooks/useBreakpoint";
 import styles from "components/agility-pageModules/common/cardPlaceholder/cardPlaceholder.module.scss";
 
 const rowHCenter = flexbox({ hAlign: "center" });
-
 const cardsXL = 3;
 const cardsLG = 2;
 const minCards = 1;
