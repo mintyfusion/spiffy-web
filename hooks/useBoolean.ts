@@ -10,6 +10,7 @@ import IUseBooleanCallbacks from "hooks/interfaces/IUseBooleanCallbacks";
  */
 export default function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks] {
     const [value, setValue] = React.useState(initialState);
+    
     const setTrue = React.useCallback(() => {
         setValue(true);
     }, []);
