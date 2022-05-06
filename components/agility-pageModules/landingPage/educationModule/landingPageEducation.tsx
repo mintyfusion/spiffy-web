@@ -10,7 +10,6 @@ import PrimaryButton from "components/agility-pageModules/common/primaryButton/p
 import styles from "components/agility-pageModules/landingPage/educationModule/landingPageEducation.module.scss";
 
 const rowHCenter = flexbox({ hAlign: "center" });
-
 const linkProps = { href: "/education" };
 
 const LandingPageEducation = (props: ModuleProps<ILandingPageEducationProps>): JSX.Element => {
