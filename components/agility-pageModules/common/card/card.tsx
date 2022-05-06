@@ -17,7 +17,7 @@ const Card = (props: ContentItem<ICardProps>): JSX.Element => {
     const { fields } = props;
     const router = useRouter();
 
-    const routeHandler = React.useCallback(() => router.push(fields.educationDetailLink), []);
+    const routeHandler = React.useCallback(() => router.push(fields.educationDetailLink), [fields]);
 
     return (
         <BaseCard
