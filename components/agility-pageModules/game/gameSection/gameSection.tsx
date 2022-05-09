@@ -15,12 +15,12 @@ import GamePageStepTypes from "components/agility-pageModules/game/gameSection/e
 import GameSignup from "components/agility-pageModules/game/gameSignup/gameSignup";
 import IGameSectionProps from "components/agility-pageModules/game/gameSection/interfaces/IGameSectionProps";
 import KeyCSS from "hooks/types/keyCSS";
-import PrimaryButton from "components/agility-pageModules/common//primaryButton/primaryButton";
+import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import setViewportHeight from "utils/setViewportHeight";
 import useBreakpoint from "hooks/useBreakpoint";
 import useStyles from "hooks/useStyles";
 
-import styles from "components/agility-pageModules/gameSection/gameSection.module.scss";
+import styles from "components/agility-pageModules/game/gameSection/gameSection.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });

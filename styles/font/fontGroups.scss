@@ -4,6 +4,10 @@
 @import "styles/font/fontSizes.scss";
 
 // Different font weights and sizes
+.regular12 {
+    @include typeFace($nine, $twelve, $regular);
+}
+
 .regular14 {
     @include typeFace($nine, $fourteen, $regular);
 }
@@ -12,8 +16,8 @@
     @include typeFace($nine, $sixteen, $regular);
 }
 
-.regular20 {
-    @include typeFace($seven, $twenty, $regular);
+.regular18 {
+    @include typeFace($nine, $eighteen, $regular);
 }
 
 .regular24 {
@@ -32,12 +36,27 @@
     @include typeFace($thirtyFive, $ninety, $regular);
 }
 
+.semiBold14 {
+    @include typeFace($nine, $fourteen, $semi-bold);
+}
+
 .semiBold20 {
     @include typeFace($twelve, $twenty, $semi-bold);
 }
 
+.semiBold25 {
+    @include typeFace($fourteen, $twentyFive, $semi-bold);
+}
+
 .semiBold32 {
     @include typeFace($eighteen, $thirtyTwo, $semi-bold);
+}
+.semiBold32 {
+    @include typeFace($eighteen, $thirtyTwo, $semi-bold);
+}
+
+.medium16 {
+    @include typeFace($sixteen, $sixteen, $medium);
 }
 
 .medium25 {
@@ -48,6 +67,18 @@
     @include typeFace($thirtyFive, $ninety, $semi-bold);
 }
 
+.medium14 {
+    @include typeFace($nine, $fourteen, $medium);
+}
+
+.bold14 {
+    @include typeFace($fourteen, $fourteen, $bold);
+}
+
+.bold16 {
+    @include typeFace($nine, $sixteen, $bold);
+}
+
 .bold24 {
     @include typeFace($fourteen, $twentyFour, $bold);
 }
@@ -56,16 +87,24 @@
     @include typeFace($sixteen, $twentyFive, $bold);
 }
 
+.bold31 {
+    @include typeFace($twentyFour, $thirtyOne, $bold);
+}
+
 .bold32 {
     @include typeFace($nine, $thirtyTwo, $bold);
 }
 
 .bold36 {
-    @include typeFace($fourteen, $thirtySix, $bold);
+    @include typeFace($thirty, $thirtySix, $bold);
 }
 
 .bold41 {
     @include typeFace($fourteen, $fortyOne, $bold);
+}
+
+.bold51 {
+    @include typeFace($thirty, $fiftyOne, $bold);
 }
 
 .bold60 {
@@ -74,10 +113,6 @@
 
 .bold67 {
     @include typeFace($twentyFive, $sixtySeven, $bold);
-}
-
-.bold67 {
-    @include typeFace($thirty, $sixtySeven, $bold);
 }
 
 .bold90 {
@@ -121,12 +156,16 @@
     @include typeFace($nine, $twentyFive, $regular);
 }
 
-.regular-desktop20-mobile7 {
-    @include typeFace($seven, $twenty, $regular);
+.regular-desktop30-mobile20 {
+    @include typeFace($twenty, $thirty, $regular);
 }
 
-.bold-desktop25-mobile9 {
-    @include typeFace($nine, $twentyFive, $bold);
+.regular-desktop16-mobile7 {
+    @include typeFace($seven, $sixteen, $regular);
+}
+
+.regular-desktop20-mobile7 {
+    @include typeFace($seven, $twenty, $regular);
 }
 
 .regular-desktop25-mobile16 {
@@ -141,10 +180,58 @@
     @include typeFace($twentyEight, $sixtySeven, $extra-bold);
 }
 
-.regular-desktop30-mobile20 {
-    @include typeFace($twenty, $thirty, $bold);
+.regular-desktop-16-mobile-16 {
+    @include typeFace($sixteen, $sixteen, $regular);
 }
 
-.regular-desktop16-mobile7 {
-    @include typeFace($seven, $sixteen, $regular);
+.regular-desktop-16-mobile-14 {
+    @include typeFace($fourteen, $sixteen, $regular);
+}
+
+.semi-bold-desktop-16-mobile-14 {
+    @include typeFace($fourteen, $sixteen, $semi-bold);
+}
+
+.bold-desktop-25-mobile-24 {
+    @include typeFace($twentyFour, $twentyFive, $bold);
+}
+
+.bold-desktop-25-mobile-22 {
+    @include typeFace($twentyTwo, $twentyFive, $bold);
+}
+
+.bold-desktop-36-mobile-24 {
+    @include typeFace($twentyFour, $thirtySix, $bold);
+}
+
+.regular-desktop-16-mobile-14 {
+    @include typeFace($fourteen, $sixteen, $regular);
+}
+
+.regular-desktop-16-mobile-12 {
+    @include typeFace($twelve, $sixteen, $regular);
+}
+
+.regular-desktop-14-mobile-12 {
+    @include typeFace($twelve, $fourteen, $regular);
+}
+
+.regular-desktop-18-mobile-16 {
+    @include typeFace($sixteen, $eighteen, $regular);
+}
+
+.regular-desktop-18-mobile-14 {
+    @include typeFace($fourteen, $eighteen, $regular);
+}
+
+.bold-desktop-31-mobile-20 {
+    @include typeFace($twenty, $thirtyOne, $bold);
+}
+
+.bold-desktop-25-mobile-25 {
+    @include typeFace($twentyFive, $twentyFive, $bold);
+}
+
+.bold-desktop-16-mobile-25 {
+    @include typeFace($twentyFive, $sixteen, $bold);
 }

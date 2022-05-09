@@ -4,21 +4,22 @@
 
 .contentContainer {
     background-color: $neutral-light-black;
+    border-radius: 10px;
 
     h5,
     p,
     li,
     h5 span {
-        @extend .regular-desktop25-mobile16;
+        @extend .regular-desktop-16-mobile-16;
         margin: 1rem 0;
     }
 
     h1 {
-        @extend .bold67;
+        @extend .bold31;
     }
 
     h2 {
-        @extend .extraBold41;
+        @extend .bold31;
     }
 }
 
@@ -30,6 +31,6 @@
 
 @include media("<tablet") {
     .contentContainer {
-        margin: 2rem;
+        margin: 45px 20px;
     }
 }

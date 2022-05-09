@@ -32,7 +32,8 @@ const HeroModuleVariant1 = (props: ModuleProps<IHeroModuleVariant1Props>): JSX.E
         }
     }, [data.searchValue]);
 
-    const handleSearch = React.useCallback(() => {
+    const handleSearch = React.useCallback((event: React.FormEvent<EventTarget>) => {
+        event.preventDefault();
         if (!data.searchValue) {
             data.setSearch(searchedText);
             setDisableSearchInput(true);
@@ -57,21 +58,23 @@ const HeroModuleVariant1 = (props: ModuleProps<IHeroModuleVariant1Props>): JSX.E
                 <h5 className={styles.description}>{description}</h5>
                 {showSearchBar &&
                     <div className={`position-relative ${styles.searchContainer} mt-3`} >
-                        <input
-                            type="text"
-                            placeholder="Search"
-                            value={searchedText}
-                            onChange={handleInputChange}
-                            ref={searchRef}
-                            disabled={disableSearchInput}
-                        />
-                        <PrimaryButton
-                            variant="warning"
-                            className="position-absolute h-100 top-0 end-0"
-                            onClick={handleSearch}
-                        >
-                            <FontAwesomeIcon icon={data.searchValue ? faTimes : faSearch} width="25" height="25" />
-                        </PrimaryButton>
+                        <form onSubmit={handleSearch}>
+                            <input
+                                type="text"
+                                placeholder="Search"
+                                value={searchedText}
+                                onChange={handleInputChange}
+                                ref={searchRef}
+                                disabled={disableSearchInput}
+                            />
+                            <PrimaryButton
+                                variant="warning"
+                                className="position-absolute h-100 top-0 end-0"
+                                onClick={handleSearch}
+                            >
+                                <FontAwesomeIcon icon={data.searchValue ? faTimes : faSearch} width="19" height="19" />
+                            </PrimaryButton>
+                        </form>
                     </div>
                 }
             </div>

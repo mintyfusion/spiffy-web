@@ -69,13 +69,13 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
 
     return <div className={`position-relative overflow-hidden ${styles.wrapperDiv}`}>
         <Stack
-            className={`${styles.content2} ${!isBreakpointMatched && `${showClassLeft} ${showClassRight}`}`}
+            className={`${styles.content2} ${!isBreakpointMatched && `${showClassLeft} ${showClassRight}`} h-100`}
             onMouseEnter={() => handleFocus(true)}
             onMouseLeave={() => handleFocus(false)}
         >
-            <Row className={`${styles.content2Container} ${rowReverse} flex-xl-row m-0`} >
+            <Row className={`${styles.content2Container} ${rowReverse} flex-xl-row m-0 h-100`} >
                 <Col
-                    className={`${columnAlignEnd} no-gutters h-100 ${styles.leftSection} ${itemAlignment}`}
+                    className={`${columnAlignEnd} ${styles.leftSection} ${itemAlignment}`}
                     onMouseEnter={() => handleGetStartedButtonLeft(true)}
                     onMouseLeave={() => handleGetStartedButtonLeft(false)}
                 >
@@ -93,7 +93,7 @@ const LandingPageGetStarted = (props: ModuleProps<ILandingPageGetStarted>): JSX.
                     />
                 </Col>
                 <Col
-                    className={`${columnAlignCenter} no-gutters h-100 ${styles.rightSection} ${itemAlignment}`}
+                    className={`${columnAlignCenter} no-gutters ${styles.rightSection} ${itemAlignment}`}
                     onMouseEnter={() => handleGetStartedButtonRight(true)}
                     onMouseLeave={() => handleGetStartedButtonRight(false)}
                 >

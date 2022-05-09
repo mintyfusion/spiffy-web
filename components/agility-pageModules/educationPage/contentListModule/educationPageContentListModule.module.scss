@@ -10,8 +10,14 @@
 .content {
     background: $dirty-white;
 
-    .contentHeading h2 {
-        @extend .fullBold67;
+    .contentHeading {
+        h2 {
+            @extend .bold31;
+        }
+
+        h5 {
+            @extend .regular-desktop-16-mobile-14 ;
+        }
     }
 }
 
@@ -22,7 +28,11 @@
 }
 
 @include media("<tablet") {
+    .contentContainer {
+        padding: 20px;
+    }
+
     .content {
-        padding: 3rem 1rem;
+        padding: 15px 20px;
     }
 }

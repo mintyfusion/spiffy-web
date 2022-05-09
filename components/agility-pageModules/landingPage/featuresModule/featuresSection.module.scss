@@ -48,20 +48,23 @@
 
     .cardStack {
       .card {
+        width: 45%;
+        min-width: 570px;
         .imageContainer .imageLogoContainer {
           width: 60px;
         }
 
         .cardContent {
           background: $white;
+          padding: 30px 25px;
 
           h4 {
-            @extend .bold41;
+            @extend .bold25;
             color: $black;
           }
 
           h6 {
-            @extend .regular-desktop25-mobile9;
+            @extend .regular16;
             color: $neutral-black;
           }
         }
@@ -75,11 +78,11 @@
     height: inherit;
 
     .arrowContainer h2 {
-      @extend .semiBold90;
+      @extend .bold36;
     }
 
     h2 {
-      @extend .extraBold90;
+      @extend .bold36;
     }
   }
 }
@@ -108,14 +111,13 @@
   .content1 .leftSection .cardStack {
     .card {
       height: 420px;
-      padding: 5rem;
       // For dynamic card box sizing based on viewport
       .imageContainer {
-        @include fluidDimension("width", 100, 353);
+        width: 100%;
       }
 
       .cardContent {
-        @include fluidDimension("width", 100, 480);
+        width: 100%;
       }
 
       &:nth-child(2) {
@@ -159,10 +161,26 @@
     top: 10%;
   }
 
-  .card {
-    margin: auto;
-    margin-bottom: 2rem;
-    max-width: 40rem;
+  .content1 {
+    .leftSection {
+      z-index: 1;
+
+      .cardStack {
+        .card {
+          margin: auto;
+          margin-bottom: 2rem;
+          min-width: 75%;
+
+          .imageContainer .imageLogoContainer {
+            width: 60px;
+          }
+
+          .cardContent {
+            padding: 20px 15px;
+          }
+        }
+      }
+    }
   }
 
   .rightSection {
@@ -180,6 +198,10 @@
       .imageContainer,
       .cardContent {
         flex: 1;
+      }
+
+      .cardContent {
+        padding: 20px 15px;
       }
     }
   }

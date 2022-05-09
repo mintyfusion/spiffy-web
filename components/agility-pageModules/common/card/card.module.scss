@@ -1,27 +1,43 @@
 @import "styles/theme.scss";
 @import "styles/font/fontGroups.scss";
 @import "styles/includeMedia.scss";
+@import "styles/mixins.scss";
 
 .card {
     border-radius: 12px;
+    border-color: $brightGray;
+
+    img {
+        border-radius: 10px;
+    }
 
     .cardTag {
         color: $light-grey;
-        @extend .regular16;
+        @extend .regular-desktop-14-mobile-12;
     }
 
     .cardTitle {
-        @extend .regular25;
-        min-height: 88px;
+        @extend .regular-desktop-18-mobile-16;
+        @include textEllipsis(2);
+        min-height: 59px;
     }
 
     .cardDescription {
-        @extend .regular14;
+        @extend .regular-desktop-14-mobile-12;
+        @include textEllipsis(4);
     }
 
     .link {
-        @extend .bold24;
+        @extend .bold14;
         cursor: pointer;
         color: $yellow;
+    }
+}
+
+@include media("<tablet") {
+    .card {
+        .cardTitle {
+            min-height: auto;
+        }
     }
 }

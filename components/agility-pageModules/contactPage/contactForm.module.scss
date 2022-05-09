@@ -7,15 +7,15 @@
     background-color: $dirty-white;
 
     h2 {
-        @extend .bold67;
+        @extend .bold31;
     }
 
     h3 {
-        @extend .bold41;
+        @extend .bold-desktop-25-mobile-22;
     }
 
     h4 {
-        @extend .regular25;
+        @extend .regular-desktop-16-mobile-16;
     }
 
     h5 {
@@ -24,7 +24,7 @@
 
     h6,
     label {
-        @extend .regular16;
+        @extend .regular14;
     }
 
     .overlay {
@@ -35,9 +35,8 @@
         .topContextContainer {
             background-color: $neutral-light-black;
 
-            .buttonFaq {
+            .buttonFAQ {
                 @extend .bold24;
-                min-width: 200px;
             }
         }
     }
@@ -45,37 +44,56 @@
     .formContainer {
         .formContent {
             background-color: $white;
-            border-radius: 5px;
+            border-radius: 10px;
             border: 1px solid $light-transparent-grey;
             box-shadow: 29px 26px 2px 6px $dirty-grey;
 
             form {
-                padding: 2rem;
+                padding: 30px;
             }
+
+            .formTitle {
+                @extend .regular12;
+                color: $light-grey;
+            }
+
+            .formDesc {
+                @extend .bold16;
+            }
+
+            .formButtons {
+                margin-bottom: 30px;
+            }
+
             .phoneNumberContainer {
                 label,
                 input {
-                    @extend .regular24;
-                    @include fluidDimension("min-height", 51, 59);
-                    padding: 10px;
+                    @extend .regular14;
+                    padding: 12px;
+                    height: 40px;
+
+                    &:focus-visible {
+                        border-radius: 0 8px 8px 0;
+                    }
                 }
 
                 .countryflagContainer {
                     background: url("/images/contact-page/flags/icon-usa.svg") no-repeat;
-                    background-position: 15%;
-                    border: 1px solid $neutral-black;
+                    background-position: 20%;
+                    border: 1px solid $silver;
                     border-right: 0;
                     border-radius: 8px 0 0 8px;
+                    background-size: 30px;
                 }
             }
 
             input,
             textarea {
-                @extend .regular24;
+                @extend .regular14;
                 border-radius: 8px;
-                padding: 10px;
+                padding: 12px;
                 background-color: $neutral-light-black;
-                border: 1px solid $light-transparent-grey;
+                border: none;
                 outline-color: $light-transparent-grey;
 
                 &:focus-visible {
@@ -87,7 +105,7 @@
 
             .inputPhoneNumber {
                 background-color: initial;
-                border: 1px solid $neutral-black;
+                border: 1px solid $silver;
                 border-top-left-radius: 0px;
                 border-bottom-left-radius: 0px;
             }
@@ -98,7 +116,7 @@
         }
 
         .userTypeButton {
-            @extend .semiBold20;
+            @extend .semiBold14;
         }
 
         .inactive {
@@ -125,33 +143,45 @@
 
 @include media(">=desktop") {
     .formContent {
-        max-width: calc(100% - 50px);
+        max-width: 66%;
         min-width: 400px;
     }
 
     .countryflagContainer {
-        min-width: 120px;
+        min-width: 80px;
     }
 
     .contextContainer {
         & > div {
-            padding: 2rem 4rem 2rem 7rem;
+            padding: 2rem 7rem;
         }
     }
 }
 
 @include media("<desktop") {
-    .formContent {
-        width: 100%;
+    .container {
+        padding: 0px;
+        
+        .formContainer {
+            .formContent {
+                width: 90%;
+                box-shadow: none;
+                margin: 0 auto;
+            }
+        }
     }
 
     .countryflagContainer {
-        min-width: 90px;
+        min-width: 75px;
     }
 
     .contextContainer {
-        & > div {
-            padding: 2rem 3rem;
+        .topContextContainer {
+            padding: 45px 20px;
+        }
+
+        .bottomContextContainer {
+            padding: 25px 20px;
         }
     }
 }

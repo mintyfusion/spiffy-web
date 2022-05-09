@@ -13,7 +13,7 @@ import styles from "components/agility-pageModules/creatorPage/videoSection/vide
 const VideoPlayer = dynamic(() => import("components/agility-pageModules/common/videoPlayer/videoPlayer"));
 
 const VideoSection = (props: ModuleProps<IVideoSectionProps>): JSX.Element => {
-    const breakpoint = useBreakpoint(Breakpoints.XXL, BreakpointChecks.Greater);
+    const breakpoint = useBreakpoint(Breakpoints.XL, BreakpointChecks.Greater);
     const { fields } = props.module;
 
     const preparedData = React.useMemo(() => ({

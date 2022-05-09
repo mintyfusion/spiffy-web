@@ -1,8 +1,10 @@
 @import "styles/includeMedia.scss";
+@import "styles/theme.scss";
 
 @include media(">=desktop") {
     .container {
         padding: 3rem 6rem;
+        background-color: $dirty-white;
     }
 }
 

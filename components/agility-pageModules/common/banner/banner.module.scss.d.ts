@@ -3,6 +3,7 @@ export type Styles = {
   "bannerContainer": string;
   "carouselItem": string;
   "full": string;
+  "half": string;
 };
 
 export type ClassNames = keyof Styles;

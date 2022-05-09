@@ -24,7 +24,7 @@ const CardContainer = dynamic(() => import("components/agility-pageModules/commo
 
 const horizontalAlign = flexbox({ hAlign: "center", vAlign: "center" });
 
-const defaultCards = 3;
+const defaultCards = 18;
 
 const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>): JSX.Element => {
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
@@ -106,11 +106,11 @@ const EducationPageContentListModule = (props: ModuleProps<IContentSectionProps>
                 >
                     <Row className={`${styles.contentHeading} w-100 text-center`}>
                         <h2>{!searchData.searchValue ? content.fields.name.replace("_", " ") : "Search Results"}</h2>
-                        <h5>{
-                            !searchData.searchValue
+                        <h5 className="mb-0">
+                            {!searchData.searchValue
                                 ? props.module.fields.title
-                                : `Showing search results for ${searchData.searchValue}`
-                        }
+                                : `Showing search results for "${searchData.searchValue}"`
+                            }
                         </h5>
                     </Row>
                     {

@@ -25,34 +25,32 @@
         from {
             left: #{$start};
         }
-        
+
         to {
             left: #{$end};
         }
     }
 }
 
-$minHeight: calc(100vh - 25rem);
 $minWidth: calc(100vw - 62rem);
 
 .wrapperDiv {
-    min-height: $minHeight;
+    min-height: 410px;
 
     .content2 {
         .content2Container {
-            min-height: $minHeight;
-
             .leftSection {
                 background: $dirty-white;
                 transition: padding 0.5s;
+                padding: 0;
 
                 .leftSectionRight {
                     transition: padding 0.5s;
                     h2 {
-                        @extend .bold67;
+                        @extend .bold31;
                     }
                     h5 {
-                        @extend .regular25;
+                        @extend .regular18;
                     }
                 }
             }
@@ -61,14 +59,16 @@ $minWidth: calc(100vw - 62rem);
                 background: $light-red;
                 color: $white;
                 transition: padding 0.5s;
+                padding: 18px;
 
                 .rightSectionLeft {
                     transition: padding 0.5s;
+                    padding-left: 5rem;
                     h2 {
-                        @extend .bold67;
+                        @extend .bold31;
                     }
                     h5 {
-                        @extend .regular25;
+                        @extend .regular18;
                     }
                 }
             }
@@ -89,30 +89,21 @@ $minWidth: calc(100vw - 62rem);
         position: absolute;
         left: -50%;
         z-index: 1;
-        .leftSection {
-            width: 100vw;
-            min-height: $minHeight;
-            padding: 5rem;
 
-            .leftSectionRight {
+        .leftSection,
+        .rightSection {
+            width: 100vw;
+            
+            .leftSectionRight,
+            .rightSectionLeft {
                 min-width: 510px;
                 max-width: $minWidth;
-
-                > h2 {
-                    width: max-content;
-                }
+                padding-right: 6rem;
             }
         }
 
         .rightSection {
-            width: 100vw;
-            min-height: $minHeight;
-            padding: 5rem;
-
             .rightSectionLeft {
-                min-width: 510px;
-                max-width: $minWidth;
-
                 > h2 {
                     width: max-content;
                 }
@@ -126,21 +117,25 @@ $minWidth: calc(100vw - 62rem);
 }
 
 @include media("<1200px") {
-    .content2 {
-        .leftSection {
-            padding: 3rem;
+    .wrapperDiv {
+        .content2 {
+            .content2Container {
+                .leftSection {
+                    padding: 45px;
 
-            .leftSectionRight {
-                min-width: inherit;
-                padding: inherit;
-            }
-        }
-        .rightSection {
-            padding: 3rem;
+                    .leftSectionRight {
+                        min-width: inherit;
+                        padding: inherit;
+                    }
+                }
+                .rightSection {
+                    padding: 45px;
 
-            .rightSectionLeft {
-                min-width: inherit;
-                padding: inherit;
+                    .rightSectionLeft {
+                        min-width: inherit;
+                        padding: inherit;
+                    }
+                }
             }
         }
     }

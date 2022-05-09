@@ -1,7 +1,6 @@
+import { AppProps } from "next/app";
 import React from "react";
 import TagManager, { TagManagerArgs } from "react-gtm-module";
-import type { AppProps } from "next/app";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "styles/globals.scss";
 

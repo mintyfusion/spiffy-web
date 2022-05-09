@@ -1,4 +1,5 @@
 @import "styles/functions.scss";
+@import "styles/includeMedia.scss";
 
 $prefixes: -webkit-, -moz-, -ms-, -o-;
 
@@ -16,6 +17,13 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
     line-height: calculate-line-height($font-size);
     letter-spacing: countLetterSpacing($font-size);
     font-weight: $fontWeight;
+
+    @include media(">1366px") {
+        $font-size: #{$maxValue}px;
+        font-size: $font-size;
+        line-height: calculate-line-height($font-size);
+        letter-spacing: countLetterSpacing($font-size);
+    }
 }
 
 // Common keyframes for opacity
@@ -53,40 +61,6 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
     #{$property}: fluid($minValue, $maxValue);
 }
 
-@mixin blockquoteDesktopCSS() {
-    blockquote {
-        width: 68%;
-        margin-left: auto;
-
-        &::before {
-            position: absolute;
-            left: 5%;
-            margin-top: 1rem;
-            width: 150px;
-            height: 95px;
-        }
-
-        p:first-child::before {
-            content: "";
-            position: absolute;
-            margin-left: -10%;
-            height: 115px;
-            border: none;
-            border-right: 3px solid $grey;
-            margin-top: 1rem;
-        }
-    }
-}
-
-@mixin blockquoteTabletCSS() {
-    blockquote::before {
-        width: 160px;
-        height: 100px;
-        border-bottom: 3px solid $light-grey;
-        background-position-y: -5px;
-    }
-}
-
 // Returns image properties for the given size.
 @mixin imgProperties($size) {
     width: $size;
@@ -99,4 +73,13 @@ $prefixes: -webkit-, -moz-, -ms-, -o-;
     animation-name: $name;
     animation-duration: $time;
     animation-fill-mode: forwards;
+}
+
+@mixin textEllipsis($lines: 1) {
+    text-overflow: ellipsis;
+    white-space: initial;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
 }

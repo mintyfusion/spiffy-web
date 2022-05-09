@@ -36,6 +36,10 @@
         cursor: pointer;
         transition: color 100ms;
 
+        &.inactive {
+            color: $darkGrey;
+        }
+
         &:hover {
             color: $yellow;
             transition: color 100ms;
@@ -83,6 +87,7 @@
         &.inactive {
             background-color: $faded-yellow;
             border: none;
+            color: $darkGrey;
         }
 
         &:hover {
@@ -95,6 +100,11 @@
     .tab {
         background-color: $white;
         border: none;
+
+        &.inactive {
+            border: none;
+            color: $darkGrey;
+        }
     }
 }
 

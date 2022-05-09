@@ -1,17 +1,26 @@
 @import "styles/font/fontGroups.scss";
 @import "styles/theme.scss";
 
-.contentContainer {
-    h2 {
-        @extend .bold67;
-    }
+.commonWrapper {
+    padding: 5rem;
+    .contentContainer {
+        h2 {
+            @extend .bold31;
+        }
 
-    h5 {
-        @extend .regular25;
+        h5 {
+            @extend .regular-desktop-16-mobile-14;
+        }
     }
 }
 
 .inverted {
     @extend .backgroundPattern;
     color: $white;
+}
+
+@include media("<tablet") {
+    .commonWrapper {
+        padding: 45px 30px;
+    }
 }

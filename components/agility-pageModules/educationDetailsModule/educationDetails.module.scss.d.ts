@@ -1,4 +1,5 @@
 export type Styles = {
+  "backgroundPattern": string;
   "container": string;
 };
 

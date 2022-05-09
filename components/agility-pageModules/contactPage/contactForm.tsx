@@ -144,8 +144,8 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
     }, [formFields, loading, userType, setSubmittedTrue, setSubmittedFalse, setLoadingTrue, setLoadingFalse]);
 
     return (
-        <Row className={`${styles.container} w-100 m-0 flex-column-reverse flex-md-row`}>
-            <Col className={`${styles.contextContainer} ${colAlignCenter}`}>
+        <Row className={`${styles.container} w-100 m-0 flex-md-row`}>
+            <Col className={`${styles.contextContainer} ${colAlignCenter} text-left`}>
                 <Row className={styles.topContextContainer}>
                     <div className={breakpoint && colAlignCenter}>
                         <h2>{fields.title}</h2>
@@ -160,7 +160,7 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                     </div>
                 </Row>
                 <Row>
-                    <div>
+                    <div className={styles.bottomContextContainer}>
                         <h3>{fields.subTitle}</h3>
                         <h4
                             className="mb-3"
@@ -171,13 +171,13 @@ const ContactForm = (props: ModuleProps<IContactFormProps>): JSX.Element => {
                     </div>
                 </Row>
             </Col>
-            <Col className={`${styles.formContainer} p-0`}>
+            <Col className={`${styles.formContainer} p-0`} lg="5" sm="12">
                 <div className={`${styles.formContent} position-relative`}>
                     {!submitted
                         ? <form onSubmit={handleSubmit}>
-                            <h6>{fields.formTitle}</h6>
-                            <h5 className="mb-3">{fields.formDescription}</h5>
-                            <div className={`gap-3 my-2 my-md-3  ${rowAlignStretch}`}>
+                            <h6 className={styles.formTitle}>{fields.formTitle}</h6>
+                            <h5 className={`${styles.formDesc} mb-3`}>{fields.formDescription}</h5>
+                            <div className={`gap-3 ${rowAlignStretch} ${styles.formButtons} flex-column flex-md-row`}>
                                 <PrimaryButton
                                     className={`
                                         w-100 

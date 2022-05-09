@@ -12,7 +12,7 @@ const HeroSection = (props: ModuleProps<IHeroSectionProps>): JSX.Element => {
     const { title, description, quoteText } = props.module.fields;
 
     return (
-        <div className={`${styles.heroContainer} p-5`}>
+        <div className={styles.heroContainer}>
             <div className="position-relative">
                 <h1>{title}</h1>
                 <h5>{description}</h5>

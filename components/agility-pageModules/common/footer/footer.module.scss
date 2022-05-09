@@ -57,7 +57,7 @@
                 }
 
                 .footerText {
-                    @extend .regular25;
+                    @extend .regular-desktop-16-mobile-14;
                     color: $white;
                 }
 
@@ -66,13 +66,13 @@
                         margin-bottom: 0.5rem;
                     }
                     .linkHeaderText {
-                        @extend .regular16;
+                        @extend .regular-desktop-14-mobile-12;
                         color: $yellow;
                     }
 
                     div:not(.linkHeaderText) {
                         color: $white;
-                        @extend .regular25;
+                        @extend .regular-desktop-18-mobile-14;
                         width: max-content;
                     }
 
@@ -92,10 +92,6 @@
                     p {
                         @extend .regular16;
                     }
-                }
-
-                img {
-                    width: 100%;
                 }
             }
         }
@@ -130,7 +126,6 @@
     .footerTop {
         .footerLeftSection {
             min-width: unset;
-            margin-bottom: 1rem;
             flex-basis: 100%;
         }
 
@@ -167,12 +162,27 @@
 
 @include media(">=phone", "<=1370px") {
     .footerContainer {
-        .column {
-            padding: 1rem;
+        .footerContentContainer {
+            .column {
+                padding: 1rem;
 
-            .footerTop {
-                .footerLinks {
-                    padding-left: unset;
+                .footerTop {
+                    .footerLeftSection {
+                        margin-top: 30px;
+                        
+                        .footerSocials {
+                            & > * + * {
+                                margin-left: 5px;
+                            }
+                        }
+                        div > * {
+                            margin-bottom: 0.5rem;
+                        }
+                    }
+
+                    .footerLinks {
+                        padding-left: unset;
+                    }
                 }
             }
         }
@@ -188,14 +198,5 @@
 @include media("<desktop") {
     .footerBottom a {
         margin-top: 1.5px;
-    }
-}
-
-@include media("<=phone") {
-    .footerBottom {
-        p {
-            margin-bottom: 0;
-            margin-top: 2px;
-        }
     }
 }

@@ -17,14 +17,14 @@ const rowHAlignCenter = flexbox({ hAlign: "center" });
 
 const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModuleProps>): JSX.Element => {
     const { verticalContentList } = props.module.fields;
-    
+
     const isViewportDesktop = useBreakpoint(Breakpoints.MD, BreakpointChecks.Greater);
 
     return (
         <div className={`position-relative ${styles.content3}`}>
-            {verticalContentList.map((content, index) =>
+            {verticalContentList?.map((content, index) =>
                 <Row key={index} className={`${rowHAlignCenter} ${styles.container} w-100 m-0 position-sticky`}>
-                    <Col className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0`}>
+                    <Col className={`${columnAlignCenter} no-gutters ${styles.contentContainer} p-0 h-100`}>
                         <div>
                             <h1 className={`${styles.headerEmphasisText} position-absolute`}>
                                 {verticalContentList[index].fields.highlightedWord}
@@ -43,7 +43,7 @@ const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModulePro
                         </div>
                     </Col>
                     {isViewportDesktop &&
-                        <Col className={`${styles.parallaxColumnRigth} p-0`}>
+                        <Col className={`${styles.parallaxColumnRigth} p-0 h-100`}>
                             <Image
                                 src={content.fields.image.url}
                                 width="1045"
@@ -52,7 +52,7 @@ const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModulePro
                                 priority={true}
                                 objectFit="cover"
                             />
-                            {/* <div className="position-absolute bottom-0 end-0">
+                            {isViewportDesktop && <div className="position-sticky bottom-100 text-end p-4">
                                 <Image
                                     src="/images/homepage/common/watermark.svg"
                                     width="80px"
@@ -60,18 +60,9 @@ const VerticalContentSection = (props: ModuleProps<ILandingPageVerticalModulePro
                                     layout="intrinsic"
                                     priority={true}
                                 />
-                            </div> */}
+                            </div>}
                         </Col>}
                 </Row>)}
-            <div className="position-sticky bottom-0 text-end p-4">
-                <Image
-                    src="/images/homepage/common/watermark.svg"
-                    width="80px"
-                    height="80px"
-                    layout="intrinsic"
-                    priority={true}
-                />
-            </div>
         </div>
     );
 };

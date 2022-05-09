@@ -26,7 +26,7 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
 
     return (
         <div>
-            <h2 className={`p-4 p-lg-5 text-center m-0 ${styles.headingText}`}>{fields.title}</h2>
+            <h2 className={`p-4 p-lg-5 m-0 ${styles.headingText}`}>{fields.title}</h2>
             <Row
                 className={`w-100 m-0 d-flex flex-column flex-lg-row ${styles.cardContainer} position-relative`}
             >
@@ -44,8 +44,6 @@ const ValuesSection = (props: ModuleProps<IValuesSectionProps>): JSX.Element => 
                                 w-100 
                                 position-relative
                                 ${styles.imageContainer}
-                                overflow-hidden
-                                ${breakpoint && styles.overlay}
                             `}
                         >
                             <Image

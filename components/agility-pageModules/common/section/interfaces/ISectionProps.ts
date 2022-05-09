@@ -10,4 +10,5 @@ export default interface ISectionProps {
     responsiveBreakpoint?: number;
     buttonText: string;
     showButtonArrow?: boolean;
+    inverted?: string;
 }

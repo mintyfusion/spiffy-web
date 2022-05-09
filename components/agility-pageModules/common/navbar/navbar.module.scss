@@ -26,22 +26,23 @@ $backroundTransition: background-color 0.2s;
   }
 
   .navbarItems {
-    @extend .regular24;
+    @extend .semiBold14;
 
     .link {
       color: $white;
       text-transform: uppercase;
+      @extend .regular-desktop-16-mobile-16;
 
       &:hover {
         color: $yellow;
         transition: color 0.2s ease-in, background 0.2s ease-in;
-        cursor: pointer;
+          cursor: pointer;
       }
     }
 
     .buttons {
       .buttonLogin {
-        @extend .bold24;
+        @extend .semi-bold-desktop-16-mobile-14;
         color: $yellow;
         background: $transparent;
         border: none;

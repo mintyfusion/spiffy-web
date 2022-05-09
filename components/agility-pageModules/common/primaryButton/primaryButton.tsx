@@ -11,29 +11,31 @@ import styles from "components/agility-pageModules/common/primaryButton/primaryB
 
 const rowCenter = flexbox({ vAlign: "center", hAlign: "center" });
 
-const PrimaryButton = ({ showArrow, linkProps, ...props }: PropsWithChildren<IPrimaryButtonProps>): JSX.Element => {
-    const btn = (
-        <Button
-            variant="warning"
-            {...props}
-            className={`
+const PrimaryButton =
+    ({ showArrow, linkProps, ...props }: PropsWithChildren<IPrimaryButtonProps>): JSX.Element => {
+        const btn = (
+            <Button
+                variant="warning"
+                {...props}
+                className={`
                 ${showArrow ? styles.sectionButton : styles.primaryButton} 
+                ${styles.defaultButton}
                 position-relative
                 ${props.className}
             `}
-        >
-            {props.children}
-            {showArrow &&
-                <label className={`${rowCenter} position-absolute bg-white`}>
-                    <Image src={getStartedArrow} layout="fill" />
-                </label>}
-        </Button>
-    );
+            >
+                {props.children}
+                {showArrow &&
+                    <label className={`${rowCenter} position-absolute`}>
+                        <Image src={getStartedArrow} layout="fill" />
+                    </label>}
+            </Button>
+        );
 
-    return linkProps
-        ? <Link {...linkProps}>{btn}</Link>
-        : btn;
-};
+        return linkProps
+            ? <Link {...linkProps}>{btn}</Link>
+            : btn;
+    };
 
 PrimaryButton.defaultProps = {
     showArrow: false

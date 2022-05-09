@@ -2,18 +2,18 @@
 @import "styles/theme.scss";
 
 .footerLogoDimensions {
-    width: 245px;
+    width: 200px;
     height: 77px;
 
     @include media("<tablet") {
-        width: 149px;
-        height: 43px;
+        width: 127px;
+        height: 36px;
     }
 }
 
 .headerLogoDimensions {
-    width: 149px;
-    height: 43px;
+    width: 120px;
+    height: 34px;
 }
 
 :export {

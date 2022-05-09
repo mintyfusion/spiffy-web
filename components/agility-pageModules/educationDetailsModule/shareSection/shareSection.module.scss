@@ -23,8 +23,8 @@
 
     .shareText {
         text-transform: uppercase;
-        @extend .bold-desktop41-mobile25;
-        color: $darkGrey;
+        @extend .bold-desktop-16-mobile-25;
+        color: $neutral-black-900;
     }
 
     div:before {
@@ -56,12 +56,12 @@
 
 @include media(">=1370px") {
     .socials {
-        @include detailsSocialContent(58px, 15px);
+        @include detailsSocialContent(35px, 10px);
     }
 }
 
 @include media("<1370px") {
     .socials {
-        @include detailsSocialContent(30px, 7px);
+        @include detailsSocialContent(38px, 10px);
     }
 }

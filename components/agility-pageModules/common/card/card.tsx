@@ -1,5 +1,6 @@
 import { Card as BaseCard } from "react-bootstrap";
 import { ContentItem } from "@agility/nextjs";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import React from "react";
 
@@ -14,17 +15,24 @@ const columnAlign = flexbox({ vertical: true });
 
 const Card = (props: ContentItem<ICardProps>): JSX.Element => {
     const { fields } = props;
+    const { push } = useRouter();
+
+    const handleBaseCardClick = React.useCallback(() => push(fields.educationDetailLink), [fields, push]);
 
     return (
-        <BaseCard className={`${styles.card} ${columnAlign} p-3 flex-grow-1 w-100`}>
-            <div className="cardImageContainer">
+        <BaseCard
+            className={`${styles.card} ${columnAlign} p-3 flex-grow-1 w-100`}
+            onClick={handleBaseCardClick}
+            role="button"
+        >
+            <div>
                 <Image src={fields.image.url} width="10px" height="5px" layout="responsive" objectFit="cover" />
             </div>
-            <BaseCard.Body className={columnAlignCenter}>
-                <BaseCard.Title className={`${styles.cardTag} mb-3`}>
-                    {fields.tag.fields.name.replace("_"," ")}
+            <BaseCard.Body className={`${columnAlignCenter} pb-0`}>
+                <BaseCard.Title className={`${styles.cardTag} mb-0`}>
+                    {fields.tag.fields.name.replace("_", " ")}
                 </BaseCard.Title>
-                <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 `} >
+                <BaseCard.Text className={`${styles.cardTitle} py-1 my-1 w-100 `} title={fields.title}>
                     {fields.title}
                 </BaseCard.Text>
                 {!!fields.description &&

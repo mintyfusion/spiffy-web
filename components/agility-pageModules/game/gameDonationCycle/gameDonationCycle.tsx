@@ -13,7 +13,7 @@ import LogoVariants from "components/agility-pageModules/common/logo/enums/logoV
 import useBoolean from "hooks/useBoolean";
 import useStyles from "hooks/useStyles";
 
-import styles from "components/agility-pageModules/gameDonationCycle/gameDonationCycle.module.scss";
+import styles from "components/agility-pageModules/game/gameDonationCycle/gameDonationCycle.module.scss";
 
 const colVCenter = flexbox({ vAlign: "center", vertical: true, });
 const rowHCenter = flexbox({ hAlign: "center" });

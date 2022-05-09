@@ -5,7 +5,7 @@ import GameSection from "components/agility-pageModules/game/gameSection/gameSec
 import PrimaryButton from "components/agility-pageModules/common/primaryButton/primaryButton";
 import useBoolean from "hooks/useBoolean";
 
-import styles from "components/agility-pageModules/gameMain/gameMain.module.scss";
+import styles from "components/agility-pageModules/game/gameMain/gameMain.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 

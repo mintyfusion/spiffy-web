@@ -19,7 +19,7 @@
 
 .headingText {
     background-color: $yellow;
-    @extend .bold36;
+    @extend .bold-desktop-36-mobile-24;
 }
 
 .cardContainer {
@@ -51,18 +51,14 @@
             z-index: 2;
 
             h2 {
-                @extend .bold41;
+                @extend .bold-desktop-25-mobile-24;
             }
 
             h5 {
-                @extend .regular25;
+                @extend .regular-desktop-16-mobile-14;
             }
         }
     }
-}
-
-.overlay::after {
-    background-color: $transparent-black;
 }
 
 @include media(">=desktop") {

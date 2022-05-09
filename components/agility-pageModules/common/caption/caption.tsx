@@ -19,27 +19,32 @@ const Caption = (props: ICaptionProps): JSX.Element => {
         <div className={`carousel-caption ${styles.caption} ${props.captionContainerClass}`}>
             <Stack className={`${styles.banner}`}>
                 <Row className={`${rowHAlignCenter} ${styles.captionContent} `}>
-                    <Col className={`${columnAlignCenter} no-gutters`}>
+                    <Col className={`${columnAlignCenter} no-gutters`} lg="8" md="12" sm="12">
                         {preparedData.length > 1
                             ? <>
-                                <h3
-                                    role="secondary-text"
-                                    dangerouslySetInnerHTML={{
-                                        __html: styleWords(preparedData[0], [{
-                                            text: highlightWord,
-                                            className: styles.highlightWord,
-                                        }])
-                                    }}
-                                />
-                                <h2
-                                    role="primary-text"
-                                    dangerouslySetInnerHTML={{
-                                        __html: styleWords(preparedData[1], [{
-                                            text: highlightWord,
-                                            className: styles.highlightWord,
-                                        }])
-                                    }}
-                                />
+                                <div>
+                                    <h3
+                                        className="d-inline"
+                                        role="secondary-text"
+                                        dangerouslySetInnerHTML={{
+                                            __html: styleWords(preparedData[0], [{
+                                                text: highlightWord,
+                                                className: styles.highlightWord,
+                                            }])
+                                        }}
+                                    />
+                                    &nbsp;&nbsp;
+                                    <h2
+                                        className="d-inline"
+                                        role="primary-text"
+                                        dangerouslySetInnerHTML={{
+                                            __html: styleWords(preparedData[1], [{
+                                                text: highlightWord,
+                                                className: styles.highlightWord,
+                                            }])
+                                        }}
+                                    />
+                                </div>
                             </>
                             : <h2
                                 role="primary-text"
@@ -57,7 +62,7 @@ const Caption = (props: ICaptionProps): JSX.Element => {
                     </Col>
                 </Row>
             </Stack>
-        </div >
+        </div>
     );
 };
 

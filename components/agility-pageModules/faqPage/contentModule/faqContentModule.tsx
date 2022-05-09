@@ -24,11 +24,12 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
     const [activeTab, setActiveTab] = React.useState<string>(ContentCategory.all);
     const contentRef = React.useRef<HTMLDivElement>();
     const data = React.useContext(SearchContext);
+
     const ContextAwareToggle = (props: React.PropsWithChildren<{ eventKey: string }>): JSX.Element =>
         <div className={` h-100 ${rowCenter} ${styles.customAccordianButton}`}>
             <div>
-                <FontAwesomeIcon icon={faChevronLeft} width="20" height="35" />
-                <FontAwesomeIcon icon={faChevronLeft} width="20" height="35" />
+                <FontAwesomeIcon icon={faChevronLeft} width="15" height="30" />
+                <FontAwesomeIcon icon={faChevronLeft} width="15" height="30" />
                 {props.children}
             </div>
         </div>;
@@ -52,7 +53,7 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                             <Accordion key={`${tag} ${index}`} className={`${styles.accordion} ${tag !== activeTab && "d-none"}`}>
                                 <Accordion.Item eventKey={`${tag} ${index}`} className="position-relative border-0">
                                     <Accordion.Header className={styles.accordianHeader}>
-                                        <Stack className="gap-1 gap-md-4 w-100" direction="horizontal">
+                                        <Stack className={`${styles.headerInner} gap-1 gap-md-4 w-100`} direction="horizontal">
                                             <div className={`${styles.faqIndex} p-3`}>
                                                 {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
                                             </div>
@@ -91,36 +92,40 @@ const FAQContentModule = (props: ModuleProps<IFaqContentModuleProps>): JSX.Eleme
                     tabs={tabs}
                 />
             }
-            <Stack className={styles.faqAccordionContainer} >
+            <Stack className={styles.faqAccordionContainer}>
                 {resultData
                     && resultData
-                        .filter(content => content.fields.title.indexOf(data.searchValue) >= 0)
-                        .map((post, index) =>
-                            <Accordion
-                                key={index}
-                                className={`${styles.accordion} ${activeTab !== ContentCategory.all && "d-none"}`}
-                            >
-                                <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
-                                    <Accordion.Header className={styles.accordianHeader}>
-                                        <Stack className="w-100" direction="horizontal">
-                                            <div className={`${styles.faqIndex} p-3`}>
-                                                {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
-                                            </div>
-                                            <div className="w-100 p-2">{post.fields.title}</div>
-                                            <ContextAwareToggle eventKey={index.toString()} />
-                                        </Stack>
-                                    </Accordion.Header>
-                                    <Accordion.Body className={styles.accordianBody}>
-                                        <div dangerouslySetInnerHTML={renderHtml(post.fields.description)} />
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            </Accordion>
-                        )}
+                        .filter(content => content.fields.title.toLowerCase()
+                            .indexOf(data.searchValue.toLowerCase()) >= 0).map((post, index) =>
+                                <Accordion
+                                    key={index}
+                                    className={`${styles.accordion} ${activeTab !== ContentCategory.all && "d-none"}`}
+                                >
+                                    <Accordion.Item eventKey={index.toString()} className="position-relative border-0">
+                                        <Accordion.Header className={styles.accordianHeader}>
+                                            <Stack className="w-100" direction="horizontal">
+                                                <div className={`${styles.faqIndex} p-3`}>
+                                                    {`${index < zeroPrefixLimit ? "0" : ""}${index + 1}`}
+                                                </div>
+                                                <div className="w-100 p-2">{post.fields.title}</div>
+                                                <ContextAwareToggle eventKey={index.toString()} />
+                                            </Stack>
+                                        </Accordion.Header>
+                                        <Accordion.Body className={styles.accordianBody}>
+                                            <div
+                                                dangerouslySetInnerHTML={renderHtml(post.fields.description)}
+                                                className={styles.accordianBodyInner}
+                                            />
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            )}
 
                 {!resultData?.length
                     || data.searchValue
-                    && resultData?.filter(content => content.fields.title.indexOf(data.searchValue) !== -1).length === 0
-                    && <Message message="No FAQ Found" error />
+                    && resultData?.filter(content =>
+                        content.fields.title.toLowerCase().indexOf(data.searchValue.toLowerCase()) !== -1).length === 0
+                    && <Message message="No Results Found" error />
                 }
                 {faqData.map((data, index) => <React.Fragment key={index}>{data}</React.Fragment>)}
             </Stack>

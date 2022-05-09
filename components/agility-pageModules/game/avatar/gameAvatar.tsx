@@ -3,7 +3,7 @@ import React from "react";
 import GamePageAvatarType from "components/agility-pageModules/game/gameSection/enums/GamePageAvatarTypes";
 import IAvatarProps from "components/agility-pageModules/game/avatar/interfaces/IAvatarProps";
 
-import styles from "components/agility-pageModules/avatar/avatar.module.scss";
+import styles from "components/agility-pageModules/game/avatar/avatar.module.scss";
 
 const Avatar = ({ color, size }: IAvatarProps) => {
     const avatarColor = React.useMemo(() => {

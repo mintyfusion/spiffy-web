@@ -11,20 +11,9 @@
     }
 }
 
-@include includeMedia.media(">=desktop") {
-    .cardPlaceholderContainer {
-        & > div {
-            width: 390px;
-        }
-    }
-}
-
-@include includeMedia.media("<desktop") {
-    .cardPlaceholderContainer {
-        & > div {
-            width: 300px;
-        }
-    }
+.card {
+    min-width: 350px;
+    padding: 0;
 }
 
 :export {

@@ -2,7 +2,11 @@
 @import "styles/font/fontGroups.scss";
 
 .breadcrumbMain {
-    @extend .regular-desktop25-mobile16;
+    @extend .regular-desktop-14-mobile-12;
+
+    li {
+        @extend .regular-desktop-14-mobile-12;
+    }
 
     :global(.breadcrumb-item) {
         color: $yellow;
@@ -15,10 +19,5 @@
     :global(.breadcrumb-item + .breadcrumb-item::before) {
         content: ">";
         color: $black;
-    }
-
-    // Added css instead of bootstrap classname as Crumb is a custom Bootstrap component
-    ol {
-        flex-wrap: nowrap;
     }
 }

@@ -71,7 +71,6 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                 ${props.sticky
                     ? "position-sticky"
                     : "position-fixed"} 
-                py-4 
                 px-md-5
                 px-4 
                 w-100 
@@ -100,8 +99,6 @@ const Navbar = (props: INavbarProps): JSX.Element => {
             </div>
             <BTNavbar.Collapse
                 className={`
-                ps-lg-2
-                ps-xl-5 
                 ${styles.navbarItems} 
                 ${breakpoint && `${styles.collapsible} 
                                  ${colBetween}

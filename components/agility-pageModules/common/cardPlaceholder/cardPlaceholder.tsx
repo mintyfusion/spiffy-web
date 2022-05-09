@@ -3,10 +3,12 @@ import React, { HTMLAttributes } from "react";
 
 import BreakpointChecks from "hooks/enums/breakpointChecks";
 import Breakpoints from "common/style/breakpoints";
+import flexbox from "utils/flexbox";
 import useBreakpoint from "hooks/useBreakpoint";
 
 import styles from "components/agility-pageModules/common/cardPlaceholder/cardPlaceholder.module.scss";
 
+const rowHCenter = flexbox({ hAlign: "center" });
 const cardsXL = 3;
 const cardsLG = 2;
 const minCards = 1;
@@ -21,7 +23,7 @@ const CardPlaceHolder = (props: HTMLAttributes<HTMLDivElement>): JSX.Element => 
 
         for (let i = 0; i < numberOfCards; i++) {
 
-            card.push(<Col className="card p-3" aria-hidden="true">
+            card.push(<Col className="card p-3" aria-hidden="true" key={i}>
                 <svg className="">
                     <rect width="100%" height="100%" fill={styles.placeholderColor}></rect>
                 </svg>
@@ -45,7 +47,7 @@ const CardPlaceHolder = (props: HTMLAttributes<HTMLDivElement>): JSX.Element => 
     }, [breakpointLG, breakpointXXL]);
 
     return (
-        <Row {...props} className={styles.cardPlaceholderContainer}>
+        <Row {...props} className={`gap-4 ${rowHCenter}`}>
             {placeholderCards.map(card => card)}
         </Row>
     );

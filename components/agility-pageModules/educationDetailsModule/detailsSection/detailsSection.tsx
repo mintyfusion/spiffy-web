@@ -24,9 +24,9 @@ const DetailsSection = (props: IDetailsSectionProps): JSX.Element => {
                 {props.detailsType == DetailsType.guide
                     ? <Image
                         src={props.mediaSrc}
-                        layout="responsive"
+                        layout="intrinsic"
                         width="1670px"
-                        height="700px"
+                        height="450px"
                         priority={true}
                     />
                     : <VideoPlayer width="100%" height="100%" url={props.mediaSrc} />

@@ -1,6 +1,7 @@
 @import "styles/theme.scss";
 @import "styles/mixins.scss";
 @import "styles/includeMedia.scss";
+@import "styles/variables.scss";
 
 .bannerContainer {
     @extend .backgroundPattern;
@@ -8,26 +9,25 @@
 
 .carouselItem div,
 .carouselItem {
-    min-height: 25rem;
+    max-height: 100%;
 }
 
 .full {
-    min-height: 40rem;
+    max-height: 100%;
 }
 
-.carouselItem {
-    min-height: 20rem;
+.half {
+    max-height: 500px;
 }
 
 .full {
     & > div:first-child {
-        height: 100vh;
+        height: $vh;
     }
 }
 
 @include media(">=1340px") {
     .carouselItem div {
-        min-height: 40rem;
         width: 100vw;
     }
 }
@@ -45,7 +45,7 @@
 }
 
 @include media("<=tablet") {
-    .carouselItem div {
-        min-height: 20rem;
+    .carouselItem {
+        max-height: $vh;
     }
 }

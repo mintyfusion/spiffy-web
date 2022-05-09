@@ -10,7 +10,7 @@ import GamePageStepTypes from "components/agility-pageModules/game/gameSection/e
 import IGameAvatarList from "components/agility-pageModules/game/gameAvatarList/interfaces/IAvatarList";
 import percentages from "components/agility-pageModules/game/gameAvatarList/gameAvatarListContent";
 
-import styles from "components/agility-pageModules/gameAvatarList/gameAvatarList.module.scss";
+import styles from "components/agility-pageModules/game/gameAvatarList/gameAvatarList.module.scss";
 
 const colCenter = flexbox({ vertical: true, hAlign: "center", vAlign: "center" });
 const rowHBetween = flexbox({ hAlign: "between" });
