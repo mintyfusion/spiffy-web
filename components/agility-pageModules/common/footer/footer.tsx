@@ -74,7 +74,7 @@ const Footer = (): JSX.Element => {
                                 <Image
                                     src="/images/homepage/footer/mintyfusionstudios.svg"
                                     width={breakpoint ? "100" : "150"}
-                                    height="25"
+                                    height="20"
                                     alt="mintyfusion Studios"
                                     layout="intrinsic"
                                     priority={true}
