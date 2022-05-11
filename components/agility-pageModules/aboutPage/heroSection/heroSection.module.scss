@@ -33,7 +33,22 @@
 @include media("<desktop") {
     .heroContainer {
         padding: 120px 100px 50px 100px;
-        
+
+        h1 {
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        h5 {
+            margin-bottom: 40px;
+        }
+    }
+}
+
+@include media("<tablet") {
+    .heroContainer {
+        padding: 100px 30px;
+
         h1 {
             max-width: 100%;
             margin-bottom: 10px;
