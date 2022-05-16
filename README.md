@@ -1,6 +1,9 @@
 # Introduction 
 This is Spiffy's public facing website. It uses Agility as a CMS and get's deployed to Vercel using code pushed to GitHub.
 
+# Author
+mintyfusion Studios
+
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
 1.	Installation process
