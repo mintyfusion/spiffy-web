@@ -3,6 +3,7 @@ This is Spiffy's public facing website. It uses Agility as a CMS and get's deplo
 
 # Author
 mintyfusion Studios
+hello@mintyfusion.com
 
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
