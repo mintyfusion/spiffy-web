@@ -2,7 +2,7 @@
 This is Spiffy's public facing website. It uses Agility as a CMS and get's deployed to Vercel using code pushed to GitHub.
 
 # Author
-mintyfusion Studios
+mintyfusion Studios (Tutkoo Inc.)
 hello@mintyfusion.com
 
 # Getting Started
