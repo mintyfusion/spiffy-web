@@ -54,7 +54,7 @@ const CommonSection = (props: ICommonSectionProps): JSX.Element => {
                         </Row>
                     </Col>
                     <Col className="w-100 p-0">
-                        <Image src={image.url} width="960" height="780" layout="responsive" />
+                        {image && <Image src={image.url} width="960" height="780" layout="responsive" />}
                     </Col>
                 </Row>
             </Container>
