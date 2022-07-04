@@ -19,7 +19,7 @@ const colBetween = flexbox({ vertical: true, vAlign: "center", hAlign: "between"
 const colCenter = flexbox({ vertical: true, vAlign: "center", hAlign: "center" });
 
 const linkProps = {
-    href: ConstantUtils.dashboardPath
+    href: `${ConstantUtils.dashboardPath}?signup=true`
 };
 
 const Navbar = (props: INavbarProps): JSX.Element => {
