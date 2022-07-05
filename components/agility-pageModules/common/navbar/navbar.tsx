@@ -1,4 +1,5 @@
 import { Navbar as BTNavbar, Button, Nav, Stack } from "react-bootstrap";
+import { useRouter } from "next/router";
 import React from "react";
 
 import Breakpoints from "common/style/breakpoints";
@@ -18,15 +19,17 @@ const rowCenter = flexbox({ hAlign: "center", vAlign: "center" });
 const colBetween = flexbox({ vertical: true, vAlign: "center", hAlign: "between" });
 const colCenter = flexbox({ vertical: true, vAlign: "center", hAlign: "center" });
 
-const linkProps = {
-    href: `${ConstantUtils.dashboardPath}?signup=true`
-};
-
 const Navbar = (props: INavbarProps): JSX.Element => {
+    const router = useRouter();
     const [backgroundClass, setBackgroundClass] = React.useState<string>("");
     const [toggled, { toggle, setFalse }] = useBoolean(false);
     const breakpoint = useBreakpoint(Breakpoints.LG);
     const navbarRef = React.useRef<HTMLDivElement>();
+    const linkProps = {
+        href: router.asPath === "/creator"
+            ? `${ConstantUtils.creatorDashboardPath}?signup=true`
+            : `${ConstantUtils.dashboardPath}?signup=true`
+    };
 
     // Adding dark background when page is scrolled
     const handleScroll = React.useCallback(() => {
@@ -137,7 +140,11 @@ const Navbar = (props: INavbarProps): JSX.Element => {
                         gap={2}
                         className={`${styles.buttons} ${breakpoint ? colCenter : rowCenter}`}
                     >
-                        <a href={ConstantUtils.dashboardPath}>
+                        <a
+                            href={router.asPath === "/creator"
+                                ? ConstantUtils.creatorDashboardPath
+                                : ConstantUtils.dashboardPath}
+                        >
                             <Button variant="dark" className={`${styles.buttonLogin}`}>Log In</Button>
                         </a>
                         <PrimaryButton linkProps={linkProps}>
