@@ -5,7 +5,6 @@ module.exports = {
         NEXT_AGILITY_GLASSHOUSE_CREATOR_URL: process.env.NEXT_AGILITY_GLASSHOUSE_CREATOR_URL,
     },
     images: {
-        domains: ["cdn.aglty.io"],
-        loader: 'akamai',
+        domains: ["cdn.aglty.io"]
     }
 }
